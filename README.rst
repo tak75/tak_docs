@@ -1,2 +1,5 @@
-# tak_docs
-tak documents
+========
+tak docs
+========
+
+Publicな個人用ドキュメント
