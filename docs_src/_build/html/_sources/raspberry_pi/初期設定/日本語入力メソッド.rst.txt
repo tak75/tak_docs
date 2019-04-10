@@ -1,0 +1,11 @@
+==================
+日本語入力メソッド
+==================
+
+fcitx-mozc が最良なので、これをインストールすべき::
+
+  sudo apt-get install fcitx-mozc -y  #インストール
+  im-config -n fcitx                  #有効化
+  sudo reboot                         #再起動
+
+https://www.fabshop.jp/%E6%97%A5%E6%9C%AC%E8%AA%9E%E5%85%A5%E5%8A%9B%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%81%AF%E3%80%81fcitx-mozc%E3%81%A7%E6%B1%BA%E3%81%BE%E3%82%8A%EF%BC%81/

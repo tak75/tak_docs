@@ -1,0 +1,116 @@
+==========================================================
+パッケージインストール／アンインストール／アップデート方法
+==========================================================
+
+apt-get
+=======
+
+* 説明
+* インストール::
+
+    sudo apt-get install パッケージ名
+
+* バージョン指定インストール::
+
+    # インストール可能なバージョン確認
+    sudo apt-cache policy パッケージ名
+    # バージョンを指定してインストール
+    sudo apt-get install パッケージ名=バージョン
+
+* アンインストール::
+
+    # 設定ファイルを残す
+    sudo apt-get remove パッケージ名
+    # 設定ファイルも削除
+    sudo apt-get --purge remove パッケージ名
+
+* アップデート::
+
+    # 更新リストを取得する
+    sudo apt-get update
+    # 現在インストールされているパッケージ構成を変えない範囲でアップグレードする
+    sudo apt-get upgrade
+    # パッケージ構成の変更に追随してアップグレードする
+    sudo apt-get dist-upgrade
+
+easy_install
+==============
+
+* 説明
+
+  * パッケージ管理ツール
+  * Pythonの外部ライブラリ（パッケージ）をインストール
+
+* 事前準備
+
+  easy_installコマンドを利用するには、http://peak.telecommunity.com/dist/ez_setup.py ファイルをダウンロードし、そのファイルをpythonコマンドで実行する::
+
+    wget http://peak.telecommunity.com/dist/ez_setup.py
+    python ez_setup.py
+
+* インストール::
+
+    easy_install パッケージ名
+
+* アップデート::
+
+pip/pip3
+========
+
+* 説明
+
+  * パッケージ管理ツール
+  * pip：python2用、pip3：python3用
+
+* 事前準備
+
+  pipのインストールが必要::
+
+    sudo apt-get install python-pip
+
+  pip/pip3を共存させる方法
+  http://blog.yubais.net/21.html
+
+* インストール::
+
+    # python2用
+    sudo pip install パッケージ名
+    # python3用
+    sudo pip3 install パッケージ名
+    
+    # パッケージ名はスペースで区切ることで複数のパッケージを指定可能
+
+* アップデート::
+
+    pip install --upgrade パッケージ名
+    # パッケージ名はスペースで区切ることで複数のパッケージを指定可能
+
+conda
+======
+
+* 説明
+
+  * anacondaやminicondaで使用されるパッケージ管理ツール。
+  * condaはpipに比べて仮想環境構築もできたりと高機能であるが、pipでインストールできてcondaにはインストールできないパッケージもある。
+  * したがって、パッケージをインストールする際には基本的にはcondaを使用し、condaでサポートされていないパッケージについてはpipでインストールするという使い方が良い。
+
+* アップデート::
+
+    conda update パッケージ名
+
+    # 例：anaconda自身をアップデートする場合
+    conda update conda
+
+setup.py の場合
+==================
+
+* 説明
+  
+  ダウンロードしたzipファイルを解凍して"setup.py"ファイルがあった場合
+
+* インストール::
+
+    python setup.py install
+
+
+

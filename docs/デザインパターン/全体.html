@@ -1,0 +1,311 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>全体 &#8212; Tak Documents  ドキュメント</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="Strategyパターン" href="Strategyパターン.html" />
+    <link rel="prev" title="デザインパターン" href="index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="Strategyパターン.html" title="Strategyパターン"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="デザインパターン"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">デザインパターン</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">デザインパターン</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">全体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Strategyパターン.html">Strategyパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Observerパターン.html">Observerパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Decoratorパターン.html">Decoratorパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Factoryパターン.html">Factoryパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singletonパターン.html">Singletonパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Commandパターン.html">Commandパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adapterパターン.html">Adapterパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Facadeパターン.html">Facadeパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TemplateMethodパターン.html">TemplateMethodパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Iteratorパターン.html">Iteratorパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compositeパターン.html">Compositeパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Stateパターン.html">Stateパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compoundパターン.html">Compoundパターン</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../備忘録/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">全体</a><ul>
+<li><a class="reference internal" href="#id2">概要</a></li>
+<li><a class="reference internal" href="#id3">類似パターン</a></li>
+<li><a class="reference internal" href="#oo">OOの原則</a></li>
+<li><a class="reference internal" href="#id4">設計原則</a></li>
+<li><a class="reference internal" href="#id5">備考</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="index.html"
+                        title="前の章へ">デザインパターン</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="Strategyパターン.html"
+                        title="次の章へ">Strategyパターン</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<h1>全体<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id2">
+<h2>概要<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<table border="1" class="docutils" id="id6">
+<caption><span class="caption-number">表 11 </span><span class="caption-text">デザインパターン概要</span><a class="headerlink" href="#id6" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">パターン</th>
+<th class="head">概要</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><p class="first last">Strategy</p>
+</td>
+<td><p class="first last"></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first last">Observer</p>
+</td>
+<td><p class="first last"></p>
+</td>
+</tr>
+<tr class="row-even"><td><p class="first last">Decorator</p>
+</td>
+<td><p class="first last">基盤となるクラスのコードを全く変更することなく、オブジェクトに新しい責務を与えることができる</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first last">Factory</p>
+</td>
+<td><p class="first last"></p>
+</td>
+</tr>
+<tr class="row-even"><td><p class="first last">Singleton</p>
+</td>
+<td><p class="first last"></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first last">Command</p>
+</td>
+<td><p class="first last"></p>
+</td>
+</tr>
+<tr class="row-even"><td><p class="first last">Adapter</p>
+</td>
+<td><p class="first last"></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first last">Facade</p>
+</td>
+<td><p class="first last"></p>
+</td>
+</tr>
+<tr class="row-even"><td><p class="first last">TemplateMethod</p>
+</td>
+<td><p class="first last"></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first last">Iterator</p>
+</td>
+<td><p class="first last"></p>
+</td>
+</tr>
+<tr class="row-even"><td><p class="first last">Composite</p>
+</td>
+<td><p class="first last"></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first last">State</p>
+</td>
+<td><p class="first last"></p>
+</td>
+</tr>
+<tr class="row-even"><td><p class="first last">Compound</p>
+</td>
+<td><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h2>類似パターン<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<table border="1" class="docutils" id="id7">
+<caption><span class="caption-number">表 12 </span><span class="caption-text">ラップパターン</span><a class="headerlink" href="#id7" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">パターン</th>
+<th class="head">目的</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Decorator</td>
+<td>インタフェースを変更せずに、責務を追加する</td>
+</tr>
+<tr class="row-odd"><td>Adapter</td>
+<td>あるインタフェースを別のインタフェースに変換する</td>
+</tr>
+<tr class="row-even"><td>Facade</td>
+<td>インタフェースをより簡潔にする</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils" id="id8">
+<caption><span class="caption-number">表 13 </span><span class="caption-text">誰が何をする？</span><a class="headerlink" href="#id8" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">パターン</th>
+<th class="head">説明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Template Method</td>
+<td>サブクラスがアルゴリズムの手順の実装方法を決める。</td>
+</tr>
+<tr class="row-odd"><td>Strategy</td>
+<td>交換可能な振る舞いをカプセル化し、委譲を使って使用すべき振る舞いを決める。</td>
+</tr>
+<tr class="row-even"><td>Factory Method</td>
+<td>サブクラスがどの具象クラスをインスタンス化するかを決める。Template Method を特化したパターンである。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="oo">
+<h2>OOの原則<a class="headerlink" href="#oo" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li>変化する部分をカプセル化する。
+（アプリケーション内の変化する部分を特定し、不変な部分と分離しカプセル化することで、不変な部分に影響を与えずに変化する部分を後で変更したり拡張したりできる。）</li>
+<li>継承よりコンポジションを好む。
+（「IS-A」より「HAS-A」が優れている場合がある）</li>
+<li>実装に対してではなくインタフェースに対してプログラミングする。
+（抽象クラスに対してでも可）</li>
+<li>相互にやり取りするオブジェクト間には、疎結合設計を使用するようにする。
+（インタフェースのみを知っていればよく、具体的な動作などを知る必要はない）</li>
+<li>クラスは拡張に対しては開かれた状態であるべきであるが、変更に対しては閉じた状態であるべきである。</li>
+<li>抽象に依存する。具象クラスに依存してはいけない。
+（クラスのすべての責務は、変更される可能性のある部分である。
+複数の責務を持つことは、変更される可能性のある部分が複数あることを意味する。
+この原則は、各クラスに1つだけの責務を与えるよう指導している）</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>設計原則<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li>アプリケーション内の変化する部分を特定し、不変な部分と分離する。</li>
+<li>実装に対してではなくインタフェースに対してプログラミングする。</li>
+<li>クラスは拡張に対しては開かれた状態であるべきであるが、変更に対しては閉じた状態であるべきである。</li>
+<li>抽象に依存する。具象クラスに依存してはいけない。（依存性反転の原則）</li>
+<li>最小知識の原則 - 直接の友達とだけやり取りする。</li>
+<li>ハリウッドの原則 - こちらを呼び出さないでください。こちらから呼び出します。(Don't call us, we'll call you.)</li>
+<li>クラスは、変更される理由を1つだけ持つべきである。</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>備考<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li>デザインパターンでの「インタフェースを実装する」という表現は必ずしも&quot;interface&quot;キーワードを使ってクラス宣言することではない。
+（クラスまたはインタフェースである）スーパータイプのメソッドを実装する具象クラスが、そのスーパータイプの「インタフェースを実装している」と考えられる。
+つまり、「インタフェース」　＝　「親クラス」または「インタフェース」と考えられる。</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="Strategyパターン.html" title="Strategyパターン"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="デザインパターン"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >デザインパターン</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, tak.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.1 で生成しました。
+    </div>
+  </body>
+</html>

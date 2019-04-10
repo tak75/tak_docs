@@ -1,0 +1,238 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>python API ドキュメント作成 &#8212; Tak Documents  ドキュメント</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="Linux" href="../Linux/index.html" />
+    <link rel="prev" title="Sphinx本 著者ミーティング 6/30" href="sample/sphinx-book/index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../Linux/index.html" title="Linux"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="sample/sphinx-book/index.html" title="Sphinx本 著者ミーティング 6/30"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Sphinx</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Sphinx</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="備忘録.html">備忘録</a></li>
+<li class="toctree-l2"><a class="reference internal" href="リファレンス.html">リファレンス</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">python API ドキュメント作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="B'z/index.html">B'z</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample/index.html">コーディング サンプル</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../デザインパターン/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../備忘録/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">python API ドキュメント作成</a><ul>
+<li><a class="reference internal" href="#id1">はじめに</a></li>
+<li><a class="reference internal" href="#id2">操作方法</a><ul>
+<li><a class="reference internal" href="#id3">プロジェクト新規作成</a></li>
+<li><a class="reference internal" href="#conf-py">conf.pyの修正</a></li>
+<li><a class="reference internal" href="#id4">ビルド</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#docstring">docstring</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="sample/sphinx-book/index.html"
+                        title="前の章へ">Sphinx本 著者ミーティング 6/30</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="../Linux/index.html"
+                        title="次の章へ">Linux</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="python-api">
+<span id="python-api-label"></span><h1>python API ドキュメント作成<a class="headerlink" href="#python-api" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id1">
+<h2>はじめに<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>pythonソースでは、docstring形式でコメントを入力することで、sphinxでAPIドキュメント出力を行うことができる。</p>
+</div>
+<div class="section" id="id2">
+<h2>操作方法<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id3">
+<h3>プロジェクト新規作成<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>以下のディレクトリ構成を例に説明する:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">project</span> <span class="c1"># Pythonプロジェクト</span>
+  <span class="o">|</span>
+  <span class="o">|-</span> <span class="n">src</span> <span class="c1"># APIドキュメントを自動生成したいPythonコードのディレクトリ</span>
+  <span class="o">|</span>   <span class="o">|-</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">pyとか</span>
+  <span class="o">|</span>   <span class="o">|-</span> <span class="n">hoge</span> <span class="c1"># サブモジュールとか</span>
+  <span class="o">|</span>
+  <span class="o">|-</span> <span class="n">docs</span> <span class="c1"># Sphinxプロジェクトのディレクトリ</span>
+</pre></div>
+</div>
+<p>docsディレクトリにAPIドキュメント用のSphinxプロジェクトを作成:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">project</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">apidoc</span> <span class="o">-</span><span class="n">F</span> <span class="o">-</span><span class="n">o</span> <span class="n">docs</span><span class="o">/</span> <span class="n">src</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="conf-py">
+<h3>conf.pyの修正<a class="headerlink" href="#conf-py" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>conf.pyファイル内のコメントを外し以下のように追記する:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># If extensions (or modules to document with autodoc) are in another directory,</span>
+<span class="c1"># add these directories to sys.path here. If the directory is relative to the</span>
+<span class="c1"># documentation root, use os.path.abspath to make it absolute, like shown here.</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Z:\BBB\GyroViewer\GyroViewer&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>conf.pyファイルに以下を追記する:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># インポートエラーとなるモジュールがあると以降のビルドが中止されてしまうため、</span>
+<span class="c1"># インポートエラーとなるモジュールをあらかじめ知らせておくことでエラーを防止する</span>
+<span class="n">autodoc_mock_imports</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">&#39;ptvsd&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;smbus&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;ConfigParser&#39;</span><span class="p">]</span>
+
+<span class="c1"># privateを含めたMethodの表示</span>
+<span class="n">autodoc_default_flags</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">&#39;members&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;private-members&#39;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>ビルド<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>通常のsphinxと同様:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">docs</span>
+<span class="n">make</span> <span class="n">html</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="docstring">
+<h2>docstring<a class="headerlink" href="#docstring" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>以下のように記述する:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Sample機能提供モジュール</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">class</span> <span class="nc">Sample</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    sample機能を実装したクラスです。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">bar</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="sd">&quot;&quot;&quot; xxを保持するメンバです &quot;&quot;&quot;</span>
+
+    <span class="c1">#: yyを保持するメンバです</span>
+    <span class="n">foo</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        初期化処理を行います。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;hoge&#39;</span>
+
+
+
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        引数で指定した値を足し算して返します。``arg1 + arg2``</span>
+
+<span class="sd">        :param int arg1: 足される値。</span>
+<span class="sd">        :param arg2: 足す値。</span>
+<span class="sd">        :type arg2: int</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        :return: 足し算した結果。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="../Linux/index.html" title="Linux"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="sample/sphinx-book/index.html" title="Sphinx本 著者ミーティング 6/30"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Sphinx</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, tak.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.1 で生成しました。
+    </div>
+  </body>
+</html>

@@ -1,0 +1,257 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Factoryパターン &#8212; Tak Documents  ドキュメント</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="Singletonパターン" href="Singletonパターン.html" />
+    <link rel="prev" title="Decoratorパターン" href="Decoratorパターン.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="Singletonパターン.html" title="Singletonパターン"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="Decoratorパターン.html" title="Decoratorパターン"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">デザインパターン</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">デザインパターン</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="全体.html">全体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Strategyパターン.html">Strategyパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Observerパターン.html">Observerパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Decoratorパターン.html">Decoratorパターン</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Factoryパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singletonパターン.html">Singletonパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Commandパターン.html">Commandパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adapterパターン.html">Adapterパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Facadeパターン.html">Facadeパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TemplateMethodパターン.html">TemplateMethodパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Iteratorパターン.html">Iteratorパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compositeパターン.html">Compositeパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Stateパターン.html">Stateパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compoundパターン.html">Compoundパターン</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../備忘録/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Factoryパターン</a><ul>
+<li><a class="reference internal" href="#simple-factory">Simple Factoryパターン</a><ul>
+<li><a class="reference internal" href="#id1">説明</a></li>
+<li><a class="reference internal" href="#id2">図面</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#factory-method">Factory Methodパターン</a><ul>
+<li><a class="reference internal" href="#id4">適用ケース</a></li>
+<li><a class="reference internal" href="#id5">定義</a></li>
+<li><a class="reference internal" href="#id6">説明</a></li>
+<li><a class="reference internal" href="#id7">Simple Factory との違い</a></li>
+<li><a class="reference internal" href="#id8">図面</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#abstract-factory">Abstract Factory パターン</a><ul>
+<li><a class="reference internal" href="#id10">適用ケース</a></li>
+<li><a class="reference internal" href="#id11">定義</a></li>
+<li><a class="reference internal" href="#id12">説明</a></li>
+<li><a class="reference internal" href="#id13">図面</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="Decoratorパターン.html"
+                        title="前の章へ">Decoratorパターン</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="Singletonパターン.html"
+                        title="次の章へ">Singletonパターン</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="factory">
+<h1>Factoryパターン<a class="headerlink" href="#factory" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="simple-factory">
+<h2>Simple Factoryパターン<a class="headerlink" href="#simple-factory" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id1">
+<h3>説明<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li>Simple Factory は <strong>デザインパターンではなく</strong> 、プログラミングのイディオム。</li>
+<li>インスタンスの作成を１つのクラスにカプセル化することで、実装が変わった際に変更すべき部分が１つだけになる。</li>
+<li>クライアントコードから具象クラスのインスタンス化を取り除くことができる。</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>図面<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>クラス図の例を <a class="reference internal" href="#simplefactory"><span class="std std-numref">図 11</span></a> に、シーケンス図を <a class="reference internal" href="#id3"><span class="std std-numref">図 12</span></a> に各々示す。</p>
+<div class="figure" id="simplefactory">
+<a class="reference internal image-reference" href="../_images/SimpleFactoryパターン_クラス図.png"><img alt="../_images/SimpleFactoryパターン_クラス図.png" src="../_images/SimpleFactoryパターン_クラス図.png" style="width: 816.85px; height: 278.8px;" /></a>
+<p class="caption"><span class="caption-number">図 11 </span><span class="caption-text">Simple Factoryパターン クラス図</span></p>
+</div>
+<div class="figure" id="id3">
+<a class="reference internal image-reference" href="../_images/SimpleFactoryパターン_シーケンス図.png"><img alt="../_images/SimpleFactoryパターン_シーケンス図.png" src="../_images/SimpleFactoryパターン_シーケンス図.png" style="width: 892.5px; height: 557.6px;" /></a>
+<p class="caption"><span class="caption-number">図 12 </span><span class="caption-text">Simple Factoryパターン シーケンス図</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="factory-method">
+<h2>Factory Methodパターン<a class="headerlink" href="#factory-method" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id4">
+<h3>適用ケース<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li>複数の製品（インスタンス）を作成する必要がある場合に有効。</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>定義<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>Factory Method パターンはオブジェクト作成のためのインスタフェースを定義するが、どのクラスをインスタンス化するかについてはサブクラスに決定させる。
+Factory Method により、クラスはサブクラスにインスタンス化を先送りできる。</p>
+</div>
+<div class="section" id="id6">
+<h3>説明<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li>Factoryに製品名などを渡すことで、Product（具象クラスのインスタンス）を作ることができる。</li>
+<li>クライアントコードから具象クラスのインスタンス化を取り除くことができる。</li>
+<li>ConcreteFactory で製品を実装し、Factory では製品を使用するのみ。
+製品の実装と使用を分離できることにメリットがある。
+製品を追加したり製品の実装を変更しても Factory には影響が及ばない。</li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h3>Simple Factory との違い<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>Simple Factory は一発勝負と考えられるのに対し、Factory Method は使用する実装をサブクラスに決定させるフレームワークを作成している。
+Simple Factory ではオブジェクト作成をカプセル化する方法は提供するが、作成する製品を変更する方法がないので、Facotry Method のような柔軟性はない。
+Facotory Method では、** 元のクラスを修正することなく** 新たな ConcreteFactory クラスを作成することで、作成する製品を変更することができる。</p>
+</div>
+<div class="section" id="id8">
+<h3>図面<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>クラス図の例を <a class="reference internal" href="#factorymethod"><span class="std std-numref">図 13</span></a> に、シーケンス図を <a class="reference internal" href="#id9"><span class="std std-numref">図 14</span></a> に各々示す。</p>
+<div class="figure" id="factorymethod">
+<a class="reference internal image-reference" href="../_images/FactoryMethodパターン_クラス図.png"><img alt="../_images/FactoryMethodパターン_クラス図.png" src="../_images/FactoryMethodパターン_クラス図.png" style="width: 803.25px; height: 477.7px;" /></a>
+<p class="caption"><span class="caption-number">図 13 </span><span class="caption-text">Factory Methodパターン クラス図</span></p>
+</div>
+<div class="figure" id="id9">
+<a class="reference internal image-reference" href="../_images/FactoryMethodパターン_シーケンス図.png"><img alt="../_images/FactoryMethodパターン_シーケンス図.png" src="../_images/FactoryMethodパターン_シーケンス図.png" style="width: 639.1999999999999px; height: 718.25px;" /></a>
+<p class="caption"><span class="caption-number">図 14 </span><span class="caption-text">Factory Methodパターン シーケンス図</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="abstract-factory">
+<h2>Abstract Factory パターン<a class="headerlink" href="#abstract-factory" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id10">
+<h3>適用ケース<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li>工場が複数存在する（増える可能性がある）場合に有効。</li>
+<li>部品や製品が増える可能性がある場合は困難。
+（部品や製品を増やすためには、既存のfactoryパッケージ、およびconcretefactoryパッケージともに修正が必要となる）</li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h3>定義<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>Abstract Factory パターンは、 <strong>具象クラスを指定することなく</strong> 、一連の関連オブジェクトや依存オブジェクトを作成するためのインスタフェースを提供する。</p>
+</div>
+<div class="section" id="id12">
+<h3>説明<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li>Client（依頼者）は、具象クラスについては一切知る必要がない。
+抽象クラスに対して処理するだけでよい。
+このため、後で工場が増えたとしても、Clientに新しい工場のインスタンスを渡すだけで、Clientの修正なしに新しい工場を使用することができる。</li>
+</ul>
+</div>
+<div class="section" id="id13">
+<h3>図面<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>クラス図の例を <a class="reference internal" href="#abstractfactory"><span class="std std-numref">図 15</span></a> に、シーケンス図を <a class="reference internal" href="#id14"><span class="std std-numref">図 16</span></a> に各々示す。</p>
+<div class="figure" id="abstractfactory">
+<a class="reference internal image-reference" href="../_images/AbstractFactoryパターン_クラス図.png"><img alt="../_images/AbstractFactoryパターン_クラス図.png" src="../_images/AbstractFactoryパターン_クラス図.png" style="width: 891.65px; height: 765.85px;" /></a>
+<p class="caption"><span class="caption-number">図 15 </span><span class="caption-text">Abstract Factoryパターン クラス図</span></p>
+</div>
+<div class="figure" id="id14">
+<a class="reference internal image-reference" href="../_images/AbstractFactoryパターン_シーケンス図.png"><img alt="../_images/AbstractFactoryパターン_シーケンス図.png" src="../_images/AbstractFactoryパターン_シーケンス図.png" style="width: 958.8px; height: 776.05px;" /></a>
+<p class="caption"><span class="caption-number">図 16 </span><span class="caption-text">Abstract Factoryパターン シーケンス図</span></p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="Singletonパターン.html" title="Singletonパターン"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="Decoratorパターン.html" title="Decoratorパターン"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >デザインパターン</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, tak.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.1 で生成しました。
+    </div>
+  </body>
+</html>

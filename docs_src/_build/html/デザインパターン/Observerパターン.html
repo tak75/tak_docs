@@ -1,0 +1,184 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Observerパターン &#8212; Tak Documents  ドキュメント</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="Decoratorパターン" href="Decoratorパターン.html" />
+    <link rel="prev" title="Strategyパターン" href="Strategyパターン.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="Decoratorパターン.html" title="Decoratorパターン"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="Strategyパターン.html" title="Strategyパターン"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">デザインパターン</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">デザインパターン</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="全体.html">全体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Strategyパターン.html">Strategyパターン</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Observerパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Decoratorパターン.html">Decoratorパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Factoryパターン.html">Factoryパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singletonパターン.html">Singletonパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Commandパターン.html">Commandパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adapterパターン.html">Adapterパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Facadeパターン.html">Facadeパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TemplateMethodパターン.html">TemplateMethodパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Iteratorパターン.html">Iteratorパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compositeパターン.html">Compositeパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Stateパターン.html">Stateパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compoundパターン.html">Compoundパターン</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../備忘録/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Observerパターン</a><ul>
+<li><a class="reference internal" href="#id1">適用ケース</a></li>
+<li><a class="reference internal" href="#id2">定義</a></li>
+<li><a class="reference internal" href="#id3">説明</a></li>
+<li><a class="reference internal" href="#id4">図面</a></li>
+<li><a class="reference internal" href="#id7">補足</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="Strategyパターン.html"
+                        title="前の章へ">Strategyパターン</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="Decoratorパターン.html"
+                        title="次の章へ">Decoratorパターン</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="observer">
+<h1>Observerパターン<a class="headerlink" href="#observer" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id1">
+<h2>適用ケース<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li>あるクラス内での変化を他の複数のクラスに通知する際に有効。</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>定義<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Observer パターンは、オブジェクト間の１対多の依存関係を定義し、あるオブジェクトの状態が変化すると、それに依存しているすべてのオブジェクトが自動的に通知され更新されるようにする。</p>
+</div>
+<div class="section" id="id3">
+<h2>説明<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li>サブジェクト（発行者）に複数のオブザーバ（購読者）を登録する。</li>
+<li>サブジェクトの状態が変化すると、登録されている全てのオブザーバに対して、オブザーバは状態が変化したことを通知する。</li>
+<li>通知のみを行いオブザーバ側からサブジェクトに対して最新の状態を問い合わせる仕様としてもよいし（プル型実装）、
+通知時に最新の状態をオブザーバに渡す仕様としてもよい（プッシュ型実装）。</li>
+<li>サブジェクトとオブザーバは、お互いについてほとんど知る必要はない（インタフェースさえ知っておけばよい）。</li>
+<li>登録は任意に解除することが可能。</li>
+<li>通知順序に関しては当てにしてはいけない（特定の通知順になるとは限らない）。</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>図面<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>クラス図を <a class="reference internal" href="#id5"><span class="std std-numref">図 7</span></a> に、シーケンス図を <a class="reference internal" href="#id6"><span class="std std-numref">図 8</span></a> に各々示す。</p>
+<div class="figure" id="id5">
+<a class="reference internal image-reference" href="../_images/Observerパターン_クラス図.png"><img alt="../_images/Observerパターン_クラス図.png" src="../_images/Observerパターン_クラス図.png" style="width: 603.5px; height: 361.25px;" /></a>
+<p class="caption"><span class="caption-number">図 7 </span><span class="caption-text">Observerパターン クラス図</span></p>
+</div>
+<div class="figure" id="id6">
+<a class="reference internal image-reference" href="../_images/Observerパターン_シーケンス図.png"><img alt="../_images/Observerパターン_シーケンス図.png" src="../_images/Observerパターン_シーケンス図.png" style="width: 782.0px; height: 817.6999999999999px;" /></a>
+<p class="caption"><span class="caption-number">図 8 </span><span class="caption-text">Observerパターン シーケンス図</span></p>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>補足<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>以下の理由により、プッシュ型実装よりプル型実装の方が適切であると考えられている。</p>
+<ul class="simple">
+<li>新たに追加するオブザーバのために受け渡す状態を追加する可能性がある場合、プッシュ型では全てのオブザーバの実装を修正する必要があるが、プル型では不要。</li>
+<li>サブジェクトが多くの状態を保持している場合、プッシュ型では全ての状態を受取るためのオブザーバの実装が必要となるが、プル型では自分が必要な状態のみを問い合わせればよいため効率がよい。</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="Decoratorパターン.html" title="Decoratorパターン"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="Strategyパターン.html" title="Strategyパターン"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >デザインパターン</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, tak.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.1 で生成しました。
+    </div>
+  </body>
+</html>

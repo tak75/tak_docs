@@ -1,0 +1,20 @@
+===================
+ショートカット作成
+===================
+
+lxshortcut
+===========
+
+以下をインストールし::
+
+  sudo apt-get install lxshortcut
+
+例えばデスクトップにショートカットを作成したい場合::
+
+  cd Desktop
+  lxshortcut -o filename.desktop
+
+http://www.atokochi.com/2017/06/14/post-19/
+
+.. figure:: images/ショートカット作成.png
+   

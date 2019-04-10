@@ -1,0 +1,180 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Commandパターン &#8212; Tak Documents  ドキュメント</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="Adapterパターン" href="Adapterパターン.html" />
+    <link rel="prev" title="Singletonパターン" href="Singletonパターン.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="Adapterパターン.html" title="Adapterパターン"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="Singletonパターン.html" title="Singletonパターン"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">デザインパターン</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">デザインパターン</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="全体.html">全体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Strategyパターン.html">Strategyパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Observerパターン.html">Observerパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Decoratorパターン.html">Decoratorパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Factoryパターン.html">Factoryパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singletonパターン.html">Singletonパターン</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Commandパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adapterパターン.html">Adapterパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Facadeパターン.html">Facadeパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TemplateMethodパターン.html">TemplateMethodパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Iteratorパターン.html">Iteratorパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compositeパターン.html">Compositeパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Stateパターン.html">Stateパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compoundパターン.html">Compoundパターン</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../備忘録/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Commandパターン</a><ul>
+<li><a class="reference internal" href="#id1">適用ケース</a></li>
+<li><a class="reference internal" href="#id2">定義</a></li>
+<li><a class="reference internal" href="#id3">説明</a></li>
+<li><a class="reference internal" href="#id4">図面</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="Singletonパターン.html"
+                        title="前の章へ">Singletonパターン</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="Adapterパターン.html"
+                        title="次の章へ">Adapterパターン</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="command">
+<h1>Commandパターン<a class="headerlink" href="#command" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id1">
+<h2>適用ケース<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li>ボタンに割り当てる機能を任意に変更できるようにしたい場合。</li>
+<li>ボタン操作をアンドゥしたい場合。</li>
+<li>リクエストをキューイングしたい場合。</li>
+<li>リクエストをロギングしクラッシュ後に復旧させたい場合。（execute()実行の都度、コマンドオブジェクトをディスクに保管しクラッシュ後に順にロードし実行）</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>定義<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Command パターンは、リクエストをオブジェクトとしてカプセル化し、その結果、
+他のオブジェクトを異なるリクエスト、キュー、またはログリクエストでパラメータ化でき、アンドゥ可能な操作もサポートする。</p>
+</div>
+<div class="section" id="id3">
+<h2>説明<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li>Command パターンは、リクエストを行うオブジェクトとその実行方法を知っているオブジェクトを分離する。</li>
+<li>コマンドオブジェクトがこの分離の中核であり、レシーバをアクション（または一連のアクション）でカプセル化する。</li>
+<li>インボーカは、コマンドオブジェクトの execute() メソッドを呼び出すことで、リクエストを実行する。execute() メソッドはレシーバのアクションを起動する。</li>
+<li>インボーカはコマンドでパラメータ化することができ、実行時に動的にパラメータ化することさえできる。</li>
+<li>コマンドは、オブジェクトを最後の execute() メソッドの呼び出し前の状態に回復するアンドゥメソッドを実装することで、アンドゥをサポートできる。</li>
+<li>マクロコマンドはコマンドの簡単な拡張であり、複数のコマンドを起動できる。同様に、マクロコマンドは undo() を簡単にサポートできる。</li>
+<li>実際には、「賢い」コマンドオブジェクトが、レシーバに委譲しないでリクエスト自体を実装することも珍しいことではない。</li>
+<li>コマンドを使用して、ロギングやトランザクション型システムを実装することもできる。</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>図面<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>クラス図の例を <a class="reference internal" href="#id5"><span class="std std-numref">図 19</span></a> に、シーケンス図を <a class="reference internal" href="#id6"><span class="std std-numref">図 20</span></a> に各々示す。</p>
+<div class="figure" id="id5">
+<a class="reference internal image-reference" href="../_images/Commandパターン_クラス図.png"><img alt="../_images/Commandパターン_クラス図.png" src="../_images/Commandパターン_クラス図.png" style="width: 773.5px; height: 574.6px;" /></a>
+<p class="caption"><span class="caption-number">図 19 </span><span class="caption-text">Commandパターン クラス図</span></p>
+</div>
+<div class="figure" id="id6">
+<a class="reference internal image-reference" href="../_images/Commandパターン_シーケンス図.png"><img alt="../_images/Commandパターン_シーケンス図.png" src="../_images/Commandパターン_シーケンス図.png" style="width: 719.1px; height: 931.6px;" /></a>
+<p class="caption"><span class="caption-number">図 20 </span><span class="caption-text">Commandパターン シーケンス図</span></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="Adapterパターン.html" title="Adapterパターン"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="Singletonパターン.html" title="Singletonパターン"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >デザインパターン</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, tak.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.1 で生成しました。
+    </div>
+  </body>
+</html>

@@ -1,0 +1,174 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Strategyパターン &#8212; Tak Documents  ドキュメント</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="Observerパターン" href="Observerパターン.html" />
+    <link rel="prev" title="全体" href="全体.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="Observerパターン.html" title="Observerパターン"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="全体.html" title="全体"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">デザインパターン</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">デザインパターン</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="全体.html">全体</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Strategyパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Observerパターン.html">Observerパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Decoratorパターン.html">Decoratorパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Factoryパターン.html">Factoryパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singletonパターン.html">Singletonパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Commandパターン.html">Commandパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adapterパターン.html">Adapterパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Facadeパターン.html">Facadeパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TemplateMethodパターン.html">TemplateMethodパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Iteratorパターン.html">Iteratorパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compositeパターン.html">Compositeパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Stateパターン.html">Stateパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compoundパターン.html">Compoundパターン</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../備忘録/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Strategyパターン</a><ul>
+<li><a class="reference internal" href="#id1">適用ケース</a></li>
+<li><a class="reference internal" href="#id2">定義</a></li>
+<li><a class="reference internal" href="#id3">説明</a></li>
+<li><a class="reference internal" href="#id4">図面</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="全体.html"
+                        title="前の章へ">全体</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="Observerパターン.html"
+                        title="次の章へ">Observerパターン</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="strategy">
+<h1>Strategyパターン<a class="headerlink" href="#strategy" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id1">
+<h2>適用ケース<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li>多くの類似クラスを作成する場合に有効。</li>
+<li>実行時に振る舞いを変更したい場合に有効。</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>定義<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Strategy パターンは一連のアルゴリズムを定義し、それぞれをカプセル化してそれらを交換可能にする。
+Strategy パターンによって、アルゴリズムを使用するクライアントとは独立して、アルゴリズムを変更できる。</p>
+</div>
+<div class="section" id="id3">
+<h2>説明<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li>多くの類似クラスを作成する場合、クラス内の変化する部分と不変な部分と分離する。</li>
+<li>不変な部分はスーパークラスに実装し、それを類似クラスで継承する。</li>
+<li>変化する部分はインタフェースで定義し、そのインタフェースを実装した振る舞いクラスを必要なだけ用意する。</li>
+<li>上記類似クラスは、この振る舞いクラスのインスタンスを持つことで、不変な部分に影響を与えずに変化する部分を後で変更したり拡張したりできる。</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>図面<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>クラス図の例を <a class="reference internal" href="#id5"><span class="std std-numref">図 5</span></a> に、シーケンス図を <a class="reference internal" href="#id6"><span class="std std-numref">図 6</span></a> に各々示す。</p>
+<div class="figure" id="id5">
+<a class="reference internal image-reference" href="../_images/Strategyパターン_クラス図.png"><img alt="../_images/Strategyパターン_クラス図.png" src="../_images/Strategyパターン_クラス図.png" style="width: 850.0px; height: 470.9px;" /></a>
+<p class="caption"><span class="caption-number">図 5 </span><span class="caption-text">Strategyパターン クラス図</span></p>
+</div>
+<div class="figure" id="id6">
+<a class="reference internal image-reference" href="../_images/Strategyパターン_シーケンス図.png"><img alt="../_images/Strategyパターン_シーケンス図.png" src="../_images/Strategyパターン_シーケンス図.png" style="width: 574.6px; height: 493.0px;" /></a>
+<p class="caption"><span class="caption-number">図 6 </span><span class="caption-text">Strategyパターン シーケンス図</span></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="Observerパターン.html" title="Observerパターン"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="全体.html" title="全体"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >デザインパターン</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, tak.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.1 で生成しました。
+    </div>
+  </body>
+</html>

@@ -1,0 +1,1207 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>リファレンス &#8212; Tak Documents  ドキュメント</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="B&#39;z" href="B&#39;z/index.html" />
+    <link rel="prev" title="備忘録" href="備忘録.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="B'z/index.html" title="B&#39;z"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="備忘録.html" title="備忘録"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Sphinx</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Sphinx</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="備忘録.html">備忘録</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">リファレンス</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python API ドキュメント作成.html">python API ドキュメント作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="B'z/index.html">B'z</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample/index.html">コーディング サンプル</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../デザインパターン/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../備忘録/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">リファレンス</a><ul>
+<li><a class="reference internal" href="#id2">インライン記法</a></li>
+<li><a class="reference internal" href="#id3">インライン記法（ロール）</a></li>
+<li><a class="reference internal" href="#id4">段落</a></li>
+<li><a class="reference internal" href="#id5">コメント</a></li>
+<li><a class="reference internal" href="#id6">セクション名</a></li>
+<li><a class="reference internal" href="#contents">ページ内目次（contents）</a></li>
+<li><a class="reference internal" href="#id7">リスト、サブリスト</a></li>
+<li><a class="reference internal" href="#id8">番号付きリスト</a></li>
+<li><a class="reference internal" href="#id9">定義リスト</a></li>
+<li><a class="reference internal" href="#id10">画像</a></li>
+<li><a class="reference internal" href="#numref">図表番号による参照（numref）</a></li>
+<li><a class="reference internal" href="#urlemail">ハイパーリンク、URL、email</a></li>
+<li><a class="reference internal" href="#id11">外部ハイパーリンクターゲット、名前付きハイパーリンク参照</a></li>
+<li><a class="reference internal" href="#id13">名前なしハイパーリンク</a></li>
+<li><a class="reference internal" href="#url">埋め込みURL記法</a></li>
+<li><a class="reference internal" href="#id17">インライン内部ターゲット</a></li>
+<li><a class="reference internal" href="#id21">ラベル</a></li>
+<li><a class="reference internal" href="#ref">クロスリファレンス（ref）</a></li>
+<li><a class="reference internal" href="#doc">別原稿ファイルへのリンク（doc）</a></li>
+<li><a class="reference internal" href="#download">ダウンロード用リンク（download）</a></li>
+<li><a class="reference internal" href="#id26">ラインブロック</a></li>
+<li><a class="reference internal" href="#id27">引用ブロック</a></li>
+<li><a class="reference internal" href="#id28">クォートリテラルブロック</a></li>
+<li><a class="reference internal" href="#literal-code-block-label">リテラルコードブロック（::）</a></li>
+<li><a class="reference internal" href="#code-block">コードブロック（code-block）</a></li>
+<li><a class="reference internal" href="#literalinclude">コードの引用（literalinclude）</a></li>
+<li><a class="reference internal" href="#parsed-literal">パースドリテラル（parsed-literal）</a></li>
+<li><a class="reference internal" href="#csv-csv-table">CSVテーブル（csv-table）</a></li>
+<li><a class="reference internal" href="#excel-exceltable">excelテーブル（exceltable）</a></li>
+<li><a class="reference internal" href="#list-table">リストテーブル（list-table）</a></li>
+<li><a class="reference internal" href="#field-list-label">フィールドリスト</a></li>
+<li><a class="reference internal" href="#docinfo">docinfo</a></li>
+<li><a class="reference internal" href="#toc-toctree">TOCツリー（toctree）</a></li>
+<li><a class="reference internal" href="#id31">脚注</a></li>
+<li><a class="reference internal" href="#id43">引用参照</a></li>
+<li><a class="reference internal" href="#id45">注釈</a></li>
+<li><a class="reference internal" href="#math">数式（math）</a></li>
+<li><a class="reference internal" href="#id46">オプションリスト</a></li>
+<li><a class="reference internal" href="#id47">置換</a></li>
+<li><a class="reference internal" href="#glossary">用語集（glossary）</a></li>
+<li><a class="reference internal" href="#term">用語参照（term）</a></li>
+<li><a class="reference internal" href="#include">インクルード（include）</a></li>
+<li><a class="reference internal" href="#raw">raw</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="備忘録.html"
+                        title="前の章へ">備忘録</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="B&#39;z/index.html"
+                        title="次の章へ">B'z</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<h1>リファレンス<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id2">
+<h2>インライン記法<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">これは <em>強調</em> です。</div>
+<div class="line">これは <strong>強い強調</strong> です。</div>
+<div class="line">これは <code class="docutils literal notranslate"><span class="pre">インラインリテラル記法</span></code> です。</div>
+</div>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>これは *強調* です。
+これは **強い強調** です。
+これは ``インラインリテラル記法`` です。
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>インライン記法（ロール）<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">これは <em>強調</em> です。</div>
+<div class="line">これは <strong>強い強調</strong> です。</div>
+<div class="line">これは <code class="docutils literal notranslate"><span class="pre">インラインリテラル記法</span></code> です。</div>
+<div class="line">これは <sub>下付き</sub> です。</div>
+<div class="line">これは <sup>上付き</sup> です。</div>
+<div class="line">これは <cite>タイトル</cite> です。</div>
+</div>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>これは :emphasis:`強調` です。
+これは :strong:`強い強調` です。
+これは :literal:`インラインリテラル記法` です。
+これは :sub:`下付き` です。
+これは :sup:`上付き` です。
+これは :title:`タイトル` です。
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>段落<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>これは最初の段落です。
+連続した行は同じ段落です。</p>
+<p>１行以上空行を入れると、次の段落になります。
+同じ段落では改行は無視されます。</p>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>これは最初の段落です。
+連続した行は同じ段落です。
+
+１行以上空行を入れると、次の段落になります。
+同じ段落では改行は無視されます。
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>コメント<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>文章内の一部の行をコメントアウトします。</p>
+<p>この行はコメントではありません。</p>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>文章内の一部の行をコメントアウトします。
+
+.. これはコメントアウトされた文章です。
+   続く行（同じインデント）もコメントアウトされます。
+
+   コメントアウトされた文章は、変換の際に読み飛ばされます。
+
+この行はコメントではありません。
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>セクション名<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>セクション名の装飾には <strong>=</strong> や <strong>-</strong> 以外にも様々な記号が使用できる。
+ただし、見やすさの観点から、上記や <strong>+</strong> や <strong>#</strong> や <strong>*</strong> などが推奨されている。</p>
+<p>記述方法:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">======</span>
+<span class="n">h1相当</span>
+<span class="o">======</span>
+
+<span class="n">h2相当</span>
+<span class="o">======</span>
+
+<span class="o">------</span>
+<span class="n">h3相当</span>
+<span class="o">------</span>
+
+<span class="n">h4相当</span>
+<span class="o">------</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="contents">
+<h2>ページ内目次（contents）<a class="headerlink" href="#contents" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>以下のように記述することで、それ以降のページ内目次を自動的に作成する。:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">contents</span><span class="p">::</span>
+   <span class="p">:</span><span class="n">local</span><span class="p">:</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>リスト、サブリスト<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li>日時</li>
+<li>場所</li>
+<li>参加者<ul>
+<li>DS1</li>
+<li>DS2</li>
+</ul>
+</li>
+</ul>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">日時</span>
+<span class="o">*</span> <span class="n">場所</span>
+<span class="o">*</span> <span class="n">参加者</span>
+
+  <span class="o">*</span> <span class="n">DS1</span>
+  <span class="o">*</span> <span class="n">DS2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>番号付きリスト<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ol class="arabic simple">
+<li>日時</li>
+<li>場所</li>
+<li>参加者<ol class="arabic">
+<li>DS1</li>
+<li>DS2</li>
+</ol>
+</li>
+</ol>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1. 日時
+2. 場所
+3. 参加者
+
+   (1) DS1 （(1),(2),,ではんく、1),2),,や、A.,B.,,などでもOK）
+   (2) DS2
+</pre></div>
+</div>
+<p>以下のように自動採番もできる。</p>
+<ol class="arabic simple">
+<li>日時</li>
+<li>場所</li>
+<li>参加者<ol class="arabic">
+<li>DS1</li>
+<li>DS2</li>
+</ol>
+</li>
+</ol>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#. 日時</span>
+<span class="c1">#. 場所</span>
+<span class="c1">#. 参加者</span>
+
+   <span class="p">(</span><span class="c1">#) DS1</span>
+   <span class="p">(</span><span class="c1">#) DS2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>定義リスト<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>定義リストは用語と説明書きを続けて書く。説明書きは用語の次の行にインデントを一段深くして書く。</p>
+<dl class="docutils">
+<dt>定義1</dt>
+<dd>これは定義1の説明です。</dd>
+<dt>定義2</dt>
+<dd>これは定義2の説明です。
+次は定義3です。</dd>
+</dl>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>定義1
+  これは定義1の説明です。
+
+定義2
+  これは定義2の説明です。
+  次は定義3です。
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>画像<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="figure" id="dinosaur">
+<a class="reference internal image-reference" href="../_images/DINOSAUR1.jpg"><img alt="../_images/DINOSAUR1.jpg" src="../_images/DINOSAUR1.jpg" style="width: 240px;" /></a>
+<p class="caption"><span class="caption-number">図 1 </span><span class="caption-text">B'z アルバム「DINOSAUR」</span></p>
+<div class="legend">
+これは2017年に発売されたアルバムです。</div>
+</div>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.. figure:: images/DINOSAUR.jpg
+   :width: 240px
+   :name: DINOSAUR
+
+   B&#39;z アルバム「DINOSAUR」              // キャプション
+
+   これは2017年に発売されたアルバムです。  // 説明文
+</pre></div>
+</div>
+<p>パスは、/から始めると、プロジェクトルートから辿って読み込む。
+それ以外はソースファイルからの相対パスで読み込む。</p>
+<p>figureディレクティブの主なオプションは　<a class="reference internal" href="#figure"><span class="std std-numref">表 1</span></a> の通り。</p>
+<table border="1" class="docutils" id="figure">
+<caption><span class="caption-number">表 1 </span><span class="caption-text">figureディレクティブの主なオプション</span><a class="headerlink" href="#figure" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">オプション名</th>
+<th class="head">概要</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>align</td>
+<td>画像の表示位置を左（left）、中央（center）、右（right）から選択する</td>
+</tr>
+<tr class="row-odd"><td>alt</td>
+<td>画像の説明を指定する</td>
+</tr>
+<tr class="row-even"><td>width</td>
+<td>画像をリサイズする。画像の幅をpx単位で指定する（例：120px）</td>
+</tr>
+<tr class="row-odd"><td>height</td>
+<td>画像をリサイズする。画像の高さをpx単位で指定する（例：120px）</td>
+</tr>
+<tr class="row-even"><td>scale</td>
+<td>画像をリサイズする。画像の大きさを%で指定する（例：50%）</td>
+</tr>
+<tr class="row-odd"><td>target</td>
+<td>画像にリンクを張る。リンク先のURLを指定する</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<p class="last">出力形式に適した画像を自動選択することが可能。
+「.. figure:: images/DINOSAUR.*」
+のように、拡張子に&quot;*&quot;を使用する。
+例えば、DINOSAUR.png と DINOSAUR.svg の2つのファイルを準備しておけば、
+html と EPUB の場合は svg 画像が、pdf の場合は png 画像が使用される。</p>
+</div>
+</div>
+<div class="section" id="numref">
+<h2>図表番号による参照（numref）<a class="headerlink" href="#numref" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>B'zのアルバムは <a class="reference internal" href="#dinosaur"><span class="std std-numref">図 1</span></a> を参照のこと。</p>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sa">B</span><span class="s1">&#39;zのアルバムは :numref:`DINOSAUR` を参照のこと。</span>
+</pre></div>
+</div>
+<p>図表番号の機能を有効にするには conf.py に以下の設定を1行追加すること。:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">numfig</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="urlemail">
+<h2>ハイパーリンク、URL、email<a class="headerlink" href="#urlemail" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>これらは、各アドレスを文中にそのまま書くだけで自動的にリンク表記となる。</p>
+</div>
+<div class="section" id="id11">
+<h2>外部ハイパーリンクターゲット、名前付きハイパーリンク参照<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://office.yahoo.co.jp/">Yahoo</a> のアドレス</li>
+<li><a class="reference external" href="https://office.yahoo.co.jp/">Yahoo Japan</a> のアドレス</li>
+<li><a class="reference external" href="https://office.yahoo.co.jp/">ヤフージャパン</a> のアドレス</li>
+</ul>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// まず、名前付きハイパーリンクの URL を定義する
+.. _Yahoo: https://office.yahoo.co.jp/
+.. _Yahoo Japan: https://office.yahoo.co.jp/
+.. _ヤフージャパン: https://office.yahoo.co.jp/
+
+// ついで、名前付きハイパーリンク参照を使う
+* Yahoo_ のアドレス
+* `Yahoo Japan`_ のアドレス（スペース付の場合は``で囲む）
+* `ヤフージャパン`_ のアドレス（日本語の場合は``で囲む）
+</pre></div>
+</div>
+<p>定義、参照の記載とも、半角スペースに注意すること</p>
+</div>
+<div class="section" id="id13">
+<h2>名前なしハイパーリンク<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p><a class="reference external" href="https://office.yahoo.co.jp/">Yahooサイト</a> と <a class="reference external" href="https://weather.yahoo.co.jp/">天気予報サイト</a></p>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// まず、URLを定義する
+.. __: https://office.yahoo.co.jp/
+.. __: https://weather.yahoo.co.jp/
+
+// 定義した順で参照する
+Yahooサイト__ と 天気予報サイト__
+</pre></div>
+</div>
+</div>
+<div class="section" id="url">
+<h2>埋め込みURL記法<a class="headerlink" href="#url" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://office.yahoo.co.jp/">Yahoo</a> のアドレス</li>
+<li><a class="reference external" href="https://office.yahoo.co.jp/">Yahoo Japan</a> のアドレス</li>
+<li><a class="reference external" href="https://office.yahoo.co.jp/">ヤフージャパン</a> のアドレス</li>
+</ul>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* `Yahoo &lt;https://office.yahoo.co.jp/&gt;`__ のアドレス
+* `Yahoo Japan &lt;https://office.yahoo.co.jp/&gt;`__ のアドレス
+* `ヤフージャパン &lt;https://office.yahoo.co.jp/&gt;`__ のアドレス
+</pre></div>
+</div>
+<p>_（アンダスコア）を1つにして <a class="reference external" href="https://office.yahoo.co.jp/">Yahoo Japan</a>
+と記述すると、ハイパーリンクを作ると同時に <a class="reference external" href="https://office.yahoo.co.jp/">Yahoo Japan</a> という
+ハイパーリンクターゲットも作成される。</p>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>_（アンダスコア）を1つにして `Yahoo Japan &lt;https://office.yahoo.co.jp/&gt;`_
+と記述すると、ハイパーリンクを作ると同時に `Yahoo Japan`_ という
+ハイパーリンクターゲットも作成される。
+</pre></div>
+</div>
+</div>
+<div class="section" id="id17">
+<h2>インライン内部ターゲット<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id18">
+<h3>１章<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>文章中の文字列にターゲットを設定する。
+例「これを <span class="target" id="id19">特定の単語</span> と言う」</p>
+</div>
+<div class="section" id="id20">
+<h3>２章<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>別のところからターゲットを設定したところへリンクを書ける。
+例「詳しくは、 <a class="reference internal" href="#id19">特定の単語</a> を参照のこと」</p>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>例「これを _`特定の単語` と言う」
+例「詳しくは、 `特定の単語`_ を参照のこと」
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id21">
+<h2>ラベル<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="my-label">
+<span id="id22"></span><h3>１章<a class="headerlink" href="#my-label" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>これは１章の文章。</p>
+</div>
+<div class="section" id="id23">
+<h3>２章<a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p><a class="reference internal" href="#my-label">my-label</a> を参照のこと。
+<a class="reference internal" href="#my-label">こちらも参照のこと</a> 。</p>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// 任意の箇所にラベルをつける
+.. _my-label:
+
+１章
+----
+
+これは１章の文章。
+
+２章
+----
+
+my-label_ を参照のこと。
+`こちらも参照のこと &lt;my-label_&gt;`__ 。
+</pre></div>
+</div>
+<p>※この参照は、 <strong>同じファイル内</strong> でのみ有効。</p>
+</div>
+</div>
+<div class="section" id="ref">
+<h2>クロスリファレンス（ref）<a class="headerlink" href="#ref" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="my-label2">
+<span id="id24"></span><h3>１章<a class="headerlink" href="#my-label2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>これは１章の文章。</p>
+</div>
+<div class="section" id="id25">
+<h3>２章<a class="headerlink" href="#id25" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="#my-label2"><span class="std std-ref">１章</span></a> を参照のこと。</li>
+<li><a class="reference internal" href="#my-label2"><span class="std std-ref">いっしょう</span></a> を参照のこと。</li>
+</ul>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.. _my-label2:
+
+１章
+----
+
+これは１章の文章。
+
+２章
+----
+
+* :ref:`my-label2` を参照のこと。            // リンクタイトルにラベル部のセクション名を使用
+* :ref:`いっしょう&lt;my-label2&gt;` を参照のこと。 // リンクタイトルを指定
+</pre></div>
+</div>
+<p>※この参照は、 <strong>複数のファイル</strong> をまたいで有効。</p>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<p class="last">ラベルはプロジェクト全体を通して、重複してはいけない。</p>
+</div>
+</div>
+</div>
+<div class="section" id="doc">
+<h2>別原稿ファイルへのリンク（doc）<a class="headerlink" href="#doc" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>備忘録.rst へのリンクを張りたい場合は、 <a class="reference internal" href="備忘録.html"><span class="doc">備忘録</span></a> と書く。
+ディレクトリが異なる場合は、相対パス <a class="reference internal" href="B'z/index.html"><span class="doc">B'z</span></a> での指定も可能。</p>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>memo.rst へのリンクを張りたい場合は、 :doc:`memo` と書く。
+ディレクトリが異なる場合は、相対パス :doc:`B&#39;z/index` での指定も可能。
+</pre></div>
+</div>
+</div>
+<div class="section" id="download">
+<h2>ダウンロード用リンク（download）<a class="headerlink" href="#download" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>アンパンマン.pdf へのリンクを張りたい場合は、 <a class="reference download internal" download="" href="../_downloads/2b15bd30663afa8bf66e2b164987b023/アンパンマン.pdf"><code class="xref download docutils literal notranslate"><span class="pre">アンパンマン.pdf</span></code></a> と書く。</p>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>アンパンマン.pdf へのリンクを張りたい場合は、 :download:`アンパンマン.pdf` と書く。
+</pre></div>
+</div>
+</div>
+<div class="section" id="id26">
+<h2>ラインブロック<a class="headerlink" href="#id26" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line">改行を維持する方法。</div>
+<div class="line">2行目。
+これは2行目の続き</div>
+<div class="line">これは3行目。</div>
+</div>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>| 改行を維持する方法。
+| 2行目。
+  これは2行目の続き
+| これは3行目。
+</pre></div>
+</div>
+</div>
+<div class="section" id="id27">
+<h2>引用ブロック<a class="headerlink" href="#id27" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>文献から文章を引用する場合に使う。</p>
+<p>物語は次の一行からはじまります。</p>
+<blockquote>
+<div>トンネルを抜けるとそこは雪国であった。</div></blockquote>
+<p>引用ブロックの内部は段落として解釈される。</p>
+<blockquote>
+<div>段落として解釈されるので
+改行は無視される
+reStの記法も <strong>使うことが</strong> <em>できる</em> 。</div></blockquote>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>物語は次の一行からはじまります。
+
+  トンネルを抜けるとそこは雪国であった。
+
+引用ブロックの内部は段落として解釈される。
+
+  段落として解釈されるので
+  改行は無視される
+  reStの記法も **使うことが** *できる* 。
+</pre></div>
+</div>
+</div>
+<div class="section" id="id28">
+<h2>クォートリテラルブロック<a class="headerlink" href="#id28" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>メールの引用などを記述する。</p>
+<p>2018/2/1 Aさんのメールより:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">ありがとう</span>
+<span class="o">&gt;</span>
+<span class="o">&gt;</span> <span class="n">どういたしまして</span>
+</pre></div>
+</div>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2018</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">1</span> <span class="n">Aさんのメールより</span><span class="p">::</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">ありがとう</span>
+<span class="o">&gt;</span>
+<span class="o">&gt;</span> <span class="n">どういたしまして</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="literal-code-block-label">
+<span id="id29"></span><h2>リテラルコードブロック（::）<a class="headerlink" href="#literal-code-block-label" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&quot;::&quot;の次に1行分空行を入れて、インデントを深くする。
+リテラルコードブロックの中での改行は
+維持されたまま変換される。
+reStの記法は **使えない**。
+</pre></div>
+</div>
+<p>&quot;::&quot;記号は文章の末尾に書くこともできる:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">末尾に書いた場合は</span> <span class="s2">&quot;::&quot;</span> <span class="n">の2つのうちの1つが表示される</span>
+</pre></div>
+</div>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>::
+
+  &quot;::&quot;の次に1行分空行を入れて、インデントを深くする。
+  リテラルコードブロックの中での改行は
+  維持されたまま変換される。
+  reStの記法は **使えない**。
+
+&quot;::&quot;記号は文章の末尾に書くこともできる::
+
+  末尾に書いた場合は &quot;::&quot; の2つのうちの1つが表示される
+</pre></div>
+</div>
+</div>
+<div class="section" id="code-block">
+<h2>コードブロック（code-block）<a class="headerlink" href="#code-block" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>pythonの場合</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wx</span>
+
+<span class="k">class</span> <span class="nc">Base</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">basecolr</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>c言語の場合</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">func_a</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="k">const</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="o">*</span><span class="n">a</span> <span class="o">=</span> <span class="n">c</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pythonの場合</span>
+
+<span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">python</span>
+
+   <span class="kn">import</span> <span class="nn">wx</span>
+
+   <span class="k">class</span> <span class="nc">Base</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+       <span class="n">basecolr</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+
+<span class="n">c言語の場合</span>
+
+<span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">c</span>
+
+   <span class="nb">int</span> <span class="n">func_a</span><span class="p">(</span><span class="nb">int</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="nb">int</span> <span class="n">const</span> <span class="n">b</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="n">static</span> <span class="nb">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+       <span class="o">*</span><span class="n">a</span> <span class="o">=</span> <span class="n">c</span><span class="o">++</span><span class="p">;</span>
+   <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="literalinclude">
+<h2>コードの引用（literalinclude）<a class="headerlink" href="#literalinclude" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>外部ファイルを読み込み、その内容をソースコードとしてハイライトして埋め込む。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wx</span>
+
+<span class="k">class</span> <span class="nc">Base</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">basecolr</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">literalinclude</span><span class="p">::</span> <span class="n">test_code</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="parsed-literal">
+<h2>パースドリテラル（parsed-literal）<a class="headerlink" href="#parsed-literal" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>ソースコードなどを文章の中に埋め込む。
+<a class="reference internal" href="#literal-code-block-label"><span class="std std-ref">リテラルコードブロック（::）</span></a> との違いは、インライン要素がreSTとして解釈されること。</p>
+<pre class="literal-block">
+この中では、 <strong>reST記法</strong> も使用できる。
+改行は
+維持される。
+</pre>
+<p>※内部でreST記法を使うと、背景色がなくなってしまうっぽい。使わなければ他のものと同じ（薄い緑）。</p>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.. parsed-literal::
+
+  この中では、 **reST記法** も使用できる。
+  改行は
+  維持される。
+</pre></div>
+</div>
+</div>
+<div class="section" id="csv-csv-table">
+<h2>CSVテーブル（csv-table）<a class="headerlink" href="#csv-csv-table" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<table border="1" class="docutils" id="id49">
+<caption><span class="caption-number">表 2 </span><span class="caption-text">タイトル</span><a class="headerlink" href="#id49" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ツールの名前</th>
+<th class="head">開発者</th>
+<th class="head">バージョン</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Python</td>
+<td>Guido va Rossum</td>
+<td>3.6.2</td>
+</tr>
+<tr class="row-odd"><td>Sphinx</td>
+<td>Georg Brandl</td>
+<td>1.6.4</td>
+</tr>
+</tbody>
+</table>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">csv</span><span class="o">-</span><span class="n">table</span><span class="p">::</span> <span class="n">タイトル</span>
+   <span class="p">:</span><span class="n">header</span><span class="o">-</span><span class="n">rows</span><span class="p">:</span> <span class="mi">1</span>
+
+   <span class="n">ツールの名前</span><span class="p">,</span><span class="n">開発者</span><span class="p">,</span><span class="n">バージョン</span>
+   <span class="n">Python</span><span class="p">,</span><span class="n">Guido</span> <span class="n">va</span> <span class="n">Rossum</span><span class="p">,</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">2</span>
+   <span class="n">Sphinx</span><span class="p">,</span><span class="n">Georg</span> <span class="n">Brandl</span><span class="p">,</span><span class="mf">1.6</span><span class="o">.</span><span class="mi">4</span>
+</pre></div>
+</div>
+<p>csvファイルを読み込むことも可能。</p>
+<table border="1" class="docutils" id="id50">
+<caption><span class="caption-number">表 3 </span><span class="caption-text">タイトル</span><a class="headerlink" href="#id50" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ツールの名前</th>
+<th class="head">開発者</th>
+<th class="head">バージョン</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Python</td>
+<td>Guido va Rossum</td>
+<td>3.6.2</td>
+</tr>
+<tr class="row-odd"><td>Sphinx</td>
+<td>Georg Brandl</td>
+<td>1.6.4</td>
+</tr>
+</tbody>
+</table>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">csv</span><span class="o">-</span><span class="n">table</span><span class="p">::</span> <span class="n">タイトル</span>
+   <span class="p">:</span><span class="n">file</span><span class="p">:</span> <span class="n">csv_test</span><span class="o">.</span><span class="n">csv</span>
+   <span class="p">:</span><span class="n">header</span><span class="o">-</span><span class="n">rows</span><span class="p">:</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="excel-exceltable">
+<h2>excelテーブル（exceltable）<a class="headerlink" href="#excel-exceltable" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>excelファイルを読み込むこともできる。</p>
+<table border="1" class="docutils" id="id51">
+<caption><span class="caption-number">表 4 </span><span class="caption-text">タイトル</span><a class="headerlink" href="#id51" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col width="32%" />
+<col width="42%" />
+<col width="27%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><p class="first last">ツールの名前</p>
+</th>
+<th class="head"><p class="first last">開発者</p>
+</th>
+<th class="head"><p class="first last">バージョン</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><p class="first last">Python</p>
+</td>
+<td><p class="first last">Guido va Rossum</p>
+</td>
+<td><p class="first last">3.6.2</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first last">Sphinx</p>
+</td>
+<td><p class="first last">Georg Brandl</p>
+</td>
+<td><p class="first last">1.6.4</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">exceltable</span><span class="p">::</span> <span class="n">タイトル</span>
+  <span class="p">:</span><span class="n">file</span><span class="p">:</span> <span class="n">excel_test</span><span class="o">.</span><span class="n">xls</span>
+  <span class="p">:</span><span class="n">header</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="p">:</span><span class="n">selection</span><span class="p">:</span> <span class="n">B3</span><span class="p">:</span><span class="n">D5</span>
+  <span class="p">:</span><span class="n">sheet</span><span class="p">:</span> <span class="n">test</span>    <span class="c1"># シート番号（例：1）でもシート名でもOK</span>
+</pre></div>
+</div>
+<p>ただし、exceltableモジュールのインストールが必要。
+方法は、Anaconda Prompt を開き:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">exceltable</span>
+</pre></div>
+</div>
+<p>そして、conf.py ファイルに以下を追記する:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sphinxcontrib.exceltable&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>なお、セル結合はできないみたい。</p>
+<p><a class="reference external" href="http://pythonhosted.org/sphinxcontrib-exceltable/#setup">http://pythonhosted.org/sphinxcontrib-exceltable/#setup</a></p>
+</div>
+<div class="section" id="list-table">
+<h2>リストテーブル（list-table）<a class="headerlink" href="#list-table" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<table border="1" class="docutils" id="id52">
+<caption><span class="caption-number">表 5 </span><span class="caption-text">タイトル</span><a class="headerlink" href="#id52" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ツールの名前</th>
+<th class="head">開発者</th>
+<th class="head">バージョン</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Python</td>
+<td>Guido va Rossum</td>
+<td>3.6.2</td>
+</tr>
+<tr class="row-odd"><td>Sphinx</td>
+<td>Georg Brandl</td>
+<td>1.6.4</td>
+</tr>
+</tbody>
+</table>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="nb">list</span><span class="o">-</span><span class="n">table</span><span class="p">::</span> <span class="n">タイトル</span>
+   <span class="p">:</span><span class="n">header</span><span class="o">-</span><span class="n">rows</span><span class="p">:</span> <span class="mi">1</span>
+
+   <span class="o">*</span> <span class="o">-</span> <span class="n">ツールの名前</span>
+     <span class="o">-</span> <span class="n">開発者</span>
+     <span class="o">-</span> <span class="n">バージョン</span>
+   <span class="o">*</span> <span class="o">-</span> <span class="n">Python</span>
+     <span class="o">-</span> <span class="n">Guido</span> <span class="n">va</span> <span class="n">Rossum</span>
+     <span class="o">-</span> <span class="mf">3.6</span><span class="o">.</span><span class="mi">2</span>
+   <span class="o">*</span> <span class="o">-</span> <span class="n">Sphinx</span>
+     <span class="o">-</span> <span class="n">Georg</span> <span class="n">Brandl</span>
+     <span class="o">-</span> <span class="mf">1.6</span><span class="o">.</span><span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="field-list-label">
+<span id="id30"></span><h2>フィールドリスト<a class="headerlink" href="#field-list-label" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>見出しと内容のペアを使って簡単な表を作る。</p>
+<p>各種バージョン一覧</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">OS:</th><td class="field-body">CentOS 6.4</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Python:</th><td class="field-body">2.7.1</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Sphinx:</th><td class="field-body">1.6.4</td>
+</tr>
+</tbody>
+</table>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">各種バージョン一覧</span>
+
+<span class="p">:</span><span class="n">OS</span><span class="p">:</span> <span class="n">CentOS</span> <span class="mf">6.4</span>
+<span class="p">:</span><span class="n">Python</span><span class="p">:</span> <span class="mf">2.7</span><span class="o">.</span><span class="mi">1</span>
+<span class="p">:</span><span class="n">Sphinx</span><span class="p">:</span> <span class="mf">1.6</span><span class="o">.</span><span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="docinfo">
+<h2>docinfo<a class="headerlink" href="#docinfo" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p><a class="reference internal" href="#field-list-label"><span class="std std-ref">フィールドリスト</span></a> をファイルの先頭、セクション名よりも前に書くと、docinfoとして扱われる。:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:tocdepth: 2
+と記載することで、サイドバーに表示される目次の最大深さを指定できる。
+</pre></div>
+</div>
+</div>
+<div class="section" id="toc-toctree">
+<h2>TOCツリー（toctree）<a class="headerlink" href="#toc-toctree" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="B'z/index.html">B'z</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="B'z/index.html#id1">シングル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="B'z/index.html#id2">アルバム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="B'z/index.html#id3">ミニアルバム</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sample/index.html">コーディング サンプル</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sample/minutes/index.html">Sphinx本 著者ミーティング 6/30</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample/install_manual/index.html">Python 2.7インストール手順書</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample/sphinx_history/index.html">Sphinxの歴史</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample/sphinx-book/index.html">Sphinx本 著者ミーティング 6/30</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">toctree</span><span class="p">::</span>
+   <span class="p">:</span><span class="n">maxdepth</span><span class="p">:</span> <span class="mi">2</span>
+
+   <span class="sa">B</span><span class="s1">&#39;z/index</span>
+   <span class="n">sample</span><span class="o">/</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id31">
+<h2>脚注<a class="headerlink" href="#id31" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Sphinx <a class="footnote-reference" href="#id34" id="id32">[1]</a> はPython <a class="footnote-reference" href="#id35" id="id33">[2]</a> 製のドキュメントツールです。</p>
+<table class="docutils footnote" frame="void" id="id34" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id32">[1]</a></td><td>脚注1です。</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id35" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id33">[2]</a></td><td>脚注2です。</td></tr>
+</tbody>
+</table>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Sphinx [1]_ はPython [2]_ 製のドキュメントツールです。
+
+.. [1] 脚注1です。
+.. [2] 脚注2です。
+</pre></div>
+</div>
+<p>自動採番の方法は以下の通り。</p>
+<p>Sphinx <a class="footnote-reference" href="#sphinx" id="id36">[3]</a> はPython <a class="footnote-reference" href="#python" id="id37">[4]</a> 製のドキュメントツールです。
+脚注の参照は、出現順に関係なく何度でもできる <a class="footnote-reference" href="#sphinx" id="id38">[3]</a></p>
+<table class="docutils footnote" frame="void" id="sphinx" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[3]</td><td><em>(<a class="fn-backref" href="#id36">1</a>, <a class="fn-backref" href="#id38">2</a>)</em> #sphinxに対する脚注です。</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="python" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id37">[4]</a></td><td>#pythonに対する脚注です。</td></tr>
+</tbody>
+</table>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Sphinx [#sphinx]_ はPython [#python]_ 製のドキュメントツールです。
+脚注の参照は、出現順に関係なく何度でもできる [#sphinx]_
+
+.. [#sphinx] #sphinxに対する脚注です。
+.. [#python] #pythonに対する脚注です。
+</pre></div>
+</div>
+<p>以下の記述も可能。</p>
+<p>Sphinx <a class="footnote-reference" href="#id41" id="id39">[5]</a> はPython <a class="footnote-reference" href="#id42" id="id40">[6]</a> 製のドキュメントツールです。</p>
+<table class="docutils footnote" frame="void" id="id41" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id39">[5]</a></td><td>1番目の#に対する脚注です。</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id42" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id40">[6]</a></td><td>2番目の#に対する脚注です。</td></tr>
+</tbody>
+</table>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Sphinx</span> <span class="p">[</span><span class="c1">#]_ はPython [#]_ 製のドキュメントツールです。</span>
+
+<span class="o">..</span> <span class="p">[</span><span class="c1">#] 1番目の#に対する脚注です。</span>
+<span class="o">..</span> <span class="p">[</span><span class="c1">#] 2番目の#に対する脚注です。</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id43">
+<h2>引用参照<a class="headerlink" href="#id43" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Sphinx の入門本 <a class="reference internal" href="#sphinx2013" id="id44">[SPHINX2013]</a> では次のように説明している。</p>
+<blockquote>
+<div>Sphinx の公式ドキュメントも Sphinx で書かれています。</div></blockquote>
+<table class="docutils citation" frame="void" id="sphinx2013" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id44">[SPHINX2013]</a></td><td>Sphinx をはじめよう（2013, オライリー・ジャパン刊）</td></tr>
+</tbody>
+</table>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Sphinx の入門本 [SPHINX2013]_ では次のように説明している。
+
+  Sphinx の公式ドキュメントも Sphinx で書かれています。
+
+.. [SPHINX2013] Sphinx をはじめよう（2013, オライリー・ジャパン刊）
+</pre></div>
+</div>
+</div>
+<div class="section" id="id45">
+<h2>注釈<a class="headerlink" href="#id45" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<p class="last">これは注釈です</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">これは警告です</p>
+</div>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">note</span><span class="p">::</span> <span class="n">これは注釈です</span>
+
+<span class="o">..</span> <span class="n">warning</span><span class="p">::</span> <span class="n">これは警告です</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="math">
+<h2>数式（math）<a class="headerlink" href="#math" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>文章中に数式を、 <span class="math notranslate nohighlight">\(A_\text{c} = (\pi/4) d^2\)</span> のように書ける。</p>
+<p>数式を別行に書き番号を振りたい場合は、以下のようにする。</p>
+<div class="math notranslate nohighlight" id="equation-sphinx-0">
+<span class="eqno">(1)<a class="headerlink" href="#equation-sphinx-0" title="この数式へのパーマリンク">¶</a></span>\[A_\text{c} = (\pi/4) d^2\]</div>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>文章中に数式を、 :math:`A_\text{c} = (\pi/4) d^2` のように書ける。
+
+数式を別行に書き番号を振りたい場合は、以下のようにする。
+
+.. math::
+  A_\text{c} = (\pi/4) d^2
+</pre></div>
+</div>
+<p>ただし、数式を使うためには conf.py に以下の記述が必要:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># math拡張を使用するため追加</span>
+<span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sphinx.ext.mathjax&#39;</span><span class="p">]</span>
+
+<span class="c1"># 数式に番号を振るため追加</span>
+<span class="n">math_number_all</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id46">
+<h2>オプションリスト<a class="headerlink" href="#id46" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-a</span></kbd></td>
+<td>コマンドラインオプション &quot;a&quot;</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-b <var>file</var></span></kbd></td>
+<td>オプションは引数と、この文の
+ような複数行の説明を持てる</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--long</span></kbd></td>
+<td>長い形式のオプション</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--input=<var>file</var></span></kbd></td>
+<td>長い形式のオプションも引数を持てる</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">/va</span></kbd></td>
+<td>DOS/VMS スタイルのオプション</td></tr>
+</tbody>
+</table>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>-a            コマンドラインオプション &quot;a&quot;
+-b file       オプションは引数と、この文の
+              ような複数行の説明を持てる
+--long        長い形式のオプション
+--input=file  長い形式のオプションも引数を持てる
+/va           DOS/VMS スタイルのオプション
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<ul class="last simple">
+<li>オプションと説明文の間には、スペース2つ以上開けること</li>
+<li>説明文の開始位置は揃える必要はない</li>
+<li>オプション先頭の'-'や'/'がないとエラーとなる</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id47">
+<h2>置換<a class="headerlink" href="#id47" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>たとえば、 2018年2月4日 を今日の日付を表すに置き換える。
+文中に <img alt="menu" src="../_images/menu.png" /> 画像をインラインで埋め込む際にも使える。</p>
+<p>さらに <a class="reference external" href="https://example.com/issues/1234">#1234 ロゴがずれる</a> のように、文字列置換とリンクを同時に行える。</p>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>たとえば、 |tody| を今日の日付を表すに置き換える。
+文中に |menu| 画像をインラインで埋め込む際にも使える。
+
+.. |tody| replace:: 2018年2月4日
+.. |menu| image:: images/menu.png
+
+さらに |#1234|_ のように、文字列置換とリンクを同時に行える。
+
+.. |#1234| replace:: #1234 ロゴがずれる
+.. _#1234: https://example.com/issues/1234
+</pre></div>
+</div>
+<p>ただし、置換の定義と参照は同じ <strong>ファイル内でのみ</strong> 有効。</p>
+</div>
+<div class="section" id="glossary">
+<h2>用語集（glossary）<a class="headerlink" href="#glossary" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>glossary ディレクティブで、用語とその説明を定義する。
+定義された用語は term ロールで参照する。</p>
+<dl class="glossary docutils">
+<dt id="term-sphinx">Sphinx</dt>
+<dd>Sphinx は <a class="reference internal" href="#term"><span class="xref std std-term">原稿</span></a> を読み込んで、さまざまなフォーマットに
+ドキュメントを変換するツール。</dd>
+<dt id="term">原稿</dt>
+<dd>ドキュメントの中身が書かれたでき須戸ファイル。</dd>
+</dl>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.. glossary::
+
+  Sphinx
+      Sphinx は :term:`原稿` を読み込んで、さまざまなフォーマットに
+      ドキュメントを変換するツール。
+
+  原稿
+      ドキュメントの中身が書かれたでき須戸ファイル。
+</pre></div>
+</div>
+</div>
+<div class="section" id="term">
+<h2>用語参照（term）<a class="headerlink" href="#term" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>同じファイル内でなくても、Sphinx プロジェクト内で定義された用語であればどこからでも参照できる。</p>
+<p>本文書は <a class="reference internal" href="#term-sphinx"><span class="xref std std-term">Sphinx</span></a> を利用して作成した。</p>
+<p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>本文書は :term:`Sphinx` を利用して作成した。
+</pre></div>
+</div>
+</div>
+<div class="section" id="include">
+<h2>インクルード（include）<a class="headerlink" href="#include" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>外部ファイルを読み込み、その内容を reST ドキュメントソースとして解釈する。
+外部のファイルに書かれた reST ドキュメントを利用したい場合や、複数のページに同じ内容を埋め込む場合に使用する。</p>
+<p>記述方法:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">include</span><span class="p">::</span> <span class="n">memo</span><span class="o">.</span><span class="n">rst</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="raw">
+<h2>raw<a class="headerlink" href="#raw" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>HTML本来の記述を行いたい場合に使用する。</p>
+<a href="../_images/DINOSAUR.jpg">画像へのリンク</a><p>実際の記述:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">raw</span><span class="p">::</span> <span class="n">html</span>
+
+   <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;../_images/DINOSAUR.jpg&quot;</span><span class="o">&gt;</span><span class="n">画像へのリンク</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<p class="last">ただし、画像や動画へのリンクを行う場合は、ビルド後に保管される画像や動画への相対パスを指定する必要があり、ディレクトリ構造が変わるとパスを変える必要があり注意が必要。</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="B'z/index.html" title="B&#39;z"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="備忘録.html" title="備忘録"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Sphinx</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, tak.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.1 で生成しました。
+    </div>
+  </body>
+</html>

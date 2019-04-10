@@ -1,0 +1,32 @@
+=============
+実行環境種類
+=============
+
+LXTerminal
+===========
+
+Shellを起動するには、LXTerminalを起動し以下を実行::
+
+  sudo python3
+
+Python プログラムを実行するには::
+
+  python ファイル名
+
+IDLE（統合開発環境）
+====================
+
+起動方法::
+
+  スタート -> プログラミング -> Python3(IDLE)
+
+Shellおよびpyプログラム読込＆RUN
+
+Geany（統合開発環境）
+=====================
+
+軽量なクロスプラットフォームのテキストエディタであり、Scintillaと基本的な統合開発環境 (IDE) 機能をベースとしている。
+他のパッケージにあまり依存せず、立ち上げ時間が短い設計になっている。
+Windows、Linux、macOS、BSD、Solarisなど、様々なオペレーティングシステムで動作する。
+サポートするプログラミング言語としては、C言語、Java、JavaScript、PHP、HTML、CSS、Python、Perl、Ruby、Pascal、Haskell、Lua などがある。
+

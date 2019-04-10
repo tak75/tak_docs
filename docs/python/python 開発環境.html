@@ -1,0 +1,193 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>python 開発環境 &#8212; Tak Documents  ドキュメント</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="flask" href="flask.html" />
+    <link rel="prev" title="Python" href="index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="flask.html" title="flask"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Python"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Python</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linux/index.html">Linux</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Python</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">python 開発環境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flask.html">flask</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../デザインパターン/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../備忘録/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">python 開発環境</a><ul>
+<li><a class="reference internal" href="#id1">はじめに</a></li>
+<li><a class="reference internal" href="#id2">リモートデバッグ</a><ul>
+<li><a class="reference internal" href="#id3">用意するもの</a></li>
+<li><a class="reference internal" href="#id4">使い方</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="index.html"
+                        title="前の章へ">Python</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="flask.html"
+                        title="次の章へ">flask</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="python">
+<h1>python 開発環境<a class="headerlink" href="#python" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id1">
+<h2>はじめに<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>開発環境としては、以下の点でVisualStudioが最もよさそう（Windowsで開発し、RasPiに接続してリモートデバッグ）。</p>
+<ul class="simple">
+<li>リファクタリングができる（関数名変更など）</li>
+<li>リモートデバッグができる</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>リモートデバッグ<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>WindowsのVisualStudioを使って、RasPi上のpythonコードをリモートデバッグする方法をご紹介します。</p>
+<p>※ツール類は全部無償</p>
+<div class="section" id="id3">
+<h3>用意するもの<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p class="first">Win側</p>
+<ul class="simple">
+<li>VisualStuido Express 2013(無償のやつ)</li>
+<li>Python Tools for Visual Studio　2.1　（略称：PTVS）
+<a class="reference external" href="http://pytools.codeplex.com/">http://pytools.codeplex.com/</a>
+※Win側にもpythonをインストール済みのこと</li>
+</ul>
+</li>
+<li><p class="first">RasPi側</p>
+<ul>
+<li><p class="first">Python Tools for Visual Studio remote debugging server　2.1（略称：PTVSD）
+<a class="reference external" href="https://pypi.python.org/pypi/ptvsd">https://pypi.python.org/pypi/ptvsd</a>
+※pipで入れるもよし、落としたzip解凍してpython setup.py installもよし</p>
+<p>pipの例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">ptvsd</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>使い方<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">RasPi上にある、デバッグしたいpyファイルの先頭に以下2行を追加（app.pyの先頭でよい）:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ptvsd</span>
+<span class="n">ptvsd</span><span class="o">.</span><span class="n">enable_attach</span><span class="p">(</span><span class="n">secret</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<span class="c1">#&#39;test&#39; のところは任意のプロセス識別名</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">上記ファイルをRasPiの共有フォルダにおくか、Win側にもコピーして VisualStudio（以降VS）で開き、好きにブレークポイントを設定</p>
+</li>
+<li><p class="first">RasPi側で①のファイルを実行する（処理の先頭にinput()をおくなりして、一旦とまるようにしとく）</p>
+</li>
+<li><p class="first">VSメニューの「デバッグ」→「プロセスにアタッチ」からダイアログ表示し、トランスポートの選択を&quot;Python remote debugging&quot;に、
+修飾子に&quot;<a class="reference external" href="tcp://test&#64;**.**.**.**">tcp://test&#64;**.**.**.**</a>&quot;と入力すると、（testは①で決めたプロセス名。＠以降はRasPiのIPアドレス）
+選択可能なプロセスとしてリストアップされる</p>
+</li>
+<li><p class="first">プロセスを選択して「アタッチ」すると、VS側でデバッグ実行状態になる</p>
+</li>
+<li><p class="first">3.で一旦停めていたRasPi側の処理を続行させると、以降はVS側でデバッグ実行（ちゃんとブレークポイントで止まる。変数の値も見える）。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="flask.html" title="flask"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Python"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Python</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, tak.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.1 で生成しました。
+    </div>
+  </body>
+</html>

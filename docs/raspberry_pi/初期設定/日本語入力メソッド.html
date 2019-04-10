@@ -1,0 +1,131 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>日本語入力メソッド &#8212; Tak Documents  ドキュメント</title>
+    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="next" title="新規ユーザにsudoの権限をつける" href="新規ユーザにsudoの権限をつける.html" />
+    <link rel="prev" title="初期設定" href="index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="新規ユーザにsudoの権限をつける.html" title="新規ユーザにsudoの権限をつける"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="初期設定"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Raspberry Pi</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">初期設定</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Raspberry Pi</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">初期設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../操作系/index.html">操作系</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../実行環境.html">実行環境種類</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GPIO制御.html">GPIO制御</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../samba.html">samba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GitBucket.html">GitBucket</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../デザインパターン/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../備忘録/index.html">備忘録</a></li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="index.html"
+                        title="前の章へ">初期設定</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="新規ユーザにsudoの権限をつける.html"
+                        title="次の章へ">新規ユーザにsudoの権限をつける</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<h1>日本語入力メソッド<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>fcitx-mozc が最良なので、これをインストールすべき:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">fcitx</span><span class="o">-</span><span class="n">mozc</span> <span class="o">-</span><span class="n">y</span>  <span class="c1">#インストール</span>
+<span class="n">im</span><span class="o">-</span><span class="n">config</span> <span class="o">-</span><span class="n">n</span> <span class="n">fcitx</span>                  <span class="c1">#有効化</span>
+<span class="n">sudo</span> <span class="n">reboot</span>                         <span class="c1">#再起動</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://www.fabshop.jp/%E6%97%A5%E6%9C%AC%E8%AA%9E%E5%85%A5%E5%8A%9B%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%81%AF%E3%80%81fcitx-mozc%E3%81%A7%E6%B1%BA%E3%81%BE%E3%82%8A%EF%BC%81/">https://www.fabshop.jp/%E6%97%A5%E6%9C%AC%E8%AA%9E%E5%85%A5%E5%8A%9B%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%81%AF%E3%80%81fcitx-mozc%E3%81%A7%E6%B1%BA%E3%81%BE%E3%82%8A%EF%BC%81/</a></p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="新規ユーザにsudoの権限をつける.html" title="新規ユーザにsudoの権限をつける"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="初期設定"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Raspberry Pi</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >初期設定</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, tak.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.1 で生成しました。
+    </div>
+  </body>
+</html>

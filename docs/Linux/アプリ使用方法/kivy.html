@@ -1,0 +1,296 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>kivy &#8212; Tak Documents  ドキュメント</title>
+    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="next" title="Atom" href="Atom.html" />
+    <link rel="prev" title="Anaconda" href="Anaconda.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="Atom.html" title="Atom"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="Anaconda.html" title="Anaconda"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Linux</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">アプリ使用方法</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Linux</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">アプリ使用方法</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../デザインパターン/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../備忘録/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">kivy</a><ul>
+<li><a class="reference internal" href="#id1">はじめに</a></li>
+<li><a class="reference internal" href="#id2">Kivyと依存パッケージの更新／インストール</a></li>
+<li><a class="reference internal" href="#id3">サンプルアプリ実行</a></li>
+<li><a class="reference internal" href="#atom">Atomエディタ</a><ul>
+<li><a class="reference internal" href="#id4">Atomのインストール</a></li>
+<li><a class="reference internal" href="#id5">プログラムの実行</a><ul>
+<li><a class="reference internal" href="#anaconda-prompt">Anaconda Prompt を使う場合</a></li>
+<li><a class="reference internal" href="#atom-atom-runner">Atom の atom-runner を使う場合</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">プログラムについて</a><ul>
+<li><a class="reference internal" href="#id7">ファイル名</a></li>
+<li><a class="reference internal" href="#id8">コメント方法</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9">レイアウト作成</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="Anaconda.html"
+                        title="前の章へ">Anaconda</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="Atom.html"
+                        title="次の章へ">Atom</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="kivy">
+<h1>kivy<a class="headerlink" href="#kivy" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id1">
+<h2>はじめに<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li>python で開発するGUI</li>
+<li>スマホアプリやタッチパネル操作用アプリを作りたい場合にメリットあり</li>
+<li>PCで操作する機器制御用アプリは wxPython + wxGlade が作成が楽で使いやすい気がする</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<p class="last">つまり、スマホでpythonのリモートプロシージャ？を使用して機器操作できる？</p>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>Kivyと依存パッケージの更新／インストール<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p><a class="reference external" href="https://www.closetoyou.jp/kivy/introduction-to-kivy02/">2 Kivyの導入</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># kivy環境（仮想環境）に入る</span>
+<span class="n">activate</span> <span class="n">kivy</span>
+
+<span class="c1"># 既存パッケージアップデート</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">pip</span> <span class="n">wheel</span> <span class="n">setuptools</span>
+
+<span class="c1"># 依存パッケージインストール</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">docutils</span> <span class="n">pygments</span> <span class="n">pypiwin32</span> <span class="n">kivy</span><span class="o">.</span><span class="n">deps</span><span class="o">.</span><span class="n">sdl2</span> <span class="n">kivy</span><span class="o">.</span><span class="n">deps</span><span class="o">.</span><span class="n">glew1Copy</span>
+
+<span class="c1"># kivy本体とサンプルアプリをインストール</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">kivy</span> <span class="n">kivy_examples</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>サンプルアプリ実行<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># kivy環境にて実施</span>
+<span class="n">python</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">i</span>\<span class="n">Anaconda3</span>\<span class="n">envs</span>\<span class="n">kivy</span>\<span class="n">share</span>\<span class="n">kivy</span><span class="o">-</span><span class="n">examples</span>\<span class="n">demo</span>\<span class="n">showcase</span>\<span class="n">main</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="atom">
+<span id="atom-label"></span><h2>Atomエディタ<a class="headerlink" href="#atom" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id4">
+<h3>Atomのインストール<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p><a class="reference external" href="https://www.closetoyou.jp/kivy/introduction-to-kivy03/">3 Atomエディタの導入</a></p>
+<ul>
+<li><p class="first">Atom：<a class="reference external" href="https://atom.io/">公式サイト</a></p>
+</li>
+<li><p class="first">追加パッケージ（メニューから、「File」→「Settings」を選択）</p>
+<ul>
+<li><p class="first">japanese-menu</p>
+</li>
+<li><p class="first">autocomplete-python</p>
+<p>ローカルで完結する「Jedi」を選択</p>
+</li>
+<li><p class="first">atom-runner</p>
+</li>
+<li><p class="first">minimap</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>プログラムの実行<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="anaconda-prompt">
+<h4>Anaconda Prompt を使う場合<a class="headerlink" href="#anaconda-prompt" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<p>Anaconda Promptを開き、kivy仮想環境に入った上で、「python “ファイル名”」と入力する:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">activate</span> <span class="n">kivy</span>
+
+<span class="c1"># ファイルパスは例</span>
+<span class="n">python</span> <span class="n">C</span><span class="p">:</span>\<span class="n">kivy_project</span>\<span class="n">main</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="atom-atom-runner">
+<h4>Atom の atom-runner を使う場合<a class="headerlink" href="#atom-atom-runner" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<p><a class="reference external" href="https://www.closetoyou.jp/kivy/introduction-to-kivy04/">4 Kvファイルを用いた簡単なアプリ作成</a></p>
+<p>Anaconda Promptを立ち上げてkivy仮想環境に入って、Prompt上からAtomを起動する:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">activate</span> <span class="n">kivy</span>
+
+<span class="c1"># パスはAtomの実行ファイル</span>
+<span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">i</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">atom</span>\<span class="n">atom</span><span class="o">.</span><span class="n">exe</span>
+</pre></div>
+</div>
+<p>続いて、Atom の atom-runner を使う。
+Atomでmain.pyファイルを開いた状態で、「Altキー + r」を押す。
+すると、作成したプログラムが実行され、ウィンドウが開く。</p>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>プログラムについて<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id7">
+<h3>ファイル名<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>まず前提として、main.pyにて、Appクラスを継承したXxxAppという名称を持つクラスのrunメソッドを呼ぶ場合、自動的にxxx.kvというファイルが存在するかどうかを確かめ、あればそれを読み込む。
+以下の例ではAppクラスを継承したクラス名がExpenseAppなので、expense.kvが読み込まれることになる。
+大文字と小文字の区別に気を付けること。</p>
+<p><strong>main.py</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kivy.app</span> <span class="k">import</span> <span class="n">App</span>
+
+<span class="k">class</span> <span class="nc">ExpenseApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">ExpenseApp</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>expense.kv</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Label</span><span class="p">:</span>
+    <span class="n">text</span><span class="p">:</span> <span class="s2">&quot;Expense App&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>コメント方法<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>kvファイルでは、「#」にてコメント可能。
+ただし、日本語コメントを入力すると <strong>UnicodeDecodeError</strong> となる。</p>
+<p><a class="reference external" href="https://qiita.com/EsseiK/items/9d87a16cc586957416c8">https://qiita.com/EsseiK/items/9d87a16cc586957416c8</a></p>
+<p>回避のために以下のファイル修正が必要。</p>
+<p>ファイルパス:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="p">[</span><span class="n">ユーザー名</span><span class="p">]</span>\<span class="n">Anaconda3</span>\<span class="n">envs</span>\<span class="p">[</span><span class="n">環境名</span><span class="p">]</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">kivy</span>\<span class="n">lang</span>\<span class="n">builder</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>の288行目。</p>
+<p>変更前:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>変更後:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<p class="last">コメントをコードと同じ行に続けて書くとエラーになるみたい。
+独立行に書くと問題ない。</p>
+</div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>レイアウト作成<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p><a class="reference external" href="https://www.closetoyou.jp/kivy/introduction-to-kivy05/">5 Kvファイルによる基本的なレイアウト作成</a></p>
+<p><a class="reference external" href="https://www.closetoyou.jp/kivy/introduction-to-kivy06/">6 画面設計とKvファイルによる画面アウトラインの作成</a></p>
+<p><a class="reference external" href="https://www.closetoyou.jp/kivy/introduction-to-kivy07/">7 Kvファイルを用いた文字入力欄とボタンの設置</a></p>
+<p><a class="reference external" href="https://www.closetoyou.jp/kivy/introduction-to-kivy08/">8 Widgetの外観修正</a></p>
+<p><a class="reference external" href="https://www.closetoyou.jp/kivy/introduction-to-kivy09/">9 日本語の表示方法</a></p>
+<p>エディタをShift-JISにする必要はなさそう？？</p>
+<p><a class="reference external" href="https://www.closetoyou.jp/kivy/introduction-to-kivy10/">10 画面遷移の実装方法その1</a></p>
+<p><a class="reference external" href="https://www.closetoyou.jp/kivy/introduction-to-kivy11/">11 画面遷移の実装方法その1</a></p>
+<p><a class="reference external" href="https://www.closetoyou.jp/kivy/introduction-to-kivy12/">12 ログイン失敗時のエラーメッセージ表示方法その1</a></p>
+<p><a class="reference external" href="https://www.closetoyou.jp/kivy/introduction-to-kivy13/">13 ログイン失敗時のエラーメッセージ表示方法その2</a></p>
+<p><a class="reference external" href="https://www.closetoyou.jp/kivy/introduction-to-kivy14/">14 経費申請画面の作成その1</a></p>
+<p><a class="reference external" href="https://www.closetoyou.jp/kivy/introduction-to-kivy15/">15 経費申請画面の作成その2</a></p>
+<p><a class="reference external" href="https://www.closetoyou.jp/kivy/introduction-to-kivy16/">16 プログラムのWindows実行ファイル化</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="Atom.html" title="Atom"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="Anaconda.html" title="Anaconda"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Linux</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >アプリ使用方法</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, tak.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.1 で生成しました。
+    </div>
+  </body>
+</html>

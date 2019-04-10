@@ -1,0 +1,166 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>flask &#8212; Tak Documents  ドキュメント</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="Raspberry Pi" href="../raspberry_pi/index.html" />
+    <link rel="prev" title="python 開発環境" href="python 開発環境.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../raspberry_pi/index.html" title="Raspberry Pi"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="python 開発環境.html" title="python 開発環境"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Python</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linux/index.html">Linux</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Python</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python 開発環境.html">python 開発環境</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">flask</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../デザインパターン/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../備忘録/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">flask</a><ul>
+<li><a class="reference internal" href="#id1">ハマったこと</a><ul>
+<li><a class="reference internal" href="#unicodedecodeerror">UnicodeDecodeError</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="python 開発環境.html"
+                        title="前の章へ">python 開発環境</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="../raspberry_pi/index.html"
+                        title="次の章へ">Raspberry Pi</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="flask">
+<h1>flask<a class="headerlink" href="#flask" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p><a class="reference external" href="http://python.zombie-hunting-club.com/entry/2017/11/03/223503">http://python.zombie-hunting-club.com/entry/2017/11/03/223503</a></p>
+<p><a class="reference external" href="http://www.subarunari.com/entry/2017/09/30/003944">http://www.subarunari.com/entry/2017/09/30/003944</a></p>
+<ul class="simple">
+<li>Flaskのデフォルトのテンプレートエンジンは jinja2 で HTML と Python のコードを同居させることができる。</li>
+<li>テンプレートはアプリケーションルート配下の templtates ディレクトリ以下に置く。</li>
+</ul>
+<p>例1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!-- user.html --&gt;
+&lt;p&gt;
+    {{ user_name }}
+&lt;/p&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li>{{...}} で囲われた部分がPhthonのコード。</li>
+<li>{{...}} はPythonの値をHTMLに出力するために用いるもので、Directiveと呼ぶ。</li>
+<li>{%...%} はif文なのの式を埋め込みたい場合に用いるもの。</li>
+</ul>
+<div class="section" id="id1">
+<h2>ハマったこと<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="unicodedecodeerror">
+<h3>UnicodeDecodeError<a class="headerlink" href="#unicodedecodeerror" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>Python2.7でFlaskのアプリケーションを起動したときUnicodeDecodeErrorが出た時の対処法。
+Flaskで簡単なアプリを作って起動してみたところ、以下のエラーが発生した。:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">UnicodeDecodeError</span><span class="p">:</span> <span class="s1">&#39;ascii&#39;</span> <span class="n">codec</span> <span class="n">can</span><span class="s1">&#39;t decode byte 0xe3 in position 0: ordinal not in range(128)</span>
+</pre></div>
+</div>
+<p>これはPython2.7のデフォルトの文字コードがASCIIのため。
+以下のようにして文字コードをUTF-8にする必要あり:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">reload</span><span class="p">(</span><span class="n">sys</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">setdefaultencoding</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="../raspberry_pi/index.html" title="Raspberry Pi"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="python 開発環境.html" title="python 開発環境"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Python</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, tak.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.1 で生成しました。
+    </div>
+  </body>
+</html>

@@ -1,0 +1,267 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>パッケージインストール／アンインストール／アップデート方法 &#8212; Tak Documents  ドキュメント</title>
+    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="next" title="OSバージョン種類と確認方法" href="OSバージョン種類と確認方法.html" />
+    <link rel="prev" title="ショートカット作成" href="ショートカット作成.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="OSバージョン種類と確認方法.html" title="OSバージョン種類と確認方法"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="ショートカット作成.html" title="ショートカット作成"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Raspberry Pi</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">操作系</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Raspberry Pi</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../初期設定/index.html">初期設定</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">操作系</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../実行環境.html">実行環境種類</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GPIO制御.html">GPIO制御</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../samba.html">samba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GitBucket.html">GitBucket</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../デザインパターン/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../備忘録/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">パッケージインストール／アンインストール／アップデート方法</a><ul>
+<li><a class="reference internal" href="#apt-get">apt-get</a></li>
+<li><a class="reference internal" href="#easy-install">easy_install</a></li>
+<li><a class="reference internal" href="#pip-pip3">pip/pip3</a></li>
+<li><a class="reference internal" href="#conda">conda</a></li>
+<li><a class="reference internal" href="#setup-py">setup.py の場合</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="ショートカット作成.html"
+                        title="前の章へ">ショートカット作成</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="OSバージョン種類と確認方法.html"
+                        title="次の章へ">OSバージョン種類と確認方法</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<h1>パッケージインストール／アンインストール／アップデート方法<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="apt-get">
+<h2>apt-get<a class="headerlink" href="#apt-get" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">説明</p>
+</li>
+<li><p class="first">インストール:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">パッケージ名</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">バージョン指定インストール:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># インストール可能なバージョン確認</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">cache</span> <span class="n">policy</span> <span class="n">パッケージ名</span>
+<span class="c1"># バージョンを指定してインストール</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">パッケージ名</span><span class="o">=</span><span class="n">バージョン</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">アンインストール:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 設定ファイルを残す</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">remove</span> <span class="n">パッケージ名</span>
+<span class="c1"># 設定ファイルも削除</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="o">--</span><span class="n">purge</span> <span class="n">remove</span> <span class="n">パッケージ名</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">アップデート:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 更新リストを取得する</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="c1"># 現在インストールされているパッケージ構成を変えない範囲でアップグレードする</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">upgrade</span>
+<span class="c1"># パッケージ構成の変更に追随してアップグレードする</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">dist</span><span class="o">-</span><span class="n">upgrade</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="easy-install">
+<h2>easy_install<a class="headerlink" href="#easy-install" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">説明</p>
+<ul class="simple">
+<li>パッケージ管理ツール</li>
+<li>Pythonの外部ライブラリ（パッケージ）をインストール</li>
+</ul>
+</li>
+<li><p class="first">事前準備</p>
+<p>easy_installコマンドを利用するには、<a class="reference external" href="http://peak.telecommunity.com/dist/ez_setup.py">http://peak.telecommunity.com/dist/ez_setup.py</a> ファイルをダウンロードし、そのファイルをpythonコマンドで実行する:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">peak</span><span class="o">.</span><span class="n">telecommunity</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">dist</span><span class="o">/</span><span class="n">ez_setup</span><span class="o">.</span><span class="n">py</span>
+<span class="n">python</span> <span class="n">ez_setup</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">インストール:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">easy_install</span> <span class="n">パッケージ名</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">アップデート:</p>
+</li>
+</ul>
+</div>
+<div class="section" id="pip-pip3">
+<h2>pip/pip3<a class="headerlink" href="#pip-pip3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">説明</p>
+<ul class="simple">
+<li>パッケージ管理ツール</li>
+<li>pip：python2用、pip3：python3用</li>
+</ul>
+</li>
+<li><p class="first">事前準備</p>
+<p>pipのインストールが必要:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span>
+</pre></div>
+</div>
+<p>pip/pip3を共存させる方法
+<a class="reference external" href="http://blog.yubais.net/21.html">http://blog.yubais.net/21.html</a></p>
+</li>
+<li><p class="first">インストール:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># python2用</span>
+<span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">パッケージ名</span>
+<span class="c1"># python3用</span>
+<span class="n">sudo</span> <span class="n">pip3</span> <span class="n">install</span> <span class="n">パッケージ名</span>
+
+<span class="c1"># パッケージ名はスペースで区切ることで複数のパッケージを指定可能</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">アップデート:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">パッケージ名</span>
+<span class="c1"># パッケージ名はスペースで区切ることで複数のパッケージを指定可能</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="conda">
+<h2>conda<a class="headerlink" href="#conda" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">説明</p>
+<ul class="simple">
+<li>anacondaやminicondaで使用されるパッケージ管理ツール。</li>
+<li>condaはpipに比べて仮想環境構築もできたりと高機能であるが、pipでインストールできてcondaにはインストールできないパッケージもある。</li>
+<li>したがって、パッケージをインストールする際には基本的にはcondaを使用し、condaでサポートされていないパッケージについてはpipでインストールするという使い方が良い。</li>
+</ul>
+</li>
+<li><p class="first">アップデート:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">update</span> <span class="n">パッケージ名</span>
+
+<span class="c1"># 例：anaconda自身をアップデートする場合</span>
+<span class="n">conda</span> <span class="n">update</span> <span class="n">conda</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="setup-py">
+<h2>setup.py の場合<a class="headerlink" href="#setup-py" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">説明</p>
+<p>ダウンロードしたzipファイルを解凍して&quot;setup.py&quot;ファイルがあった場合</p>
+</li>
+<li><p class="first">インストール:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="OSバージョン種類と確認方法.html" title="OSバージョン種類と確認方法"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="ショートカット作成.html" title="ショートカット作成"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Raspberry Pi</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >操作系</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, tak.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.1 で生成しました。
+    </div>
+  </body>
+</html>
