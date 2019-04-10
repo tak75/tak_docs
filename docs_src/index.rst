@@ -6,6 +6,7 @@ tak documents
    :maxdepth: 2
 
    sphinx/index
+   GitHub/index
    Linux/index
    python/index
    raspberry_pi/index
