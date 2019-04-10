@@ -11,9 +11,9 @@ Sphinxドキュメントの公開方法
   ├── .gitignore
   ├── docs
   │   ├── .nojekyll（Jekyllを使用しないようにするために必要）
-  │   ├── 公開するhtmlファイル
+  │   ├── 公開するhtmlファイル（buildで作成されるhtmlファイルをコピーする）
   └── docs_src
-      ├── build元のrstファイル
+       ├── build元のrstファイル
 
 
 .nojekyllファイルの作成方法
