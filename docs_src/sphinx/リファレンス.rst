@@ -618,6 +618,7 @@ CSVテーブル（csv-table）
 
 .. csv-table:: タイトル
    :header-rows: 1
+   :widths: 3, 5, 3
 
    ツールの名前,開発者,バージョン
    Python,Guido va Rossum,3.6.2
@@ -627,10 +628,13 @@ CSVテーブル（csv-table）
 
  .. csv-table:: タイトル
     :header-rows: 1
+    :widths: 3, 5, 3
 
     ツールの名前,開発者,バージョン
     Python,Guido va Rossum,3.6.2
     Sphinx,Georg Brandl,1.6.4
+
+.. note:: "widths"で指定する値はピクセル数ではなく比率みたい
 
 csvファイルを読み込むことも可能。
 

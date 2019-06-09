@@ -65,6 +65,7 @@
 <li><a class="reference internal" href="#">Sphinxドキュメントの公開方法</a><ul>
 <li><a class="reference internal" href="#id1">ディレクトリ構成</a></li>
 <li><a class="reference internal" href="#nojekyll">.nojekyllファイルの作成方法</a></li>
+<li><a class="reference internal" href="#html-copy-bat">html_copy.batの内容</a></li>
 <li><a class="reference internal" href="#id2">参考</a></li>
 </ul>
 </li>
@@ -105,8 +106,10 @@
 ├── docs
 │   ├── .nojekyll（Jekyllを使用しないようにするために必要）
 │   ├── 公開するhtmlファイル（buildで作成されるhtmlファイルをコピーする）
-└── docs_src
-     ├── build元のrstファイル
+├── docs_src
+│    ├── build元のrstファイル
+├── html_copy.bat（”docs_src\build”を”docs”にコピーするためのバッチファイル）
+└── README.rst
 </pre></div>
 </div>
 </div>
@@ -116,6 +119,104 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">null</span> <span class="o">&gt;</span> <span class="o">.</span><span class="n">nojekyll</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="html-copy-bat">
+<h2>html_copy.batの内容<a class="headerlink" href="#html-copy-bat" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xcopy</span> <span class="n">docs_src</span>\<span class="n">_build</span>\<span class="n">html</span> <span class="n">docs</span> <span class="o">/</span><span class="n">D</span> <span class="o">/</span><span class="n">E</span> <span class="o">/</span><span class="n">Y</span>
+</pre></div>
+</div>
+<table border="1" class="colwidths-given docutils" id="id3">
+<caption><span class="caption-number">表 10 </span><span class="caption-text">オプション説明</span><a class="headerlink" href="#id3" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">オプション</th>
+<th class="head">説明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>/A</td>
+<td>アーカイブ属性のファイルのみコピーする</td>
+</tr>
+<tr class="row-odd"><td>/M</td>
+<td>アーカイブ属性のファイルのみコピーし、アーカイブ属性を解除する</td>
+</tr>
+<tr class="row-even"><td>/D:MM/DD/YYYY</td>
+<td>指定した日付以降に更新されたファイルのみコピーする</td>
+</tr>
+<tr class="row-odd"><td><strong>/D</strong></td>
+<td><strong>コピー先に同名のファイルが存在する場合に更新日が新しいファイルのみコピーする</strong></td>
+</tr>
+<tr class="row-even"><td>/P</td>
+<td>コピー前に確認メッセージを表示する</td>
+</tr>
+<tr class="row-odd"><td>/S</td>
+<td>ファイルが存在する場合のみディレクトリごとコピーする</td>
+</tr>
+<tr class="row-even"><td><strong>/E</strong></td>
+<td><strong>ファイルが存在しなくてもディレクトリごとコピーする</strong></td>
+</tr>
+<tr class="row-odd"><td>/V</td>
+<td>ファイルの内容が正しいか検査する</td>
+</tr>
+<tr class="row-even"><td>/W</td>
+<td>キー入力を待ってコピーを開始する</td>
+</tr>
+<tr class="row-odd"><td>/C</td>
+<td>コピー時のエラーを無視する</td>
+</tr>
+<tr class="row-even"><td>/I</td>
+<td>コピー先のディレクトリが存在しない場合は新規にディレクトリを作成する</td>
+</tr>
+<tr class="row-odd"><td>/Q</td>
+<td>コピーしたファイル名を表示しない</td>
+</tr>
+<tr class="row-even"><td>/F</td>
+<td>コピー元とコピー先のファイル名を詳細表示する</td>
+</tr>
+<tr class="row-odd"><td>/L</td>
+<td>コピーされるファイルを確認する（コピーは行わない）</td>
+</tr>
+<tr class="row-even"><td>/G</td>
+<td>暗号化を解除してコピーする（XP Only）</td>
+</tr>
+<tr class="row-odd"><td>/H</td>
+<td>隠しファイルやシステムファイルも全てコピーする</td>
+</tr>
+<tr class="row-even"><td>/R</td>
+<td>読み取り専用属性のファイルも上書きコピーできるようにする</td>
+</tr>
+<tr class="row-odd"><td>/T</td>
+<td>ファイルが存在するディレクトリのディレクトリのみコピーする</td>
+</tr>
+<tr class="row-even"><td>/U</td>
+<td>コピー先に同名のファイルがある場合のみコピーする</td>
+</tr>
+<tr class="row-odd"><td>/K</td>
+<td>通常は解除される読み取り専用属性を維持したままコピーする</td>
+</tr>
+<tr class="row-even"><td>/O</td>
+<td>ファイルの所有権やアクセス権限もそのままコピーする</td>
+</tr>
+<tr class="row-odd"><td>/N</td>
+<td>コピー元のファイル名が長い場合、コピー先のファイル名を短く（8+3形式）する</td>
+</tr>
+<tr class="row-even"><td><strong>/Y</strong></td>
+<td><strong>同名のファイルが存在する場合、上書きの確認を行わない</strong></td>
+</tr>
+<tr class="row-odd"><td>/-Y</td>
+<td>同名のファイルが存在する場合、上書きの確認を行う</td>
+</tr>
+<tr class="row-even"><td>/Z</td>
+<td>ネットワーク経由のコピーでネットワーク切断が発生した場合、コピーを再開できるようにする</td>
+</tr>
+<tr class="row-odd"><td>/EXCLUDE:file name</td>
+<td>指定したファイルをコピー対象から外す（複数ファイル指定時は&quot;+&quot;でくくる）</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="id2">
 <h2>参考<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
