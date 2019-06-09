@@ -6,5 +6,5 @@ VirtualBox
    :maxdepth: 2
 
    Raspbianインストール方法
-   画面解像度変更方法
+
 
