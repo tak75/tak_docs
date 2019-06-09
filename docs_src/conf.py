@@ -52,7 +52,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Tak Documents'
-copyright = '2018, tak'
+copyright = '2019, tak'
 author = 'tak'
 
 # The version info for the project you're documenting, acts as replacement for

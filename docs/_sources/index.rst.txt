@@ -7,6 +7,7 @@ tak documents
 
    sphinx/index
    GitHub/index
+   VirtualBox/index
    Linux/index
    python/index
    raspberry_pi/index
