@@ -5,6 +5,6 @@ VirtualBox
 .. toctree::
    :maxdepth: 2
 
-   Raspbianインストール方法
+   Raspberry Pi Desktop インストール方法
 
 
