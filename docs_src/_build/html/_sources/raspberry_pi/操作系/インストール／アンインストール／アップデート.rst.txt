@@ -111,6 +111,3 @@ setup.py の場合
 * インストール::
 
     python setup.py install
-
-
-

@@ -63,9 +63,9 @@
   <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Raspberry Pi Desktop インストール方法</a><ul>
-<li><a class="reference internal" href="#id1">Raspberry Pi Desktop インストール</a></li>
-<li><a class="reference internal" href="#id2">インストール後の処理</a></li>
+<li><a class="reference internal" href="#id1">インストール</a></li>
 <li><a class="reference internal" href="#vboxlinuxadditions">VBoxLinuxAdditionsインストール</a></li>
+<li><a class="reference internal" href="#id2">グループ追加</a></li>
 <li><a class="reference internal" href="#vb-lable-ref">参考</a></li>
 </ul>
 </li>
@@ -100,7 +100,7 @@
   <div class="section" id="raspberry-pi-desktop">
 <h1>Raspberry Pi Desktop インストール方法<a class="headerlink" href="#raspberry-pi-desktop" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <div class="section" id="id1">
-<h2>Raspberry Pi Desktop インストール<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>インストール<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="https://www.raspberrypi.org/downloads/raspberry-pi-desktop/">ここ</a> からisoファイルをダウンロード</li>
 <li>VirtualBox で新規に Virtual Machine を作成しインストール（詳細は <a class="reference internal" href="#vb-lable-ref"><span class="std std-ref">参考</span></a> を参照）</li>
@@ -110,9 +110,6 @@
 <p class="last">Oracle VM VirtualBox マネージャー -&gt; 設定 -&gt; 一般 -&gt; 基本 -&gt; バージョン については、「Debian (64-bit)」ではなく、isoファイルに合わせて「Debian (32-bit)」を選択すること。
 そうしないと、スクリーンサイズ変更やクリップボード共有ができなくなる。</p>
 </div>
-</div>
-<div class="section" id="id2">
-<h2>インストール後の処理<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p class="first">パッケージ更新:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;apt update &amp;&amp; apt upgrade -y &amp;&amp; reboot&#39;</span>
@@ -123,7 +120,7 @@
 </div>
 <div class="section" id="vboxlinuxadditions">
 <h2>VBoxLinuxAdditionsインストール<a class="headerlink" href="#vboxlinuxadditions" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>本インストール処理は、スクリーンサイズを変更したり、クリップボードの共有を行うために必要。</p>
+<p>本処理は、スクリーンサイズを変更したり、クリップボードの共有を行うために必要。</p>
 <ol class="arabic">
 <li><p class="first">ディスク挿入:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VirtualBoxのMenu</span><span class="p">:</span> <span class="n">Devices</span> <span class="o">&gt;</span> <span class="n">Insert</span> <span class="n">Guest</span> <span class="n">Additions</span> <span class="n">CD</span> <span class="n">Images</span><span class="o">...</span>
@@ -151,6 +148,21 @@
 </div>
 </li>
 </ol>
+</div>
+<div class="section" id="id2">
+<h2>グループ追加<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>本処理は、フォルダ共有のために必要。</p>
+<ul>
+<li><p class="first">ユーザにvboxsfグループを追加:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">adduser</span> <span class="n">pi</span> <span class="n">vboxsf</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<p class="last">ユーザが何のグループにも所属していないためフォルダ共有設定ができない。</p>
+</div>
+</li>
+</ul>
 </div>
 <div class="section" id="vb-lable-ref">
 <span id="id3"></span><h2>参考<a class="headerlink" href="#vb-lable-ref" title="このヘッドラインへのパーマリンク">¶</a></h2>
