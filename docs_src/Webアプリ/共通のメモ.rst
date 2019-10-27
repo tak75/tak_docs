@@ -1,0 +1,10 @@
+==========
+共通のメモ
+==========
+
+POSTメソッドのテスト
+====================
+
+* Windows PowerShellにて、Invoke-RestMethodを利用する::
+
+    Invoke-RestMethod -Uri "http://localhost:5000/ex_req?u1=abc&u2=def&u1=ghi" -Method POST -Body "f1=ABC$f2=DEF&f2=GHI"

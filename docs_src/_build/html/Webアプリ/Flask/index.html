@@ -1,0 +1,143 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Flask &#8212; Tak Documents  ドキュメント</title>
+    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="next" title="Flask環境構築" href="Flask環境構築.html" />
+    <link rel="prev" title="Webアプリ" href="../index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="Flask環境構築.html" title="Flask環境構築"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Webアプリ"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Webアプリ</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Webアプリ</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Flask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../共通のメモ.html">共通のメモ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../デザインパターン/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../備忘録/index.html">備忘録</a></li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="../index.html"
+                        title="前の章へ">Webアプリ</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="Flask環境構築.html"
+                        title="次の章へ">Flask環境構築</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="flask">
+<h1>Flask<a class="headerlink" href="#flask" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Flask環境構築.html">Flask環境構築</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Flask環境構築.html#id1">学習用の仮想環境を構築する</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Flask環境構築.html#id2">仮想環境でのFlask実行方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Flask環境構築.html#id3">Flaskの環境変数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Flask環境構築.html#id4">デバッグ機能の使い方</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Flask環境構築.html#id8">ハマったこと</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Flask基本機能.html">Flask基本機能</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Flask基本機能.html#id1">ルーティング</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Flask基本機能.html#id2">テンプレート</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Flask基本機能.html#id3">リクエストオブジェクト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Flask基本機能.html#id4">リダイレクト関数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Flask基本機能.html#id6">エラー処理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Flask基本機能.html#id7">ファイルアップロード</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="Flask環境構築.html" title="Flask環境構築"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Webアプリ"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Webアプリ</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, tak.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 で生成しました。
+    </div>
+  </body>
+</html>
