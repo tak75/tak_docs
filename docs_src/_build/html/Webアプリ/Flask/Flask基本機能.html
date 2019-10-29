@@ -77,6 +77,13 @@
 <li><a class="reference internal" href="#id9">セッション</a></li>
 <li><a class="reference internal" href="#id10">フラッシュ</a></li>
 <li><a class="reference internal" href="#id11">ロギング</a></li>
+<li><a class="reference internal" href="#id12">ファイルダウンロード</a><ul>
+<li><a class="reference internal" href="#app-py">app.pyからの相対パスのファイルをダウンロード</a></li>
+<li><a class="reference internal" href="#id13">指定されたファイル名でダウンロード</a></li>
+<li><a class="reference internal" href="#id14">指定したディレクトリからの相対パスのファイルをダウンロード</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id15">flaskコマンド</a></li>
 </ul>
 </li>
 </ul>
@@ -573,6 +580,169 @@ RawContentLength  : 14
 </div>
 </li>
 </ul>
+</div>
+<div class="section" id="id12">
+<h2>ファイルダウンロード<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="app-py">
+<h3>app.pyからの相対パスのファイルをダウンロード<a class="headerlink" href="#app-py" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p class="first">必要なインポート:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">send_file</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">使用例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_send_file/&lt;path:var&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">fn_send_file</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">send_file</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">as_attachment</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">上記例では、&lt;path:var&gt;で指定したapp.pyからの相対パスのファイルをダウンロードしファイルに保存する。例えば、&quot;localhost:5000/ex_send_file/app.py&quot;と入力すると、app.pyを任意の場所にダウンロードできる。</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id13">
+<h3>指定されたファイル名でダウンロード<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p class="first">使用例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_send_file_obj/&lt;var&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">fn_send_file_obj</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
+    <span class="n">fp</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">send_file</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">attachment_filename</span><span class="o">=</span><span class="s1">&#39;test.txt&#39;</span><span class="p">,</span> <span class="n">as_attachment</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">上記例では、&lt;var&gt;の内容の&quot;test.txt&quot;ファイルをダウンロードし保存する。例えば、&quot;localhost:5000/ex_send_file_obj/TEST&quot;と入力すると、&quot;TEST&quot;と記載された&quot;test.txt&quot;ファイルを任意の場所にダウンロードできる。</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id14">
+<h3>指定したディレクトリからの相対パスのファイルをダウンロード<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p class="first">必要なインポート:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">send_from_directory</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">使用例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_send_from_dir/&lt;path:var&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">fn_send_from_dir</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">send_from_directory</span><span class="p">(</span><span class="s1">&#39;C:/flask_work/&#39;</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">as_attachment</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">上記例では、&lt;path:var&gt;で指定した'C:/flask_work/'からの相対パスのファイルをダウンロードしファイルに保存する。例えば、&quot;localhost:5000/ex_send_from_dir/app.py&quot;と入力すると、'C:/flask_work/app.py'を任意の場所にダウンロードできる。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id15">
+<h2>flaskコマンド<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>PowerShellの仮想環境において:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flask</span>
+</pre></div>
+</div>
+<p>と入力すると、flaskコマンドの説明が表示される。コマンドはroutes、run、shellの3種類:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span> <span class="n">flask</span> <span class="p">[</span><span class="n">OPTIONS</span><span class="p">]</span> <span class="n">COMMAND</span> <span class="p">[</span><span class="n">ARGS</span><span class="p">]</span><span class="o">...</span>
+
+<span class="n">A</span> <span class="n">general</span> <span class="n">utility</span> <span class="n">script</span> <span class="k">for</span> <span class="n">Flask</span> <span class="n">applications</span><span class="o">.</span>
+
+<span class="n">Provides</span> <span class="n">commands</span> <span class="kn">from</span> <span class="nn">Flask</span><span class="p">,</span> <span class="n">extensions</span><span class="p">,</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">application</span><span class="o">.</span> <span class="n">Loads</span> <span class="n">the</span>
+<span class="n">application</span> <span class="n">defined</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">FLASK_APP</span> <span class="n">environment</span> <span class="n">variable</span><span class="p">,</span> <span class="ow">or</span> <span class="kn">from</span> <span class="nn">a</span>
+<span class="n">wsgi</span><span class="o">.</span><span class="n">py</span> <span class="n">file</span><span class="o">.</span> <span class="n">Setting</span> <span class="n">the</span> <span class="n">FLASK_ENV</span> <span class="n">environment</span> <span class="n">variable</span> <span class="n">to</span> <span class="s1">&#39;development&#39;</span>
+<span class="n">will</span> <span class="n">enable</span> <span class="n">debug</span> <span class="n">mode</span><span class="o">.</span>
+
+    <span class="o">&gt;</span> <span class="nb">set</span> <span class="n">FLASK_APP</span><span class="o">=</span><span class="n">hello</span><span class="o">.</span><span class="n">py</span>
+    <span class="o">&gt;</span> <span class="nb">set</span> <span class="n">FLASK_ENV</span><span class="o">=</span><span class="n">development</span>
+    <span class="o">&gt;</span> <span class="n">flask</span> <span class="n">run</span>
+
+<span class="n">Options</span><span class="p">:</span>
+<span class="o">--</span><span class="n">version</span>  <span class="n">Show</span> <span class="n">the</span> <span class="n">flask</span> <span class="n">version</span>
+<span class="o">--</span><span class="n">help</span>     <span class="n">Show</span> <span class="n">this</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span><span class="o">.</span>
+
+<span class="n">Commands</span><span class="p">:</span>
+<span class="n">routes</span>  <span class="n">Show</span> <span class="n">the</span> <span class="n">routes</span> <span class="k">for</span> <span class="n">the</span> <span class="n">app</span><span class="o">.</span>
+<span class="n">run</span>     <span class="n">Run</span> <span class="n">a</span> <span class="n">development</span> <span class="n">server</span><span class="o">.</span>
+<span class="n">shell</span>   <span class="n">Run</span> <span class="n">a</span> <span class="n">shell</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">app</span> <span class="n">context</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>runコマンドのヘルプを確認したい場合は:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flask</span> <span class="n">run</span> <span class="o">--</span><span class="n">help</span>
+</pre></div>
+</div>
+<p>と入力する:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span> <span class="n">flask</span> <span class="n">run</span> <span class="p">[</span><span class="n">OPTIONS</span><span class="p">]</span>
+
+<span class="n">Run</span> <span class="n">a</span> <span class="n">local</span> <span class="n">development</span> <span class="n">server</span><span class="o">.</span>
+
+<span class="n">This</span> <span class="n">server</span> <span class="ow">is</span> <span class="k">for</span> <span class="n">development</span> <span class="n">purposes</span> <span class="n">only</span><span class="o">.</span> <span class="n">It</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">provide</span> <span class="n">the</span>
+<span class="n">stability</span><span class="p">,</span> <span class="n">security</span><span class="p">,</span> <span class="ow">or</span> <span class="n">performance</span> <span class="n">of</span> <span class="n">production</span> <span class="n">WSGI</span> <span class="n">servers</span><span class="o">.</span>
+
+<span class="n">The</span> <span class="n">reloader</span> <span class="ow">and</span> <span class="n">debugger</span> <span class="n">are</span> <span class="n">enabled</span> <span class="n">by</span> <span class="n">default</span> <span class="k">if</span> <span class="n">FLASK_ENV</span><span class="o">=</span><span class="n">development</span>
+<span class="ow">or</span> <span class="n">FLASK_DEBUG</span><span class="o">=</span><span class="mf">1.</span>
+
+<span class="n">Options</span><span class="p">:</span>
+<span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">host</span> <span class="n">TEXT</span>                 <span class="n">The</span> <span class="n">interface</span> <span class="n">to</span> <span class="n">bind</span> <span class="n">to</span><span class="o">.</span>
+<span class="o">-</span><span class="n">p</span><span class="p">,</span> <span class="o">--</span><span class="n">port</span> <span class="n">INTEGER</span>              <span class="n">The</span> <span class="n">port</span> <span class="n">to</span> <span class="n">bind</span> <span class="n">to</span><span class="o">.</span>
+<span class="o">--</span><span class="n">cert</span> <span class="n">PATH</span>                     <span class="n">Specify</span> <span class="n">a</span> <span class="n">certificate</span> <span class="n">file</span> <span class="n">to</span> <span class="n">use</span> <span class="n">HTTPS</span><span class="o">.</span>
+<span class="o">--</span><span class="n">key</span> <span class="n">FILE</span>                      <span class="n">The</span> <span class="n">key</span> <span class="n">file</span> <span class="n">to</span> <span class="n">use</span> <span class="n">when</span> <span class="n">specifying</span> <span class="n">a</span>
+                                <span class="n">certificate</span><span class="o">.</span>
+<span class="o">--</span><span class="n">reload</span> <span class="o">/</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">reload</span>          <span class="n">Enable</span> <span class="ow">or</span> <span class="n">disable</span> <span class="n">the</span> <span class="n">reloader</span><span class="o">.</span> <span class="n">By</span> <span class="n">default</span>
+                                <span class="n">the</span> <span class="n">reloader</span> <span class="ow">is</span> <span class="n">active</span> <span class="k">if</span> <span class="n">debug</span> <span class="ow">is</span> <span class="n">enabled</span><span class="o">.</span>
+<span class="o">--</span><span class="n">debugger</span> <span class="o">/</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">debugger</span>      <span class="n">Enable</span> <span class="ow">or</span> <span class="n">disable</span> <span class="n">the</span> <span class="n">debugger</span><span class="o">.</span> <span class="n">By</span> <span class="n">default</span>
+                                <span class="n">the</span> <span class="n">debugger</span> <span class="ow">is</span> <span class="n">active</span> <span class="k">if</span> <span class="n">debug</span> <span class="ow">is</span> <span class="n">enabled</span><span class="o">.</span>
+<span class="o">--</span><span class="n">eager</span><span class="o">-</span><span class="n">loading</span> <span class="o">/</span> <span class="o">--</span><span class="n">lazy</span><span class="o">-</span><span class="n">loader</span>
+                                <span class="n">Enable</span> <span class="ow">or</span> <span class="n">disable</span> <span class="n">eager</span> <span class="n">loading</span><span class="o">.</span> <span class="n">By</span> <span class="n">default</span>
+                                <span class="n">eager</span> <span class="n">loading</span> <span class="ow">is</span> <span class="n">enabled</span> <span class="k">if</span> <span class="n">the</span> <span class="n">reloader</span> <span class="ow">is</span>
+                                <span class="n">disabled</span><span class="o">.</span>
+<span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">threads</span> <span class="o">/</span> <span class="o">--</span><span class="n">without</span><span class="o">-</span><span class="n">threads</span>
+                                <span class="n">Enable</span> <span class="ow">or</span> <span class="n">disable</span> <span class="n">multithreading</span><span class="o">.</span>
+<span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="n">files</span> <span class="n">PATH</span>              <span class="n">Extra</span> <span class="n">files</span> <span class="n">that</span> <span class="n">trigger</span> <span class="n">a</span> <span class="n">reload</span> <span class="n">on</span> <span class="n">change</span><span class="o">.</span>
+                                <span class="n">Multiple</span> <span class="n">paths</span> <span class="n">are</span> <span class="n">separated</span> <span class="n">by</span> <span class="s1">&#39;;&#39;</span><span class="o">.</span>
+<span class="o">--</span><span class="n">help</span>                          <span class="n">Show</span> <span class="n">this</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>routesコマンドでは、app.pyで実装した全てのrouteが表示される:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flask</span> <span class="n">routes</span>
+</pre></div>
+</div>
+<p>と入力すると:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Endpoint</span>          <span class="n">Methods</span>    <span class="n">Rule</span>
+<span class="o">----------------</span>  <span class="o">---------</span>  <span class="o">----------------------------------</span>
+<span class="n">fn_abort</span>          <span class="n">GET</span>        <span class="o">/</span><span class="n">ex_abort</span><span class="o">/&lt;</span><span class="nb">int</span><span class="p">:</span><span class="n">var</span><span class="o">&gt;</span>
+<span class="n">fn_cookie</span>         <span class="n">GET</span>        <span class="o">/</span><span class="n">ex_cookie</span>
+<span class="n">fn_cookie</span>         <span class="n">GET</span>        <span class="o">/</span><span class="n">ex_cookie</span><span class="o">/&lt;</span><span class="n">var</span><span class="o">&gt;</span>
+<span class="n">fn_flash</span>          <span class="n">GET</span>        <span class="o">/</span><span class="n">ex_flash</span>
+<span class="n">fn_flash</span>          <span class="n">GET</span>        <span class="o">/</span><span class="n">ex_flash</span><span class="o">/&lt;</span><span class="n">var</span><span class="o">&gt;</span>
+<span class="n">fn_logging</span>        <span class="n">GET</span>        <span class="o">/</span><span class="n">ex_logging</span>
+<span class="n">fn_logging</span>        <span class="n">GET</span>        <span class="o">/</span><span class="n">ex_logging</span><span class="o">/&lt;</span><span class="n">var</span><span class="o">&gt;</span>
+<span class="n">fn_redirect</span>       <span class="n">GET</span>        <span class="o">/</span><span class="n">ex_redirect</span>
+<span class="n">fn_req</span>            <span class="n">GET</span><span class="p">,</span> <span class="n">POST</span>  <span class="o">/</span><span class="n">ex_req</span>
+<span class="n">fn_res</span>            <span class="n">GET</span>        <span class="o">/</span><span class="n">ex_res</span><span class="o">/&lt;</span><span class="nb">int</span><span class="p">:</span><span class="n">var</span><span class="o">&gt;</span>
+<span class="n">fn_rt_variable</span>    <span class="n">GET</span>        <span class="o">/</span><span class="n">rt_variable</span><span class="o">/</span>
+<span class="n">fn_rt_variable</span>    <span class="n">GET</span>        <span class="o">/</span><span class="n">rt_variable_f</span><span class="o">/&lt;</span><span class="nb">float</span><span class="p">:</span><span class="n">var</span><span class="o">&gt;</span>
+<span class="n">fn_rt_variable</span>    <span class="n">GET</span>        <span class="o">/</span><span class="n">rt_variable_i</span><span class="o">/&lt;</span><span class="nb">int</span><span class="p">:</span><span class="n">var</span><span class="o">&gt;</span>
+<span class="n">fn_rt_variable</span>    <span class="n">GET</span>        <span class="o">/</span><span class="n">rt_variable_a</span><span class="o">/&lt;</span><span class="nb">any</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="p">,</span><span class="n">s3</span><span class="p">):</span><span class="n">var</span><span class="o">&gt;</span>
+<span class="n">fn_rt_variable</span>    <span class="n">GET</span>        <span class="o">/</span><span class="n">rt_variable_u</span><span class="o">/&lt;</span><span class="n">uuid</span><span class="p">:</span><span class="n">var</span><span class="o">&gt;</span>
+<span class="n">fn_rt_variable</span>    <span class="n">GET</span>        <span class="o">/</span><span class="n">rt_variable_p</span><span class="o">/&lt;</span><span class="n">path</span><span class="p">:</span><span class="n">var</span><span class="o">&gt;</span>
+<span class="n">fn_rt_variable</span>    <span class="n">GET</span>        <span class="o">/</span><span class="n">rt_variable</span><span class="o">/&lt;</span><span class="n">var</span><span class="o">&gt;</span>
+<span class="n">fn_rt_variable_m</span>  <span class="n">GET</span>        <span class="o">/</span><span class="n">rt_variable_m</span><span class="o">/</span><span class="n">end</span>
+<span class="n">fn_rt_variable_m</span>  <span class="n">GET</span>        <span class="o">/</span><span class="n">rt_variable_m</span><span class="o">/&lt;</span><span class="n">s1</span><span class="o">&gt;/</span><span class="n">end</span>
+<span class="n">fn_rt_variable_m</span>  <span class="n">GET</span>        <span class="o">/</span><span class="n">rt_variable_m</span><span class="o">/&lt;</span><span class="n">s1</span><span class="o">&gt;/&lt;</span><span class="n">s2</span><span class="o">&gt;/</span><span class="n">end</span>
+<span class="n">fn_send_file</span>      <span class="n">GET</span>        <span class="o">/</span><span class="n">ex_send_file</span><span class="o">/&lt;</span><span class="n">path</span><span class="p">:</span><span class="n">var</span><span class="o">&gt;</span>
+<span class="n">fn_send_file_obj</span>  <span class="n">GET</span>        <span class="o">/</span><span class="n">ex_send_file_obj</span><span class="o">/&lt;</span><span class="n">var</span><span class="o">&gt;</span>
+<span class="n">fn_send_from_dir</span>  <span class="n">GET</span>        <span class="o">/</span><span class="n">ex_send_from_dir</span><span class="o">/&lt;</span><span class="n">path</span><span class="p">:</span><span class="n">var</span><span class="o">&gt;</span>
+<span class="n">fn_session</span>        <span class="n">GET</span>        <span class="o">/</span><span class="n">ex_session</span>
+<span class="n">fn_session</span>        <span class="n">GET</span>        <span class="o">/</span><span class="n">ex_session</span><span class="o">/&lt;</span><span class="n">var</span><span class="o">&gt;</span>
+<span class="n">fn_template</span>       <span class="n">GET</span>        <span class="o">/</span><span class="n">ex_template</span>
+<span class="n">fn_template</span>       <span class="n">GET</span>        <span class="o">/</span><span class="n">ex_template</span><span class="o">/&lt;</span><span class="n">t1</span><span class="o">&gt;</span>
+<span class="n">fn_upload</span>         <span class="n">GET</span><span class="p">,</span> <span class="n">POST</span>  <span class="o">/</span><span class="n">ex_upload</span>
+<span class="n">fn_zderr</span>          <span class="n">GET</span>        <span class="o">/</span><span class="n">ex_zderr</span>
+<span class="n">hello</span>             <span class="n">GET</span>        <span class="o">/</span>
+<span class="n">static</span>            <span class="n">GET</span>        <span class="o">/</span><span class="n">static</span><span class="o">/&lt;</span><span class="n">path</span><span class="p">:</span><span class="n">filename</span><span class="o">&gt;</span>
+</pre></div>
+</div>
 </div>
 </div>
 

@@ -388,3 +388,158 @@ make_response()関数
     import logging.config
 
     logging.config.fileConfig('logging.conf')
+
+ファイルダウンロード
+====================
+
+--------------------------------------------
+app.pyからの相対パスのファイルをダウンロード
+--------------------------------------------
+
+* 必要なインポート::
+
+    from flask import send_file
+
+* 使用例::
+
+    @app.route('/ex_send_file/<path:var>')
+    def fn_send_file(var):
+        return send_file(var, as_attachment=True)
+
+* 上記例では、<path:var>で指定したapp.pyからの相対パスのファイルをダウンロードしファイルに保存する。例えば、"localhost:5000/ex_send_file/app.py"と入力すると、app.pyを任意の場所にダウンロードできる。
+
+----------------------------------
+指定されたファイル名でダウンロード
+----------------------------------
+
+* 使用例::
+
+    @app.route('/ex_send_file_obj/<var>')
+    def fn_send_file_obj(var):
+        fp = io.BytesIO(var.encode())
+        return send_file(fp, attachment_filename='test.txt', as_attachment=True)
+
+* 上記例では、<var>の内容の"test.txt"ファイルをダウンロードし保存する。例えば、"localhost:5000/ex_send_file_obj/TEST"と入力すると、"TEST"と記載された"test.txt"ファイルを任意の場所にダウンロードできる。
+
+----------------------------------------------------------
+指定したディレクトリからの相対パスのファイルをダウンロード
+----------------------------------------------------------
+
+* 必要なインポート::
+
+    from flask import send_from_directory
+
+* 使用例::
+
+    @app.route('/ex_send_from_dir/<path:var>')
+    def fn_send_from_dir(var):
+        return send_from_directory('C:/flask_work/', var, as_attachment=True)
+
+* 上記例では、<path:var>で指定した'C:/flask_work/'からの相対パスのファイルをダウンロードしファイルに保存する。例えば、"localhost:5000/ex_send_from_dir/app.py"と入力すると、'C:/flask_work/app.py'を任意の場所にダウンロードできる。
+
+flaskコマンド
+=============
+
+PowerShellの仮想環境において::
+
+    flask
+
+と入力すると、flaskコマンドの説明が表示される。コマンドはroutes、run、shellの3種類::
+
+    Usage: flask [OPTIONS] COMMAND [ARGS]...
+
+    A general utility script for Flask applications.
+
+    Provides commands from Flask, extensions, and the application. Loads the
+    application defined in the FLASK_APP environment variable, or from a
+    wsgi.py file. Setting the FLASK_ENV environment variable to 'development'
+    will enable debug mode.
+
+        > set FLASK_APP=hello.py
+        > set FLASK_ENV=development
+        > flask run
+
+    Options:
+    --version  Show the flask version
+    --help     Show this message and exit.
+
+    Commands:
+    routes  Show the routes for the app.
+    run     Run a development server.
+    shell   Run a shell in the app context.
+  
+runコマンドのヘルプを確認したい場合は::
+
+    flask run --help
+
+と入力する::
+
+    Usage: flask run [OPTIONS]
+
+    Run a local development server.
+
+    This server is for development purposes only. It does not provide the
+    stability, security, or performance of production WSGI servers.
+
+    The reloader and debugger are enabled by default if FLASK_ENV=development
+    or FLASK_DEBUG=1.
+
+    Options:
+    -h, --host TEXT                 The interface to bind to.
+    -p, --port INTEGER              The port to bind to.
+    --cert PATH                     Specify a certificate file to use HTTPS.
+    --key FILE                      The key file to use when specifying a
+                                    certificate.
+    --reload / --no-reload          Enable or disable the reloader. By default
+                                    the reloader is active if debug is enabled.
+    --debugger / --no-debugger      Enable or disable the debugger. By default
+                                    the debugger is active if debug is enabled.
+    --eager-loading / --lazy-loader
+                                    Enable or disable eager loading. By default
+                                    eager loading is enabled if the reloader is
+                                    disabled.
+    --with-threads / --without-threads
+                                    Enable or disable multithreading.
+    --extra-files PATH              Extra files that trigger a reload on change.
+                                    Multiple paths are separated by ';'.
+    --help                          Show this message and exit.
+  
+routesコマンドでは、app.pyで実装した全てのrouteが表示される::
+
+    flask routes
+
+と入力すると::
+
+    Endpoint          Methods    Rule
+    ----------------  ---------  ----------------------------------
+    fn_abort          GET        /ex_abort/<int:var>
+    fn_cookie         GET        /ex_cookie
+    fn_cookie         GET        /ex_cookie/<var>
+    fn_flash          GET        /ex_flash
+    fn_flash          GET        /ex_flash/<var>
+    fn_logging        GET        /ex_logging
+    fn_logging        GET        /ex_logging/<var>
+    fn_redirect       GET        /ex_redirect
+    fn_req            GET, POST  /ex_req
+    fn_res            GET        /ex_res/<int:var>
+    fn_rt_variable    GET        /rt_variable/
+    fn_rt_variable    GET        /rt_variable_f/<float:var>
+    fn_rt_variable    GET        /rt_variable_i/<int:var>
+    fn_rt_variable    GET        /rt_variable_a/<any(s1,s2,s3):var>
+    fn_rt_variable    GET        /rt_variable_u/<uuid:var>
+    fn_rt_variable    GET        /rt_variable_p/<path:var>
+    fn_rt_variable    GET        /rt_variable/<var>
+    fn_rt_variable_m  GET        /rt_variable_m/end
+    fn_rt_variable_m  GET        /rt_variable_m/<s1>/end
+    fn_rt_variable_m  GET        /rt_variable_m/<s1>/<s2>/end
+    fn_send_file      GET        /ex_send_file/<path:var>
+    fn_send_file_obj  GET        /ex_send_file_obj/<var>
+    fn_send_from_dir  GET        /ex_send_from_dir/<path:var>
+    fn_session        GET        /ex_session
+    fn_session        GET        /ex_session/<var>
+    fn_template       GET        /ex_template
+    fn_template       GET        /ex_template/<t1>
+    fn_upload         GET, POST  /ex_upload
+    fn_zderr          GET        /ex_zderr
+    hello             GET        /
+    static            GET        /static/<path:filename>
