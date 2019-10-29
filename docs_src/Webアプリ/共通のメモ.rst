@@ -8,3 +8,12 @@ POSTメソッドのテスト
 * Windows PowerShellにて、Invoke-RestMethodを利用する::
 
     Invoke-RestMethod -Uri "http://localhost:5000/ex_req?u1=abc&u2=def&u1=ghi" -Method POST -Body "f1=ABC$f2=DEF&f2=GHI"
+
+ウェブページを取得
+====================
+
+* Windows PowerShellにて、Invoke-WebRequestを利用する::
+
+    Invoke-WebRequest http://localhost:5000/ex_res/200
+
+

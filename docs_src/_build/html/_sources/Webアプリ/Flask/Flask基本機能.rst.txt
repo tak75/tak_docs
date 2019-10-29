@@ -129,7 +129,7 @@ http://www.subarunari.com/entry/2017/09/30/003944
 
 * 例外の発生方法について
 
-    * abort関数利用のためのインポート::
+    * abort()関数利用のためのインポート::
 
         from flask import abort
 
@@ -198,3 +198,193 @@ http://www.subarunari.com/entry/2017/09/30/003944
 
     .. note:: secure_filename()関数はセキュアなファイル名を作成する関数であり、ファイル名のパス区切り文字、スラッシュ、さらにはパス内の非ASCII文字にいたるまでを取り去る。
         使用するためには、"from werkzeug.utils import secure_filename" が必要
+
+make_response()関数
+===================
+
+* make_response()関数を使うことによって、レスポンスの内容（レスポンスヘッダやHTTPステータスなど）を細かく設定可能
+
+* make_response()関数利用のためのインポート::
+
+    from flask import make_response
+
+* 使用例::
+
+    @app.route('/ex_res/<int:var>')
+    def fn_res(var):
+        resp = make_response('call fn_res().', var)
+        resp.headers['ex_res'] = 'OK!!'
+        return resp
+
+* 実行結果（PowerShell）::
+
+    PS C:\Users\i> Invoke-WebRequest http://localhost:5000/ex_res/200
+    
+    StatusCode        : 200
+    StatusDescription : OK
+    Content           : call fn_res().
+    RawContent        : HTTP/1.0 200 OK
+                        ex_res: OK!!
+                        Content-Length: 14
+                        Content-Type: text/html; charset=utf-8
+                        Date: Mon, 28 Oct 2019 12:43:02 GMT
+                        Server: Werkzeug/0.16.0 Python/3.8.0
+
+                        call fn_res().
+    Forms             : {}
+    Headers           : {[ex_res, OK!!], [Content-Length, 14], [Content-Type, text/html; charset=utf-8], [Date, Mon, 28 Oct
+                        2019 12:43:02 GMT]...}
+    Images            : {}
+    InputFields       : {}
+    Links             : {}
+    ParsedHtml        : mshtml.HTMLDocumentClass
+    RawContentLength  : 14
+
+クッキー
+========
+
+* 使用例::
+
+    @app.route('/ex_cookie')                    # クッキー読出し用
+    @app.route('/ex_cookie/<var>')              # クッキー設定用
+    def fn_cookie(var=None):
+        if var is None:
+            ck = request.cookies.get('ck')      # クッキー読出し
+            return f'ck = {ck}'
+        else:
+            resp = make_response('set cookie.')
+            resp.set_cookie('ck', var)          # クッキー設定
+            return resp
+
+セッション
+==========
+
+* セッション利用のためのインポート::
+
+    from flask import session
+
+* 使用例::
+
+    app.secret_key = 'test'     # セッションの暗号化で利用するキーを事前に設定する
+
+    @app.route('/ex_session')               # セッション読出し用
+    @app.route('/ex_session/<var>')         # セッション設定用
+    def fn_session(var=None):
+        if var is None:
+            sess = session.get('sess')      # セッション読出し
+            return f'sess = {sess}'
+        else:
+            session['sess'] = var           # セッション設定
+            return 'set session.'
+
+フラッシュ
+==========
+
+* 一度だけ表示したいメッセージなどに利用できる機能
+
+* フラッシュ利用のためのインポート::
+
+    from flask import flash, get_flashed_messages
+
+* 使用例::
+
+    app.secret_key = 'test'     # フラッシュの暗号化で利用するキーを事前に設定する
+
+    @app.route('/ex_flash')
+    @app.route('/ex_flash/<var>')
+    def fn_flash(var=None):
+        if var is None:
+            fl = get_flashed_messages()     # 保存したメッセージの取得（取得するとメッセージは削除される）
+            return f'fl = {fl}'
+        else:
+            flash(var)                      # メッセージの保存
+            return 'set flash.'
+
+* 実行例::
+
+    # ブラウザ入力（メッセージ保存）
+    http://localhost:5000/ex_flash/one
+    http://localhost:5000/ex_flash/two
+    http://localhost:5000/ex_flash/three
+
+    # ブラウザ入力（メッセージ取得）
+    http://localhost:5000/ex_flash
+
+    # ブラウザで表示される内容
+    fl = ['one', 'two', 'three']
+
+    # ブラウザ入力（メッセージ再取得）
+    http://localhost:5000/ex_flash
+
+    # ブラウザで表示される内容
+    fl = []             # 一度表示したので削除された
+
+* カテゴリを指定することも可能::
+
+    @app.route('/ex_flash')
+    @app.route('/ex_flash/<var>')
+    def fn_flash(var=None):
+        if var is None:
+            fl = get_flashed_messages(with_categories=True, category_filter=['debug', 'info'])
+            return f'fl = {fl}'
+        else:
+            flash('DEBUG:' + var, 'debug')
+            flash('INFO:' + var, 'info')
+            flash('ERROR:' + var, 'error')
+            return 'set flash.'
+
+ロギング
+========
+
+* pythonのロギング機能を簡単に利用できるようになっている。
+
+* 使用例::
+
+    @app.route('/ex_logging')
+    @app.route('/ex_logging/<var>')
+    def fn_logging(var=None):
+        app.logger.info(var)
+        app.logger.warning(var)
+        app.logger.error(var)
+        return 'call fn_logging().'
+	
+* 実行例::
+
+    # ブラウザ入力
+    http://localhost:5000/ex_logging/123
+
+    # 標準入出力（PowerShellなど）へログが出力される
+    [2019-10-28 23:00:21,901] INFO in app: 123
+    [2019-10-28 23:00:21,901] WARNING in app: 123
+    [2019-10-28 23:00:21,902] ERROR in app: 123
+
+* ログをファイル出力するには、まずlogging.confファイルを作成する::
+
+    # logging.conf ファイル
+    [loggers]
+    keys=root
+
+    [handlers]
+    keys=fileHandler
+
+    [formatters]
+    keys=logFormatter
+
+    [logger_root]
+    handlers=fileHandler
+
+    [handler_fileHandler]
+    class=logging.FileHandler
+    level=DEBUG
+    formatter=logFormatter
+    args=('flask_work.log', )
+
+    [formatter_logFormatter]
+    class=logging.Formatter
+    format=[%(asctime)s]:[%(levelname)s]:[%(filename)s:%(lineno)d]:%(message)s
+
+* ログをファイル出力するために必要なインポート、および上記logging.conf ファイル読込::
+
+    import logging.config
+
+    logging.config.fileConfig('logging.conf')

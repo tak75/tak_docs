@@ -66,6 +66,7 @@
   <ul>
 <li><a class="reference internal" href="#">共通のメモ</a><ul>
 <li><a class="reference internal" href="#post">POSTメソッドのテスト</a></li>
+<li><a class="reference internal" href="#id2">ウェブページを取得</a></li>
 </ul>
 </li>
 </ul>
@@ -103,6 +104,16 @@
 <ul>
 <li><p class="first">Windows PowerShellにて、Invoke-RestMethodを利用する:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Invoke</span><span class="o">-</span><span class="n">RestMethod</span> <span class="o">-</span><span class="n">Uri</span> <span class="s2">&quot;http://localhost:5000/ex_req?u1=abc&amp;u2=def&amp;u1=ghi&quot;</span> <span class="o">-</span><span class="n">Method</span> <span class="n">POST</span> <span class="o">-</span><span class="n">Body</span> <span class="s2">&quot;f1=ABC$f2=DEF&amp;f2=GHI&quot;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>ウェブページを取得<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">Windows PowerShellにて、Invoke-WebRequestを利用する:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Invoke</span><span class="o">-</span><span class="n">WebRequest</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">5000</span><span class="o">/</span><span class="n">ex_res</span><span class="o">/</span><span class="mi">200</span>
 </pre></div>
 </div>
 </li>

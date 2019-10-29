@@ -72,6 +72,11 @@
 <li><a class="reference internal" href="#id4">リダイレクト関数</a></li>
 <li><a class="reference internal" href="#id6">エラー処理</a></li>
 <li><a class="reference internal" href="#id7">ファイルアップロード</a></li>
+<li><a class="reference internal" href="#make-response">make_response()関数</a></li>
+<li><a class="reference internal" href="#id8">クッキー</a></li>
+<li><a class="reference internal" href="#id9">セッション</a></li>
+<li><a class="reference internal" href="#id10">フラッシュ</a></li>
+<li><a class="reference internal" href="#id11">ロギング</a></li>
 </ul>
 </li>
 </ul>
@@ -255,7 +260,7 @@
 <li><p class="first">例外の発生方法について</p>
 <blockquote>
 <div><ul>
-<li><p class="first">abort関数利用のためのインポート:</p>
+<li><p class="first">abort()関数利用のためのインポート:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">abort</span>
 </pre></div>
 </div>
@@ -354,6 +359,220 @@
 使用するためには、&quot;from werkzeug.utils import secure_filename&quot; が必要</p>
 </div>
 </div></blockquote>
+</div>
+<div class="section" id="make-response">
+<h2>make_response()関数<a class="headerlink" href="#make-response" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">make_response()関数を使うことによって、レスポンスの内容（レスポンスヘッダやHTTPステータスなど）を細かく設定可能</p>
+</li>
+<li><p class="first">make_response()関数利用のためのインポート:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">make_response</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">使用例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_res/&lt;int:var&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">fn_res</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">make_response</span><span class="p">(</span><span class="s1">&#39;call fn_res().&#39;</span><span class="p">,</span> <span class="n">var</span><span class="p">)</span>
+    <span class="n">resp</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;ex_res&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;OK!!&#39;</span>
+    <span class="k">return</span> <span class="n">resp</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">実行結果（PowerShell）:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>PS C:\Users\i&gt; Invoke-WebRequest http://localhost:5000/ex_res/200
+
+StatusCode        : 200
+StatusDescription : OK
+Content           : call fn_res().
+RawContent        : HTTP/1.0 200 OK
+                    ex_res: OK!!
+                    Content-Length: 14
+                    Content-Type: text/html; charset=utf-8
+                    Date: Mon, 28 Oct 2019 12:43:02 GMT
+                    Server: Werkzeug/0.16.0 Python/3.8.0
+
+                    call fn_res().
+Forms             : {}
+Headers           : {[ex_res, OK!!], [Content-Length, 14], [Content-Type, text/html; charset=utf-8], [Date, Mon, 28 Oct
+                    2019 12:43:02 GMT]...}
+Images            : {}
+InputFields       : {}
+Links             : {}
+ParsedHtml        : mshtml.HTMLDocumentClass
+RawContentLength  : 14
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h2>クッキー<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">使用例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_cookie&#39;</span><span class="p">)</span>                    <span class="c1"># クッキー読出し用</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_cookie/&lt;var&gt;&#39;</span><span class="p">)</span>              <span class="c1"># クッキー設定用</span>
+<span class="k">def</span> <span class="nf">fn_cookie</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">var</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ck</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ck&#39;</span><span class="p">)</span>      <span class="c1"># クッキー読出し</span>
+        <span class="k">return</span> <span class="n">f</span><span class="s1">&#39;ck = </span><span class="si">{ck}</span><span class="s1">&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="n">make_response</span><span class="p">(</span><span class="s1">&#39;set cookie.&#39;</span><span class="p">)</span>
+        <span class="n">resp</span><span class="o">.</span><span class="n">set_cookie</span><span class="p">(</span><span class="s1">&#39;ck&#39;</span><span class="p">,</span> <span class="n">var</span><span class="p">)</span>          <span class="c1"># クッキー設定</span>
+        <span class="k">return</span> <span class="n">resp</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h2>セッション<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">セッション利用のためのインポート:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">session</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">使用例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">secret_key</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span>     <span class="c1"># セッションの暗号化で利用するキーを事前に設定する</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_session&#39;</span><span class="p">)</span>               <span class="c1"># セッション読出し用</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_session/&lt;var&gt;&#39;</span><span class="p">)</span>         <span class="c1"># セッション設定用</span>
+<span class="k">def</span> <span class="nf">fn_session</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">var</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">sess</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sess&#39;</span><span class="p">)</span>      <span class="c1"># セッション読出し</span>
+        <span class="k">return</span> <span class="n">f</span><span class="s1">&#39;sess = </span><span class="si">{sess}</span><span class="s1">&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">session</span><span class="p">[</span><span class="s1">&#39;sess&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">var</span>           <span class="c1"># セッション設定</span>
+        <span class="k">return</span> <span class="s1">&#39;set session.&#39;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h2>フラッシュ<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">一度だけ表示したいメッセージなどに利用できる機能</p>
+</li>
+<li><p class="first">フラッシュ利用のためのインポート:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">flash</span><span class="p">,</span> <span class="n">get_flashed_messages</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">使用例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">secret_key</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span>     <span class="c1"># フラッシュの暗号化で利用するキーを事前に設定する</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_flash&#39;</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_flash/&lt;var&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">fn_flash</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">var</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fl</span> <span class="o">=</span> <span class="n">get_flashed_messages</span><span class="p">()</span>     <span class="c1"># 保存したメッセージの取得（取得するとメッセージは削除される）</span>
+        <span class="k">return</span> <span class="n">f</span><span class="s1">&#39;fl = </span><span class="si">{fl}</span><span class="s1">&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">flash</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>                      <span class="c1"># メッセージの保存</span>
+        <span class="k">return</span> <span class="s1">&#39;set flash.&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">実行例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ブラウザ入力（メッセージ保存）</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">5000</span><span class="o">/</span><span class="n">ex_flash</span><span class="o">/</span><span class="n">one</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">5000</span><span class="o">/</span><span class="n">ex_flash</span><span class="o">/</span><span class="n">two</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">5000</span><span class="o">/</span><span class="n">ex_flash</span><span class="o">/</span><span class="n">three</span>
+
+<span class="c1"># ブラウザ入力（メッセージ取得）</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">5000</span><span class="o">/</span><span class="n">ex_flash</span>
+
+<span class="c1"># ブラウザで表示される内容</span>
+<span class="n">fl</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">]</span>
+
+<span class="c1"># ブラウザ入力（メッセージ再取得）</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">5000</span><span class="o">/</span><span class="n">ex_flash</span>
+
+<span class="c1"># ブラウザで表示される内容</span>
+<span class="n">fl</span> <span class="o">=</span> <span class="p">[]</span>             <span class="c1"># 一度表示したので削除された</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">カテゴリを指定することも可能:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_flash&#39;</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_flash/&lt;var&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">fn_flash</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">var</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fl</span> <span class="o">=</span> <span class="n">get_flashed_messages</span><span class="p">(</span><span class="n">with_categories</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">category_filter</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;debug&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">f</span><span class="s1">&#39;fl = </span><span class="si">{fl}</span><span class="s1">&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">flash</span><span class="p">(</span><span class="s1">&#39;DEBUG:&#39;</span> <span class="o">+</span> <span class="n">var</span><span class="p">,</span> <span class="s1">&#39;debug&#39;</span><span class="p">)</span>
+        <span class="n">flash</span><span class="p">(</span><span class="s1">&#39;INFO:&#39;</span> <span class="o">+</span> <span class="n">var</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+        <span class="n">flash</span><span class="p">(</span><span class="s1">&#39;ERROR:&#39;</span> <span class="o">+</span> <span class="n">var</span><span class="p">,</span> <span class="s1">&#39;error&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;set flash.&#39;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h2>ロギング<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">pythonのロギング機能を簡単に利用できるようになっている。</p>
+</li>
+<li><p class="first">使用例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_logging&#39;</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_logging/&lt;var&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">fn_logging</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;call fn_logging().&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">実行例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ブラウザ入力</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">5000</span><span class="o">/</span><span class="n">ex_logging</span><span class="o">/</span><span class="mi">123</span>
+
+<span class="c1"># 標準入出力（PowerShellなど）へログが出力される</span>
+<span class="p">[</span><span class="mi">2019</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">28</span> <span class="mi">23</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">21</span><span class="p">,</span><span class="mi">901</span><span class="p">]</span> <span class="n">INFO</span> <span class="ow">in</span> <span class="n">app</span><span class="p">:</span> <span class="mi">123</span>
+<span class="p">[</span><span class="mi">2019</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">28</span> <span class="mi">23</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">21</span><span class="p">,</span><span class="mi">901</span><span class="p">]</span> <span class="n">WARNING</span> <span class="ow">in</span> <span class="n">app</span><span class="p">:</span> <span class="mi">123</span>
+<span class="p">[</span><span class="mi">2019</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">28</span> <span class="mi">23</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">21</span><span class="p">,</span><span class="mi">902</span><span class="p">]</span> <span class="n">ERROR</span> <span class="ow">in</span> <span class="n">app</span><span class="p">:</span> <span class="mi">123</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">ログをファイル出力するには、まずlogging.confファイルを作成する:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># logging.conf ファイル</span>
+<span class="p">[</span><span class="n">loggers</span><span class="p">]</span>
+<span class="n">keys</span><span class="o">=</span><span class="n">root</span>
+
+<span class="p">[</span><span class="n">handlers</span><span class="p">]</span>
+<span class="n">keys</span><span class="o">=</span><span class="n">fileHandler</span>
+
+<span class="p">[</span><span class="n">formatters</span><span class="p">]</span>
+<span class="n">keys</span><span class="o">=</span><span class="n">logFormatter</span>
+
+<span class="p">[</span><span class="n">logger_root</span><span class="p">]</span>
+<span class="n">handlers</span><span class="o">=</span><span class="n">fileHandler</span>
+
+<span class="p">[</span><span class="n">handler_fileHandler</span><span class="p">]</span>
+<span class="n">class</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span>
+<span class="n">level</span><span class="o">=</span><span class="n">DEBUG</span>
+<span class="n">formatter</span><span class="o">=</span><span class="n">logFormatter</span>
+<span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;flask_work.log&#39;</span><span class="p">,</span> <span class="p">)</span>
+
+<span class="p">[</span><span class="n">formatter_logFormatter</span><span class="p">]</span>
+<span class="n">class</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span>
+<span class="nb">format</span><span class="o">=</span><span class="p">[</span><span class="o">%</span><span class="p">(</span><span class="n">asctime</span><span class="p">)</span><span class="n">s</span><span class="p">]:[</span><span class="o">%</span><span class="p">(</span><span class="n">levelname</span><span class="p">)</span><span class="n">s</span><span class="p">]:[</span><span class="o">%</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="n">s</span><span class="p">:</span><span class="o">%</span><span class="p">(</span><span class="n">lineno</span><span class="p">)</span><span class="n">d</span><span class="p">]:</span><span class="o">%</span><span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="n">s</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">ログをファイル出力するために必要なインポート、および上記logging.conf ファイル読込:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging.config</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">fileConfig</span><span class="p">(</span><span class="s1">&#39;logging.conf&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 
