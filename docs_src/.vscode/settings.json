@@ -1,5 +1,6 @@
 {
   "restructuredtext.workspaceRoot": "c:\\Users\\i\\Google ドライブ\\tak_doc",
     "python.linting.enabled": false,
-    "python.linting.pylintEnabled": true
+    "python.linting.pylintEnabled": true,
+    "restructuredtext.confPath": "${workspaceFolder}\\sphinx\\sample\\sphinx_history"
   }
