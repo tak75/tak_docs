@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <p>私は<div>Webエンジニア</div>を目指しています。</p>
+    <p>私は<span>Webエンジニア</span>を目指しています。</p>
+
+    <!-- divの中にspanが入るのはOK -->
+    <div>私は<span>Webエンジニア</span>を目指しています。</div>
+    <!-- spanの中にdivが入るのはNG
+    （インライン要素の中にブロック要素を入れることはできない） -->
+    <span>私は<div>Webエンジニア</div>を目指しています。</span>
+  </body>
+</html>

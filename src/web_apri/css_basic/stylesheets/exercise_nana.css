@@ -1,0 +1,31 @@
+/* body要素へ背景色の設定。#f7fbff （薄い水色）*/
+body{
+  background-color: #F7FBFF;
+}
+
+/* 大見出し(h1)へに対して、
+文字色 #ffffff　（白）の設定。
+背景色 #73badc (水色)の設定。 */
+h1{
+  color: #FFFFFF;
+  background-color: #73BADC;
+}
+
+/* id名が"favorite"の要素に対して文字色 #1b942f (緑) を設定 */
+#favorite{
+  color: #1B942F;
+}
+
+/* class名が"special"の要素に対して文字色 #c72626 （赤）を設定 */
+.special{
+  color: #C72626;
+}
+
+/* id名が"sns"の要素に対して、枠線を設定。
+線の色は、#73badc (水色) 、
+線の太さは、5px、
+線の種類は、solidを設定。
+ */
+#sns{
+  border: #73BADC 5px solid;
+}

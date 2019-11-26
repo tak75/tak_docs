@@ -1,0 +1,17 @@
+#box{
+  /* padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px; */
+  /* padding: 10px 10px 10px 10px;*/ /* 上右下左 */
+  padding: 10px;
+  
+  border: red 10px solid;
+
+  /* margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px; */
+  /* margin: 10px 10px 10px 10px;*/ /* 上右下左 */
+  margin: 10px;
+}

@@ -1,0 +1,23 @@
+#rap{
+  width: 100%;
+}
+
+#box1{
+  background-color: red;
+  color: white;
+  width: 70%;
+  float: left;
+}
+
+#box2{
+  background-color: green;
+  color: white;
+  width: 30%;
+  float: right;
+}
+
+#box3{
+  background-color: blue;
+  color: white;
+  clear: both;
+}

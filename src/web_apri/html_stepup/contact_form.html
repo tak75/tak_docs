@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>お問合せフォーム</title>
+  </head>
+  <body>
+    <h1>お問合せフォーム</h1>
+    <form action="#" method="post">
+      <table border="1">
+        <tr>
+          <th>お名前</th>
+          <td><input type="text" name="username"></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><input type="email" name="email"></td>
+        </tr>
+        <tr>
+          <th>お住いの地域</th>
+          <td>
+            <select name="prefecture">
+              <!-- selectedは初期値 -->
+              <option value="" selected>選択してください</option>
+              <option value="hokkaido">北海道</option>
+              <option value="tohoku">東北</option>
+              <option value="kanto">関東</option>
+              <option value="chubu">中部</option>
+              <option value="kinki">近畿</option>
+              <option value="chugoku">中国</option>
+              <option value="sikoku">四国</option>
+              <option value="kyusyu">九州</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th>性別</th>
+          <td>
+            <!-- checkedは初期値 -->
+            <!-- nameが同じであれば対になるラジオボタンを意味する -->
+            <input type="radio" name="gender" value="male" checked>男性
+            <input type="radio" name="gender" value="female">女性
+          </td>
+        </tr>
+        <tr>
+          <th>お問合せ内容</th>
+          <td>
+            <textarea name="contents"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <th>プライバシーポリシーに同意する</th>
+          <td>
+            <input type="checkbox" name="privacy" value="1">同意する
+          </td>
+        </tr>
+      </table>
+      <input type="submit" value="送信">
+    </form>
+  </body>
+</html>

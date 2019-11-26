@@ -7,5 +7,7 @@ Webアプリ
 
    HTML
    CSS
+   Bootstrap
+   JavaScript
    Flask/index
    共通のメモ

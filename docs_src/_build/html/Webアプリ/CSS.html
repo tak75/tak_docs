@@ -20,7 +20,7 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="Flask" href="Flask/index.html" />
+    <link rel="next" title="Bootstrap" href="Bootstrap.html" />
     <link rel="prev" title="HTML" href="HTML.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
@@ -34,7 +34,7 @@
           <a href="../genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="Flask/index.html" title="Flask"
+          <a href="Bootstrap.html" title="Bootstrap"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
           <a href="HTML.html" title="HTML"
@@ -56,6 +56,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Webアプリ</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="HTML.html">HTML</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bootstrap.html">Bootstrap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Flask/index.html">Flask</a></li>
 <li class="toctree-l2"><a class="reference internal" href="共通のメモ.html">共通のメモ</a></li>
 </ul>
@@ -70,7 +71,6 @@
 <li><a class="reference internal" href="#id1">セレクター</a></li>
 <li><a class="reference internal" href="#id2">フォント</a></li>
 <li><a class="reference internal" href="#id3">フロートレイアウト</a></li>
-<li><a class="reference internal" href="#id4">その他</a></li>
 </ul>
 </li>
 </ul>
@@ -79,8 +79,8 @@
   <p class="topless"><a href="HTML.html"
                         title="前の章へ">HTML</a></p>
   <h4>次のトピックへ</h4>
-  <p class="topless"><a href="Flask/index.html"
-                        title="次の章へ">Flask</a></p>
+  <p class="topless"><a href="Bootstrap.html"
+                        title="次の章へ">Bootstrap</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>クイック検索</h3>
     <div class="searchformwrapper">
@@ -139,9 +139,11 @@
 </li>
 </ul>
 </li>
-<li><p class="first">「idセレクター」はHTML文書内で重複して設定することはできない。ページ内に一つだけある要素のスタイルを設定するために用いる。</p>
+<li><p class="first">「idセレクター」はHTML文書内で重複して設定することはできない。ページ内に一つだけある要素のスタイルを設定するために用いる。
+このためセレクタを記述する際は「#～」のみでよい。</p>
 </li>
-<li><p class="first">「classセレクター」はHTML文書内で重複して設定することができる。章立てをする場合の章見出しや、フォームの各項目など、ページ内に複数ある要素に対して用いる。</p>
+<li><p class="first">「classセレクター」はHTML文書内で重複して設定することができる。章立てをする場合の章見出しや、フォームの各項目など、ページ内に複数ある要素に対して用いる。
+このためセレクタを記述する際は「.～」のみでは全ての要素に対してスタイルが当てられるため、特定の1要素に当てるためには「header nav ul li.～」のように限定させる必要がある。</p>
 </li>
 </ul>
 </div>
@@ -189,17 +191,6 @@
 </li>
 </ul>
 </div>
-<div class="section" id="id4">
-<h2>その他<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<ul>
-<li><p class="first">ダミー画像を入れる方法（無償のサイトを利用する）:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">html</span>
-<span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://via.placeholder.com/940x350&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;CSS Cafe&quot;</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</li>
-</ul>
-</div>
 </div>
 
 
@@ -215,7 +206,7 @@
           <a href="../genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="Flask/index.html" title="Flask"
+          <a href="Bootstrap.html" title="Bootstrap"
              >次へ</a> |</li>
         <li class="right" >
           <a href="HTML.html" title="HTML"

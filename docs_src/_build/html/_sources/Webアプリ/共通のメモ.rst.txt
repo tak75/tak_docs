@@ -16,4 +16,15 @@ POSTメソッドのテスト
 
     Invoke-WebRequest http://localhost:5000/ex_res/200
 
+フリーの素材サイト
+==================
 
+* 画像
+
+  * `Unsplash <https://unsplash.com/>`__
+
+* アイコン
+
+  * `Font Awesome <https://fontawesome.com/>`__
+
+    アイコンをWebフォントとして利用できる
