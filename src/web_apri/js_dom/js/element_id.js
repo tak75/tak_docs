@@ -5,7 +5,7 @@
 // id:resultの内容（テキスト）を、現在時刻（日時）に書き換え。
 function show() {
   var result = document.getElementById('result');
-  // innnerTextプロパティを使用することで<p>タグ内の文字列だけを取得する。
+  // innerTextプロパティを使用することで<p>タグ内の文字列だけを取得する。
   // 使用しないと「<p id="result">～～</p>」が表示される。
   console.log(result.innerText);
   var nowDate = new Date();

@@ -169,7 +169,7 @@ replaceChild()
 * 概要
 
   指定した子ノードを置き換える
-  
+
 * 使用例
 
   .. code-block:: JavaScript
@@ -204,7 +204,7 @@ removeChild()
 * 概要
 
   指定した子ノードを取り除く
-  
+
 * 使用例
 
   .. code-block:: JavaScript
@@ -219,3 +219,56 @@ removeChild()
     }
 
 * 戻り値は、取り除いたノードoldChildであり、これは再利用できる
+
+イベントとイベントハンドラ
+==========================
+
+----------------------------
+開始タグの中で関連付ける方法
+----------------------------
+
+* 1つの要素や1つのイベントに対して、1つのイベントハンドラしか設定できない。
+* 本来レイアウトを定義すべきHTMLの中に、javascriptのコードを混在させており、可読性が落ちる。
+* 使用例
+
+  .. code-block:: html
+
+    <!htmlコード>
+    <input type="button" value="クリックしてください" onclick="clicked()">
+
+  .. code-block:: JavaScript
+
+    // javascriptコード
+    function clicked() {
+      console.log('イベント発生');
+    }
+
+--------------------------
+プロパティで関連付ける方法
+--------------------------
+
+* 1つの要素や1つのイベントに対して、1つのイベントハンドラしか設定できない。
+* 使用例
+
+  .. code-block:: JavaScript
+
+    var e = document.getElementById('button');
+    e.onclick = function() {
+      console.log('イベント発生');
+    };
+
+----------------
+addEventListener
+----------------
+
+* 1つの要素や1つのイベントに対して、複数のイベントハンドラを設定できる。（この方法で実装すべし！）
+* 使用例
+
+  .. code-block:: JavaScript
+
+    window.onload = function() {
+      var e = document.getElementById('button');
+      e.addEventListener('click', function(){
+        console.log('イベント発生！');
+      }, false);
+    }

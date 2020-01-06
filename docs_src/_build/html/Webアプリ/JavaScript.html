@@ -82,6 +82,12 @@
 <li><a class="reference internal" href="#removechild">removeChild()</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#id2">イベントとイベントハンドラ</a><ul>
+<li><a class="reference internal" href="#id3">開始タグの中で関連付ける方法</a></li>
+<li><a class="reference internal" href="#id4">プロパティで関連付ける方法</a></li>
+<li><a class="reference internal" href="#addeventlistener">addEventListener</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -325,6 +331,62 @@
 </div>
 </li>
 <li><p class="first">戻り値は、取り除いたノードoldChildであり、これは再利用できる</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>イベントとイベントハンドラ<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id3">
+<h3>開始タグの中で関連付ける方法<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p class="first">1つの要素や1つのイベントに対して、1つのイベントハンドラしか設定できない。</p>
+</li>
+<li><p class="first">本来レイアウトを定義すべきHTMLの中に、javascriptのコードを混在させており、可読性が落ちる。</p>
+</li>
+<li><p class="first">使用例</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!htmlコード&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;クリックしてください&quot;</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;clicked()&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="c1">// javascriptコード</span>
+<span class="kd">function</span> <span class="nx">clicked</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;イベント発生&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>プロパティで関連付ける方法<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p class="first">1つの要素や1つのイベントに対して、1つのイベントハンドラしか設定できない。</p>
+</li>
+<li><p class="first">使用例</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">e</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">);</span>
+<span class="nx">e</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;イベント発生&#39;</span><span class="p">);</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="addeventlistener">
+<h3>addEventListener<a class="headerlink" href="#addeventlistener" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p class="first">1つの要素や1つのイベントに対して、複数のイベントハンドラを設定できる。（この方法で実装すべし！）</p>
+</li>
+<li><p class="first">使用例</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">e</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">);</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;イベント発生！&#39;</span><span class="p">);</span>
+  <span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </li>
 </ul>
 </div>
