@@ -70,6 +70,18 @@
   <ul>
 <li><a class="reference internal" href="#">JavaScript</a><ul>
 <li><a class="reference internal" href="#id1">関数の種類</a></li>
+<li><a class="reference internal" href="#dom">DOM操作</a><ul>
+<li><a class="reference internal" href="#getelementbyid">getElementById()</a></li>
+<li><a class="reference internal" href="#getelementsbytagname">getElementsByTagName()</a></li>
+<li><a class="reference internal" href="#getelementsbyname">getElementsByName()</a></li>
+<li><a class="reference internal" href="#getelementsbyclassname">getElementsByClassName()</a></li>
+<li><a class="reference internal" href="#createelement">createElement()</a></li>
+<li><a class="reference internal" href="#createtextnode">createTextNode()</a></li>
+<li><a class="reference internal" href="#appendchild">appendChild()</a></li>
+<li><a class="reference internal" href="#replacechild">replaceChild()</a></li>
+<li><a class="reference internal" href="#removechild">removeChild()</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -105,28 +117,217 @@
 <div class="section" id="id1">
 <h2>関数の種類<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
-<li><p class="first">function命令:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">getRectangle</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="n">height</span> <span class="o">*</span> <span class="n">width</span><span class="p">;</span>
+<li><p class="first">function命令</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">getRectangle</span><span class="p">(</span><span class="nx">height</span><span class="p">,</span> <span class="nx">width</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">height</span> <span class="o">*</span> <span class="nx">width</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">getRectangle</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">getRectangle</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">関数リテラル:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">getRectangle</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">return</span> <span class="n">height</span> <span class="o">*</span> <span class="n">width</span><span class="p">;</span>
+<li><p class="first">関数リテラル</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">getRectangle</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">height</span><span class="p">,</span> <span class="nx">width</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">return</span> <span class="nx">height</span> <span class="o">*</span> <span class="nx">width</span><span class="p">;</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Functionコンストラクタ:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">getRectangle</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Function</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="s1">&#39;return height * width&#39;</span><span class="p">);</span>
-<span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">getRectangle</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span>
+<li><p class="first">Functionコンストラクタ</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">getRectangle</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Function</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="s1">&#39;return height * width&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">getRectangle</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span>
 </pre></div>
 </div>
 </li>
 </ul>
+</div>
+<div class="section" id="dom">
+<h2>DOM操作<a class="headerlink" href="#dom" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="getelementbyid">
+<h3>getElementById()<a class="headerlink" href="#getelementbyid" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p class="first">概要</p>
+<p>指定したidを持つ要素を1つ取得する</p>
+</li>
+<li><p class="first">使用例</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;result&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">nowDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+<span class="nx">result</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">nowDate</span><span class="p">.</span><span class="nx">toLocaleString</span><span class="p">();</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">指定したidを持つ要素がなければ null を返す。</p>
+</li>
+</ul>
+</div>
+<div class="section" id="getelementsbytagname">
+<h3>getElementsByTagName()<a class="headerlink" href="#getelementsbytagname" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p class="first">概要</p>
+<p>指定したタグ名を持つ要素を取得する</p>
+</li>
+<li><p class="first">使用例</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="c1">// タグ名がdivの要素を取得し、その内容（テキスト）をコンソールに出力する。</span>
+<span class="kd">var</span> <span class="nx">elements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">elements</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">elements</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">innerText</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">戻り値は、HTMLCollection（配列と似た構造のデータ）。</p>
+</li>
+<li><p class="first">指定したタグ名を持つ要素がない場合は、空のHTMLCollection([])を返す。（null ではない）</p>
+</li>
+</ul>
+</div>
+<div class="section" id="getelementsbyname">
+<h3>getElementsByName()<a class="headerlink" href="#getelementsbyname" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p class="first">概要</p>
+<ul class="simple">
+<li>指定したname属性を持つ要素を取得する。</li>
+<li>ラジオボタン、チェックボックスなどname属性が等しい要素群の取得に利用。</li>
+</ul>
+</li>
+<li><p class="first">使用例</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="c1">// name属性が&#39;result&#39;の要素を取得し、その入力内容（テキスト）をコンソールに出力する。</span>
+<span class="kd">var</span> <span class="nx">elements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByName</span><span class="p">(</span><span class="s1">&#39;result&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">elements</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">value</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">戻り値は、HTMLCollection（配列と似た構造のデータ）。</p>
+</li>
+<li><p class="first">指定したname属性が存在しない場合は、空のHTMLCollection([])を返す。（null ではない）</p>
+</li>
+</ul>
+</div>
+<div class="section" id="getelementsbyclassname">
+<h3>getElementsByClassName()<a class="headerlink" href="#getelementsbyclassname" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p class="first">概要</p>
+<p>指定したclass属性を持つ要素を取得する。</p>
+</li>
+<li><p class="first">使用例</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="c1">// ボタンをクリックしたら、class名が&#39;foo&#39;の要素を取得し、</span>
+<span class="c1">// その内容（テキスト）をコンソールに出力する。</span>
+<span class="kd">var</span> <span class="nx">elements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">elements</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">elements</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">innerText</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">戻り値は、HTMLCollection（配列と似た構造のデータ）。</p>
+</li>
+<li><p class="first">指定したclass属性が存在しない場合は、空のHTMLCollection([])を返す。（null ではない）</p>
+</li>
+</ul>
+</div>
+<div class="section" id="createelement">
+<h3>createElement()<a class="headerlink" href="#createelement" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p class="first">概要</p>
+<p>要素を作成する。</p>
+</li>
+<li><p class="first">ノードを作成するだけのため、別途階層に追加する処理が必要。</p>
+</li>
+</ul>
+</div>
+<div class="section" id="createtextnode">
+<h3>createTextNode()<a class="headerlink" href="#createtextnode" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p class="first">概要</p>
+<p>テキストノードを作成する。</p>
+</li>
+<li><p class="first">ノードを作成するだけのため、別途階層に追加する処理が必要。</p>
+</li>
+</ul>
+</div>
+<div class="section" id="appendchild">
+<h3>appendChild()<a class="headerlink" href="#appendchild" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p class="first">概要</p>
+<p>指定された要素を現在の要素の最後の子要素として追加。</p>
+</li>
+<li><p class="first">使用例</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="c1">// 空のリスト、ボタンを配置</span>
+<span class="c1">// ボタンをクリックすると、リストの項目が追加される。</span>
+<span class="c1">// 追加される文字列は”追加文字列”とする。</span>
+<span class="kd">function</span> <span class="nx">append</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// li要素を生成</span>
+    <span class="kd">var</span> <span class="nx">li</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">);</span>
+    <span class="c1">// テキストノードを生成</span>
+    <span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="s1">&#39;追加文字列&#39;</span><span class="p">);</span>
+    <span class="c1">// liタグの要素に、テキストノード textを追加</span>
+    <span class="nx">li</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+    <span class="c1">// idがlistsのulタグに、liを追加。具体的には&lt;li&gt;追加文字列&lt;/li&gt;が、追加される。</span>
+    <span class="kd">var</span> <span class="nx">listsElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;lists&quot;</span><span class="p">);</span>
+    <span class="nx">listsElement</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">li</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">戻り値は、追加した子ノード</p>
+</li>
+</ul>
+</div>
+<div class="section" id="replacechild">
+<h3>replaceChild()<a class="headerlink" href="#replacechild" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p class="first">概要</p>
+<p>指定した子ノードを置き換える</p>
+</li>
+<li><p class="first">使用例</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="c1">// リストとボタンを配置</span>
+<span class="c1">// ボタンをクリックしたら、リストの子要素を置換する処理</span>
+<span class="kd">function</span> <span class="nx">replace</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// 空のli要素を作成</span>
+    <span class="kd">var</span> <span class="nx">newList</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">);</span>
+    <span class="c1">// 生成したノードにid属性&quot;newList&quot;を付与</span>
+    <span class="nx">newList</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;newList&#39;</span><span class="p">);</span>
+    <span class="c1">// テキストノードを生成</span>
+    <span class="kd">var</span> <span class="nx">newText</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="s1">&#39;新しい要素です&#39;</span><span class="p">);</span>
+    <span class="c1">// 生成したノードを、空のli要素の子ノードとして追加</span>
+    <span class="nx">newList</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">newText</span><span class="p">);</span>
+    <span class="c1">// 置換前の変数oldListの参照を変数oldListに代入。</span>
+    <span class="c1">// (参照とは、オブジェクトへのリンクのことを言う)</span>
+    <span class="c1">// https://developer.mozilla.org/ja/docs/Glossary/Object_reference</span>
+    <span class="kd">var</span> <span class="nx">oldList</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;oldList&#39;</span><span class="p">);</span>
+    <span class="c1">// 親ノードulの参照を変数parentNodeに代入</span>
+    <span class="kd">var</span> <span class="nx">parentNode</span> <span class="o">=</span> <span class="nx">oldList</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">;</span>
+    <span class="c1">// 既存ノードoldListを、新規に作成したli要素newListと置換</span>
+    <span class="nx">parentNode</span><span class="p">.</span><span class="nx">replaceChild</span><span class="p">(</span><span class="nx">newList</span><span class="p">,</span> <span class="nx">oldList</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">newChildと、oldChildを入れ換える動作。（appendChild()と、removeChild()を同時に行う）</p>
+</li>
+</ul>
+</div>
+<div class="section" id="removechild">
+<h3>removeChild()<a class="headerlink" href="#removechild" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p class="first">概要</p>
+<p>指定した子ノードを取り除く</p>
+</li>
+<li><p class="first">使用例</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="c1">// リストとボタンを設置</span>
+<span class="c1">// ボタンをクリックすると、リストの子要素が最後のものから削除される</span>
+<span class="kd">function</span> <span class="nx">remove</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">parentElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;lists&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">elements</span> <span class="o">=</span> <span class="nx">parentElement</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">removeIndex</span> <span class="o">=</span> <span class="nx">elements</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="nx">parentElement</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">elements</span><span class="p">[</span><span class="nx">removeIndex</span><span class="p">]);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">戻り値は、取り除いたノードoldChildであり、これは再利用できる</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 
