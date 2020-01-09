@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>HTML &#8212; Tak Documents  ドキュメント</title>
+    <title>Ruby &#8212; Tak Documents  ドキュメント</title>
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
@@ -20,8 +20,8 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="CSS" href="CSS.html" />
-    <link rel="prev" title="Webアプリ" href="index.html" />
+    <link rel="next" title="共通のメモ" href="共通のメモ.html" />
+    <link rel="prev" title="Flask基本機能" href="Flask/Flask基本機能.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
@@ -34,10 +34,10 @@
           <a href="../genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="CSS.html" title="CSS"
+          <a href="共通のメモ.html" title="共通のメモ"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Webアプリ"
+          <a href="Flask/Flask基本機能.html" title="Flask基本機能"
              accesskey="P">前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Webアプリ</a> &#187;</li> 
@@ -54,11 +54,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../raspberry_pi/index.html">Raspberry Pi</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Webアプリ</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HTML.html">HTML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="CSS.html">CSS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Bootstrap.html">Bootstrap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="JavaScript.html">JavaScript</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Flask/index.html">Flask</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Ruby</a></li>
 <li class="toctree-l2"><a class="reference internal" href="共通のメモ.html">共通のメモ</a></li>
 </ul>
 </li>
@@ -68,21 +69,18 @@
 
   <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">HTML</a><ul>
-<li><a class="reference internal" href="#id1">エディタ</a></li>
-<li><a class="reference internal" href="#id2">文法チェック</a></li>
-<li><a class="reference internal" href="#id3">メタデータ</a></li>
-<li><a class="reference internal" href="#id4">その他</a></li>
+<li><a class="reference internal" href="#">Ruby</a><ul>
+<li><a class="reference internal" href="#ruby-cloud9">Rubyのバージョン管理コマンド（Cloud9のコマンドラインで入力し使用）</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>前のトピックへ</h4>
-  <p class="topless"><a href="index.html"
-                        title="前の章へ">Webアプリ</a></p>
+  <p class="topless"><a href="Flask/Flask基本機能.html"
+                        title="前の章へ">Flask基本機能</a></p>
   <h4>次のトピックへ</h4>
-  <p class="topless"><a href="CSS.html"
-                        title="次の章へ">CSS</a></p>
+  <p class="topless"><a href="共通のメモ.html"
+                        title="次の章へ">共通のメモ</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>クイック検索</h3>
     <div class="searchformwrapper">
@@ -103,62 +101,50 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="html">
-<h1>HTML<a class="headerlink" href="#html" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="section" id="id1">
-<h2>エディタ<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<ul class="simple">
-<li>Visual Studio Code<ul>
-<li>htmlのタグやjavascriptのメソッドなどについて、デフォルトで入力補助がある。</li>
-<li>「HTML Preview」<ul>
-<li>本拡張機能を入れるとリアルタイムプレビューできるようになる。</li>
-<li>リアルタイムプレビューの方法は、「Ctrl + K → V」（ <a class="reference external" href="https://rui-log.com/vscode-html-cording/">https://rui-log.com/vscode-html-cording/</a> ）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Atom<ul>
-<li>htmlのタグについてはデフォルトで入力補助があるが、javascriptについてはない。Visual Studio Codeの方がよさそう。</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="id2">
-<h2>文法チェック<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+  <div class="section" id="ruby">
+<h1>Ruby<a class="headerlink" href="#ruby" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="ruby-cloud9">
+<h2>Rubyのバージョン管理コマンド（Cloud9のコマンドラインで入力し使用）<a class="headerlink" href="#ruby-cloud9" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
-<li><p class="first">W3C（<a class="reference external" href="https://validator.w3.org/">https://validator.w3.org/</a>）</p>
-<p>以下の方法にて文法チェックできる。</p>
-<ul class="simple">
-<li>公開中のURL入力</li>
-<li>ファイルアップロード</li>
-<li>コピー　＆　ペースト</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="id3">
-<h2>メタデータ<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<ul>
-<li><p class="first">description</p>
-<p>ページのコンテンツに関する簡潔で正確な概要を書くことで検索エンジンにひっかかるようにする。【重要！】:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">meta</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;description&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;CSS Cafeの公式Webサイトです。商品情報、店舗紹介、アクセス、会社情報など。&quot;</span><span class="o">&gt;</span>
+<li><p class="first">現在のRubyのバージョンを表示する</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ruby -v
+
+//出力例
+ruby 2.3.8p459 (2018-10-18 revision 65136) [x86_64-linux]
 </pre></div>
 </div>
 </li>
-<li><p class="first">keywords</p>
-<p>ページのコンテンツに関連する単語をカンマ区切りで書く:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">meta</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;keywords&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;CSS Cafe, カフェ，コーヒー&quot;</span><span class="o">&gt;</span>
+<li><p class="first">現在インストールされているRubyのバージョンリストを表示する</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rvm list
+
+//出力例
+   ruby-2.3.1 [ x86_64 ]
+=&gt; ruby-2.3.8 [ x86_64 ]
+ * ruby-2.6.3 [ x86_64 ]
+
+# =&gt; - current
+# =* - current &amp;&amp; default
+#  * - default
 </pre></div>
 </div>
 </li>
-</ul>
+<li><p class="first">特定のバージョンをインストールする</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rvm install 2.3.4
+</pre></div>
 </div>
-<div class="section" id="id4">
-<h2>その他<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<ul>
-<li><p class="first">ダミー画像を入れる方法（無償のサイトを利用する）:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">html</span>
-<span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://via.placeholder.com/940x350&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;CSS Cafe&quot;</span><span class="o">&gt;</span>
+</li>
+<li><p class="first">特定のメジャーバージョンの最新版をインストールする</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rvm install 2.3   // 2.3.x の最新版がインストールされる
+</pre></div>
+</div>
+</li>
+<li><p class="first">特定のバージョンを使用する</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rvm use 2.6.3
+</pre></div>
+</div>
+</li>
+<li><p class="first">特定のバージョンをアンインストールする</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rvm remove 2.3.1
 </pre></div>
 </div>
 </li>
@@ -179,10 +165,10 @@
           <a href="../genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="CSS.html" title="CSS"
+          <a href="共通のメモ.html" title="共通のメモ"
              >次へ</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Webアプリ"
+          <a href="Flask/Flask基本機能.html" title="Flask基本機能"
              >前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Webアプリ</a> &#187;</li> 

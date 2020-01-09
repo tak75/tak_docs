@@ -10,4 +10,5 @@ Webアプリ
    Bootstrap
    JavaScript
    Flask/index
+   Ruby
    共通のメモ

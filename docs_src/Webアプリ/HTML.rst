@@ -5,9 +5,17 @@ HTML
 エディタ
 ========
 
+* Visual Studio Code
+
+  * htmlのタグやjavascriptのメソッドなどについて、デフォルトで入力補助がある。
+  * 「HTML Preview」
+    
+    * 本拡張機能を入れるとリアルタイムプレビューできるようになる。
+    * リアルタイムプレビューの方法は、「Ctrl + K → V」（ https://rui-log.com/vscode-html-cording/ ）
+
 * Atom
 
-  * htmlのタグについて入力補助があるのでラク（Visual Studio Codeにはデフォルトではないが拡張機能をインストールすれば可能？）。
+  * htmlのタグについてはデフォルトで入力補助があるが、javascriptについてはない。Visual Studio Codeの方がよさそう。
 
 文法チェック
 ============
