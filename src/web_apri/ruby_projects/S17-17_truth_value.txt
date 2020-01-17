@@ -1,0 +1,42 @@
+$ irb
+2.5.0 :001 > t1 = true
+ => true 
+2.5.0 :002 > t2 = true
+ => true 
+2.5.0 :003 > f1 = false
+ => false 
+2.5.0 :004 > t1 && t2
+ => true 
+2.5.0 :005 > t1 && f1
+> t1 = true
+ => true 
+2.5.0 :021 > f1 = false
+ => false 
+2.5.0 :022 > f2 = false
+ => false 
+2.5.0 :023 > t1 || f1
+ => true 
+2.5.0 :024 > f1 || f2
+ => false 
+ 2.5.0 :025 > t1 = true
+ => true 
+2.5.0 :026 > f1 = false
+ => false 
+2.5.0 :027 > !t1
+ => false 
+2.5.0 :028 > !f1
+ => true 
+ 2.5.0 :029 > name = 'Nakamura'
+ => "Nakamura" 
+2.5.0 :030 > name.empty?
+ => false 
+2.5.0 :031 > name = ''
+ => "" 
+2.5.0 :032 > name.empty?
+ => true
+ 2.5.0 :033 > name = 'Nakamura'
+ => "Nakamura" 
+2.5.0 :034 > name.include?('m')
+ => true 
+2.5.0 :035 > name.include?('z')
+ => false 

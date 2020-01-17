@@ -1,0 +1,10 @@
+$ irb
+2.5.0 :001 > puts 'nakamura'
+nakamura
+ => nil 
+2.5.0 :002 > print 'nakamura'
+nakamura => nil 
+2.5.0 :003 > p 'nakamura'
+"nakamura"
+ => "nakamura" 
+2.5.0 :004 > exit

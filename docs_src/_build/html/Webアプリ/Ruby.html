@@ -70,7 +70,23 @@
   <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Ruby</a><ul>
+<li><a class="reference internal" href="#id1">概要</a></li>
 <li><a class="reference internal" href="#ruby-cloud9">Rubyのバージョン管理コマンド（Cloud9のコマンドラインで入力し使用）</a></li>
+<li><a class="reference internal" href="#id2">開発環境</a></li>
+<li><a class="reference internal" href="#id3">Rubyを動かす方法</a></li>
+<li><a class="reference internal" href="#id4">言語仕様</a><ul>
+<li><a class="reference internal" href="#id5">文字列</a></li>
+<li><a class="reference internal" href="#id6">条件分岐</a><ul>
+<li><a class="reference internal" href="#if">if文</a></li>
+<li><a class="reference internal" href="#unless">unless文</a></li>
+<li><a class="reference internal" href="#case">case文</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">関数</a></li>
+<li><a class="reference internal" href="#puts-print-p">puts,print,p メソッド</a></li>
+<li><a class="reference internal" href="#id8">その他</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -103,6 +119,17 @@
             
   <div class="section" id="ruby">
 <h1>Ruby<a class="headerlink" href="#ruby" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id1">
+<h2>概要<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">Ruby</p>
+<p>日本人が開発したプログラミング言語。</p>
+</li>
+<li><p class="first">Ruby on Rails</p>
+<p>Rubyで書かれたWebアプリケーションフレームワーク</p>
+</li>
+</ul>
+</div>
 <div class="section" id="ruby-cloud9">
 <h2>Rubyのバージョン管理コマンド（Cloud9のコマンドラインで入力し使用）<a class="headerlink" href="#ruby-cloud9" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
@@ -148,7 +175,171 @@ ruby 2.3.8p459 (2018-10-18 revision 65136) [x86_64-linux]
 </pre></div>
 </div>
 </li>
+<li><p class="first">特定のバージョンをデフォルトで使用するバージョンに設定する</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rvm --default 2.6.3
+</pre></div>
+</div>
+</li>
 </ul>
+</div>
+<div class="section" id="id2">
+<h2>開発環境<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li>AWS Cloud9を使用する</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>Rubyを動かす方法<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">irbを使う</p>
+<ul>
+<li><p class="first">Interactive Rubyの略</p>
+</li>
+<li><p class="first">対話型</p>
+</li>
+<li><p class="first">Cloud9のコマンドラインで以下のように入力し使用する</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ irb       // 開始時
+&gt; exit      // 終了時
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p class="first">ファイルに保存したプログラムを実行する</p>
+<ul>
+<li><p class="first">ファイル拡張子は.rb</p>
+</li>
+<li><p class="first">Cloud9のコマンドラインにて、実行ファイルのディレクトリに移動（cd）した上で、以下を入力し実行する</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ruby xxx.rb   // xxx.rbはファイル名
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>言語仕様<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id5">
+<h3>文字列<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p class="first">文字列を囲う記号は「ダブルクォート&quot;&quot;」と「シングルクォート''」の2種がある。
+両者で実行結果が異なるので要注意。</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">first_name</span> <span class="o">=</span> <span class="s1">&#39;Hanako&#39;</span>
+<span class="n">last_name</span> <span class="o">=</span> <span class="s1">&#39;Yamada&#39;</span>
+
+<span class="c1"># ダブルクォート&quot;&quot;では、特殊文字や式展開が行われる</span>
+<span class="c1"># 以下の実行結果は、「My name is Hanako Yamada」</span>
+<span class="nb">puts</span> <span class="s2">&quot;My name is </span><span class="si">#{</span><span class="n">first_name</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">last_name</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="c1"># シングルクォート&#39;&#39;では、特殊文字や式展開が行われない</span>
+<span class="c1"># 以下の実行結果は、「My name is #{first_name} #{last_name}」</span>
+<span class="nb">puts</span> <span class="s1">&#39;My name is #{first_name} #{last_name}&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">破壊的メソッド</p>
+<p>文字列操作メソッドの末尾に&quot;!&quot;を付けることで、対象の文字列自体を操作し変更することができる。</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Hello World!&#39;</span>
+<span class="nb">puts</span> <span class="n">s</span><span class="o">.</span><span class="n">upcase</span>     <span class="c1"># &quot;HELLO WORLD!&quot;と出力される</span>
+<span class="nb">puts</span> <span class="n">s</span>            <span class="c1"># &quot;Hello World!&quot;と出力される</span>
+<span class="nb">puts</span> <span class="n">s</span><span class="o">.</span><span class="n">pucase!</span>    <span class="c1"># &quot;HELLO WORLD!&quot;と出力される</span>
+<span class="nb">puts</span> <span class="n">s</span>            <span class="c1"># &quot;HELLO WORLD!&quot;と出力される（対象の文字列自体が変更された）</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>条件分岐<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="if">
+<h4>if文<a class="headerlink" href="#if" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ul class="simple">
+<li>if/elsif/else/end の並び。</li>
+</ul>
+</div>
+<div class="section" id="unless">
+<h4>unless文<a class="headerlink" href="#unless" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ul>
+<li><p class="first">unless/else/end の並び。</p>
+</li>
+<li><p class="first">&quot;elsif&quot;に相当するものはない。</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">unless</span> <span class="n">n</span><span class="o">.</span><span class="n">zero?</span>
+  <span class="nb">puts</span> <span class="s1">&#39;0ではありません&#39;</span>
+<span class="k">else</span>
+  <span class="nb">puts</span> <span class="s1">&#39;0です&#39;</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="case">
+<h4>case文<a class="headerlink" href="#case" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ul>
+<li><p class="first">case/when/else/end の並び。</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">stone</span> <span class="o">=</span> <span class="s1">&#39;garnet&#39;</span>
+<span class="k">case</span> <span class="n">stone</span>
+<span class="k">when</span> <span class="s1">&#39;ruby&#39;</span>
+  <span class="nb">puts</span> <span class="s1">&#39;7月&#39;</span>
+<span class="k">when</span> <span class="s1">&#39;peridot&#39;</span>
+  <span class="nb">puts</span> <span class="s1">&#39;8月&#39;</span>
+<span class="k">when</span> <span class="s1">&#39;sapphire&#39;</span>
+  <span class="nb">puts</span> <span class="s1">&#39;9月&#39;</span>
+<span class="k">else</span>
+  <span class="nb">puts</span> <span class="s1">&#39;データが登録されていません&#39;</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>関数<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># 例1</span>
+<span class="c1"># 引数がない場合は括弧()は不要</span>
+<span class="k">def</span> <span class="nf">hello_world</span>
+  <span class="nb">puts</span> <span class="s1">&#39;Hello World!&#39;</span>
+<span class="k">end</span>
+
+<span class="c1"># 例2</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+  <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>       <span class="c1"># 返り値に &quot;return&quot; は不要。あってもエラーにはならない。</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="puts-print-p">
+<h3>puts,print,p メソッド<a class="headerlink" href="#puts-print-p" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// putsメソッドは改行あり。戻り値はnil
+2.5.0 :001 &gt; puts &#39;nakamura&#39;
+nakamura
+=&gt; nil
+
+// printメソッドは改行なし。戻り値はnil
+2.5.0 :002 &gt; print &#39;nakamura&#39;
+nakamura =&gt; nil
+
+// pメソッドはデバッグ用。戻り値は引数のオブジェクト
+2.5.0 :003 &gt; p &#39;nakamura&#39;
+&quot;nakamura&quot;
+=&gt; &quot;nakamura&quot;
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>その他<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p class="first">nil</p>
+<p>何も存在しないことを意味する値。nullと同意？</p>
+</li>
+<li><p class="first">インクリメント&quot;++&quot;やデクリメント&quot;--&quot;はrubyにはない。代わりに&quot;+=&quot;と&quot;-=&quot;を使う。</p>
+</li>
+<li></li>
+</ul>
+</div>
 </div>
 </div>
 
