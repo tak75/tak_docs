@@ -1,0 +1,92 @@
+$ irb
+2.5.0 :001 > h = {}
+ => {} 
+2.5.0 :002 > puts h
+{}
+ => nil 
+2.5.0 :003 > nakamura = {'name' => 'Nakamura', 'birthplace' => 'Nagano'}
+ => {"name"=>"Nakamura", "birthplace"=>"Nagano"} 
+2.5.0 :004 > puts nakamura['name']
+Nakamura
+ => nil 
+2.5.0 :005 > puts nakamura['birthplace']
+Nagano
+ => nil 
+2.5.0 :006 > nakamura['age'] = 20
+ => 20 
+2.5.0 :007 > puts nakamura
+{"name"=>"Nakamura", "birthplace"=>"Nagano", "age"=>20}
+ => nil 
+2.5.0 :008 > nakamura.delete('age')
+ => 20 
+2.5.0 :009 > puts nakamura
+{"name"=>"Nakamura", "birthplace"=>"Nagano"}
+ => nil 
+ 2.5.0 :010 > sato = { name: 'Sato', birthplace: 'Tokyo' }
+ => {:name=>"Sato", :birthplace=>"Tokyo"} 
+2.5.0 :011 > puts sato
+{:name=>"Sato", :birthplace=>"Tokyo"}
+ => nil 
+2.5.0 :012 > puts sato[:name]
+Sato
+ => nil 
+2.5.0 :013 > puts sato[:birthplace]
+Tokyo
+ => nil 
+2.5.0 :014 > sato[:age] = 20
+ => 20 
+2.5.0 :015 > puts sato
+{:name=>"Sato", :birthplace=>"Tokyo", :age=>20}
+ => nil 
+2.5.0 :016 > sato[:age] = 21
+ => 21 
+2.5.0 :017 > puts sato
+{:name=>"Sato", :birthplace=>"Tokyo", :age=>21}
+ => nil 
+2.5.0 :018 > sato.delete(:age)
+ => 21 
+2.5.0 :019 > puts sato
+{:name=>"Sato", :birthplace=>"Tokyo"}
+ => nil 
+ 2.5.0 :010 > sato = { name: 'Sato', birthplace: 'Tokyo' }
+ => {:name=>"Sato", :birthplace=>"Tokyo"} 
+2.5.0 :011 > puts sato
+{:name=>"Sato", :birthplace=>"Tokyo"}
+2.5.0 :020 > scores = {luke: 100, jack: 90, robert: 70}
+ => {:luke=>100, :jack=>90, :robert=>70} 
+2.5.0 :022 > puts scores 
+{:luke=>100, :jack=>90, :robert=>70}
+ => nil 
+2.5.0 :023 > scores.each { |k, v| puts v}
+100
+90
+70
+ => {:luke=>100, :jack=>90, :robert=>70} 
+2.5.0 :024 > scores.each { |k, v| puts "#{k}, #{v}" }
+luke, 100
+jack, 90
+robert, 70
+ => {:luke=>100, :jack=>90, :robert=>70}
+ 
+  > puts scores
+{:luke=>100, :jack=>90, :robert=>70}
+ => nil 
+2.5.0 :026 > scores.each { |k, v|
+2.5.0 :027 >     if v >= 80
+2.5.0 :028?>       puts "#{k}, #{v}"
+2.5.0 :029?>     end
+2.5.0 :030?>   }
+luke, 100
+jack, 90
+ => {:luke=>100, :jack=>90, :robert=>70} 
+ 
+ 2.5.0 :032 > scores.keys
+ => [:luke, :jack, :robert] 
+2.5.0 :033 > scores.values
+ => [100, 90, 70] 
+2.5.0 :034 > scores.has_key?(:luke)
+ => true 
+2.5.0 :035 > scores.has_key?(:takahashi)
+ => false 
+2.5.0 :036 > scores.size
+ => 3 

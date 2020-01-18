@@ -83,8 +83,40 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#id7">関数</a></li>
-<li><a class="reference internal" href="#puts-print-p">puts,print,p メソッド</a></li>
-<li><a class="reference internal" href="#id8">その他</a></li>
+<li><a class="reference internal" href="#puts-print-p">puts,print,p メソッド</a><ul>
+<li><a class="reference internal" href="#puts">puts メソッド</a></li>
+<li><a class="reference internal" href="#print">print メソッド</a></li>
+<li><a class="reference internal" href="#p">p メソッド</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">配列</a></li>
+<li><a class="reference internal" href="#id9">ハッシュ</a><ul>
+<li><a class="reference internal" href="#id10">基本操作1</a></li>
+<li><a class="reference internal" href="#id11">要素を1つずつ処理</a></li>
+<li><a class="reference internal" href="#id12">基本操作2</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id13">繰り返し処理</a><ul>
+<li><a class="reference internal" href="#each">each</a></li>
+<li><a class="reference internal" href="#for">for</a></li>
+<li><a class="reference internal" href="#times">times</a></li>
+<li><a class="reference internal" href="#while">while</a></li>
+<li><a class="reference internal" href="#upto">upto</a></li>
+<li><a class="reference internal" href="#downto">downto</a></li>
+<li><a class="reference internal" href="#step">step</a></li>
+<li><a class="reference internal" href="#loop-break">loop, break</a></li>
+<li><a class="reference internal" href="#next">next</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id14">クラス</a></li>
+<li><a class="reference internal" href="#id15">アクセサ</a></li>
+<li><a class="reference internal" href="#id16">クラスメソッド、クラス変数</a></li>
+<li><a class="reference internal" href="#id17">クラスの継承</a></li>
+<li><a class="reference internal" href="#id18">メソッドのアクセス権</a></li>
+<li><a class="reference internal" href="#id19">モジュール</a></li>
+<li><a class="reference internal" href="#id20">例外</a></li>
+<li><a class="reference internal" href="#id21">コーディングルール</a></li>
+<li><a class="reference internal" href="#id22">その他</a></li>
 </ul>
 </li>
 </ul>
@@ -134,49 +166,49 @@
 <h2>Rubyのバージョン管理コマンド（Cloud9のコマンドラインで入力し使用）<a class="headerlink" href="#ruby-cloud9" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p class="first">現在のRubyのバージョンを表示する</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ruby -v
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ruby -v
 
-//出力例
-ruby 2.3.8p459 (2018-10-18 revision 65136) [x86_64-linux]
+<span class="go">//出力例</span>
+<span class="go">ruby 2.3.8p459 (2018-10-18 revision 65136) [x86_64-linux]</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">現在インストールされているRubyのバージョンリストを表示する</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rvm list
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rvm list
 
-//出力例
-   ruby-2.3.1 [ x86_64 ]
-=&gt; ruby-2.3.8 [ x86_64 ]
- * ruby-2.6.3 [ x86_64 ]
+<span class="go">//出力例</span>
+<span class="go">   ruby-2.3.1 [ x86_64 ]</span>
+<span class="go">=&gt; ruby-2.3.8 [ x86_64 ]</span>
+<span class="go"> * ruby-2.6.3 [ x86_64 ]</span>
 
-# =&gt; - current
-# =* - current &amp;&amp; default
-#  * - default
+<span class="gp">#</span> <span class="o">=</span>&gt; - <span class="nv">current</span>
+<span class="gp">#</span> <span class="o">=</span>* - current <span class="o">&amp;&amp;</span> default
+<span class="gp">#</span>  * - default
 </pre></div>
 </div>
 </li>
 <li><p class="first">特定のバージョンをインストールする</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rvm install 2.3.4
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rvm install <span class="m">2</span>.3.4
 </pre></div>
 </div>
 </li>
 <li><p class="first">特定のメジャーバージョンの最新版をインストールする</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rvm install 2.3   // 2.3.x の最新版がインストールされる
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rvm install <span class="m">2</span>.3   // <span class="m">2</span>.3.x の最新版がインストールされる
 </pre></div>
 </div>
 </li>
 <li><p class="first">特定のバージョンを使用する</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rvm use 2.6.3
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rvm use <span class="m">2</span>.6.3
 </pre></div>
 </div>
 </li>
 <li><p class="first">特定のバージョンをアンインストールする</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rvm remove 2.3.1
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rvm remove <span class="m">2</span>.3.1
 </pre></div>
 </div>
 </li>
 <li><p class="first">特定のバージョンをデフォルトで使用するバージョンに設定する</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rvm --default 2.6.3
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rvm --default <span class="m">2</span>.6.3
 </pre></div>
 </div>
 </li>
@@ -198,8 +230,8 @@ ruby 2.3.8p459 (2018-10-18 revision 65136) [x86_64-linux]
 <li><p class="first">対話型</p>
 </li>
 <li><p class="first">Cloud9のコマンドラインで以下のように入力し使用する</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ irb       // 開始時
-&gt; exit      // 終了時
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> irb       // 開始時
+<span class="gp">&gt;</span> <span class="nb">exit</span>      // 終了時
 </pre></div>
 </div>
 </li>
@@ -210,7 +242,7 @@ ruby 2.3.8p459 (2018-10-18 revision 65136) [x86_64-linux]
 <li><p class="first">ファイル拡張子は.rb</p>
 </li>
 <li><p class="first">Cloud9のコマンドラインにて、実行ファイルのディレクトリに移動（cd）した上で、以下を入力し実行する</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ruby xxx.rb   // xxx.rbはファイル名
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ruby xxx.rb   // xxx.rbはファイル名
 </pre></div>
 </div>
 </li>
@@ -313,31 +345,583 @@ ruby 2.3.8p459 (2018-10-18 revision 65136) [x86_64-linux]
 </div>
 <div class="section" id="puts-print-p">
 <h3>puts,print,p メソッド<a class="headerlink" href="#puts-print-p" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// putsメソッドは改行あり。戻り値はnil
-2.5.0 :001 &gt; puts &#39;nakamura&#39;
-nakamura
-=&gt; nil
-
-// printメソッドは改行なし。戻り値はnil
-2.5.0 :002 &gt; print &#39;nakamura&#39;
-nakamura =&gt; nil
-
-// pメソッドはデバッグ用。戻り値は引数のオブジェクト
-2.5.0 :003 &gt; p &#39;nakamura&#39;
-&quot;nakamura&quot;
-=&gt; &quot;nakamura&quot;
+<div class="section" id="puts">
+<h4>puts メソッド<a class="headerlink" href="#puts" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ul class="simple">
+<li>改行を加えてターミナルに出力する</li>
+<li>戻り値はnil</li>
+</ul>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">001</span> <span class="o">&gt;</span> <span class="nb">puts</span> <span class="s1">&#39;nakamura&#39;</span>
+<span class="n">nakamura</span>
+<span class="o">=&gt;</span> <span class="kp">nil</span>
 </pre></div>
 </div>
 </div>
+<div class="section" id="print">
+<h4>print メソッド<a class="headerlink" href="#print" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ul class="simple">
+<li>改行なしでターミナルに出力する</li>
+<li>戻り値はnil</li>
+</ul>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">002</span> <span class="o">&gt;</span> <span class="nb">print</span> <span class="s1">&#39;nakamura&#39;</span>
+<span class="n">nakamura</span> <span class="o">=&gt;</span> <span class="kp">nil</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="p">
+<h4>p メソッド<a class="headerlink" href="#p" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ul class="simple">
+<li>デバッグ用</li>
+<li>戻り値は引数のオブジェクト</li>
+</ul>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">003</span> <span class="o">&gt;</span> <span class="nb">p</span> <span class="s1">&#39;nakamura&#39;</span>
+<span class="s2">&quot;nakamura&quot;</span>
+<span class="o">=&gt;</span> <span class="s2">&quot;nakamura&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="id8">
-<h3>その他<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>配列<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># 空の配列を作成する</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">006</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="o">=&gt;</span> <span class="o">[]</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">007</span> <span class="o">&gt;</span> <span class="n">b</span><span class="o">.</span><span class="n">empty?</span>
+<span class="o">=&gt;</span> <span class="kp">true</span>
+
+<span class="c1"># 初期値を指定してい配列を作成する</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">001</span> <span class="o">&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;aa&#39;</span><span class="p">,</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]]</span>
+<span class="o">=&gt;</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;aa&quot;</span><span class="p">,</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]]</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">002</span> <span class="o">&gt;</span> <span class="n">a</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+<span class="o">=&gt;</span> <span class="mi">1</span>
+
+<span class="c1"># 特定の要素が含まれているか調べる</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">00</span><span class="mi">8</span> <span class="o">&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span><span class="s1">&#39;aa&#39;</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="kp">true</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">00</span><span class="mi">9</span> <span class="o">&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="kp">false</span>
+
+<span class="c1"># 配列を逆順にして返す</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">010</span> <span class="o">&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">reverse</span>
+<span class="o">=&gt;</span> <span class="o">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span><span class="p">,</span> <span class="s2">&quot;aa&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">]</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">011</span> <span class="o">&gt;</span> <span class="n">a</span>
+<span class="o">=&gt;</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;aa&quot;</span><span class="p">,</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]]</span>
+
+<span class="c1"># 配列そのものを逆順にする</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">012</span> <span class="o">&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">reverse!</span>
+<span class="o">=&gt;</span> <span class="o">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span><span class="p">,</span> <span class="s2">&quot;aa&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">]</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">013</span> <span class="o">&gt;</span> <span class="n">a</span>
+<span class="o">=&gt;</span> <span class="o">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span><span class="p">,</span> <span class="s2">&quot;aa&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">]</span>
+
+<span class="c1"># 配列をシャッフルする</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">014</span> <span class="o">&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">shuffle</span>
+<span class="o">=&gt;</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;aa&quot;</span><span class="p">,</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">015</span> <span class="o">&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">shuffle</span>
+<span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;aa&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span><span class="p">,</span> <span class="mi">2</span><span class="o">]</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">016</span> <span class="o">&gt;</span> <span class="n">a</span>
+<span class="o">=&gt;</span> <span class="o">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span><span class="p">,</span> <span class="s2">&quot;aa&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">]</span>
+
+<span class="c1"># 0～10の連続した数値を持つ配列を作成する</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">022</span> <span class="o">&gt;</span> <span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="o">..</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
+<span class="o">=&gt;</span> <span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="o">]</span>
+
+<span class="c1"># 配列への要素追加 1（&quot;20&quot;を追加）</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">023</span> <span class="o">&gt;</span> <span class="n">z</span> <span class="o">&lt;&lt;</span> <span class="mi">20</span>
+<span class="o">=&gt;</span> <span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="o">]</span>
+
+<span class="c1"># 配列への要素追加 2（&quot;30&quot;を追加）</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">025</span> <span class="o">&gt;</span> <span class="n">z</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="o">]</span>
+
+<span class="c1"># 配列から最後の要素を取り出し削除する</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">02</span><span class="mi">8</span> <span class="o">&gt;</span> <span class="n">z</span><span class="o">.</span><span class="n">pop</span>
+<span class="o">=&gt;</span> <span class="mi">30</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">030</span> <span class="o">&gt;</span> <span class="n">z</span>
+<span class="o">=&gt;</span> <span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="o">]</span>
+
+<span class="c1"># 配列から最初の要素を取り出し削除する</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">031</span> <span class="o">&gt;</span> <span class="n">z</span><span class="o">.</span><span class="n">shift</span>
+<span class="o">=&gt;</span> <span class="mi">0</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">032</span> <span class="o">&gt;</span> <span class="n">z</span>
+<span class="o">=&gt;</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="o">]</span>
+
+<span class="c1"># 重複する要素を削除する</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">034</span> <span class="o">&gt;</span> <span class="n">z</span>
+<span class="o">=&gt;</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="o">]</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">035</span> <span class="o">&gt;</span> <span class="n">z</span><span class="o">.</span><span class="n">uniq</span>
+<span class="o">=&gt;</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="o">]</span>
+
+<span class="c1"># 配列文字列を結合する</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">03</span><span class="mi">9</span> <span class="o">&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;my&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;nakamura&#39;</span><span class="o">]</span>
+<span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;my&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span> <span class="s2">&quot;nakamura&quot;</span><span class="o">]</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">040</span> <span class="o">&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">join</span>
+<span class="o">=&gt;</span> <span class="s2">&quot;mynameisnakamura&quot;</span>
+
+<span class="c1"># セパレータを指定して配列文字列を結合する</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">042</span> <span class="o">&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="s2">&quot;my name is nakamura&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>ハッシュ<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id10">
+<h4>基本操作1<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># 空のハッシュを作成する</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">001</span> <span class="o">&gt;</span> <span class="n">h</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="o">=&gt;</span> <span class="p">{}</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">002</span> <span class="o">&gt;</span> <span class="nb">puts</span> <span class="n">h</span>
+<span class="p">{}</span>
+<span class="o">=&gt;</span> <span class="kp">nil</span>
+
+<span class="c1"># 初期値を指定してハッシュを作成する</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">003</span> <span class="o">&gt;</span> <span class="n">nakamura</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Nakamura&#39;</span><span class="p">,</span> <span class="s1">&#39;birthplace&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Nagano&#39;</span><span class="p">}</span>
+<span class="o">=&gt;</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;Nakamura&quot;</span><span class="p">,</span> <span class="s2">&quot;birthplace&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;Nagano&quot;</span><span class="p">}</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">004</span> <span class="o">&gt;</span> <span class="nb">puts</span> <span class="n">nakamura</span><span class="o">[</span><span class="s1">&#39;name&#39;</span><span class="o">]</span>
+<span class="no">Nakamura</span>
+<span class="o">=&gt;</span> <span class="kp">nil</span>
+
+<span class="c1"># 要素を追加する</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">006</span> <span class="o">&gt;</span> <span class="n">nakamura</span><span class="o">[</span><span class="s1">&#39;age&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="o">=&gt;</span> <span class="mi">20</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">007</span> <span class="o">&gt;</span> <span class="nb">puts</span> <span class="n">nakamura</span>
+<span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;Nakamura&quot;</span><span class="p">,</span> <span class="s2">&quot;birthplace&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;Nagano&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="o">=&gt;</span><span class="mi">20</span><span class="p">}</span>
+<span class="o">=&gt;</span> <span class="kp">nil</span>
+
+<span class="c1"># 要素を削除する</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">00</span><span class="mi">8</span> <span class="o">&gt;</span> <span class="n">nakamura</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="mi">20</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">00</span><span class="mi">9</span> <span class="o">&gt;</span> <span class="nb">puts</span> <span class="n">nakamura</span>
+<span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;Nakamura&quot;</span><span class="p">,</span> <span class="s2">&quot;birthplace&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;Nagano&quot;</span><span class="p">}</span>
+<span class="o">=&gt;</span> <span class="kp">nil</span>
+
+<span class="c1"># シンボルを使ってハッシュを作成する</span>
+<span class="c1"># 前述の文字列を使った方法よりアクセスが早い</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">010</span> <span class="o">&gt;</span> <span class="n">sato</span> <span class="o">=</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;Sato&#39;</span><span class="p">,</span> <span class="ss">birthplace</span><span class="p">:</span> <span class="s1">&#39;Tokyo&#39;</span> <span class="p">}</span>
+<span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">&quot;Sato&quot;</span><span class="p">,</span> <span class="ss">:birthplace</span><span class="o">=&gt;</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">}</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">011</span> <span class="o">&gt;</span> <span class="nb">puts</span> <span class="n">sato</span>
+<span class="p">{</span><span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">&quot;Sato&quot;</span><span class="p">,</span> <span class="ss">:birthplace</span><span class="o">=&gt;</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">}</span>
+<span class="o">=&gt;</span> <span class="kp">nil</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">012</span> <span class="o">&gt;</span> <span class="nb">puts</span> <span class="n">sato</span><span class="o">[</span><span class="ss">:name</span><span class="o">]</span>
+<span class="no">Sato</span>
+<span class="o">=&gt;</span> <span class="kp">nil</span>
+
+<span class="c1"># 要素を追加する</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">014</span> <span class="o">&gt;</span> <span class="n">sato</span><span class="o">[</span><span class="ss">:age</span><span class="o">]</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="o">=&gt;</span> <span class="mi">20</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">015</span> <span class="o">&gt;</span> <span class="nb">puts</span> <span class="n">sato</span>
+<span class="p">{</span><span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">&quot;Sato&quot;</span><span class="p">,</span> <span class="ss">:birthplace</span><span class="o">=&gt;</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="ss">:age</span><span class="o">=&gt;</span><span class="mi">20</span><span class="p">}</span>
+<span class="o">=&gt;</span> <span class="kp">nil</span>
+
+<span class="c1"># 要素の値を変更する</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">016</span> <span class="o">&gt;</span> <span class="n">sato</span><span class="o">[</span><span class="ss">:age</span><span class="o">]</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="o">=&gt;</span> <span class="mi">21</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">017</span> <span class="o">&gt;</span> <span class="nb">puts</span> <span class="n">sato</span>
+<span class="p">{</span><span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">&quot;Sato&quot;</span><span class="p">,</span> <span class="ss">:birthplace</span><span class="o">=&gt;</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="ss">:age</span><span class="o">=&gt;</span><span class="mi">21</span><span class="p">}</span>
+<span class="o">=&gt;</span> <span class="kp">nil</span>
+
+<span class="c1"># 要素を削除する</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">01</span><span class="mi">8</span> <span class="o">&gt;</span> <span class="n">sato</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="ss">:age</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="mi">21</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">01</span><span class="mi">9</span> <span class="o">&gt;</span> <span class="nb">puts</span> <span class="n">sato</span>
+<span class="p">{</span><span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">&quot;Sato&quot;</span><span class="p">,</span> <span class="ss">:birthplace</span><span class="o">=&gt;</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">}</span>
+<span class="o">=&gt;</span> <span class="kp">nil</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h4>要素を1つずつ処理<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">020</span> <span class="o">&gt;</span> <span class="n">scores</span> <span class="o">=</span> <span class="p">{</span><span class="ss">luke</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="ss">jack</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="ss">robert</span><span class="p">:</span> <span class="mi">70</span><span class="p">}</span>
+<span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:luke</span><span class="o">=&gt;</span><span class="mi">100</span><span class="p">,</span> <span class="ss">:jack</span><span class="o">=&gt;</span><span class="mi">90</span><span class="p">,</span> <span class="ss">:robert</span><span class="o">=&gt;</span><span class="mi">70</span><span class="p">}</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">022</span> <span class="o">&gt;</span> <span class="nb">puts</span> <span class="n">scores</span>
+<span class="p">{</span><span class="ss">:luke</span><span class="o">=&gt;</span><span class="mi">100</span><span class="p">,</span> <span class="ss">:jack</span><span class="o">=&gt;</span><span class="mi">90</span><span class="p">,</span> <span class="ss">:robert</span><span class="o">=&gt;</span><span class="mi">70</span><span class="p">}</span>
+<span class="o">=&gt;</span> <span class="kp">nil</span>
+
+<span class="c1"># ハッシュから1つずつ要素を取り出し値のみを表示する</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">023</span> <span class="o">&gt;</span> <span class="n">scores</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">v</span><span class="p">}</span>
+<span class="mi">100</span>
+<span class="mi">90</span>
+<span class="mi">70</span>
+<span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:luke</span><span class="o">=&gt;</span><span class="mi">100</span><span class="p">,</span> <span class="ss">:jack</span><span class="o">=&gt;</span><span class="mi">90</span><span class="p">,</span> <span class="ss">:robert</span><span class="o">=&gt;</span><span class="mi">70</span><span class="p">}</span>
+
+<span class="c1"># ハッシュから1つずつ要素を取り出しキーと値を表示する</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">024</span> <span class="o">&gt;</span> <span class="n">scores</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">k</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">}</span>
+<span class="n">luke</span><span class="p">,</span> <span class="mi">100</span>
+<span class="n">jack</span><span class="p">,</span> <span class="mi">90</span>
+<span class="n">robert</span><span class="p">,</span> <span class="mi">70</span>
+<span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:luke</span><span class="o">=&gt;</span><span class="mi">100</span><span class="p">,</span> <span class="ss">:jack</span><span class="o">=&gt;</span><span class="mi">90</span><span class="p">,</span> <span class="ss">:robert</span><span class="o">=&gt;</span><span class="mi">70</span><span class="p">}</span>
+
+<span class="c1"># ハッシュから1つずつ要素を取り出し値が80以上の要素のみキーと値を表示する</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">026</span> <span class="o">&gt;</span> <span class="n">scores</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="o">|</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">027</span> <span class="o">&gt;</span>     <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;=</span> <span class="mi">80</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">02</span><span class="mi">8</span><span class="o">?&gt;</span>       <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">k</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">02</span><span class="mi">9</span><span class="o">?&gt;</span>     <span class="k">end</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">030</span><span class="o">?&gt;</span>   <span class="p">}</span>
+<span class="n">luke</span><span class="p">,</span> <span class="mi">100</span>
+<span class="n">jack</span><span class="p">,</span> <span class="mi">90</span>
+<span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:luke</span><span class="o">=&gt;</span><span class="mi">100</span><span class="p">,</span> <span class="ss">:jack</span><span class="o">=&gt;</span><span class="mi">90</span><span class="p">,</span> <span class="ss">:robert</span><span class="o">=&gt;</span><span class="mi">70</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h4>基本操作2<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># ハッシュ内のキー一覧を表示</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">032</span> <span class="o">&gt;</span> <span class="n">scores</span><span class="o">.</span><span class="n">keys</span>
+<span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:luke</span><span class="p">,</span> <span class="ss">:jack</span><span class="p">,</span> <span class="ss">:robert</span><span class="o">]</span>
+
+<span class="c1"># ハッシュ内の値一覧を表示</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">033</span> <span class="o">&gt;</span> <span class="n">scores</span><span class="o">.</span><span class="n">values</span>
+<span class="o">=&gt;</span> <span class="o">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">70</span><span class="o">]</span>
+
+<span class="c1"># ハッシュ内に所定のキーがあるか</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">034</span> <span class="o">&gt;</span> <span class="n">scores</span><span class="o">.</span><span class="n">has_key?</span><span class="p">(</span><span class="ss">:luke</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="kp">true</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">035</span> <span class="o">&gt;</span> <span class="n">scores</span><span class="o">.</span><span class="n">has_key?</span><span class="p">(</span><span class="ss">:takahashi</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="kp">false</span>
+
+<span class="c1"># ハッシュの要素数を取得</span>
+<span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">036</span> <span class="o">&gt;</span> <span class="n">scores</span><span class="o">.</span><span class="n">size</span>
+<span class="o">=&gt;</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id13">
+<h3>繰り返し処理<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="each">
+<h4>each<a class="headerlink" href="#each" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># 配列の要素を変数numberに1つずつ取り出しながら処理を実行する</span>
+<span class="c1"># 方法その1</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="o">]</span>
+<span class="n">numbers</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">number</span><span class="o">|</span>
+    <span class="nb">puts</span> <span class="n">number</span>
+<span class="k">end</span>
+
+<span class="c1"># 方法その2</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="o">]</span>
+<span class="n">numbers</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">number</span><span class="o">|</span>
+    <span class="nb">puts</span> <span class="n">number</span>
+<span class="p">}</span>
+
+<span class="c1"># ハッシュの場合</span>
+<span class="c1"># ハッシュの要素（キーと値）を変数nameとscoreに1つずつ取り出しながら処理を実行する</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">{</span><span class="ss">nakamura</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="ss">sato</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="ss">takahashi</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
+<span class="n">scores</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="p">,</span> <span class="n">score</span><span class="o">|</span>
+    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">m, </span><span class="si">#{</span><span class="n">score</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="for">
+<h4>for<a class="headerlink" href="#for" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ul class="simple">
+<li><strong>forは原則使わない</strong></li>
+<li>慣習としてeachでもforでも書ける時は、eachを用いる。</li>
+<li>forは、どうしても使わなければいけない明確な理由が明言できる人以外は、使ってはいけない（The Ruby Style Guideより）</li>
+</ul>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># 配列の要素を変数numberに1つずつ取り出しながら処理を実行する</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="o">]</span>
+<span class="k">for</span> <span class="n">number</span> <span class="k">in</span> <span class="n">numbers</span> <span class="k">do</span>
+    <span class="nb">puts</span> <span class="n">number</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="times">
+<h4>times<a class="headerlink" href="#times" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ul class="simple">
+<li>配列を使わず、単純にn回処理を繰り返したい時に使う。</li>
+</ul>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># 繰り返し回数=5回</span>
+<span class="mi">5</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span>
+  <span class="nb">puts</span> <span class="s1">&#39;Hello!&#39;</span>
+<span class="k">end</span>
+
+<span class="c1"># 繰り返し回数の番号をiに取り出しつつ処理を行う</span>
+<span class="c1"># 方法その1</span>
+<span class="mi">5</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">: Hello!&quot;</span>
+<span class="k">end</span>
+
+<span class="c1"># 方法その2</span>
+<span class="mi">5</span><span class="o">.</span><span class="n">times</span> <span class="p">{</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">: Hello!&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="while">
+<h4>while<a class="headerlink" href="#while" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ul class="simple">
+<li>指定した条件が真である間、処理を繰り返す</li>
+</ul>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span>
+  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">:hello&quot;</span>
+  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># i = i + 1</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="upto">
+<h4>upto<a class="headerlink" href="#upto" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ul class="simple">
+<li>nからmまで数値を1ずつ増やしながら処理を実行する場合に使用する</li>
+</ul>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># 10～14まで値を増やしながら1つずつ出力する</span>
+<span class="mi">10</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">n</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="downto">
+<h4>downto<a class="headerlink" href="#downto" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ul class="simple">
+<li>nからmまで数値を1ずつ減らしながら処理を実行する場合に使用する</li>
+</ul>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># 14～10まで値を減らしながら1つずつ出力する</span>
+<span class="mi">14</span><span class="o">.</span><span class="n">downto</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">n</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step">
+<h4>step<a class="headerlink" href="#step" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ul class="simple">
+<li>nからmまで数値をxずつ増やしながら処理を実行する場合に使用する</li>
+</ul>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1～10まで2ずつ増やしながら値を出力する</span>
+<span class="c1"># 処理結果：1 3 5 7 9</span>
+<span class="mi">1</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">n</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">n</span><span class="p">}</span>
+
+<span class="c1"># 10～1まで2ずつ減らしながら値を出力する</span>
+<span class="c1"># 処理結果：10 8 6 4 2</span>
+<span class="mi">10</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">n</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">n</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="loop-break">
+<h4>loop, break<a class="headerlink" href="#loop-break" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ul class="simple">
+<li>あえて無限ループを作りたい時に利用する</li>
+</ul>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="kp">loop</span> <span class="k">do</span>
+  <span class="nb">puts</span> <span class="n">j</span>
+  <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+  <span class="k">break</span> <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">10</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="next">
+<h4>next<a class="headerlink" href="#next" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="o">]</span>
+<span class="n">numbers</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span>
+  <span class="c1"># nが偶数の場合は次の要素の処理に進む（C言語のcontinueと同意）</span>
+  <span class="c1"># nが奇数の場合は&quot;even&quot;の代わりに&quot;odd&quot;を使用</span>
+  <span class="k">next</span> <span class="k">if</span> <span class="n">n</span><span class="o">.</span><span class="n">even?</span>
+  <span class="nb">puts</span> <span class="n">n</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id14">
+<h3>クラス<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li>インスタンス変数は&quot;&#64;～&quot;と記載</li>
+</ul>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span>
+
+  <span class="c1"># コンストラクタ</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="nb">puts</span> <span class="s1">&#39;initialize!!&#39;</span>
+    <span class="vi">@name</span> <span class="o">=</span> <span class="nb">name</span>    <span class="c1"># &quot;@～&quot;はインスタンス変数であり、クラス内であればどこでも使える</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">hello</span>
+    <span class="nb">puts</span> <span class="s2">&quot;Hello! I am </span><span class="si">#{</span><span class="vi">@name</span><span class="si">}</span><span class="s2">.&quot;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># インスタンス作成</span>
+<span class="n">emma</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;Emma&#39;</span><span class="p">)</span>
+<span class="n">emma</span><span class="o">.</span><span class="n">hello</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id15">
+<h3>アクセサ<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># 自分でget/setアクセサを書く場合</span>
+<span class="k">class</span> <span class="nc">User</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="vi">@name</span> <span class="o">=</span> <span class="nb">name</span>
+  <span class="k">end</span>
+
+  <span class="c1"># getアクセサ</span>
+  <span class="k">def</span> <span class="nf">name</span>
+    <span class="vi">@name</span>
+  <span class="k">end</span>
+
+  <span class="c1"># setアクセサ</span>
+  <span class="k">def</span> <span class="nf">name</span><span class="o">=</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="vi">@name</span> <span class="o">=</span> <span class="n">value</span>
+  <span class="k">end</span>
+
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># 自動でget/setアクセサを書く場合</span>
+<span class="k">class</span> <span class="nc">User</span>
+
+  <span class="c1"># get/setアクセサを自動生成</span>
+  <span class="kp">attr_accessor</span> <span class="ss">:name</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="vi">@name</span> <span class="o">=</span> <span class="nb">name</span>
+  <span class="k">end</span>
+
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># getアクセサのみ自動生成する場合（リードオンリー）</span>
+<span class="kp">attr_reader</span> <span class="ss">:name</span>
+
+<span class="c1"># setアクセサのみ自動生成する場合（ライトオンリー）</span>
+<span class="kp">attr_writer</span> <span class="ss">:name</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id16">
+<h3>クラスメソッド、クラス変数<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span>
+  <span class="no">REGION</span> <span class="o">=</span> <span class="s1">&#39;USA&#39;</span>
+
+  <span class="c1"># クラス変数（&quot;@@&quot;を付ける）</span>
+  <span class="vc">@@count</span> <span class="o">=</span> <span class="mi">0</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="vi">@name</span> <span class="o">=</span> <span class="nb">name</span>
+    <span class="vc">@@count</span> <span class="o">+=</span> <span class="mi">1</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">hello</span>
+    <span class="nb">puts</span> <span class="s2">&quot;I am </span><span class="si">#{</span><span class="vi">@name</span><span class="si">}</span><span class="s2">. </span><span class="si">#{</span><span class="vc">@@count</span><span class="si">}</span><span class="s2"> instance(s).&quot;</span>
+  <span class="k">end</span>
+
+  <span class="c1"># クラスメソッド（&quot;self.&quot;を付ける）</span>
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">info</span>
+    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="vc">@@count</span><span class="si">}</span><span class="s2"> instance(s).Region: </span><span class="si">#{</span><span class="no">REGION</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="k">end</span>
+
+<span class="k">end</span>
+
+<span class="n">emma</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;Emma&#39;</span><span class="p">)</span>
+<span class="c1"># クラスメソッドのコール方法</span>
+<span class="no">User</span><span class="o">.</span><span class="n">info</span>
+
+<span class="c1"># 定数へのアクセス方法</span>
+<span class="nb">puts</span> <span class="no">User</span><span class="o">::</span><span class="no">REGION</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id17">
+<h3>クラスの継承<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Userクラスを継承</span>
+<span class="k">class</span> <span class="nc">AdminUser</span> <span class="o">&lt;</span> <span class="no">User</span>
+
+  <span class="c1"># 親クラスのメソッドのオーバライド</span>
+  <span class="k">def</span> <span class="nf">hello</span>
+    <span class="nb">puts</span> <span class="s1">&#39;Admin!!&#39;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id18">
+<h3>メソッドのアクセス権<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li>public/protected/private の3種</li>
+<li>デフォルトはpublic</li>
+</ul>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span>
+  <span class="c1"># 1段下げてメソッドを定義することで、全てのメソッドがprivateとなる</span>
+  <span class="kp">private</span>
+    <span class="k">def</span> <span class="nf">hello</span>
+      <span class="nb">puts</span> <span class="s2">&quot;Hello! I am </span><span class="si">#{</span><span class="vi">@name</span><span class="si">}</span><span class="s2">.&quot;</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">xxx</span>
+      <span class="c1"># 処理</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id19">
+<h3>モジュール<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li>クラスメソッドや定数のみを持つクラス？</li>
+<li>関連するメソッドや定数などをまとめてグループ化したいだけの時にモジュールは手軽に使えて便利</li>
+</ul>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="nn">Driver</span>
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">run</span>
+    <span class="nb">puts</span> <span class="s1">&#39;Run&#39;</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">stop</span>
+    <span class="nb">puts</span> <span class="s1">&#39;Stop&#39;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">Driver</span><span class="o">.</span><span class="n">run</span>
+<span class="no">Driver</span><span class="o">.</span><span class="n">stop</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id20">
+<h3>例外<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="nb">puts</span> <span class="s1">&#39;---数値を入力してください---&#39;</span>
+<span class="n">i</span> <span class="o">=</span> <span class="nb">gets</span><span class="o">.</span><span class="n">to_i</span>
+
+<span class="k">begin</span>
+  <span class="c1"># 例外が起きうる処理</span>
+  <span class="nb">puts</span> <span class="mi">10</span> <span class="o">/</span> <span class="n">i</span>
+<span class="k">rescue</span> <span class="o">=&gt;</span> <span class="n">ex</span>
+  <span class="c1"># 例外が発生した場合の処理</span>
+  <span class="nb">puts</span> <span class="s1">&#39;error!&#39;</span>
+  <span class="nb">puts</span> <span class="n">ex</span><span class="o">.</span><span class="n">message</span>
+  <span class="nb">puts</span> <span class="n">ex</span><span class="o">.</span><span class="n">class</span>
+<span class="k">ensure</span>
+  <span class="c1"># 例外が発生しても、しなくても、最後に実行したい処理</span>
+  <span class="nb">puts</span> <span class="s1">&#39;end&#39;</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id21">
+<h3>コーディングルール<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p class="first">公式のコーディングルールは存在しない</p>
+</li>
+<li><p class="first">「The Ruby Style Guide」が有名</p>
+<p>参考：Rubyのソースコード解析ツールRuboCopの作者と同じ</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/rubocop-hq/ruby-style-guide">英語</a></li>
+<li><a class="reference external" href="https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md">日本語</a></li>
+<li><a class="reference external" href="https://github.com/rubocop-hq/rubocop">RuboCop</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id22">
+<h3>その他<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p class="first">nil</p>
 <p>何も存在しないことを意味する値。nullと同意？</p>
 </li>
 <li><p class="first">インクリメント&quot;++&quot;やデクリメント&quot;--&quot;はrubyにはない。代わりに&quot;+=&quot;と&quot;-=&quot;を使う。</p>
 </li>
-<li></li>
 </ul>
 </div>
 </div>
