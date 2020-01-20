@@ -75,6 +75,7 @@
 <li><a class="reference internal" href="#id1">使用方法</a></li>
 <li><a class="reference internal" href="#id2">作業用ユーザの作成</a></li>
 <li><a class="reference internal" href="#sqlsql">SQLファイルからSQLを実行</a></li>
+<li><a class="reference internal" href="#id5">テーブル操作</a></li>
 </ul>
 </li>
 </ul>
@@ -146,6 +147,7 @@
 <li><p class="first">日本語の文字コードをUTF8に変える</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// 現在の文字セットを確認</span>
 <span class="gp">$</span> mysql -u root
+
 <span class="go">mysql&gt; show variables like &#39;%char%&#39;;</span>
 <span class="go">+--------------------------+------------------------------+</span>
 <span class="go">| Variable_name            | Value                        |</span>
@@ -163,21 +165,26 @@
 </div>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// 現在の設定ファイルをチェック（lessを抜ける際は&quot;Q&quot;+&quot;Enter&quot;）</span>
 <span class="gp">$</span> less /etc/my.cnf
+
 <span class="go">// 念のため現在の設定ファイルをバックアップ</span>
 <span class="gp">$</span> sudo cp /etc/my.cnf /etc/my.cnf.bk
+
 <span class="go">// 文字コードをUTF8に変更</span>
 <span class="go">//   &quot;i&quot;でInsertモード、</span>
 <span class="go">//   [mysqld]の最後に&quot;character-set-server = utf8&quot;を追記し、</span>
 <span class="go">//   &quot;esc&quot;+&quot;:wq&quot;で上書き保存</span>
 <span class="gp">$</span> sudo vim /etc/my.cnf
+
 <span class="go">// 念のため設定ファイルを再確認（lessを抜ける際は&quot;Q&quot;+&quot;Enter&quot;）</span>
 <span class="gp">$</span> less /etc/my.cnf
+
 <span class="go">// MySQLをリスタート</span>
 <span class="gp">$</span> sudo service mysqld restart
 </pre></div>
 </div>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// 文字セットを確認</span>
 <span class="gp">$</span> mysql -u root
+
 <span class="go">mysql&gt; show variables like &#39;%char%&#39;;</span>
 <span class="go">+--------------------------+------------------------------+</span>
 <span class="go">| Variable_name            | Value                        |</span>
@@ -197,6 +204,7 @@
 <li><p class="first">MySQLを自動起動に設定する</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// 自動起動に設定</span>
 <span class="gp">$</span> sudo chkconfig mysqld on
+
 <span class="go">// 自動起動に設定されたか確認</span>
 <span class="gp">$</span> sudo chkconfig <span class="p">|</span> grep mysql
 <span class="go">mysqld          0:off   1:off   2:on    3:on    4:on    5:on    6:off</span>
@@ -209,32 +217,32 @@
 <h2>使用方法<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p class="first">現在のDBを表示する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mysql&gt; show databases;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">show</span> <span class="n">databases</span><span class="p">;</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">コマンドラインをクリアする</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mysql&gt; system clear</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">system</span> <span class="n">clear</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">DB&quot;xxx&quot;を作成する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mysql&gt; create database xxx;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">create</span> <span class="k">database</span> <span class="n">xxx</span><span class="p">;</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">DB&quot;xxx&quot;を削除する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mysql&gt; drop database xxx;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">drop</span> <span class="k">database</span> <span class="n">xxx</span><span class="p">;</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">現在の操作対象のDBを確認する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mysql&gt; select database();</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="k">database</span><span class="p">();</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">操作対象のDBを&quot;xxx&quot;にセットする</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mysql&gt; use xxx;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="n">use</span> <span class="n">xxx</span><span class="p">;</span>
 </pre></div>
 </div>
 </li>
@@ -251,36 +259,46 @@
 <li><p class="first">rootユーザは全ての権限を持っており危険であるため、作業用のユーザを作成する。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// rootユーザでログインする</span>
 <span class="gp">$</span> mysql -u root
-<span class="go">// localhostからアクセスするユーザ&quot;dbuser01&quot;を作成し、パスワードを&quot;xxx&quot;に設定する</span>
-<span class="go">mysql&gt; create user dbuser01@localhost identified by &#39;xxx&#39;;</span>
-<span class="go">// localhostからアクセスするユーザ&quot;dbuser01&quot;に、DB&quot;db01&quot;の全てのテーブルに対する全て権限を付与する</span>
-<span class="go">mysql&gt; grant all on db01.* to dbuser01@localhost;</span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- localhostからアクセスするユーザ&quot;dbuser01&quot;を作成し、パスワードを&quot;xxx&quot;に設定する</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">create</span> <span class="k">user</span> <span class="n">dbuser01</span><span class="o">@</span><span class="n">localhost</span> <span class="n">identified</span> <span class="k">by</span> <span class="s1">&#39;xxx&#39;</span><span class="p">;</span>
+
+<span class="c1">-- localhostからアクセスするユーザ&quot;dbuser01&quot;に、DB&quot;db01&quot;の全てのテーブルに対する全て権限を付与する</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">grant</span> <span class="k">all</span> <span class="k">on</span> <span class="n">db01</span><span class="p">.</span><span class="o">*</span> <span class="k">to</span> <span class="n">dbuser01</span><span class="o">@</span><span class="n">localhost</span><span class="p">;</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">作業用ユーザでログインする</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// ユーザ&quot;dbuser01&quot;（要パスワード）でログインする</span>
 <span class="gp">$</span> mysql -u dbuser01 -p
-<span class="go">// 以下が表示されるので設定したパスワードを入力しEnterキーを押す</span>
-<span class="go">Enter password:</span>
-<span class="go">// 現在のユーザを確認する</span>
-<span class="go">mysql&gt; select user();</span>
-<span class="go">// 出力内容</span>
-<span class="go">+--------------------+</span>
-<span class="go">| user()             |</span>
-<span class="go">+--------------------+</span>
-<span class="go">| dbuser01@localhost |</span>
-<span class="go">+--------------------+</span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- 以下が表示されるので設定したパスワードを入力しEnterキーを押す</span>
+<span class="n">Enter</span> <span class="n">password</span><span class="p">:</span>
+
+<span class="c1">-- 現在のユーザを確認する</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="k">user</span><span class="p">();</span>
+
+<span class="c1">-- 出力内容</span>
+<span class="o">+</span><span class="c1">--------------------+</span>
+<span class="o">|</span> <span class="k">user</span><span class="p">()</span>             <span class="o">|</span>
+<span class="o">+</span><span class="c1">--------------------+</span>
+<span class="o">|</span> <span class="n">dbuser01</span><span class="o">@</span><span class="n">localhost</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">--------------------+</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">ユーザとDBを削除する場合</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// rootユーザでログインする</span>
 <span class="gp">$</span> mysql -u root
-<span class="go">// DB&quot;xxx&quot;を削除する</span>
-<span class="go">mysql&gt; drop database xxx;</span>
-<span class="go">// ユーザ&quot;dbuser01@localhost&quot;を削除する</span>
-<span class="go">mysql&gt; drop user dbuser01@localhost;</span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- DB&quot;xxx&quot;を削除する</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">drop</span> <span class="k">database</span> <span class="n">xxx</span><span class="p">;</span>
+
+<span class="c1">-- ユーザ&quot;dbuser01@localhost&quot;を削除する</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">drop</span> <span class="k">user</span> <span class="n">dbuser01</span><span class="o">@</span><span class="n">localhost</span><span class="p">;</span>
 </pre></div>
 </div>
 </li>
@@ -294,8 +312,10 @@
 <li><p class="first">&quot;initialize.sql&quot;ファイルを作成する（例）</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- DB&quot;mydb&quot;が存在していたら削除する（存在しない場合は何もしない）</span>
 <span class="k">drop</span> <span class="k">database</span> <span class="k">if</span> <span class="k">exists</span> <span class="n">mydb</span><span class="p">;</span>
+
 <span class="c1">-- DB&quot;mydb&quot;を作成する</span>
 <span class="k">create</span> <span class="k">database</span> <span class="n">mydb</span><span class="p">;</span>
+
 <span class="c1">-- localhostからアクセスするユーザ&quot;dbuser01&quot;を作成</span>
 <span class="c1">-- パスワードを&quot;xxx&quot;に設定</span>
 <span class="c1">-- DB&quot;mydb&quot;の全てのテーブルに対する全て権限を付与する</span>
@@ -309,6 +329,43 @@
 </div>
 </li>
 </ul>
+</div>
+<div class="section" id="id5">
+<h2>テーブル操作<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- DB&quot;mydb&quot;を使用</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="n">use</span> <span class="n">mydb</span><span class="p">;</span>
+
+<span class="c1">-- テーブル&quot;users&quot;を作成</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">create</span> <span class="k">table</span> <span class="n">users</span><span class="p">(</span><span class="n">id</span> <span class="nb">int</span> <span class="n">unsigned</span><span class="p">,</span> <span class="n">name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span> <span class="n">age</span> <span class="nb">int</span><span class="p">);</span>
+
+<span class="c1">-- テーブルを表示</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">show</span> <span class="n">tables</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----------------+</span>
+<span class="o">|</span> <span class="n">Tables_in_mydb</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----------------+</span>
+<span class="o">|</span> <span class="n">users</span>          <span class="o">|</span>
+<span class="o">+</span><span class="c1">----------------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;の詳細を表示（desc:description）</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">desc</span> <span class="n">users</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">-------+------------------+------+-----+---------+-------+</span>
+<span class="o">|</span> <span class="n">Field</span> <span class="o">|</span> <span class="k">Type</span>             <span class="o">|</span> <span class="k">Null</span> <span class="o">|</span> <span class="k">Key</span> <span class="o">|</span> <span class="k">Default</span> <span class="o">|</span> <span class="n">Extra</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">-------+------------------+------+-----+---------+-------+</span>
+<span class="o">|</span> <span class="n">id</span>    <span class="o">|</span> <span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="n">unsigned</span> <span class="o">|</span> <span class="n">YES</span>  <span class="o">|</span>     <span class="o">|</span> <span class="k">NULL</span>    <span class="o">|</span>       <span class="o">|</span>
+<span class="o">|</span> <span class="n">name</span>  <span class="o">|</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>      <span class="o">|</span> <span class="n">YES</span>  <span class="o">|</span>     <span class="o">|</span> <span class="k">NULL</span>    <span class="o">|</span>       <span class="o">|</span>
+<span class="o">|</span> <span class="n">age</span>   <span class="o">|</span> <span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>          <span class="o">|</span> <span class="n">YES</span>  <span class="o">|</span>     <span class="o">|</span> <span class="k">NULL</span>    <span class="o">|</span>       <span class="o">|</span>
+<span class="o">+</span><span class="c1">-------+------------------+------+-----+---------+-------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;を削除</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">drop</span> <span class="k">table</span> <span class="n">users</span><span class="p">;</span>
+
+<span class="c1">-- テーブルを表示</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">show</span> <span class="n">tables</span><span class="p">;</span>
+<span class="n">Empty</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 </div>
 
