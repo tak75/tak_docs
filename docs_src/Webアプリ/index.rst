@@ -11,4 +11,5 @@ Webアプリ
    JavaScript
    Flask/index
    Ruby
+   MySQL
    共通のメモ

@@ -537,6 +537,13 @@ my-label_ を参照のこと。
 コードブロック（code-block）
 -----------------------------
 
+コンソールの場合
+
+.. code-block:: console
+
+  $ irb
+  > 
+
 pythonの場合
 
 .. code-block:: python
@@ -557,6 +564,13 @@ c言語の場合
    }
 
 実際の記述::
+
+ コンソールの場合
+
+ .. code-block:: console
+
+    $ irb
+    > 
 
  pythonの場合
 

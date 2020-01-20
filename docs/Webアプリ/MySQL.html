@@ -1,0 +1,342 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>MySQL &#8212; Tak Documents  ドキュメント</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="共通のメモ" href="共通のメモ.html" />
+    <link rel="prev" title="Ruby" href="Ruby.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="共通のメモ.html" title="共通のメモ"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="Ruby.html" title="Ruby"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Webアプリ</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VirtualBox/index.html">VirtualBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Webアプリ</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="HTML.html">HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CSS.html">CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bootstrap.html">Bootstrap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="JavaScript.html">JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Flask/index.html">Flask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Ruby.html">Ruby</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="共通のメモ.html">共通のメモ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../デザインパターン/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../備忘録/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">MySQL</a><ul>
+<li><a class="reference internal" href="#cloud9">Cloud9での環境構築</a></li>
+<li><a class="reference internal" href="#id1">使用方法</a></li>
+<li><a class="reference internal" href="#id2">作業用ユーザの作成</a></li>
+<li><a class="reference internal" href="#sqlsql">SQLファイルからSQLを実行</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="Ruby.html"
+                        title="前の章へ">Ruby</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="共通のメモ.html"
+                        title="次の章へ">共通のメモ</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="mysql">
+<h1>MySQL<a class="headerlink" href="#mysql" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="cloud9">
+<h2>Cloud9での環境構築<a class="headerlink" href="#cloud9" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">Cloud9にはデフォルトでMySQLがインストールされている</p>
+</li>
+<li><p class="first">現在のバージョンを表示する</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> mysql --version
+<span class="go">mysql  Ver 14.14 Distrib 5.5.62, for Linux (x86_64) using readline 5.1</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">現在のバージョンより最新の安定版がある場合は、サービスを停止し、最新版を再インストールする</p>
+</li>
+<li><p class="first">例）一旦5.5系をアンインストールし、安定版5.7系の最新バージョンをインストールする</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo service mysqld stop
+<span class="gp">$</span> sudo yum -y remove mysql-config mysql55-server mysql55-libs mysql55
+<span class="gp">$</span> sudo yum -y install mysql57-server mysql57
+</pre></div>
+</div>
+</li>
+<li><p class="first">サービスを開始する</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo service mysqld start
+</pre></div>
+</div>
+</li>
+<li><p class="first">現在のステータスを表示する</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> service mysqld status
+</pre></div>
+</div>
+</li>
+<li><p class="first">rootユーザでログインする（パスワード不要）</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> mysql -u root
+<span class="go">mysql&gt; exit    // 終了する場合</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">日本語の文字コードをUTF8に変える</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// 現在の文字セットを確認</span>
+<span class="gp">$</span> mysql -u root
+<span class="go">mysql&gt; show variables like &#39;%char%&#39;;</span>
+<span class="go">+--------------------------+------------------------------+</span>
+<span class="go">| Variable_name            | Value                        |</span>
+<span class="go">+--------------------------+------------------------------+</span>
+<span class="go">| character_set_client     | utf8                         |</span>
+<span class="go">| character_set_connection | utf8                         |</span>
+<span class="go">| character_set_database   | latin1                       |   // これをutf8に変えたい</span>
+<span class="go">| character_set_filesystem | binary                       |</span>
+<span class="go">| character_set_results    | utf8                         |   // これをutf8に変えたい</span>
+<span class="go">| character_set_server     | latin1                       |</span>
+<span class="go">| character_set_system     | utf8                         |</span>
+<span class="go">| character_sets_dir       | /usr/share/mysql57/charsets/ |</span>
+<span class="go">+--------------------------+------------------------------+</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// 現在の設定ファイルをチェック（lessを抜ける際は&quot;Q&quot;+&quot;Enter&quot;）</span>
+<span class="gp">$</span> less /etc/my.cnf
+<span class="go">// 念のため現在の設定ファイルをバックアップ</span>
+<span class="gp">$</span> sudo cp /etc/my.cnf /etc/my.cnf.bk
+<span class="go">// 文字コードをUTF8に変更</span>
+<span class="go">//   &quot;i&quot;でInsertモード、</span>
+<span class="go">//   [mysqld]の最後に&quot;character-set-server = utf8&quot;を追記し、</span>
+<span class="go">//   &quot;esc&quot;+&quot;:wq&quot;で上書き保存</span>
+<span class="gp">$</span> sudo vim /etc/my.cnf
+<span class="go">// 念のため設定ファイルを再確認（lessを抜ける際は&quot;Q&quot;+&quot;Enter&quot;）</span>
+<span class="gp">$</span> less /etc/my.cnf
+<span class="go">// MySQLをリスタート</span>
+<span class="gp">$</span> sudo service mysqld restart
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// 文字セットを確認</span>
+<span class="gp">$</span> mysql -u root
+<span class="go">mysql&gt; show variables like &#39;%char%&#39;;</span>
+<span class="go">+--------------------------+------------------------------+</span>
+<span class="go">| Variable_name            | Value                        |</span>
+<span class="go">+--------------------------+------------------------------+</span>
+<span class="go">| character_set_client     | utf8                         |</span>
+<span class="go">| character_set_connection | utf8                         |</span>
+<span class="go">| character_set_database   | utf8                         |</span>
+<span class="go">| character_set_filesystem | binary                       |</span>
+<span class="go">| character_set_results    | utf8                         |</span>
+<span class="go">| character_set_server     | utf8                         |</span>
+<span class="go">| character_set_system     | utf8                         |</span>
+<span class="go">| character_sets_dir       | /usr/share/mysql57/charsets/ |</span>
+<span class="go">+--------------------------+------------------------------+</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">MySQLを自動起動に設定する</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// 自動起動に設定</span>
+<span class="gp">$</span> sudo chkconfig mysqld on
+<span class="go">// 自動起動に設定されたか確認</span>
+<span class="gp">$</span> sudo chkconfig <span class="p">|</span> grep mysql
+<span class="go">mysqld          0:off   1:off   2:on    3:on    4:on    5:on    6:off</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2>使用方法<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">現在のDBを表示する</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mysql&gt; show databases;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">コマンドラインをクリアする</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mysql&gt; system clear</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">DB&quot;xxx&quot;を作成する</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mysql&gt; create database xxx;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">DB&quot;xxx&quot;を削除する</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mysql&gt; drop database xxx;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">現在の操作対象のDBを確認する</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mysql&gt; select database();</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">操作対象のDBを&quot;xxx&quot;にセットする</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mysql&gt; use xxx;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">操作対象のDBを&quot;xxx&quot;にセットしてログインする</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> mysql -u root db01
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>作業用ユーザの作成<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">rootユーザは全ての権限を持っており危険であるため、作業用のユーザを作成する。</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// rootユーザでログインする</span>
+<span class="gp">$</span> mysql -u root
+<span class="go">// localhostからアクセスするユーザ&quot;dbuser01&quot;を作成し、パスワードを&quot;xxx&quot;に設定する</span>
+<span class="go">mysql&gt; create user dbuser01@localhost identified by &#39;xxx&#39;;</span>
+<span class="go">// localhostからアクセスするユーザ&quot;dbuser01&quot;に、DB&quot;db01&quot;の全てのテーブルに対する全て権限を付与する</span>
+<span class="go">mysql&gt; grant all on db01.* to dbuser01@localhost;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">作業用ユーザでログインする</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// ユーザ&quot;dbuser01&quot;（要パスワード）でログインする</span>
+<span class="gp">$</span> mysql -u dbuser01 -p
+<span class="go">// 以下が表示されるので設定したパスワードを入力しEnterキーを押す</span>
+<span class="go">Enter password:</span>
+<span class="go">// 現在のユーザを確認する</span>
+<span class="go">mysql&gt; select user();</span>
+<span class="go">// 出力内容</span>
+<span class="go">+--------------------+</span>
+<span class="go">| user()             |</span>
+<span class="go">+--------------------+</span>
+<span class="go">| dbuser01@localhost |</span>
+<span class="go">+--------------------+</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">ユーザとDBを削除する場合</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// rootユーザでログインする</span>
+<span class="gp">$</span> mysql -u root
+<span class="go">// DB&quot;xxx&quot;を削除する</span>
+<span class="go">mysql&gt; drop database xxx;</span>
+<span class="go">// ユーザ&quot;dbuser01@localhost&quot;を削除する</span>
+<span class="go">mysql&gt; drop user dbuser01@localhost;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="sqlsql">
+<h2>SQLファイルからSQLを実行<a class="headerlink" href="#sqlsql" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">SQLでのコメント方法は&quot;--&quot;か、&quot;/* <a href="#id3"><span class="problematic" id="id4">*</span></a>/&quot;</p>
+</li>
+<li><p class="first">&quot;initialize.sql&quot;ファイルを作成する（例）</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- DB&quot;mydb&quot;が存在していたら削除する（存在しない場合は何もしない）</span>
+<span class="k">drop</span> <span class="k">database</span> <span class="k">if</span> <span class="k">exists</span> <span class="n">mydb</span><span class="p">;</span>
+<span class="c1">-- DB&quot;mydb&quot;を作成する</span>
+<span class="k">create</span> <span class="k">database</span> <span class="n">mydb</span><span class="p">;</span>
+<span class="c1">-- localhostからアクセスするユーザ&quot;dbuser01&quot;を作成</span>
+<span class="c1">-- パスワードを&quot;xxx&quot;に設定</span>
+<span class="c1">-- DB&quot;mydb&quot;の全てのテーブルに対する全て権限を付与する</span>
+<span class="k">grant</span> <span class="k">all</span> <span class="k">on</span> <span class="n">mydb</span><span class="p">.</span><span class="o">*</span> <span class="k">to</span> <span class="n">mydbuser</span><span class="o">@</span><span class="n">localhost</span> <span class="n">identified</span> <span class="k">by</span> <span class="s1">&#39;xxx&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">&quot;initialize.sql&quot;ファイルをrootユーザ権限で実行する</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> mysql -u root &lt; initialize.sql
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="共通のメモ.html" title="共通のメモ"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="Ruby.html" title="Ruby"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Webアプリ</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, tak.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 で生成しました。
+    </div>
+  </body>
+</html>

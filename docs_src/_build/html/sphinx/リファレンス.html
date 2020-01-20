@@ -638,6 +638,11 @@ reStの記法は **使えない**。
 </div>
 <div class="section" id="code-block">
 <h2>コードブロック（code-block）<a class="headerlink" href="#code-block" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>コンソールの場合</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> irb
+<span class="gp">&gt;</span>
+</pre></div>
+</div>
 <p>pythonの場合</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wx</span>
 
@@ -654,24 +659,31 @@ reStの記法は **使えない**。
 </pre></div>
 </div>
 <p>実際の記述:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pythonの場合</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>コンソールの場合
 
-<span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">python</span>
+.. code-block:: console
 
-   <span class="kn">import</span> <span class="nn">wx</span>
+   $ irb
+   &gt;
 
-   <span class="k">class</span> <span class="nc">Base</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-       <span class="n">basecolr</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+pythonの場合
 
-<span class="n">c言語の場合</span>
+.. code-block:: python
 
-<span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">c</span>
+   import wx
 
-   <span class="nb">int</span> <span class="n">func_a</span><span class="p">(</span><span class="nb">int</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="nb">int</span> <span class="n">const</span> <span class="n">b</span><span class="p">)</span>
-   <span class="p">{</span>
-       <span class="n">static</span> <span class="nb">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-       <span class="o">*</span><span class="n">a</span> <span class="o">=</span> <span class="n">c</span><span class="o">++</span><span class="p">;</span>
-   <span class="p">}</span>
+   class Base(object):
+       basecolr = (255, 255, 255)
+
+c言語の場合
+
+.. code-block:: c
+
+   int func_a(int* a, int const b)
+   {
+       static int c = 0;
+       *a = c++;
+   }
 </pre></div>
 </div>
 </div>
