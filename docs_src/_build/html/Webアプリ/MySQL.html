@@ -75,7 +75,15 @@
 <li><a class="reference internal" href="#id1">使用方法</a></li>
 <li><a class="reference internal" href="#id2">作業用ユーザの作成</a></li>
 <li><a class="reference internal" href="#sqlsql">SQLファイルからSQLを実行</a></li>
-<li><a class="reference internal" href="#id5">テーブル操作</a></li>
+<li><a class="reference internal" href="#id3">テーブル操作</a></li>
+<li><a class="reference internal" href="#id4">データの挿入</a></li>
+<li><a class="reference internal" href="#id5">値の取得</a></li>
+<li><a class="reference internal" href="#id6">条件を指定して値を取得</a></li>
+<li><a class="reference internal" href="#id7">パターンマッチ</a></li>
+<li><a class="reference internal" href="#id8">並び替え</a></li>
+<li><a class="reference internal" href="#id9">件数の制限</a></li>
+<li><a class="reference internal" href="#id10">データの更新</a></li>
+<li><a class="reference internal" href="#id11">データの削除</a></li>
 </ul>
 </li>
 </ul>
@@ -307,8 +315,6 @@
 <div class="section" id="sqlsql">
 <h2>SQLファイルからSQLを実行<a class="headerlink" href="#sqlsql" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
-<li><p class="first">SQLでのコメント方法は&quot;--&quot;か、&quot;/* <a href="#id3"><span class="problematic" id="id4">*</span></a>/&quot;</p>
-</li>
 <li><p class="first">&quot;initialize.sql&quot;ファイルを作成する（例）</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- DB&quot;mydb&quot;が存在していたら削除する（存在しない場合は何もしない）</span>
 <span class="k">drop</span> <span class="k">database</span> <span class="k">if</span> <span class="k">exists</span> <span class="n">mydb</span><span class="p">;</span>
@@ -330,8 +336,8 @@
 </li>
 </ul>
 </div>
-<div class="section" id="id5">
-<h2>テーブル操作<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id3">
+<h2>テーブル操作<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- DB&quot;mydb&quot;を使用</span>
 <span class="n">mysql</span><span class="o">&gt;</span> <span class="n">use</span> <span class="n">mydb</span><span class="p">;</span>
@@ -362,6 +368,513 @@
 
 <span class="c1">-- テーブルを表示</span>
 <span class="n">mysql</span><span class="o">&gt;</span> <span class="k">show</span> <span class="n">tables</span><span class="p">;</span>
+<span class="n">Empty</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id4">
+<h2>データの挿入<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- データの挿入</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">insert</span> <span class="k">into</span> <span class="n">users</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span> <span class="k">values</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;sato&#39;</span><span class="p">,</span><span class="mi">20</span><span class="p">);</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">insert</span> <span class="k">into</span> <span class="n">users</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span> <span class="k">values</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;suzuki&#39;</span><span class="p">,</span><span class="mi">21</span><span class="p">);</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">insert</span> <span class="k">into</span> <span class="n">users</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span> <span class="k">values</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;takahashi&#39;</span><span class="p">,</span><span class="k">null</span><span class="p">);</span>
+
+<span class="c1">-- テーブル&quot;users&quot;から全てを選択し表示</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">------+-----------+------+</span>
+<span class="o">|</span> <span class="n">id</span>   <span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">------+-----------+------+</span>
+<span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span> <span class="n">sato</span>      <span class="o">|</span>   <span class="mi">20</span> <span class="o">|</span>
+<span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span> <span class="n">suzuki</span>    <span class="o">|</span>   <span class="mi">21</span> <span class="o">|</span>
+<span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span> <span class="n">takahashi</span> <span class="o">|</span> <span class="k">NULL</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">------+-----------+------+</span>
+
+<span class="c1">-- 一度に複数のデータを挿入</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">insert</span> <span class="k">into</span> <span class="n">users</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span><span class="n">age</span><span class="p">)</span> <span class="k">values</span>
+    <span class="o">-&gt;</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="s1">&#39;tanaka&#39;</span><span class="p">,</span><span class="mi">23</span><span class="p">),</span>
+    <span class="o">-&gt;</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;ito&#39;</span><span class="p">,</span><span class="mi">24</span><span class="p">),</span>
+    <span class="o">-&gt;</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="s1">&#39;watanabe&#39;</span><span class="p">,</span><span class="mi">25</span><span class="p">);</span>
+
+<span class="c1">-- テーブル&quot;users&quot;から全てを選択し表示</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">------+-----------+------+</span>
+<span class="o">|</span> <span class="n">id</span>   <span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">------+-----------+------+</span>
+<span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span> <span class="n">sato</span>      <span class="o">|</span>   <span class="mi">20</span> <span class="o">|</span>
+<span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span> <span class="n">suzuki</span>    <span class="o">|</span>   <span class="mi">21</span> <span class="o">|</span>
+<span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span> <span class="n">takahashi</span> <span class="o">|</span> <span class="k">NULL</span> <span class="o">|</span>
+<span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span> <span class="n">tanaka</span>    <span class="o">|</span>   <span class="mi">23</span> <span class="o">|</span>
+<span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span> <span class="n">ito</span>       <span class="o">|</span>   <span class="mi">24</span> <span class="o">|</span>
+<span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span> <span class="n">watanabe</span>  <span class="o">|</span>   <span class="mi">25</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">------+-----------+------+</span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- id を &quot;auto increment&quot; &amp; &quot;not null&quot; &amp; &quot;prmary key&quot;</span>
+<span class="c1">-- age を &quot;not null&quot; としてテーブル&quot;users&quot;を作成する</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">create</span> <span class="k">table</span> <span class="n">users</span><span class="p">(</span><span class="n">id</span> <span class="nb">int</span> <span class="n">unsigned</span> <span class="n">auto_increment</span> <span class="k">not</span> <span class="k">null</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span> <span class="n">name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span> <span class="n">age</span> <span class="nb">int</span> <span class="k">not</span> <span class="k">null</span><span class="p">);</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">desc</span> <span class="n">users</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">-------+------------------+------+-----+---------+----------------+</span>
+<span class="o">|</span> <span class="n">Field</span> <span class="o">|</span> <span class="k">Type</span>             <span class="o">|</span> <span class="k">Null</span> <span class="o">|</span> <span class="k">Key</span> <span class="o">|</span> <span class="k">Default</span> <span class="o">|</span> <span class="n">Extra</span>          <span class="o">|</span>
+<span class="o">+</span><span class="c1">-------+------------------+------+-----+---------+----------------+</span>
+<span class="o">|</span> <span class="n">id</span>    <span class="o">|</span> <span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="n">unsigned</span> <span class="o">|</span> <span class="k">NO</span>   <span class="o">|</span> <span class="n">PRI</span> <span class="o">|</span> <span class="k">NULL</span>    <span class="o">|</span> <span class="n">auto_increment</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">name</span>  <span class="o">|</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>      <span class="o">|</span> <span class="n">YES</span>  <span class="o">|</span>     <span class="o">|</span> <span class="k">NULL</span>    <span class="o">|</span>                <span class="o">|</span>
+<span class="o">|</span> <span class="n">age</span>   <span class="o">|</span> <span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>          <span class="o">|</span> <span class="k">NO</span>   <span class="o">|</span>     <span class="o">|</span> <span class="k">NULL</span>    <span class="o">|</span>                <span class="o">|</span>
+<span class="o">+</span><span class="c1">-------+------------------+------+-----+---------+----------------+</span>
+
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">insert</span> <span class="k">into</span> <span class="n">users</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span> <span class="k">values</span><span class="p">(</span><span class="s1">&#39;sato&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">insert</span> <span class="k">into</span> <span class="n">users</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span> <span class="k">values</span><span class="p">(</span><span class="s1">&#39;suzuki&#39;</span><span class="p">,</span> <span class="mi">21</span><span class="p">);</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+--------+-----+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>   <span class="o">|</span> <span class="n">age</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+--------+-----+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">sato</span>   <span class="o">|</span>  <span class="mi">20</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="n">suzuki</span> <span class="o">|</span>  <span class="mi">21</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+--------+-----+</span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- id を &quot;auto increment&quot; &amp; &quot;not null&quot; &amp; &quot;prmary key&quot;</span>
+<span class="c1">-- age を &quot;not null&quot; &amp; &quot;初期値=1&quot; としてテーブル&quot;users&quot;を作成する</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">create</span> <span class="k">table</span> <span class="n">users</span><span class="p">(</span><span class="n">id</span> <span class="nb">int</span> <span class="n">unsigned</span> <span class="n">auto_increment</span> <span class="k">not</span> <span class="k">null</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span>
+    <span class="o">-&gt;</span> <span class="n">name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span>
+    <span class="o">-&gt;</span> <span class="n">age</span> <span class="nb">int</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">desc</span> <span class="n">users</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">-------+------------------+------+-----+---------+----------------+</span>
+<span class="o">|</span> <span class="n">Field</span> <span class="o">|</span> <span class="k">Type</span>             <span class="o">|</span> <span class="k">Null</span> <span class="o">|</span> <span class="k">Key</span> <span class="o">|</span> <span class="k">Default</span> <span class="o">|</span> <span class="n">Extra</span>          <span class="o">|</span>
+<span class="o">+</span><span class="c1">-------+------------------+------+-----+---------+----------------+</span>
+<span class="o">|</span> <span class="n">id</span>    <span class="o">|</span> <span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="n">unsigned</span> <span class="o">|</span> <span class="k">NO</span>   <span class="o">|</span> <span class="n">PRI</span> <span class="o">|</span> <span class="k">NULL</span>    <span class="o">|</span> <span class="n">auto_increment</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">name</span>  <span class="o">|</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>      <span class="o">|</span> <span class="n">YES</span>  <span class="o">|</span>     <span class="o">|</span> <span class="k">NULL</span>    <span class="o">|</span>                <span class="o">|</span>
+<span class="o">|</span> <span class="n">age</span>   <span class="o">|</span> <span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>          <span class="o">|</span> <span class="k">NO</span>   <span class="o">|</span>     <span class="o">|</span> <span class="mi">1</span>       <span class="o">|</span>                <span class="o">|</span>
+<span class="o">+</span><span class="c1">-------+------------------+------+-----+---------+----------------+</span>
+
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">insert</span> <span class="k">into</span> <span class="n">users</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">values</span><span class="p">(</span><span class="s1">&#39;sato&#39;</span><span class="p">);</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+------+-----+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span> <span class="o">|</span> <span class="n">age</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+------+-----+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">sato</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+------+-----+</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id5">
+<h2>値の取得<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- テーブル&quot;users&quot;から全ての値を取り出す</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">sato</span>      <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="n">suzuki</span>    <span class="o">|</span>   <span class="mi">22</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">takahashi</span> <span class="o">|</span>   <span class="mi">29</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="n">tanaka</span>    <span class="o">|</span>   <span class="mi">30</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">5</span> <span class="o">|</span> <span class="n">ito</span>       <span class="o">|</span>   <span class="mi">19</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">6</span> <span class="o">|</span> <span class="n">watanabe</span>  <span class="o">|</span>   <span class="mi">20</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="n">yamamoto</span>  <span class="o">|</span> <span class="k">NULL</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;から&quot;name&quot;の値を取り出す</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="n">name</span> <span class="k">from</span> <span class="n">users</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">-----------+</span>
+<span class="o">|</span> <span class="n">name</span>      <span class="o">|</span>
+<span class="o">+</span><span class="c1">-----------+</span>
+<span class="o">|</span> <span class="n">sato</span>      <span class="o">|</span>
+<span class="o">|</span> <span class="n">suzuki</span>    <span class="o">|</span>
+<span class="o">|</span> <span class="n">takahashi</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">tanaka</span>    <span class="o">|</span>
+<span class="o">|</span> <span class="n">ito</span>       <span class="o">|</span>
+<span class="o">|</span> <span class="n">watanabe</span>  <span class="o">|</span>
+<span class="o">|</span> <span class="n">yamamoto</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">-----------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;から&quot;name&quot;と&quot;age&quot;の値を取り出す</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span> <span class="k">from</span> <span class="n">users</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">-----------+------+</span>
+<span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">-----------+------+</span>
+<span class="o">|</span> <span class="n">sato</span>      <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">suzuki</span>    <span class="o">|</span>   <span class="mi">22</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">takahashi</span> <span class="o">|</span>   <span class="mi">29</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">tanaka</span>    <span class="o">|</span>   <span class="mi">30</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">ito</span>       <span class="o">|</span>   <span class="mi">19</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">watanabe</span>  <span class="o">|</span>   <span class="mi">20</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">yamamoto</span>  <span class="o">|</span> <span class="k">NULL</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">-----------+------+</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id6">
+<h2>条件を指定して値を取得<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- テーブル&quot;users&quot;からnameが&#39;sato&#39;の値を取り出す</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;sato&#39;</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span> <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+------+------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">sato</span> <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;からageが20でない値を取り出す（下記は2者同意）</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">age</span> <span class="o">&lt;&gt;</span> <span class="mi">20</span><span class="p">;</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">age</span> <span class="o">!=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">sato</span>      <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="n">suzuki</span>    <span class="o">|</span>   <span class="mi">22</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">takahashi</span> <span class="o">|</span>   <span class="mi">29</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="n">tanaka</span>    <span class="o">|</span>   <span class="mi">30</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">5</span> <span class="o">|</span> <span class="n">ito</span>       <span class="o">|</span>   <span class="mi">19</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;からidが1～3の値を取り出す（下記は3者同意）</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">id</span> <span class="k">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">id</span> <span class="k">between</span> <span class="mi">1</span> <span class="k">and</span> <span class="mi">3</span><span class="p">;</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">id</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="k">and</span> <span class="n">id</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">sato</span>      <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="n">suzuki</span>    <span class="o">|</span>   <span class="mi">22</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">takahashi</span> <span class="o">|</span>   <span class="mi">29</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;からidが1～3以外の値を取り出す</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">id</span> <span class="k">not</span> <span class="k">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+<span class="o">+</span><span class="c1">----+----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>     <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+----------+------+</span>
+<span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="n">tanaka</span>   <span class="o">|</span>   <span class="mi">30</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">5</span> <span class="o">|</span> <span class="n">ito</span>      <span class="o">|</span>   <span class="mi">19</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">6</span> <span class="o">|</span> <span class="n">watanabe</span> <span class="o">|</span>   <span class="mi">20</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="n">yamamoto</span> <span class="o">|</span> <span class="k">NULL</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+----------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;からageがnullでない値を取り出す</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">age</span> <span class="k">is</span> <span class="k">not</span> <span class="k">null</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">sato</span>      <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="n">suzuki</span>    <span class="o">|</span>   <span class="mi">22</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">takahashi</span> <span class="o">|</span>   <span class="mi">29</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="n">tanaka</span>    <span class="o">|</span>   <span class="mi">30</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">5</span> <span class="o">|</span> <span class="n">ito</span>       <span class="o">|</span>   <span class="mi">19</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">6</span> <span class="o">|</span> <span class="n">watanabe</span>  <span class="o">|</span>   <span class="mi">20</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;からageがnullの値を取り出す</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">age</span> <span class="k">is</span> <span class="k">null</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>     <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+----------+------+</span>
+<span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="n">yamamoto</span> <span class="o">|</span> <span class="k">NULL</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+----------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;からageが20か29の値を取り出す</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">20</span> <span class="k">or</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">29</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">takahashi</span> <span class="o">|</span>   <span class="mi">29</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">6</span> <span class="o">|</span> <span class="n">watanabe</span>  <span class="o">|</span>   <span class="mi">20</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id7">
+<h2>パターンマッチ<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">&quot;%&quot;はワイルドカードとして認識され、文字数は指定されない。</p>
+</li>
+<li><p class="first">&quot;_&quot;はワイルドカードとして認識され、その数が文字数を表す。</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">sato</span>      <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="n">suzuki</span>    <span class="o">|</span>   <span class="mi">22</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">takahashi</span> <span class="o">|</span>   <span class="mi">29</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="n">tanaka</span>    <span class="o">|</span>   <span class="mi">30</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">5</span> <span class="o">|</span> <span class="n">ito</span>       <span class="o">|</span>   <span class="mi">19</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">6</span> <span class="o">|</span> <span class="n">watanabe</span>  <span class="o">|</span>   <span class="mi">20</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="n">yamamoto</span>  <span class="o">|</span> <span class="k">NULL</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;からnameが&#39;sa&#39;で始まる値を取り出す</span>
+<span class="c1">-- （下記は2者同意。大文字／小文字は区別されない）</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">name</span> <span class="k">like</span> <span class="s1">&#39;sa%&#39;</span><span class="p">;</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">name</span> <span class="k">like</span> <span class="s1">&#39;SA%&#39;</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span> <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+------+------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">sato</span> <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;からnameの途中に&#39;a&#39;を含む値を取り出す</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">name</span> <span class="k">like</span> <span class="s1">&#39;%a%&#39;</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">sato</span>      <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">takahashi</span> <span class="o">|</span>   <span class="mi">29</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="n">tanaka</span>    <span class="o">|</span>   <span class="mi">30</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">6</span> <span class="o">|</span> <span class="n">watanabe</span>  <span class="o">|</span>   <span class="mi">20</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="n">yamamoto</span>  <span class="o">|</span> <span class="k">NULL</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;からnameが&#39;a&#39;で終わる値を取り出す</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">name</span> <span class="k">like</span> <span class="s1">&#39;%a&#39;</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+--------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>   <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+--------+------+</span>
+<span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="n">tanaka</span> <span class="o">|</span>   <span class="mi">30</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+--------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;からnameの途中に&#39;a&#39;と&#39;k&#39;をその順番で含む値を取り出す</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">name</span> <span class="k">like</span> <span class="s1">&#39;%a%k%&#39;</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">takahashi</span> <span class="o">|</span>   <span class="mi">29</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="n">tanaka</span>    <span class="o">|</span>   <span class="mi">30</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;からnameが6文字の値を取り出す（&quot;_&quot;を6つ書く）</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">name</span> <span class="k">like</span> <span class="s1">&#39;______&#39;</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+--------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>   <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+--------+------+</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="n">suzuki</span> <span class="o">|</span>   <span class="mi">22</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="n">tanaka</span> <span class="o">|</span>   <span class="mi">30</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+--------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;からnameの2文字目が&#39;a&#39;の値を取り出す</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">name</span> <span class="k">like</span> <span class="s1">&#39;_a%&#39;</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">sato</span>      <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">takahashi</span> <span class="o">|</span>   <span class="mi">29</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="n">tanaka</span>    <span class="o">|</span>   <span class="mi">30</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">6</span> <span class="o">|</span> <span class="n">watanabe</span>  <span class="o">|</span>   <span class="mi">20</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="n">yamamoto</span>  <span class="o">|</span> <span class="k">NULL</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h2>並び替え<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- テーブル&quot;users&quot;からageを昇順にソートして全ての値を取り出す</span>
+<span class="c1">-- （下記は2者同意。昇順の場合は省略できる）</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">order</span> <span class="k">by</span> <span class="n">age</span> <span class="k">asc</span><span class="p">;</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">order</span> <span class="k">by</span> <span class="n">age</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="n">yamamoto</span>  <span class="o">|</span> <span class="k">NULL</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">sato</span>      <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">5</span> <span class="o">|</span> <span class="n">ito</span>       <span class="o">|</span>   <span class="mi">19</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">6</span> <span class="o">|</span> <span class="n">watanabe</span>  <span class="o">|</span>   <span class="mi">20</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="n">suzuki</span>    <span class="o">|</span>   <span class="mi">22</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">takahashi</span> <span class="o">|</span>   <span class="mi">29</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="n">tanaka</span>    <span class="o">|</span>   <span class="mi">30</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;からageを降順にソートして全ての値を取り出す</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">order</span> <span class="k">by</span> <span class="n">age</span> <span class="k">desc</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="n">tanaka</span>    <span class="o">|</span>   <span class="mi">30</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">takahashi</span> <span class="o">|</span>   <span class="mi">29</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="n">suzuki</span>    <span class="o">|</span>   <span class="mi">22</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">6</span> <span class="o">|</span> <span class="n">watanabe</span>  <span class="o">|</span>   <span class="mi">20</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">5</span> <span class="o">|</span> <span class="n">ito</span>       <span class="o">|</span>   <span class="mi">19</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">sato</span>      <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="n">yamamoto</span>  <span class="o">|</span> <span class="k">NULL</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id9">
+<h2>件数の制限<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- テーブル&quot;users&quot;から3件値を取り出す</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">limit</span> <span class="mi">3</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">sato</span>      <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="n">suzuki</span>    <span class="o">|</span>   <span class="mi">22</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">takahashi</span> <span class="o">|</span>   <span class="mi">29</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;からageを昇順にソートして上位3件を取り出す</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">order</span> <span class="k">by</span> <span class="n">age</span> <span class="k">asc</span> <span class="k">limit</span> <span class="mi">3</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>     <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+----------+------+</span>
+<span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="n">yamamoto</span> <span class="o">|</span> <span class="k">NULL</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">sato</span>     <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">5</span> <span class="o">|</span> <span class="n">ito</span>      <span class="o">|</span>   <span class="mi">19</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+----------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;からageがnull以外の値を取り出し、ageを昇順にソートして上位3件を取り出す</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">age</span> <span class="k">is</span> <span class="k">not</span> <span class="k">null</span> <span class="k">order</span> <span class="k">by</span> <span class="n">age</span> <span class="k">asc</span> <span class="k">limit</span> <span class="mi">3</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>     <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+----------+------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">sato</span>     <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">5</span> <span class="o">|</span> <span class="n">ito</span>      <span class="o">|</span>   <span class="mi">19</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">6</span> <span class="o">|</span> <span class="n">watanabe</span> <span class="o">|</span>   <span class="mi">20</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+----------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;からageがnull以外の値を取り出し、</span>
+<span class="c1">-- ageを昇順にソートして3件オフセットして上位3件を取り出す</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">age</span> <span class="k">is</span> <span class="k">not</span> <span class="k">null</span> <span class="k">order</span> <span class="k">by</span> <span class="n">age</span> <span class="k">asc</span> <span class="k">limit</span> <span class="mi">3</span> <span class="k">offset</span> <span class="mi">3</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="n">suzuki</span>    <span class="o">|</span>   <span class="mi">22</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">takahashi</span> <span class="o">|</span>   <span class="mi">29</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="n">tanaka</span>    <span class="o">|</span>   <span class="mi">30</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id10">
+<h2>データの更新<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">sato</span>      <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="n">suzuki</span>    <span class="o">|</span>   <span class="mi">22</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">takahashi</span> <span class="o">|</span>   <span class="mi">29</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="n">tanaka</span>    <span class="o">|</span>   <span class="mi">30</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">5</span> <span class="o">|</span> <span class="n">ito</span>       <span class="o">|</span>   <span class="mi">19</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">6</span> <span class="o">|</span> <span class="n">watanabe</span>  <span class="o">|</span>   <span class="mi">20</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="n">yamamoto</span>  <span class="o">|</span> <span class="k">NULL</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;において、id=1の値のageを40に更新する</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">update</span> <span class="n">users</span> <span class="k">set</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">40</span> <span class="k">where</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">sato</span>      <span class="o">|</span>   <span class="mi">40</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="n">suzuki</span>    <span class="o">|</span>   <span class="mi">22</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">takahashi</span> <span class="o">|</span>   <span class="mi">29</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="n">tanaka</span>    <span class="o">|</span>   <span class="mi">30</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">5</span> <span class="o">|</span> <span class="n">ito</span>       <span class="o">|</span>   <span class="mi">19</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">6</span> <span class="o">|</span> <span class="n">watanabe</span>  <span class="o">|</span>   <span class="mi">20</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="n">yamamoto</span>  <span class="o">|</span> <span class="k">NULL</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;において、id=1の値のnameを&#39;aaaaa&#39;に、ageを40に更新する</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">update</span> <span class="n">users</span> <span class="k">set</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;aaaaa&#39;</span><span class="p">,</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">41</span> <span class="k">where</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">aaaaa</span>     <span class="o">|</span>   <span class="mi">41</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="n">suzuki</span>    <span class="o">|</span>   <span class="mi">22</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">takahashi</span> <span class="o">|</span>   <span class="mi">29</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="n">tanaka</span>    <span class="o">|</span>   <span class="mi">30</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">5</span> <span class="o">|</span> <span class="n">ito</span>       <span class="o">|</span>   <span class="mi">19</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">6</span> <span class="o">|</span> <span class="n">watanabe</span>  <span class="o">|</span>   <span class="mi">20</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="n">yamamoto</span>  <span class="o">|</span> <span class="k">NULL</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;において、ageが30以上の値のageを99に更新する</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">update</span> <span class="n">users</span> <span class="k">set</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">99</span> <span class="k">where</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">30</span><span class="p">;</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">aaaaa</span>     <span class="o">|</span>   <span class="mi">99</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="n">suzuki</span>    <span class="o">|</span>   <span class="mi">22</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">takahashi</span> <span class="o">|</span>   <span class="mi">29</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="n">tanaka</span>    <span class="o">|</span>   <span class="mi">99</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">5</span> <span class="o">|</span> <span class="n">ito</span>       <span class="o">|</span>   <span class="mi">19</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">6</span> <span class="o">|</span> <span class="n">watanabe</span>  <span class="o">|</span>   <span class="mi">20</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="n">yamamoto</span>  <span class="o">|</span> <span class="k">NULL</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;において、nameを全て&#39;hote&#39;に更新する</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">update</span> <span class="n">users</span> <span class="k">set</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;hoge&#39;</span><span class="p">;</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span> <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+------+------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">hoge</span> <span class="o">|</span>   <span class="mi">99</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="n">hoge</span> <span class="o">|</span>   <span class="mi">22</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">hoge</span> <span class="o">|</span>   <span class="mi">29</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="n">hoge</span> <span class="o">|</span>   <span class="mi">99</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">5</span> <span class="o">|</span> <span class="n">hoge</span> <span class="o">|</span>   <span class="mi">19</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">6</span> <span class="o">|</span> <span class="n">hoge</span> <span class="o">|</span>   <span class="mi">20</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="n">hoge</span> <span class="o">|</span> <span class="k">NULL</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+------+------+</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id11">
+<h2>データの削除<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span>  <span class="mi">1</span> <span class="o">|</span> <span class="n">sato</span>      <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="n">suzuki</span>    <span class="o">|</span>   <span class="mi">22</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">takahashi</span> <span class="o">|</span>   <span class="mi">29</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="n">tanaka</span>    <span class="o">|</span>   <span class="mi">30</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">5</span> <span class="o">|</span> <span class="n">ito</span>       <span class="o">|</span>   <span class="mi">19</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">6</span> <span class="o">|</span> <span class="n">watanabe</span>  <span class="o">|</span>   <span class="mi">20</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="n">yamamoto</span>  <span class="o">|</span> <span class="k">NULL</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;からid=1の値を削除する</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">delete</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+<span class="o">|</span>  <span class="mi">2</span> <span class="o">|</span> <span class="n">suzuki</span>    <span class="o">|</span>   <span class="mi">22</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span> <span class="o">|</span> <span class="n">takahashi</span> <span class="o">|</span>   <span class="mi">29</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span> <span class="o">|</span> <span class="n">tanaka</span>    <span class="o">|</span>   <span class="mi">30</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">5</span> <span class="o">|</span> <span class="n">ito</span>       <span class="o">|</span>   <span class="mi">19</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">6</span> <span class="o">|</span> <span class="n">watanabe</span>  <span class="o">|</span>   <span class="mi">20</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="n">yamamoto</span>  <span class="o">|</span> <span class="k">NULL</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+-----------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;からageが30以上の値を削除する</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">delete</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----+----------+------+</span>
+<span class="o">|</span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span>     <span class="o">|</span> <span class="n">age</span>  <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+----------+------+</span>
+<span class="o">|</span>  <span class="mi">5</span> <span class="o">|</span> <span class="n">ito</span>      <span class="o">|</span>   <span class="mi">19</span> <span class="o">|</span>
+<span class="o">|</span>  <span class="mi">7</span> <span class="o">|</span> <span class="n">yamamoto</span> <span class="o">|</span> <span class="k">NULL</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">----+----------+------+</span>
+
+<span class="c1">-- テーブル&quot;users&quot;から全ての値を削除する</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">delete</span> <span class="k">from</span> <span class="n">users</span><span class="p">;</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span><span class="p">;</span>
 <span class="n">Empty</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span> <span class="n">sec</span><span class="p">)</span>
 </pre></div>
 </div>

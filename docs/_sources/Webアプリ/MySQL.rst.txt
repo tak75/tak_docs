@@ -215,7 +215,6 @@ Cloud9での環境構築
 SQLファイルからSQLを実行
 ==========================
 
-* SQLでのコメント方法は"--"か、"/* */"
 * "initialize.sql"ファイルを作成する（例）
 
   .. code-block:: sql
@@ -271,4 +270,504 @@ SQLファイルからSQLを実行
 
     -- テーブルを表示
     mysql> show tables;
+    Empty set (0.00 sec)
+
+データの挿入
+============
+
+  .. code-block:: sql
+
+    -- データの挿入
+    mysql> insert into users(id, name, age) values(1,'sato',20);
+    mysql> insert into users(id, name, age) values(2,'suzuki',21);
+    mysql> insert into users(id, name, age) values(3,'takahashi',null);
+
+    -- テーブル"users"から全てを選択し表示
+    mysql> select * from users;
+    +------+-----------+------+
+    | id   | name      | age  |
+    +------+-----------+------+
+    |    1 | sato      |   20 |
+    |    2 | suzuki    |   21 |
+    |    3 | takahashi | NULL |
+    +------+-----------+------+
+
+    -- 一度に複数のデータを挿入
+    mysql> insert into users(id, name,age) values
+        -> (4,'tanaka',23),
+        -> (5,'ito',24),
+        -> (6,'watanabe',25);
+
+    -- テーブル"users"から全てを選択し表示
+    mysql> select * from users;
+    +------+-----------+------+
+    | id   | name      | age  |
+    +------+-----------+------+
+    |    1 | sato      |   20 |
+    |    2 | suzuki    |   21 |
+    |    3 | takahashi | NULL |
+    |    4 | tanaka    |   23 |
+    |    5 | ito       |   24 |
+    |    6 | watanabe  |   25 |
+    +------+-----------+------+
+
+  .. code-block:: sql
+
+    -- id を "auto increment" & "not null" & "prmary key"
+    -- age を "not null" としてテーブル"users"を作成する
+    mysql> create table users(id int unsigned auto_increment not null primary key, name varchar(32), age int not null);
+    mysql> desc users;
+    +-------+------------------+------+-----+---------+----------------+
+    | Field | Type             | Null | Key | Default | Extra          |
+    +-------+------------------+------+-----+---------+----------------+
+    | id    | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+    | name  | varchar(32)      | YES  |     | NULL    |                |
+    | age   | int(11)          | NO   |     | NULL    |                |
+    +-------+------------------+------+-----+---------+----------------+
+
+    mysql> insert into users (name, age) values('sato', 20);
+    mysql> insert into users (name, age) values('suzuki', 21);
+    mysql> select * from users;
+    +----+--------+-----+
+    | id | name   | age |
+    +----+--------+-----+
+    |  1 | sato   |  20 |
+    |  2 | suzuki |  21 |
+    +----+--------+-----+
+
+  .. code-block:: sql
+
+    -- id を "auto increment" & "not null" & "prmary key"
+    -- age を "not null" & "初期値=1" としてテーブル"users"を作成する
+    mysql> create table users(id int unsigned auto_increment not null primary key,
+        -> name varchar(32),
+        -> age int not null default 1);
+    mysql> desc users;
+    +-------+------------------+------+-----+---------+----------------+
+    | Field | Type             | Null | Key | Default | Extra          |
+    +-------+------------------+------+-----+---------+----------------+
+    | id    | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+    | name  | varchar(32)      | YES  |     | NULL    |                |
+    | age   | int(11)          | NO   |     | 1       |                |
+    +-------+------------------+------+-----+---------+----------------+
+
+    mysql> insert into users(name) values('sato');
+    mysql> select * from users;
+    +----+------+-----+
+    | id | name | age |
+    +----+------+-----+
+    |  1 | sato |   1 |
+    +----+------+-----+
+
+値の取得
+========
+
+  .. code-block:: sql
+
+    -- テーブル"users"から全ての値を取り出す
+    mysql> select * from users;
+    +----+-----------+------+
+    | id | name      | age  |
+    +----+-----------+------+
+    |  1 | sato      |   18 |
+    |  2 | suzuki    |   22 |
+    |  3 | takahashi |   29 |
+    |  4 | tanaka    |   30 |
+    |  5 | ito       |   19 |
+    |  6 | watanabe  |   20 |
+    |  7 | yamamoto  | NULL |
+    +----+-----------+------+
+
+    -- テーブル"users"から"name"の値を取り出す
+    mysql> select name from users;
+    +-----------+
+    | name      |
+    +-----------+
+    | sato      |
+    | suzuki    |
+    | takahashi |
+    | tanaka    |
+    | ito       |
+    | watanabe  |
+    | yamamoto  |
+    +-----------+
+
+    -- テーブル"users"から"name"と"age"の値を取り出す
+    mysql> select name, age from users;
+    +-----------+------+
+    | name      | age  |
+    +-----------+------+
+    | sato      |   18 |
+    | suzuki    |   22 |
+    | takahashi |   29 |
+    | tanaka    |   30 |
+    | ito       |   19 |
+    | watanabe  |   20 |
+    | yamamoto  | NULL |
+    +-----------+------+
+
+条件を指定して値を取得
+======================
+
+  .. code-block:: sql
+
+    -- テーブル"users"からnameが'sato'の値を取り出す
+    mysql> select * from users where name='sato';
+    +----+------+------+
+    | id | name | age  |
+    +----+------+------+
+    |  1 | sato |   18 |
+    +----+------+------+
+
+    -- テーブル"users"からageが20でない値を取り出す（下記は2者同意）
+    mysql> select * from users where age <> 20;
+    mysql> select * from users where age != 20;
+    +----+-----------+------+
+    | id | name      | age  |
+    +----+-----------+------+
+    |  1 | sato      |   18 |
+    |  2 | suzuki    |   22 |
+    |  3 | takahashi |   29 |
+    |  4 | tanaka    |   30 |
+    |  5 | ito       |   19 |
+    +----+-----------+------+
+
+    -- テーブル"users"からidが1～3の値を取り出す（下記は3者同意）
+    mysql> select * from users where id in (1,2,3);
+    mysql> select * from users where id between 1 and 3;
+    mysql> select * from users where id >= 1 and id <= 3;
+    +----+-----------+------+
+    | id | name      | age  |
+    +----+-----------+------+
+    |  1 | sato      |   18 |
+    |  2 | suzuki    |   22 |
+    |  3 | takahashi |   29 |
+    +----+-----------+------+
+
+    -- テーブル"users"からidが1～3以外の値を取り出す
+    mysql> select * from users where id not in (1,2,3);
+    +----+----------+------+
+    | id | name     | age  |
+    +----+----------+------+
+    |  4 | tanaka   |   30 |
+    |  5 | ito      |   19 |
+    |  6 | watanabe |   20 |
+    |  7 | yamamoto | NULL |
+    +----+----------+------+
+
+    -- テーブル"users"からageがnullでない値を取り出す
+    mysql> select * from users where age is not null;
+    +----+-----------+------+
+    | id | name      | age  |
+    +----+-----------+------+
+    |  1 | sato      |   18 |
+    |  2 | suzuki    |   22 |
+    |  3 | takahashi |   29 |
+    |  4 | tanaka    |   30 |
+    |  5 | ito       |   19 |
+    |  6 | watanabe  |   20 |
+    +----+-----------+------+
+
+    -- テーブル"users"からageがnullの値を取り出す
+    mysql> select * from users where age is null;
+    +----+----------+------+
+    | id | name     | age  |
+    +----+----------+------+
+    |  7 | yamamoto | NULL |
+    +----+----------+------+
+
+    -- テーブル"users"からageが20か29の値を取り出す
+    mysql> select * from users where age = 20 or age = 29;
+    +----+-----------+------+
+    | id | name      | age  |
+    +----+-----------+------+
+    |  3 | takahashi |   29 |
+    |  6 | watanabe  |   20 |
+    +----+-----------+------+
+
+パターンマッチ
+==============
+
+* "%"はワイルドカードとして認識され、文字数は指定されない。
+* "_"はワイルドカードとして認識され、その数が文字数を表す。
+
+  .. code-block:: sql
+
+    mysql> select * from users;
+    +----+-----------+------+
+    | id | name      | age  |
+    +----+-----------+------+
+    |  1 | sato      |   18 |
+    |  2 | suzuki    |   22 |
+    |  3 | takahashi |   29 |
+    |  4 | tanaka    |   30 |
+    |  5 | ito       |   19 |
+    |  6 | watanabe  |   20 |
+    |  7 | yamamoto  | NULL |
+    +----+-----------+------+
+
+    -- テーブル"users"からnameが'sa'で始まる値を取り出す
+    -- （下記は2者同意。大文字／小文字は区別されない）
+    mysql> select * from users where name like 'sa%';
+    mysql> select * from users where name like 'SA%';
+    +----+------+------+
+    | id | name | age  |
+    +----+------+------+
+    |  1 | sato |   18 |
+    +----+------+------+
+
+    -- テーブル"users"からnameの途中に'a'を含む値を取り出す
+    mysql> select * from users where name like '%a%';
+    +----+-----------+------+
+    | id | name      | age  |
+    +----+-----------+------+
+    |  1 | sato      |   18 |
+    |  3 | takahashi |   29 |
+    |  4 | tanaka    |   30 |
+    |  6 | watanabe  |   20 |
+    |  7 | yamamoto  | NULL |
+    +----+-----------+------+
+
+    -- テーブル"users"からnameが'a'で終わる値を取り出す
+    mysql> select * from users where name like '%a';
+    +----+--------+------+
+    | id | name   | age  |
+    +----+--------+------+
+    |  4 | tanaka |   30 |
+    +----+--------+------+
+
+    -- テーブル"users"からnameの途中に'a'と'k'をその順番で含む値を取り出す
+    mysql> select * from users where name like '%a%k%';
+    +----+-----------+------+
+    | id | name      | age  |
+    +----+-----------+------+
+    |  3 | takahashi |   29 |
+    |  4 | tanaka    |   30 |
+    +----+-----------+------+
+
+    -- テーブル"users"からnameが6文字の値を取り出す（"_"を6つ書く）
+    mysql> select * from users where name like '______';
+    +----+--------+------+
+    | id | name   | age  |
+    +----+--------+------+
+    |  2 | suzuki |   22 |
+    |  4 | tanaka |   30 |
+    +----+--------+------+
+
+    -- テーブル"users"からnameの2文字目が'a'の値を取り出す
+    mysql> select * from users where name like '_a%';
+    +----+-----------+------+
+    | id | name      | age  |
+    +----+-----------+------+
+    |  1 | sato      |   18 |
+    |  3 | takahashi |   29 |
+    |  4 | tanaka    |   30 |
+    |  6 | watanabe  |   20 |
+    |  7 | yamamoto  | NULL |
+    +----+-----------+------+
+
+並び替え
+========
+
+  .. code-block:: sql
+
+    -- テーブル"users"からageを昇順にソートして全ての値を取り出す
+    -- （下記は2者同意。昇順の場合は省略できる）
+    mysql> select * from users order by age asc;
+    mysql> select * from users order by age;
+    +----+-----------+------+
+    | id | name      | age  |
+    +----+-----------+------+
+    |  7 | yamamoto  | NULL |
+    |  1 | sato      |   18 |
+    |  5 | ito       |   19 |
+    |  6 | watanabe  |   20 |
+    |  2 | suzuki    |   22 |
+    |  3 | takahashi |   29 |
+    |  4 | tanaka    |   30 |
+    +----+-----------+------+
+
+    -- テーブル"users"からageを降順にソートして全ての値を取り出す
+    mysql> select * from users order by age desc;
+    +----+-----------+------+
+    | id | name      | age  |
+    +----+-----------+------+
+    |  4 | tanaka    |   30 |
+    |  3 | takahashi |   29 |
+    |  2 | suzuki    |   22 |
+    |  6 | watanabe  |   20 |
+    |  5 | ito       |   19 |
+    |  1 | sato      |   18 |
+    |  7 | yamamoto  | NULL |
+    +----+-----------+------+
+
+件数の制限
+===========
+
+  .. code-block:: sql
+
+    -- テーブル"users"から3件値を取り出す
+    mysql> select * from users limit 3;
+    +----+-----------+------+
+    | id | name      | age  |
+    +----+-----------+------+
+    |  1 | sato      |   18 |
+    |  2 | suzuki    |   22 |
+    |  3 | takahashi |   29 |
+    +----+-----------+------+
+
+    -- テーブル"users"からageを昇順にソートして上位3件を取り出す
+    mysql> select * from users order by age asc limit 3;
+    +----+----------+------+
+    | id | name     | age  |
+    +----+----------+------+
+    |  7 | yamamoto | NULL |
+    |  1 | sato     |   18 |
+    |  5 | ito      |   19 |
+    +----+----------+------+
+
+    -- テーブル"users"からageがnull以外の値を取り出し、ageを昇順にソートして上位3件を取り出す
+    mysql> select * from users where age is not null order by age asc limit 3;
+    +----+----------+------+
+    | id | name     | age  |
+    +----+----------+------+
+    |  1 | sato     |   18 |
+    |  5 | ito      |   19 |
+    |  6 | watanabe |   20 |
+    +----+----------+------+
+
+    -- テーブル"users"からageがnull以外の値を取り出し、
+    -- ageを昇順にソートして3件オフセットして上位3件を取り出す
+    mysql> select * from users where age is not null order by age asc limit 3 offset 3;
+    +----+-----------+------+
+    | id | name      | age  |
+    +----+-----------+------+
+    |  2 | suzuki    |   22 |
+    |  3 | takahashi |   29 |
+    |  4 | tanaka    |   30 |
+    +----+-----------+------+
+
+データの更新
+============
+
+  .. code-block:: sql
+
+    mysql> mysql> select * from users;
+    +----+-----------+------+
+    | id | name      | age  |
+    +----+-----------+------+
+    |  1 | sato      |   18 |
+    |  2 | suzuki    |   22 |
+    |  3 | takahashi |   29 |
+    |  4 | tanaka    |   30 |
+    |  5 | ito       |   19 |
+    |  6 | watanabe  |   20 |
+    |  7 | yamamoto  | NULL |
+    +----+-----------+------+
+
+    -- テーブル"users"において、id=1の値のageを40に更新する
+    mysql> update users set age = 40 where id = 1;
+    mysql> select * from users;
+    +----+-----------+------+
+    | id | name      | age  |
+    +----+-----------+------+
+    |  1 | sato      |   40 |
+    |  2 | suzuki    |   22 |
+    |  3 | takahashi |   29 |
+    |  4 | tanaka    |   30 |
+    |  5 | ito       |   19 |
+    |  6 | watanabe  |   20 |
+    |  7 | yamamoto  | NULL |
+    +----+-----------+------+
+
+    -- テーブル"users"において、id=1の値のnameを'aaaaa'に、ageを40に更新する
+    mysql> update users set name = 'aaaaa', age = 41 where id = 1;
+    mysql> select * from users;
+    +----+-----------+------+
+    | id | name      | age  |
+    +----+-----------+------+
+    |  1 | aaaaa     |   41 |
+    |  2 | suzuki    |   22 |
+    |  3 | takahashi |   29 |
+    |  4 | tanaka    |   30 |
+    |  5 | ito       |   19 |
+    |  6 | watanabe  |   20 |
+    |  7 | yamamoto  | NULL |
+    +----+-----------+------+
+
+    -- テーブル"users"において、ageが30以上の値のageを99に更新する
+    mysql> update users set age = 99 where age >= 30;
+    mysql> select * from users;
+    +----+-----------+------+
+    | id | name      | age  |
+    +----+-----------+------+
+    |  1 | aaaaa     |   99 |
+    |  2 | suzuki    |   22 |
+    |  3 | takahashi |   29 |
+    |  4 | tanaka    |   99 |
+    |  5 | ito       |   19 |
+    |  6 | watanabe  |   20 |
+    |  7 | yamamoto  | NULL |
+    +----+-----------+------+
+
+    -- テーブル"users"において、nameを全て'hote'に更新する
+    mysql> update users set name = 'hoge';
+    mysql> select * from users;
+    +----+------+------+
+    | id | name | age  |
+    +----+------+------+
+    |  1 | hoge |   99 |
+    |  2 | hoge |   22 |
+    |  3 | hoge |   29 |
+    |  4 | hoge |   99 |
+    |  5 | hoge |   19 |
+    |  6 | hoge |   20 |
+    |  7 | hoge | NULL |
+    +----+------+------+
+
+データの削除
+============
+
+  .. code-block:: sql
+
+    mysql> select * from users;
+    +----+-----------+------+
+    | id | name      | age  |
+    +----+-----------+------+
+    |  1 | sato      |   18 |
+    |  2 | suzuki    |   22 |
+    |  3 | takahashi |   29 |
+    |  4 | tanaka    |   30 |
+    |  5 | ito       |   19 |
+    |  6 | watanabe  |   20 |
+    |  7 | yamamoto  | NULL |
+    +----+-----------+------+
+
+    -- テーブル"users"からid=1の値を削除する
+    mysql> delete from users where id = 1;
+    mysql> select * from users;
+    +----+-----------+------+
+    | id | name      | age  |
+    +----+-----------+------+
+    |  2 | suzuki    |   22 |
+    |  3 | takahashi |   29 |
+    |  4 | tanaka    |   30 |
+    |  5 | ito       |   19 |
+    |  6 | watanabe  |   20 |
+    |  7 | yamamoto  | NULL |
+    +----+-----------+------+
+
+    -- テーブル"users"からageが30以上の値を削除する
+    mysql> delete from users where age >= 20;
+    mysql> select * from users;
+    +----+----------+------+
+    | id | name     | age  |
+    +----+----------+------+
+    |  5 | ito      |   19 |
+    |  7 | yamamoto | NULL |
+    +----+----------+------+
+
+    -- テーブル"users"から全ての値を削除する
+    mysql> delete from users;
+    mysql> select * from users;
     Empty set (0.00 sec)
