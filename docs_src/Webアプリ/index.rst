@@ -5,6 +5,7 @@ Webアプリ
 .. toctree::
    :maxdepth: 2
 
+   AWS
    HTML
    CSS
    Bootstrap
@@ -12,4 +13,5 @@ Webアプリ
    Flask/index
    Ruby
    MySQL
+   Ruby on Rails
    共通のメモ
