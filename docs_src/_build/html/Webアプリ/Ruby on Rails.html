@@ -75,7 +75,14 @@
 <li><a class="reference internal" href="#">Ruby on Rails</a><ul>
 <li><a class="reference internal" href="#id1">はじめに</a></li>
 <li><a class="reference internal" href="#id2">開発環境構築</a></li>
-<li><a class="reference internal" href="#rails">新規railsプロジェクトの作成</a></li>
+<li><a class="reference internal" href="#id3">新規プロジェクトの作成</a></li>
+<li><a class="reference internal" href="#id4">コントローラの作成</a></li>
+<li><a class="reference internal" href="#id5">モデルの作成</a></li>
+<li><a class="reference internal" href="#id6">マイグレーションファイルの編集</a></li>
+<li><a class="reference internal" href="#db-db-db">DBスキーマ（DBの構造）をDBに反映させる</a></li>
+<li><a class="reference internal" href="#id7">初期データの作成</a></li>
+<li><a class="reference internal" href="#id8">ルーティングの設定</a></li>
+<li><a class="reference internal" href="#controller">一覧画面のcontrollerを開発</a></li>
 </ul>
 </li>
 </ul>
@@ -153,8 +160,8 @@
 </li>
 </ul>
 </div>
-<div class="section" id="rails">
-<h2>新規railsプロジェクトの作成<a class="headerlink" href="#rails" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id3">
+<h2>新規プロジェクトの作成<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p class="first">Cloud9 作業1</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// バージョンを指定して&quot;hello&quot;プロジェクトを新規作成する</span>
@@ -186,30 +193,194 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">&quot;hello&quot;コントローラを作成する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// hello : コントローラの名前</span>
-<span class="go">// index : アクションメソッドの名前</span>
-<span class="go">// generateは&quot;g&quot;と省略可能</span>
-<span class="gp">$</span> rails generate controller hello index
-<span class="go">Running via Spring preloader in process 8361</span>
-<span class="go">  create  app/controllers/hello_controller.rb</span>
-<span class="go">   route  get &#39;hello/index&#39;</span>
-<span class="go">  invoke  erb</span>
-<span class="go">  create    app/views/hello</span>
-<span class="go">  create    app/views/hello/index.html.erb</span>
-<span class="go">  invoke  test_unit</span>
-<span class="go">  create    test/controllers/hello_controller_test.rb</span>
-<span class="go">  invoke  helper</span>
-<span class="go">  create    app/helpers/hello_helper.rb</span>
-<span class="go">  invoke    test_unit</span>
-<span class="go">  invoke  assets</span>
-<span class="go">  invoke    coffee</span>
-<span class="go">  create      app/assets/javascripts/hello.coffee</span>
-<span class="go">  invoke    scss</span>
-<span class="go">  create      app/assets/stylesheets/hello.scss</span>
+<li><p class="first">Preview-&gt;Preview Running Applicationを選択し、表示される画面の右上↗ボタンを押すことで、Webアプリ画面が表示される</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>コントローラの作成<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">&quot;Tasks&quot;コントローラを作成する（複数形であることに注意）</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// &quot;g&quot; はgenerateの略で、&quot;generate&quot;と記述してもOK</span>
+<span class="gp">$</span> rails g controller Tasks
+<span class="go">create  app/controllers/tasks_controller.rb    // 重要！</span>
+<span class="go">invoke  erb</span>
+<span class="go">create    app/views/tasks</span>
+<span class="go">invoke  test_unit</span>
+<span class="go">create    test/controllers/tasks_controller_test.rb</span>
+<span class="go">invoke  helper</span>
+<span class="go">create    app/helpers/tasks_helper.rb</span>
+<span class="go">invoke    test_unit</span>
+<span class="go">invoke  assets</span>
+<span class="go">invoke    coffee</span>
+<span class="go">create      app/assets/javascripts/tasks.coffee</span>
+<span class="go">invoke    scss</span>
+<span class="go">create      app/assets/stylesheets/tasks.scss</span>
+
+<span class="go">// 以下のように末尾にパラメータを1つ付けて、アクションメソッドを作成</span>
+<span class="go">// することも可能</span>
+<span class="go">// 以下の例では&quot;index&quot;という名のアクションメソッドが作成される</span>
+<span class="gp">$</span> rails g controller Tasks index
 </pre></div>
 </div>
 </li>
+<li><p class="first">上記で作成されるファイルの内&quot;app/controllers/tasks_controller.rb&quot;が特に重要</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>モデルの作成<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">&quot;Task&quot;モデルを作成する（単数形であることに注意）</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// &quot;title&quot;はタスクの名前を保持するカラム</span>
+<span class="go">// &quot;done&quot;はタスクの完了状態を保持するカラム</span>
+<span class="gp">$</span> rails g model Task title:string <span class="k">done</span>:boolean
+<span class="go">invoke  active_record</span>
+<span class="go">create    db/migrate/20200204121345_create_tasks.rb   // 重要！</span>
+<span class="go">create    app/models/task.rb                          // 重要！</span>
+<span class="go">invoke    test_unit</span>
+<span class="go">create      test/models/task_test.rb</span>
+<span class="go">create      test/fixtures/tasks.yml</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">上記で作成される&quot;20200204121345_create_tasks.rb&quot;はマイグレーションファイル</p>
+</li>
+<li><p class="first">マイグレーションファイルとは、DBを生成する際の設計図であり、以下のようにRubyでDBの構造が記述されている</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CreateTasks</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="o">[</span><span class="mi">5</span><span class="o">.</span><span class="mi">1</span><span class="o">]</span>
+  <span class="k">def</span> <span class="nf">change</span>
+    <span class="n">create_table</span> <span class="ss">:tasks</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+      <span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:title</span>
+      <span class="n">t</span><span class="o">.</span><span class="n">boolean</span> <span class="ss">:done</span>
+
+      <span class="c1"># DBのレコードの作成日と更新日を管理するために、</span>
+      <span class="c1"># Railsが使うカラムを作成するためのもの</span>
+      <span class="n">t</span><span class="o">.</span><span class="n">timestamps</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">マイグレーションファイルを実行することで、その内容に基づいたデータテーブルを生成してくれる</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h2>マイグレーションファイルの編集<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">&quot;done&quot;のデフォルト値がfalseになるよう、マイグレーションファイルを編集する</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CreateTasks</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="o">[</span><span class="mi">5</span><span class="o">.</span><span class="mi">1</span><span class="o">]</span>
+  <span class="k">def</span> <span class="nf">change</span>
+    <span class="n">create_table</span> <span class="ss">:tasks</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+      <span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:title</span>
+      <span class="n">t</span><span class="o">.</span><span class="n">boolean</span> <span class="ss">:done</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="kp">false</span>   <span class="c1"># 追加！</span>
+
+      <span class="n">t</span><span class="o">.</span><span class="n">timestamps</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="db-db-db">
+<h2>DBスキーマ（DBの構造）をDBに反映させる<a class="headerlink" href="#db-db-db" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">DBの構造をDBに反映させる</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rake db:migrate
+
+<span class="go">// 以下でもOK</span>
+<span class="gp">$</span> rails db:migrate
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<p class="last">Rails 4までは、「このコマンドはrailsから、このコマンドはrakeから」というように分かれていたが、分けるのも煩雑になるだけということで、Rails 5からは、今までrakeで実行していたコマンドをrailsでも実行できるようになった。
+よって、Rails 5以降でコマンドを使うだけなら、railsだけで問題ない。</p>
+</div>
+</li>
+<li><p class="first">上記の実行で、&quot;db/development.sql&quot;ファイルが追加され、このファイルにDBのデータが入っている</p>
+</li>
+<li><p class="first">DBの構造を確認する</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// DBコマンドラインツールを起動する</span>
+<span class="gp">$</span> rails db
+<span class="go">SQLite version 3.7.17 2013-05-20 00:56:22</span>
+<span class="go">Enter &quot;.help&quot; for instructions</span>
+<span class="go">Enter SQL statements terminated with a &quot;;&quot;</span>
+
+<span class="go">// DBの構造を確認する</span>
+<span class="go">sqlite&gt; .schema</span>
+<span class="go">CREATE TABLE &quot;schema_migrations&quot; (&quot;version&quot; varchar NOT NULL PRIMARY KEY);</span>
+<span class="go">CREATE TABLE &quot;ar_internal_metadata&quot; (&quot;key&quot; varchar NOT NULL PRIMARY KEY, &quot;value&quot; varchar, &quot;created_at&quot; datetime NOT NULL, &quot;updated_at&quot; datetime NOT NULL);</span>
+<span class="go">CREATE TABLE &quot;tasks&quot; (&quot;id&quot; INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, &quot;title&quot; varchar, &quot;done&quot; boolean DEFAULT &#39;f&#39;, &quot;created_at&quot; datetime NOT NULL, &quot;updated_at&quot; datetime NOT NULL);</span>
+
+<span class="go">// DBコマンドラインツールを終了する</span>
+<span class="go">sqlite&gt; .exit</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h2>初期データの作成<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">複数の方法があるが、ここではRailsコンソールを使用する</p>
+</li>
+<li><p class="first">Railsコンソールでは、Railsの環境をロードした状態でirbが起動するので、Modelの操作やデバッグに便利</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// Railsコンソールを起動する</span>
+<span class="gp">$</span> rails console
+
+<span class="go">// 任意のレコードを追加する</span>
+<span class="go">2.6.3 :001 &gt; Task.create(title:&quot;test1&quot;)</span>
+<span class="go">2.6.3 :002 &gt; Task.create(title:&quot;test2&quot;)</span>
+
+<span class="go">// Railsコンソールを終了する</span>
+<span class="go">2.6.3 :003 &gt; exit</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h2>ルーティングの設定<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p class="first">&quot;config/routes.rb&quot;を編集する</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
+  <span class="c1"># tasksのレストフルなURLを自動生成する</span>
+  <span class="c1"># よく使う一般的なルーティングをまとめて用意してくれる設定</span>
+  <span class="n">resources</span> <span class="ss">:tasks</span>
+  <span class="c1"># rootのURLにアクセスしたら、</span>
+  <span class="c1"># tasksコントローラのindexアクションメソッドを実行する</span>
+  <span class="n">root</span> <span class="s1">&#39;tasks#index&#39;</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">ルーティングを確認する</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rake routes
+<span class="go">   Prefix Verb   URI Pattern               Controller#Action</span>
+<span class="go">    tasks GET    /tasks(.:format)          tasks#index</span>
+<span class="go">          POST   /tasks(.:format)          tasks#create</span>
+<span class="go"> new_task GET    /tasks/new(.:format)      tasks#new</span>
+<span class="go">edit_task GET    /tasks/:id/edit(.:format) tasks#edit</span>
+<span class="go">     task GET    /tasks/:id(.:format)      tasks#show</span>
+<span class="go">          PATCH  /tasks/:id(.:format)      tasks#update</span>
+<span class="go">          PUT    /tasks/:id(.:format)      tasks#update</span>
+<span class="go">          DELETE /tasks/:id(.:format)      tasks#destroy</span>
+<span class="go">     root GET    /                         tasks#index</span>
+
+<span class="go">// 以下でもOK</span>
+<span class="gp">$</span> rails routes
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="controller">
+<h2>一覧画面のcontrollerを開発<a class="headerlink" href="#controller" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
 <li><p class="first">上記で作成されるファイルについて</p>
 <ul>
 <li><p class="first">.erb</p>

@@ -46,8 +46,8 @@ Ruby on Rails
     $ sqlite3 --version
     3.7.17 2013-05-20 00:56:22 118a3b35693b134d56ebd780123b7fd6f1497668
 
-新規railsプロジェクトの作成
-===========================
+新規プロジェクトの作成
+======================
 
 * Cloud9 作業1
 
@@ -80,30 +80,207 @@ Ruby on Rails
     // RailsのWebサーバ(puma)を起動する（引数の"s"はサーバを意味する）
     $ rails s
 
-* "hello"コントローラを作成する
+* Preview->Preview Running Applicationを選択し、表示される画面の右上↗ボタンを押すことで、Webアプリ画面が表示される
+
+コントローラの作成
+==================
+
+* "Tasks"コントローラを作成する（複数形であることに注意）
 
   .. code-block:: console
 
-    // hello : コントローラの名前
-    // index : アクションメソッドの名前
-    // generateは"g"と省略可能
-    $ rails generate controller hello index
-    Running via Spring preloader in process 8361
-      create  app/controllers/hello_controller.rb
-       route  get 'hello/index'
-      invoke  erb
-      create    app/views/hello
-      create    app/views/hello/index.html.erb
-      invoke  test_unit
-      create    test/controllers/hello_controller_test.rb
-      invoke  helper
-      create    app/helpers/hello_helper.rb
-      invoke    test_unit
-      invoke  assets
-      invoke    coffee
-      create      app/assets/javascripts/hello.coffee
-      invoke    scss
-      create      app/assets/stylesheets/hello.scss
+    // "g" はgenerateの略で、"generate"と記述してもOK
+    $ rails g controller Tasks
+    create  app/controllers/tasks_controller.rb    // 重要！
+    invoke  erb
+    create    app/views/tasks
+    invoke  test_unit
+    create    test/controllers/tasks_controller_test.rb
+    invoke  helper
+    create    app/helpers/tasks_helper.rb
+    invoke    test_unit
+    invoke  assets
+    invoke    coffee
+    create      app/assets/javascripts/tasks.coffee
+    invoke    scss
+    create      app/assets/stylesheets/tasks.scss
+
+    // 以下のように末尾にパラメータを1つ付けて、アクションメソッドを作成
+    // することも可能
+    // 以下の例では"index"という名のアクションメソッドが作成される
+    $ rails g controller Tasks index
+
+* 上記で作成されるファイルの内"app/controllers/tasks_controller.rb"が特に重要
+
+モデルの作成
+============
+
+* "Task"モデルを作成する（単数形であることに注意）
+
+  .. code-block:: console
+
+    // "title"はタスクの名前を保持するカラム
+    // "done"はタスクの完了状態を保持するカラム
+    $ rails g model Task title:string done:boolean
+    invoke  active_record
+    create    db/migrate/20200204121345_create_tasks.rb   // 重要！
+    create    app/models/task.rb                          // 重要！
+    invoke    test_unit
+    create      test/models/task_test.rb
+    create      test/fixtures/tasks.yml
+
+* 上記で作成される"20200204121345_create_tasks.rb"はマイグレーションファイル
+* マイグレーションファイルとは、DBを生成する際の設計図であり、以下のようにRubyでDBの構造が記述されている
+
+  .. code-block:: ruby
+
+    class CreateTasks < ActiveRecord::Migration[5.1]
+      def change
+        create_table :tasks do |t|
+          t.string :title
+          t.boolean :done
+
+          # DBのレコードの作成日と更新日を管理するために、
+          # Railsが使うカラムを作成するためのもの
+          t.timestamps
+        end
+      end
+    end
+
+* マイグレーションファイルを実行することで、その内容に基づいたデータテーブルを生成してくれる
+
+マイグレーションファイルの編集
+==============================
+
+* "done"のデフォルト値がfalseになるよう、マイグレーションファイルを編集する
+
+  .. code-block:: ruby
+
+    class CreateTasks < ActiveRecord::Migration[5.1]
+      def change
+        create_table :tasks do |t|
+          t.string :title
+          t.boolean :done, default: false   # 追加！
+
+          t.timestamps
+        end
+      end
+    end
+
+DBスキーマ（DBの構造）をDBに反映させる
+======================================
+
+* DBの構造をDBに反映させる
+
+  .. code-block:: console
+
+    $ rake db:migrate
+
+    // 以下でもOK
+    $ rails db:migrate
+
+  .. note::
+
+    Rails 4までは、「このコマンドはrailsから、このコマンドはrakeから」というように分かれていたが、分けるのも煩雑になるだけということで、Rails 5からは、今までrakeで実行していたコマンドをrailsでも実行できるようになった。
+    よって、Rails 5以降でコマンドを使うだけなら、railsだけで問題ない。
+
+
+* 上記の実行で、"db/development.sql"ファイルが追加され、このファイルにDBのデータが入っている
+* DBの構造を確認する
+
+  .. code-block:: console
+
+    // DBコマンドラインツールを起動する
+    $ rails db
+    SQLite version 3.7.17 2013-05-20 00:56:22
+    Enter ".help" for instructions
+    Enter SQL statements terminated with a ";"
+
+    // DBの構造を確認する
+    sqlite> .schema
+    CREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY);
+    CREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
+    CREATE TABLE "tasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "done" boolean DEFAULT 'f', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
+    
+    // DBコマンドラインツールを終了する
+    sqlite> .exit
+
+初期データの作成
+================
+
+* 複数の方法があるが、ここではRailsコンソールを使用する
+* Railsコンソールでは、Railsの環境をロードした状態でirbが起動するので、Modelの操作やデバッグに便利
+
+  .. code-block:: console
+
+    // Railsコンソールを起動する
+    $ rails console
+
+    // 任意のレコードを追加する
+    2.6.3 :001 > Task.create(title:"test1")
+    2.6.3 :002 > Task.create(title:"test2")
+
+    // Railsコンソールを終了する
+    2.6.3 :003 > exit
+
+ルーティングの設定
+==================
+
+* "config/routes.rb"を編集する
+
+  .. code-block:: ruby
+
+    Rails.application.routes.draw do
+      # tasksのレストフルなURLを自動生成する
+      # よく使う一般的なルーティングをまとめて用意してくれる設定
+      resources :tasks
+      # rootのURLにアクセスしたら、
+      # tasksコントローラのindexアクションメソッドを実行する
+      root 'tasks#index'
+    end
+
+* ルーティングを確認する
+
+  .. code-block:: console
+
+    $ rake routes
+       Prefix Verb   URI Pattern               Controller#Action
+        tasks GET    /tasks(.:format)          tasks#index
+              POST   /tasks(.:format)          tasks#create
+     new_task GET    /tasks/new(.:format)      tasks#new
+    edit_task GET    /tasks/:id/edit(.:format) tasks#edit
+         task GET    /tasks/:id(.:format)      tasks#show
+              PATCH  /tasks/:id(.:format)      tasks#update
+              PUT    /tasks/:id(.:format)      tasks#update
+              DELETE /tasks/:id(.:format)      tasks#destroy
+         root GET    /                         tasks#index
+
+    // 以下でもOK
+    $ rails routes
+
+一覧画面のcontrollerを開発
+==========================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 * 上記で作成されるファイルについて
 

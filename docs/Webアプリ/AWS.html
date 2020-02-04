@@ -76,7 +76,18 @@
 <li><a class="reference internal" href="#id1">概要</a></li>
 <li><a class="reference internal" href="#id2">初期設定</a></li>
 <li><a class="reference internal" href="#id3">操作</a></li>
-<li><a class="reference internal" href="#vpc">VPC</a></li>
+<li><a class="reference internal" href="#vpc">【VPC】ネットワーク構築</a><ul>
+<li><a class="reference internal" href="#id4">用語</a></li>
+<li><a class="reference internal" href="#id5">手順</a></li>
+<li><a class="reference internal" href="#id6">補足</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ec2web">【EC2】Webサーバ構築</a><ul>
+<li><a class="reference internal" href="#id7">用語</a></li>
+<li><a class="reference internal" href="#id8">手順</a></li>
+<li><a class="reference internal" href="#id9">補足</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -126,16 +137,28 @@
 <div class="section" id="id2">
 <h2>初期設定<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
-<li>CloundWatchで料金アラートを設定<ul>
+<li>CloudWatchで料金アラートを設定<ul>
 <li>請求ダッシュボードで請求アラートを受け取れるように設定<ul>
 <li>マネジメントコンソール画面のメニューバーのアカウントより、マイ請求ダッシュボードを選択</li>
 <li>左メニューから、Billing の設定を選択し各々設定する</li>
 </ul>
 </li>
-<li>CloundWatchで料金アラートを設定</li>
-<li>マネジメントコンソール画面のメニューバーのアカウントより、マイアカウント-&gt;IAMユーザーによる請求情報へのアクセス有効化で「有効」に設定</li>
+<li>CloudWatchで料金アラートを設定<ul>
+<li>CloudWatch-&gt;請求-&gt;アラームの作成</li>
+<li>メトリクス-&gt;請求-&gt;概算合計請求額を選択し、チェックボックスにチェックを入れる</li>
+<li>メトリクスの選択ボタンを押下</li>
+<li>閾値金額を入力（例：10USD）</li>
+<li>次へボタンを押下</li>
+<li>トピック名とメアドを入力し、トピックの作成ボタンを押下</li>
+<li>次へボタンを押下</li>
+<li>名前と説明を入力し、次へボタンを押下</li>
+<li>アラームの作成ボタンを押下</li>
+<li>上記メアドに通知メールがあるので、&quot;Confirm subscription&quot;ボタンを押下</li>
 </ul>
 </li>
+</ul>
+</li>
+<li>マネジメントコンソール画面のメニューバーのアカウントより、マイアカウント-&gt;IAMユーザーによる請求情報へのアクセス有効化で「有効」に設定</li>
 <li>IAMで作業ユーザを作成</li>
 <li>CloudTrailで操作ログを記録<ul>
 <li>デフォルトで有効になっているが、保存期間は90日のみ</li>
@@ -156,28 +179,46 @@
 </ul>
 </div>
 <div class="section" id="vpc">
-<h2>VPC<a class="headerlink" href="#vpc" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>【VPC】ネットワーク構築<a class="headerlink" href="#vpc" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id4">
+<h3>用語<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li>リージョン<ul>
-<li>AWSの各サービスが提供されている地域のことであり、各国にある</li>
-<li>基本的には最新サービスはまずアメリカリージョンで提供され、それから他のリージョンに展開される</li>
+<li>AWSの各サービスが提供されている地域のことであり、各国に存在する</li>
+<li>基本的には、最新サービスはまずアメリカリージョンで提供され、それから他のリージョンに展開される</li>
 </ul>
 </li>
 <li>アベイラビリティゾーン<ul>
 <li>独立したデータセンターのこと</li>
-<li>リージョン内にはアベイラビリティゾーンが2つ以上あり、災害等で1つが使用できなくなっても他で代替できる</li>
+<li>リージョン内にはアベイラビリティゾーンが複数あり、災害等で1つが使用できなくなっても他で代替できる</li>
 </ul>
 </li>
 <li>VPC<ul>
+<li>Virtual Private Cloud</li>
 <li>AWS上に仮想ネットワークを作成できるサービス</li>
+<li>IPv4 アドレスの範囲を CIDRブロックの形式で指定する必要がある (例: 10.0.0.0/16)。</li>
+<li>プライベートIPアドレスを使用することが推奨されている<ul>
+<li>クラスA：10.0.0.0～10.255.255.255 （10.0.0.0/8）</li>
+<li>クラスB：172.16.0.0～172.31.255.255 （172.16.0.0/12）</li>
+<li>クラスC：192.168.0.0～192.168.255.255 （192.168.0.0/16）</li>
+</ul>
+</li>
+<li>VPC作成後はIPv4 アドレス範囲を変更できないので、大きめに設定する<ul>
+<li>大きさは /28から/16で、/16が推奨</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>サブネット<ul>
 <li>VPCを細かく区切ったネットワークであり、プライベート／パブリックの設定が可能</li>
+<li>これにより、サブネットAは公開するが、サブネットBは非公開とする、ことでセキュリティを高める運用が可能</li>
+<li>アベイラビリティゾーンを分けて配置することで、物理的な場所を離すことで、災害に強くなるメリットもある</li>
+<li>IPv4 アドレス範囲は/24が標準的</li>
 </ul>
 </li>
 <li>IPアドレスの表記<ul>
 <li>CIDR表記（サイダー）<ul>
+<li>Classless Inter-Domain Routing</li>
 <li>例：192.168.128.0/24</li>
 <li>&quot;/&quot;の後の数値24は、ネットワーク部が先頭から24ビット目までであることを表す</li>
 </ul>
@@ -188,7 +229,162 @@
 </li>
 </ul>
 </li>
+<li>ルートテーブル<ul>
+<li>VPCと各サブネットに対して設定できる</li>
+<li>ルートテーブルに設定している送信先IPアドレス範囲（CIDRブロック）以外の通信は破棄される</li>
+<li>&quot;0.0.0.0/0&quot;で、ルートテーブルに設定しているIPアドレス範囲以外のIPアドレスを意味する</li>
 </ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>手順<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li>VPCを作成する<ul>
+<li>テナンシー：デフォルト</li>
+<li>VPCを作成すると、自動的にメインルートテーブルとメインネットワークACLが作成される？</li>
+</ul>
+</li>
+<li>サブネットを作成する<ul>
+<li>パブリックサブネットを作成する</li>
+<li>プライベートサブネットを作成する</li>
+<li>VPCには、上記で作成したVPCを選択する</li>
+<li>ルートテーブルとネットワークACLを明示的に設定しないと、VPCに設定されたメインルートテーブルとメインネットワークACLが利用される</li>
+</ul>
+</li>
+<li>ルーティングを設定する<ul>
+<li>インターネットゲートウェイを作成し、VPCにアタッチする<ul>
+<li>作成したIGWを選択し、アクション-&gt;VPCにアタッチを選択</li>
+</ul>
+</li>
+<li>ルートテーブルを作成し、パブリックサブネットに紐づける<ul>
+<li>作成したルートテーブルを選択し、サブネットの関連付け-&gt;サブネットの関連付けの編集より、紐づけるサブネットを選択し保存する</li>
+<li>作成したルートテーブルを選択し、ルート-&gt;ルートの編集-&gt;ルートの追加より、以下のルートを追加する<ul>
+<li>送信先：&quot;0.0.0.0/0&quot;</li>
+<li>ターゲット：Internet Gateway-&gt;作成したIGW</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>補足<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li>異なるシステムの場合はアカウントを分けること</li>
+<li>同一システムで本番環境とステージング環境を分けたい場合は、同一アカウントでVPCとリージョンを分けるのがオススメ</li>
+</ul>
+</div>
+</div>
+<div class="section" id="ec2web">
+<h2>【EC2】Webサーバ構築<a class="headerlink" href="#ec2web" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id7">
+<h3>用語<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li>EC2<ul>
+<li>Elastic Compute Cloud</li>
+<li>AWSクラウド上の仮想サーバ</li>
+<li>数分で起動し、1時間または秒単位で従量課金</li>
+<li>無料枠内でいくつEC2インスタンスを作成してもよいが、全インスタンスの稼働時間が750時間／月を超えると課金される</li>
+</ul>
+</li>
+<li>AMI（アミイ）<ul>
+<li>Amazon Machine image</li>
+<li>インスタンス起動に必要な情報が入ったOSのイメージ</li>
+<li>サーバのテンプレートのようなもの</li>
+<li>AWSやサードパーティがAMIを提供</li>
+<li>カスタムAMIも作成可能</li>
+<li>AMIから何台でもEC2インスタンスを起動可能</li>
+</ul>
+</li>
+<li>インスタンスタイプ<ul>
+<li>サーバのスペックを定義したもの</li>
+<li>インスタンスタイプにより、CPU、メモリ、ストレージ、ネットワーク帯域が異なる</li>
+<li>例：m5.xlarge<ul>
+<li>m<ul>
+<li>インスタンスファミリー</li>
+<li>インスタンスの特徴を示す</li>
+<li>汎用的／CPU最適化／メモリ最適化／価格最適化／など</li>
+</ul>
+</li>
+<li>5<ul>
+<li>インスタンス世代</li>
+<li>数値が大きいほど世代が新しい</li>
+<li>新しいものの方が性能／コストパフォーマンス／などがよい</li>
+<li>大きな数値を使用することが推奨</li>
+</ul>
+</li>
+<li>xlarge<ul>
+<li>インスタンスサイズ</li>
+<li>CPU、メモリ、ネットワークのキャパシティを示す</li>
+<li>small/large/xlarge/など</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ストレージ<ul>
+<li>サーバにくっつけるデータの保管場所</li>
+<li>EC2には以下の2種類がある<ul>
+<li>EBS（Elastic Block Store）<ul>
+<li>高い可能性と耐久性を持つストレージ</li>
+<li>他のインスタンスに付け替え可能</li>
+<li>EBSの費用が別途発生</li>
+<li>OSやDBなどの永続性と耐久性が必要なデータを置く</li>
+</ul>
+</li>
+<li>インスタンスストア<ul>
+<li>インスタンス専用の一時的なストレージ</li>
+<li>他のインスタンスに付け替えることはできない</li>
+<li>追加費用なし（無料）</li>
+<li>一時ファイル、キャッシュなど、失われても問題がないデータを置く</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>手順<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li>EC2インスタンスを設置する<ul>
+<li>AMIの選択<ul>
+<li>EC2-&gt;インスタンス-&gt;インスタンスの作成を選択する</li>
+<li>クイックスタート-&gt;Amazon Linux 2 AMIを選択し選択ボタンを押下する</li>
+</ul>
+</li>
+<li>インスタンスタイプの選択<ul>
+<li>無料枠で利用できる&quot;t2.micro&quot;を選択し次のステップボタンを押下する</li>
+</ul>
+</li>
+<li>インスタンス詳細の設定<ul>
+<li>インスタンス数：1</li>
+<li>購入のオプション：チェックなし（常時インスタンスを起動したいためスポットインスタンスではない）</li>
+<li>ネットワーク：作成したVPCを選択</li>
+<li>サブネット：作成したパブリックサブネットを選択</li>
+<li>自動割り当てパブリックIP：有効（インターネット経由でアクセスしたいため）</li>
+<li>配置グループ：チェックなし（複数インスタンスがある場合にインスタンス間のアクセスを高速化するために利用）</li>
+<li></li>
+</ul>
+</li>
+<li>ストレージの追加</li>
+<li>タグの追加</li>
+<li>セキュリティグループの設定</li>
+<li>SSHキーペアの設定</li>
+</ul>
+</li>
+<li>Apacheをインストールする</li>
+<li>ファイアウォールを設定する</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h3>補足<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
 </div>
 </div>
 
