@@ -241,23 +241,33 @@ AWS
     #. サーバ：元データとの一致を確認
     #. サーバ → PC：ログインを許可
 
-  * ポート番号
+* ポート番号
 
-    * ポート番号は、プログラムのアドレス
-    * 同一コンピュータ内で通信を行うプログラムを識別する時に利用
-    * ポート番号を決める方法は2種類ある
+  * ポート番号は、プログラムのアドレス
+  * 同一コンピュータ内で通信を行うプログラムを識別する時に利用
+  * ポート番号を決める方法は2種類ある
 
-      * 標準で決められている番号
+    * 標準で決められている番号
 
-        * ウェルノウンポート番号と呼ばれる
-        * ウェルノウンポート番号は0～1023
-        * 例：SSHは22、SMTPは25、HTTPは80、HTTPSは443
+      * ウェルノウンポート番号と呼ばれる
+      * ウェルノウンポート番号は0～1023
+      * 例：SSHは22、SMTPは25、HTTPは80、HTTPSは443
 
-      * 動的に決まる番号
+    * 動的に決まる番号
 
-        * サーバのポート番号は決まっている必要があるが、クライアントのポート番号は決まってなくてもよい
-        * クライアントのポート番号は、OSが他のポート番号と被らないようにランダムに決める
-        * 番号は49142～65535
+      * サーバのポート番号は決まっている必要があるが、クライアントのポート番号は決まってなくてもよい
+      * クライアントのポート番号は、OSが他のポート番号と被らないようにランダムに決める
+      * 番号は49142～65535
+
+* Apache
+
+  HTTPリクエストがあると、それに対してレスポンスを返しWebページを表示する、Webサーバのソフトウェア。
+
+* ファイアウォール
+
+  * ファイアウォールとは、ネットワークを不正アクセスから守るために、「通してよい通信だけを通して、それ以外は通さない」機能の総称
+  * AWSでは、EC2インスタンスに対して設定する **セキュリティグループ** がファイアウォールの役割を担っている。
+
 
 ----
 手順
@@ -325,15 +335,116 @@ AWS
     * SSH接続で使用するキーのこと
     * 「新しいキーペアの作成」を選択
     * キーペア名を任意に入力し、「キーペアのダウンロード」ボタンを押下することで、"～～.pem"ファイルが作成される
-    * このキーペアは後で作成することができないため、なくさないこと
+    
+    .. warning::
+    
+      このキーペアは後で作成することができないため、必ずEC2インスタンス作成時に作成し、なくさないこと。
 
 * Apacheをインストールする
 
   * SSHでサーバにログイン
+
+    * 接続先はEC2インスタンスの「IPv4 パブリック IP」である。
+      このアドレスはインスタンスの再起動の都度変わるので確認すること。
+    * ユーザ名を"ec2-user"とし、上記で作成したSSHキーペアを読み込ませる。
+
   * Apacheをインストール
    
+    * パッケージを更新する
+
+      .. code-block:: console
+
+        // yum：Linuxのパッケージ管理ツール。"yum update"でyumが管理する全パッケージを更新する。
+        // -y："Yes"オプション。全パッケージの更新を"Yes"にする。付けないと都度Yes/Noを聞かれる
+        $ sudo yum update -y
+
+    * Apacheをインストールする
+
+      .. code-block:: console
+
+        // httpd：Apacheを構成する実行ファイル
+        $ sudo yum -y install httpd
+
+    * Apacheを起動させる
+
+      .. code-block:: console
+
+        // httpd.service：Apacheのこと
+        $ sudo systemctl start httpd.service
+
+    * Apacheが起動しているか確認する1（Apacheのステータスを確認）
+
+      .. code-block:: console
+
+        $ sudo systemctl status httpd.service
+        ● httpd.service - The Apache HTTP Server
+          Loaded: loaded (/usr/lib/systemd/system/httpd.service; disabled; vendor preset: disabled)
+          Active: active (running) since Tue 2020-02-11 13:18:43 UTC; 33s ago
+            Docs: man:httpd.service(8)
+        Main PID: 21785 (httpd)
+          Status: "Total requests: 0; Idle/Busy workers 100/0;Requests/sec: 0; Bytes served/sec:   0 B/sec"
+          CGroup: /system.slice/httpd.service
+                  tq21785 /usr/sbin/httpd -DFOREGROUND
+                  tq21786 /usr/sbin/httpd -DFOREGROUND
+                  tq21787 /usr/sbin/httpd -DFOREGROUND
+                  tq21788 /usr/sbin/httpd -DFOREGROUND
+                  tq21789 /usr/sbin/httpd -DFOREGROUND
+                  mq21790 /usr/sbin/httpd -DFOREGROUND
+
+    * Apacheが起動しているか確認する2（全プロセスを確認）
+
+      .. code-block:: console
+
+        // ps：プロセスを表示するコマンド
+        // -ax：全てのプロセスを表示するオプション
+        // u：CPUやメモリ使用率を付けて表示するオプション
+        $ ps -axu
+        USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+        ・・ 省略 ・・
+        apache   21786  0.0  0.6 298484  6512 ?        Sl   13:18   0:00 /usr/sbin/httpd
+        apache   21787  0.0  0.6 298484  6512 ?        Sl   13:18   0:00 /usr/sbin/httpd
+        apache   21788  0.0  0.6 495156  6520 ?        Sl   13:18   0:00 /usr/sbin/httpd
+        apache   21789  0.0  0.6 298484  6512 ?        Sl   13:18   0:00 /usr/sbin/httpd
+        apache   21790  0.0  0.6 298484  6512 ?        Sl   13:18   0:00 /usr/sbin/httpd
+        ec2-user 21839  0.0  0.3 164364  3900 pts/0    R+   13:22   0:00 ps -axu
+
+    * Apacheが起動しているか確認する3（Apacheのプロセスを確認）
+
+      .. code-block:: console
+
+        // |：パイプライン。左のコマンドの実行結果を右のコマンドに渡す
+        // grep：引数の文字列を検索して表示する
+        $ ps -axu | grep httpd
+        root     21785  0.0  0.9 257372  9716 ?        Ss   13:18   0:00 /usr/sbin/http  -DFOREGROUND
+        apache   21786  0.0  0.6 298484  6512 ?        Sl   13:18   0:00 /usr/sbin/http  -DFOREGROUND
+        apache   21787  0.0  0.6 298484  6512 ?        Sl   13:18   0:00 /usr/sbin/http  -DFOREGROUND
+        apache   21788  0.0  0.6 495156  6520 ?        Sl   13:18   0:00 /usr/sbin/http  -DFOREGROUND
+        apache   21789  0.0  0.6 298484  6512 ?        Sl   13:18   0:00 /usr/sbin/http  -DFOREGROUND
+        apache   21790  0.0  0.6 298484  6512 ?        Sl   13:18   0:00 /usr/sbin/http  -DFOREGROUND
+        ec2-user 21842  0.0  0.0 119416   920 pts/0    S+   13:27   0:00 grep --color=auto httpd
+
+    * Apacheをサーバ起動に合わせて自動起動するよう設定する
+
+      .. code-block:: console
+
+        $ sudo systemctl enable httpd.service
+
+    * 自動起動設定となったか確認する
+
+      .. code-block:: console
+
+        $ sudo systemctl is-enabled httpd.service
+        enabled
 
 * ファイアウォールを設定する
+
+  * 現時点では、パブリックサブネットへのアクセスは、ポート22番（SSH接続）への通信のみOKの状態。
+  * HTTPリクエストを通すために、セキュリティグループのポート80番を開ける。セキュリティグループのインバウンド設定にて、以下のルールを追加する
+
+    * タイプ：HTTP
+    * プロトコル：TCP
+    * ポート範囲：80
+    * ソース：任意の場所
 
 ----
 補足
@@ -346,10 +457,10 @@ AWS
     // lsof：オープン中のファイルやそのファイルをオープンしているプロセスのリストを出力する
     //       "list open files" の略
     // -i：ネットワークソケットファイルを表示
-    // -n：IPアドレスをホスト名に変換しない
-    // -P：ポート番号をサービス名に変換しない
-    // "LISTEN"：待ち受けているプロセスを示す。
-    // "ESTABLISHED"：ソケット接続を確立しセッションを結んでいるプロセスを示す。
+    // -n：IPアドレスをホスト名に変換しないオプション
+    // -P：ポート番号をサービス名に変換しないオプション
+    // "LISTEN"：他のコンピュータから待ち受けているポートを示す。
+    // "ESTABLISHED"：現在通信中のポートを示す。
     $ sudo lsof -i -n -P
     COMMAND    PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
     rpcbind   2679      rpc    6u  IPv4  16789      0t0  UDP *:111 
@@ -368,3 +479,5 @@ AWS
     sshd     32416     root    3u  IPv4  56384      0t0  TCP 10.0.10.10:22->126.193.60.75:20586 (ESTABLISHED)
     sshd     32433 ec2-user    3u  IPv4  56384      0t0  TCP 10.0.10.10:22->126.193.60.75:20586 (ESTABLISHED)
 
+  上記では、"sshd"というプログラムが、アドレス制限なしの22番ポートで待ち受けている。
+  このため、SSH接続できるのである。

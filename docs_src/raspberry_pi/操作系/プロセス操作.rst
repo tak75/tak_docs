@@ -2,19 +2,32 @@
 プロセス操作
 =============
 
-手動で起動／終了する場合::
+* 手動で起動／終了する
 
-  sudo systemctl start webiopi  # 起動する場合
-  sudo systemctl stop webiopi   # 終了する場合
+  .. code-block:: console
 
-システム起動時に自動的に起動させる場合::
+    $ sudo systemctl start webiopi  # 起動する場合
+    $ sudo systemctl stop webiopi   # 終了する場合
 
-  sudo systemctl enable webiopi   # 自動起動させる
-  sudo systemctl disable webiopi  # 自動起動させない
+* システム起動時に自動的に起動させる
 
-現在の起動状態を調べる場合::
+  .. code-block:: console
 
-  sudo systemctl status webiopi
-  # active(running)となっていれば起動状態
+    $ sudo systemctl enable webiopi   # 自動起動させる
+    $ sudo systemctl disable webiopi  # 自動起動させない
+
+* 現在の起動状態を調べる
+
+  .. code-block:: console
+
+    $ sudo systemctl status webiopi
+    結果がactive(running)となっていれば起動状態
+
+* 自動起動設定であるか確認する
+
+  .. code-block:: console
+
+    $ sudo systemctl is-enabled webiopi
+    enabled
 
 .. note:: 上記は全てwebiopiが対象プロセスの場合の例

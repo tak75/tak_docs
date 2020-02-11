@@ -95,21 +95,32 @@
             
   <div class="section" id="id1">
 <h1>プロセス操作<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>手動で起動／終了する場合:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">webiopi</span>  <span class="c1"># 起動する場合</span>
-<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">stop</span> <span class="n">webiopi</span>   <span class="c1"># 終了する場合</span>
+<ul>
+<li><p class="first">手動で起動／終了する</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo systemctl start webiopi  <span class="c1"># 起動する場合</span>
+<span class="gp">$</span> sudo systemctl stop webiopi   <span class="c1"># 終了する場合</span>
 </pre></div>
 </div>
-<p>システム起動時に自動的に起動させる場合:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">webiopi</span>   <span class="c1"># 自動起動させる</span>
-<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">disable</span> <span class="n">webiopi</span>  <span class="c1"># 自動起動させない</span>
+</li>
+<li><p class="first">システム起動時に自動的に起動させる</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo systemctl <span class="nb">enable</span> webiopi   <span class="c1"># 自動起動させる</span>
+<span class="gp">$</span> sudo systemctl disable webiopi  <span class="c1"># 自動起動させない</span>
 </pre></div>
 </div>
-<p>現在の起動状態を調べる場合:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">status</span> <span class="n">webiopi</span>
-<span class="c1"># active(running)となっていれば起動状態</span>
+</li>
+<li><p class="first">現在の起動状態を調べる</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo systemctl status webiopi
+<span class="go">結果がactive(running)となっていれば起動状態</span>
 </pre></div>
 </div>
+</li>
+<li><p class="first">自動起動設定であるか確認する</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo systemctl is-enabled webiopi
+<span class="go">enabled</span>
+</pre></div>
+</div>
+</li>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注釈</p>
 <p class="last">上記は全てwebiopiが対象プロセスの場合の例</p>
