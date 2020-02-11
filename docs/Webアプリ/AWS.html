@@ -282,15 +282,21 @@
 <h2>【EC2】Webサーバ構築<a class="headerlink" href="#ec2web" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id7">
 <h3>用語<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p class="first">EC2</p>
 <ul class="simple">
-<li>EC2<ul>
 <li>Elastic Compute Cloud</li>
 <li>AWSクラウド上の仮想サーバ</li>
 <li>数分で起動し、1時間または秒単位で従量課金</li>
 <li>無料枠内でいくつEC2インスタンスを作成してもよいが、全インスタンスの稼働時間が750時間／月を超えると課金される</li>
 </ul>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">EC2インスタンスを一旦終了すると、グローバルIPアドレスが変わるので要注意！</p>
+</div>
 </li>
-<li>AMI（アミイ）<ul>
+<li><p class="first">AMI（アミイ）</p>
+<ul class="simple">
 <li>Amazon Machine image</li>
 <li>インスタンス起動に必要な情報が入ったOSのイメージ</li>
 <li>サーバのテンプレートのようなもの</li>
@@ -299,7 +305,8 @@
 <li>AMIから何台でもEC2インスタンスを起動可能</li>
 </ul>
 </li>
-<li>インスタンスタイプ<ul>
+<li><p class="first">インスタンスタイプ</p>
+<ul class="simple">
 <li>サーバのスペックを定義したもの</li>
 <li>インスタンスタイプにより、CPU、メモリ、ストレージ、ネットワーク帯域が異なる</li>
 <li>例：m5.xlarge<ul>
@@ -326,21 +333,74 @@
 </li>
 </ul>
 </li>
-<li>ストレージ<ul>
-<li>サーバにくっつけるデータの保管場所</li>
-<li>EC2には以下の2種類がある<ul>
-<li>EBS（Elastic Block Store）<ul>
+<li><p class="first">ストレージ</p>
+<ul>
+<li><p class="first">サーバにくっつけるデータの保管場所</p>
+</li>
+<li><p class="first">EC2には以下の2種類がある</p>
+<ul>
+<li><p class="first">EBS（Elastic Block Store）</p>
+<ul class="simple">
 <li>高い可能性と耐久性を持つストレージ</li>
 <li>他のインスタンスに付け替え可能</li>
 <li>EBSの費用が別途発生</li>
 <li>OSやDBなどの永続性と耐久性が必要なデータを置く</li>
 </ul>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<p class="last">無料利用枠では 30 GB までの EBS 汎用 (SSD) ストレージまたはマグネティックストレージを取得できる。</p>
+</div>
 </li>
-<li>インスタンスストア<ul>
+<li><p class="first">インスタンスストア</p>
+<ul class="simple">
 <li>インスタンス専用の一時的なストレージ</li>
 <li>他のインスタンスに付け替えることはできない</li>
 <li>追加費用なし（無料）</li>
 <li>一時ファイル、キャッシュなど、失われても問題がないデータを置く</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p class="first">SSH</p>
+<ul class="simple">
+<li>サーバと自分の目の前のパソコンをセキュアにつなぐサービスのこと</li>
+<li>通信内容が暗号化された遠隔ログインシステム</li>
+<li>公開鍵認証にてログインする</li>
+<li>サーバにログインする際は基本的にSSHを使用する</li>
+<li>EC2にログインする際はSSHを使用する</li>
+<li>SSH接続のツールはTeraTermなど複数あるが、rloginがオススメ</li>
+</ul>
+</li>
+<li><p class="first">公開鍵認証</p>
+<ul class="simple">
+<li>サーバ側が「公開鍵」を保有し、ユーザ側が「秘密鍵」を保有する</li>
+<li>EC2作成時にダウンロードしたSSHキーペアが「秘密鍵」となる</li>
+<li>ログインフロー<ol class="arabic">
+<li>PC → サーバ：ログインを要求</li>
+<li>サーバ → PC：適当なデータを公開鍵で暗号化し送信</li>
+<li>PC → サーバ：受信したデータを複合化し平文データを送信</li>
+<li>サーバ：元データとの一致を確認</li>
+<li>サーバ → PC：ログインを許可</li>
+</ol>
+</li>
+<li>ポート番号<ul>
+<li>ポート番号は、プログラムのアドレス</li>
+<li>同一コンピュータ内で通信を行うプログラムを識別する時に利用</li>
+<li>ポート番号を決める方法は2種類ある<ul>
+<li>標準で決められている番号<ul>
+<li>ウェルノウンポート番号と呼ばれる</li>
+<li>ウェルノウンポート番号は0～1023</li>
+<li>例：SSHは22、SMTPは25、HTTPは80、HTTPSは443</li>
+</ul>
+</li>
+<li>動的に決まる番号<ul>
+<li>サーバのポート番号は決まっている必要があるが、クライアントのポート番号は決まってなくてもよい</li>
+<li>クライアントのポート番号は、OSが他のポート番号と被らないようにランダムに決める</li>
+<li>番号は49142～65535</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -368,22 +428,95 @@
 <li>ネットワーク：作成したVPCを選択</li>
 <li>サブネット：作成したパブリックサブネットを選択</li>
 <li>自動割り当てパブリックIP：有効（インターネット経由でアクセスしたいため）</li>
-<li>配置グループ：チェックなし（複数インスタンスがある場合にインスタンス間のアクセスを高速化するために利用）</li>
-<li></li>
+<li>配置グループ：チェックなし（複数インスタンスがある場合にインスタンス間のアクセスを高速化するために利用するもの）</li>
+<li>キャパシティーの予約：なし（EC2インスタンスが必ず利用できるように予め予約すると追加料金が発生するため）</li>
+<li>IAMロール：なし（EC2インスタンスが他のAWSサービスと連携する際の権限を設定するもの）</li>
+<li>シャットダウン動作：停止（終了時にEC2インスタンスを削除する必要がないため）</li>
+<li>終了保護の有効化：チェックなし（EC2インスタンスが誤って削除されることを防ぐためのもの。本番環境では利用する場合あり）</li>
+<li>モニタリング：チェックなし（EC2インスタンスの監視周期を5分→1分にするためのもの。追加料金発生）</li>
+<li>テナンシー：共有（ハードウェアを占有する際に利用するもの）</li>
+<li>Elastic Inference：チェックなし（機械学習でGPUを使用する場合にコストパフォーマンスをよくするためのもの）</li>
+<li>T2/T3無制限：チェックなし（T2/T3系インスタンスには留意点あり。
+CPU使用率にベースライン（CPU資料率10%）が設定されており、これ以下で運用されている場合はCPUクレジットが貯まっていく。
+アクセスが集中するなど、CPU使用率がベースラインを超えた場合は、バーストモードで動作し、CPUクレジットを消費していく。
+CPUクレジットが消費され尽くすと、バーストモードでは動作できなくなり負荷増となる。
+このバーストモードを無制限とするために利用される項目である。
+ただし、追加料金が発生する）</li>
+<li>ネットワークインターフェイス-&gt;プライマリIP：例）10.0.10.10（
+パブリックIPアドレスだけでなく、プライベートIPアドレスを持たせることができる。
+パブリックサブネットのプライベートIPアドレスが10.0.10.0/24の場合、その範囲内で設定する）</li>
+<li>高度な詳細-&gt;ユーザーデータ：空欄（インスタンス起動時に実行するスクリプトを設定できる）</li>
 </ul>
 </li>
-<li>ストレージの追加</li>
-<li>タグの追加</li>
-<li>セキュリティグループの設定</li>
-<li>SSHキーペアの設定</li>
+<li>ストレージの追加<ul>
+<li>新しいボリュームの追加はしない</li>
+<li>サイズ：8GB</li>
+<li>ボリュームタイプ：汎用SSD</li>
+<li>終了時に削除：チェックあり</li>
+<li>暗号化：暗号化なし</li>
 </ul>
 </li>
-<li>Apacheをインストールする</li>
+<li>タグの追加<ul>
+<li>&quot;タグを追加&quot;ボタンを押下し、インスタンスの名前を設定する</li>
+<li>キー：Name、値：インスタンス名</li>
+</ul>
+</li>
+<li>セキュリティグループの設定<ul>
+<li>セキュリティグループ名を設定する</li>
+<li>タイプ、ソースはデフォルトのまま</li>
+<li>ただし、ソースを0.0.0.0/0にすると、どこからでもSSH接続できるようになるので危険</li>
+<li>今回はとりあえずデフォルト（0.0.0.0/0）とする</li>
+</ul>
+</li>
+<li>SSHキーペアの設定<ul>
+<li>SSH接続で使用するキーのこと</li>
+<li>「新しいキーペアの作成」を選択</li>
+<li>キーペア名を任意に入力し、「キーペアのダウンロード」ボタンを押下することで、&quot;～～.pem&quot;ファイルが作成される</li>
+<li>このキーペアは後で作成することができないため、なくさないこと</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Apacheをインストールする<ul>
+<li>SSHでサーバにログイン</li>
+<li>Apacheをインストール</li>
+</ul>
+</li>
 <li>ファイアウォールを設定する</li>
 </ul>
 </div>
 <div class="section" id="id9">
 <h3>補足<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p class="first">どのポート番号でどのプログラムが待ち受けているかを調べる</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// lsof：オープン中のファイルやそのファイルをオープンしているプロセスのリストを出力する</span>
+<span class="go">//       &quot;list open files&quot; の略</span>
+<span class="go">// -i：ネットワークソケットファイルを表示</span>
+<span class="go">// -n：IPアドレスをホスト名に変換しない</span>
+<span class="go">// -P：ポート番号をサービス名に変換しない</span>
+<span class="go">// &quot;LISTEN&quot;：待ち受けているプロセスを示す。</span>
+<span class="go">// &quot;ESTABLISHED&quot;：ソケット接続を確立しセッションを結んでいるプロセスを示す。</span>
+<span class="gp">$</span> sudo lsof -i -n -P
+<span class="go">COMMAND    PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME</span>
+<span class="go">rpcbind   2679      rpc    6u  IPv4  16789      0t0  UDP *:111</span>
+<span class="go">rpcbind   2679      rpc    7u  IPv4  16793      0t0  UDP *:727</span>
+<span class="go">rpcbind   2679      rpc    8u  IPv4  16794      0t0  TCP *:111 (LISTEN)</span>
+<span class="go">rpcbind   2679      rpc    9u  IPv6  16795      0t0  UDP *:111</span>
+<span class="go">rpcbind   2679      rpc   10u  IPv6  16796      0t0  UDP *:727</span>
+<span class="go">rpcbind   2679      rpc   11u  IPv6  16797      0t0  TCP *:111 (LISTEN)</span>
+<span class="go">chronyd   2702   chrony    1u  IPv4  17280      0t0  UDP 127.0.0.1:323</span>
+<span class="go">chronyd   2702   chrony    2u  IPv6  17281      0t0  UDP [::1]:323</span>
+<span class="go">dhclient  2910     root    6u  IPv4  17815      0t0  UDP *:68</span>
+<span class="go">dhclient  3032     root    5u  IPv6  18132      0t0  UDP [fe80::4f4:e7ff:fe7f:da0c]:546</span>
+<span class="go">master    3169     root   13u  IPv4  18980      0t0  TCP 127.0.0.1:25 (LISTEN)</span>
+<span class="go">sshd      3388     root    3u  IPv4  20815      0t0  TCP *:22 (LISTEN)</span>
+<span class="go">sshd      3388     root    4u  IPv6  20824      0t0  TCP *:22 (LISTEN)</span>
+<span class="go">sshd     32416     root    3u  IPv4  56384      0t0  TCP 10.0.10.10:22-&gt;126.193.60.75:20586 (ESTABLISHED)</span>
+<span class="go">sshd     32433 ec2-user    3u  IPv4  56384      0t0  TCP 10.0.10.10:22-&gt;126.193.60.75:20586 (ESTABLISHED)</span>
+</pre></div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
