@@ -47,7 +47,7 @@ Cloud9での環境構築
 
     // 現在の文字セットを確認
     $ mysql -u root
-    
+
     mysql> show variables like '%char%';
     +--------------------------+------------------------------+
     | Variable_name            | Value                        |

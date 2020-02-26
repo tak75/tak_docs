@@ -4,27 +4,26 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>JavaScript &#8212; Tak Documents  ドキュメント</title>
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script type="text/javascript" src="../_static/translations.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="Flask" href="Flask/index.html" />
     <link rel="prev" title="Bootstrap" href="Bootstrap.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
-    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <script src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -45,7 +44,7 @@
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h3><a href="../index.html">Table of Contents</a></h3>
+<h3><a href="../index.html">目次</a></h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../sphinx/index.html">Sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../GitHub/index.html">GitHub</a></li>
@@ -54,6 +53,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../raspberry_pi/index.html">Raspberry Pi</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Webアプリ</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="用語.html">用語</a></li>
 <li class="toctree-l2"><a class="reference internal" href="AWS.html">AWS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HTML.html">HTML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="CSS.html">CSS</a></li>
@@ -70,7 +70,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../備忘録/index.html">備忘録</a></li>
 </ul>
 
-  <h3><a href="../index.html">Table of Contents</a></h3>
+  <h3><a href="../index.html">目次</a></h3>
   <ul>
 <li><a class="reference internal" href="#">JavaScript</a><ul>
 <li><a class="reference internal" href="#id1">関数の種類</a></li>
@@ -103,17 +103,15 @@
   <p class="topless"><a href="Flask/index.html"
                         title="次の章へ">Flask</a></p>
 <div id="searchbox" style="display: none" role="search">
-  <h3>クイック検索</h3>
+  <h3 id="searchlabel">クイック検索</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="検索" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -127,7 +125,7 @@
 <div class="section" id="id1">
 <h2>関数の種類<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
-<li><p class="first">function命令</p>
+<li><p>function命令</p>
 <div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">getRectangle</span><span class="p">(</span><span class="nx">height</span><span class="p">,</span> <span class="nx">width</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">height</span> <span class="o">*</span> <span class="nx">width</span><span class="p">;</span>
 <span class="p">}</span>
@@ -136,13 +134,13 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">関数リテラル</p>
+<li><p>関数リテラル</p>
 <div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">getRectangle</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">height</span><span class="p">,</span> <span class="nx">width</span><span class="p">)</span> <span class="p">{</span>
 <span class="k">return</span> <span class="nx">height</span> <span class="o">*</span> <span class="nx">width</span><span class="p">;</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Functionコンストラクタ</p>
+<li><p>Functionコンストラクタ</p>
 <div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">getRectangle</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Function</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="s1">&#39;return height * width&#39;</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">getRectangle</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span>
 </pre></div>
@@ -155,27 +153,26 @@
 <div class="section" id="getelementbyid">
 <h3>getElementById()<a class="headerlink" href="#getelementbyid" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
-<li><p class="first">概要</p>
+<li><p>概要</p>
 <p>指定したidを持つ要素を1つ取得する</p>
 </li>
-<li><p class="first">使用例</p>
+<li><p>使用例</p>
 <div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;result&#39;</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">nowDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
 <span class="nx">result</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">nowDate</span><span class="p">.</span><span class="nx">toLocaleString</span><span class="p">();</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">指定したidを持つ要素がなければ null を返す。</p>
-</li>
+<li><p>指定したidを持つ要素がなければ null を返す。</p></li>
 </ul>
 </div>
 <div class="section" id="getelementsbytagname">
 <h3>getElementsByTagName()<a class="headerlink" href="#getelementsbytagname" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
-<li><p class="first">概要</p>
+<li><p>概要</p>
 <p>指定したタグ名を持つ要素を取得する</p>
 </li>
-<li><p class="first">使用例</p>
+<li><p>使用例</p>
 <div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="c1">// タグ名がdivの要素を取得し、その内容（テキスト）をコンソールに出力する。</span>
 <span class="kd">var</span> <span class="nx">elements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
 <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">elements</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
@@ -184,41 +181,37 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">戻り値は、HTMLCollection（配列と似た構造のデータ）。</p>
-</li>
-<li><p class="first">指定したタグ名を持つ要素がない場合は、空のHTMLCollection([])を返す。（null ではない）</p>
-</li>
+<li><p>戻り値は、HTMLCollection（配列と似た構造のデータ）。</p></li>
+<li><p>指定したタグ名を持つ要素がない場合は、空のHTMLCollection([])を返す。（null ではない）</p></li>
 </ul>
 </div>
 <div class="section" id="getelementsbyname">
 <h3>getElementsByName()<a class="headerlink" href="#getelementsbyname" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
-<li><p class="first">概要</p>
+<li><p>概要</p>
 <ul class="simple">
-<li>指定したname属性を持つ要素を取得する。</li>
-<li>ラジオボタン、チェックボックスなどname属性が等しい要素群の取得に利用。</li>
+<li><p>指定したname属性を持つ要素を取得する。</p></li>
+<li><p>ラジオボタン、チェックボックスなどname属性が等しい要素群の取得に利用。</p></li>
 </ul>
 </li>
-<li><p class="first">使用例</p>
+<li><p>使用例</p>
 <div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="c1">// name属性が&#39;result&#39;の要素を取得し、その入力内容（テキスト）をコンソールに出力する。</span>
 <span class="kd">var</span> <span class="nx">elements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByName</span><span class="p">(</span><span class="s1">&#39;result&#39;</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">elements</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">value</span><span class="p">);</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">戻り値は、HTMLCollection（配列と似た構造のデータ）。</p>
-</li>
-<li><p class="first">指定したname属性が存在しない場合は、空のHTMLCollection([])を返す。（null ではない）</p>
-</li>
+<li><p>戻り値は、HTMLCollection（配列と似た構造のデータ）。</p></li>
+<li><p>指定したname属性が存在しない場合は、空のHTMLCollection([])を返す。（null ではない）</p></li>
 </ul>
 </div>
 <div class="section" id="getelementsbyclassname">
 <h3>getElementsByClassName()<a class="headerlink" href="#getelementsbyclassname" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
-<li><p class="first">概要</p>
+<li><p>概要</p>
 <p>指定したclass属性を持つ要素を取得する。</p>
 </li>
-<li><p class="first">使用例</p>
+<li><p>使用例</p>
 <div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="c1">// ボタンをクリックしたら、class名が&#39;foo&#39;の要素を取得し、</span>
 <span class="c1">// その内容（テキスト）をコンソールに出力する。</span>
 <span class="kd">var</span> <span class="nx">elements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
@@ -228,39 +221,35 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">戻り値は、HTMLCollection（配列と似た構造のデータ）。</p>
-</li>
-<li><p class="first">指定したclass属性が存在しない場合は、空のHTMLCollection([])を返す。（null ではない）</p>
-</li>
+<li><p>戻り値は、HTMLCollection（配列と似た構造のデータ）。</p></li>
+<li><p>指定したclass属性が存在しない場合は、空のHTMLCollection([])を返す。（null ではない）</p></li>
 </ul>
 </div>
 <div class="section" id="createelement">
 <h3>createElement()<a class="headerlink" href="#createelement" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
-<li><p class="first">概要</p>
+<li><p>概要</p>
 <p>要素を作成する。</p>
 </li>
-<li><p class="first">ノードを作成するだけのため、別途階層に追加する処理が必要。</p>
-</li>
+<li><p>ノードを作成するだけのため、別途階層に追加する処理が必要。</p></li>
 </ul>
 </div>
 <div class="section" id="createtextnode">
 <h3>createTextNode()<a class="headerlink" href="#createtextnode" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
-<li><p class="first">概要</p>
+<li><p>概要</p>
 <p>テキストノードを作成する。</p>
 </li>
-<li><p class="first">ノードを作成するだけのため、別途階層に追加する処理が必要。</p>
-</li>
+<li><p>ノードを作成するだけのため、別途階層に追加する処理が必要。</p></li>
 </ul>
 </div>
 <div class="section" id="appendchild">
 <h3>appendChild()<a class="headerlink" href="#appendchild" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
-<li><p class="first">概要</p>
+<li><p>概要</p>
 <p>指定された要素を現在の要素の最後の子要素として追加。</p>
 </li>
-<li><p class="first">使用例</p>
+<li><p>使用例</p>
 <div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="c1">// 空のリスト、ボタンを配置</span>
 <span class="c1">// ボタンをクリックすると、リストの項目が追加される。</span>
 <span class="c1">// 追加される文字列は”追加文字列”とする。</span>
@@ -278,17 +267,16 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">戻り値は、追加した子ノード</p>
-</li>
+<li><p>戻り値は、追加した子ノード</p></li>
 </ul>
 </div>
 <div class="section" id="replacechild">
 <h3>replaceChild()<a class="headerlink" href="#replacechild" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
-<li><p class="first">概要</p>
+<li><p>概要</p>
 <p>指定した子ノードを置き換える</p>
 </li>
-<li><p class="first">使用例</p>
+<li><p>使用例</p>
 <div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="c1">// リストとボタンを配置</span>
 <span class="c1">// ボタンをクリックしたら、リストの子要素を置換する処理</span>
 <span class="kd">function</span> <span class="nx">replace</span><span class="p">()</span> <span class="p">{</span>
@@ -312,17 +300,16 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">newChildと、oldChildを入れ換える動作。（appendChild()と、removeChild()を同時に行う）</p>
-</li>
+<li><p>newChildと、oldChildを入れ換える動作。（appendChild()と、removeChild()を同時に行う）</p></li>
 </ul>
 </div>
 <div class="section" id="removechild">
 <h3>removeChild()<a class="headerlink" href="#removechild" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
-<li><p class="first">概要</p>
+<li><p>概要</p>
 <p>指定した子ノードを取り除く</p>
 </li>
-<li><p class="first">使用例</p>
+<li><p>使用例</p>
 <div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="c1">// リストとボタンを設置</span>
 <span class="c1">// ボタンをクリックすると、リストの子要素が最後のものから削除される</span>
 <span class="kd">function</span> <span class="nx">remove</span><span class="p">(){</span>
@@ -334,8 +321,7 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">戻り値は、取り除いたノードoldChildであり、これは再利用できる</p>
-</li>
+<li><p>戻り値は、取り除いたノードoldChildであり、これは再利用できる</p></li>
 </ul>
 </div>
 </div>
@@ -344,11 +330,9 @@
 <div class="section" id="id3">
 <h3>開始タグの中で関連付ける方法<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
-<li><p class="first">1つの要素や1つのイベントに対して、1つのイベントハンドラしか設定できない。</p>
-</li>
-<li><p class="first">本来レイアウトを定義すべきHTMLの中に、javascriptのコードを混在させており、可読性が落ちる。</p>
-</li>
-<li><p class="first">使用例</p>
+<li><p>1つの要素や1つのイベントに対して、1つのイベントハンドラしか設定できない。</p></li>
+<li><p>本来レイアウトを定義すべきHTMLの中に、javascriptのコードを混在させており、可読性が落ちる。</p></li>
+<li><p>使用例</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!htmlコード&gt;</span>
 <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;クリックしてください&quot;</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;clicked()&quot;</span><span class="p">&gt;</span>
 </pre></div>
@@ -365,9 +349,8 @@
 <div class="section" id="id4">
 <h3>プロパティで関連付ける方法<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
-<li><p class="first">1つの要素や1つのイベントに対して、1つのイベントハンドラしか設定できない。</p>
-</li>
-<li><p class="first">使用例</p>
+<li><p>1つの要素や1つのイベントに対して、1つのイベントハンドラしか設定できない。</p></li>
+<li><p>使用例</p>
 <div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">e</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">);</span>
 <span class="nx">e</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;イベント発生&#39;</span><span class="p">);</span>
@@ -380,9 +363,8 @@
 <div class="section" id="addeventlistener">
 <h3>addEventListener<a class="headerlink" href="#addeventlistener" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
-<li><p class="first">1つの要素や1つのイベントに対して、複数のイベントハンドラを設定できる。（この方法で実装すべし！）</p>
-</li>
-<li><p class="first">使用例</p>
+<li><p>1つの要素や1つのイベントに対して、複数のイベントハンドラを設定できる。（この方法で実装すべし！）</p></li>
+<li><p>使用例</p>
 <div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">e</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">);</span>
   <span class="nx">e</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
@@ -420,8 +402,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, tak.
-      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 で生成しました。
+        &#169; Copyright 2020, tak.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.0 で生成しました。
     </div>
   </body>
 </html>

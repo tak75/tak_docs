@@ -13,7 +13,7 @@ Bootstrap
 参考になるWebページ
 ====================
 
-* `Bootstrap 4 Cheat Sheet <https://hackerthemes.com/bootstrap-cheatsheet/>`__ 
+* `Bootstrap 4 Cheat Sheet <https://hackerthemes.com/bootstrap-cheatsheet/>`__
 
 機能紹介
 ========
@@ -29,7 +29,7 @@ Bootstrap
           <div class="col-2">C</div>        // 幅2
         </div>
       </div>
-      
+
   * 等幅も可能。その場合はcolだけにすればよい::
 
       <div class="container">
@@ -49,7 +49,7 @@ Bootstrap
           <div class="col-lg-2">C</div>        // 幅2
         </div>
       </div>
-      
+
   * 入れ子も可能::
 
       <div class="row">

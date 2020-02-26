@@ -9,7 +9,7 @@ kivy
 * スマホアプリやタッチパネル操作用アプリを作りたい場合にメリットあり
 * PCで操作する機器制御用アプリは wxPython + wxGlade が作成が楽で使いやすい気がする
 
-.. note:: 
+.. note::
    つまり、スマホでpythonのリモートプロシージャ？を使用して機器操作できる？
 
 Kivyと依存パッケージの更新／インストール
@@ -50,7 +50,7 @@ Atomのインストール
 
 `3 Atomエディタの導入 <https://www.closetoyou.jp/kivy/introduction-to-kivy03/>`__
 
-* Atom：`公式サイト <https://atom.io/>`__ 
+* Atom：`公式サイト <https://atom.io/>`__
 * 追加パッケージ（メニューから、「File」→「Settings」を選択）
 
   * japanese-menu
@@ -129,7 +129,7 @@ https://qiita.com/EsseiK/items/9d87a16cc586957416c8
 回避のために以下のファイル修正が必要。
 
 ファイルパス::
-  
+
   C:\Users\[ユーザー名]\Anaconda3\envs\[環境名]\Lib\site-packages\kivy\lang\builder.py
 
 の288行目。
@@ -142,7 +142,7 @@ https://qiita.com/EsseiK/items/9d87a16cc586957416c8
 
   with open(filename, 'r', encoding='utf8') as fd:
 
-.. note:: 
+.. note::
    コメントをコードと同じ行に続けて書くとエラーになるみたい。
    独立行に書くと問題ない。
 

@@ -36,7 +36,7 @@ WindowsのVisualStudioを使って、RasPi上のpythonコードをリモート�
     ※pipで入れるもよし、落としたzip解凍してpython setup.py installもよし
 
     pipの例::
-    
+
       sudo pip install ptvsd
 
 -------

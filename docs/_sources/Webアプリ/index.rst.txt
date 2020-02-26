@@ -5,7 +5,8 @@ Webアプリ
 .. toctree::
    :maxdepth: 2
 
-   AWS
+   用語
+   AWS/index
    HTML
    CSS
    Bootstrap

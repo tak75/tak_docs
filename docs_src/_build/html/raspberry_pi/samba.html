@@ -4,27 +4,26 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>samba &#8212; Tak Documents  ドキュメント</title>
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script type="text/javascript" src="../_static/translations.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="GitBucket" href="GitBucket.html" />
     <link rel="prev" title="GPIO制御" href="GPIO制御.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
-    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <script src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -45,7 +44,7 @@
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h3><a href="../index.html">Table of Contents</a></h3>
+<h3><a href="../index.html">目次</a></h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../sphinx/index.html">Sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../GitHub/index.html">GitHub</a></li>
@@ -66,7 +65,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../備忘録/index.html">備忘録</a></li>
 </ul>
 
-  <h3><a href="../index.html">Table of Contents</a></h3>
+  <h3><a href="../index.html">目次</a></h3>
   <ul>
 <li><a class="reference internal" href="#">samba</a><ul>
 <li><a class="reference internal" href="#id1">インストール</a></li>
@@ -85,17 +84,15 @@
   <p class="topless"><a href="GitBucket.html"
                         title="次の章へ">GitBucket</a></p>
 <div id="searchbox" style="display: none" role="search">
-  <h3>クイック検索</h3>
+  <h3 id="searchlabel">クイック検索</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="検索" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -117,13 +114,13 @@
 <div class="section" id="id2">
 <h2>設定<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">smb.confを開く。:</p>
+<li><p>smb.confを開く。:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo leafpad /etc/samba/smb.conf  # Xwindow使用時
 $ sudo vim /etc/samba/smb.conf      # Xwindow未使用時
 </pre></div>
 </div>
 </li>
-<li><p class="first">開いたファイルに以下を追加する。[share]はファイルの末尾に追加する。:</p>
+<li><p>開いたファイルに以下を追加する。[share]はファイルの末尾に追加する。:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="k">global</span><span class="p">]</span>
 <span class="n">dos</span> <span class="n">charset</span> <span class="o">=</span> <span class="n">CP932</span>
 <span class="n">unix</span> <span class="n">charset</span> <span class="o">=</span> <span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
@@ -144,12 +141,12 @@ $ sudo vim /etc/samba/smb.conf      # Xwindow未使用時
 <div class="section" id="id3">
 <h2>起動<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
-<li><p class="first">上記設定直後に、設定内容をsambaに反映させるには、以下を実行する。:</p>
+<li><p>上記設定直後に、設定内容をsambaに反映させるには、以下を実行する。:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo /etc/init.d/samba reload
 </pre></div>
 </div>
 </li>
-<li><p class="first">システム起動時に自動的に起動させる場合は、以下を実行する。:</p>
+<li><p>システム起動時に自動的に起動させる場合は、以下を実行する。:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo update-rc.d samba defaults   # 自動起動させる
 $ sudo update-rc.d samba remove     # 自動起動させない
 </pre></div>
@@ -160,14 +157,14 @@ $ sudo update-rc.d samba remove     # 自動起動させない
 <div class="section" id="id4">
 <h2>備考<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
-<li>smb.conf に [homes] の記載があるが、これはユーザのホームディレクトリを <strong>Readonly</strong> で共有するための設定である。
-外部から接続した際に見える共有名はユーザ名（例えば <strong>pi</strong>）となる。</li>
+<li><p>smb.conf に [homes] の記載があるが、これはユーザのホームディレクトリを <strong>Readonly</strong> で共有するための設定である。
+外部から接続した際に見える共有名はユーザ名（例えば <strong>pi</strong>）となる。</p></li>
 </ul>
 </div>
 <div class="section" id="id5">
 <h2>参考<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
-<li><a class="reference external" href="http://www.uetyi.com/server-const/entry-23.html">Sambaの設定（共有フォルダの追加）</a></li>
+<li><p><a class="reference external" href="http://www.uetyi.com/server-const/entry-23.html">Sambaの設定（共有フォルダの追加）</a></p></li>
 </ul>
 </div>
 </div>
@@ -195,8 +192,8 @@ $ sudo update-rc.d samba remove     # 自動起動させない
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, tak.
-      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 で生成しました。
+        &#169; Copyright 2020, tak.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.0 で生成しました。
     </div>
   </body>
 </html>

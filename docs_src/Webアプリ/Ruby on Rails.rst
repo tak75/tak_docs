@@ -21,28 +21,28 @@ Ruby on Rails
 * rubyのバージョンを確認する
 
   .. code-block:: console
-  
+
     $ ruby -v
     ruby 2.6.3p62 (2019-04-16 revision 67580) [x86_64-linux]
 
 * railsをバージョンを指定してインストールする
 
   .. code-block:: console
-  
+
     // --no-documentはドキュメントなしでインストールする場合
     $ gem install rails --version="5.1.4" --no-document
 
 * railsのバージョンを確認する
 
   .. code-block:: console
-  
+
     $ rails -v
     Rails 5.1.4
 
 * sqlite3のバージョンを確認する
 
   .. code-block:: console
-  
+
     $ sqlite3 --version
     3.7.17 2013-05-20 00:56:22 118a3b35693b134d56ebd780123b7fd6f1497668
 
@@ -52,7 +52,7 @@ Ruby on Rails
 * Cloud9 作業1
 
   .. code-block:: console
-  
+
     // バージョンを指定して"hello"プロジェクトを新規作成する
     $ rails _5.1.4_ new hello
 
@@ -66,7 +66,7 @@ Ruby on Rails
 
     【変更前】 gem 'sqlite3'
     【変更後】 gem 'sqlite3', '~> 1.3.6'
-  
+
 * Cloud9 作業2
 
   .. code-block:: console
@@ -201,7 +201,7 @@ DBスキーマ（DBの構造）をDBに反映させる
     CREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY);
     CREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
     CREATE TABLE "tasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "done" boolean DEFAULT 'f', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
-    
+
     // DBコマンドラインツールを終了する
     sqlite> .exit
 
@@ -285,7 +285,7 @@ DBスキーマ（DBの構造）をDBに反映させる
 * 上記で作成されるファイルについて
 
   * .erb
-  
+
     Embedded Ruby の略。テンプレートエンジン
 
 * ルーティング設定は、config->routes.rbに記載される

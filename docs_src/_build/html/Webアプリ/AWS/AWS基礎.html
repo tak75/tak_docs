@@ -1,0 +1,1531 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>AWS基礎 &#8212; Tak Documents  ドキュメント</title>
+    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../../_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="next" title="AWS応用" href="AWS応用.html" />
+    <link rel="prev" title="AWS" href="index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="AWS応用.html" title="AWS応用"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="AWS"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Webアプリ</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">AWS</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../index.html">目次</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Webアプリ</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../用語.html">用語</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">AWS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HTML.html">HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../CSS.html">CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Bootstrap.html">Bootstrap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../JavaScript.html">JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Flask/index.html">Flask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ruby.html">Ruby</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MySQL.html">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ruby on Rails.html">Ruby on Rails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../共通のメモ.html">共通のメモ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../デザインパターン/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../備忘録/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">AWS基礎</a><ul>
+<li><a class="reference internal" href="#id1">概要</a></li>
+<li><a class="reference internal" href="#id2">初期設定</a></li>
+<li><a class="reference internal" href="#id3">操作</a></li>
+<li><a class="reference internal" href="#vpc">【VPC】ネットワーク構築</a><ul>
+<li><a class="reference internal" href="#id4">用語</a></li>
+<li><a class="reference internal" href="#id5">手順</a></li>
+<li><a class="reference internal" href="#id6">補足</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ec2web">【EC2】Webサーバ構築</a><ul>
+<li><a class="reference internal" href="#id7">用語</a></li>
+<li><a class="reference internal" href="#id8">手順</a></li>
+<li><a class="reference internal" href="#id9">補足</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#route53">【Route53】ドメインを登録する</a><ul>
+<li><a class="reference internal" href="#id10">用語</a></li>
+<li><a class="reference internal" href="#id11">手順</a></li>
+<li><a class="reference internal" href="#id12">補足</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rdsdb">【RDS】DBサーバを構築する</a><ul>
+<li><a class="reference internal" href="#id13">用語</a></li>
+<li><a class="reference internal" href="#id14">手順</a></li>
+<li><a class="reference internal" href="#id15">補足</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ec2wordpress">【EC2】WordPressを構築する</a><ul>
+<li><a class="reference internal" href="#id16">用語</a></li>
+<li><a class="reference internal" href="#id17">手順</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="index.html"
+                        title="前の章へ">AWS</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="AWS応用.html"
+                        title="次の章へ">AWS応用</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="aws">
+<h1>AWS基礎<a class="headerlink" href="#aws" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id1">
+<h2>概要<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p>サービスの数は世界最大</p></li>
+<li><p>リソースが柔軟</p></li>
+<li><p>従量課金で使用した分だけ支払えばよい</p></li>
+<li><p>マネジメントコンソール</p>
+<p>AWSログイン時に表示される画面のこと</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>初期設定<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p>CloudWatchで料金アラートを設定</p>
+<ul>
+<li><p>請求ダッシュボードで請求アラートを受け取れるように設定</p>
+<ul>
+<li><p>マネジメントコンソール画面のメニューバーのアカウントより、マイ請求ダッシュボードを選択</p></li>
+<li><p>左メニューから、Billing の設定を選択し各々設定する</p></li>
+</ul>
+</li>
+<li><p>CloudWatchで料金アラートを設定</p>
+<ul>
+<li><p>CloudWatch -&gt; 請求 -&gt; アラームの作成</p></li>
+<li><p>メトリクス -&gt; 請求 -&gt; 概算合計請求額を選択し、チェックボックスにチェックを入れる</p></li>
+<li><p>メトリクスの選択ボタンを押下</p></li>
+<li><p>閾値金額を入力（例：10USD）</p></li>
+<li><p>次へボタンを押下</p></li>
+<li><p>トピック名とメアドを入力し、トピックの作成ボタンを押下</p></li>
+<li><p>次へボタンを押下</p></li>
+<li><p>名前と説明を入力し、次へボタンを押下</p></li>
+<li><p>アラームの作成ボタンを押下</p></li>
+<li><p>上記メアドに通知メールがあるので、&quot;Confirm subscription&quot;ボタンを押下</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>マネジメントコンソール画面のメニューバーのアカウントより、マイアカウント -&gt; IAMユーザーによる請求情報へのアクセス有効化で「有効」に設定</p></li>
+<li><p>IAMで作業ユーザを作成</p></li>
+<li><p>CloudTrailで操作ログを記録</p>
+<ul>
+<li><p>デフォルトで有効になっているが、保存期間は90日のみ</p></li>
+<li><p>S3に操作ログを保存することで、永久的に保存できる</p></li>
+<li><p>ただし、CloudTrail自体は無料だが、S3の料金は必要</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>操作<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p>操作ログ閲覧方法</p>
+<ul>
+<li><p>サービス -&gt; CloudTrail -&gt; 最近のイベント を閲覧する</p></li>
+<li><p>デフォルト保存期間は90日</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="vpc">
+<h2>【VPC】ネットワーク構築<a class="headerlink" href="#vpc" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id4">
+<h3>用語<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<dl class="glossary simple">
+<dt id="term-0">リージョン</dt><dd><ul class="simple">
+<li><p>AWSの各サービスが提供されている地域のことであり、各国に存在する</p></li>
+<li><p>基本的には、最新サービスはまずアメリカリージョンで提供され、それから他のリージョンに展開される</p></li>
+</ul>
+</dd>
+<dt id="term-1">アベイラビリティゾーン</dt><dd><ul class="simple">
+<li><p>独立したデータセンターのこと</p></li>
+<li><p>リージョン内にはアベイラビリティゾーンが複数あり、災害等で1つが使用できなくなっても他で代替できる</p></li>
+</ul>
+</dd>
+<dt id="term-vpc">VPC</dt><dd><ul class="simple">
+<li><p>Virtual Private Cloud</p></li>
+<li><p>AWS上に仮想ネットワークを作成できるサービス</p></li>
+<li><p>IPv4 アドレスの範囲を CIDRブロックの形式で指定する必要がある (例: 10.0.0.0/16)。</p></li>
+<li><p>プライベートIPアドレスを使用することが推奨されている</p>
+<ul>
+<li><p>クラスA：10.0.0.0～10.255.255.255 （10.0.0.0/8）</p></li>
+<li><p>クラスB：172.16.0.0～172.31.255.255 （172.16.0.0/12）</p></li>
+<li><p>クラスC：192.168.0.0～192.168.255.255 （192.168.0.0/16）</p></li>
+</ul>
+</li>
+<li><p>VPC作成後はIPv4 アドレス範囲を変更できないので、大きめに設定する</p>
+<ul>
+<li><p>大きさは /28から/16で、/16が推奨</p></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="term-2">サブネット</dt><dd><ul class="simple">
+<li><p>VPCを細かく区切ったネットワークであり、プライベート／パブリックの設定が可能</p></li>
+<li><p>これにより、サブネットAは公開するが、サブネットBは非公開とする、という設定が可能となり、
+セキュリティを高める運用が可能</p></li>
+<li><p>アベイラビリティゾーンを分けて配置することで、物理的な場所を離し、災害に強くなるメリットもある</p></li>
+<li><p>IPv4 アドレス範囲は/24が標準的</p></li>
+</ul>
+</dd>
+<dt id="term-ip">IPアドレスの表記</dt><dd><ul class="simple">
+<li><p>CIDR表記（サイダー）</p>
+<ul>
+<li><p>Classless Inter-Domain Routing</p></li>
+<li><p>例：192.168.128.0/24</p></li>
+<li><p>&quot;/&quot;の後の数値24は、ネットワーク部が先頭から24ビット目までであることを表す</p></li>
+</ul>
+</li>
+<li><p>サブネットマスク表記</p>
+<ul>
+<li><p>例：192.168.128.0/255.255.255.0</p></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="term-3">ルートテーブル</dt><dd><ul class="simple">
+<li><p>VPCと各サブネットに対して設定できる</p></li>
+<li><p>ルートテーブルに設定している送信先IPアドレス範囲（CIDRブロック）以外の通信は破棄される</p></li>
+<li><p>&quot;0.0.0.0/0&quot;で、ルートテーブルに設定しているIPアドレス範囲以外のIPアドレスを意味する</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id5">
+<h3>手順<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p>VPCを作成する</p>
+<ul>
+<li><p>テナンシー：デフォルト</p></li>
+<li><p>VPCを作成すると、自動的にメインルートテーブルとメインネットワークACLが作成される？</p></li>
+</ul>
+</li>
+<li><p>サブネットを作成する</p>
+<ul>
+<li><p>パブリックサブネットを作成する</p>
+<ul>
+<li><p>名前タグ：任意（aws-and-infra-public-subnet-1a）</p></li>
+<li><p>VPC：事前作成のVPCを選択</p></li>
+<li><p>VPC CIDR：デフォルトのまま</p></li>
+<li><p>アベイラリティゾーン：任意（ap-northeast-1a）</p></li>
+<li><p>IPv4 CIDRブロック：任意のプライベートIPアドレス（10.0.10.0/24）</p></li>
+</ul>
+</li>
+<li><p>プライベートサブネットを作成する</p>
+<ul>
+<li><p>名前タグ：任意（aws-and-infra-private-subnet-1a）</p></li>
+<li><p>VPC：事前作成のVPCを選択</p></li>
+<li><p>VPC CIDR：デフォルトのまま</p></li>
+<li><p>アベイラリティゾーン：任意（ap-northeast-1a）</p></li>
+<li><p>IPv4 CIDRブロック：任意のプライベートIPアドレス（10.0.20.0/24）</p></li>
+</ul>
+</li>
+<li><p>ルートテーブルとネットワークACLを明示的に設定しないと、VPCに設定されたメインルートテーブルとメインネットワークACLが利用される</p></li>
+</ul>
+</li>
+<li><p>ルーティングを設定する</p>
+<ul>
+<li><p>インターネットゲートウェイを作成し、VPCにアタッチする</p>
+<ul>
+<li><p>作成したIGWを選択し、アクション -&gt; VPCにアタッチを選択</p></li>
+</ul>
+</li>
+<li><p>ルートテーブルを作成し、パブリックサブネットに紐づける</p>
+<ul>
+<li><p>作成したルートテーブルを選択し、サブネットの関連付け -&gt; サブネットの関連付けの編集より、紐づけるサブネットを選択し保存する</p></li>
+<li><p>作成したルートテーブルを選択し、ルート-&gt;ルートの編集 -&gt; ルートの追加より、以下のルートを追加する</p>
+<ul>
+<li><p>送信先：&quot;0.0.0.0/0&quot;</p></li>
+<li><p>ターゲット：Internet Gateway -&gt; 作成したIGW</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>補足<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p>異なるシステムの場合はアカウントを分けること</p></li>
+<li><p>同一システムで本番環境とステージング環境を分けたい場合は、同一アカウントでVPCとリージョンを分けるのがオススメ</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="ec2web">
+<h2>【EC2】Webサーバ構築<a class="headerlink" href="#ec2web" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id7">
+<h3>用語<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<dl class="glossary">
+<dt id="term-ec2">EC2</dt><dd><ul class="simple">
+<li><p>Elastic Compute Cloud</p></li>
+<li><p>AWSクラウド上の仮想サーバ</p></li>
+<li><p>数分で起動し、1時間または秒単位で従量課金</p></li>
+<li><p>無料枠内でいくつEC2インスタンスを作成してもよいが、全インスタンスの稼働時間が750時間／月を超えると課金される</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>EC2インスタンスを一旦終了すると、グローバルIPアドレスが変わるので要注意！
+ただし、Elastic IPアドレス（条件により課金）を使うとEC2を削除するまでIPアドレスを固定することが可能。</p>
+</div>
+</dd>
+<dt id="term-ami">AMI（アミイ）</dt><dd><ul class="simple">
+<li><p>Amazon Machine image</p></li>
+<li><p>インスタンス起動に必要な情報が入ったOSのイメージ</p></li>
+<li><p>サーバのテンプレートのようなもの</p></li>
+<li><p>AWSやサードパーティがAMIを提供</p></li>
+<li><p>カスタムAMIも作成可能</p></li>
+<li><p>AMIから何台でもEC2インスタンスを起動可能</p></li>
+</ul>
+</dd>
+<dt id="term-4">インスタンスタイプ</dt><dd><ul class="simple">
+<li><p>サーバのスペックを定義したもの</p></li>
+<li><p>インスタンスタイプにより、CPU、メモリ、ストレージ、ネットワーク帯域が異なる</p></li>
+<li><p>例：m5.xlarge</p>
+<ul>
+<li><p>m</p>
+<ul>
+<li><p>インスタンスファミリー</p></li>
+<li><p>インスタンスの特徴を示す</p></li>
+<li><p>汎用的／CPU最適化／メモリ最適化／価格最適化／など</p></li>
+</ul>
+</li>
+<li><p>5</p>
+<ul>
+<li><p>インスタンス世代</p></li>
+<li><p>数値が大きいほど世代が新しい</p></li>
+<li><p>新しいものの方が性能／コストパフォーマンス／などがよい</p></li>
+<li><p>大きな数値を使用することが推奨</p></li>
+</ul>
+</li>
+<li><p>xlarge</p>
+<ul>
+<li><p>インスタンスサイズ</p></li>
+<li><p>CPU、メモリ、ネットワークのキャパシティを示す</p></li>
+<li><p>small/large/xlarge/など</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="term-5">ストレージ</dt><dd><ul>
+<li><p>サーバにくっつけるデータの保管場所</p></li>
+<li><p>EC2には以下の2種類がある</p>
+<ul>
+<li><p>EBS（Elastic Block Store）</p>
+<ul class="simple">
+<li><p>高い可能性と耐久性を持つストレージ</p></li>
+<li><p>他のインスタンスに付け替え可能</p></li>
+<li><p>EBSの費用が別途発生</p></li>
+<li><p>OSやDBなどの永続性と耐久性が必要なデータを置く</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>無料利用枠では 30 GB までの EBS 汎用 (SSD) ストレージまたはマグネティックストレージを取得できる。</p>
+</div>
+</li>
+<li><p>インスタンスストア</p>
+<ul class="simple">
+<li><p>インスタンス専用の一時的なストレージ</p></li>
+<li><p>他のインスタンスに付け替えることはできない</p></li>
+<li><p>追加費用なし（無料）</p></li>
+<li><p>一時ファイル、キャッシュなど、失われても問題がないデータを置く</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="term-ssh">SSH</dt><dd><ul class="simple">
+<li><p>サーバと自分の目の前のパソコンをセキュアにつなぐサービスのこと</p></li>
+<li><p>通信内容が暗号化された遠隔ログインシステム</p></li>
+<li><p>公開鍵認証にてログインする</p></li>
+<li><p>サーバにログインする際は基本的にSSHを使用する</p></li>
+<li><p>EC2にログインする際はSSHを使用する</p></li>
+<li><p>SSH接続のツールはTeraTermなど複数あるが、rloginがオススメ</p></li>
+</ul>
+</dd>
+<dt id="term-6">こうかいかぎにんしょう（公開鍵認証）</dt><dd><ul class="simple">
+<li><p>サーバ側が「公開鍵」を保有し、ユーザ側が「秘密鍵」を保有する</p></li>
+<li><p>EC2作成時にダウンロードしたSSHキーペアが「秘密鍵」となる</p></li>
+<li><p>ログインフロー</p>
+<ol class="arabic simple">
+<li><p>PC → サーバ：ログインを要求</p></li>
+<li><p>サーバ → PC：適当なデータを公開鍵で暗号化し送信</p></li>
+<li><p>PC → サーバ：受信したデータを複合化し平文データを送信</p></li>
+<li><p>サーバ：元データとの一致を確認</p></li>
+<li><p>サーバ → PC：ログインを許可</p></li>
+</ol>
+</li>
+</ul>
+</dd>
+<dt id="term-7">ポート番号</dt><dd><ul class="simple">
+<li><p>ポート番号は、プログラムのアドレス</p></li>
+<li><p>同一コンピュータ内で通信を行うプログラムを識別する時に利用</p></li>
+<li><p>ポート番号を決める方法は2種類ある</p>
+<ul>
+<li><p>標準で決められている番号</p>
+<ul>
+<li><p>ウェルノウンポート番号と呼ばれる</p></li>
+<li><p>ウェルノウンポート番号は0～1023</p></li>
+<li><p>例：SSHは22、SMTPは25、HTTPは80、HTTPSは443</p></li>
+</ul>
+</li>
+<li><p>動的に決まる番号</p>
+<ul>
+<li><p>サーバのポート番号は決まっている必要があるが、クライアントのポート番号は決まってなくてもよい</p></li>
+<li><p>クライアントのポート番号は、OSが他のポート番号と被らないようにランダムに決める</p></li>
+<li><p>番号は49142～65535</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="term-apache">Apache</dt><dd><p>HTTPリクエストがあると、それに対してレスポンスを返しWebページを表示する、Webサーバのソフトウェア。</p>
+</dd>
+<dt id="term-8">ファイアウォール</dt><dd><ul class="simple">
+<li><p>ファイアウォールとは、ネットワークを不正アクセスから守るために、「通してよい通信だけを通して、それ以外は通さない」機能の総称</p></li>
+<li><p>AWSでは、EC2インスタンスに対して設定する <strong>セキュリティグループ</strong> がファイアウォールの役割を担っている。</p></li>
+</ul>
+</dd>
+<dt id="term-elastic-ip">Elastic IPアドレス</dt><dd><ul class="simple">
+<li><p>固定グローバルIPアドレスを取得し、インスタンスに付与できるサービス</p></li>
+<li><p>インスタンスを削除するまで、ずっとそのIPアドレスを使用することができる</p></li>
+<li><p>Elastic IPアドレスは、EC2インスタンスに関連付けられていて、そのインスタンスが起動中であれば無料。
+逆に、そうでないと課金される（インスタンスが停止中は課金される）</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id8">
+<h3>手順<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p>EC2インスタンスを設置する</p>
+<ul>
+<li><p>AMIの選択</p>
+<ul class="simple">
+<li><p>EC2 -&gt; インスタンス -&gt; インスタンスの作成を選択する</p></li>
+<li><p>クイックスタート -&gt; Amazon Linux 2 AMIを選択し選択ボタンを押下する</p></li>
+</ul>
+</li>
+<li><p>インスタンスタイプの選択</p>
+<ul class="simple">
+<li><p>無料枠で利用できる&quot;t2.micro&quot;を選択し次のステップボタンを押下する</p></li>
+</ul>
+</li>
+<li><p>インスタンス詳細の設定</p>
+<ul class="simple">
+<li><p>インスタンス数：1</p></li>
+<li><p>購入のオプション：チェックなし（常時インスタンスを起動したいためスポットインスタンスではない）</p></li>
+<li><p>ネットワーク：事前作成のVPCを選択</p></li>
+<li><p>サブネット：事前作成のパブリックサブネットを選択</p></li>
+<li><p>自動割り当てパブリックIP：有効（インターネット経由でアクセスしたいため）</p></li>
+<li><p>配置グループ：チェックなし（複数インスタンスがある場合にインスタンス間のアクセスを高速化するために利用するもの）</p></li>
+<li><p>キャパシティーの予約：なし（EC2インスタンスが必ず利用できるように予め予約すると追加料金が発生するため）</p></li>
+<li><p>IAMロール：なし（EC2インスタンスが他のAWSサービスと連携する際の権限を設定するもの）</p></li>
+<li><p>シャットダウン動作：停止（終了時にEC2インスタンスを削除する必要がないため）</p></li>
+<li><p>終了保護の有効化：チェックなし（EC2インスタンスが誤って削除されることを防ぐためのもの。本番環境では利用する場合あり）</p></li>
+<li><p>モニタリング：チェックなし（EC2インスタンスの監視周期を5分→1分にするためのもの。追加料金発生）</p></li>
+<li><p>テナンシー：共有（ハードウェアを占有する際に利用するもの）</p></li>
+<li><p>Elastic Inference：チェックなし（機械学習でGPUを使用する場合にコストパフォーマンスをよくするためのもの）</p></li>
+<li><p>T2/T3無制限：チェックなし（T2/T3系インスタンスには留意点あり。
+CPU使用率にベースライン（CPU資料率10%）が設定されており、これ以下で運用されている場合はCPUクレジットが貯まっていく。
+アクセスが集中するなど、CPU使用率がベースラインを超えた場合は、バーストモードで動作し、CPUクレジットを消費していく。
+CPUクレジットが消費され尽くすと、バーストモードでは動作できなくなり負荷増となる。
+このバーストモードを無制限とするために利用される項目である。
+ただし、追加料金が発生する）</p></li>
+<li><p>ネットワークインターフェイス -&gt; プライマリIP：例）10.0.10.10（
+パブリックIPアドレスだけでなく、プライベートIPアドレスを持たせることができる。
+パブリックサブネットのプライベートIPアドレスが10.0.10.0/24の場合、その範囲内で設定する）</p></li>
+<li><p>高度な詳細 -&gt; ユーザーデータ：空欄（インスタンス起動時に実行するスクリプトを設定できる）</p></li>
+</ul>
+</li>
+<li><p>ストレージの追加</p>
+<ul class="simple">
+<li><p>新しいボリュームの追加はしない</p></li>
+<li><p>サイズ：8GB</p></li>
+<li><p>ボリュームタイプ：汎用SSD</p></li>
+<li><p>終了時に削除：チェックあり</p></li>
+<li><p>暗号化：暗号化なし</p></li>
+</ul>
+</li>
+<li><p>タグの追加</p>
+<ul class="simple">
+<li><p>&quot;タグを追加&quot;ボタンを押下し、インスタンスの名前を設定する</p></li>
+<li><p>キー：Name、値：インスタンス名</p></li>
+</ul>
+</li>
+<li><p>セキュリティグループの設定</p>
+<ul class="simple">
+<li><p>セキュリティグループ名を設定する</p></li>
+<li><p>タイプ、ソースはデフォルトのまま</p></li>
+<li><p>ただし、ソースを0.0.0.0/0にすると、どこからでもSSH接続できるようになるので危険</p></li>
+<li><p>今回はとりあえずデフォルト（0.0.0.0/0）とする</p></li>
+</ul>
+</li>
+<li><p>SSHキーペアの設定</p>
+<ul class="simple">
+<li><p>SSH接続で使用するキーのこと</p></li>
+<li><p>「新しいキーペアの作成」を選択</p></li>
+<li><p>キーペア名を任意に入力し、「キーペアのダウンロード」ボタンを押下することで、&quot;～～.pem&quot;ファイルが作成される</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>このキーペアは後で作成することができないため、必ずEC2インスタンス作成時に作成し、なくさないこと。</p>
+</div>
+</li>
+</ul>
+</li>
+<li><p>Apacheをインストールする</p>
+<ul>
+<li><p>SSHでサーバにログイン</p>
+<ul class="simple">
+<li><p>接続先はEC2インスタンスの「IPv4 パブリック IP」である。
+このアドレスはインスタンスの再起動の都度変わるので確認すること。</p></li>
+<li><p>ユーザ名を&quot;ec2-user&quot;とし、上記で作成したSSHキーペアを読み込ませる。</p></li>
+</ul>
+</li>
+<li><p>Apacheをインストール</p>
+<ul>
+<li><p>パッケージを更新する</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// yum：Linuxのパッケージ管理ツール。&quot;yum update&quot;でyumが管理する全パッケージを更新する。</span>
+<span class="go">// -y：&quot;Yes&quot;オプション。全パッケージの更新を&quot;Yes&quot;にする。付けないと都度Yes/Noを聞かれる</span>
+<span class="gp">$</span> sudo yum update -y
+</pre></div>
+</div>
+</li>
+<li><p>Apacheをインストールする</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// httpd：Apacheを構成する実行ファイル</span>
+<span class="gp">$</span> sudo yum -y install httpd
+</pre></div>
+</div>
+</li>
+<li><p>Apacheを起動させる</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// httpd.service：Apacheのこと</span>
+<span class="gp">$</span> sudo systemctl start httpd.service
+</pre></div>
+</div>
+</li>
+<li><p>Apacheが起動しているか確認する1（Apacheのステータスを確認）</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo systemctl status httpd.service
+<span class="go">● httpd.service - The Apache HTTP Server</span>
+<span class="go">  Loaded: loaded (/usr/lib/systemd/system/httpd.service; disabled; vendor preset: disabled)</span>
+<span class="go">  Active: active (running) since Tue 2020-02-11 13:18:43 UTC; 33s ago</span>
+<span class="go">    Docs: man:httpd.service(8)</span>
+<span class="go">Main PID: 21785 (httpd)</span>
+<span class="go">  Status: &quot;Total requests: 0; Idle/Busy workers 100/0;Requests/sec: 0; Bytes served/sec:   0 B/sec&quot;</span>
+<span class="go">  CGroup: /system.slice/httpd.service</span>
+<span class="go">          tq21785 /usr/sbin/httpd -DFOREGROUND</span>
+<span class="go">          tq21786 /usr/sbin/httpd -DFOREGROUND</span>
+<span class="go">          tq21787 /usr/sbin/httpd -DFOREGROUND</span>
+<span class="go">          tq21788 /usr/sbin/httpd -DFOREGROUND</span>
+<span class="go">          tq21789 /usr/sbin/httpd -DFOREGROUND</span>
+<span class="go">          mq21790 /usr/sbin/httpd -DFOREGROUND</span>
+</pre></div>
+</div>
+</li>
+<li><p>Apacheが起動しているか確認する2（全プロセスを確認）</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// ps：プロセスを表示するコマンド</span>
+<span class="go">// -ax：全てのプロセスを表示するオプション</span>
+<span class="go">// u：CPUやメモリ使用率を付けて表示するオプション</span>
+<span class="gp">$</span> ps -axu
+<span class="go">USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</span>
+<span class="go">・・ 省略 ・・</span>
+<span class="go">apache   21786  0.0  0.6 298484  6512 ?        Sl   13:18   0:00 /usr/sbin/httpd</span>
+<span class="go">apache   21787  0.0  0.6 298484  6512 ?        Sl   13:18   0:00 /usr/sbin/httpd</span>
+<span class="go">apache   21788  0.0  0.6 495156  6520 ?        Sl   13:18   0:00 /usr/sbin/httpd</span>
+<span class="go">apache   21789  0.0  0.6 298484  6512 ?        Sl   13:18   0:00 /usr/sbin/httpd</span>
+<span class="go">apache   21790  0.0  0.6 298484  6512 ?        Sl   13:18   0:00 /usr/sbin/httpd</span>
+<span class="go">ec2-user 21839  0.0  0.3 164364  3900 pts/0    R+   13:22   0:00 ps -axu</span>
+</pre></div>
+</div>
+</li>
+<li><p>Apacheが起動しているか確認する3（Apacheのプロセスを確認）</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// |：パイプライン。左のコマンドの実行結果を右のコマンドに渡す</span>
+<span class="go">// grep：引数の文字列を検索して表示する</span>
+<span class="gp">$</span> ps -axu <span class="p">|</span> grep httpd
+<span class="go">root     21785  0.0  0.9 257372  9716 ?        Ss   13:18   0:00 /usr/sbin/http  -DFOREGROUND</span>
+<span class="go">apache   21786  0.0  0.6 298484  6512 ?        Sl   13:18   0:00 /usr/sbin/http  -DFOREGROUND</span>
+<span class="go">apache   21787  0.0  0.6 298484  6512 ?        Sl   13:18   0:00 /usr/sbin/http  -DFOREGROUND</span>
+<span class="go">apache   21788  0.0  0.6 495156  6520 ?        Sl   13:18   0:00 /usr/sbin/http  -DFOREGROUND</span>
+<span class="go">apache   21789  0.0  0.6 298484  6512 ?        Sl   13:18   0:00 /usr/sbin/http  -DFOREGROUND</span>
+<span class="go">apache   21790  0.0  0.6 298484  6512 ?        Sl   13:18   0:00 /usr/sbin/http  -DFOREGROUND</span>
+<span class="go">ec2-user 21842  0.0  0.0 119416   920 pts/0    S+   13:27   0:00 grep --color=auto httpd</span>
+</pre></div>
+</div>
+</li>
+<li><p>Apacheをサーバ起動に合わせて自動起動するよう設定する</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo systemctl <span class="nb">enable</span> httpd.service
+</pre></div>
+</div>
+</li>
+<li><p>自動起動設定となったか確認する</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo systemctl is-enabled httpd.service
+<span class="go">enabled</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ファイアウォールを設定する</p>
+<ul class="simple">
+<li><p>現時点では、パブリックサブネットへのアクセスは、ポート22番（SSH接続）への通信のみOKの状態。</p></li>
+<li><p>HTTPリクエストを通すために、セキュリティグループのポート80番を開ける。セキュリティグループのインバウンド設定にて、以下のルールを追加する</p>
+<ul>
+<li><p>タイプ：HTTP</p></li>
+<li><p>プロトコル：TCP</p></li>
+<li><p>ポート範囲：80</p></li>
+<li><p>ソース：任意の場所</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Elastic IPアドレスを取得しEC2インスタンスに関連付ける</p>
+<ul class="simple">
+<li><p>AWS -&gt; EC2 -&gt; Elastic IP -&gt; 「Elastic IPアドレスの割り当て」ボタンをクリック</p></li>
+<li><p>「割り当て」ボタンをクリック</p></li>
+<li><p>確保したIPアドレスを選択し、Actions -&gt; Elastic IPアドレスの関連付けを選択</p></li>
+<li><p>Elastic IPアドレスの関連付けにて以下を設定し、「関連付け」ボタンを押す</p>
+<ul>
+<li><p>リソースタイプ：「インスタンス」にチェック</p></li>
+<li><p>インスタンス：事前作成のEC2インスタンスを選択</p></li>
+<li><p>プライベートIPアドレス：上記EC2インスタンスに設定されたプライベートIPアドレスを選択</p></li>
+<li><p>再関連付け：チェックなし</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>EC2インスタンスを停止すると課金されるため、インスタンスを停止される場合は、事前にElastic IPアドレスを解放すること。</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h3>補足<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p>どのポート番号でどのプログラムが待ち受けているかを調べる</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// lsof：オープン中のファイルやそのファイルをオープンしているプロセスのリストを出力する</span>
+<span class="go">//       &quot;list open files&quot; の略</span>
+<span class="go">// -i：ネットワークソケットファイルを表示</span>
+<span class="go">// -n：IPアドレスをホスト名に変換しないオプション</span>
+<span class="go">// -P：ポート番号をサービス名に変換しないオプション</span>
+<span class="go">// &quot;LISTEN&quot;：他のコンピュータから待ち受けているポートを示す。</span>
+<span class="go">// &quot;ESTABLISHED&quot;：現在通信中のポートを示す。</span>
+<span class="gp">$</span> sudo lsof -i -n -P
+<span class="go">COMMAND    PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME</span>
+<span class="go">rpcbind   2679      rpc    6u  IPv4  16789      0t0  UDP *:111</span>
+<span class="go">rpcbind   2679      rpc    7u  IPv4  16793      0t0  UDP *:727</span>
+<span class="go">rpcbind   2679      rpc    8u  IPv4  16794      0t0  TCP *:111 (LISTEN)</span>
+<span class="go">rpcbind   2679      rpc    9u  IPv6  16795      0t0  UDP *:111</span>
+<span class="go">rpcbind   2679      rpc   10u  IPv6  16796      0t0  UDP *:727</span>
+<span class="go">rpcbind   2679      rpc   11u  IPv6  16797      0t0  TCP *:111 (LISTEN)</span>
+<span class="go">chronyd   2702   chrony    1u  IPv4  17280      0t0  UDP 127.0.0.1:323</span>
+<span class="go">chronyd   2702   chrony    2u  IPv6  17281      0t0  UDP [::1]:323</span>
+<span class="go">dhclient  2910     root    6u  IPv4  17815      0t0  UDP *:68</span>
+<span class="go">dhclient  3032     root    5u  IPv6  18132      0t0  UDP [fe80::4f4:e7ff:fe7f:da0c]:546</span>
+<span class="go">master    3169     root   13u  IPv4  18980      0t0  TCP 127.0.0.1:25 (LISTEN)</span>
+<span class="go">sshd      3388     root    3u  IPv4  20815      0t0  TCP *:22 (LISTEN)</span>
+<span class="go">sshd      3388     root    4u  IPv6  20824      0t0  TCP *:22 (LISTEN)</span>
+<span class="go">sshd     32416     root    3u  IPv4  56384      0t0  TCP 10.0.10.10:22-&gt;126.193.60.75:20586 (ESTABLISHED)</span>
+<span class="go">sshd     32433 ec2-user    3u  IPv4  56384      0t0  TCP 10.0.10.10:22-&gt;126.193.60.75:20586 (ESTABLISHED)</span>
+</pre></div>
+</div>
+<p>上記では、&quot;sshd&quot;というプログラムが、アドレス制限なしの22番ポートで待ち受けている。
+このため、SSH接続できるのである。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="route53">
+<h2>【Route53】ドメインを登録する<a class="headerlink" href="#route53" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id10">
+<h3>用語<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<dl class="glossary">
+<dt id="term-9">ドメイン</dt><dd><ul class="simple">
+<li><p>インターネット上の住所のようなもの。
+IPアドレスは覚えにくいため、Webサイトにアクセスするときはドメインを使用する。</p></li>
+<li><p>「www.example.co.jp」の場合、以下にように呼称する</p>
+<ul>
+<li><p>jp：トップレベルドメイン</p></li>
+<li><p>co：第2レベルドメイン</p></li>
+<li><p>example：第3レベルドメイン</p></li>
+<li><p>www：第4レベルドメイン</p></li>
+</ul>
+</li>
+<li><p>ドメイン名全体はICANN（非営利組織。IPアドレスも管理）が管理していて、トップレベルドメイン毎にレジストリが管理。
+販売はレジストラとリセラが行う。
+一般消費者が購入する先はレジストラとリセラである。</p></li>
+</ul>
+</dd>
+<dt id="term-dns">DNS</dt><dd><ul class="simple">
+<li><p>Domain Name System。ドメイン名管理システム。</p></li>
+<li><p>ドメイン名をIPアドレスに変換する</p></li>
+<li><p>ネームサーバとフルリゾルバの2つから構成されている</p>
+<ul>
+<li><p>ネームサーバ</p>
+<ul>
+<li><p>ドメイン名とそれに紐づくIPアドレスが登録されているサーバ</p></li>
+<li><p>ドメインの階層ごとにネームサーバが配置され、そのネームサーバが配置された階層のドメインに関する情報を管理する</p></li>
+</ul>
+</li>
+<li><p>フルリゾルバ（秘書的役割）</p>
+<ul>
+<li><p>「どのドメインに紐づくIPアドレスを教えて」と問い合わせると、色々なネームサーバに聞いてIPアドレスを調べて教えてくれるサーバ</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>フローは以下のようになる</p>
+<ol class="arabic simple">
+<li><p>WebブラウザにURL（abc.work）を入力</p></li>
+<li><p>フルリゾルバにIPアドレスを問い合わせる</p></li>
+<li><p>ルートネームサーバにIPアドレスを問い合わせる</p></li>
+<li><p>workのネームサーバにIPアドレスを問い合わせる</p></li>
+<li><p>ネームサーバRoute53にIPアドレスを問い合わせる</p></li>
+<li><p>IPアドレス（xx.xx.xx.xx）を取得する</p></li>
+<li><p>WebブラウザがIPアドレス（xx.xx.xx.xx）に接続する</p></li>
+</ol>
+</li>
+<li><p>DNSはドメイン名とIPアドレスだけでなく、様々な情報を管理している。</p></li>
+<li><p>DNSの「ドメイン名とIPアドレスの紐づけ」一つ一つのことをリソースレコードと呼び、IPアドレス以外も管理している。
+（Aレコード：IPアドレス、MXレコード：メール受信サーバ、など）</p></li>
+</ul>
+</dd>
+<dt id="term-route-53">Route 53</dt><dd><ul>
+<li><p>AWSのDNSサービス。ネームサーバの役割を果たす</p></li>
+<li><p>特徴</p>
+<ul class="simple">
+<li><p>高可用性。SLA 100%（AWSによってネームサーバが落ちないことが保証されている）</p></li>
+<li><p>高速。エッジロケーションの中で最も近いロケーションから応答を返す</p></li>
+<li><p>フルマネージドサービス。DNSサーバの設計・構築・維持管理が不要</p></li>
+</ul>
+</li>
+<li><p>重要概念</p>
+<ul>
+<li><p>ホストゾーン</p>
+<p>DNSのリソースレコードの集合。ゾーンファイルのようなもの</p>
+</li>
+<li><p>レコードセット</p>
+<p>リソースレコードのこと</p>
+</li>
+<li><p>ルーティングポリシー</p>
+<p>Route53がRecord Setに対してどのようにルーティングを行うかを決める
+（シンプルルーティング／加重ルーティング／レイテンシールーティング／位置情報ルーティング／フェイルオーバルーティング）</p>
+</li>
+<li><p>ヘルスチェック</p>
+<p>サーバの稼働状況をチェック</p>
+</li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id11">
+<h3>手順<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p>ドメインを購入する</p>
+<ul>
+<li><p>勉強用途であるので最安値の.workを使う（1年目：1円、2年目以降：991円）</p></li>
+<li><p>Whois情報公開代行をON（通常はデフォルト設定）</p></li>
+<li><p>Whois情報公開代行メール転送オプションをON（300円）</p></li>
+</ul>
+</li>
+<li><p>ドメインの設定を行う</p>
+<ul>
+<li><p>ドメイン自動更新設定をOFF（1年で廃棄される）</p></li>
+</ul>
+</li>
+<li><p>Route53でDNSを設定する</p>
+<ul>
+<li><p>EC2インスタンスをrunning状態にしておき、Elastic IPアドレスを割り当てEC2インスタンスに関連付けておく</p></li>
+<li><p>ドメインのネームサーバをRoute53に変更</p>
+<ul>
+<li><p>Route53でホストゾーンを作成</p>
+<ul>
+<li><p>AWS -&gt; Route53 -&gt; DNS管理（今すぐ始める）をクリック</p></li>
+<li><p>「ホストゾーンの作成」ボタンを押す</p>
+<ul>
+<li><p>ドメイン名：作成したドメイン名&quot;tak-space.work&quot;を入力</p></li>
+<li><p>コメント：任意</p></li>
+<li><p>タイプ：パブリックホストゾーン（インターネットからアクセスする場合）</p></li>
+</ul>
+</li>
+<li><p>作成ボタンを押す</p></li>
+<li><p>すると、NSレコードとSOAレコードのみが登録された状態が表示される。
+NSレコードの「値」項目に表示されているURL（4種）を以降で使用する</p></li>
+</ul>
+</li>
+<li><p>ネームサーバをお名前.comからRoute53に変更</p>
+<ul>
+<li><p>お名前.comにログインし、「ドメイン一覧」をクリック</p></li>
+<li><p>&quot;tak-space.work&quot;をクリック</p></li>
+<li><p>ネームサーバ情報の「変更する」ボタンを押す</p></li>
+<li><p>&quot;tak-space.work&quot;のチェックボックスにチェックを入れる</p></li>
+<li><p>「他のネームサーバを利用」のタブをクリック</p></li>
+<li><p>「ネームサーバ情報を入力」欄に、上記NSレコードに表示されていたURL（4種）を入力する。
+入力順は何でもよい。ただし、URLの末尾の&quot;.&quot;は入力不要</p></li>
+<li><p>「確認画面へ進む」ボタンを押す</p></li>
+<li><p>「設定する」ボタンを押す</p></li>
+<li><p>設定が反映されるには24～72時間かかる場合がある（今回はすぐに反映された）</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ドメインに紐づくIPアドレスを登録</p>
+<ul>
+<li><p>Route53でレコードセットを作成（Aレコードを作成）</p>
+<ul>
+<li><p>AWS -&gt; Route53 -&gt; ホストゾーンをクリック</p></li>
+<li><p>&quot;tak-space.work&quot;をクリック</p></li>
+<li><p>「レコードセットの作成」ボタンを押す</p>
+<ul>
+<li><p>名前：空欄にする（&quot;tak-space.work&quot;でアクセス可能にするため）</p></li>
+<li><p>タイプ：A-IPv4アドレス</p></li>
+<li><p>エイリアス：いいえ（エイリアスとは、IPアドレスの代わりにAWS専用の名前でどこに紐づけるかを指定するオプション）</p></li>
+<li><p>TTL：300（フルリゾルバに、ドメイン名とIPアドレスの紐づけデータをキャッシュしておく秒数）</p></li>
+<li><p>値：Elastic IPアドレスを入力する</p></li>
+<li><p>ルーティングポリシー：シンプル</p></li>
+</ul>
+</li>
+<li><p>「作成」ボタンを押す</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id12">
+<h3>補足<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p>ドメイン購入のお店について</p>
+<ul class="simple">
+<li><p>選ぶポイント</p>
+<ul>
+<li><p>価格。1年目だけでなく、2年目以降の価格をチェック</p></li>
+<li><p>管理画面の使いやすさや、設定変更の反映の速さ</p></li>
+<li><p>無料プションの充実度</p></li>
+</ul>
+</li>
+<li><p>お名前.com</p>
+<ul>
+<li><p>国内最大のレジストラ。迷ったらここを選んでおけばOK</p></li>
+<li><p>580種類以上のドメインの取り扱い</p></li>
+<li><p>累積登録実績2000万件</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>&quot;tak-space.work&quot;のネームサーバ確認</p>
+<ul>
+<li><p>ネームサーバをお名前.comからRoute53に変更する前</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// dig：ドメインに紐づくIPアドレスや、IPアドレスに紐づくドメインなど</span>
+<span class="go">//      を調べるコマンド</span>
+<span class="go">// NS：ネームサーバを表示するためのオプション</span>
+<span class="go">// +short：digコマンドではいろいろな情報が表示されるので、</span>
+<span class="go">//         ネームサーバのみを表示するためのオプション</span>
+<span class="gp">$</span> dig tak-space.work NS +short
+<span class="go">dns2.onamae.com.    // お名前.comのネームサーバ</span>
+<span class="go">dns1.onamae.com.    // お名前.comのネームサーバ</span>
+
+<span class="go">// 上記のように、お名前.comのネームサーバが表示されるのは、</span>
+<span class="go">// &quot;tak-space.work&quot;というゾーンが、お名前.comのネームサーバに</span>
+<span class="go">// 委任されているから</span>
+<span class="go">// 簡単に言うと、workのネームサーバにIPアドレスを問い合わせた際に</span>
+<span class="go">// お名前.comのネームサーバに聞いてくれと返されることを意味する</span>
+</pre></div>
+</div>
+</li>
+<li><p>ネームサーバをお名前.comからRoute53に変更した後</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// 以下のようにRoute53のネームサーバが表示されるようになった</span>
+<span class="gp">$</span> dig tak-space.work NS +short
+<span class="go">ns-1154.awsdns-16.org.</span>
+<span class="go">ns-1920.awsdns-48.co.uk.</span>
+<span class="go">ns-165.awsdns-20.com.</span>
+<span class="go">ns-646.awsdns-16.net.</span>
+
+<span class="go">// なお、以下のようにするとIPアドレスを確認できる</span>
+<span class="go">// A：Aレコード（IPアドレス）を表示させるオプション</span>
+<span class="gp">$</span> dig tak-space.work A +short
+<span class="go">x.xxx.xxx.12    // IPアドレスが表示される</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="rdsdb">
+<h2>【RDS】DBサーバを構築する<a class="headerlink" href="#rdsdb" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id13">
+<h3>用語<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<dl class="glossary simple">
+<dt id="term-rds">RDS</dt><dd><ul class="simple">
+<li><p>フルマネージドなリレーショナルデータベースのサービス</p></li>
+<li><p>従来と比較して構築／運用の手間を軽減できる</p></li>
+<li><p>AWSでDBサーバを構築する方法には2種ある</p>
+<ul>
+<li><p>EC2インスタンスにDBソフトウェア（MySQLなど）をインストールする方法</p>
+<ul>
+<li><p>アプリ最適化／スケーリング／バックアップ／アップデートが必要</p></li>
+</ul>
+</li>
+<li><p>RDSを使用する方法</p>
+<ul>
+<li><p>アプリ最適化が必要</p></li>
+<li><p>上記のEC2インスタンスを使用する方法に対しても手間が軽減できる</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>利用可能なエンジン</p>
+<ul>
+<li><p>MySQL</p></li>
+<li><p>PostgreSQL</p></li>
+<li><p>Oracle</p></li>
+<li><p>Microsoft SQL Server</p></li>
+<li><p>Amazon Aurora</p></li>
+<li><p>MariaDB</p></li>
+</ul>
+</li>
+<li><p>各種設定グループ（DBの設定を行う）</p>
+<ul>
+<li><p>DBパラメータグループ：DB設定値を制御</p></li>
+<li><p>DBオプショングループ：RDSへの機能追加を制御</p></li>
+<li><p>DBサブネットグループ：RDSを起動させるサブネットを制御</p></li>
+</ul>
+</li>
+<li><p>可用性の向上</p>
+<ul>
+<li><p>マルチAZ（アベイラビリティゾーン）を簡単に構築</p></li>
+<li><p>複数のAZにDBを配置することで、マスタDBに何らかの障害が生じてもスレーブDBに切り替えることで運用を継続できる</p></li>
+<li><p>スレーブDBはマスタDBのレプリケーション（コピー）である</p></li>
+</ul>
+</li>
+<li><p>パフォーマンスの向上</p>
+<ul>
+<li><p>リードレプリカを簡単に構築できる</p></li>
+<li><p>リードレプリカとは、読出し専用のDBであり、マスタDBのレプリケーションである</p></li>
+<li><p>書込みはマスタDBに、読出しはリードレプリカに対して行うことで、負荷を分散させパフォーマンスを向上させることができる</p></li>
+<li><p>リードレプリカは複数配置することもできる</p></li>
+</ul>
+</li>
+<li><p>運用負荷の軽減</p>
+<ul>
+<li><p>自動的なバックアップ</p>
+<ul>
+<li><p>1日1回バックアップを自動取得（スナップショット）</p></li>
+<li><p>スナップショットを元にDBインスタンスを作成（リストア）</p></li>
+</ul>
+</li>
+<li><p>自動的なソフトウェアメンテナンス</p>
+<ul>
+<li><p>メンテナンスウィンドウで指定した曜日・時間帯にアップデートを自動実施</p></li>
+</ul>
+</li>
+<li><p>監視</p>
+<ul>
+<li><p>各種メトリクスを60秒間隔で取得・確認可能</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id14">
+<h3>手順<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p>はじめに</p>
+<p>RDSはサブネットの中に設置する。
+RDSを作成する際は、マルチAZができるようにするために、
+複数のアベイラビリティゾーンにサブネットが作成されていなければならない。
+このため、RDS設置前にサブネットを作成しておく必要がある。</p>
+</li>
+<li><p>プライベートサブネットの作成</p>
+<ul class="simple">
+<li><p>AWS -&gt; VPC -&gt; サブネットをクリック</p></li>
+<li><p>「サブネットの作成」ボタンを押し、プライベートサブネットを作成する</p>
+<ul>
+<li><p>名前タグ：任意（aws-and-infra-private-subnet-1c）</p></li>
+<li><p>VPC：事前作成のVPCを選択</p></li>
+<li><p>VPC CIDR：デフォルトのまま</p></li>
+<li><p>アベイラリティゾーン：任意（ap-northeast-1c）</p></li>
+<li><p>IPv4 CIDRブロック：任意のプライベートIPアドレス（10.0.21.0/24）</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>RDSの作成準備</p>
+<ul class="simple">
+<li><p>セキュリティグループの作成（EC2）</p>
+<ul>
+<li><p>AWS -&gt; EC2 -&gt; セキュリティグループ -&gt; セキュリティグループの作成ボタンを押す</p>
+<ul>
+<li><p>セキュリティグループ名：任意（例：aws-and-infra-db）</p></li>
+<li><p>説明：任意（例：aws-and-infra-db）</p></li>
+<li><p>VPC：事前作成のVPCを選択</p></li>
+<li><p>インバウンド -&gt; ルールの追加ボタンを押す</p>
+<ul>
+<li><p>タイプ：MYSQL/Aurora</p></li>
+<li><p>プロトコル：TCP（固定）</p></li>
+<li><p>ポート範囲：3306（固定）</p></li>
+<li><p>ソース：カスタム、aws-and-infra-webのセキュリティグループID
+（aws・・と入力すると候補が表示されるので選択。）</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>DBサブネットグループの作成</p>
+<ul>
+<li><p>マルチAZの関係で複数のサブネットからグループを作成する必要がある</p></li>
+<li><p>AWS -&gt; RDS -&gt; サブネットグループ -&gt; DBサブネットグループの作成ボタンを押す</p>
+<ul>
+<li><p>名前：任意（例：aws-and-infra-subnet-group）</p></li>
+<li><p>説明：任意（例：aws-and-infra-subnet-group）</p></li>
+<li><p>VPC：事前作成のVPCを選択</p></li>
+<li><p>サブネット1追加（以下入力後、サブネットを追加しますボタンを押す）</p>
+<ul>
+<li><p>アベイラリティゾーン：ap-northeast-1a</p></li>
+<li><p>サブネット：プライベートサブネット（10.0.20.0/24）</p></li>
+</ul>
+</li>
+<li><p>サブネット2追加（以下入力後、サブネットを追加しますボタンを押す）</p>
+<ul>
+<li><p>アベイラリティゾーン：ap-northeast-1c</p></li>
+<li><p>サブネット：プライベートサブネット（10.0.21.0/24）</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>DBパラメータグループの作成</p>
+<ul>
+<li><p>RDSではDBの設定ファイルを直接編集できないので、その代わりにDBの設定値を指定する</p></li>
+<li><p>AWS -&gt; RDS -&gt; パラメータグループ -&gt; パラメータグループの作成ボタンを押す</p>
+<ul>
+<li><p>パラメータグループファミリ：mysql8.0</p></li>
+<li><p>グループ名：任意（例：aws-and-infra-mysql80）</p></li>
+<li><p>説明：任意（例：aws-and-infra-mysql80）</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>DBオプショングループの作成</p>
+<ul>
+<li><p>DBの機能を設定する（プラグインを使うなど）</p></li>
+<li><p>AWS -&gt; RDS -&gt; オプショングループ -&gt; グループの作成ボタンを押す</p>
+<ul>
+<li><p>名前：任意（例：aws-and-infra-mysql80）</p></li>
+<li><p>説明：任意（例：aws-and-infra-mysql80）</p></li>
+<li><p>エンジン：mysql</p></li>
+<li><p>メジャーエンジンのバージョン：8.0</p></li>
+</ul>
+</li>
+<li><p>上記オプショングループ（aws-and-infra-mysql80）のみでなく、
+デフォルトのオプショングループ（default:mysql-8-0）も作成される。
+今後編集していくのは作成したグループ（aws-and-infra-mysql80）の方であり、これがセオリーである。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>RDSの作成</p>
+<ul class="simple">
+<li><p>AWS -&gt; RDS -&gt; データベース -&gt; データベースの作成ボタンを押す</p>
+<ul>
+<li><p>標準作成</p></li>
+<li><p>エンジンのタイプ：MySQL</p></li>
+<li><p>エディション：MySQL Community（固定）</p></li>
+<li><p>バージョン：MySQL8.0.15</p></li>
+<li><p>テンプレート：開発／テスト（課金されるが機能限定がほとんどなく本番に近い環境）</p></li>
+<li><p>DBインスタンス識別子（RDSインスタンスの名前）：任意（例：aws-and-infra-web）</p></li>
+<li><p>マスタユーザ名：任意（例：root）</p></li>
+<li><p>パスワードの自動生成：チェックなし</p></li>
+<li><p>マスタパスワード：任意（例：password）</p></li>
+<li><p>DBインスタンスサイズ：バースト可能クラス（安価にするため）</p></li>
+<li><p>ストレージタイプ：汎用</p></li>
+<li><p>ストレージ割り当て：20（デフォルト）</p></li>
+<li><p>ストレージの自動スケーリングを有効にする：チェックなし（DB負荷が高くなった時に自動的に容量の大きなDBに変更する場合に使用）</p></li>
+<li><p>マルチAZ配置：スタンバイインスタンスを作成しないでください（安価にするためマルチAZ未対応にする）</p></li>
+<li><p>VPC：事前作成のVPCを選択（例：aws-and-infra-vpc）</p></li>
+<li><p>サブネットグループ：事前作成のサブネットグループを選択（例：aws-and-infra-subnet-group）</p></li>
+<li><p>パブリックアクセス可能：なし（セキュリティを高めるためVPC以外からアクセスをしない）</p></li>
+<li><p>VPCセキュリティグループ：既存の選択</p></li>
+<li><p>既存のVPCセキュリティグループ：事前作成のVPCセキュリティグループを選択（例：aws-and-infra-db）、デフォルトは削除</p></li>
+<li><p>アベイラリティゾーン：任意（例：ap-northeast-1a）</p></li>
+<li><p>データベースポート：3306（デフォルト）</p></li>
+<li><p>データベース認証：パスワード認証（デフォルト）</p></li>
+<li><p>最初のデータベース名：空欄</p></li>
+<li><p>DBパラメータグループ：事前作成のDBパラメータグループを選択（例：aws-and-infra-mysql80）</p></li>
+<li><p>オプショングループ：事前作成のオプショングループを選択（例：aws-and-infra-mysql80）</p></li>
+<li><p>自動バックアップの有効化：チェックあり</p></li>
+<li><p>バックアップ保持期間：30日間（長い方がよい）</p></li>
+<li><p>バックアップウィンドウ：選択ウィンドウ（バックアップ開始時刻を設定）</p>
+<ul>
+<li><p>開始時間：19:00UTC（日本時刻は+9h=4:00）</p></li>
+<li><p>期間：0.5時間</p></li>
+</ul>
+</li>
+<li><p>スナップショットにタグをコピー：チェックあり</p></li>
+<li><p>拡張モニタリングの有効化：チェックなし（詳細なモニタリング用。課金）</p></li>
+<li><p>ログのエクスポート：どれもチェックなし</p></li>
+<li><p>マイナーバージョン自動アップグレードの有効化：チェックあり</p></li>
+<li><p>メンテナンスウィンドウ：選択ウィンドウ（メンテナンス開始時刻を設定）</p>
+<ul>
+<li><p>開始時間：20:00UTC（日本時刻は+9h=5:00）</p></li>
+<li><p>期間：0.5時間</p></li>
+</ul>
+</li>
+<li><p>削除保護の有効化：チェックなし（学習用で削除したい場合があるため）</p></li>
+<li><p>概算月間コスト（db.t2.microが無料枠なのでもっと安価なはず）</p>
+<ul>
+<li><p>DB インスタンス：18.98 USD</p></li>
+<li><p>ストレージ：2.76 USD</p></li>
+<li><p>合計：21.74 USD</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>WebサーバからRDSに接続する</p>
+<ul>
+<li><p>webサーバにSSH接続する（TeraTerm）</p></li>
+<li><p>WebサーバにMySWLをインストール</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo yum -y install mysql
+</pre></div>
+</div>
+</li>
+<li><p>RDSインスタンスのエンドポイントをコピーしておく
+（例：aws-and-infra-web.xxxxx.ap-northeast-1.rds.amazonaws.com）</p></li>
+<li><p>WebサーバからRDSへmysqlコマンドで接続</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// -h：エンドポイントを指定</span>
+<span class="go">// -u：ユーザ名を指定</span>
+<span class="go">// -p：パスワード入力要求</span>
+<span class="gp">$</span> mysql -h aws-and-infra-web.xxxxx.ap-northeast-1.rds.amazonaws.com -u root -p
+<span class="go">Enter password:   // 設定パスワード（password）入力</span>
+<span class="go">MySQL [(none)]&gt;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id15">
+<h3>補足<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p>スナップショット</p>
+<ul>
+<li><p>AWS -&gt; RDS -&gt; データベース -&gt; aws-and-infra-web（作成済DB）
+-&gt; メンテナンスとバックアップ -&gt; スナップショットの取得ボタン
+にて手動でスナップショットを保存できる</p></li>
+<li><p>ただし、自動バックアップとは異なり自動的に削除されない（課金）ので要注意</p></li>
+<li><p>自動バックアップの場合は、設定した期間が経過したら、もしくはRDSインスタンスを削除したら自動的に削除される</p></li>
+</ul>
+</li>
+<li><p>RDSインスタンスの停止</p>
+<ul>
+<li><p>AWS -&gt; RDS -&gt; データベース -&gt; aws-and-infra-web（作成済DB）-&gt; アクション -&gt; 停止
+にて停止可能</p></li>
+<li><p>停止させると安価にできる</p></li>
+<li><p>ただし、本番環境では停止させない方がよい</p></li>
+<li><p>停止させるとAWSのリソース状況によってはすぐに開始できない可能性がある</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="ec2wordpress">
+<h2>【EC2】WordPressを構築する<a class="headerlink" href="#ec2wordpress" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id16">
+<h3>用語<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<dl class="glossary simple">
+<dt id="term-wordpress">WordPress</dt><dd><p>オープンソースのブログソフトウェア。
+PHPで開発されており、データベース管理システムとしてMySQLを利用している。
+（プラグインよりSQLiteでの使用も可能）</p>
+</dd>
+<dt id="term-tcp-ip">TCP/IP</dt><dd><ul class="simple">
+<li><p>TCP・IPを中心として、インターネットを構築する上で必要なプロトコル群の総称。</p>
+<ul>
+<li><p>アプリケーションプロトコル：HTTP、SMTP、FTP</p></li>
+<li><p>トランスポートプロトコル：TCP、UDP</p></li>
+<li><p>経路制御プロトコル：RIP、OSPF、BGP</p></li>
+<li><p>インターネットプロトコル：IP、ICMP、ARP</p></li>
+</ul>
+</li>
+<li><p>インターネットではTCP/IPプロトコルに基づいて通信が行われている</p></li>
+<li><p>TCP/IPでは、インターネットでコンピュータ同士が通信する一連の処理を、4階層で表現する</p>
+<ul>
+<li><p>アプリケーション層：アプリケーション同士が会話する（<a class="reference internal" href="#term-http"><span class="xref std std-term">HTTP</span></a>、DNS、SSH、SMTP）</p></li>
+<li><p><a class="reference internal" href="#term-11"><span class="xref std std-term">トランスポート層</span></a>：データの転送を制御する（<a class="reference internal" href="#term-tcp"><span class="xref std std-term">TCP</span></a>、<a class="reference internal" href="#term-udp"><span class="xref std std-term">UDP</span></a>）</p></li>
+<li><p>ネットワーク層：IPアドレスを管理し、経路選択する（<a class="reference internal" href="#term-10"><span class="xref std std-term">IP</span></a>、ICMP、ARP）</p></li>
+<li><p>ネットワークインターフェース層：直接接続された機器同士で通信する（Ethernet、PPP）</p></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="term-http">HTTP</dt><dd><ul class="simple">
+<li><p>WebプラウザとWebサーバ間が通信するときに利用されるプロトコル</p></li>
+<li><p>HyperText Transfer Protocol</p></li>
+<li><p>インターネットでHTMLなどのコンテンツの送受信に用いられる通信の約束ごと</p></li>
+<li><p>クライアントがHTTPリクエストを送り、それに対してサーバがHTTPレスポンスを返す。
+そのリクエスト・レスポンスの書き方がHTTPの正体</p></li>
+<li><p>HTTPリクエストの中身</p>
+<ul>
+<li><p>リクエストライン：GET/HTTP/1.1</p></li>
+<li><p>ヘッダ：Host、User-Agent、Accept-Encoding、など</p></li>
+<li><p>ボディ：特になし（オプション）</p></li>
+</ul>
+</li>
+<li><p>HTTPレスポンスの中身</p>
+<ul>
+<li><p>ステータスライン：HTTP/1.1 200 OK（200はステータスコード、OKはステータスコードの意味を示す）</p></li>
+<li><p>ヘッダ：Date、Content-Type、Cache-Control、など</p></li>
+<li><p>ボディ：&lt;!doctype html&gt;&lt;html&gt;...&lt;/html&gt;</p></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="term-tcp">TCP</dt><dd><ul class="simple">
+<li><p><a class="reference internal" href="#term-11"><span class="xref std std-term">トランスポート層</span></a> のプロトコル</p></li>
+<li><p>Transmission Control Protocol</p></li>
+<li><p>信頼性のある通信を提供</p></li>
+<li><p>信頼性を保つために、送信するパケットの順序制御や再送制御を行う
+（データを受信したら確認応答があり、次に受信すべきシーケンス番号を返す）</p></li>
+<li><p>信頼性のある通信を実現する必要がある場合に使用する</p></li>
+<li><p>コネクション管理し、通信相手との間で通信を始める準備をしてから通信を行う</p></li>
+</ul>
+</dd>
+<dt id="term-udp">UDP</dt><dd><ul class="simple">
+<li><p><a class="reference internal" href="#term-11"><span class="xref std std-term">トランスポート層</span></a> のプロトコル</p></li>
+<li><p>User Datagram Protocol</p></li>
+<li><p>信頼性のない通信</p></li>
+<li><p>送信するだけで、パケットが届いたかは保証しない</p></li>
+<li><p>高速性やリアルタイム性を重視する通信で使用する</p></li>
+<li><p>コネクションレスなのでいつでもデータを送信できる</p></li>
+</ul>
+</dd>
+<dt id="term-10">IP</dt><dd><ul class="simple">
+<li><p>ネットワーク層のプロトコル</p></li>
+<li><p>役割</p>
+<ul>
+<li><p>IPアドレス</p></li>
+<li><p>終点コンピュータまでのパケット配送（ルーティング）</p></li>
+<li><p>パケットの分割・再構築処理
+（ネットワークインターフェース層のプロトコルによって、最大転送単位が異なる。
+IPでは、各ネットワークインターフェースの最大転送単位より小さくなるように
+パケットを分割して送信し、終点コンピュータで再構築する）</p></li>
+</ul>
+</li>
+<li><p>IPヘッダに、送信元IPアドレスと宛先IPアドレスが含まれている</p></li>
+</ul>
+</dd>
+<dt id="term-11">トランスポート層</dt><dd><ul class="simple">
+<li><p>アプリケーション間コネクションの確立・切断を担う</p></li>
+<li><p>どのアプリケーションと通信するかを指定する役割も担う。
+どのアプリケーションかを指定するのがポート番号</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id17">
+<h3>手順<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p>WordPress用のDB作成</p>
+<ul>
+<li><p>DB作成</p>
+<ul>
+<li><p>WebサーバへSSHでログインする</p></li>
+<li><p>WebサーバからRDSへmysqlコマンドでrootユーザで接続（前述）</p></li>
+<li><p>DBを作成する</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- create database：DB作成コマンド</span>
+<span class="c1">-- default character set：デフォルト文字コード設定</span>
+<span class="c1">-- collate：DBの照合順序を指定</span>
+<span class="c1">-- 「utf8_general_ci」の末尾の「_ci」は大文字と小文字を区別しないという意味</span>
+<span class="n">MySQL</span><span class="o">&gt;</span> <span class="k">create</span> <span class="k">database</span> <span class="n">aws_and_infra</span> <span class="k">default</span> <span class="nb">character</span> <span class="k">set</span> <span class="n">utf8</span> <span class="k">collate</span> <span class="n">utf8_general_ci</span><span class="p">;</span>
+
+<span class="c1">-- DB一覧を確認</span>
+<span class="n">MySQL</span><span class="o">&gt;</span> <span class="k">show</span> <span class="n">databases</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">--------------------+</span>
+<span class="o">|</span> <span class="k">Database</span>           <span class="o">|</span>
+<span class="o">+</span><span class="c1">--------------------+</span>
+<span class="o">|</span> <span class="n">aws_and_infra</span>      <span class="o">|</span>
+<span class="o">|</span> <span class="n">information_schema</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">mysql</span>              <span class="o">|</span>
+<span class="o">|</span> <span class="n">performance_schema</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">sys</span>                <span class="o">|</span>
+<span class="o">+</span><span class="c1">--------------------+</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>ユーザ作成</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- &#39;aws_and_infra&#39;：ユーザ名</span>
+<span class="c1">-- @：接続元を指定。&#39;%&#39;で接続元はどこでもOKの意味</span>
+<span class="c1">-- identified by：接続時のパスワードを指定。パスワードは&#39;password&#39;</span>
+<span class="n">MySQL</span><span class="o">&gt;</span> <span class="k">create</span> <span class="k">user</span> <span class="s1">&#39;aws_and_infra&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="n">identified</span> <span class="k">by</span> <span class="s1">&#39;password&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>ユーザに権限付与</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- grant all：全ての権限を付与する</span>
+<span class="c1">-- aws_and_infra.*：&quot;aws_and_infra&quot;DBの全てのテーブルを操作できる</span>
+<span class="n">MySQL</span><span class="o">&gt;</span> <span class="k">grant</span> <span class="k">all</span> <span class="k">on</span> <span class="n">aws_and_infra</span><span class="p">.</span><span class="o">*</span> <span class="k">to</span> <span class="s1">&#39;aws_and_infra&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 設定を反映させる</span>
+<span class="n">MySQL</span><span class="o">&gt;</span> <span class="n">flush</span> <span class="k">privileges</span><span class="p">;</span>
+
+<span class="c1">-- ユーザの一覧を表示</span>
+<span class="n">MySQL</span><span class="o">&gt;</span> <span class="k">select</span> <span class="k">user</span><span class="p">,</span> <span class="k">host</span> <span class="k">from</span> <span class="n">mysql</span><span class="p">.</span><span class="k">user</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">------------------+-----------+</span>
+<span class="o">|</span> <span class="k">user</span>             <span class="o">|</span> <span class="k">host</span>      <span class="o">|</span>
+<span class="o">+</span><span class="c1">------------------+-----------+</span>
+<span class="o">|</span> <span class="n">aws_and_infra</span>    <span class="o">|</span> <span class="o">%</span>         <span class="o">|</span>  <span class="c1">-- &#39;%&#39;：接続元はどこでもOK</span>
+<span class="o">|</span> <span class="n">root</span>             <span class="o">|</span> <span class="o">%</span>         <span class="o">|</span>
+<span class="o">|</span> <span class="n">mysql</span><span class="p">.</span><span class="n">infoschema</span> <span class="o">|</span> <span class="n">localhost</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">mysql</span><span class="p">.</span><span class="k">session</span>    <span class="o">|</span> <span class="n">localhost</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">mysql</span><span class="p">.</span><span class="n">sys</span>        <span class="o">|</span> <span class="n">localhost</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">rdsadmin</span>         <span class="o">|</span> <span class="n">localhost</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">------------------+-----------+</span>
+
+<span class="c1">-- 一旦終了</span>
+<span class="n">MySQL</span><span class="o">&gt;</span> <span class="n">exit</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>WebサーバからRDSへmysqlコマンドで&quot;aws_and_infra&quot;ユーザで接続できるか確認</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> mysql -h aws-and-infra-web.cwabjdc2qra8.ap-northeast-1.rds.amazonaws.com -u aws_and_infra -p
+<span class="go">Enter password:   // 設定パスワード（password）入力</span>
+<span class="go">MySQL [(none)]&gt;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>WordPressのインストール</p>
+<ul>
+<li><p>WordPressを動かすのに必要なライブラリのインストール</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// WordPressを動かすためにはphpが必要だが、</span>
+<span class="go">// 通常の&quot;sudo yum -y install php&quot;ではphp5.4がインストールされる。</span>
+<span class="go">// 最新のWordPressではphp5.6以上が必要。</span>
+<span class="go">// このため以下のコマンドを用いる。</span>
+<span class="gp">$</span> sudo amazon-linux-extras install -y php7.2
+
+<span class="go">// php関連のライブラリをyumからインストール</span>
+<span class="go">// 先に&quot;amazon-linux-extras install&quot;コマンドでphp7.2をインストール</span>
+<span class="go">// しておくと、yumコマンドでphp7.2の関連ライブラリをインストールできる</span>
+<span class="gp">$</span> sudo yum install -y php php-mbstring
+</pre></div>
+</div>
+</li>
+<li><p>WordPressのダウンロード</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// ホームディレクトリに移動しておく</span>
+<span class="gp">$</span> <span class="nb">cd</span> ~
+
+<span class="go">// wget：URLを指定してファイルをダウンロードするコマンド</span>
+<span class="gp">$</span> wget https://ja.wordpress.org/latest-ja.tar.gz
+
+<span class="go">// ダウンロードファイルを確認</span>
+<span class="gp">$</span> ls
+<span class="go">latest-ja.tar.gz</span>
+</pre></div>
+</div>
+</li>
+<li><p>WordPressの解凍</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// tar：複数のファイルをまとめて圧縮したり解凍したりするコマンド</span>
+<span class="go">// x：解凍を指示するオプション</span>
+<span class="go">// z：gzipを使用するオプション</span>
+<span class="go">// v：圧縮／解凍状況を表示するオプション</span>
+<span class="go">// f：圧縮ファイル名を指定するオプション</span>
+<span class="gp">$</span> tar xzvf latest-ja.tar.gz
+
+<span class="go">// 解凍ファイルを確認</span>
+<span class="gp">$</span> ls
+<span class="go">latest-ja.tar.gz  wordpress</span>
+
+<span class="go">// &quot;wordpress&quot;ディレクトリへ移動</span>
+<span class="gp">$</span> <span class="nb">cd</span> wordpress/
+</pre></div>
+</div>
+</li>
+<li><p>WordPressのプログラムをApacheから見える場所に配置</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// cp：ファイルをコピーするコマンド</span>
+<span class="go">// -r *：現ディレクトリ以下全てのファイルとディレクトリを指定するオプション</span>
+<span class="go">// /var/www/html/：コピー先ディレクトリ（Apacheが参照するディレクトリ）</span>
+<span class="gp">$</span> sudo cp -r * /var/www/html/
+</pre></div>
+</div>
+</li>
+<li><p>WordPressファイルの所有者・グループを変更</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// chown：change owner。ファイルの所有者・所有グループ変更コマンド</span>
+<span class="go">// apache:apache：ファイルの所有者と所有グループをapacheに変更するの意</span>
+<span class="go">// /var/www/html/ -R：&quot;/var/www/html/&quot;以下全てのファイルを対象</span>
+<span class="gp">$</span> sudo chown apache:apache /var/www/html/ -R
+</pre></div>
+</div>
+</li>
+<li><p>Apacheの再起動（これによりApacheがWordPressのファイルを読み取ってくれるようになる）</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// 現在のapacheの起動状態を確認</span>
+<span class="gp">$</span> sudo systemctl status httpd.service
+<span class="go">Active: active (running)    // 起動中の意味</span>
+
+<span class="go">// もし上記が起動中でない場合は起動させる</span>
+<span class="gp">$</span> sudo systemctl start httpd.service
+
+<span class="go">// Apacheを再起動させる</span>
+<span class="gp">$</span> sudo systemctl restart httpd.service
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>WordPressの設定</p>
+<ul class="simple">
+<li><p>ドメイン名にアクセスする</p></li>
+<li><p>WordPressの設定</p>
+<ul>
+<li><p>「さぁ、始めましょう！」ボタンを押す</p>
+<ul>
+<li><p>データベース名：aws_and_infra</p></li>
+<li><p>データベースのユーザー名：aws_and_infra</p></li>
+<li><p>データベースのパスワード：password</p></li>
+<li><p>データベースホスト：RDSインスタンスのエンドポイントを記載
+（AWS -&gt; RDS -&gt; データベース -&gt; aws-and-infra-web（作成済DB）-&gt; エンドポイント）</p></li>
+<li><p>テーブル接頭辞：wp_（デフォルト）</p></li>
+<li><p>「送信」ボタンを押す</p></li>
+</ul>
+</li>
+<li><p>「インストール実行」ボタンを押す</p>
+<ul>
+<li><p>サイトのタイトル：任意（例：ゼロから実践するAWS）</p></li>
+<li><p>ユーザ名：任意（例：admin）</p></li>
+<li><p>パスワード：任意</p></li>
+<li><p>メールアドレス：各自</p></li>
+<li><p>検索エンジンでの表示：任意（非公開にしたい場合はチェックする）</p></li>
+<li><p>「WordPressをインストール」ボタンを押す</p></li>
+</ul>
+</li>
+<li><p>「ログイン」ボタンからログインすると、管理画面が表示される</p></li>
+</ul>
+</li>
+<li><p>ドメイン名にアクセスすると「HelloWorld!」画面が表示される</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="AWS応用.html" title="AWS応用"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="AWS"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Webアプリ</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >AWS</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, tak.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.0 で生成しました。
+    </div>
+  </body>
+</html>

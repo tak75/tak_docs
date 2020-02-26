@@ -4,27 +4,26 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Flask基本機能 &#8212; Tak Documents  ドキュメント</title>
     <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script type="text/javascript" src="../../_static/translations.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="../../_static/bizstyle.js"></script>
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
     <link rel="next" title="Ruby" href="../Ruby.html" />
     <link rel="prev" title="Flask環境構築" href="Flask環境構築.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
-    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <script src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -46,7 +45,7 @@
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h3><a href="../../index.html">Table of Contents</a></h3>
+<h3><a href="../../index.html">目次</a></h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
@@ -55,6 +54,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../raspberry_pi/index.html">Raspberry Pi</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Webアプリ</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../用語.html">用語</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../AWS.html">AWS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HTML.html">HTML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../CSS.html">CSS</a></li>
@@ -71,7 +71,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../備忘録/index.html">備忘録</a></li>
 </ul>
 
-  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <h3><a href="../../index.html">目次</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Flask基本機能</a><ul>
 <li><a class="reference internal" href="#id1">ルーティング</a></li>
@@ -103,17 +103,15 @@
   <p class="topless"><a href="../Ruby.html"
                         title="次の章へ">Ruby</a></p>
 <div id="searchbox" style="display: none" role="search">
-  <h3>クイック検索</h3>
+  <h3 id="searchlabel">クイック検索</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="検索" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -127,14 +125,14 @@
 <div class="section" id="id1">
 <h2>ルーティング<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
-<li><p class="first">&lt;変数名&gt;にて値を取得できる:</p>
+<li><p>&lt;変数名&gt;にて値を取得できる:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/rt_variable/&lt;var&gt;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">fn_rt_variable</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-  <span class="k">return</span> <span class="n">f</span><span class="s1">&#39;var = </span><span class="si">{var}</span><span class="s1">, type(var) = {escape(type(var))}&#39;</span>
+  <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;var = </span><span class="si">{var}</span><span class="s1">, type(var) = {escape(type(var))}&#39;</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">変数の型を制約することもできる:</p>
+<li><p>変数の型を制約することもできる:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/rt_variable_i/&lt;int:var&gt;&#39;</span><span class="p">)</span>
 <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/rt_variable_f/&lt;float:var&gt;&#39;</span><span class="p">)</span>
 <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/rt_variable_p/&lt;path:var&gt;&#39;</span><span class="p">)</span>
@@ -142,17 +140,17 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">既定の値のみを受付けるようにすることもできる。以下の例では、&quot;s1&quot; or &quot;s2&quot; or &quot;s3&quot;のみを受付ける:</p>
+<li><p>既定の値のみを受付けるようにすることもできる。以下の例では、&quot;s1&quot; or &quot;s2&quot; or &quot;s3&quot;のみを受付ける:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/rt_variable_a/&lt;any(s1,s2,s3):var&gt;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">変数が複数ある場合や、各々の変数の初期値をある場合:</p>
+<li><p>変数が複数ある場合や、各々の変数の初期値をある場合:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/rt_variable_m/end&#39;</span><span class="p">)</span>
 <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/rt_variable_m/&lt;s1&gt;/end&#39;</span><span class="p">)</span>
 <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/rt_variable_m/&lt;s1&gt;/&lt;s2&gt;/end&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">fn_rt_variable_m</span><span class="p">(</span><span class="n">s1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">s2</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">):</span>
-  <span class="k">return</span> <span class="n">f</span><span class="s1">&#39;s1 = </span><span class="si">{s1}</span><span class="s1">, s2 = </span><span class="si">{s2}</span><span class="s1">&#39;</span>
+  <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;s1 = </span><span class="si">{s1}</span><span class="s1">, s2 = </span><span class="si">{s2}</span><span class="s1">&#39;</span>
 </pre></div>
 </div>
 </li>
@@ -163,16 +161,14 @@
 <p><a class="reference external" href="http://python.zombie-hunting-club.com/entry/2017/11/03/223503">http://python.zombie-hunting-club.com/entry/2017/11/03/223503</a></p>
 <p><a class="reference external" href="http://www.subarunari.com/entry/2017/09/30/003944">http://www.subarunari.com/entry/2017/09/30/003944</a></p>
 <ul>
-<li><p class="first">Flaskのデフォルトのテンプレートエンジンは jinja2 で HTML と Python のコードを同居させることができる。</p>
-</li>
-<li><p class="first">テンプレート（～.html）はアプリケーションルート配下の templates ディレクトリ以下に置く。</p>
-</li>
-<li><p class="first">テンプレート利用のためのインポート:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">render_template</span>
+<li><p>Flaskのデフォルトのテンプレートエンジンは jinja2 で HTML と Python のコードを同居させることができる。</p></li>
+<li><p>テンプレート（～.html）はアプリケーションルート配下の templates ディレクトリ以下に置く。</p></li>
+<li><p>テンプレート利用のためのインポート:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">render_template</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">使用例:</p>
+<li><p>使用例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_template&#39;</span><span class="p">)</span>
 <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_template/&lt;t1&gt;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">fn_template</span><span class="p">(</span><span class="n">t1</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -180,7 +176,7 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">テンプレートhtmlファイル例:</p>
+<li><p>テンプレートhtmlファイル例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!doctype html&gt;
 &lt;title&gt;Template Example&lt;/title&gt;
 {% if var %}
@@ -191,23 +187,20 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">{{...}} で囲われた部分がPhthonのコード。</p>
-</li>
-<li><p class="first">{{...}} はPythonの値をHTMLに出力するために用いるもので、Directiveと呼ぶ。</p>
-</li>
-<li><p class="first">{%...%} はif文などの式を埋め込みたい場合に用いるもの。</p>
-</li>
+<li><p>{{...}} で囲われた部分がPhthonのコード。</p></li>
+<li><p>{{...}} はPythonの値をHTMLに出力するために用いるもので、Directiveと呼ぶ。</p></li>
+<li><p>{%...%} はif文などの式を埋め込みたい場合に用いるもの。</p></li>
 </ul>
 </div>
 <div class="section" id="id3">
 <h2>リクエストオブジェクト<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
-<li><p class="first">リクエストオブジェクト利用のためのインポート:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">request</span>
+<li><p>リクエストオブジェクト利用のためのインポート:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">使用例:</p>
+<li><p>使用例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_req&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">fn_req</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="p">)</span>
@@ -236,31 +229,29 @@
 <div class="section" id="id4">
 <h2>リダイレクト関数<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
-<li><p class="first">リダイレクトとは、処理中のページから別のページ（ファイル）へ処理を移す方法</p>
-</li>
-<li><p class="first">クラアイアントがページXを要求すると、サーバがページYを要求する指示をクライアントに戻す。これによって“クライアントは自動的に”ページYを要求し、結果としてページYがクライアントに戻される（ページXとページYは、必ずしも同一サーバからのレスポンスではない）。（<a class="reference internal" href="#id5"><span class="std std-numref">図 8</span></a>）</p>
+<li><p>リダイレクトとは、処理中のページから別のページ（ファイル）へ処理を移す方法</p></li>
+<li><p>クラアイアントがページXを要求すると、サーバがページYを要求する指示をクライアントに戻す。これによって“クライアントは自動的に”ページYを要求し、結果としてページYがクライアントに戻される（ページXとページYは、必ずしも同一サーバからのレスポンスではない）。（<a class="reference internal" href="#id5"><span class="std std-numref">図 8</span></a>）</p>
 <blockquote>
-<div><div class="figure" id="id5">
+<div><div class="figure align-default" id="id5">
 <img alt="../../_images/リダイレクト.jpg" src="../../_images/リダイレクト.jpg" />
-<p class="caption"><span class="caption-number">図 8 </span><span class="caption-text">リダイレクト</span></p>
+<p class="caption"><span class="caption-number">図 8 </span><span class="caption-text">リダイレクト</span><a class="headerlink" href="#id5" title="この画像へのパーマリンク">¶</a></p>
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">リダイレクト関数利用のためのインポート:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">redirect</span>
+<li><p>リダイレクト関数利用のためのインポート:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">redirect</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">使用例:</p>
+<li><p>使用例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_redirect&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">fn_redirect</span><span class="p">():</span>
     <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;fn_rt_variable&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">上記使用例では、&quot;fn_rt_variable&quot;関数のルーティングにリダイレクトされ、&quot;<a class="reference external" href="http://localhost:5000/ex_redirect/">http://localhost:5000/ex_redirect/</a>&quot;と入力しEnterキーを押すと、&quot;<a class="reference external" href="http://localhost:5000/rt_variable/">http://localhost:5000/rt_variable/</a>&quot;にURL表示が変わる。</p>
-</li>
-<li><p class="first">デフォルトでは、httpステータスコード302でリダイレクトされる。任意のステータスコードでリダイレクトしたい場合は、以下のように&quot;code=&quot;を付ける:</p>
+<li><p>上記使用例では、&quot;fn_rt_variable&quot;関数のルーティングにリダイレクトされ、&quot;<a class="reference external" href="http://localhost:5000/ex_redirect/">http://localhost:5000/ex_redirect/</a>&quot;と入力しEnterキーを押すと、&quot;<a class="reference external" href="http://localhost:5000/rt_variable/">http://localhost:5000/rt_variable/</a>&quot;にURL表示が変わる。</p></li>
+<li><p>デフォルトでは、httpステータスコード302でリダイレクトされる。任意のステータスコードでリダイレクトしたい場合は、以下のように&quot;code=&quot;を付ける:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_redirect&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">fn_redirect</span><span class="p">():</span>
     <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;fn_rt_variable&#39;</span><span class="p">),</span> <span class="n">code</span><span class="o">=</span><span class="mi">301</span><span class="p">)</span>
@@ -272,15 +263,15 @@
 <div class="section" id="id6">
 <h2>エラー処理<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
-<li><p class="first">例外の発生方法について</p>
+<li><p>例外の発生方法について</p>
 <blockquote>
 <div><ul>
-<li><p class="first">abort()関数利用のためのインポート:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">abort</span>
+<li><p>abort()関数利用のためのインポート:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">abort</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">使用例:</p>
+<li><p>使用例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_abort/&lt;int:var&gt;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">fn_abort</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
     <span class="n">abort</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>          <span class="c1"># httpステータスコード=varの例外を発生させる</span>
@@ -290,10 +281,10 @@
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">所定コードの例外の捕捉方法について</p>
+<li><p>所定コードの例外の捕捉方法について</p>
 <blockquote>
 <div><ul>
-<li><p class="first">使用例:</p>
+<li><p>使用例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">errorhandler</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>      <span class="c1"># コード400のみを捕捉する</span>
 <span class="k">def</span> <span class="nf">fn_error_handler</span><span class="p">(</span><span class="n">error</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
@@ -304,15 +295,15 @@
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">全てのHTTP例外の捕捉方法について</p>
+<li><p>全てのHTTP例外の捕捉方法について</p>
 <blockquote>
 <div><ul>
-<li><p class="first">必要なインポート:</p>
+<li><p>必要なインポート:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">werkzeug</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">使用例:</p>
+<li><p>使用例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">errorhandler</span><span class="p">(</span><span class="n">werkzeug</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">HTTPException</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">fn_error_handler</span><span class="p">(</span><span class="n">error</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
@@ -323,10 +314,10 @@
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">ZeroDivision例外の捕捉方法について</p>
+<li><p>ZeroDivision例外の捕捉方法について</p>
 <blockquote>
 <div><ul>
-<li><p class="first">使用例:</p>
+<li><p>使用例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">errorhandler</span><span class="p">(</span><span class="ne">ZeroDivisionError</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">fn_error_handler</span><span class="p">(</span><span class="n">error</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
@@ -348,7 +339,7 @@
 <h2>ファイルアップロード<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><ul>
-<li><p class="first">使用例:</p>
+<li><p>使用例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_upload&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">fn_upload</span><span class="p">():</span>
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span> <span class="ow">and</span> <span class="s1">&#39;file&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">files</span><span class="p">:</span>
@@ -369,8 +360,8 @@
 </li>
 </ul>
 <div class="admonition note">
-<p class="first admonition-title">注釈</p>
-<p class="last">secure_filename()関数はセキュアなファイル名を作成する関数であり、ファイル名のパス区切り文字、スラッシュ、さらにはパス内の非ASCII文字にいたるまでを取り去る。
+<p class="admonition-title">注釈</p>
+<p>secure_filename()関数はセキュアなファイル名を作成する関数であり、ファイル名のパス区切り文字、スラッシュ、さらにはパス内の非ASCII文字にいたるまでを取り去る。
 使用するためには、&quot;from werkzeug.utils import secure_filename&quot; が必要</p>
 </div>
 </div></blockquote>
@@ -378,14 +369,13 @@
 <div class="section" id="make-response">
 <h2>make_response()関数<a class="headerlink" href="#make-response" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
-<li><p class="first">make_response()関数を使うことによって、レスポンスの内容（レスポンスヘッダやHTTPステータスなど）を細かく設定可能</p>
-</li>
-<li><p class="first">make_response()関数利用のためのインポート:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">make_response</span>
+<li><p>make_response()関数を使うことによって、レスポンスの内容（レスポンスヘッダやHTTPステータスなど）を細かく設定可能</p></li>
+<li><p>make_response()関数利用のためのインポート:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">make_response</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">使用例:</p>
+<li><p>使用例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_res/&lt;int:var&gt;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">fn_res</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
     <span class="n">resp</span> <span class="o">=</span> <span class="n">make_response</span><span class="p">(</span><span class="s1">&#39;call fn_res().&#39;</span><span class="p">,</span> <span class="n">var</span><span class="p">)</span>
@@ -394,7 +384,7 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">実行結果（PowerShell）:</p>
+<li><p>実行結果（PowerShell）:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>PS C:\Users\i&gt; Invoke-WebRequest http://localhost:5000/ex_res/200
 
 StatusCode        : 200
@@ -424,13 +414,13 @@ RawContentLength  : 14
 <div class="section" id="id8">
 <h2>クッキー<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
-<li><p class="first">使用例:</p>
+<li><p>使用例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_cookie&#39;</span><span class="p">)</span>                    <span class="c1"># クッキー読出し用</span>
 <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_cookie/&lt;var&gt;&#39;</span><span class="p">)</span>              <span class="c1"># クッキー設定用</span>
 <span class="k">def</span> <span class="nf">fn_cookie</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">var</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">ck</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ck&#39;</span><span class="p">)</span>      <span class="c1"># クッキー読出し</span>
-        <span class="k">return</span> <span class="n">f</span><span class="s1">&#39;ck = </span><span class="si">{ck}</span><span class="s1">&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;ck = </span><span class="si">{ck}</span><span class="s1">&#39;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">resp</span> <span class="o">=</span> <span class="n">make_response</span><span class="p">(</span><span class="s1">&#39;set cookie.&#39;</span><span class="p">)</span>
         <span class="n">resp</span><span class="o">.</span><span class="n">set_cookie</span><span class="p">(</span><span class="s1">&#39;ck&#39;</span><span class="p">,</span> <span class="n">var</span><span class="p">)</span>          <span class="c1"># クッキー設定</span>
@@ -443,12 +433,12 @@ RawContentLength  : 14
 <div class="section" id="id9">
 <h2>セッション<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
-<li><p class="first">セッション利用のためのインポート:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">session</span>
+<li><p>セッション利用のためのインポート:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">session</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">使用例:</p>
+<li><p>使用例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">secret_key</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span>     <span class="c1"># セッションの暗号化で利用するキーを事前に設定する</span>
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_session&#39;</span><span class="p">)</span>               <span class="c1"># セッション読出し用</span>
@@ -456,7 +446,7 @@ RawContentLength  : 14
 <span class="k">def</span> <span class="nf">fn_session</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">var</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">sess</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sess&#39;</span><span class="p">)</span>      <span class="c1"># セッション読出し</span>
-        <span class="k">return</span> <span class="n">f</span><span class="s1">&#39;sess = </span><span class="si">{sess}</span><span class="s1">&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;sess = </span><span class="si">{sess}</span><span class="s1">&#39;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">session</span><span class="p">[</span><span class="s1">&#39;sess&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">var</span>           <span class="c1"># セッション設定</span>
         <span class="k">return</span> <span class="s1">&#39;set session.&#39;</span>
@@ -468,14 +458,13 @@ RawContentLength  : 14
 <div class="section" id="id10">
 <h2>フラッシュ<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
-<li><p class="first">一度だけ表示したいメッセージなどに利用できる機能</p>
-</li>
-<li><p class="first">フラッシュ利用のためのインポート:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">flash</span><span class="p">,</span> <span class="n">get_flashed_messages</span>
+<li><p>一度だけ表示したいメッセージなどに利用できる機能</p></li>
+<li><p>フラッシュ利用のためのインポート:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">flash</span><span class="p">,</span> <span class="n">get_flashed_messages</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">使用例:</p>
+<li><p>使用例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">secret_key</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span>     <span class="c1"># フラッシュの暗号化で利用するキーを事前に設定する</span>
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_flash&#39;</span><span class="p">)</span>
@@ -483,14 +472,14 @@ RawContentLength  : 14
 <span class="k">def</span> <span class="nf">fn_flash</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">var</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">fl</span> <span class="o">=</span> <span class="n">get_flashed_messages</span><span class="p">()</span>     <span class="c1"># 保存したメッセージの取得（取得するとメッセージは削除される）</span>
-        <span class="k">return</span> <span class="n">f</span><span class="s1">&#39;fl = </span><span class="si">{fl}</span><span class="s1">&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;fl = </span><span class="si">{fl}</span><span class="s1">&#39;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">flash</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>                      <span class="c1"># メッセージの保存</span>
         <span class="k">return</span> <span class="s1">&#39;set flash.&#39;</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">実行例:</p>
+<li><p>実行例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ブラウザ入力（メッセージ保存）</span>
 <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">5000</span><span class="o">/</span><span class="n">ex_flash</span><span class="o">/</span><span class="n">one</span>
 <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">5000</span><span class="o">/</span><span class="n">ex_flash</span><span class="o">/</span><span class="n">two</span>
@@ -510,13 +499,13 @@ RawContentLength  : 14
 </pre></div>
 </div>
 </li>
-<li><p class="first">カテゴリを指定することも可能:</p>
+<li><p>カテゴリを指定することも可能:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_flash&#39;</span><span class="p">)</span>
 <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_flash/&lt;var&gt;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">fn_flash</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">var</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">fl</span> <span class="o">=</span> <span class="n">get_flashed_messages</span><span class="p">(</span><span class="n">with_categories</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">category_filter</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;debug&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">])</span>
-        <span class="k">return</span> <span class="n">f</span><span class="s1">&#39;fl = </span><span class="si">{fl}</span><span class="s1">&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;fl = </span><span class="si">{fl}</span><span class="s1">&#39;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">flash</span><span class="p">(</span><span class="s1">&#39;DEBUG:&#39;</span> <span class="o">+</span> <span class="n">var</span><span class="p">,</span> <span class="s1">&#39;debug&#39;</span><span class="p">)</span>
         <span class="n">flash</span><span class="p">(</span><span class="s1">&#39;INFO:&#39;</span> <span class="o">+</span> <span class="n">var</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
@@ -530,9 +519,8 @@ RawContentLength  : 14
 <div class="section" id="id11">
 <h2>ロギング<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
-<li><p class="first">pythonのロギング機能を簡単に利用できるようになっている。</p>
-</li>
-<li><p class="first">使用例:</p>
+<li><p>pythonのロギング機能を簡単に利用できるようになっている。</p></li>
+<li><p>使用例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_logging&#39;</span><span class="p">)</span>
 <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_logging/&lt;var&gt;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">fn_logging</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -543,7 +531,7 @@ RawContentLength  : 14
 </pre></div>
 </div>
 </li>
-<li><p class="first">実行例:</p>
+<li><p>実行例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ブラウザ入力</span>
 <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">5000</span><span class="o">/</span><span class="n">ex_logging</span><span class="o">/</span><span class="mi">123</span>
 
@@ -554,7 +542,7 @@ RawContentLength  : 14
 </pre></div>
 </div>
 </li>
-<li><p class="first">ログをファイル出力するには、まずlogging.confファイルを作成する:</p>
+<li><p>ログをファイル出力するには、まずlogging.confファイルを作成する:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># logging.conf ファイル</span>
 <span class="p">[</span><span class="n">loggers</span><span class="p">]</span>
 <span class="n">keys</span><span class="o">=</span><span class="n">root</span>
@@ -580,7 +568,7 @@ RawContentLength  : 14
 </pre></div>
 </div>
 </li>
-<li><p class="first">ログをファイル出力するために必要なインポート、および上記logging.conf ファイル読込:</p>
+<li><p>ログをファイル出力するために必要なインポート、および上記logging.conf ファイル読込:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging.config</span>
 
 <span class="n">logging</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">fileConfig</span><span class="p">(</span><span class="s1">&#39;logging.conf&#39;</span><span class="p">)</span>
@@ -594,26 +582,25 @@ RawContentLength  : 14
 <div class="section" id="app-py">
 <h3>app.pyからの相対パスのファイルをダウンロード<a class="headerlink" href="#app-py" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
-<li><p class="first">必要なインポート:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">send_file</span>
+<li><p>必要なインポート:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">send_file</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">使用例:</p>
+<li><p>使用例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_send_file/&lt;path:var&gt;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">fn_send_file</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">send_file</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">as_attachment</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">上記例では、&lt;path:var&gt;で指定したapp.pyからの相対パスのファイルをダウンロードしファイルに保存する。例えば、&quot;localhost:5000/ex_send_file/app.py&quot;と入力すると、app.pyを任意の場所にダウンロードできる。</p>
-</li>
+<li><p>上記例では、&lt;path:var&gt;で指定したapp.pyからの相対パスのファイルをダウンロードしファイルに保存する。例えば、&quot;localhost:5000/ex_send_file/app.py&quot;と入力すると、app.pyを任意の場所にダウンロードできる。</p></li>
 </ul>
 </div>
 <div class="section" id="id13">
 <h3>指定されたファイル名でダウンロード<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
-<li><p class="first">使用例:</p>
+<li><p>使用例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_send_file_obj/&lt;var&gt;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">fn_send_file_obj</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
     <span class="n">fp</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
@@ -621,27 +608,25 @@ RawContentLength  : 14
 </pre></div>
 </div>
 </li>
-<li><p class="first">上記例では、&lt;var&gt;の内容の&quot;test.txt&quot;ファイルをダウンロードし保存する。例えば、&quot;localhost:5000/ex_send_file_obj/TEST&quot;と入力すると、&quot;TEST&quot;と記載された&quot;test.txt&quot;ファイルを任意の場所にダウンロードできる。</p>
-</li>
+<li><p>上記例では、&lt;var&gt;の内容の&quot;test.txt&quot;ファイルをダウンロードし保存する。例えば、&quot;localhost:5000/ex_send_file_obj/TEST&quot;と入力すると、&quot;TEST&quot;と記載された&quot;test.txt&quot;ファイルを任意の場所にダウンロードできる。</p></li>
 </ul>
 </div>
 <div class="section" id="id14">
 <h3>指定したディレクトリからの相対パスのファイルをダウンロード<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
-<li><p class="first">必要なインポート:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">send_from_directory</span>
+<li><p>必要なインポート:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">send_from_directory</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">使用例:</p>
+<li><p>使用例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/ex_send_from_dir/&lt;path:var&gt;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">fn_send_from_dir</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">send_from_directory</span><span class="p">(</span><span class="s1">&#39;C:/flask_work/&#39;</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">as_attachment</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">上記例では、&lt;path:var&gt;で指定した'C:/flask_work/'からの相対パスのファイルをダウンロードしファイルに保存する。例えば、&quot;localhost:5000/ex_send_from_dir/app.py&quot;と入力すると、'C:/flask_work/app.py'を任意の場所にダウンロードできる。</p>
-</li>
+<li><p>上記例では、&lt;path:var&gt;で指定した'C:/flask_work/'からの相対パスのファイルをダウンロードしファイルに保存する。例えば、&quot;localhost:5000/ex_send_from_dir/app.py&quot;と入力すると、'C:/flask_work/app.py'を任意の場所にダウンロードできる。</p></li>
 </ul>
 </div>
 </div>
@@ -778,8 +763,8 @@ RawContentLength  : 14
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, tak.
-      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5 で生成しました。
+        &#169; Copyright 2020, tak.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.0 で生成しました。
     </div>
   </body>
 </html>

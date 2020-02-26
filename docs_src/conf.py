@@ -21,6 +21,13 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
+# import os
+# import sys
+# 次の4行を追加
+# import distutils.sysconfig
+# site_package_path = distutils.sysconfig.get_python_lib()
+# sys.path.insert(0, os.path.join(site_package_path, 'sortorder'))
+# sys.path.insert(0, os.path.join(site_package_path, 'sphinxcontrib/yogosyu'))
 
 # -- General configuration ------------------------------------------------
 
@@ -33,7 +40,13 @@
 # ones.
 # math拡張を使用するため追加（2018/1/28）
 # exceltableモジュールを追加（2018/2/28）
-extensions = ['sphinx.ext.mathjax', 'sphinxcontrib.exceltable']
+# 用語集モジュールを追加（2020/2/21）
+extensions = [
+    'sphinx.ext.mathjax',
+    'sphinxcontrib.exceltable',
+    # 'sortorder', # you can omit always, because 'yogosyu' automatically loads
+    # 'sphinxcontrib.yogosyu.yogosyu', # you can omit if activate next line, but this is main module
+]
 
 # 数式に番号を振るため追加（2018/1/28）
 math_number_all = True
@@ -52,7 +65,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Tak Documents'
-copyright = '2019, tak'
+copyright = '2020, tak'
 author = 'tak'
 
 # The version info for the project you're documenting, acts as replacement for
