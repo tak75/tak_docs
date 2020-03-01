@@ -179,8 +179,8 @@
 <li><p>CloudTrailで操作ログを記録</p>
 <ul>
 <li><p>デフォルトで有効になっているが、保存期間は90日のみ</p></li>
-<li><p>S3に操作ログを保存することで、永久的に保存できる</p></li>
-<li><p>ただし、CloudTrail自体は無料だが、S3の料金は必要</p></li>
+<li><p><a class="reference internal" href="AWS応用.html#term-s3"><span class="xref std std-term">S3</span></a> に操作ログを保存することで、永久的に保存できる</p></li>
+<li><p>ただし、CloudTrail自体は無料だが、<a class="reference internal" href="AWS応用.html#term-s3"><span class="xref std std-term">S3</span></a> の料金は必要</p></li>
 </ul>
 </li>
 </ul>
@@ -379,13 +379,14 @@
 </li>
 </ul>
 </dd>
-<dt id="term-5">ストレージ</dt><dd><ul>
+<dt id="term-5">ストレージ</dt><dd><ul class="simple">
 <li><p>サーバにくっつけるデータの保管場所</p></li>
-<li><p>EC2には以下の2種類がある</p>
-<ul>
-<li><p>EBS（Elastic Block Store）</p>
-<ul class="simple">
-<li><p>高い可能性と耐久性を持つストレージ</p></li>
+<li><p>EC2には <a class="reference internal" href="#term-ebs"><span class="xref std std-term">EBS</span></a> と <a class="reference internal" href="#term-6"><span class="xref std std-term">インスタンスストア</span></a> の2種類がある</p></li>
+</ul>
+</dd>
+<dt id="term-ebs">EBS</dt><dd><ul class="simple">
+<li><p>Elastic Block Store</p></li>
+<li><p>高い可用性と耐久性を持つストレージ</p></li>
 <li><p>他のインスタンスに付け替え可能</p></li>
 <li><p>EBSの費用が別途発生</p></li>
 <li><p>OSやDBなどの永続性と耐久性が必要なデータを置く</p></li>
@@ -394,17 +395,21 @@
 <p class="admonition-title">注釈</p>
 <p>無料利用枠では 30 GB までの EBS 汎用 (SSD) ストレージまたはマグネティックストレージを取得できる。</p>
 </div>
-</li>
-<li><p>インスタンスストア</p>
-<ul class="simple">
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>EBSの使用量を調べるには、AWS -&gt; EC2 -&gt; ボリューム を確認する。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>EC2インスタンスは、&quot;stopped&quot;状態であっても EBS を消費しているので要注意！
+無料枠で使用したい場合は、不要なEC2インスタンスは&quot;stopped&quot;するのではなく&quot;terminated&quot;にすること。</p>
+</div>
+</dd>
+<dt id="term-6">インスタンスストア</dt><dd><ul class="simple">
 <li><p>インスタンス専用の一時的なストレージ</p></li>
 <li><p>他のインスタンスに付け替えることはできない</p></li>
 <li><p>追加費用なし（無料）</p></li>
 <li><p>一時ファイル、キャッシュなど、失われても問題がないデータを置く</p></li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
 </dd>
 <dt id="term-ssh">SSH</dt><dd><ul class="simple">
@@ -416,7 +421,7 @@
 <li><p>SSH接続のツールはTeraTermなど複数あるが、rloginがオススメ</p></li>
 </ul>
 </dd>
-<dt id="term-6">こうかいかぎにんしょう（公開鍵認証）</dt><dd><ul class="simple">
+<dt id="term-7">こうかいかぎにんしょう（公開鍵認証）</dt><dd><ul class="simple">
 <li><p>サーバ側が「公開鍵」を保有し、ユーザ側が「秘密鍵」を保有する</p></li>
 <li><p>EC2作成時にダウンロードしたSSHキーペアが「秘密鍵」となる</p></li>
 <li><p>ログインフロー</p>
@@ -430,7 +435,7 @@
 </li>
 </ul>
 </dd>
-<dt id="term-7">ポート番号</dt><dd><ul class="simple">
+<dt id="term-8">ポート番号</dt><dd><ul class="simple">
 <li><p>ポート番号は、プログラムのアドレス</p></li>
 <li><p>同一コンピュータ内で通信を行うプログラムを識別する時に利用</p></li>
 <li><p>ポート番号を決める方法は2種類ある</p>
@@ -455,7 +460,7 @@
 </dd>
 <dt id="term-apache">Apache</dt><dd><p>HTTPリクエストがあると、それに対してレスポンスを返しWebページを表示する、Webサーバのソフトウェア。</p>
 </dd>
-<dt id="term-8">ファイアウォール</dt><dd><ul class="simple">
+<dt id="term-9">ファイアウォール</dt><dd><ul class="simple">
 <li><p>ファイアウォールとは、ネットワークを不正アクセスから守るために、「通してよい通信だけを通して、それ以外は通さない」機能の総称</p></li>
 <li><p>AWSでは、EC2インスタンスに対して設定する <strong>セキュリティグループ</strong> がファイアウォールの役割を担っている。</p></li>
 </ul>
@@ -493,7 +498,7 @@
 <li><p>サブネット：事前作成のパブリックサブネットを選択</p></li>
 <li><p>自動割り当てパブリックIP：有効（インターネット経由でアクセスしたいため）</p></li>
 <li><p>配置グループ：チェックなし（複数インスタンスがある場合にインスタンス間のアクセスを高速化するために利用するもの）</p></li>
-<li><p>キャパシティーの予約：なし（EC2インスタンスが必ず利用できるように予め予約すると追加料金が発生するため）</p></li>
+<li><p>キャパシティーの予約：なし（EC2インスタンスが必ず利用できるように予め予約するためのもの。追加料金が発生する）</p></li>
 <li><p>IAMロール：なし（EC2インスタンスが他のAWSサービスと連携する際の権限を設定するもの）</p></li>
 <li><p>シャットダウン動作：停止（終了時にEC2インスタンスを削除する必要がないため）</p></li>
 <li><p>終了保護の有効化：チェックなし（EC2インスタンスが誤って削除されることを防ぐためのもの。本番環境では利用する場合あり）</p></li>
@@ -531,9 +536,11 @@ CPUクレジットが消費され尽くすと、バーストモードでは動�
 <ul class="simple">
 <li><p>セキュリティグループ名を設定する</p></li>
 <li><p>タイプ、ソースはデフォルトのまま</p></li>
-<li><p>ただし、ソースを0.0.0.0/0にすると、どこからでもSSH接続できるようになるので危険</p></li>
-<li><p>今回はとりあえずデフォルト（0.0.0.0/0）とする</p></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>ソースを0.0.0.0/0にすると、どこからでもSSH接続できるようになるので危険だが、今回はとりあえずデフォルト（0.0.0.0/0）とする</p>
+</div>
 </li>
 <li><p>SSHキーペアの設定</p>
 <ul class="simple">
@@ -716,7 +723,7 @@ CPUクレジットが消費され尽くすと、バーストモードでは動�
 <div class="section" id="id10">
 <h3>用語<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary">
-<dt id="term-9">ドメイン</dt><dd><ul class="simple">
+<dt id="term-10">ドメイン</dt><dd><ul class="simple">
 <li><p>インターネット上の住所のようなもの。
 IPアドレスは覚えにくいため、Webサイトにアクセスするときはドメインを使用する。</p></li>
 <li><p>「www.example.co.jp」の場合、以下にように呼称する</p>
@@ -821,7 +828,7 @@ IPアドレスは覚えにくいため、Webサイトにアクセスするとき
 <li><p>AWS -&gt; Route53 -&gt; DNS管理（今すぐ始める）をクリック</p></li>
 <li><p>「ホストゾーンの作成」ボタンを押す</p>
 <ul>
-<li><p>ドメイン名：作成したドメイン名&quot;tak-space.work&quot;を入力</p></li>
+<li><p>ドメイン名：作成したドメイン名&quot;xxx.work&quot;を入力</p></li>
 <li><p>コメント：任意</p></li>
 <li><p>タイプ：パブリックホストゾーン（インターネットからアクセスする場合）</p></li>
 </ul>
@@ -834,9 +841,9 @@ NSレコードの「値」項目に表示されているURL（4種）を以降�
 <li><p>ネームサーバをお名前.comからRoute53に変更</p>
 <ul>
 <li><p>お名前.comにログインし、「ドメイン一覧」をクリック</p></li>
-<li><p>&quot;tak-space.work&quot;をクリック</p></li>
+<li><p>&quot;xxx.work&quot;をクリック</p></li>
 <li><p>ネームサーバ情報の「変更する」ボタンを押す</p></li>
-<li><p>&quot;tak-space.work&quot;のチェックボックスにチェックを入れる</p></li>
+<li><p>&quot;xxx.work&quot;のチェックボックスにチェックを入れる</p></li>
 <li><p>「他のネームサーバを利用」のタブをクリック</p></li>
 <li><p>「ネームサーバ情報を入力」欄に、上記NSレコードに表示されていたURL（4種）を入力する。
 入力順は何でもよい。ただし、URLの末尾の&quot;.&quot;は入力不要</p></li>
@@ -852,10 +859,10 @@ NSレコードの「値」項目に表示されているURL（4種）を以降�
 <li><p>Route53でレコードセットを作成（Aレコードを作成）</p>
 <ul>
 <li><p>AWS -&gt; Route53 -&gt; ホストゾーンをクリック</p></li>
-<li><p>&quot;tak-space.work&quot;をクリック</p></li>
+<li><p>&quot;xxx.work&quot;をクリック</p></li>
 <li><p>「レコードセットの作成」ボタンを押す</p>
 <ul>
-<li><p>名前：空欄にする（&quot;tak-space.work&quot;でアクセス可能にするため）</p></li>
+<li><p>名前：空欄にする（&quot;xxx.work&quot;でアクセス可能にするため）</p></li>
 <li><p>タイプ：A-IPv4アドレス</p></li>
 <li><p>エイリアス：いいえ（エイリアスとは、IPアドレスの代わりにAWS専用の名前でどこに紐づけるかを指定するオプション）</p></li>
 <li><p>TTL：300（フルリゾルバに、ドメイン名とIPアドレスの紐づけデータをキャッシュしておく秒数）</p></li>
@@ -893,7 +900,7 @@ NSレコードの「値」項目に表示されているURL（4種）を以降�
 </li>
 </ul>
 </li>
-<li><p>&quot;tak-space.work&quot;のネームサーバ確認</p>
+<li><p>&quot;xxx.work&quot;のネームサーバ確認</p>
 <ul>
 <li><p>ネームサーバをお名前.comからRoute53に変更する前</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// dig：ドメインに紐づくIPアドレスや、IPアドレスに紐づくドメインなど</span>
@@ -901,12 +908,12 @@ NSレコードの「値」項目に表示されているURL（4種）を以降�
 <span class="go">// NS：ネームサーバを表示するためのオプション</span>
 <span class="go">// +short：digコマンドではいろいろな情報が表示されるので、</span>
 <span class="go">//         ネームサーバのみを表示するためのオプション</span>
-<span class="gp">$</span> dig tak-space.work NS +short
+<span class="gp">$</span> dig xxx.work NS +short
 <span class="go">dns2.onamae.com.    // お名前.comのネームサーバ</span>
 <span class="go">dns1.onamae.com.    // お名前.comのネームサーバ</span>
 
 <span class="go">// 上記のように、お名前.comのネームサーバが表示されるのは、</span>
-<span class="go">// &quot;tak-space.work&quot;というゾーンが、お名前.comのネームサーバに</span>
+<span class="go">// &quot;xxx.work&quot;というゾーンが、お名前.comのネームサーバに</span>
 <span class="go">// 委任されているから</span>
 <span class="go">// 簡単に言うと、workのネームサーバにIPアドレスを問い合わせた際に</span>
 <span class="go">// お名前.comのネームサーバに聞いてくれと返されることを意味する</span>
@@ -915,7 +922,7 @@ NSレコードの「値」項目に表示されているURL（4種）を以降�
 </li>
 <li><p>ネームサーバをお名前.comからRoute53に変更した後</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// 以下のようにRoute53のネームサーバが表示されるようになった</span>
-<span class="gp">$</span> dig tak-space.work NS +short
+<span class="gp">$</span> dig xxx.work NS +short
 <span class="go">ns-1154.awsdns-16.org.</span>
 <span class="go">ns-1920.awsdns-48.co.uk.</span>
 <span class="go">ns-165.awsdns-20.com.</span>
@@ -923,7 +930,7 @@ NSレコードの「値」項目に表示されているURL（4種）を以降�
 
 <span class="go">// なお、以下のようにするとIPアドレスを確認できる</span>
 <span class="go">// A：Aレコード（IPアドレス）を表示させるオプション</span>
-<span class="gp">$</span> dig tak-space.work A +short
+<span class="gp">$</span> dig xxx.work A +short
 <span class="go">x.xxx.xxx.12    // IPアドレスが表示される</span>
 </pre></div>
 </div>
@@ -1173,7 +1180,7 @@ RDSを作成する際は、マルチAZができるようにするために、
 <li><p>WebサーバからRDSに接続する</p>
 <ul>
 <li><p>webサーバにSSH接続する（TeraTerm）</p></li>
-<li><p>WebサーバにMySWLをインストール</p>
+<li><p>WebサーバにMySQLをインストール</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo yum -y install mysql
 </pre></div>
 </div>
@@ -1240,8 +1247,8 @@ PHPで開発されており、データベース管理システムとしてMySQL
 <li><p>TCP/IPでは、インターネットでコンピュータ同士が通信する一連の処理を、4階層で表現する</p>
 <ul>
 <li><p>アプリケーション層：アプリケーション同士が会話する（<a class="reference internal" href="#term-http"><span class="xref std std-term">HTTP</span></a>、DNS、SSH、SMTP）</p></li>
-<li><p><a class="reference internal" href="#term-11"><span class="xref std std-term">トランスポート層</span></a>：データの転送を制御する（<a class="reference internal" href="#term-tcp"><span class="xref std std-term">TCP</span></a>、<a class="reference internal" href="#term-udp"><span class="xref std std-term">UDP</span></a>）</p></li>
-<li><p>ネットワーク層：IPアドレスを管理し、経路選択する（<a class="reference internal" href="#term-10"><span class="xref std std-term">IP</span></a>、ICMP、ARP）</p></li>
+<li><p><a class="reference internal" href="#term-12"><span class="xref std std-term">トランスポート層</span></a>：データの転送を制御する（<a class="reference internal" href="#term-tcp"><span class="xref std std-term">TCP</span></a>、<a class="reference internal" href="#term-udp"><span class="xref std std-term">UDP</span></a>）</p></li>
+<li><p>ネットワーク層：IPアドレスを管理し、経路選択する（<a class="reference internal" href="#term-11"><span class="xref std std-term">IP</span></a>、ICMP、ARP）</p></li>
 <li><p>ネットワークインターフェース層：直接接続された機器同士で通信する（Ethernet、PPP）</p></li>
 </ul>
 </li>
@@ -1270,7 +1277,7 @@ PHPで開発されており、データベース管理システムとしてMySQL
 </ul>
 </dd>
 <dt id="term-tcp">TCP</dt><dd><ul class="simple">
-<li><p><a class="reference internal" href="#term-11"><span class="xref std std-term">トランスポート層</span></a> のプロトコル</p></li>
+<li><p><a class="reference internal" href="#term-12"><span class="xref std std-term">トランスポート層</span></a> のプロトコル</p></li>
 <li><p>Transmission Control Protocol</p></li>
 <li><p>信頼性のある通信を提供</p></li>
 <li><p>信頼性を保つために、送信するパケットの順序制御や再送制御を行う
@@ -1280,7 +1287,7 @@ PHPで開発されており、データベース管理システムとしてMySQL
 </ul>
 </dd>
 <dt id="term-udp">UDP</dt><dd><ul class="simple">
-<li><p><a class="reference internal" href="#term-11"><span class="xref std std-term">トランスポート層</span></a> のプロトコル</p></li>
+<li><p><a class="reference internal" href="#term-12"><span class="xref std std-term">トランスポート層</span></a> のプロトコル</p></li>
 <li><p>User Datagram Protocol</p></li>
 <li><p>信頼性のない通信</p></li>
 <li><p>送信するだけで、パケットが届いたかは保証しない</p></li>
@@ -1288,7 +1295,7 @@ PHPで開発されており、データベース管理システムとしてMySQL
 <li><p>コネクションレスなのでいつでもデータを送信できる</p></li>
 </ul>
 </dd>
-<dt id="term-10">IP</dt><dd><ul class="simple">
+<dt id="term-11">IP</dt><dd><ul class="simple">
 <li><p>ネットワーク層のプロトコル</p></li>
 <li><p>役割</p>
 <ul>
@@ -1303,7 +1310,7 @@ IPでは、各ネットワークインターフェースの最大転送単位よ
 <li><p>IPヘッダに、送信元IPアドレスと宛先IPアドレスが含まれている</p></li>
 </ul>
 </dd>
-<dt id="term-11">トランスポート層</dt><dd><ul class="simple">
+<dt id="term-12">トランスポート層</dt><dd><ul class="simple">
 <li><p>アプリケーション間コネクションの確立・切断を担う</p></li>
 <li><p>どのアプリケーションと通信するかを指定する役割も担う。
 どのアプリケーションかを指定するのがポート番号</p></li>

@@ -74,16 +74,40 @@
   <h3><a href="../../index.html">目次</a></h3>
   <ul>
 <li><a class="reference internal" href="#">AWS応用</a><ul>
-<li><a class="reference internal" href="#id1">【】</a><ul>
-<li><a class="reference internal" href="#id2">用語</a></li>
-<li><a class="reference internal" href="#id3">手順</a></li>
-<li><a class="reference internal" href="#id4">補足</a></li>
+<li><a class="reference internal" href="#s3-cloudfront">【S3/CloudFront】画像を配信する</a><ul>
+<li><a class="reference internal" href="#id1">用語</a></li>
+<li><a class="reference internal" href="#id2">説明</a><ul>
+<li><a class="reference internal" href="#id3">インフラ設計における重要な観点</a></li>
+<li><a class="reference internal" href="#webs3">画像保存場所をWebサーバではなくS3にする理由</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id5">【】</a><ul>
+<li><a class="reference internal" href="#id4">手順</a></li>
+<li><a class="reference internal" href="#id5">補足</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#elbweb">【ELB】Webレイヤを冗長化する</a><ul>
 <li><a class="reference internal" href="#id6">用語</a></li>
-<li><a class="reference internal" href="#id7">手順</a></li>
-<li><a class="reference internal" href="#id8">補足</a></li>
+<li><a class="reference internal" href="#id7">説明</a></li>
+<li><a class="reference internal" href="#id8">手順</a></li>
+<li><a class="reference internal" href="#id9">補足</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10">【】</a><ul>
+<li><a class="reference internal" href="#id11">用語</a></li>
+<li><a class="reference internal" href="#id12">手順</a></li>
+<li><a class="reference internal" href="#id13">補足</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id14">【】</a><ul>
+<li><a class="reference internal" href="#id15">用語</a></li>
+<li><a class="reference internal" href="#id16">手順</a></li>
+<li><a class="reference internal" href="#id17">補足</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id18">【】</a><ul>
+<li><a class="reference internal" href="#id19">用語</a></li>
+<li><a class="reference internal" href="#id20">手順</a></li>
+<li><a class="reference internal" href="#id21">補足</a></li>
 </ul>
 </li>
 </ul>
@@ -116,32 +140,454 @@
             
   <div class="section" id="aws">
 <h1>AWS応用<a class="headerlink" href="#aws" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="s3-cloudfront">
+<h2>【S3/CloudFront】画像を配信する<a class="headerlink" href="#s3-cloudfront" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id1">
-<h2>【】<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id2">
-<h3>用語<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>用語<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
+<dt id="term-s3">S3</dt><dd><ul class="simple">
+<li><p>安価で耐久性の高いAWSのクラウドストレージサービス</p></li>
+<li><p>特徴</p>
+<ul>
+<li><p>1GB約3円/月</p></li>
+<li><p>ほぼ100%の高い耐久性</p></li>
+<li><p>容量無制限。1ファイル最大5TBまで</p></li>
+<li><p>バケットやオブジェクトに対してアクセス制限を設定できる</p></li>
+</ul>
+</li>
+<li><p>重要概念</p>
+<ul>
+<li><p>バケット</p>
+<ul>
+<li><p>オブジェクトの保存場所。名前はグローバルでユニークな必要あり</p></li>
+</ul>
+</li>
+<li><p>オブジェクト</p>
+<ul>
+<li><p>データ本体。S3に格納されるファイルで、各々にURLが付与される</p></li>
+<li><p>バケット内オブジェクト数は無制限</p></li>
+</ul>
+</li>
+<li><p>キー</p>
+<ul>
+<li><p>オブジェクトの格納URLパス</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>利用シーン</p>
+<ul>
+<li><p>静的コンテンツの配信</p>
+<ul>
+<li><p>img画像をS3から配信</p></li>
+</ul>
+</li>
+<li><p>バッチ連携用のファイル置き場</p>
+<ul>
+<li><p>S3にファイルを置いて、バッチでそのファイルを参照して処理する</p></li>
+</ul>
+</li>
+<li><p>ログなどの出力先</p>
+<ul>
+<li><p>定期的にS3にログを送る</p></li>
+</ul>
+</li>
+<li><p>静的ウェブホスティング</p>
+<ul>
+<li><p>静的なウェブサイトをS3から公開</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="term-0">スケールアウト</dt><dd><p>サーバの台数を増やすこと</p>
+</dd>
+<dt id="term-cloudfront">CloudFront</dt><dd><p>AWSにおける <a class="reference internal" href="#term-cdn"><span class="xref std std-term">CDN</span></a> のサービス</p>
+</dd>
+<dt id="term-cdn">CDN</dt><dd><ul class="simple">
+<li><p>Content Delivery Network</p></li>
+<li><p>高速にコンテンツを配信するサービス</p></li>
+<li><p>オリジンサーバ（元となる画像を配信するサーバ。今回の場合はS3）上にあるコンテンツを、
+世界中100箇所以上にあるエッジロケーションにコピーし、そこから配信を行う</p></li>
+<li><p>高速：ユーザから最も近いエッジサーバから画像を配信する</p></li>
+<li><p>効率的：エッジサーバでコンテンツのキャッシングを行うので、オリジンサーバに負荷をかけずに配信できる</p></li>
+</ul>
+</dd>
+<dt id="term-certificate-manager">Certificate Manager</dt><dd><p>証明書を発行・管理するためのAWSのサービス</p>
+</dd>
+<dt id="term-ssl">SSLサーバ証明書</dt><dd><ul class="simple">
+<li><p>Webサーバの持ち主が実在することを示す電子証明書</p></li>
+<li><p>ブラウザとWebサーバ間で暗号化通信（https）をする時に必要</p></li>
+</ul>
+</dd>
 </dl>
 </div>
+<div class="section" id="id2">
+<h3>説明<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="section" id="id3">
-<h3>手順<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h4>インフラ設計における重要な観点<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ul class="simple">
+<li><p>可用性：サービスを継続的に利用できるか（一番重要）</p></li>
+<li><p>性能・拡張性：システムの性能が十分で、将来的においても拡張しやすいか</p></li>
+<li><p>運用・保守性：運用と保守がしやすいか</p></li>
+<li><p>セキュリティ：情報が安全に守られているか</p></li>
+<li><p>移行性：現行システムを他のシステムに移行しやすくなっているか</p></li>
+</ul>
+</div>
+<div class="section" id="webs3">
+<h4>画像保存場所をWebサーバではなくS3にする理由<a class="headerlink" href="#webs3" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ul class="simple">
+<li><p>Webサーバのストレージが画像で一杯になるのを防ぐ</p></li>
+<li><p>HTMLへのアクセスと画像へのアクセスを分けることで負荷分散する</p></li>
+<li><p>サーバの台数を増やしやすくする（画像の保存場所を分離することで、<a class="reference internal" href="#term-0"><span class="xref std std-term">スケールアウト</span></a> しやすくする）</p></li>
+<li><p>コンテンツ配信サービス（ <a class="reference internal" href="#term-cloudfront"><span class="xref std std-term">CloudFront</span></a> ）から配信することで、画像配信を高速化できる</p></li>
+</ul>
+</div>
 </div>
 <div class="section" id="id4">
-<h3>補足<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>手順<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p>AWS側の準備</p>
+<ul class="simple">
+<li><p>S3のバケット作成</p>
+<ul>
+<li><p>AWS -&gt; S3 -&gt; バケット -&gt; 「バケットを作成する」ボタンを押す</p>
+<ul>
+<li><p>バケット名：グローバルでユニークな名称（例：aws-and-infra-wp-XXX）</p></li>
+<li><p>リージョン：アジアパシフィック（東京）</p></li>
+<li><p>既存のバケットから設定をコピー：空</p></li>
+</ul>
+</li>
+<li><p>「次へ」ボタンを押す</p>
+<ul>
+<li><p>バージョニング：チェックなし</p></li>
+<li><p>サーバアクセスのログ記録：チェックなし（本番環境ではチェックした方がよい）</p></li>
+<li><p>Tags：空</p></li>
+<li><p>オブジェクトレベルのログ記録：チェックなし</p></li>
+<li><p>デフォルト暗号化：チェックなし</p></li>
+<li><p>CloudWatchリクエストメトリクス：チェックなし</p></li>
+</ul>
+</li>
+<li><p>「次へ」ボタンを押す</p>
+<ul>
+<li><p>パブリックアクセスをすべてブロック：チェックなし
+（バケットとオブジェクトを外部公開したくない場合はチェックするが、今回は画像配信なのでチェックなし）</p></li>
+<li><p>システムのアクセス許可の管理：アクセス権限を付与する</p></li>
+</ul>
+</li>
+<li><p>「次へ」ボタンを押す</p></li>
+<li><p>「バケットを作成」ボタンを押す</p></li>
+</ul>
+</li>
+<li><p>S3の権限を持ったIAMユーザを作成</p>
+<ul>
+<li><p>AWS -&gt; IAM -&gt; ユーザー -&gt; 「ユーザーを追加」ボタンを押す</p>
+<ul>
+<li><p>ユーザ名：任意（例：aws-and-infra-wpadmin）</p></li>
+<li><p>アクセスの種類：「プログラムによるアクセス」にチェック
+（WordPressからS3にアクセスするため）</p></li>
+</ul>
+</li>
+<li><p>「次のステップ」ボタンを押す</p>
+<ul>
+<li><p>「既存のポリシーを直接アタッチ」をクリック</p></li>
+<li><p>ポリシーのフィルタに「S3」を入力</p></li>
+<li><p>「AmazonS3FullAccess」にチェックを入れる</p></li>
+</ul>
+</li>
+<li><p>「次のステップ」ボタンを押す</p>
+<ul>
+<li><p>タグの追加：空</p></li>
+</ul>
+</li>
+<li><p>「次のステップ」ボタンを押す</p></li>
+<li><p>「ユーザーの作成」ボタンを押す</p></li>
+<li><p>「.csvのダウンロード」ボタンを押し、ファイルを保存する（失くさないこと）</p></li>
+<li><p>「閉じる」ボタンを押す</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>WordPressの設定</p>
+<ul>
+<li><p>プラグインのインストール</p>
+<ul class="simple">
+<li><p>WordPressの管理画面にログイン</p></li>
+<li><p>プラグイン -&gt; 「新規追加」ボタンを押す</p></li>
+<li><p>検索ボックスに「WP Offload Media」を入力し、WP Offload Mediaを今すぐインストール</p></li>
+<li><p>「有効化」ボタンを押す</p></li>
+</ul>
+</li>
+<li><p>必要なライブラリをEC2にインストール</p>
+<ul>
+<li><p>EC2にSSH接続し、インストール</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo yum install -y php-xml
+<span class="gp">$</span> sudo yum install -y php-gd
+</pre></div>
 </div>
+</li>
+<li><p>インストールしたライブラリを読み込ますためにサーバを再起動させる</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo systemctl restart httpd.service
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>プラグインの設定</p>
+<ul>
+<li><p>WordPressの管理画面をリロード</p></li>
+<li><p>設定 -&gt; Offload Media をクリックし、以下をコピーする:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">define</span><span class="p">(</span> <span class="s1">&#39;AS3CF_SETTINGS&#39;</span><span class="p">,</span> <span class="n">serialize</span><span class="p">(</span> <span class="n">array</span><span class="p">(</span>
+    <span class="s1">&#39;provider&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;aws&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;access-key-id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;********************&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;secret-access-key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;**************************************&#39;</span><span class="p">,</span>
+<span class="p">)</span> <span class="p">)</span> <span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>EC2へのSSH接続画面にて、</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /var/www/html/
+
+<span class="gp">$</span> ls
+<span class="go">index.php        wp-blog-header.php    wp-cron.php        wp-mail.php</span>
+<span class="go">license.txt      wp-comments-post.php  wp-includes        wp-settings.php</span>
+<span class="go">readme.html      wp-config.php         wp-links-opml.php  wp-signup.php</span>
+<span class="go">wp-activate.php  wp-config-sample.php  wp-load.php        wp-trackback.php</span>
+<span class="go">wp-admin         wp-content            wp-login.php       xmlrpc.php</span>
+
+<span class="gp">$</span> vim wp-config.php
+<span class="go">// 開いたファイルの最後の方のdefine(～);の最後に、上記でコピーした内容を貼り付ける</span>
+<span class="go">// &#39;**・・&#39;の箇所は、S3の権限を持ったIAMユーザ作成時に保存したcsvファイルを開き、</span>
+<span class="go">// Access key ID と Secret access key をコピーし貼り付ける</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<div class="line-block">
+<div class="line">vim の操作について</div>
+<div class="line">「i」：挿入モード</div>
+<div class="line">「escキー」：通常モードに復帰</div>
+<div class="line">「ZZ」：上書き保存し終了</div>
+<div class="line">「:q!」：保存せずに終了</div>
+</div>
+</div>
+</li>
+<li><p>Offload Media の画面に戻り、画面をリロード</p>
+<ul class="simple">
+<li><p>「Enter bucket name」をクリックし、事前に作成したバケットを選択する</p></li>
+<li><p>「Save Selected Bucket」ボタンを押す</p></li>
+</ul>
+</li>
+<li><p>設定確認画面にて</p>
+<ul class="simple">
+<li><p>最後の「Remove File From Server」をONに設定。
+これで、画像がサーバに保存されずにS3にのみ保存される</p></li>
+<li><p>「Save Changes」ボタンを押す</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>画像がS3に保存されることを確認</p>
+<ul class="simple">
+<li><p>WordPressで画像を投稿する</p>
+<ul>
+<li><p>WordPress管理画面 -&gt; 投稿 -&gt; 投稿一覧 -&gt; Hello world!（何でもよい） -&gt; 編集　をクリック</p></li>
+<li><p>「画像の追加」ボタンを押し、画像をアップロードする</p></li>
+<li><p>「更新」ボタンを押し、「投稿を表示」をクリック</p></li>
+<li><p>アップロードした画像を右クリックし、メニューから「新しいタブで画像を開く」を選択</p></li>
+<li><p>画像のURLがs3～となっていればOK</p></li>
+</ul>
+</li>
+<li><p>S3のバケットを確認する</p>
+<ul>
+<li><p>AWS -&gt; S3 -&gt; バケット -&gt; aws-and-infra-wp-XXX（事前作成のバケット） をクリック</p></li>
+<li><p>wp-content -&gt; uploads -&gt; ・・・に画像が保管されていることを確認</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>CloudFrontから配信する</p>
+<ul class="simple">
+<li><p>ディストリビューションの作成
+（ディストリビューションとは、CloudFrontの配信ルールのこと）</p>
+<ul>
+<li><p>AWS -&gt; CloudFront -&gt; 「Create Distribution」ボタンを押す</p></li>
+<li><p>Web -&gt; 「Get Started」ボタンを押す</p>
+<ul>
+<li><p>Origin Domain Name：オリジンサーバのS3名（例：aws-and-infra-wp-xxx.s3.amazonaws.com）</p></li>
+<li><p>Origin Path：空欄（オリジンサーバの特定ディレクトリを指定する場合に使用）</p></li>
+<li><p>Origin ID：デフォルト（例：S3-aws-and-infra-wp-xxx）</p></li>
+<li><p>Restrict Bucket Access：No
+（画像にアクセスする際に、S3のURLではなくCloudFrontからのみアクセスしたい場合にYesを選択）</p></li>
+<li><p>Origin Custom HeadersHeader Name：空欄</p></li>
+<li><p>Default Cache Behavior Settings：全てデフォルトでOK</p></li>
+<li><p>Distribution Settings：全てデフォルトでOK
+（Price Classが「Use All Edge Locations」となっていることのみ確認しておく）</p></li>
+<li><p>「Create Distribution」ボタンを押す</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ここまでの設定では、WordPressの画像にアクセスするとCloudFrontのドメインのURLとなる。
+それでも特に問題はないが、画像のURLはそのWebページのドメインと同じであることが推奨されている。
+以降では、画像URLを独自ドメインのURLとするための設定を行う</p></li>
+</ul>
+</li>
+<li><p>独自ドメインから配信する</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#term-certificate-manager"><span class="xref std std-term">Certificate Manager</span></a> で <a class="reference internal" href="#term-ssl"><span class="xref std std-term">SSLサーバ証明書</span></a> の発行</p>
+<ul>
+<li><p>作成されたディストリビューションのIDをクリックし、「Edit」ボタンを押す</p></li>
+<li><p>Alternate Domain Names(CNAMEs)：独自ドメインの先頭にサブドメインを付ける（例：staic.xxx.work）</p></li>
+<li><p>「Request or Import a Certificate with ACM」ボタンを押す</p>
+<ul>
+<li><p>ドメイン名：*.独自ドメイン名（例：*.xxx.work）</p></li>
+<li><p>「この証明書に別の名前を追加」ボタンを押す</p></li>
+<li><p>入力可能となったテキストボックス（追加の名前）に独自ドメイン名を記入（例：xxx.work）
+（追加の名前に独自ドメイン名を記載しないと、サブドメインに対する証明書しか発行されず、
+独自ドメイン本体に対しては証明書が発行されないこととなる）</p></li>
+<li><p>「次へ」ボタンを押す</p></li>
+<li><p>検証方法の選択：「DNS の検証」を選択</p></li>
+<li><p>「次へ」ボタンを押す</p></li>
+<li><p>「確認」ボタンを押す</p></li>
+<li><p>「確定とリクエスト」ボタンを押す</p></li>
+<li><p>ドメイン左の▼をクリックし、表示された「Route53でのレコード作成」ボタンを押す</p>
+<ul>
+<li><p>「作成」ボタンを押す</p></li>
+</ul>
+</li>
+<li><p>もう一方のドメインについては不要（放置していたら「Route53でのレコード作成」ボタンが不活性化）</p></li>
+<li><p>「続行」ボタンを押す</p></li>
+<li><p>状況が「検証保留中」から「発行済み」に変わるまで待機する</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>CloudFrontのディストリビューションに独自ドメインを登録</p>
+<ul>
+<li><p>CloudFrontのディストリビューション画面をリロードする</p></li>
+<li><p>作成されたディストリビューションのIDをクリックし、「Edit」ボタンを押す</p></li>
+<li><p>Alternate Domain Names(CNAMEs)：独自ドメインの先頭にサブドメインを付ける（例：staic.xxx.work）</p></li>
+<li><p>SSL Certificate：「Custom SSL Certificate」を選択し、「*.xxx.work」を選ぶ</p></li>
+<li><p>「Yes, Edit」ボタンを押す</p></li>
+</ul>
+</li>
+<li><p>Route53で独自ドメインとCloudFrontドメインのCNAMEレコード（CNAMEは別名の意）を作成する</p>
+<ul>
+<li><p>AWS -&gt; Route53 -&gt; ホストゾーン -&gt; xxx.work をクリック</p></li>
+<li><p>「レコードセットの作成」ボタンを押す</p>
+<ul>
+<li><p>名前：static（上で設定した名称）</p></li>
+<li><p>タイプ：CNAME</p></li>
+<li><p>値：xxxxx.cloudfront.net（CloudFront での Domain Name をコピペで入力）</p></li>
+<li><p>「作成」ボタンを押す</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Offload Media で独自ドメインを登録する</p>
+<ul>
+<li><p>WordPress管理画面にログイン -&gt; 設定 -&gt; Offload Media Lite をクリック</p>
+<ul>
+<li><p>Custom Domain (CNAME)：ONにして、「static.xxx.work」を入力</p></li>
+<li><p>「Save Changes」ボタンを押す</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </div>
 <div class="section" id="id5">
-<h2>【】<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h3>補足<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p>S3のバケットに複数の画像が保管されるのを停止する</p>
+<ul>
+<li><p>WordPressのデフォルト設定では、1枚の画像をアップロードすると、勝手に複数サイズの画像が自動生成される。
+これを停止するためには以下を設定する</p></li>
+<li><p>WordPress管理画面 -&gt; 設定 -&gt; メディア で、全ての数値を0にして更新</p></li>
+<li><p><a class="reference external" href="http://xxx/wp-admin/options.php">http://xxx/wp-admin/options.php</a> で「medium_large_size_w」を0にして更新</p></li>
+<li><p>参考：<a class="reference external" href="https://tabi-z.com/wordpress-autoresize-stop">https://tabi-z.com/wordpress-autoresize-stop</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="elbweb">
+<h2>【ELB】Webレイヤを冗長化する<a class="headerlink" href="#elbweb" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id6">
 <h3>用語<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
+<dt id="term-elb">ELB</dt><dd></dd>
 </dl>
 </div>
 <div class="section" id="id7">
-<h3>手順<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>説明<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p>稼働率を高くするための基本的な考え方</p>
+<ul>
+<li><p>障害発生間隔を長くする</p></li>
+<li><p>平均復旧時間を短くする</p></li>
+</ul>
+</li>
+<li><p>稼働率を高くするための手法</p>
+<ul>
+<li><p>冗長化。これにより単一障害点（SPOF：Single Point Of Failure）をなくす</p></li>
+</ul>
+</li>
+</ul>
 </div>
 <div class="section" id="id8">
-<h3>補足<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>手順<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id9">
+<h3>補足<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>【】<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id11">
+<h3>用語<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<dl class="glossary simple">
+</dl>
+</div>
+<div class="section" id="id12">
+<h3>手順<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id13">
+<h3>補足<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id14">
+<h2>【】<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id15">
+<h3>用語<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<dl class="glossary simple">
+</dl>
+</div>
+<div class="section" id="id16">
+<h3>手順<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id17">
+<h3>補足<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id18">
+<h2>【】<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id19">
+<h3>用語<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<dl class="glossary simple">
+</dl>
+</div>
+<div class="section" id="id20">
+<h3>手順<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id21">
+<h3>補足<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
 </div>
 </div>
 </div>
