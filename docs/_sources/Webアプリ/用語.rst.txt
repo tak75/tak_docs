@@ -15,7 +15,8 @@
   Kafka
     マイクロサービス間の非同期通信に利用。TCPプロトコル
 
-  NoSQL（Not Only SQL）
+  NoSQL
+    Not Only SQL。
     SQL言語を使わずにデータの操作ができるデータベース。
     Key-Value型データベースを指して言うことが多い。
     これは、Key-Valueストア（KVS）とも呼ばれる。
@@ -39,7 +40,8 @@
     * 保守性が高い：「AOP（Aspect Oriented Programming）」を用いることができる
     * 再利用性が高い：
 
-  AOP（Aspect Oriented Programming）
+  AOP
+    Aspect Oriented Programming。
     コンピュータプログラムの特定の振る舞いを「アスペクト」と呼ばれる機能単位として分離して記述し、プログラム中の様々な対象に適用できるようにする手法。
     既存のオブジェクト指向プログラミング言語や開発環境に補助的に導入されることが多い。
     例えば、クラスには「本質的な処理」のみを書いて、「本質的ではない処理（共通化出来る処理）」を別に書くといった具合。

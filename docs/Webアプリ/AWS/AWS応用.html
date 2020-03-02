@@ -87,27 +87,37 @@
 </li>
 <li><a class="reference internal" href="#elbweb">【ELB】Webレイヤを冗長化する</a><ul>
 <li><a class="reference internal" href="#id6">用語</a></li>
-<li><a class="reference internal" href="#id7">説明</a></li>
-<li><a class="reference internal" href="#id8">手順</a></li>
-<li><a class="reference internal" href="#id9">補足</a></li>
+<li><a class="reference internal" href="#id7">稼働率を上げるための方法</a></li>
+<li><a class="reference internal" href="#id8">サーバ構成のベストプラクティス</a></li>
+<li><a class="reference internal" href="#elb">ELBを運用する際のポイント</a></li>
+<li><a class="reference internal" href="#id9">手順</a></li>
+<li><a class="reference internal" href="#id10">ELB動作確認</a></li>
+<li><a class="reference internal" href="#id11">後片付け（無料枠を超過しないよう元に戻す）</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id10">【】</a><ul>
-<li><a class="reference internal" href="#id11">用語</a></li>
-<li><a class="reference internal" href="#id12">手順</a></li>
-<li><a class="reference internal" href="#id13">補足</a></li>
+<li><a class="reference internal" href="#rdcdb">【RDC】DBレイヤを冗長化する</a><ul>
+<li><a class="reference internal" href="#id12">説明</a></li>
+<li><a class="reference internal" href="#id13">手順</a></li>
+<li><a class="reference internal" href="#id14">後片付け（無料枠を超過しないよう元に戻す）</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id14">【】</a><ul>
+<li><a class="reference internal" href="#cloudwatch">【CloudWatch】システムを監視する</a><ul>
 <li><a class="reference internal" href="#id15">用語</a></li>
-<li><a class="reference internal" href="#id16">手順</a></li>
-<li><a class="reference internal" href="#id17">補足</a></li>
+<li><a class="reference internal" href="#id16">説明</a></li>
+<li><a class="reference internal" href="#id17">手順</a></li>
+<li><a class="reference internal" href="#id18">後片付け（無料枠を超過しないよう元に戻す）</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id18">【】</a><ul>
+<li><a class="reference internal" href="#iam">【IAM】アクセス権限を管理する</a><ul>
 <li><a class="reference internal" href="#id19">用語</a></li>
 <li><a class="reference internal" href="#id20">手順</a></li>
 <li><a class="reference internal" href="#id21">補足</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id22">【】</a><ul>
+<li><a class="reference internal" href="#id23">用語</a></li>
+<li><a class="reference internal" href="#id24">手順</a></li>
+<li><a class="reference internal" href="#id25">補足</a></li>
 </ul>
 </li>
 </ul>
@@ -201,8 +211,6 @@
 </li>
 </ul>
 </dd>
-<dt id="term-0">スケールアウト</dt><dd><p>サーバの台数を増やすこと</p>
-</dd>
 <dt id="term-cloudfront">CloudFront</dt><dd><p>AWSにおける <a class="reference internal" href="#term-cdn"><span class="xref std std-term">CDN</span></a> のサービス</p>
 </dd>
 <dt id="term-cdn">CDN</dt><dd><ul class="simple">
@@ -240,7 +248,7 @@
 <ul class="simple">
 <li><p>Webサーバのストレージが画像で一杯になるのを防ぐ</p></li>
 <li><p>HTMLへのアクセスと画像へのアクセスを分けることで負荷分散する</p></li>
-<li><p>サーバの台数を増やしやすくする（画像の保存場所を分離することで、<a class="reference internal" href="#term-0"><span class="xref std std-term">スケールアウト</span></a> しやすくする）</p></li>
+<li><p>サーバの台数を増やしやすくする（画像の保存場所を分離することで、<a class="reference internal" href="#term-2"><span class="xref std std-term">スケールアウト</span></a> しやすくする）</p></li>
 <li><p>コンテンツ配信サービス（ <a class="reference internal" href="#term-cloudfront"><span class="xref std std-term">CloudFront</span></a> ）から配信することで、画像配信を高速化できる</p></li>
 </ul>
 </div>
@@ -522,62 +530,540 @@
 <div class="section" id="id6">
 <h3>用語<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
-<dt id="term-elb">ELB</dt><dd></dd>
+<dt id="term-0">プロビジョニング</dt><dd><p>アクセス数などを予測して適切にリソースを準備すること</p>
+</dd>
+<dt id="term-1">スケールアップ</dt><dd><ul class="simple">
+<li><p>個々の要素の性能を向上させる</p></li>
+<li><p>ある程度の規模まではスケールアップがコストパフォーマンスがよいが、
+一定範囲を超えると悪くなる</p></li>
+</ul>
+</dd>
+<dt id="term-2">スケールアウト</dt><dd><ul class="simple">
+<li><p>個々の要素の数を増やす（サーバの台数を増やす）</p></li>
+<li><p>ある程度の規模を超えそうであれば、スケールアウトで対応する</p></li>
+<li><p>最低用意しておくべきがN+1構成、安心なのはN+2構成</p></li>
+</ul>
+</dd>
+<dt id="term-elb">ELB</dt><dd><ul class="simple">
+<li><p>Elastic Load Balancing</p></li>
+<li><p>AWS上の <a class="reference internal" href="#term-3"><span class="xref std std-term">ロードバランサー</span></a></p></li>
+<li><p>機能</p>
+<ul>
+<li><p>複数のEC2インスタンスに負荷分散する</p></li>
+<li><p>複数のアベイラリティゾーンにある複数のEC2インスタンスの中から正常なターゲットにのみ振り分ける（ヘルスチェック）</p></li>
+</ul>
+</li>
+<li><p>特徴</p>
+<ul>
+<li><p>ELB自体もスケーラブル（負荷に応じ自動でスケールアウト／スケールイン）</p></li>
+<li><p>アベイラリティゾーンをまたがる構成のため障害に強い</p></li>
+<li><p>ELBへの接続ポイントへのアクセスにはDNSを使用する
+（IPアドレスを用いると自動でスケールアウト／スケールインしないので要注意）</p></li>
+<li><p>安価な従量課金</p></li>
+<li><p>マネージドサービスで運用が楽</p></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="term-3">ロードバランサー</dt><dd><p>各サーバにアクセスを振り分け、負荷を分散する装置</p>
+</dd>
+<dt id="term-4">ステートレス</dt><dd><p>システムが現在の状態を表すデータなどを保持せず、入力の内容によってのみ出力が決定される方式。
+同じ入力に対する出力は常に同じになる。
+Webサーバでは、データなどをWebサーバが保持せず、DBサーバやS3に一元管理することで、
+Webサーバに冗長性を持たせても（Webサーバを複数台設置して負荷分散しても）必ず同じ応答にすることができる。</p>
+</dd>
 </dl>
 </div>
 <div class="section" id="id7">
-<h3>説明<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<ul class="simple">
-<li><p>稼働率を高くするための基本的な考え方</p>
+<h3>稼働率を上げるための方法<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
+<li><p>稼働率を上げるための基本的な考え方</p>
+<ul class="simple">
 <li><p>障害発生間隔を長くする</p></li>
 <li><p>平均復旧時間を短くする</p></li>
 </ul>
 </li>
-<li><p>稼働率を高くするための手法</p>
-<ul>
+<li><p>稼働率を上げるための手法</p>
+<ul class="simple">
 <li><p>冗長化。これにより単一障害点（SPOF：Single Point Of Failure）をなくす</p></li>
 </ul>
+</li>
+<li><p>稼働率を上げるための具体的な方法（AWSを使う場合は2,3が対象）</p>
+<ol class="arabic simple">
+<li><p>要素単体の稼働率を高くする</p></li>
+<li><p>要素を組み合わせて、全体の稼働率を高くする</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>Active-Active</p></li>
+<li><p>Active-Standby (Hot/Warm/Cold)</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>負荷を適切な <a class="reference internal" href="#term-0"><span class="xref std std-term">プロビジョニング</span></a> で回避する</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#term-1"><span class="xref std std-term">スケールアップ</span></a></p></li>
+<li><p><a class="reference internal" href="#term-2"><span class="xref std std-term">スケールアウト</span></a></p></li>
+</ul>
+</div></blockquote>
 </li>
 </ul>
 </div>
 <div class="section" id="id8">
-<h3>手順<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>サーバ構成のベストプラクティス<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Webサーバ x 1、DBサーバ x 1 構成</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>1台でサーバスペックが足りなくなったら、DBを別のサーバに切り出す</p></li>
+<li><p>DBを外部公開しないよう設定できるのでセキュリティ面でも推奨</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>Webサーバ x 2、DBサーバ x 1 構成</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>Web側の性能が足りない時に、Webサーバを複数台使うことで、Webの冗長化と負荷分散を行う</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>Webサーバ x 2、DBサーバ x 2 構成</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>DBをマスタスレーブ方式にすることで、DBの冗長化を行う</p></li>
+<li><p>スレーブDBにはマスタDBをレプリケーション（同期）し、マスタ障害時にスレーブに切り替える</p></li>
+<li><p>AWSでは、「マスタスレーブ方式」のことを「マルチAZ」と呼ぶ</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="elb">
+<h3>ELBを運用する際のポイント<a class="headerlink" href="#elb" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p>サーバをアベイラリティゾーンをまたがって配置する</p></li>
+<li><p>Webサーバは <a class="reference internal" href="#term-4"><span class="xref std std-term">ステートレス</span></a> に構築する</p></li>
+</ul>
 </div>
 <div class="section" id="id9">
-<h3>補足<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>手順<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p>AMIからEC2を作成</p>
+<ul>
+<li><p>パブリックサブネットの作成</p>
+<ul class="simple">
+<li><p>AWS -&gt; VPC -&gt; サブネット -&gt; 「サブネットの作成」ボタンを押す</p>
+<ul>
+<li><p>名前タグ：aws-and-infra-public-subnet-1c</p></li>
+<li><p>VPC：事前作成のVPCを選択</p></li>
+<li><p>VPC CIDR：デフォルトのまま</p></li>
+<li><p>アベイラリティゾーン：ap-northeast-1c</p></li>
+<li><p>IPv4 CIDRブロック：任意のプライベートIPアドレス（10.0.11.0/24）</p></li>
+<li><p>「作成」ボタンを押す</p></li>
+</ul>
+</li>
+<li><p>作成したサブネット -&gt; ルートテーブル -&gt; 「ルートテーブルの関連付けの編集」ボタンを押す</p>
+<ul>
+<li><p>ルートテーブルID：事前作成のテーブルを選択（例：aws-and-infra-public-route）</p></li>
+<li><p>「保存」ボタンを押す</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>AMIの作成</p>
+<ul class="simple">
+<li><p>AWS -&gt; EC2 -&gt; インスタンス から事前作成のEC2を選択する</p></li>
+<li><p>アクション -&gt; イメージ -&gt; イメージの作成　を選択する</p>
+<ul>
+<li><p>イメージ名：任意（例：aws-and-infra-web_XXX）</p></li>
+<li><p>イメージの説明：任意（例：aws-and-infra-web_XXX）</p></li>
+<li><p>「イメージの作成」ボタンを押す</p></li>
+</ul>
+</li>
+<li><p>AWS -&gt; EC2 -&gt; AMI　を選択し、作成したイメージがあることを確認
+（ステータスが&quot;pending&quot;になっている）</p></li>
+</ul>
+</li>
+<li><p>AMIからEC2を作成</p>
+<ul class="simple">
+<li><p>AWS -&gt; EC2 -&gt; AMI　を選択し、「起動」ボタンを押す</p>
+<ul>
+<li><p>インスタンスタイプ：t2.micro</p></li>
+<li><p>「次のステップ」ボタンを押す</p></li>
+<li><p>インスタンス数：1</p></li>
+<li><p>購入のオプション：チェックなし（常時インスタンスを起動したいためスポットインスタンスではない）</p></li>
+<li><p>ネットワーク：事前作成のVPCを選択（例：aws-and-infra-vpc）</p></li>
+<li><p>サブネット：事前作成のパブリックサブネットを選択（例：aws-and-infra-public-subnet-1c）</p></li>
+<li><p>自動割り当てパブリックIP：有効（インターネット経由でアクセスしたいため）</p></li>
+<li><p>配置グループ：チェックなし（複数インスタンスがある場合にインスタンス間のアクセスを高速化するために利用するもの）</p></li>
+<li><p>キャパシティーの予約：なし（EC2インスタンスが必ず利用できるように予め予約するためのもの。追加料金が発生する）</p></li>
+<li><p>ネットワークインターフェイス -&gt; プライマリIP：任意（例：10.0.11.10）</p></li>
+<li><p>「次のステップ」ボタンを押す</p></li>
+<li><p>「次のステップ」ボタンを押す</p></li>
+<li><p>「タグを追加」ボタンを押す</p>
+<ul>
+<li><p>キー：Name</p></li>
+<li><p>値：aws-and-infra-web</p></li>
+</ul>
+</li>
+<li><p>「次のステップ」ボタンを押す</p></li>
+<li><p>セキュリティグループの割り当て：既存（例：aws-and-infra-web）</p></li>
+<li><p>「確認と作成」ボタンを押す</p></li>
+<li><p>「起動」ボタンを押す</p>
+<ul>
+<li><p>「既存のキーペアの選択」を選択し</p></li>
+<li><p>キーペアの選択：事前作成のキーペア（例：aws-and-infra-ssh-key）</p></li>
+<li><p>チェックボックスにチェック</p></li>
+</ul>
+</li>
+<li><p>「インスタンスの作成」ボタンを押す</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>EC2インスタンスの説明を追加する</p>
+<ul>
+<li><p>EC2（10.0.10.10）へのSSH接続画面にて、</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /var/www/html/
+
+<span class="gp">$</span> ls
+<span class="go">index.php        wp-blog-header.php    wp-cron.php        wp-mail.php</span>
+<span class="go">license.txt      wp-comments-post.php  wp-includes        wp-settings.php</span>
+<span class="go">readme.html      wp-config.php         wp-links-opml.php  wp-signup.php</span>
+<span class="go">wp-activate.php  wp-config-sample.php  wp-load.php        wp-trackback.php</span>
+<span class="go">wp-admin         wp-content            wp-login.php       xmlrpc.php</span>
+
+<span class="gp">$</span> sudo vim index.php
+<span class="go">// 開いたファイルの末尾に「echo &#39;&lt;p&gt;sample 1a&lt;/p&gt;&#39;;」を追加し上書き保存</span>
+</pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>index.php上書き保存時に「E45 readonly option is set(add ! to override)」
+が表示されたら、vimのコマンドモードで「:w !sudo tee %」を実行し、「:q!」で終了させる</p>
+</div>
+</li>
+<li><p>EC2（10.0.11.10）へのSSH接続画面にて、上記と同様に
+index.phpファイル末尾に「echo '&lt;p&gt;sample 1a&lt;/p&gt;';」を追加し上書き保存する</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ELBの作成</p>
+<ul class="simple">
+<li><p>ELBの作成</p>
+<ul>
+<li><p>AWS -&gt; EC2 -&gt; ロードバランサー -&gt; 「ロードバランサー」ボタンを押す</p></li>
+<li><p>Application Load Balancer -&gt; 「作成」ボタンを押す</p>
+<ul>
+<li><p>名前：任意（例：aws-and-infra-alb）</p></li>
+<li><p>スキーム：「インターネット向け」にチェック</p></li>
+<li><p>IPアドレスタイプ：ipv4</p></li>
+<li><p>リスナー：全てデフォルトでOK</p></li>
+<li><p>VPC：事前作成のVPCを選択（例：aws-and-infra-vpc）</p></li>
+<li><p>アベイラリティゾーン：各々のパブリックサブネットを選択</p></li>
+<li><p>「次の手順」ボタンを押す</p></li>
+<li><p>「次の手順」ボタンを押す</p></li>
+<li><p>セキュリティグループの割り当て：「新しいセキュリティグループを作成する」にチェック</p>
+<ul>
+<li><p>セキュリティグループ名：任意（例：aws-and-infra-alb）</p></li>
+<li><p>説明：任意（例：aws-and-infra-alb）</p></li>
+<li><p>タイプ：HTTP</p></li>
+</ul>
+</li>
+<li><p>「次の手順」ボタンを押す</p></li>
+<li><p>ターゲットグループ</p>
+<ul>
+<li><p>ターゲットグループ：「新しいターゲットグループ」を選択</p></li>
+<li><p>名前：任意（例：aws-and-infra-web-tg）</p></li>
+<li><p>ターゲットの種類：インスタンス</p></li>
+<li><p>プロトコル：HTTP</p></li>
+<li><p>ポート：80</p></li>
+</ul>
+</li>
+<li><p>ヘルスチェック</p>
+<ul>
+<li><p>プロトコル：HTTP</p></li>
+<li><p>パス：/（必ず応答を返すパスを設定すること）</p></li>
+</ul>
+</li>
+<li><p>ヘルスチェックの詳細設定</p>
+<ul>
+<li><p>正常のしきい値：2（デフォルト5から修正。後でヘルスチェック機能を確認したいため）</p></li>
+<li><p>間隔：10（デフォルト30から修正。後でヘルスチェック機能を確認したいため）</p></li>
+</ul>
+</li>
+<li><p>「次の手順」ボタンを押す</p></li>
+<li><p>ターゲットの登録</p>
+<ul>
+<li><p>インスタンス：両インスタンスにチェック</p></li>
+<li><p>「登録済みに追加」ボタンを押す</p></li>
+</ul>
+</li>
+<li><p>「次の手順」ボタンを押す</p></li>
+<li><p>「作成」ボタンを押す</p></li>
+</ul>
+</li>
+<li><p>作成したロードバランサーの状態が「provicioning」から「active」となるまで待機する</p></li>
+</ul>
+</li>
+<li><p>ELBの動作を確認</p>
+<ul>
+<li><p>作成したロードバランサーを選択し、DNS名をコピーしブラウザでアクセスする</p></li>
+<li><p>一番下に「sample 1a」が表示されることを確認する</p></li>
+<li><p>画面を何度かリロードすると「sample 1c」が表示される</p></li>
+</ul>
+</li>
+<li><p>独自ドメインからELBにアクセス</p>
+<ul>
+<li><p>AWS -&gt; Route53 -&gt; ホストゾーン -&gt; 既存のドメイン名「xxx.work」をクリック</p></li>
+<li><p>Aレコードの独自ドメインを選択し編集する
+（現時点では、EC2インスタンスのグローバルIPアドレスが設定されている）</p>
+<ul>
+<li><p>エイリアス：はい</p></li>
+<li><p>エイリアス先：事前作成のロードバランサーを選択（例：aws-and-infra-alb）</p></li>
+<li><p>「レコードセットの保存」ボタンを押す</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </div>
 <div class="section" id="id10">
-<h2>【】<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id11">
-<h3>用語<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<dl class="glossary simple">
-</dl>
+<h3>ELB動作確認<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p>1aのEC2インスタンスが停止中の場合の動作を確認する</p></li>
+<li><p>EC2（10.0.10.10）にSSH接続し、Apacheを停止させる</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo systemctl stop httpd.service
+</pre></div>
 </div>
+</li>
+<li><p>独自ドメイン「xxx.work」にアクセスする
+→ 画面をリロードしても「sample 1c」のみが表示される</p></li>
+<li><p>AWS -&gt; EC2 -&gt; ロードバランシング -&gt; ターゲットグループ -&gt; 事前作成のターゲットグループを選択 -&gt; 下のターゲットタブをクリック
+→ 登録済みターゲットの1aがunhealthyに、1cがhealthyとなっている</p></li>
+<li><p>EC2（10.0.10.10）にSSH接続し、Apacheを再開させる</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo systemctl start httpd.service
+</pre></div>
+</div>
+</li>
+<li><p>独自ドメイン「xxx.work」にアクセスし画面をリロードすると「sample 1a/1c」が交互に表示される</p></li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h3>後片付け（無料枠を超過しないよう元に戻す）<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p>1cをロードバランサーのターゲットから外す</p>
+<ul>
+<li><p>AWC -&gt; EC2 -&gt; ロードバランシング -&gt; ターゲットグループ -&gt; ターゲット -&gt; 編集　より1cを選択して削除</p></li>
+</ul>
+</li>
+<li><p>1cのEC2インスタンスを終了する</p>
+<ul>
+<li><p>AWC -&gt; EC2 -&gt; インスタンス -&gt; 1cインスタンス -&gt; アクション -&gt; インスタンスの状態 -&gt; 終了　をクリック</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="rdcdb">
+<h2>【RDC】DBレイヤを冗長化する<a class="headerlink" href="#rdcdb" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id12">
-<h3>手順<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>説明<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p>RDSでは、マルチAZ機能を使ってマスタスレーブ構成を構築する</p></li>
+<li><p>マスタDBに障害が発生してスレープDBに切り替わった場合は、IPアドレスは変わるが、DBのエンドポイントは変わらない。
+よって、特に何もしなくても使い続けることができる。</p></li>
+</ul>
 </div>
 <div class="section" id="id13">
-<h3>補足<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
-</div>
+<h3>手順<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p>AWS -&gt; RDS -&gt; データベース -&gt; 作成済みDB -&gt; 「変更」ボタンを押す</p>
+<ul>
+<li><p>マルチAZ配置：はい</p></li>
+<li><p>「次へ」ボタンを押す</p></li>
+<li><p>変更のスケジュール：すぐに適用</p></li>
+<li><p>「DBインスタンスの変更」ボタンを押す</p></li>
+</ul>
+</li>
+<li><p>概要 -&gt; 情報　が「変更中」から「利用可能」に変わるまで待機する
+（結構時間がかかる）</p></li>
+</ul>
 </div>
 <div class="section" id="id14">
-<h2>【】<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h3>後片付け（無料枠を超過しないよう元に戻す）<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>上記手順の逆手順でマルチAZ配置をOFFする</p>
+</div>
+</div>
+<div class="section" id="cloudwatch">
+<h2>【CloudWatch】システムを監視する<a class="headerlink" href="#cloudwatch" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id15">
 <h3>用語<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
+<dt id="term-5">システム監視</dt><dd><ul class="simple">
+<li><p>システムを正常な状態に保てるよう、稼働状況やリソースを監視すること</p></li>
+<li><p>大別して、 <span class="xref std std-term">死活監視</span> と <a class="reference internal" href="#term-7"><span class="xref std std-term">メトリクス監視</span></a> の2種類がある</p></li>
+</ul>
+</dd>
+<dt id="term-6">しかつかんし（死活監視）</dt><dd><ul class="simple">
+<li><p>正常にシステムが動作していることを確認</p></li>
+</ul>
+</dd>
+<dt id="term-7">メトリクス監視</dt><dd><ul class="simple">
+<li><p>パフォーマンスを定量的に確認</p></li>
+<li><p>指標を決め、指標が閾値以上・以下となっているかを把握</p></li>
+</ul>
+</dd>
+<dt id="term-cloudwatch">CloudWatch</dt><dd><ul class="simple">
+<li><p>AWSサービスの監視やモニタリングができる監視サービス</p></li>
+<li><p>AWSサービスのメトリクス（リソース状況）を監視する</p></li>
+<li><p>メトリクスに対して閾値を登録し、その条件を満たしたら通知する（アラーム発生）</p></li>
+<li><p><a class="reference internal" href="#term-amazon-sns"><span class="xref std std-term">Amazon SNS</span></a> と組み合わせて使用する</p></li>
+</ul>
+</dd>
+<dt id="term-amazon-sns">Amazon SNS</dt><dd><ul class="simple">
+<li><p>通知サービス</p></li>
+<li><p>Topicを作成することで、Publisherがメッセージを送信し、
+Subscriberが通知を受信するための通信チャネルとして機能する</p></li>
+<li><p>PublisherとSubscriberを疎結合とし、Publisherなどの変更時の対応を簡単にするためのもの</p></li>
+</ul>
+</dd>
 </dl>
 </div>
 <div class="section" id="id16">
-<h3>手順<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>説明<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p>監視する際のポイント</p>
+<ul>
+<li><p>項目が多すぎると監視疲れし正常に監視できなくなる可能性がある。
+また、システムも利用状況が変わるので、都度調整が必要。</p></li>
+<li><p>基本的には、CPU、Memory、Disk、Networkの使用率・枯渇を監視項目に設定すればよい</p></li>
+</ul>
+</li>
+</ul>
 </div>
 <div class="section" id="id17">
-<h3>補足<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>手順<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p>以降では、CPU使用率が60%を超えたら、
+EC2 → CloudWatch → SNS → ユーザの経路にて、Eメールを送信する監視を構築する</p></li>
+<li><p>CloudWatchのアラームを作成</p>
+<ul class="simple">
+<li><p>CloudWatchのアラームを作成</p>
+<ul>
+<li><p>AWS -&gt; CloudWatch -&gt; アラーム -&gt; 「アラームの作成」ボタンを押す</p>
+<ul>
+<li><p>メトリクスと条件の指定</p>
+<ul>
+<li><p>「メトリクスの選択」ボタンを押す</p></li>
+<li><p>EC2 -&gt; インスタンス別メトリクス　をクリックする</p></li>
+<li><p>CPUUtilizationをチェックし、「メトリクスの選択」ボタンを押す</p></li>
+<li><p>期間：1分（デフォルト5分から変更。早く検知させるため）</p></li>
+<li><p>CPUUtilizationが次の時：以上</p></li>
+<li><p>よりも：60</p></li>
+<li><p>「次へ」ボタンを押す</p></li>
+</ul>
+</li>
+<li><p>アクションの設定</p>
+<ul>
+<li><p>SNSトピックの選択：新しいトピックの作成</p></li>
+<li><p>トピック名：任意（例：cloudwatch_alarms_topic）</p></li>
+<li><p>「トピックの作成」ボタンを押す</p></li>
+<li><p>「次へ」ボタンを押す</p></li>
+</ul>
+</li>
+<li><p>名前と説明を追加</p>
+<ul>
+<li><p>アラーム名：任意（例：aws-and-infra-ec2-cpu）</p></li>
+<li><p>アラームの説明：任意（例：aws-and-infra-ec2-cpu）</p></li>
+<li><p>「次へ」ボタンを押す</p></li>
+</ul>
+</li>
+<li><p>「アラームの作成」ボタンを押す</p></li>
+<li><p>通知先に指定したメアドにメールが届いているので、認証すること</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>SNSのトピックを確認</p>
+<ul>
+<li><p>AWS -&gt; SNS -&gt; トピック　をクリックすると、上で作成したトピック（cloudwatch_alarms_topic）が表示される</p></li>
+<li><p>AWS -&gt; SNS -&gt; サブスクリプション　をクリックすると、購読者のメアドが登録されている</p></li>
+<li><p>トピックにサブスクリプションを追加していくことで、各購読者に通知する</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>アラートを確認</p>
+<ul>
+<li><p>&quot;yes &gt; /dev/null &amp;&quot; コマンドをEC2上で実行</p>
+<ul>
+<li><p>EC2インスタンスにSSH接続する</p></li>
+<li><p>EC2が高負荷となるようコマンドを実行する</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> yes &gt; /dev/null <span class="p">&amp;</span>
+</pre></div>
 </div>
+</li>
+<li><p>CPU使用率を確認</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> top
+<span class="go">PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND</span>
+<span class="go">4838 ec2-user  20   0  114632    740    676 R 18.9  0.1   0:19.70 yes</span>
+<span class="go">4839 ec2-user  20   0  114632    740    676 R 18.9  0.1   0:19.47 yes</span>
+<span class="go">4836 ec2-user  20   0  114632    748    684 R 18.6  0.1   0:24.07 yes</span>
+<span class="go">4837 ec2-user  20   0  114632    772    708 R 18.6  0.1   0:20.17 yes</span>
+<span class="go">4840 ec2-user  20   0  114632    720    656 R 18.6  0.1   0:19.35 yes</span>
+<span class="go">3924 apache    20   0  485256  44284   9036 S  6.0  4.4   1:26.69 httpd</span>
+<span class="go">    1 root      20   0  125560   5424   3968 S  0.0  0.5   0:02.64 systemd</span>
+<span class="go">    2 root      20   0       0      0      0 S  0.0  0.0   0:00.00 kthreadd</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>アラートが来ることを確認</p>
+<ul class="simple">
+<li><p>AWS -&gt; CloudWatch -&gt; アラーム をクリックすると、アラーム状態となっており、メールを送信される</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </div>
 <div class="section" id="id18">
-<h2>【】<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h3>後片付け（無料枠を超過しないよう元に戻す）<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p>EC2インスタンスにSSH接続する</p></li>
+<li><p>yesコマンドを解除する</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// yesコマンドのプロセスを表示する</span>
+<span class="gp">$</span> ps aux <span class="p">|</span> grep yes
+<span class="go">ec2-user  4836 19.7  0.0 114632   748 pts/0    R    12:47   1:50 yes</span>
+<span class="go">ec2-user  4837 19.2  0.0 114632   772 pts/0    R    12:47   1:46 yes</span>
+<span class="go">ec2-user  4838 19.1  0.0 114632   740 pts/0    R    12:47   1:45 yes</span>
+<span class="go">ec2-user  4839 19.1  0.0 114632   740 pts/0    R    12:47   1:45 yes</span>
+<span class="go">ec2-user  4840 19.1  0.0 114632   720 pts/0    R    12:47   1:45 yes</span>
+<span class="go">ec2-user  4858  0.0  0.0 119416   988 pts/0    S+   12:57   0:00 grep --color=aut</span>
+
+<span class="go">// yesコマンドのプロセスを停止する</span>
+<span class="go">// 4836-4840：yesコマンドのプロセスID</span>
+<span class="gp">$</span> <span class="nb">kill</span> -9 <span class="m">4836</span>
+<span class="gp">$</span> <span class="nb">kill</span> -9 <span class="m">4837</span>
+<span class="gp">$</span> <span class="nb">kill</span> -9 <span class="m">4838</span>
+<span class="gp">$</span> <span class="nb">kill</span> -9 <span class="m">4839</span>
+<span class="gp">$</span> <span class="nb">kill</span> -9 <span class="m">4840</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="iam">
+<h2>【IAM】アクセス権限を管理する<a class="headerlink" href="#iam" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id19">
 <h3>用語<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
@@ -588,6 +1074,20 @@
 </div>
 <div class="section" id="id21">
 <h3>補足<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id22">
+<h2>【】<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id23">
+<h3>用語<a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<dl class="glossary simple">
+</dl>
+</div>
+<div class="section" id="id24">
+<h3>手順<a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id25">
+<h3>補足<a class="headerlink" href="#id25" title="このヘッドラインへのパーマリンク">¶</a></h3>
 </div>
 </div>
 </div>
