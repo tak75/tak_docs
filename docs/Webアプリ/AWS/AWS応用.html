@@ -110,14 +110,9 @@
 </li>
 <li><a class="reference internal" href="#iam">【IAM】アクセス権限を管理する</a><ul>
 <li><a class="reference internal" href="#id19">用語</a></li>
-<li><a class="reference internal" href="#id20">手順</a></li>
-<li><a class="reference internal" href="#id21">補足</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id22">【】</a><ul>
-<li><a class="reference internal" href="#id23">用語</a></li>
-<li><a class="reference internal" href="#id24">手順</a></li>
-<li><a class="reference internal" href="#id25">補足</a></li>
+<li><a class="reference internal" href="#id20">作業内容</a></li>
+<li><a class="reference internal" href="#id21">手順</a></li>
+<li><a class="reference internal" href="#id22">補足</a></li>
 </ul>
 </li>
 </ul>
@@ -1067,27 +1062,229 @@ EC2 → CloudWatch → SNS → ユーザの経路にて、Eメールを送信す
 <div class="section" id="id19">
 <h3>用語<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
+<dt id="term-iam">IAM</dt><dd><ul class="simple">
+<li><p>AWSのサービスを利用するユーザ権限を管理するサービス</p></li>
+<li><p>AWSリソースをセキュアに操作するために、認証・認可の仕組みを提供する</p></li>
+<li><p>各AWSリソースに対して別々のアクセス権限をユーザ毎に付与できる</p></li>
+<li><p>AWS IAM自体の利用は無料</p></li>
+</ul>
+</dd>
+<dt id="term-8">IAMポリシー</dt><dd><p>アクセス許可の定義。
+「どのAWSサービスの」「どのリソースに対して」「どんな操作を」「許可する（許可しない）」を定義</p>
+</dd>
+<dt id="term-9">IAMユーザ</dt><dd><p>個々のアカウントのユーザ</p>
+</dd>
+<dt id="term-10">IAMグループ</dt><dd><p>IAMユーザの集合。
+複数のユーザにアクセス許可を付与する作業を簡素化。
+グループに対してポリシーを設定できる</p>
+</dd>
+<dt id="term-11">IAMロール</dt><dd><p>一時的にアクセスを許可したアカウントを発行できる。
+EC2やLambdaなどのAWSリソースに権限を付与するために使用</p>
+</dd>
 </dl>
 </div>
 <div class="section" id="id20">
-<h3>手順<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>作業内容<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p>作成するポリシー</p>
+<ul>
+<li><p>DeveloperPolicy</p>
+<ul>
+<li><p>EC2の全操作</p></li>
+<li><p>RDSの全操作</p></li>
+</ul>
+</li>
+<li><p>DirectorPolicy</p>
+<ul>
+<li><p>EC2の読み取り</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>作成するグループ</p>
+<ul>
+<li><p>Developers</p></li>
+<li><p>Directors</p></li>
+</ul>
+</li>
+<li><p>作成するユーザ</p>
+<ul>
+<li><p>kume（Developers）</p></li>
+<li><p>taguchi（Developers）</p></li>
+<li><p>fukushima（Directors）</p></li>
+</ul>
+</li>
+<li><p>作成するロール</p>
+<ul>
+<li><p>Web（AmazonS3FullAccess）</p></li>
+</ul>
+</li>
+</ul>
 </div>
 <div class="section" id="id21">
-<h3>補足<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>手順<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p>IAMポリシーを作成する</p>
+<ul class="simple">
+<li><p>AWS -&gt; IAM -&gt; ポリシー -&gt; 「ポリシーの作成」ボタンを押す</p></li>
+<li><p>DeveloperPolicy</p>
+<ul>
+<li><p>サービス：EC2</p></li>
+<li><p>アクション：すべてのEC2アクション　にチェック</p></li>
+<li><p>リソース：すべてのリソース　にチェック</p></li>
+<li><p>「さらにアクセス許可を追加する」をクリック</p></li>
+<li><p>サービス：RDS</p></li>
+<li><p>アクション：すべてのRDSアクション　にチェック</p></li>
+<li><p>リソース：すべてのリソース　にチェック</p></li>
+<li><p>「ポリシーの確認」ボタンを押す</p></li>
+<li><p>名前：AwsAndInfraDeveloperPolicy</p></li>
+<li><p>説明：AwsAndInfraDeveloperPolicy</p></li>
+<li><p>「ポリシーの作成」ボタンを押す</p></li>
+</ul>
+</li>
+<li><p>DirectorPolicy</p>
+<ul>
+<li><p>サービス：EC2</p></li>
+<li><p>アクション：読み込み　にチェック</p></li>
+<li><p>リソース：すべてのリソース　にチェック</p></li>
+<li><p>「ポリシーの確認」ボタンを押す</p></li>
+<li><p>名前：AwsAndInfraDirectorPolicy</p></li>
+<li><p>説明：AwsAndInfraDirectorPolicy</p></li>
+<li><p>「ポリシーの作成」ボタンを押す</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>IAMグループを作成する</p>
+<ul class="simple">
+<li><p>AWS -&gt; IAM -&gt; グループ -&gt; 「新しいグループの作成」ボタンを押す</p></li>
+<li><p>Developers</p>
+<ul>
+<li><p>グループ名：AwsAndInfraDevelopers</p></li>
+<li><p>「次のステップ」ボタンを押す</p></li>
+<li><p>ポリシー：AwsAndInfraDeveloperPolicy　にチェック</p></li>
+<li><p>「次のステップ」ボタンを押す</p></li>
+<li><p>「グループの作成」ボタンを押す</p></li>
+</ul>
+</li>
+<li><p>Directors</p>
+<ul>
+<li><p>グループ名：AwsAndInfraDirectors</p></li>
+<li><p>「次のステップ」ボタンを押す</p></li>
+<li><p>ポリシー：AwsAndInfraDirectorPolicy　にチェック</p></li>
+<li><p>「次のステップ」ボタンを押す</p></li>
+<li><p>「グループの作成」ボタンを押す</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>IAMユーザを作成する</p>
+<ul class="simple">
+<li><p>AWS -&gt; IAM -&gt; ユーザ -&gt; 「ユーザを追加」ボタンを押す</p></li>
+<li><p>Developers に所属するユーザ</p>
+<ul>
+<li><p>ユーザ名：kume</p></li>
+<li><p>「別のユーザーの追加」をクリック</p></li>
+<li><p>ユーザ名：taguchi</p></li>
+<li><p>アクセスの種類：AWS マネジメントコンソールへのアクセス　にチェック</p></li>
+<li><p>コンソールのパスワード：自動生成がよいが、今回はカスタムでpasswordとする</p></li>
+<li><p>パスワードのリセットが必要：チェック入れる</p></li>
+<li><p>「次のステップ」ボタンを押す</p></li>
+<li><p>アクセス許可の設定：ユーザーをグループに追加</p></li>
+<li><p>グループ名：AwsAndInfraDevelopers　にチェック</p></li>
+<li><p>「次のステップ」ボタンを押す</p></li>
+<li><p>「次のステップ」ボタンを押す</p></li>
+<li><p>「ユーザーの作成」ボタンを押す</p></li>
+<li><p>「.csvのダウンロード」ボタンを押してファイルに保存する</p></li>
+<li><p>「閉じる」ボタンを押す</p></li>
+</ul>
+</li>
+<li><p>Directors に所属するユーザ</p>
+<ul>
+<li><p>ユーザ名：fukushima</p></li>
+<li><p>アクセスの種類：AWS マネジメントコンソールへのアクセス　にチェック</p></li>
+<li><p>コンソールのパスワード：自動生成がよいが、今回はカスタムでpasswordとする</p></li>
+<li><p>パスワードのリセットが必要：チェック入れる</p></li>
+<li><p>「次のステップ」ボタンを押す</p></li>
+<li><p>アクセス許可の設定：ユーザーをグループに追加</p></li>
+<li><p>グループ名：AwsAndInfraDirectors　にチェック</p></li>
+<li><p>「次のステップ」ボタンを押す</p></li>
+<li><p>「次のステップ」ボタンを押す</p></li>
+<li><p>「ユーザーの作成」ボタンを押す</p></li>
+<li><p>「.csvのダウンロード」ボタンを押してファイルに保存する</p></li>
+<li><p>「閉じる」ボタンを押す</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>IAMロールを作成する前に、EC2からS3バケットリストを出力する</p>
+<ul>
+<li><p>EC2へのSSH接続画面にて、</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// S3バケットリストの出力コマンドを実行すると、</span>
+<span class="go">// エラーメッセージが出力される</span>
+<span class="gp">$</span> aws s3 ls
+<span class="go">Unable to locate credentials.</span>
+<span class="go">You can configure credentials by running &quot;aws configure&quot;.</span>
+</pre></div>
 </div>
+</li>
+</ul>
+</li>
+<li><p>IAMロールを作成する</p>
+<ul class="simple">
+<li><p>AWS -&gt; IAM -&gt; ロール -&gt; 「ロールの作成」ボタンを押す</p>
+<ul>
+<li><p>信頼されたエンティティの種類を選択：AWSサービス</p></li>
+<li><p>ユースケースの選択：EC2</p></li>
+<li><p>「次のステップ」ボタンを押す</p></li>
+<li><p>ポリシー：AmazonS3FullAccess</p></li>
+<li><p>「次のステップ」ボタンを押す</p></li>
+<li><p>「次のステップ」ボタンを押す</p></li>
+<li><p>ロール名：AwsAndInfraWeb</p></li>
+<li><p>「ロールの作成」ボタンを押す</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>EC2インスタンスに作成したロールを割り当てる</p>
+<ul class="simple">
+<li><p>AWS -&gt; EC2 -&gt; インスタンス -&gt; aws-and-infra-web　にチェック</p></li>
+<li><p>アクション -&gt; インスタンスの設定 -&gt; IAMロールの割り当て／置換　をクリック</p>
+<ul>
+<li><p>IAM ロール：事前作成のロール（例：AwsAndInfraWeb）</p></li>
+<li><p>「適用」ボタンを押す</p></li>
+<li><p>「閉じる」ボタンを押す</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>IAMロールを作成した後に、EC2からS3バケットリストを出力する</p>
+<ul>
+<li><p>EC2へのSSH接続画面にて、</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// S3バケットリストの出力コマンドを実行する</span>
+<span class="gp">$</span> aws s3 ls
+<span class="go">2020-02-27 13:48:33 aws-and-infra-wp-tak</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
 </div>
 <div class="section" id="id22">
-<h2>【】<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id23">
-<h3>用語<a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<dl class="glossary simple">
-</dl>
-</div>
-<div class="section" id="id24">
-<h3>手順<a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">¶</a></h3>
-</div>
-<div class="section" id="id25">
-<h3>補足<a class="headerlink" href="#id25" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>補足<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p>IAMのベストプラクティス</p>
+<ul>
+<li><p>個々人にIAMユーザを作成する（ユーザ毎に操作履歴が記録される）</p></li>
+<li><p>ユーザをグループに所属させ、グループに権限を割り当てる</p></li>
+<li><p>権限は最小限にする</p></li>
+<li><p>EC2インスタンスから実行するアプリケーションには、ロールを使用する
+（EC2インスタンスからAWSの別のサービスにアクセスする場合はロールを使用する）</p></li>
+<li><p>定期的に不要な認証情報を削除する（退職者のユーザなど）</p></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 </div>
