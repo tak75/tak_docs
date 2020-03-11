@@ -549,7 +549,7 @@ pythonの場合
 .. code-block:: python
 
    import wx
-   
+
    class Base(object):
        basecolr = (255, 255, 255)
 
@@ -563,6 +563,29 @@ c言語の場合
        *a = c++;
    }
 
+rubyの場合
+
+.. code-block:: ruby
+
+  def new
+    # モデル"Task"のレコードを1つ作成して、テンプレート変数"@task"に入れる
+    @task = Task.new
+  end
+
+erbテンプレートエンジンの場合
+
+.. code-block:: html+erb
+
+  <h1>ToDoアプリ</h1>
+  <ul>
+    <% @tasks.each do |task| %>
+      <li>
+        <%= check_box_tag '', '' %>
+        <%= task.title %>
+      </li>
+    <% end %>
+  </ul>
+
 実際の記述::
 
  コンソールの場合
@@ -570,14 +593,14 @@ c言語の場合
  .. code-block:: console
 
     $ irb
-    > 
+    >
 
  pythonの場合
 
  .. code-block:: python
 
     import wx
-    
+
     class Base(object):
         basecolr = (255, 255, 255)
 
@@ -590,6 +613,30 @@ c言語の場合
         static int c = 0;
         *a = c++;
     }
+
+ rubyの場合
+
+  .. code-block:: ruby
+
+    def new
+      # モデル"Task"のレコードを1つ作成して、テンプレート変数"@task"に入れる
+      @task = Task.new
+    end
+
+ erbテンプレートエンジンの場合
+
+  .. code-block:: html+erb
+
+    <h1>ToDoアプリ</h1>
+    <ul>
+      <% @tasks.each do |task| %>
+        <li>
+          <%= check_box_tag '', '' %>
+          <%= task.title %>
+        </li>
+      <% end %>
+    </ul>
+
 
 -------------------------------
 コードの引用（literalinclude）

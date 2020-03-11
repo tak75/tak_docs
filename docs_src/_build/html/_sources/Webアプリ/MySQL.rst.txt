@@ -71,9 +71,7 @@ Cloud9での環境構築
     $ sudo cp /etc/my.cnf /etc/my.cnf.bk
 
     // 文字コードをUTF8に変更
-    //   "i"でInsertモード、
-    //   [mysqld]の最後に"character-set-server = utf8"を追記し、
-    //   "esc"+":wq"で上書き保存
+    // [mysqld]の最後に"character-set-server = utf8"を追記する
     $ sudo vim /etc/my.cnf
 
     // 念のため設定ファイルを再確認（lessを抜ける際は"Q"+"Enter"）

@@ -662,6 +662,25 @@ reStの記法は **使えない**。
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>rubyの場合</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">new</span>
+  <span class="c1"># モデル&quot;Task&quot;のレコードを1つ作成して、テンプレート変数&quot;@task&quot;に入れる</span>
+  <span class="vi">@task</span> <span class="o">=</span> <span class="no">Task</span><span class="o">.</span><span class="n">new</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>erbテンプレートエンジンの場合</p>
+<div class="highlight-html+erb notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>ToDoアプリ<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+  <span class="cp">&lt;%</span> <span class="vi">@tasks</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">task</span><span class="o">|</span> <span class="cp">%&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+      <span class="cp">&lt;%=</span> <span class="n">check_box_tag</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span> <span class="cp">%&gt;</span>
+      <span class="cp">&lt;%=</span> <span class="n">task</span><span class="o">.</span><span class="n">title</span> <span class="cp">%&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</pre></div>
+</div>
 <p>実際の記述:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>コンソールの場合
 
@@ -688,6 +707,29 @@ c言語の場合
        static int c = 0;
        *a = c++;
    }
+
+rubyの場合
+
+ .. code-block:: ruby
+
+   def new
+     # モデル&quot;Task&quot;のレコードを1つ作成して、テンプレート変数&quot;@task&quot;に入れる
+     @task = Task.new
+   end
+
+erbテンプレートエンジンの場合
+
+ .. code-block:: html+erb
+
+   &lt;h1&gt;ToDoアプリ&lt;/h1&gt;
+   &lt;ul&gt;
+     &lt;% @tasks.each do |task| %&gt;
+       &lt;li&gt;
+         &lt;%= check_box_tag &#39;&#39;, &#39;&#39; %&gt;
+         &lt;%= task.title %&gt;
+       &lt;/li&gt;
+     &lt;% end %&gt;
+   &lt;/ul&gt;
 </pre></div>
 </div>
 </div>
