@@ -20,7 +20,7 @@ Ruby on Rails
     * RubyGemsは、ライブラリの作成や公開、インストールを助けるシステム
     * `gemを探す <https://rubygems.org/>`__
 
-  erb
+  erb【Rails】
 
     * Embedded Ruby
     * 拡張子
@@ -38,7 +38,7 @@ Ruby on Rails
   
         <%= 何らかの値を返す式 %>
 
-  ヘルパー
+  ヘルパー【Rails】
     
     Ruby on Rails において、ビューでの共通処理をメソッドとして定義し、簡単に使いまわせるようにした機能。
     "link_to" や "check_box_tag" など
@@ -56,6 +56,11 @@ Ruby on Rails
         <%= form_for(モデル,[オプション]) do |f| %>
           フォームの中身
         <% end %>
+
+      .. note::
+
+        form_forヘルパーは、Rails5.1から非推奨（将来的になくなる可能性がある）。
+        Rails5.1以降では、form_forヘルパーの代わりにform_withヘルパーを使用すること
 
 開発環境構築
 ============
@@ -393,7 +398,7 @@ DBスキーマ（DBの構造）をDBに反映させる
 ルーティングの設定
 ------------------
 
-* "config/routes.rb"を編集する
+* ファイルを編集する（config/routes.rb）
 
   .. code-block:: ruby
 
@@ -406,6 +411,26 @@ DBスキーマ（DBの構造）をDBに反映させる
       # tasksコントローラのindexアクションメソッドを実行する
       root 'tasks#index'
     end
+
+.. glossary::
+
+  resourcesメソッド【Rails】
+
+    railsで定義されている7つのアクションのルーティングを自動で作成するメソッド。
+    resourcesメソッドを使うことにより、簡単にルーティングを作成することができる。
+
+    .. csv-table:: resourcesメソッドで自動生成されるルーティング
+      :header-rows: 1
+      :widths: 10, 40
+
+      アクション名,役割
+      index,リソースの一覧を表示させる
+      show,リソースの詳細を表示させる
+      new,投稿フォームを表示させる
+      create,リソースを追加させる
+      edit,更新フォームを表示させる
+      update,リソースを更新させる
+      destroy,リソースを削除する
 
 * ルーティングを確認する
 
@@ -428,7 +453,7 @@ DBスキーマ（DBの構造）をDBに反映させる
 --------------------------
 
 * タスク一覧ページがリクエストされた時に呼ばれる、Tasksコントローラのindexメソッドを実装する
-* app/controllers/hello_controller.rb　を編集する
+* ファイルを編集する（app/controllers/tasks_controller.rb）
 
   .. code-block:: ruby
 
@@ -444,7 +469,7 @@ DBスキーマ（DBの構造）をDBに反映させる
 一覧画面のviewを開発
 --------------------
 
-* "app/views/tasks/index.html.erb"　ファイルを作成する
+* ファイルを作成する（app/views/tasks/index.html.erb）
 
   .. code-block:: html+erb
 
@@ -458,34 +483,41 @@ DBスキーマ（DBの構造）をDBに反映させる
       <% end %>
     </ul>
 
-* 上記の"check_box_tag"は、htmlのチェックボックスを作成する :term:`ヘルパー`
+* 上記の"check_box_tag"は、htmlのチェックボックスを作成する :term:`ヘルパー【Rails】`
 
 --------------------------------------
 一覧画面へ新規追加画面へのリンクを追加
 --------------------------------------
 
-* "app/views/tasks/index.html.erb"　ファイルの末尾に以下を追加する
+* ファイルの末尾に以下を追加する（app/views/tasks/index.html.erb）
 
   .. code-block:: html+erb
 
     <%= link_to '新規追加', new_task_path %>
 
-* 上記の"link_to"は、ハイパーリンクを作成する :term:`ヘルパー`
-* "new_task_path"は、"rails routes"コマンドで出力される"/tasks/new"のPrefix "new_task" + "_path"。
-  railsの規約に則ったパス名称である。
-  Webアプリで表示される"新規追加"リンクをクリックすると、"/tasks/new"のページが表示される
+* 上記の"link_to"は、ハイパーリンクを作成する :term:`ヘルパー【Rails】`
+* Webアプリで表示される"新規追加"リンクをクリックすると、"/tasks/new"のページが表示される
 
-  .. code-block:: console
+.. glossary::
 
-    $ rails routes
-       Prefix Verb   URI Pattern               Controller#Action
-     new_task GET    /tasks/new(.:format)      tasks#new
+  Prefix【Rails】
+
+    パスが代入されている変数のようなもの。
+    resourcesメソッドを使ってルーティングを定義すると自動で作成される。
+    Prefixを使うときは末尾に"_path"と追記すればパスとなる。
+    例えば、以下の"rails routes"コマンドで出力される"/tasks/new"のパスは、"new_task_path"となる
+  
+    .. code-block:: console
+
+      $ rails routes
+        Prefix Verb   URI Pattern               Controller#Action
+      new_task GET    /tasks/new(.:format)      tasks#new
 
 ------------------------
 新規追加画面のviewを開発
 ------------------------
 
-* "app/views/tasks/new.html.erb"　ファイルを作成する
+* ファイルを作成する（app/views/tasks/new.html.erb）
 
   .. code-block:: html+erb
 
@@ -500,19 +532,14 @@ DBスキーマ（DBの構造）をDBに反映させる
       </p>
     <% end %>
 
-* 上記の"form_for"は、フォームを作成する :term:`ヘルパー`
-
-.. note::
-
-  form_forヘルパーは、Rails5.1から非推奨（将来的になくなる可能性がある）。
-  Rails5.1以降では、form_forヘルパーの代わりにform_withヘルパーを使用すること
+* 上記の"form_for"は、フォームを作成する :term:`ヘルパー【Rails】`
 
 ------------------------------
 新規追加画面のcontrollerを開発
 ------------------------------
 
 * "新規追加"リンクをクリックした際の処理を記述する
-  （app/controllers/hello_controller.rb）
+  （app/controllers/tasks_controller.rb）
 
   .. code-block:: ruby
 
@@ -525,7 +552,7 @@ DBスキーマ（DBの構造）をDBに反映させる
 * 保存する場合はsaveメソッドを使用する
 * createメソッドであれば、レコードを作成し、作成したレコードをDBに保存する
 * "Create Task"ボタンを押した際の処理を記述する
-  （app/controllers/hello_controller.rb）
+  （app/controllers/tasks_controller.rb）
 
   .. code-block:: ruby
 
@@ -563,5 +590,226 @@ DBスキーマ（DBの構造）をDBに反映させる
       length: { minimum: 5, message: '5文字以上で入力してください！'}
     end
 
+------------------------------------
+一覧画面から編集画面へのリンクを追加
+------------------------------------
 
+* 一覧画面に編集リンクを追加する（app/views/tasks/index.html.erb）
 
+  .. code-block:: html+erb
+
+    <h1>ToDoアプリ</h1>
+    <ul>
+      <% @tasks.each do |task| %>
+        <li>
+          <%= check_box_tag '', '' %>
+          <%= task.title %>
+          # 下記1行を追加
+          <%= link_to '[編集]', edit_task_path(task.id) %>
+        </li>
+      <% end %>
+    </ul>
+
+--------------------
+編集機能のviewを開発
+--------------------
+
+* 編集機能は新規追加とほぼ同じなので、"new.html.erb"をコピーし作成する
+  （app/views/tasks/edit.html.erb）
+* 両者のviewは共通化した方がよいが、とりあえず今回は複製する
+
+  .. code-block:: ruby
+
+    <h1>編集画面</h1>
+    <%= form_for @task do |f| %>
+      <p>
+        <%= f.label :title %> <br>
+        <%= f.text_field :title %>
+        <% if @task.errors.any? %>
+          <%= @task.errors.messages[:title][0] %>
+        <% end %>
+      </p>
+      <p>
+        <%= f.submit %>
+      </p>
+    <% end %>
+
+--------------------------
+編集画面のcontrollerを開発
+--------------------------
+
+* createメソッドの下に追記する（app/controllers/tasks_controller.rb）
+
+  .. code-block:: ruby
+
+    def edit
+      @task = Task.find(params[:id])
+    end
+    
+    def update
+      @task = Task.find(params[:id])
+      
+      if @task.update(task_params)
+        redirect_to root_path
+      else
+        render 'edit'
+      end
+    end
+
+--------------------
+削除機能のviewを開発
+--------------------
+
+* 一覧画面に削除リンクを追加する（app/views/tasks/index.html.erb）
+
+  .. code-block:: html+erb
+
+    <h1>ToDoアプリ</h1>
+    <ul>
+      <% @tasks.each do |task| %>
+        <li>
+          <%= check_box_tag '', '' %>
+          <%= task.title %>
+          <%= link_to '[編集]', edit_task_path(task.id) %>
+          # 下記の行を追加
+          <%= link_to '[削除]', 
+            task_path(task.id), # 下記ルートの※からきている
+            method: :delete,    # 下記ルートの※からきている
+            data:{ confirm: '削除してもよろしいですか？'} %>
+        </li>
+      <% end %>
+    </ul>
+
+  .. code-block:: console
+
+    $ rails routes
+       Prefix Verb   URI Pattern               Controller#Action
+         task GET    /tasks/:id(.:format)      tasks#show
+              PATCH  /tasks/:id(.:format)      tasks#update
+              PUT    /tasks/:id(.:format)      tasks#update
+              DELETE /tasks/:id(.:format)      tasks#destroy  # ※
+
+--------------------------
+削除機能のcontrollerを開発
+--------------------------
+
+* updateメソッドの下に追記する（app/controllers/tasks_controller.rb）
+
+  .. code-block:: ruby
+
+    def destroy
+      @task = Task.find(params[:id])
+      @task.destroy
+      redirect_to root_path
+    end
+
+------------------------------------
+チェックボックスのトグル動作について
+------------------------------------
+
+.. glossary::
+
+  Ajax
+
+    * Asynchronous JavaScript + XML
+    * ウェブブラウザ内で非同期通信を行いながらインタフェースの構築を行うプログラミング手法
+    * 言い換えると、画面を遷移しなくても、サーバとの通信を行いながら、
+      動的に画面の表示内容が変わるWebアプリが作れる技術
+    * 一般的に利用されており、gmail や google map などがその代表例
+    * 素のJavaScriptでも実装できるが、手間なので、JavaScriptのライブラリ "jQuery" を使用
+      （パフォーマンスをとことん追求したい特殊案件では素のJavaScriptでAjaxを実装する場合もある）
+
+------------------
+jQueryインストール
+------------------
+
+* ファイルを修正し以下を追記する（Gemfile）::
+
+    gem 'jquery-rails', '~>4.3.1'
+
+* jquery-railsをインストールする
+
+  .. code-block:: console
+
+    $ bundle install
+
+* jquery-rails（https://github.com/rails/jquery-rails）のInstallationを参照し、
+  jQuery3を使用するためファイル末尾に以下を追記する（app/assets/javascripts/application.js）::
+
+    //= require jquery3
+    //= require jquery_ujs
+
+----------------
+ルーティング設定
+----------------
+
+* ファイルを編集する（config/routes.rb）
+
+  .. code-block:: ruby
+
+    Rails.application.routes.draw do
+      resources :tasks
+      root 'tasks#index'
+      # 以下の1行を追記
+      post 'tasks/:id/toggle' => 'tasks#toggle'
+    end
+
+* 上記を追記することで、以下のルート※が追加される
+
+  .. code-block:: console
+
+    $ rails routes
+       Prefix Verb   URI Pattern               Controller#Action
+         root GET    /                           tasks#index
+              POST   /tasks/:id/toggle(.:format) tasks#toggle   # ※
+
+----------------------------------------------
+チェックボックスのトグル動作のcontrollerを開発
+----------------------------------------------
+
+* destroyメソッドの下に追記する（app/controllers/tasks_controller.rb）
+
+  .. code-block:: ruby
+
+    def toggle
+      # Ajaxを使うのでViewは使わない
+      head :no_content
+      @task = Task.find(params[:id])
+      @task.done = !@task.done
+      @task.save
+    end
+
+--------------------------------------------------
+チェックボックスのトグル動作のクライアント側の開発
+--------------------------------------------------
+
+* 一覧画面に削除リンクを追加する（app/views/tasks/index.html.erb）
+
+  .. code-block:: html+erb
+
+    <h1>ToDoアプリ</h1>
+    <ul>
+      <% @tasks.each do |task| %>
+        <li>
+          # 下記1行を追記修正
+          <%= check_box_tag '', '', task.done, {'data-id' => task.id} %>
+          <%= task.title %>
+          <%= link_to '[編集]', edit_task_path(task.id) %>
+          <%= link_to '[削除]', 
+            task_path(task.id),
+            method: :delete,
+            data:{ confirm: '削除してもよろしいですか？'} %>
+        </li>
+      <% end %>
+    </ul>
+
+    <%= link_to '新規追加', new_task_path %>
+
+    # 以下のコードを追記
+    <script>
+      $(function(){
+        $("input[type=checkbox]").click(function(){
+          $.post('/tasks/' + $(this).data('id') + '/toggle');
+        });
+      });
+    </script>

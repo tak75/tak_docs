@@ -95,6 +95,16 @@
 <li><a class="reference internal" href="#id13">新規追加画面のviewを開発</a></li>
 <li><a class="reference internal" href="#id14">新規追加画面のcontrollerを開発</a></li>
 <li><a class="reference internal" href="#id15">バリデートの追加</a></li>
+<li><a class="reference internal" href="#id16">一覧画面から編集画面へのリンクを追加</a></li>
+<li><a class="reference internal" href="#id17">編集機能のviewを開発</a></li>
+<li><a class="reference internal" href="#id18">編集画面のcontrollerを開発</a></li>
+<li><a class="reference internal" href="#id19">削除機能のviewを開発</a></li>
+<li><a class="reference internal" href="#id20">削除機能のcontrollerを開発</a></li>
+<li><a class="reference internal" href="#id21">チェックボックスのトグル動作について</a></li>
+<li><a class="reference internal" href="#jquery">jQueryインストール</a></li>
+<li><a class="reference internal" href="#id22">ルーティング設定</a></li>
+<li><a class="reference internal" href="#id23">チェックボックスのトグル動作のcontrollerを開発</a></li>
+<li><a class="reference internal" href="#id24">チェックボックスのトグル動作のクライアント側の開発</a></li>
 </ul>
 </li>
 </ul>
@@ -143,7 +153,7 @@
 <li><p><a class="reference external" href="https://rubygems.org/">gemを探す</a></p></li>
 </ul>
 </dd>
-<dt id="term-erb">erb</dt><dd><ul>
+<dt id="term-erbrails">erb【Rails】</dt><dd><ul>
 <li><p>Embedded Ruby</p></li>
 <li><p>拡張子</p></li>
 <li><p>テンプレートエンジン</p></li>
@@ -160,7 +170,7 @@
 </li>
 </ul>
 </dd>
-<dt id="term-0">ヘルパー</dt><dd><p>Ruby on Rails において、ビューでの共通処理をメソッドとして定義し、簡単に使いまわせるようにした機能。
+<dt id="term-rails">ヘルパー【Rails】</dt><dd><p>Ruby on Rails において、ビューでの共通処理をメソッドとして定義し、簡単に使いまわせるようにした機能。
 &quot;link_to&quot; や &quot;check_box_tag&quot; など</p>
 <ul>
 <li><p>link_to（文字列のリンクを生成）</p>
@@ -173,6 +183,11 @@
   フォームの中身
 &lt;% end %&gt;
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>form_forヘルパーは、Rails5.1から非推奨（将来的になくなる可能性がある）。
+Rails5.1以降では、form_forヘルパーの代わりにform_withヘルパーを使用すること</p>
 </div>
 </li>
 </ul>
@@ -306,7 +321,7 @@ models, views, controllers を開発していく流れとなる</p></li>
 </pre></div>
 </div>
 </li>
-<li><p>app/views/hello/index.html. <a class="reference internal" href="#term-erb"><span class="xref std std-term">erb</span></a></p>
+<li><p>app/views/hello/index.html. <span class="xref std std-term">erb</span></p>
 <div class="highlight-html+erb notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello#index<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Find me in app/views/hello/index.html.erb<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </pre></div>
@@ -504,7 +519,7 @@ railsでも実行できるようになった。
 <div class="section" id="id11">
 <h3>ルーティングの設定<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
-<li><p>&quot;config/routes.rb&quot;を編集する</p>
+<li><p>ファイルを編集する（config/routes.rb）</p>
 <div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
   <span class="c1"># tasksのレストフルなURLを自動生成する</span>
   <span class="c1"># よく使う一般的なルーティングをまとめて用意してくれる設定</span>
@@ -517,6 +532,48 @@ railsでも実行できるようになった。
 </pre></div>
 </div>
 </li>
+</ul>
+<dl class="glossary">
+<dt id="term-resourcesrails">resourcesメソッド【Rails】</dt><dd><p>railsで定義されている7つのアクションのルーティングを自動で作成するメソッド。
+resourcesメソッドを使うことにより、簡単にルーティングを作成することができる。</p>
+<table class="colwidths-given docutils align-default" id="id25">
+<caption><span class="caption-number">表 13 </span><span class="caption-text">resourcesメソッドで自動生成されるルーティング</span><a class="headerlink" href="#id25" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>アクション名</p></th>
+<th class="head"><p>役割</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>index</p></td>
+<td><p>リソースの一覧を表示させる</p></td>
+</tr>
+<tr class="row-odd"><td><p>show</p></td>
+<td><p>リソースの詳細を表示させる</p></td>
+</tr>
+<tr class="row-even"><td><p>new</p></td>
+<td><p>投稿フォームを表示させる</p></td>
+</tr>
+<tr class="row-odd"><td><p>create</p></td>
+<td><p>リソースを追加させる</p></td>
+</tr>
+<tr class="row-even"><td><p>edit</p></td>
+<td><p>更新フォームを表示させる</p></td>
+</tr>
+<tr class="row-odd"><td><p>update</p></td>
+<td><p>リソースを更新させる</p></td>
+</tr>
+<tr class="row-even"><td><p>destroy</p></td>
+<td><p>リソースを削除する</p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<ul>
 <li><p>ルーティングを確認する</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rails routes
 <span class="go">   Prefix Verb   URI Pattern               Controller#Action</span>
@@ -538,7 +595,7 @@ railsでも実行できるようになった。
 <h3>一覧画面のcontrollerを開発<a class="headerlink" href="#controller" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>タスク一覧ページがリクエストされた時に呼ばれる、Tasksコントローラのindexメソッドを実装する</p></li>
-<li><p>app/controllers/hello_controller.rb　を編集する</p>
+<li><p>ファイルを編集する（app/controllers/tasks_controller.rb）</p>
 <div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HelloController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
   <span class="k">def</span> <span class="nf">index</span>
     <span class="c1"># &quot;Task&quot;テーブルの全てのレコードを取得して、テンプレート変数&quot;@tasks&quot;に入れる</span>
@@ -554,7 +611,7 @@ railsでも実行できるようになった。
 <div class="section" id="view">
 <h3>一覧画面のviewを開発<a class="headerlink" href="#view" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
-<li><p>&quot;app/views/tasks/index.html.erb&quot;　ファイルを作成する</p>
+<li><p>ファイルを作成する（app/views/tasks/index.html.erb）</p>
 <div class="highlight-html+erb notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>ToDoアプリ<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
   <span class="cp">&lt;%</span> <span class="vi">@tasks</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">task</span><span class="o">|</span> <span class="cp">%&gt;</span>
@@ -567,33 +624,37 @@ railsでも実行できるようになった。
 </pre></div>
 </div>
 </li>
-<li><p>上記の&quot;check_box_tag&quot;は、htmlのチェックボックスを作成する <a class="reference internal" href="#term-0"><span class="xref std std-term">ヘルパー</span></a></p></li>
+<li><p>上記の&quot;check_box_tag&quot;は、htmlのチェックボックスを作成する <a class="reference internal" href="#term-rails"><span class="xref std std-term">ヘルパー【Rails】</span></a></p></li>
 </ul>
 </div>
 <div class="section" id="id12">
 <h3>一覧画面へ新規追加画面へのリンクを追加<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
-<li><p>&quot;app/views/tasks/index.html.erb&quot;　ファイルの末尾に以下を追加する</p>
+<li><p>ファイルの末尾に以下を追加する（app/views/tasks/index.html.erb）</p>
 <div class="highlight-html+erb notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s1">&#39;新規追加&#39;</span><span class="p">,</span> <span class="n">new_task_path</span> <span class="cp">%&gt;</span>
 </pre></div>
 </div>
 </li>
-<li><p>上記の&quot;link_to&quot;は、ハイパーリンクを作成する <a class="reference internal" href="#term-0"><span class="xref std std-term">ヘルパー</span></a></p></li>
-<li><p>&quot;new_task_path&quot;は、&quot;rails routes&quot;コマンドで出力される&quot;/tasks/new&quot;のPrefix &quot;new_task&quot; + &quot;_path&quot;。
-railsの規約に則ったパス名称である。
-Webアプリで表示される&quot;新規追加&quot;リンクをクリックすると、&quot;/tasks/new&quot;のページが表示される</p>
+<li><p>上記の&quot;link_to&quot;は、ハイパーリンクを作成する <a class="reference internal" href="#term-rails"><span class="xref std std-term">ヘルパー【Rails】</span></a></p></li>
+<li><p>Webアプリで表示される&quot;新規追加&quot;リンクをクリックすると、&quot;/tasks/new&quot;のページが表示される</p></li>
+</ul>
+<dl class="glossary">
+<dt id="term-prefixrails">Prefix【Rails】</dt><dd><p>パスが代入されている変数のようなもの。
+resourcesメソッドを使ってルーティングを定義すると自動で作成される。
+Prefixを使うときは末尾に&quot;_path&quot;と追記すればパスとなる。
+例えば、以下の&quot;rails routes&quot;コマンドで出力される&quot;/tasks/new&quot;のパスは、&quot;new_task_path&quot;となる</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rails routes
-<span class="go">   Prefix Verb   URI Pattern               Controller#Action</span>
-<span class="go"> new_task GET    /tasks/new(.:format)      tasks#new</span>
+<span class="go">  Prefix Verb   URI Pattern               Controller#Action</span>
+<span class="go">new_task GET    /tasks/new(.:format)      tasks#new</span>
 </pre></div>
 </div>
-</li>
-</ul>
+</dd>
+</dl>
 </div>
 <div class="section" id="id13">
 <h3>新規追加画面のviewを開発<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
-<li><p>&quot;app/views/tasks/new.html.erb&quot;　ファイルを作成する</p>
+<li><p>ファイルを作成する（app/views/tasks/new.html.erb）</p>
 <div class="highlight-html+erb notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>新規追加画面<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 <span class="cp">&lt;%=</span> <span class="n">form_for</span> <span class="vi">@task</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="cp">%&gt;</span>
   <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
@@ -607,19 +668,14 @@ Webアプリで表示される&quot;新規追加&quot;リンクをクリック�
 </pre></div>
 </div>
 </li>
-<li><p>上記の&quot;form_for&quot;は、フォームを作成する <a class="reference internal" href="#term-0"><span class="xref std std-term">ヘルパー</span></a></p></li>
+<li><p>上記の&quot;form_for&quot;は、フォームを作成する <a class="reference internal" href="#term-rails"><span class="xref std std-term">ヘルパー【Rails】</span></a></p></li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">注釈</p>
-<p>form_forヘルパーは、Rails5.1から非推奨（将来的になくなる可能性がある）。
-Rails5.1以降では、form_forヘルパーの代わりにform_withヘルパーを使用すること</p>
-</div>
 </div>
 <div class="section" id="id14">
 <h3>新規追加画面のcontrollerを開発<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>&quot;新規追加&quot;リンクをクリックした際の処理を記述する
-（app/controllers/hello_controller.rb）</p>
+（app/controllers/tasks_controller.rb）</p>
 <div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">new</span>
   <span class="c1"># モデル&quot;Task&quot;のレコードを1つ作成して、テンプレート変数&quot;@task&quot;に入れる</span>
   <span class="vi">@task</span> <span class="o">=</span> <span class="no">Task</span><span class="o">.</span><span class="n">new</span>
@@ -631,7 +687,7 @@ Rails5.1以降では、form_forヘルパーの代わりにform_withヘルパー�
 <li><p>保存する場合はsaveメソッドを使用する</p></li>
 <li><p>createメソッドであれば、レコードを作成し、作成したレコードをDBに保存する</p></li>
 <li><p>&quot;Create Task&quot;ボタンを押した際の処理を記述する
-（app/controllers/hello_controller.rb）</p>
+（app/controllers/tasks_controller.rb）</p>
 <div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create</span>
   <span class="vi">@task</span> <span class="o">=</span> <span class="no">Task</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">task_params</span><span class="p">)</span>
 
@@ -665,6 +721,229 @@ Rails5.1以降では、form_forヘルパーの代わりにform_withヘルパー�
   <span class="ss">presence</span><span class="p">:</span> <span class="p">{</span> <span class="ss">message</span><span class="p">:</span> <span class="s1">&#39;タイトルを入力してください！&#39;</span><span class="p">},</span>
   <span class="ss">length</span><span class="p">:</span> <span class="p">{</span> <span class="ss">minimum</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="ss">message</span><span class="p">:</span> <span class="s1">&#39;5文字以上で入力してください！&#39;</span><span class="p">}</span>
 <span class="k">end</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id16">
+<h3>一覧画面から編集画面へのリンクを追加<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p>一覧画面に編集リンクを追加する（app/views/tasks/index.html.erb）</p>
+<div class="highlight-html+erb notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>ToDoアプリ<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+  <span class="cp">&lt;%</span> <span class="vi">@tasks</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">task</span><span class="o">|</span> <span class="cp">%&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+      <span class="cp">&lt;%=</span> <span class="n">check_box_tag</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span> <span class="cp">%&gt;</span>
+      <span class="cp">&lt;%=</span> <span class="n">task</span><span class="o">.</span><span class="n">title</span> <span class="cp">%&gt;</span>
+      # 下記1行を追加
+      <span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s1">&#39;[編集]&#39;</span><span class="p">,</span> <span class="n">edit_task_path</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="cp">%&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id17">
+<h3>編集機能のviewを開発<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p>編集機能は新規追加とほぼ同じなので、&quot;new.html.erb&quot;をコピーし作成する
+（app/views/tasks/edit.html.erb）</p></li>
+<li><p>両者のviewは共通化した方がよいが、とりあえず今回は複製する</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span>&lt;h1&gt;編集画面&lt;/h1&gt;
+&lt;%= form_for @task do |f| %&gt;
+  &lt;p&gt;
+    &lt;%= f.label :title %&gt; &lt;br&gt;
+    &lt;%= f.text_field :title %&gt;
+    &lt;% if @task.errors.any? %&gt;
+      &lt;%= @task.errors.messages[:title][0] %&gt;
+    &lt;% end %&gt;
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;%= f.submit %&gt;
+  &lt;/p&gt;
+&lt;% end %&gt;
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id18">
+<h3>編集画面のcontrollerを開発<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p>createメソッドの下に追記する（app/controllers/tasks_controller.rb）</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">edit</span>
+  <span class="vi">@task</span> <span class="o">=</span> <span class="no">Task</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">update</span>
+  <span class="vi">@task</span> <span class="o">=</span> <span class="no">Task</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="vi">@task</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">task_params</span><span class="p">)</span>
+    <span class="n">redirect_to</span> <span class="n">root_path</span>
+  <span class="k">else</span>
+    <span class="n">render</span> <span class="s1">&#39;edit&#39;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id19">
+<h3>削除機能のviewを開発<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p>一覧画面に削除リンクを追加する（app/views/tasks/index.html.erb）</p>
+<div class="highlight-html+erb notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>ToDoアプリ<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+  <span class="cp">&lt;%</span> <span class="vi">@tasks</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">task</span><span class="o">|</span> <span class="cp">%&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+      <span class="cp">&lt;%=</span> <span class="n">check_box_tag</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span> <span class="cp">%&gt;</span>
+      <span class="cp">&lt;%=</span> <span class="n">task</span><span class="o">.</span><span class="n">title</span> <span class="cp">%&gt;</span>
+      <span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s1">&#39;[編集]&#39;</span><span class="p">,</span> <span class="n">edit_task_path</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="cp">%&gt;</span>
+      # 下記の行を追加
+      <span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s1">&#39;[削除]&#39;</span><span class="p">,</span>
+        <span class="n">task_path</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span> <span class="c1"># 下記ルートの※からきている</span>
+        <span class="nb">method</span><span class="p">:</span> <span class="ss">:delete</span><span class="p">,</span>    <span class="c1"># 下記ルートの※からきている</span>
+        <span class="ss">data</span><span class="p">:{</span> <span class="ss">confirm</span><span class="p">:</span> <span class="s1">&#39;削除してもよろしいですか？&#39;</span><span class="p">}</span> <span class="cp">%&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rails routes
+<span class="go">   Prefix Verb   URI Pattern               Controller#Action</span>
+<span class="go">     task GET    /tasks/:id(.:format)      tasks#show</span>
+<span class="go">          PATCH  /tasks/:id(.:format)      tasks#update</span>
+<span class="go">          PUT    /tasks/:id(.:format)      tasks#update</span>
+<span class="go">          DELETE /tasks/:id(.:format)      tasks#destroy  # ※</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id20">
+<h3>削除機能のcontrollerを開発<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p>updateメソッドの下に追記する（app/controllers/tasks_controller.rb）</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">destroy</span>
+  <span class="vi">@task</span> <span class="o">=</span> <span class="no">Task</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+  <span class="vi">@task</span><span class="o">.</span><span class="n">destroy</span>
+  <span class="n">redirect_to</span> <span class="n">root_path</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id21">
+<h3>チェックボックスのトグル動作について<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<dl class="glossary simple">
+<dt id="term-ajax">Ajax</dt><dd><ul class="simple">
+<li><p>Asynchronous JavaScript + XML</p></li>
+<li><p>ウェブブラウザ内で非同期通信を行いながらインタフェースの構築を行うプログラミング手法</p></li>
+<li><p>言い換えると、画面を遷移しなくても、サーバとの通信を行いながら、
+動的に画面の表示内容が変わるWebアプリが作れる技術</p></li>
+<li><p>一般的に利用されており、gmail や google map などがその代表例</p></li>
+<li><p>素のJavaScriptでも実装できるが、手間なので、JavaScriptのライブラリ &quot;jQuery&quot; を使用
+（パフォーマンスをとことん追求したい特殊案件では素のJavaScriptでAjaxを実装する場合もある）</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="jquery">
+<h3>jQueryインストール<a class="headerlink" href="#jquery" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p>ファイルを修正し以下を追記する（Gemfile）:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gem</span> <span class="s1">&#39;jquery-rails&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt;4.3.1&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p>jquery-railsをインストールする</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> bundle install
+</pre></div>
+</div>
+</li>
+<li><p>jquery-rails（<a class="reference external" href="https://github.com/rails/jquery-rails">https://github.com/rails/jquery-rails</a>）のInstallationを参照し、
+jQuery3を使用するためファイル末尾に以下を追記する（app/assets/javascripts/application.js）:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//=</span> <span class="n">require</span> <span class="n">jquery3</span>
+<span class="o">//=</span> <span class="n">require</span> <span class="n">jquery_ujs</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id22">
+<h3>ルーティング設定<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p>ファイルを編集する（config/routes.rb）</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
+  <span class="n">resources</span> <span class="ss">:tasks</span>
+  <span class="n">root</span> <span class="s1">&#39;tasks#index&#39;</span>
+  <span class="c1"># 以下の1行を追記</span>
+  <span class="n">post</span> <span class="s1">&#39;tasks/:id/toggle&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;tasks#toggle&#39;</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</li>
+<li><p>上記を追記することで、以下のルート※が追加される</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rails routes
+<span class="go">   Prefix Verb   URI Pattern               Controller#Action</span>
+<span class="go">     root GET    /                           tasks#index</span>
+<span class="go">          POST   /tasks/:id/toggle(.:format) tasks#toggle   # ※</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id23">
+<h3>チェックボックスのトグル動作のcontrollerを開発<a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p>destroyメソッドの下に追記する（app/controllers/tasks_controller.rb）</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">toggle</span>
+  <span class="c1"># Ajaxを使うのでViewは使わない</span>
+  <span class="n">head</span> <span class="ss">:no_content</span>
+  <span class="vi">@task</span> <span class="o">=</span> <span class="no">Task</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+  <span class="vi">@task</span><span class="o">.</span><span class="n">done</span> <span class="o">=</span> <span class="o">!</span><span class="vi">@task</span><span class="o">.</span><span class="n">done</span>
+  <span class="vi">@task</span><span class="o">.</span><span class="n">save</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id24">
+<h3>チェックボックスのトグル動作のクライアント側の開発<a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p>一覧画面に削除リンクを追加する（app/views/tasks/index.html.erb）</p>
+<div class="highlight-html+erb notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>ToDoアプリ<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+  <span class="cp">&lt;%</span> <span class="vi">@tasks</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">task</span><span class="o">|</span> <span class="cp">%&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+      # 下記1行を追記修正
+      <span class="cp">&lt;%=</span> <span class="n">check_box_tag</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">task</span><span class="o">.</span><span class="n">done</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;data-id&#39;</span> <span class="o">=&gt;</span> <span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">}</span> <span class="cp">%&gt;</span>
+      <span class="cp">&lt;%=</span> <span class="n">task</span><span class="o">.</span><span class="n">title</span> <span class="cp">%&gt;</span>
+      <span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s1">&#39;[編集]&#39;</span><span class="p">,</span> <span class="n">edit_task_path</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="cp">%&gt;</span>
+      <span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s1">&#39;[削除]&#39;</span><span class="p">,</span>
+        <span class="n">task_path</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+        <span class="nb">method</span><span class="p">:</span> <span class="ss">:delete</span><span class="p">,</span>
+        <span class="ss">data</span><span class="p">:{</span> <span class="ss">confirm</span><span class="p">:</span> <span class="s1">&#39;削除してもよろしいですか？&#39;</span><span class="p">}</span> <span class="cp">%&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+
+<span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s1">&#39;新規追加&#39;</span><span class="p">,</span> <span class="n">new_task_path</span> <span class="cp">%&gt;</span>
+
+# 以下のコードを追記
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;input[type=checkbox]&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+      <span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/tasks/&#39;</span> <span class="o">+</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/toggle&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 </li>
