@@ -75,44 +75,46 @@
   <ul>
 <li><a class="reference internal" href="#">AWS応用</a><ul>
 <li><a class="reference internal" href="#s3-cloudfront">【S3/CloudFront】画像を配信する</a><ul>
-<li><a class="reference internal" href="#id1">用語</a></li>
-<li><a class="reference internal" href="#id2">説明</a><ul>
-<li><a class="reference internal" href="#id3">インフラ設計における重要な観点</a></li>
+<li><a class="reference internal" href="#id1">本項で構築するAWS環境</a></li>
+<li><a class="reference internal" href="#id2">用語</a></li>
+<li><a class="reference internal" href="#id3">説明</a><ul>
+<li><a class="reference internal" href="#id4">インフラ設計における重要な観点</a></li>
 <li><a class="reference internal" href="#webs3">画像保存場所をWebサーバではなくS3にする理由</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id4">手順</a></li>
-<li><a class="reference internal" href="#id5">補足</a></li>
+<li><a class="reference internal" href="#id5">手順</a></li>
+<li><a class="reference internal" href="#id6">補足</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#elbweb">【ELB】Webレイヤを冗長化する</a><ul>
-<li><a class="reference internal" href="#id6">用語</a></li>
-<li><a class="reference internal" href="#id7">稼働率を上げるための方法</a></li>
-<li><a class="reference internal" href="#id8">サーバ構成のベストプラクティス</a></li>
+<li><a class="reference internal" href="#id7">本項で構築するAWS環境</a></li>
+<li><a class="reference internal" href="#id8">用語</a></li>
+<li><a class="reference internal" href="#id9">稼働率を上げるための方法</a></li>
+<li><a class="reference internal" href="#id10">サーバ構成のベストプラクティス</a></li>
 <li><a class="reference internal" href="#elb">ELBを運用する際のポイント</a></li>
-<li><a class="reference internal" href="#id9">手順</a></li>
-<li><a class="reference internal" href="#id10">ELB動作確認</a></li>
-<li><a class="reference internal" href="#id11">後片付け（無料枠を超過しないよう元に戻す）</a></li>
+<li><a class="reference internal" href="#id11">手順</a></li>
+<li><a class="reference internal" href="#id12">ELB動作確認</a></li>
+<li><a class="reference internal" href="#id13">後片付け（無料枠を超過しないよう元に戻す）</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#rdcdb">【RDC】DBレイヤを冗長化する</a><ul>
-<li><a class="reference internal" href="#id12">説明</a></li>
-<li><a class="reference internal" href="#id13">手順</a></li>
-<li><a class="reference internal" href="#id14">後片付け（無料枠を超過しないよう元に戻す）</a></li>
+<li><a class="reference internal" href="#id14">説明</a></li>
+<li><a class="reference internal" href="#id15">手順</a></li>
+<li><a class="reference internal" href="#id16">後片付け（無料枠を超過しないよう元に戻す）</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#cloudwatch">【CloudWatch】システムを監視する</a><ul>
-<li><a class="reference internal" href="#id15">用語</a></li>
-<li><a class="reference internal" href="#id16">説明</a></li>
-<li><a class="reference internal" href="#id17">手順</a></li>
-<li><a class="reference internal" href="#id18">後片付け（無料枠を超過しないよう元に戻す）</a></li>
+<li><a class="reference internal" href="#id17">用語</a></li>
+<li><a class="reference internal" href="#id18">説明</a></li>
+<li><a class="reference internal" href="#id19">手順</a></li>
+<li><a class="reference internal" href="#id20">後片付け（無料枠を超過しないよう元に戻す）</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#iam">【IAM】アクセス権限を管理する</a><ul>
-<li><a class="reference internal" href="#id19">用語</a></li>
-<li><a class="reference internal" href="#id20">作業内容</a></li>
-<li><a class="reference internal" href="#id21">手順</a></li>
-<li><a class="reference internal" href="#id22">補足</a></li>
+<li><a class="reference internal" href="#id21">用語</a></li>
+<li><a class="reference internal" href="#id22">作業内容</a></li>
+<li><a class="reference internal" href="#id23">手順</a></li>
+<li><a class="reference internal" href="#id24">補足</a></li>
 </ul>
 </li>
 </ul>
@@ -148,7 +150,14 @@
 <div class="section" id="s3-cloudfront">
 <h2>【S3/CloudFront】画像を配信する<a class="headerlink" href="#s3-cloudfront" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id1">
-<h3>用語<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>本項で構築するAWS環境<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="figure align-default" id="aws1-cloudfront">
+<a class="reference internal image-reference" href="../../_images/AWS応用1_CloudFront.png"><img alt="../../_images/AWS応用1_CloudFront.png" src="../../_images/AWS応用1_CloudFront.png" style="width: 640px;" /></a>
+<p class="caption"><span class="caption-number">図 7 </span><span class="caption-text">本項で構築するAWS環境（CloudFront）</span><a class="headerlink" href="#aws1-cloudfront" title="この画像へのパーマリンク">¶</a></p>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>用語<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
 <dt id="term-s3">S3</dt><dd><ul class="simple">
 <li><p>安価で耐久性の高いAWSのクラウドストレージサービス</p></li>
@@ -226,10 +235,10 @@
 </dd>
 </dl>
 </div>
-<div class="section" id="id2">
-<h3>説明<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="section" id="id3">
-<h4>インフラ設計における重要な観点<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<h3>説明<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id4">
+<h4>インフラ設計における重要な観点<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <ul class="simple">
 <li><p>可用性：サービスを継続的に利用できるか（一番重要）</p></li>
 <li><p>性能・拡張性：システムの性能が十分で、将来的においても拡張しやすいか</p></li>
@@ -248,8 +257,8 @@
 </ul>
 </div>
 </div>
-<div class="section" id="id4">
-<h3>手順<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id5">
+<h3>手順<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>AWS側の準備</p>
 <ul class="simple">
@@ -496,8 +505,8 @@
 </li>
 </ul>
 </div>
-<div class="section" id="id5">
-<h3>補足<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id6">
+<h3>補足<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>S3のバケットに複数の画像が保管されるのを停止する</p>
 <ul>
@@ -513,8 +522,15 @@
 </div>
 <div class="section" id="elbweb">
 <h2>【ELB】Webレイヤを冗長化する<a class="headerlink" href="#elbweb" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id6">
-<h3>用語<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id7">
+<h3>本項で構築するAWS環境<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="figure align-default" id="aws2-web">
+<a class="reference internal image-reference" href="../../_images/AWS応用2_Webサーバの冗長化.png"><img alt="../../_images/AWS応用2_Webサーバの冗長化.png" src="../../_images/AWS応用2_Webサーバの冗長化.png" style="width: 640px;" /></a>
+<p class="caption"><span class="caption-number">図 8 </span><span class="caption-text">本項で構築するAWS環境（Webサーバの冗長化）</span><a class="headerlink" href="#aws2-web" title="この画像へのパーマリンク">¶</a></p>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>用語<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
 <dt id="term-0">プロビジョニング</dt><dd><p>アクセス数などを予測して適切にリソースを準備すること</p>
 </dd>
@@ -560,8 +576,8 @@ Webサーバに冗長性を持たせても（Webサーバを複数台設置し�
 </dd>
 </dl>
 </div>
-<div class="section" id="id7">
-<h3>稼働率を上げるための方法<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id9">
+<h3>稼働率を上げるための方法<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>稼働率を上げるための基本的な考え方</p>
 <ul class="simple">
@@ -597,8 +613,8 @@ Webサーバに冗長性を持たせても（Webサーバを複数台設置し�
 </li>
 </ul>
 </div>
-<div class="section" id="id8">
-<h3>サーバ構成のベストプラクティス<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id10">
+<h3>サーバ構成のベストプラクティス<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Webサーバ x 1、DBサーバ x 1 構成</p></li>
 </ol>
@@ -634,8 +650,8 @@ Webサーバに冗長性を持たせても（Webサーバを複数台設置し�
 <li><p>Webサーバは <a class="reference internal" href="#term-4"><span class="xref std std-term">ステートレス</span></a> に構築する</p></li>
 </ul>
 </div>
-<div class="section" id="id9">
-<h3>手順<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id11">
+<h3>手順<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>AMIからEC2を作成</p>
 <ul>
@@ -820,8 +836,8 @@ index.phpファイル末尾に「echo '&lt;p&gt;sample 1a&lt;/p&gt;';」を追�
 </li>
 </ul>
 </div>
-<div class="section" id="id10">
-<h3>ELB動作確認<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id12">
+<h3>ELB動作確認<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>1aのEC2インスタンスが停止中の場合の動作を確認する</p></li>
 <li><p>EC2（10.0.10.10）にSSH接続し、Apacheを停止させる</p>
@@ -841,8 +857,8 @@ index.phpファイル末尾に「echo '&lt;p&gt;sample 1a&lt;/p&gt;';」を追�
 <li><p>独自ドメイン「xxx.work」にアクセスし画面をリロードすると「sample 1a/1c」が交互に表示される</p></li>
 </ul>
 </div>
-<div class="section" id="id11">
-<h3>後片付け（無料枠を超過しないよう元に戻す）<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id13">
+<h3>後片付け（無料枠を超過しないよう元に戻す）<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>1cをロードバランサーのターゲットから外す</p>
 <ul>
@@ -859,16 +875,16 @@ index.phpファイル末尾に「echo '&lt;p&gt;sample 1a&lt;/p&gt;';」を追�
 </div>
 <div class="section" id="rdcdb">
 <h2>【RDC】DBレイヤを冗長化する<a class="headerlink" href="#rdcdb" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id12">
-<h3>説明<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id14">
+<h3>説明<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>RDSでは、マルチAZ機能を使ってマスタスレーブ構成を構築する</p></li>
 <li><p>マスタDBに障害が発生してスレープDBに切り替わった場合は、IPアドレスは変わるが、DBのエンドポイントは変わらない。
 よって、特に何もしなくても使い続けることができる。</p></li>
 </ul>
 </div>
-<div class="section" id="id13">
-<h3>手順<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id15">
+<h3>手順<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>AWS -&gt; RDS -&gt; データベース -&gt; 作成済みDB -&gt; 「変更」ボタンを押す</p>
 <ul>
@@ -882,15 +898,15 @@ index.phpファイル末尾に「echo '&lt;p&gt;sample 1a&lt;/p&gt;';」を追�
 （結構時間がかかる）</p></li>
 </ul>
 </div>
-<div class="section" id="id14">
-<h3>後片付け（無料枠を超過しないよう元に戻す）<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id16">
+<h3>後片付け（無料枠を超過しないよう元に戻す）<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>上記手順の逆手順でマルチAZ配置をOFFする</p>
 </div>
 </div>
 <div class="section" id="cloudwatch">
 <h2>【CloudWatch】システムを監視する<a class="headerlink" href="#cloudwatch" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id15">
-<h3>用語<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id17">
+<h3>用語<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
 <dt id="term-5">システム監視</dt><dd><ul class="simple">
 <li><p>システムを正常な状態に保てるよう、稼働状況やリソースを監視すること</p></li>
@@ -922,8 +938,8 @@ Subscriberが通知を受信するための通信チャネルとして機能す�
 </dd>
 </dl>
 </div>
-<div class="section" id="id16">
-<h3>説明<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id18">
+<h3>説明<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>監視する際のポイント</p>
 <ul>
@@ -934,8 +950,8 @@ Subscriberが通知を受信するための通信チャネルとして機能す�
 </li>
 </ul>
 </div>
-<div class="section" id="id17">
-<h3>手順<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id19">
+<h3>手順<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>以降では、CPU使用率が60%を超えたら、
 EC2 → CloudWatch → SNS → ユーザの経路にて、Eメールを送信する監視を構築する</p></li>
@@ -1021,8 +1037,8 @@ EC2 → CloudWatch → SNS → ユーザの経路にて、Eメールを送信す
 </li>
 </ul>
 </div>
-<div class="section" id="id18">
-<h3>後片付け（無料枠を超過しないよう元に戻す）<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id20">
+<h3>後片付け（無料枠を超過しないよう元に戻す）<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>EC2インスタンスにSSH接続する</p></li>
 <li><p>yesコマンドを解除する</p>
@@ -1050,8 +1066,8 @@ EC2 → CloudWatch → SNS → ユーザの経路にて、Eメールを送信す
 </div>
 <div class="section" id="iam">
 <h2>【IAM】アクセス権限を管理する<a class="headerlink" href="#iam" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id19">
-<h3>用語<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id21">
+<h3>用語<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
 <dt id="term-iam">IAM</dt><dd><ul class="simple">
 <li><p>AWSのサービスを利用するユーザ権限を管理するサービス</p></li>
@@ -1074,8 +1090,8 @@ EC2やLambdaなどのAWSリソースに権限を付与するために使用</p>
 </dd>
 </dl>
 </div>
-<div class="section" id="id20">
-<h3>作業内容<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id22">
+<h3>作業内容<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>作成するポリシー</p>
 <ul>
@@ -1112,8 +1128,8 @@ EC2やLambdaなどのAWSリソースに権限を付与するために使用</p>
 </li>
 </ul>
 </div>
-<div class="section" id="id21">
-<h3>手順<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id23">
+<h3>手順<a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>IAMポリシーを作成する</p>
 <ul class="simple">
@@ -1262,8 +1278,8 @@ EC2やLambdaなどのAWSリソースに権限を付与するために使用</p>
 </li>
 </ul>
 </div>
-<div class="section" id="id22">
-<h3>補足<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id24">
+<h3>補足<a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>IAMのベストプラクティス</p>
 <ul>

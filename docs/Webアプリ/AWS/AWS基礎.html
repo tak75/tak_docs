@@ -76,34 +76,38 @@
 <li><a class="reference internal" href="#">AWS基礎</a><ul>
 <li><a class="reference internal" href="#id1">概要</a></li>
 <li><a class="reference internal" href="#id2">初期設定</a></li>
-<li><a class="reference internal" href="#id3">操作</a></li>
+<li><a class="reference internal" href="#id3">操作</a><ul>
+<li><a class="reference internal" href="#id4">AWS環境の基本モデル</a></li>
+<li><a class="reference internal" href="#id6">本ページで構築するAWS環境</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#vpc">【VPC】ネットワーク構築</a><ul>
-<li><a class="reference internal" href="#id4">用語</a></li>
-<li><a class="reference internal" href="#id5">手順</a></li>
-<li><a class="reference internal" href="#id6">補足</a></li>
+<li><a class="reference internal" href="#id8">用語</a></li>
+<li><a class="reference internal" href="#id9">手順</a></li>
+<li><a class="reference internal" href="#id10">補足</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#ec2web">【EC2】Webサーバ構築</a><ul>
-<li><a class="reference internal" href="#id7">用語</a></li>
-<li><a class="reference internal" href="#id8">手順</a></li>
-<li><a class="reference internal" href="#id9">補足</a></li>
+<li><a class="reference internal" href="#id11">用語</a></li>
+<li><a class="reference internal" href="#id12">手順</a></li>
+<li><a class="reference internal" href="#id13">補足</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#route53">【Route53】ドメインを登録する</a><ul>
-<li><a class="reference internal" href="#id10">用語</a></li>
-<li><a class="reference internal" href="#id11">手順</a></li>
-<li><a class="reference internal" href="#id12">補足</a></li>
+<li><a class="reference internal" href="#id14">用語</a></li>
+<li><a class="reference internal" href="#id15">手順</a></li>
+<li><a class="reference internal" href="#id16">補足</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#rdsdb">【RDS】DBサーバを構築する</a><ul>
-<li><a class="reference internal" href="#id13">用語</a></li>
-<li><a class="reference internal" href="#id14">手順</a></li>
-<li><a class="reference internal" href="#id15">補足</a></li>
+<li><a class="reference internal" href="#id17">用語</a></li>
+<li><a class="reference internal" href="#id18">手順</a></li>
+<li><a class="reference internal" href="#id19">補足</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#ec2wordpress">【EC2】WordPressを構築する</a><ul>
-<li><a class="reference internal" href="#id16">用語</a></li>
-<li><a class="reference internal" href="#id17">手順</a></li>
+<li><a class="reference internal" href="#id20">用語</a></li>
+<li><a class="reference internal" href="#id21">手順</a></li>
 </ul>
 </li>
 </ul>
@@ -195,11 +199,25 @@
 </ul>
 </li>
 </ul>
+<div class="section" id="id4">
+<h3>AWS環境の基本モデル<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="figure align-default" id="id5">
+<a class="reference internal image-reference" href="../../_images/AWS基本モデル.png"><img alt="../../_images/AWS基本モデル.png" src="../../_images/AWS基本モデル.png" style="width: 640px;" /></a>
+<p class="caption"><span class="caption-number">図 5 </span><span class="caption-text">AWS環境の基本モデル</span><a class="headerlink" href="#id5" title="この画像へのパーマリンク">¶</a></p>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>本ページで構築するAWS環境<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="figure align-default" id="id7">
+<a class="reference internal image-reference" href="../../_images/AWS基礎.png"><img alt="../../_images/AWS基礎.png" src="../../_images/AWS基礎.png" style="width: 640px;" /></a>
+<p class="caption"><span class="caption-number">図 6 </span><span class="caption-text">本ページ（AWS基礎）で構築するAWS環境</span><a class="headerlink" href="#id7" title="この画像へのパーマリンク">¶</a></p>
+</div>
+</div>
 </div>
 <div class="section" id="vpc">
 <h2>【VPC】ネットワーク構築<a class="headerlink" href="#vpc" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id4">
-<h3>用語<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id8">
+<h3>用語<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
 <dt id="term-0">リージョン</dt><dd><ul class="simple">
 <li><p>AWSの各サービスが提供されている地域のことであり、各国に存在する</p></li>
@@ -260,8 +278,8 @@
 </dd>
 </dl>
 </div>
-<div class="section" id="id5">
-<h3>手順<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id9">
+<h3>手順<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>VPCを作成する</p>
 <ul>
@@ -314,8 +332,8 @@
 </li>
 </ul>
 </div>
-<div class="section" id="id6">
-<h3>補足<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id10">
+<h3>補足<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>異なるシステムの場合はアカウントを分けること</p></li>
 <li><p>同一システムで本番環境とステージング環境を分けたい場合は、同一アカウントでVPCとリージョンを分けるのがオススメ</p></li>
@@ -324,8 +342,8 @@
 </div>
 <div class="section" id="ec2web">
 <h2>【EC2】Webサーバ構築<a class="headerlink" href="#ec2web" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id7">
-<h3>用語<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id11">
+<h3>用語<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary">
 <dt id="term-ec2">EC2</dt><dd><ul class="simple">
 <li><p>Elastic Compute Cloud</p></li>
@@ -476,8 +494,8 @@
 </dd>
 </dl>
 </div>
-<div class="section" id="id8">
-<h3>手順<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id12">
+<h3>手順<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>EC2インスタンスを設置する</p>
 <ul>
@@ -684,8 +702,8 @@ CPUクレジットが消費され尽くすと、バーストモードでは動�
 </li>
 </ul>
 </div>
-<div class="section" id="id9">
-<h3>補足<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id13">
+<h3>補足<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>どのポート番号でどのプログラムが待ち受けているかを調べる</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// lsof：オープン中のファイルやそのファイルをオープンしているプロセスのリストを出力する</span>
@@ -722,8 +740,8 @@ CPUクレジットが消費され尽くすと、バーストモードでは動�
 </div>
 <div class="section" id="route53">
 <h2>【Route53】ドメインを登録する<a class="headerlink" href="#route53" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id10">
-<h3>用語<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id14">
+<h3>用語<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary">
 <dt id="term-10">ドメイン</dt><dd><ul class="simple">
 <li><p>インターネット上の住所のようなもの。
@@ -805,8 +823,8 @@ IPアドレスは覚えにくいため、Webサイトにアクセスするとき
 </dd>
 </dl>
 </div>
-<div class="section" id="id11">
-<h3>手順<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id15">
+<h3>手順<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>ドメインを購入する</p>
 <ul>
@@ -881,8 +899,8 @@ NSレコードの「値」項目に表示されているURL（4種）を以降�
 </li>
 </ul>
 </div>
-<div class="section" id="id12">
-<h3>補足<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id16">
+<h3>補足<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>ドメイン購入のお店について</p>
 <ul class="simple">
@@ -944,8 +962,8 @@ NSレコードの「値」項目に表示されているURL（4種）を以降�
 </div>
 <div class="section" id="rdsdb">
 <h2>【RDS】DBサーバを構築する<a class="headerlink" href="#rdsdb" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id13">
-<h3>用語<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id17">
+<h3>用語<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
 <dt id="term-rds">RDS</dt><dd><ul class="simple">
 <li><p>フルマネージドなリレーショナルデータベースのサービス</p></li>
@@ -1021,8 +1039,8 @@ NSレコードの「値」項目に表示されているURL（4種）を以降�
 </dd>
 </dl>
 </div>
-<div class="section" id="id14">
-<h3>手順<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id18">
+<h3>手順<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>はじめに</p>
 <p>RDSはサブネットの中に設置する。
@@ -1203,8 +1221,8 @@ RDSを作成する際は、マルチAZができるようにするために、
 </li>
 </ul>
 </div>
-<div class="section" id="id15">
-<h3>補足<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id19">
+<h3>補足<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>スナップショット</p>
 <ul>
@@ -1229,8 +1247,8 @@ RDSを作成する際は、マルチAZができるようにするために、
 </div>
 <div class="section" id="ec2wordpress">
 <h2>【EC2】WordPressを構築する<a class="headerlink" href="#ec2wordpress" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id16">
-<h3>用語<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id20">
+<h3>用語<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
 <dt id="term-wordpress">WordPress</dt><dd><p>オープンソースのブログソフトウェア。
 PHPで開発されており、データベース管理システムとしてMySQLを利用している。
@@ -1320,8 +1338,8 @@ IPでは、各ネットワークインターフェースの最大転送単位よ
 </dd>
 </dl>
 </div>
-<div class="section" id="id17">
-<h3>手順<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id21">
+<h3>手順<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>WordPress用のDB作成</p>
 <ul>
