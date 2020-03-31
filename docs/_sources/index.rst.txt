@@ -12,5 +12,6 @@ tak documents
    python/index
    raspberry_pi/index
    Webアプリ/index
+   C＃/index
    デザインパターン/index
    備忘録/index

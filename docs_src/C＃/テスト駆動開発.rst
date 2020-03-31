@@ -1,0 +1,68 @@
+==============
+テスト駆動開発
+==============
+
+はじめに
+========
+
+* Visual Studio 2017を使用する。
+
+テスト駆動開発とは
+==================
+
+* テストコード -> 本番コード の順に実装する
+
+  #.  本番コードのプロジェクトをソリューションに追加する（例：TDD.UI）
+  #.  テストコードのプロジェクトをソリューションに追加する（例：TDDTest.Tests）
+  #.  本番コードのプロジェクトにクラスを追加する（例：Calculation.cs）
+  #.  テストコードを書く（UnitTest1.cs）
+      （関数名は日本語で構わない。
+      以下の例では、表示の都合上コメントアウトしているが、実際は/\* \*/は不要）
+
+      .. code-block:: csharp
+
+        [TestMethod]
+        public void /*平均値を取得できる*/()
+        {
+          var list = new List<int> { 1, 2, 3, 4, 5 };
+          // 作成したい関数を"Ave"とする
+          var result = TDD.UI.Calculation.Ave(list);
+          // 出力値と期待される結果を比較し、一致していればOKとする
+          Assert.AreEqual(3, result);
+        }
+
+  #.  "Ave" は未定義関数であるため、赤いラインが付く。
+      ここにカーソルを移動し、"Ctrl" + "." を入力し、Enter キーを押す。
+      これにより、スケルトンコードが生成される（Calculation.cs）
+
+      .. code-block:: csharp
+
+        public static object Ave(List<int> list)
+        {
+            throw new NotImplementedException();
+        }
+
+  #.  スケルトンコードを実装する
+
+      .. code-block:: csharp
+
+        public static int Ave(List<int> list)
+        {
+            int values = 0;
+            foreach(var val in list)
+            {
+                values += val;
+            }
+            return values / list.Count;
+        }
+
+  #.  テスト -> ウィンドウ -> テスト エクスプローラー を表示する
+  #.  すべて実行をクリックしテストする。全て成功となればOK
+
+  .. warning::
+
+    テストコード先頭の[TestMethod]が記載されているコードをテストコードとして認識する。
+    [TestMethod]を削除するとテストされないので要注意。
+    このため、スケルトンコード実装前に、一度テストを実行し失敗することを確認するのがよい。
+
+    

@@ -1,0 +1,49 @@
+===============
+.NET Core + WPF
+===============
+
+参考Webサイト
+=============
+
+* `Windows Presentation Foundation <https://docs.microsoft.com/ja-jp/dotnet/framework/wpf/>`__ ：WPFに関するMicrosoft公式ドキュメント（日本語）
+* `.NET Core 3で始めるWPFアプリ開発――Hello, WPF! <https://codezine.jp/article/detail/11809>`__
+* `.NET Core 3で始めるWPFアプリ開発――.NET Coreって？　WPFって？ <https://codezine.jp/article/detail/11854>`__
+
+用語
+====
+
+.. glossary::
+
+  .NET Core
+
+    簡単に言ってしまえば.NET Frameworkをリストラクチャ（本来の意味のrestructure、「再構築」）したもの。
+    macOSとLinuxもサポート。
+    .NETファミリーは組込み用／Webページ用などと乱立しており、これらを.NET Coreに統合する計画。
+    .NET Core 3.xの次バージョンを「.NET 5」とし、今後は.NET 5、6、7、8がリリース予定
+
+  WPF
+  
+    Windows Presentation Foundation。
+    デスクトップ向けWindows用のアプリを開発するためのGUIフレームワーク。
+    .NET Frameworkまたは.NET Coreのクラスライブラリーの一部として提供されている
+
+  データバインディング
+
+    ロジックが持つデータをUIに結び付ける。
+    コントロール同士にも使える
+
+  
+
+メモ
+====
+
+* 変数名を付けなくてもコードビハインドから簡単にアクセスできるコントロールが1つだけある。
+  それは自分自身、つまり、ウィンドウそのもの。
+  XAMLではWindowコントロールとして表現されている。
+  例えば、次のコードのようにしてウィンドウのタイトルを変更できる
+
+  .. code-block:: csharp
+
+    this.Title += " - .NET CoreでWPF"; 
+
+* 
