@@ -1,0 +1,24 @@
+﻿<Window x:Class="CheckBoxDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CheckBoxDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300" Width="300">
+    <Grid>
+        <CheckBox x:Name="MyCheckBox"
+                  FontSize="20"
+                  Margin="10"
+                  Content="check box"
+                  VerticalContentAlignment="Center"
+                  Height="30"
+                  VerticalAlignment="Top"
+                  
+                  IsThreeState="True"
+                  Checked="MyCheckBox_Checked"
+                  Unchecked="MyCheckBox_Unchecked"
+                  Indeterminate="MyCheckBox_Indeterminate"
+                  IsChecked="{x:Null}"/>
+    </Grid>
+</Window>

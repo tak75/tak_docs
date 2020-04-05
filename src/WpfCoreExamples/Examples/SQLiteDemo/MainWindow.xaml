@@ -1,0 +1,21 @@
+﻿<Window x:Class="SQLiteDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SQLiteDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="400">
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBox x:Name="NameTextBox"/>
+            <TextBox x:Name="PhoneTextBox"/>
+            <Button Content="Save"
+                    x:Name="SaveButton"
+                    Click="SaveButton_Click"/>
+            <Button Content="Read"
+                    x:Name="ReadButton"
+                    Click="ReadButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,87 @@
+﻿<Window x:Class="VariousButtonsDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VariousButtonsDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300" Width="300">
+    <Grid>
+        <StackPanel>
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <!--TemplateBindingマークアップ拡張：
+                                    コントロール・テンプレートの適用先のコントロールに
+                                    与えられたプロパティ値を取得するために利用する。-->
+                                    <Ellipse Fill="{TemplateBinding Background}"/>
+                                    <ContentPresenter
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </StackPanel.Resources>
+            <!--楕円ボタン1-->
+            <Button 
+                Margin="3"
+                x:Name="NormalButton"
+                Height="30"
+                Width="100"
+                Background="Aqua"
+                Click="NormalButton_Click">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Fill="Red"
+                                     Width="15"
+                                     Height="15"
+                                     Margin="0,0,30,0"/>
+                        <TextBlock Text="AAA"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <!--楕円ボタン2-->
+            <Button 
+                Margin="3"
+                Height="30"
+                Width="100"
+                Background="GreenYellow">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle Fill="Red"
+                                     Width="15"
+                                     Height="15"
+                                     Margin="0,0,30,0"/>
+                        <TextBlock Text="BBB"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+            <!--RepeatButtonはボタンを押下している間中、クリックイベントを通知するボタン
+            RepeatButtonを押下し続けると、最初に1回クリックイベントが通知され、
+            その後、Delayに設定されているミリ秒間なにもせず待機される。
+            Delayミリ秒が経過するとクリックイベントが通知され、
+            その後はIntervalに設定されている値ミリ秒間隔で、クリックイベントが通知され、
+            ボタンの押し下げを止めると、クリックイベントも通知されなくなる。
+            以下の設定では、RepeatButtonを押し続けると、最初に1回クリックイベントが通知され、
+            その5秒後から、2秒間隔でクリックイベントが通知され続ける。-->
+            <RepeatButton Content="repeat"
+                              FontSize="20"
+                              x:Name="RepeatButton"
+                              Click="RepeatButton_Click"
+                              Interval="2000"
+                              Delay="5000"/>
+
+            <!--ToggleButton-->
+            <ToggleButton Content="toggle"
+                              FontSize="20"
+                              x:Name="MyToggleBtton"
+                              Click="MyToggleBtton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

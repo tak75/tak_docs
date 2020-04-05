@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Examples\AnimatedButton\AnimatedButton.csproj" />
+    <ProjectReference Include="..\Examples\ButtonDemo\ButtonDemo.csproj" />
+    <ProjectReference Include="..\Examples\CheckBoxDemo\CheckBoxDemo.csproj" />
+    <ProjectReference Include="..\Examples\CustomerSettingSamp\CustomerSettingSamp.csproj" />
+    <ProjectReference Include="..\Examples\ExpanderDemo\ExpanderDemo.csproj" />
+    <ProjectReference Include="..\Examples\GroupBoxDemo\GroupBoxDemo.csproj" />
+    <ProjectReference Include="..\Examples\HelloWorld\HelloWorld.csproj" />
+    <ProjectReference Include="..\Examples\ListViewDemo\ListViewDemo.csproj" />
+    <ProjectReference Include="..\Examples\ProgressBarDemo\ProgressBarDemo.csproj" />
+    <ProjectReference Include="..\Examples\RadioButtonDemo\RadioButtonDemo.csproj" />
+    <ProjectReference Include="..\Examples\SliderDemo\SliderDemo.csproj" />
+    <ProjectReference Include="..\Examples\SQLiteDemo\SQLiteDemo.csproj" />
+    <ProjectReference Include="..\Examples\VariousButtons\VariousButtonsDemo.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,772 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\SampleBrowser\\SampleBrowser.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ButtonTest\\ButtonDemo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ButtonTest\\ButtonDemo.csproj",
+        "projectName": "ButtonDemo",
+        "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ButtonTest\\ButtonDemo.csproj",
+        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ButtonTest\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\CheckBoxTest\\CheckBoxDemo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\CheckBoxTest\\CheckBoxDemo.csproj",
+        "projectName": "CheckBoxDemo",
+        "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\CheckBoxTest\\CheckBoxDemo.csproj",
+        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\CheckBoxTest\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\CustomerSettingSamp\\CustomerSettingSamp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\CustomerSettingSamp\\CustomerSettingSamp.csproj",
+        "projectName": "CustomerSettingSamp",
+        "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\CustomerSettingSamp\\CustomerSettingSamp.csproj",
+        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\CustomerSettingSamp\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "sqlite-net-pcl": {
+              "target": "Package",
+              "version": "[1.6.292, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ExpanderTest\\ExpanderDemo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ExpanderTest\\ExpanderDemo.csproj",
+        "projectName": "ExpanderDemo",
+        "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ExpanderTest\\ExpanderDemo.csproj",
+        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ExpanderTest\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\GroupBoxTest\\GroupBoxDemo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\GroupBoxTest\\GroupBoxDemo.csproj",
+        "projectName": "GroupBoxDemo",
+        "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\GroupBoxTest\\GroupBoxDemo.csproj",
+        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\GroupBoxTest\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\HelloWorld\\HelloWorld.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\HelloWorld\\HelloWorld.csproj",
+        "projectName": "HelloWorld",
+        "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\HelloWorld\\HelloWorld.csproj",
+        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\HelloWorld\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ListViewTest\\ListViewDemo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ListViewTest\\ListViewDemo.csproj",
+        "projectName": "ListViewDemo",
+        "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ListViewTest\\ListViewDemo.csproj",
+        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ListViewTest\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ProgressBarTest\\ProgressBarDemo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ProgressBarTest\\ProgressBarDemo.csproj",
+        "projectName": "ProgressBarDemo",
+        "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ProgressBarTest\\ProgressBarDemo.csproj",
+        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ProgressBarTest\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\RadioButtonTest\\RadioButtonDemo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\RadioButtonTest\\RadioButtonDemo.csproj",
+        "projectName": "RadioButtonDemo",
+        "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\RadioButtonTest\\RadioButtonDemo.csproj",
+        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\RadioButtonTest\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\SampleBrowser\\SampleBrowser.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\SampleBrowser\\SampleBrowser.csproj",
+        "projectName": "SampleBrowser",
+        "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\SampleBrowser\\SampleBrowser.csproj",
+        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\SampleBrowser\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ButtonTest\\ButtonDemo.csproj": {
+                "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ButtonTest\\ButtonDemo.csproj"
+              },
+              "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\CheckBoxTest\\CheckBoxDemo.csproj": {
+                "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\CheckBoxTest\\CheckBoxDemo.csproj"
+              },
+              "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\CustomerSettingSamp\\CustomerSettingSamp.csproj": {
+                "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\CustomerSettingSamp\\CustomerSettingSamp.csproj"
+              },
+              "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ExpanderTest\\ExpanderDemo.csproj": {
+                "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ExpanderTest\\ExpanderDemo.csproj"
+              },
+              "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\GroupBoxTest\\GroupBoxDemo.csproj": {
+                "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\GroupBoxTest\\GroupBoxDemo.csproj"
+              },
+              "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\HelloWorld\\HelloWorld.csproj": {
+                "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\HelloWorld\\HelloWorld.csproj"
+              },
+              "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ListViewTest\\ListViewDemo.csproj": {
+                "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ListViewTest\\ListViewDemo.csproj"
+              },
+              "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ProgressBarTest\\ProgressBarDemo.csproj": {
+                "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\ProgressBarTest\\ProgressBarDemo.csproj"
+              },
+              "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\RadioButtonTest\\RadioButtonDemo.csproj": {
+                "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\RadioButtonTest\\RadioButtonDemo.csproj"
+              },
+              "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\SliderTest\\SliderDemo.csproj": {
+                "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\SliderTest\\SliderDemo.csproj"
+              },
+              "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\SQLiteTest\\SQLiteDemo.csproj": {
+                "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\SQLiteTest\\SQLiteDemo.csproj"
+              },
+              "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\VariousButtons\\VariousButtonsDemo.csproj": {
+                "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\VariousButtons\\VariousButtonsDemo.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\SliderTest\\SliderDemo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\SliderTest\\SliderDemo.csproj",
+        "projectName": "SliderDemo",
+        "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\SliderTest\\SliderDemo.csproj",
+        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\SliderTest\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\SQLiteTest\\SQLiteDemo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\SQLiteTest\\SQLiteDemo.csproj",
+        "projectName": "SQLiteDemo",
+        "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\SQLiteTest\\SQLiteDemo.csproj",
+        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\SQLiteTest\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "sqlite-net-pcl": {
+              "target": "Package",
+              "version": "[1.6.292, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\VariousButtons\\VariousButtonsDemo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\VariousButtons\\VariousButtonsDemo.csproj",
+        "projectName": "VariousButtonsDemo",
+        "projectPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\VariousButtons\\VariousButtonsDemo.csproj",
+        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\i\\source\\repos\\WpfCoreExamples\\VariousButtons\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+﻿<Window x:Class="SliderDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SliderDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="550">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel>
+                <Slider TickPlacement="Both" Width="200" Foreground="Black" Margin="10"/>
+                <Slider TickPlacement="BottomRight" Width="200" Foreground="Black" Margin="10"/>
+                <Slider TickPlacement="None" Width="200" Foreground="Black" Margin="10"/>
+                <Slider TickPlacement="TopLeft" Width="200" Foreground="Black" Margin="10"/>
+                <Slider Width="200" Foreground="Black" Margin="10"/>
+            </StackPanel>
+
+            <StackPanel>
+                <Slider Width="200"
+                        TickPlacement="Both"
+                        Foreground="Black"
+                        Margin="10"
+                        IsSnapToTickEnabled="True"
+                        TickFrequency="10"
+                        SmallChange="20"
+                        LargeChange="50"
+                        Minimum="0"
+                        Maximum="100"
+                        ValueChanged="Slider_ValueChanged"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="SliderValue:"/>
+                    <TextBlock x:Name="ASlider"/>
+                </StackPanel>
+
+                <Slider Width="200"
+                        TickPlacement="Both"
+                        Foreground="Black"
+                        Margin="10"
+                        IsSnapToTickEnabled="False"
+                        TickFrequency="10"
+                        SmallChange="20"
+                        LargeChange="50"
+                        Minimum="0"
+                        Maximum="100"
+                        ValueChanged="BSlider_ValueChanged"
+                        Orientation="Vertical"
+                        Height="120"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="SliderValue:"/>
+                    <TextBlock x:Name="BSlider"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
