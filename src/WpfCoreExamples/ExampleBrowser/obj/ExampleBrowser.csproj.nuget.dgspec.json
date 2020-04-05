@@ -4,6 +4,116 @@
     "G:\\work\\tak_docs\\src\\WpfCoreExamples\\ExampleBrowser\\ExampleBrowser.csproj": {}
   },
   "projects": {
+    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\ComboBoxDemo\\ComboBoxDemo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\ComboBoxDemo\\ComboBoxDemo.csproj",
+        "projectName": "ComboBoxDemo",
+        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\ComboBoxDemo\\ComboBoxDemo.csproj",
+        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
+        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\ComboBoxDemo\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\DataTemplateDemo\\DataTemplateDemo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\DataTemplateDemo\\DataTemplateDemo.csproj",
+        "projectName": "DataTemplateDemo",
+        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\DataTemplateDemo\\DataTemplateDemo.csproj",
+        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
+        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\DataTemplateDemo\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "G:\\work\\tak_docs\\src\\WpfCoreExamples\\ExampleBrowser\\ExampleBrowser.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -27,6 +137,12 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
+              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\ComboBoxDemo\\ComboBoxDemo.csproj": {
+                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\ComboBoxDemo\\ComboBoxDemo.csproj"
+              },
+              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\DataTemplateDemo\\DataTemplateDemo.csproj": {
+                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\DataTemplateDemo\\DataTemplateDemo.csproj"
+              },
               "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj": {
                 "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj"
               },
@@ -65,6 +181,9 @@
               },
               "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\VariousButtons\\VariousButtonsDemo.csproj": {
                 "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\VariousButtons\\VariousButtonsDemo.csproj"
+              },
+              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\GridDemo\\GridDemo.csproj": {
+                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\GridDemo\\GridDemo.csproj"
               }
             }
           }
@@ -779,6 +898,61 @@
         "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\VariousButtons\\VariousButtonsDemo.csproj",
         "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
         "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\VariousButtons\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\GridDemo\\GridDemo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\GridDemo\\GridDemo.csproj",
+        "projectName": "GridDemo",
+        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\GridDemo\\GridDemo.csproj",
+        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
+        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\GridDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",

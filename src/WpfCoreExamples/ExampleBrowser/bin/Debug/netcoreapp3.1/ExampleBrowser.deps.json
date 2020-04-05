@@ -12,6 +12,7 @@
           "ButtonDemo": "1.0.0",
           "CheckBoxDemo": "1.0.0",
           "CustomerSettingSamp": "1.0.0",
+          "DataTemplateDemo": "1.0.0",
           "ExpanderDemo": "1.0.0",
           "GroupBoxDemo": "1.0.0",
           "HelloWorld": "1.0.0",
@@ -836,6 +837,11 @@
           "CustomerSettingSamp.dll": {}
         }
       },
+      "DataTemplateDemo/1.0.0": {
+        "runtime": {
+          "DataTemplateDemo.dll": {}
+        }
+      },
       "ExpanderDemo/1.0.0": {
         "runtime": {
           "ExpanderDemo.dll": {}
@@ -1468,6 +1474,11 @@
       "sha512": ""
     },
     "CustomerSettingSamp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DataTemplateDemo/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

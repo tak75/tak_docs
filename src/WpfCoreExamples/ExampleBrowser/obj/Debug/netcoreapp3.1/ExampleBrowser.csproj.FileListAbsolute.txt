@@ -220,3 +220,6 @@ G:\work\tak_docs\src\WpfCoreExamples\ExampleBrowser\obj\Debug\netcoreapp3.1\Exam
 G:\work\tak_docs\src\WpfCoreExamples\ExampleBrowser\obj\Debug\netcoreapp3.1\ExampleBrowser.dll
 G:\work\tak_docs\src\WpfCoreExamples\ExampleBrowser\obj\Debug\netcoreapp3.1\ExampleBrowser.pdb
 G:\work\tak_docs\src\WpfCoreExamples\ExampleBrowser\obj\Debug\netcoreapp3.1\ExampleBrowser.genruntimeconfig.cache
+G:\work\tak_docs\src\WpfCoreExamples\ExampleBrowser\bin\Debug\netcoreapp3.1\DataTemplateDemo.exe
+G:\work\tak_docs\src\WpfCoreExamples\ExampleBrowser\bin\Debug\netcoreapp3.1\DataTemplateDemo.dll
+G:\work\tak_docs\src\WpfCoreExamples\ExampleBrowser\bin\Debug\netcoreapp3.1\DataTemplateDemo.pdb

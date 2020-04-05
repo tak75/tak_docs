@@ -25,24 +25,31 @@ namespace ExampleBrowser
         {
             InitializeComponent();
             this.DataContext = this;
-            this.Examples = new List<Example>
+            this.ExamplesSimple = new List<Example>
             {
+                new Example(typeof(HelloWorld.MainWindow), null, "HelloWorld"),
+                new Example(typeof(GridDemo.MainWindow), null, "Gridの簡易デモ"),
                 new Example(typeof(ButtonDemo.MainWindow), null, "画像付ボタン、図形付ボタン、丸型ボタン（シンプル）"),
                 new Example(typeof(VariousButtonsDemo.MainWindow), null, "楕円形ボタン、リピートボタン、トグルボタン、TemplateBinding"),
-                new Example(typeof(AnimatedButton.MainWindow), null, "アニメーションボタン"),
                 new Example(typeof(CheckBoxDemo.MainWindow), null, "CheckBoxの簡易デモ"),
                 new Example(typeof(RadioButtonDemo.MainWindow), null, "RadioButtonの簡易デモ"),
                 new Example(typeof(ExpanderDemo.MainWindow), null, "Expanderの簡易デモ"),
                 new Example(typeof(GroupBoxDemo.MainWindow), null, "GroupBoxの簡易デモ"),
-                new Example(typeof(HelloWorld.MainWindow), null, "HelloWorld"),
                 new Example(typeof(ListViewDemo.MainWindow), null, "ListViewの簡易デモ、ItemTemplate"),
                 new Example(typeof(ProgressBarDemo.MainWindow), null, "ProgressBarの簡易デモ"),
                 new Example(typeof(SliderDemo.MainWindow), null, "Sliderの簡易デモ"),
                 new Example(typeof(SQLiteDemo.MainWindow), null, "SQLiteの簡易デモ"),
                 new Example(typeof(CustomerSettingSamp.MainWindow), null, "SQLiteを用いたカスタマー設定サンプル"),
+                new Example(typeof(ComboBoxDemo.MainWindow), null, "ComboBoxの簡易デモ"),
+                new Example(typeof(DataTemplateDemo.MainWindow), null, ""),
+            };
+            this.ExamplesComplex = new List<Example>
+            {
+                new Example(typeof(AnimatedButton.MainWindow), null, "アニメーションボタン、ControlTemplate"),
             };
         }
-        public IList<Example> Examples { get; private set; }
+        public IList<Example> ExamplesSimple { get; private set; }
+        public IList<Example> ExamplesComplex { get; private set; }
         private void ListBoxMouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var lb = (ListBox)sender;

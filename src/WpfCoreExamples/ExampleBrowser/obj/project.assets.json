@@ -1362,6 +1362,19 @@
           "Microsoft.WindowsDesktop.App.WPF"
         ]
       },
+      "ComboBoxDemo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/ComboBoxDemo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ComboBoxDemo.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
       "CustomerSettingSamp/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -1378,6 +1391,19 @@
           "Microsoft.WindowsDesktop.App.WPF"
         ]
       },
+      "DataTemplateDemo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/DataTemplateDemo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataTemplateDemo.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
       "ExpanderDemo/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -1386,6 +1412,19 @@
         },
         "runtime": {
           "bin/placeholder/ExpanderDemo.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
+      "GridDemo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/GridDemo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GridDemo.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App.WPF"
@@ -4944,15 +4983,30 @@
       "path": "../Examples/CheckBoxDemo/CheckBoxDemo.csproj",
       "msbuildProject": "../Examples/CheckBoxDemo/CheckBoxDemo.csproj"
     },
+    "ComboBoxDemo/1.0.0": {
+      "type": "project",
+      "path": "../ComboBoxDemo/ComboBoxDemo.csproj",
+      "msbuildProject": "../ComboBoxDemo/ComboBoxDemo.csproj"
+    },
     "CustomerSettingSamp/1.0.0": {
       "type": "project",
       "path": "../Examples/CustomerSettingSamp/CustomerSettingSamp.csproj",
       "msbuildProject": "../Examples/CustomerSettingSamp/CustomerSettingSamp.csproj"
     },
+    "DataTemplateDemo/1.0.0": {
+      "type": "project",
+      "path": "../DataTemplateDemo/DataTemplateDemo.csproj",
+      "msbuildProject": "../DataTemplateDemo/DataTemplateDemo.csproj"
+    },
     "ExpanderDemo/1.0.0": {
       "type": "project",
       "path": "../Examples/ExpanderDemo/ExpanderDemo.csproj",
       "msbuildProject": "../Examples/ExpanderDemo/ExpanderDemo.csproj"
+    },
+    "GridDemo/1.0.0": {
+      "type": "project",
+      "path": "../GridDemo/GridDemo.csproj",
+      "msbuildProject": "../GridDemo/GridDemo.csproj"
     },
     "GroupBoxDemo/1.0.0": {
       "type": "project",
@@ -5000,8 +5054,11 @@
       "AnimatedButton >= 1.0.0",
       "ButtonDemo >= 1.0.0",
       "CheckBoxDemo >= 1.0.0",
+      "ComboBoxDemo >= 1.0.0",
       "CustomerSettingSamp >= 1.0.0",
+      "DataTemplateDemo >= 1.0.0",
       "ExpanderDemo >= 1.0.0",
+      "GridDemo >= 1.0.0",
       "GroupBoxDemo >= 1.0.0",
       "HelloWorld >= 1.0.0",
       "ListViewDemo >= 1.0.0",
@@ -5038,6 +5095,12 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
+            "G:\\work\\tak_docs\\src\\WpfCoreExamples\\ComboBoxDemo\\ComboBoxDemo.csproj": {
+              "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\ComboBoxDemo\\ComboBoxDemo.csproj"
+            },
+            "G:\\work\\tak_docs\\src\\WpfCoreExamples\\DataTemplateDemo\\DataTemplateDemo.csproj": {
+              "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\DataTemplateDemo\\DataTemplateDemo.csproj"
+            },
             "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj": {
               "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj"
             },
@@ -5076,6 +5139,9 @@
             },
             "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\VariousButtons\\VariousButtonsDemo.csproj": {
               "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\VariousButtons\\VariousButtonsDemo.csproj"
+            },
+            "G:\\work\\tak_docs\\src\\WpfCoreExamples\\GridDemo\\GridDemo.csproj": {
+              "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\GridDemo\\GridDemo.csproj"
             }
           }
         }
