@@ -19,7 +19,7 @@
     <script src="../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="デザインパターン" href="../デザインパターン/index.html" />
+    <link rel="next" title="Prism" href="Prism.html" />
     <link rel="prev" title="テスト駆動開発" href="テスト駆動開発.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
@@ -33,7 +33,7 @@
           <a href="../genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="../デザインパターン/index.html" title="デザインパターン"
+          <a href="Prism.html" title="Prism"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
           <a href="テスト駆動開発.html" title="テスト駆動開発"
@@ -57,6 +57,8 @@
 <li class="toctree-l2"><a class="reference internal" href="仕様.html">仕様</a></li>
 <li class="toctree-l2"><a class="reference internal" href="テスト駆動開発.html">テスト駆動開発</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">.NET Core + WPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prism.html">Prism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LINQ.html">LINQ</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../デザインパターン/index.html">デザインパターン</a></li>
@@ -68,6 +70,12 @@
 <li><a class="reference internal" href="#">.NET Core + WPF</a><ul>
 <li><a class="reference internal" href="#web">参考Webサイト</a></li>
 <li><a class="reference internal" href="#id1">用語</a></li>
+<li><a class="reference internal" href="#mvvm">MVVM</a><ul>
+<li><a class="reference internal" href="#vew">Vew</a></li>
+<li><a class="reference internal" href="#viewmodel">ViewModel</a></li>
+<li><a class="reference internal" href="#model">Model</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#id2">メモ</a></li>
 </ul>
 </li>
@@ -77,8 +85,8 @@
   <p class="topless"><a href="テスト駆動開発.html"
                         title="前の章へ">テスト駆動開発</a></p>
   <h4>次のトピックへ</h4>
-  <p class="topless"><a href="../デザインパターン/index.html"
-                        title="次の章へ">デザインパターン</a></p>
+  <p class="topless"><a href="Prism.html"
+                        title="次の章へ">Prism</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">クイック検索</h3>
     <div class="searchformwrapper">
@@ -124,6 +132,23 @@ macOSとLinuxもサポート。
 </dd>
 </dl>
 </div>
+<div class="section" id="mvvm">
+<h2>MVVM<a class="headerlink" href="#mvvm" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="vew">
+<h3>Vew<a class="headerlink" href="#vew" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="viewmodel">
+<h3>ViewModel<a class="headerlink" href="#viewmodel" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p>プレゼンテーション・ロジックとステート（＝状態）を持ちます。ドメイン・エンティティをViewに表示できるように整形したり、ドメイン・ロジックが公開するメソッドを操作として公開したりする責務を持ちます。</p></li>
+<li><p>Modelの公開するステートをいちいちラップしてViewに公開するのもViewModelの役目です。</p></li>
+<li><p>ViewModelは、Viewへの参照を持ったり、Viewの特定の実装を意識したりしません。しかしViewModelはまったくViewを意識しないというわけでもないので注意が必要です。「ViewModelはViewを意識しますが、その実装について何も知らなくてもよいし、知るべきではない」という認識が妥当です。ViewModelのプロパティは、特定のコントロールにさえ結合しなければ表示専用のものであってよいのです。それを忘れないでください。</p></li>
+</ul>
+</div>
+<div class="section" id="model">
+<h3>Model<a class="headerlink" href="#model" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+</div>
 <div class="section" id="id2">
 <h2>メモ<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
@@ -153,7 +178,7 @@ XAMLではWindowコントロールとして表現されている。
           <a href="../genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="../デザインパターン/index.html" title="デザインパターン"
+          <a href="Prism.html" title="Prism"
              >次へ</a> |</li>
         <li class="right" >
           <a href="テスト駆動開発.html" title="テスト駆動開発"

@@ -42,7 +42,6 @@ G:\work\tak_docs\src\WpfCoreExamples\Examples\SliderDemo\bin\Debug\netcoreapp3.1
 G:\work\tak_docs\src\WpfCoreExamples\Examples\SliderDemo\bin\Debug\netcoreapp3.1\SliderDemo.runtimeconfig.dev.json
 G:\work\tak_docs\src\WpfCoreExamples\Examples\SliderDemo\bin\Debug\netcoreapp3.1\SliderDemo.dll
 G:\work\tak_docs\src\WpfCoreExamples\Examples\SliderDemo\bin\Debug\netcoreapp3.1\SliderDemo.pdb
-G:\work\tak_docs\src\WpfCoreExamples\Examples\SliderDemo\obj\Debug\netcoreapp3.1\SliderDemo.csprojAssemblyReference.cache
 G:\work\tak_docs\src\WpfCoreExamples\Examples\SliderDemo\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 G:\work\tak_docs\src\WpfCoreExamples\Examples\SliderDemo\obj\Debug\netcoreapp3.1\App.g.cs
 G:\work\tak_docs\src\WpfCoreExamples\Examples\SliderDemo\obj\Debug\netcoreapp3.1\SliderDemo_MarkupCompile.cache
@@ -55,3 +54,4 @@ G:\work\tak_docs\src\WpfCoreExamples\Examples\SliderDemo\obj\Debug\netcoreapp3.1
 G:\work\tak_docs\src\WpfCoreExamples\Examples\SliderDemo\obj\Debug\netcoreapp3.1\SliderDemo.dll
 G:\work\tak_docs\src\WpfCoreExamples\Examples\SliderDemo\obj\Debug\netcoreapp3.1\SliderDemo.pdb
 G:\work\tak_docs\src\WpfCoreExamples\Examples\SliderDemo\obj\Debug\netcoreapp3.1\SliderDemo.genruntimeconfig.cache
+G:\work\tak_docs\src\WpfCoreExamples\Examples\SliderDemo\obj\Debug\netcoreapp3.1\SliderDemo.csprojAssemblyReference.cache

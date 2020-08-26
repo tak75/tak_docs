@@ -5,82 +5,86 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExampleBrowser"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="400">
+        Title="MainWindow" Height="600" Width="450">
 
-    <StackPanel Orientation="Vertical">
-        <Expander
-            Header="Simple Demo" 
-            Margin="5"
-            IsExpanded="False"
-            BorderBrush="Blue">
-            <ListBox 
-                ItemsSource="{Binding ExamplesSimple}" 
-                Margin="2"
-                BorderThickness="0" 
-                ScrollViewer.CanContentScroll="False" 
-                ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                MouseDoubleClick="ListBoxMouseDoubleClick">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Vertical">
-                            <Grid Margin="2">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock 
-                                    Text="{Binding Title}" 
-                                    TextWrapping="Wrap" 
-                                    FontWeight="Bold" 
-                                    FontSize="14" 
-                                    Foreground="DarkBlue"/>
-                                <TextBlock 
-                                    Grid.Column="1" 
-                                    Text="{Binding Description}" 
-                                    TextWrapping="Wrap" 
-                                    FontSize="11"/>
-                            </Grid>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </Expander>
-        <Expander
-            Header="Complex Demo" 
-            Margin="5"
-            IsExpanded="False"
-            BorderBrush="Red">
-            <ListBox 
-                ItemsSource="{Binding ExamplesComplex}" 
-                Margin="2"
-                BorderThickness="0" 
-                ScrollViewer.CanContentScroll="False" 
-                ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                MouseDoubleClick="ListBoxMouseDoubleClick">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Vertical">
-                            <Grid Margin="2">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock 
-                                    Text="{Binding Title}" 
-                                    TextWrapping="Wrap" 
-                                    FontWeight="Bold" 
-                                    FontSize="14" 
-                                    Foreground="DarkBlue"/>
-                                <TextBlock 
-                                    Grid.Column="1" 
-                                    Text="{Binding Description}" 
-                                    TextWrapping="Wrap" 
-                                    FontSize="11"/>
-                            </Grid>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </Expander>
-    </StackPanel>
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Vertical">
+                <Expander
+                    Header="Simple Demo" 
+                    Margin="5"
+                    IsExpanded="False"
+                    BorderBrush="Blue">
+                    <ListBox 
+                        ItemsSource="{Binding ExamplesSimple}" 
+                        Margin="2"
+                        BorderThickness="0"
+                        ScrollViewer.CanContentScroll="False" 
+                        ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                        MouseDoubleClick="ListBoxMouseDoubleClick">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <Grid Margin="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="170"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock 
+                                            Text="{Binding Title}" 
+                                            TextWrapping="Wrap" 
+                                            FontWeight="Bold" 
+                                            FontSize="14" 
+                                            Foreground="DarkBlue"/>
+                                        <TextBlock 
+                                            Grid.Column="1" 
+                                            Text="{Binding Description}" 
+                                            TextWrapping="Wrap" 
+                                            FontSize="11"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Expander>
+                    <Expander
+                        Header="Complex Demo" 
+                        Margin="5"
+                        IsExpanded="False"
+                        BorderBrush="Red">  
+                    <ListBox 
+                        ItemsSource="{Binding ExamplesComplex}" 
+                        Margin="2"
+                        BorderThickness="0" 
+                        ScrollViewer.CanContentScroll="False" 
+                        ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                        MouseDoubleClick="ListBoxMouseDoubleClick">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <Grid Margin="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="150"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock 
+                                            Text="{Binding Title}" 
+                                            TextWrapping="Wrap" 
+                                            FontWeight="Bold" 
+                                            FontSize="14" 
+                                            Foreground="DarkBlue"/>
+                                        <TextBlock 
+                                            Grid.Column="1" 
+                                            Text="{Binding Description}" 
+                                            TextWrapping="Wrap" 
+                                            FontSize="11"/>
+                                    </Grid>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Expander>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
 </Window>

@@ -69,7 +69,7 @@ namespace CustomerSettingSamp {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CustomerSettingSamp;component/savewindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/CustomerSettingSamp;V1.0.0.0;component/savewindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\SaveWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

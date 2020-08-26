@@ -8,3 +8,5 @@ C#
    仕様
    テスト駆動開発
    .NET Core + WPF
+   Prism
+   LINQ

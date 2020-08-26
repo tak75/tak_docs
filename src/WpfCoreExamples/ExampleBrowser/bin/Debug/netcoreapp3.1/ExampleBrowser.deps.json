@@ -10,18 +10,33 @@
         "dependencies": {
           "AnimatedButton": "1.0.0",
           "ButtonDemo": "1.0.0",
+          "CanvasDemo": "1.0.0",
           "CheckBoxDemo": "1.0.0",
+          "ComboBoxDemo": "1.0.0",
+          "ControlTemplateDemo": "1.0.0",
+          "CustomButtonDemo": "1.0.0",
           "CustomerSettingSamp": "1.0.0",
           "DataTemplateDemo": "1.0.0",
+          "DockPanelDemo": "1.0.0",
           "ExpanderDemo": "1.0.0",
+          "GridDemo": "1.0.0",
           "GroupBoxDemo": "1.0.0",
           "HelloWorld": "1.0.0",
+          "ListBoxDemo": "1.0.0",
           "ListViewDemo": "1.0.0",
+          "MenuDemo": "1.0.0",
           "ProgressBarDemo": "1.0.0",
           "RadioButtonDemo": "1.0.0",
           "SQLiteDemo": "1.0.0",
           "SliderDemo": "1.0.0",
-          "VariousButtonsDemo": "1.0.0"
+          "StatusBarDemo": "1.0.0",
+          "TabControlDemo": "1.0.0",
+          "TextBlock_TextBoxDemo": "1.0.0",
+          "ToolBarDemo": "1.0.0",
+          "TreeViewDemo": "1.0.0",
+          "TriggerDemo": "1.0.0",
+          "VariousButtonsDemo": "1.0.0",
+          "WrapPanelDemo": "1.0.0"
         },
         "runtime": {
           "ExampleBrowser.dll": {}
@@ -824,9 +839,29 @@
           "ButtonDemo.dll": {}
         }
       },
+      "CanvasDemo/1.0.0": {
+        "runtime": {
+          "CanvasDemo.dll": {}
+        }
+      },
       "CheckBoxDemo/1.0.0": {
         "runtime": {
           "CheckBoxDemo.dll": {}
+        }
+      },
+      "ComboBoxDemo/1.0.0": {
+        "runtime": {
+          "ComboBoxDemo.dll": {}
+        }
+      },
+      "ControlTemplateDemo/1.0.0": {
+        "runtime": {
+          "ControlTemplateDemo.dll": {}
+        }
+      },
+      "CustomButtonDemo/1.0.0": {
+        "runtime": {
+          "CustomButtonDemo.dll": {}
         }
       },
       "CustomerSettingSamp/1.0.0": {
@@ -842,9 +877,19 @@
           "DataTemplateDemo.dll": {}
         }
       },
+      "DockPanelDemo/1.0.0": {
+        "runtime": {
+          "DockPanelDemo.dll": {}
+        }
+      },
       "ExpanderDemo/1.0.0": {
         "runtime": {
           "ExpanderDemo.dll": {}
+        }
+      },
+      "GridDemo/1.0.0": {
+        "runtime": {
+          "GridDemo.dll": {}
         }
       },
       "GroupBoxDemo/1.0.0": {
@@ -857,9 +902,19 @@
           "HelloWorld.dll": {}
         }
       },
+      "ListBoxDemo/1.0.0": {
+        "runtime": {
+          "ListBoxDemo.dll": {}
+        }
+      },
       "ListViewDemo/1.0.0": {
         "runtime": {
           "ListViewDemo.dll": {}
+        }
+      },
+      "MenuDemo/1.0.0": {
+        "runtime": {
+          "MenuDemo.dll": {}
         }
       },
       "ProgressBarDemo/1.0.0": {
@@ -885,9 +940,44 @@
           "SQLiteDemo.dll": {}
         }
       },
+      "StatusBarDemo/1.0.0": {
+        "runtime": {
+          "StatusBarDemo.dll": {}
+        }
+      },
+      "TabControlDemo/1.0.0": {
+        "runtime": {
+          "TabControlDemo.dll": {}
+        }
+      },
+      "TextBlock_TextBoxDemo/1.0.0": {
+        "runtime": {
+          "TextBlock_TextBoxDemo.dll": {}
+        }
+      },
+      "ToolBarDemo/1.0.0": {
+        "runtime": {
+          "ToolBarDemo.dll": {}
+        }
+      },
+      "TreeViewDemo/1.0.0": {
+        "runtime": {
+          "TreeViewDemo.dll": {}
+        }
+      },
+      "TriggerDemo/1.0.0": {
+        "runtime": {
+          "TriggerDemo.dll": {}
+        }
+      },
       "VariousButtonsDemo/1.0.0": {
         "runtime": {
           "VariousButtonsDemo.dll": {}
+        }
+      },
+      "WrapPanelDemo/1.0.0": {
+        "runtime": {
+          "WrapPanelDemo.dll": {}
         }
       }
     }
@@ -1468,7 +1558,27 @@
       "serviceable": false,
       "sha512": ""
     },
+    "CanvasDemo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "CheckBoxDemo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ComboBoxDemo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ControlTemplateDemo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CustomButtonDemo/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -1483,7 +1593,17 @@
       "serviceable": false,
       "sha512": ""
     },
+    "DockPanelDemo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "ExpanderDemo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GridDemo/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -1498,7 +1618,17 @@
       "serviceable": false,
       "sha512": ""
     },
+    "ListBoxDemo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "ListViewDemo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MenuDemo/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -1523,7 +1653,42 @@
       "serviceable": false,
       "sha512": ""
     },
+    "StatusBarDemo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TabControlDemo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TextBlock_TextBoxDemo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ToolBarDemo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TreeViewDemo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TriggerDemo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "VariousButtonsDemo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WrapPanelDemo/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

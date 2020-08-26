@@ -1349,6 +1349,19 @@
           "Microsoft.WindowsDesktop.App.WPF"
         ]
       },
+      "CanvasDemo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/CanvasDemo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CanvasDemo.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
       "CheckBoxDemo/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -1370,6 +1383,32 @@
         },
         "runtime": {
           "bin/placeholder/ComboBoxDemo.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
+      "ControlTemplateDemo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/ControlTemplateDemo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ControlTemplateDemo.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
+      "CustomButtonDemo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/CustomButtonDemo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CustomButtonDemo.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App.WPF"
@@ -1399,6 +1438,19 @@
         },
         "runtime": {
           "bin/placeholder/DataTemplateDemo.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
+      "DockPanelDemo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/DockPanelDemo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DockPanelDemo.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App.WPF"
@@ -1456,6 +1508,19 @@
           "Microsoft.WindowsDesktop.App.WPF"
         ]
       },
+      "ListBoxDemo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/ListBoxDemo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ListBoxDemo.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
       "ListViewDemo/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -1464,6 +1529,19 @@
         },
         "runtime": {
           "bin/placeholder/ListViewDemo.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
+      "MenuDemo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/MenuDemo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MenuDemo.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App.WPF"
@@ -1524,6 +1602,84 @@
           "Microsoft.WindowsDesktop.App.WPF"
         ]
       },
+      "StatusBarDemo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/StatusBarDemo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/StatusBarDemo.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
+      "TabControlDemo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/TabControlDemo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TabControlDemo.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
+      "TextBlock_TextBoxDemo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/TextBlock_TextBoxDemo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TextBlock_TextBoxDemo.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
+      "ToolBarDemo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/ToolBarDemo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ToolBarDemo.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
+      "TreeViewDemo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/TreeViewDemo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TreeViewDemo.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
+      "TriggerDemo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/TriggerDemo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TriggerDemo.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
       "VariousButtonsDemo/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -1532,6 +1688,19 @@
         },
         "runtime": {
           "bin/placeholder/VariousButtonsDemo.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
+      "WrapPanelDemo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/WrapPanelDemo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WrapPanelDemo.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App.WPF"
@@ -4978,6 +5147,11 @@
       "path": "../Examples/ButtonDemo/ButtonDemo.csproj",
       "msbuildProject": "../Examples/ButtonDemo/ButtonDemo.csproj"
     },
+    "CanvasDemo/1.0.0": {
+      "type": "project",
+      "path": "../Examples/CanvasDemo/CanvasDemo.csproj",
+      "msbuildProject": "../Examples/CanvasDemo/CanvasDemo.csproj"
+    },
     "CheckBoxDemo/1.0.0": {
       "type": "project",
       "path": "../Examples/CheckBoxDemo/CheckBoxDemo.csproj",
@@ -4985,8 +5159,18 @@
     },
     "ComboBoxDemo/1.0.0": {
       "type": "project",
-      "path": "../ComboBoxDemo/ComboBoxDemo.csproj",
-      "msbuildProject": "../ComboBoxDemo/ComboBoxDemo.csproj"
+      "path": "../Examples/ComboBoxDemo/ComboBoxDemo.csproj",
+      "msbuildProject": "../Examples/ComboBoxDemo/ComboBoxDemo.csproj"
+    },
+    "ControlTemplateDemo/1.0.0": {
+      "type": "project",
+      "path": "../Examples/ControlTemplateDemo/ControlTemplateDemo.csproj",
+      "msbuildProject": "../Examples/ControlTemplateDemo/ControlTemplateDemo.csproj"
+    },
+    "CustomButtonDemo/1.0.0": {
+      "type": "project",
+      "path": "../Examples/CustomButtonDemo/CustomButtonDemo.csproj",
+      "msbuildProject": "../Examples/CustomButtonDemo/CustomButtonDemo.csproj"
     },
     "CustomerSettingSamp/1.0.0": {
       "type": "project",
@@ -4995,8 +5179,13 @@
     },
     "DataTemplateDemo/1.0.0": {
       "type": "project",
-      "path": "../DataTemplateDemo/DataTemplateDemo.csproj",
-      "msbuildProject": "../DataTemplateDemo/DataTemplateDemo.csproj"
+      "path": "../Examples/DataTemplateDemo/DataTemplateDemo.csproj",
+      "msbuildProject": "../Examples/DataTemplateDemo/DataTemplateDemo.csproj"
+    },
+    "DockPanelDemo/1.0.0": {
+      "type": "project",
+      "path": "../Examples/DockPanelDemo/DockPanelDemo.csproj",
+      "msbuildProject": "../Examples/DockPanelDemo/DockPanelDemo.csproj"
     },
     "ExpanderDemo/1.0.0": {
       "type": "project",
@@ -5005,8 +5194,8 @@
     },
     "GridDemo/1.0.0": {
       "type": "project",
-      "path": "../GridDemo/GridDemo.csproj",
-      "msbuildProject": "../GridDemo/GridDemo.csproj"
+      "path": "../Examples/GridDemo/GridDemo.csproj",
+      "msbuildProject": "../Examples/GridDemo/GridDemo.csproj"
     },
     "GroupBoxDemo/1.0.0": {
       "type": "project",
@@ -5018,10 +5207,20 @@
       "path": "../Examples/HelloWorld/HelloWorld.csproj",
       "msbuildProject": "../Examples/HelloWorld/HelloWorld.csproj"
     },
+    "ListBoxDemo/1.0.0": {
+      "type": "project",
+      "path": "../Examples/ListBoxDemo/ListBoxDemo.csproj",
+      "msbuildProject": "../Examples/ListBoxDemo/ListBoxDemo.csproj"
+    },
     "ListViewDemo/1.0.0": {
       "type": "project",
       "path": "../Examples/ListViewDemo/ListViewDemo.csproj",
       "msbuildProject": "../Examples/ListViewDemo/ListViewDemo.csproj"
+    },
+    "MenuDemo/1.0.0": {
+      "type": "project",
+      "path": "../Examples/MenuDemo/MenuDemo.csproj",
+      "msbuildProject": "../Examples/MenuDemo/MenuDemo.csproj"
     },
     "ProgressBarDemo/1.0.0": {
       "type": "project",
@@ -5043,30 +5242,78 @@
       "path": "../Examples/SQLiteDemo/SQLiteDemo.csproj",
       "msbuildProject": "../Examples/SQLiteDemo/SQLiteDemo.csproj"
     },
+    "StatusBarDemo/1.0.0": {
+      "type": "project",
+      "path": "../Examples/StatusBarDemo/StatusBarDemo.csproj",
+      "msbuildProject": "../Examples/StatusBarDemo/StatusBarDemo.csproj"
+    },
+    "TabControlDemo/1.0.0": {
+      "type": "project",
+      "path": "../Examples/TabControlDemo/TabControlDemo.csproj",
+      "msbuildProject": "../Examples/TabControlDemo/TabControlDemo.csproj"
+    },
+    "TextBlock_TextBoxDemo/1.0.0": {
+      "type": "project",
+      "path": "../Examples/TextBlock_TextBoxDemo/TextBlock_TextBoxDemo.csproj",
+      "msbuildProject": "../Examples/TextBlock_TextBoxDemo/TextBlock_TextBoxDemo.csproj"
+    },
+    "ToolBarDemo/1.0.0": {
+      "type": "project",
+      "path": "../Examples/ToolBarDemo/ToolBarDemo.csproj",
+      "msbuildProject": "../Examples/ToolBarDemo/ToolBarDemo.csproj"
+    },
+    "TreeViewDemo/1.0.0": {
+      "type": "project",
+      "path": "../Examples/TreeViewDemo/TreeViewDemo.csproj",
+      "msbuildProject": "../Examples/TreeViewDemo/TreeViewDemo.csproj"
+    },
+    "TriggerDemo/1.0.0": {
+      "type": "project",
+      "path": "../Examples/TriggerDemo/TriggerDemo.csproj",
+      "msbuildProject": "../Examples/TriggerDemo/TriggerDemo.csproj"
+    },
     "VariousButtonsDemo/1.0.0": {
       "type": "project",
       "path": "../Examples/VariousButtons/VariousButtonsDemo.csproj",
       "msbuildProject": "../Examples/VariousButtons/VariousButtonsDemo.csproj"
+    },
+    "WrapPanelDemo/1.0.0": {
+      "type": "project",
+      "path": "../Examples/WrapPanelDemo/WrapPanelDemo.csproj",
+      "msbuildProject": "../Examples/WrapPanelDemo/WrapPanelDemo.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "AnimatedButton >= 1.0.0",
       "ButtonDemo >= 1.0.0",
+      "CanvasDemo >= 1.0.0",
       "CheckBoxDemo >= 1.0.0",
       "ComboBoxDemo >= 1.0.0",
+      "ControlTemplateDemo >= 1.0.0",
+      "CustomButtonDemo >= 1.0.0",
       "CustomerSettingSamp >= 1.0.0",
       "DataTemplateDemo >= 1.0.0",
+      "DockPanelDemo >= 1.0.0",
       "ExpanderDemo >= 1.0.0",
       "GridDemo >= 1.0.0",
       "GroupBoxDemo >= 1.0.0",
       "HelloWorld >= 1.0.0",
+      "ListBoxDemo >= 1.0.0",
       "ListViewDemo >= 1.0.0",
+      "MenuDemo >= 1.0.0",
       "ProgressBarDemo >= 1.0.0",
       "RadioButtonDemo >= 1.0.0",
       "SQLiteDemo >= 1.0.0",
       "SliderDemo >= 1.0.0",
-      "VariousButtonsDemo >= 1.0.0"
+      "StatusBarDemo >= 1.0.0",
+      "TabControlDemo >= 1.0.0",
+      "TextBlock_TextBoxDemo >= 1.0.0",
+      "ToolBarDemo >= 1.0.0",
+      "TreeViewDemo >= 1.0.0",
+      "TriggerDemo >= 1.0.0",
+      "VariousButtonsDemo >= 1.0.0",
+      "WrapPanelDemo >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5095,26 +5342,41 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "G:\\work\\tak_docs\\src\\WpfCoreExamples\\ComboBoxDemo\\ComboBoxDemo.csproj": {
-              "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\ComboBoxDemo\\ComboBoxDemo.csproj"
-            },
-            "G:\\work\\tak_docs\\src\\WpfCoreExamples\\DataTemplateDemo\\DataTemplateDemo.csproj": {
-              "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\DataTemplateDemo\\DataTemplateDemo.csproj"
-            },
             "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj": {
               "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj"
             },
             "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\ButtonDemo.csproj": {
               "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\ButtonDemo.csproj"
             },
+            "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CanvasDemo\\CanvasDemo.csproj": {
+              "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CanvasDemo\\CanvasDemo.csproj"
+            },
             "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CheckBoxDemo\\CheckBoxDemo.csproj": {
               "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CheckBoxDemo\\CheckBoxDemo.csproj"
+            },
+            "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ComboBoxDemo\\ComboBoxDemo.csproj": {
+              "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ComboBoxDemo\\ComboBoxDemo.csproj"
+            },
+            "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ControlTemplateDemo\\ControlTemplateDemo.csproj": {
+              "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ControlTemplateDemo\\ControlTemplateDemo.csproj"
+            },
+            "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CustomButtonDemo\\CustomButtonDemo.csproj": {
+              "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CustomButtonDemo\\CustomButtonDemo.csproj"
             },
             "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj": {
               "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj"
             },
+            "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\DataTemplateDemo\\DataTemplateDemo.csproj": {
+              "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\DataTemplateDemo\\DataTemplateDemo.csproj"
+            },
+            "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\DockPanelDemo\\DockPanelDemo.csproj": {
+              "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\DockPanelDemo\\DockPanelDemo.csproj"
+            },
             "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ExpanderDemo\\ExpanderDemo.csproj": {
               "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ExpanderDemo\\ExpanderDemo.csproj"
+            },
+            "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\GridDemo\\GridDemo.csproj": {
+              "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\GridDemo\\GridDemo.csproj"
             },
             "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\GroupBoxDemo\\GroupBoxDemo.csproj": {
               "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\GroupBoxDemo\\GroupBoxDemo.csproj"
@@ -5122,8 +5384,14 @@
             "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\HelloWorld\\HelloWorld.csproj": {
               "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\HelloWorld\\HelloWorld.csproj"
             },
+            "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ListBoxDemo\\ListBoxDemo.csproj": {
+              "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ListBoxDemo\\ListBoxDemo.csproj"
+            },
             "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ListViewDemo\\ListViewDemo.csproj": {
               "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ListViewDemo\\ListViewDemo.csproj"
+            },
+            "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\MenuDemo\\MenuDemo.csproj": {
+              "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\MenuDemo\\MenuDemo.csproj"
             },
             "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ProgressBarDemo\\ProgressBarDemo.csproj": {
               "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ProgressBarDemo\\ProgressBarDemo.csproj"
@@ -5137,11 +5405,29 @@
             "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\SQLiteDemo\\SQLiteDemo.csproj": {
               "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\SQLiteDemo\\SQLiteDemo.csproj"
             },
+            "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\StatusBarDemo\\StatusBarDemo.csproj": {
+              "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\StatusBarDemo\\StatusBarDemo.csproj"
+            },
+            "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TabControlDemo\\TabControlDemo.csproj": {
+              "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TabControlDemo\\TabControlDemo.csproj"
+            },
+            "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TextBlock_TextBoxDemo\\TextBlock_TextBoxDemo.csproj": {
+              "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TextBlock_TextBoxDemo\\TextBlock_TextBoxDemo.csproj"
+            },
+            "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ToolBarDemo\\ToolBarDemo.csproj": {
+              "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ToolBarDemo\\ToolBarDemo.csproj"
+            },
+            "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TreeViewDemo\\TreeViewDemo.csproj": {
+              "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TreeViewDemo\\TreeViewDemo.csproj"
+            },
+            "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TriggerDemo\\TriggerDemo.csproj": {
+              "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TriggerDemo\\TriggerDemo.csproj"
+            },
             "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\VariousButtons\\VariousButtonsDemo.csproj": {
               "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\VariousButtons\\VariousButtonsDemo.csproj"
             },
-            "G:\\work\\tak_docs\\src\\WpfCoreExamples\\GridDemo\\GridDemo.csproj": {
-              "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\GridDemo\\GridDemo.csproj"
+            "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\WrapPanelDemo\\WrapPanelDemo.csproj": {
+              "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\WrapPanelDemo\\WrapPanelDemo.csproj"
             }
           }
         }
@@ -5172,7 +5458,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

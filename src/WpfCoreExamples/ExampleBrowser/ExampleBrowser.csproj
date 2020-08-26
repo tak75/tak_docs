@@ -7,22 +7,35 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ComboBoxDemo\ComboBoxDemo.csproj" />
-    <ProjectReference Include="..\DataTemplateDemo\DataTemplateDemo.csproj" />
     <ProjectReference Include="..\Examples\AnimatedButton\AnimatedButton.csproj" />
     <ProjectReference Include="..\Examples\ButtonDemo\ButtonDemo.csproj" />
+    <ProjectReference Include="..\Examples\CanvasDemo\CanvasDemo.csproj" />
     <ProjectReference Include="..\Examples\CheckBoxDemo\CheckBoxDemo.csproj" />
+    <ProjectReference Include="..\Examples\ComboBoxDemo\ComboBoxDemo.csproj" />
+    <ProjectReference Include="..\Examples\ControlTemplateDemo\ControlTemplateDemo.csproj" />
+    <ProjectReference Include="..\Examples\CustomButtonDemo\CustomButtonDemo.csproj" />
     <ProjectReference Include="..\Examples\CustomerSettingSamp\CustomerSettingSamp.csproj" />
+    <ProjectReference Include="..\Examples\DataTemplateDemo\DataTemplateDemo.csproj" />
+    <ProjectReference Include="..\Examples\DockPanelDemo\DockPanelDemo.csproj" />
     <ProjectReference Include="..\Examples\ExpanderDemo\ExpanderDemo.csproj" />
+    <ProjectReference Include="..\Examples\GridDemo\GridDemo.csproj" />
     <ProjectReference Include="..\Examples\GroupBoxDemo\GroupBoxDemo.csproj" />
     <ProjectReference Include="..\Examples\HelloWorld\HelloWorld.csproj" />
+    <ProjectReference Include="..\Examples\ListBoxDemo\ListBoxDemo.csproj" />
     <ProjectReference Include="..\Examples\ListViewDemo\ListViewDemo.csproj" />
+    <ProjectReference Include="..\Examples\MenuDemo\MenuDemo.csproj" />
     <ProjectReference Include="..\Examples\ProgressBarDemo\ProgressBarDemo.csproj" />
     <ProjectReference Include="..\Examples\RadioButtonDemo\RadioButtonDemo.csproj" />
     <ProjectReference Include="..\Examples\SliderDemo\SliderDemo.csproj" />
     <ProjectReference Include="..\Examples\SQLiteDemo\SQLiteDemo.csproj" />
+    <ProjectReference Include="..\Examples\StatusBarDemo\StatusBarDemo.csproj" />
+    <ProjectReference Include="..\Examples\TabControlDemo\TabControlDemo.csproj" />
+    <ProjectReference Include="..\Examples\TextBlock_TextBoxDemo\TextBlock_TextBoxDemo.csproj" />
+    <ProjectReference Include="..\Examples\ToolBarDemo\ToolBarDemo.csproj" />
+    <ProjectReference Include="..\Examples\TreeViewDemo\TreeViewDemo.csproj" />
+    <ProjectReference Include="..\Examples\TriggerDemo\TriggerDemo.csproj" />
     <ProjectReference Include="..\Examples\VariousButtons\VariousButtonsDemo.csproj" />
-    <ProjectReference Include="..\GridDemo\GridDemo.csproj" />
+    <ProjectReference Include="..\Examples\WrapPanelDemo\WrapPanelDemo.csproj" />
   </ItemGroup>
 
 </Project>

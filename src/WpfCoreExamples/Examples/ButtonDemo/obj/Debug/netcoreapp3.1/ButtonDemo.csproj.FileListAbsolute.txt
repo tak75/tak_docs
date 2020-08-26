@@ -46,7 +46,6 @@ G:\work\tak_docs\src\WpfCoreExamples\Examples\ButtonDemo\bin\Debug\netcoreapp3.1
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ButtonDemo\bin\Debug\netcoreapp3.1\ButtonDemo.runtimeconfig.dev.json
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ButtonDemo\bin\Debug\netcoreapp3.1\ButtonDemo.dll
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ButtonDemo\bin\Debug\netcoreapp3.1\ButtonDemo.pdb
-G:\work\tak_docs\src\WpfCoreExamples\Examples\ButtonDemo\obj\Debug\netcoreapp3.1\ButtonDemo.csprojAssemblyReference.cache
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ButtonDemo\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ButtonDemo\obj\Debug\netcoreapp3.1\App.g.cs
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ButtonDemo\obj\Debug\netcoreapp3.1\ButtonDemo_MarkupCompile.cache
@@ -61,3 +60,4 @@ G:\work\tak_docs\src\WpfCoreExamples\Examples\ButtonDemo\obj\Debug\netcoreapp3.1
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ButtonDemo\obj\Debug\netcoreapp3.1\ButtonDemo.dll
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ButtonDemo\obj\Debug\netcoreapp3.1\ButtonDemo.pdb
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ButtonDemo\obj\Debug\netcoreapp3.1\ButtonDemo.genruntimeconfig.cache
+G:\work\tak_docs\src\WpfCoreExamples\Examples\ButtonDemo\obj\Debug\netcoreapp3.1\ButtonDemo.csprojAssemblyReference.cache

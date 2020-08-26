@@ -20,7 +20,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title=".NET Core + WPF" href=".NET Core + WPF.html" />
-    <link rel="prev" title="文法" href="文法.html" />
+    <link rel="prev" title="仕様" href="仕様.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script src="_static/css3-mediaqueries.js"></script>
@@ -36,7 +36,7 @@
           <a href=".NET Core + WPF.html" title=".NET Core + WPF"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
-          <a href="文法.html" title="文法"
+          <a href="仕様.html" title="仕様"
              accesskey="P">前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">C#</a> &#187;</li> 
@@ -54,9 +54,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../raspberry_pi/index.html">Raspberry Pi</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Webアプリ/index.html">Webアプリ</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">C#</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="文法.html">文法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="仕様.html">仕様</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">テスト駆動開発</a></li>
 <li class="toctree-l2"><a class="reference internal" href=".NET Core + WPF.html">.NET Core + WPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prism.html">Prism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LINQ.html">LINQ</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../デザインパターン/index.html">デザインパターン</a></li>
@@ -68,13 +70,16 @@
 <li><a class="reference internal" href="#">テスト駆動開発</a><ul>
 <li><a class="reference internal" href="#id2">はじめに</a></li>
 <li><a class="reference internal" href="#id3">テスト駆動開発とは</a></li>
+<li><a class="reference internal" href="#moq">Moq について</a></li>
+<li><a class="reference internal" href="#chaining-assertion">Chaining Assertion について</a></li>
+<li><a class="reference internal" href="#axocover">AxoCover について</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>前のトピックへ</h4>
-  <p class="topless"><a href="文法.html"
-                        title="前の章へ">文法</a></p>
+  <p class="topless"><a href="仕様.html"
+                        title="前の章へ">仕様</a></p>
   <h4>次のトピックへ</h4>
   <p class="topless"><a href=".NET Core + WPF.html"
                         title="次の章へ">.NET Core + WPF</a></p>
@@ -162,6 +167,78 @@
 </li>
 </ul>
 </div>
+<div class="section" id="moq">
+<h2>Moq について<a class="headerlink" href="#moq" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p>NuGetでインストールするライブラリである</p></li>
+<li><p>DBに接続しDBからの取得した値を使ってテストする場合などでは、以下が必要となるが、Moqを使うことで仮想的な環境を作成することができる</p>
+<ul class="simple">
+<li><p>実環境をローカルに構築する必要がある</p></li>
+<li><p>テスト用のテーブルをDBに作成する必要がある</p></li>
+</ul>
+</li>
+<li><p>Moqに対応させるためのコーディングは以下の通り</p>
+<ul>
+<li><p>DBクラスのインタフェース(IDB)を作成し、DBクラスはIDBインタフェースを継承させる</p></li>
+<li><p>DBオブジェクトを使用するクラスでは、コンストラクタの引数にて、外部からDBオブジェクトを設定してもらう</p></li>
+<li><p>このDBオブジェクトに、実環境では&quot;new DB()&quot;を使い、テスト環境では&quot;mock.Object&quot;を使う</p></li>
+<li><p>mockは以下のコードのようにセットアップすることで、テスト用の返却値を設定する</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">mock</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Mock</span><span class="p">&lt;</span><span class="n">IDB</span><span class="p">&gt;();</span>
+
+<span class="c1">// GetDBValue() の返却値を 100 にセットアップする</span>
+<span class="n">mock</span><span class="p">.</span><span class="n">Setup</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">GetDBValue</span><span class="p">()).</span><span class="n">Returns</span><span class="p">(</span><span class="m">100</span><span class="p">);</span>
+
+<span class="c1">// テストコードでは、コンストラクタの引数に &quot;mock.Object&quot; を渡す</span>
+<span class="kt">var</span> <span class="n">viewModel</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Form1ViewModel</span><span class="p">(</span><span class="n">mock</span><span class="p">.</span><span class="n">Object</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="chaining-assertion">
+<h2>Chaining Assertion について<a class="headerlink" href="#chaining-assertion" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p>NuGetでインストールするライブラリである</p></li>
+<li><p>例外をテストする際に利用する</p></li>
+<li><p>本ライブラリを使用しない場合は、例外のテストは、以下のコードのように、
+[ExpectedException]属性を付け例外専用のテスト関数を作る必要がある。</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>[TestMethod]
+[ExpectedException(typeof(InputException))]
+public void 例外のテスト()
+{
+    Assert.AreEqual(2, Form1ViewModel.Add(-1, 3));
+}
+</pre></div>
+</div>
+</li>
+<li><p>本ライブラリを使用する場合は以下のコードとなる。</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>[TestMethod]
+public void 通常のテスト()
+{
+    var ex = AssertEx.Throws&lt;InputException&gt;(() =&gt; Form1ViewModel.Add(-1, 3));
+}
+</pre></div>
+</div>
+</li>
+<li><p>また、本ライブラリを使用すると、AreEqual は Is に置き換えられる。</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 以下の2つは同じ内容のコード</span>
+<span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="s">&quot;107&quot;</span><span class="p">,</span> <span class="n">viewModel</span><span class="p">.</span><span class="n">ResultLabelText</span><span class="p">);</span>
+<span class="n">viewModel</span><span class="p">.</span><span class="n">ResultLabelText</span><span class="p">.</span><span class="n">Is</span><span class="p">(</span><span class="s">&quot;107&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="axocover">
+<h2>AxoCover について<a class="headerlink" href="#axocover" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p>対応はVS2017まで？VS2019は未対応？</p></li>
+<li><p>テストの完了率を確認することができる</p></li>
+<li><p>if文などで複数分岐している箇所は、各々の箇所が1つのテストとカウントされる</p></li>
+</ul>
+</div>
 </div>
 
 
@@ -180,7 +257,7 @@
           <a href=".NET Core + WPF.html" title=".NET Core + WPF"
              >次へ</a> |</li>
         <li class="right" >
-          <a href="文法.html" title="文法"
+          <a href="仕様.html" title="仕様"
              >前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >C#</a> &#187;</li> 

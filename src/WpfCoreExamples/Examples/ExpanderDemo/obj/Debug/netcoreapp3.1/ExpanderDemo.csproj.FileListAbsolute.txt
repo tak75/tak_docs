@@ -42,7 +42,6 @@ G:\work\tak_docs\src\WpfCoreExamples\Examples\ExpanderDemo\bin\Debug\netcoreapp3
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ExpanderDemo\bin\Debug\netcoreapp3.1\ExpanderDemo.runtimeconfig.dev.json
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ExpanderDemo\bin\Debug\netcoreapp3.1\ExpanderDemo.dll
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ExpanderDemo\bin\Debug\netcoreapp3.1\ExpanderDemo.pdb
-G:\work\tak_docs\src\WpfCoreExamples\Examples\ExpanderDemo\obj\Debug\netcoreapp3.1\ExpanderDemo.csprojAssemblyReference.cache
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ExpanderDemo\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ExpanderDemo\obj\Debug\netcoreapp3.1\App.g.cs
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ExpanderDemo\obj\Debug\netcoreapp3.1\ExpanderDemo_MarkupCompile.cache
@@ -55,3 +54,4 @@ G:\work\tak_docs\src\WpfCoreExamples\Examples\ExpanderDemo\obj\Debug\netcoreapp3
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ExpanderDemo\obj\Debug\netcoreapp3.1\ExpanderDemo.dll
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ExpanderDemo\obj\Debug\netcoreapp3.1\ExpanderDemo.pdb
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ExpanderDemo\obj\Debug\netcoreapp3.1\ExpanderDemo.genruntimeconfig.cache
+G:\work\tak_docs\src\WpfCoreExamples\Examples\ExpanderDemo\obj\Debug\netcoreapp3.1\ExpanderDemo.csprojAssemblyReference.cache

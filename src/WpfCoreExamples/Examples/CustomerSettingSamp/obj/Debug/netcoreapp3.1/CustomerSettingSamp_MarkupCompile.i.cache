@@ -1,5 +1,5 @@
 ﻿CustomerSettingSamp
-
+1.0.0.0
 
 winexe
 C#
@@ -12,7 +12,7 @@ TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 G:\work\tak_docs\src\WpfCoreExamples\Examples\CustomerSettingSamp\App.xaml
 2-612280565
 
-6-52463806
+7-950107562
 197927245283
 MainWindow.xaml;SaveWindow.xaml;
 

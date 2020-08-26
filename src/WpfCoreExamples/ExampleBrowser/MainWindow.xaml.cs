@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ButtonDemo;
+using ControlTemplateDemo;
 
 namespace ExampleBrowser
 {
@@ -29,22 +30,35 @@ namespace ExampleBrowser
             {
                 new Example(typeof(HelloWorld.MainWindow), null, "HelloWorld"),
                 new Example(typeof(GridDemo.MainWindow), null, "Gridの簡易デモ"),
-                new Example(typeof(ButtonDemo.MainWindow), null, "画像付ボタン、図形付ボタン、丸型ボタン（シンプル）"),
-                new Example(typeof(VariousButtonsDemo.MainWindow), null, "楕円形ボタン、リピートボタン、トグルボタン、TemplateBinding"),
+                new Example(typeof(ButtonDemo.MainWindow), null, "画像付ボタン、図形付ボタン、丸型ボタン（シンプル）、LayoutTransform（表示倍率）"),
+                new Example(typeof(VariousButtonsDemo.MainWindow), null, "楕円形ボタン、リピートボタン、トグルボタン、ControlTemplate、TemplateBinding"),
                 new Example(typeof(CheckBoxDemo.MainWindow), null, "CheckBoxの簡易デモ"),
                 new Example(typeof(RadioButtonDemo.MainWindow), null, "RadioButtonの簡易デモ"),
                 new Example(typeof(ExpanderDemo.MainWindow), null, "Expanderの簡易デモ"),
                 new Example(typeof(GroupBoxDemo.MainWindow), null, "GroupBoxの簡易デモ"),
-                new Example(typeof(ListViewDemo.MainWindow), null, "ListViewの簡易デモ、ItemTemplate"),
+                new Example(typeof(ListViewDemo.MainWindow), null, "ListViewの簡易デモ、ItemTemplate、DataTemplate"),
+                new Example(typeof(ListBoxDemo.MainWindow), null, "ListBoxの簡易デモ、ItemTemplate、DataTemplate、SelectionMode"),
                 new Example(typeof(ProgressBarDemo.MainWindow), null, "ProgressBarの簡易デモ"),
                 new Example(typeof(SliderDemo.MainWindow), null, "Sliderの簡易デモ"),
                 new Example(typeof(SQLiteDemo.MainWindow), null, "SQLiteの簡易デモ"),
-                new Example(typeof(CustomerSettingSamp.MainWindow), null, "SQLiteを用いたカスタマー設定サンプル"),
-                new Example(typeof(ComboBoxDemo.MainWindow), null, "ComboBoxの簡易デモ"),
+                new Example(typeof(CustomerSettingSamp.MainWindow), null, "SQLiteを用いたカスタマー設定サンプル、ItemTemplate、DataTemplate"),
+                new Example(typeof(ComboBoxDemo.MainWindow), null, "ComboBoxの簡易デモ、ItemTemplate、DataTemplate"),
+                new Example(typeof(TabControlDemo.MainWindow), null, "TabControlの簡易デモ"),
+                new Example(typeof(TreeViewDemo.MainWindow), null, "TreeViewの簡易デモ"),
+                new Example(typeof(TextBlock_TextBoxDemo.MainWindow), null, "TextBlock、およびTextBoxDemoの簡易デモ"),
+                new Example(typeof(MenuDemo.MainWindow), null, "Menuの簡易デモ"),
+                new Example(typeof(ToolBarDemo.MainWindow), null, "ToolBarの簡易デモ"),
+                new Example(typeof(StatusBarDemo.MainWindow), null, "StatusBarの簡易デモ"),
+                new Example(typeof(WrapPanelDemo.MainWindow), null, "WrapPanelの簡易デモ"),
+                new Example(typeof(DockPanelDemo.MainWindow), null, "DockPanelの簡易デモ"),
+                new Example(typeof(CanvasDemo.MainWindow), null, "Canvasの簡易デモ"),
+                new Example(typeof(TriggerDemo.MainWindow), null, "Triggerの簡易デモ"),
+                new Example(typeof(ControlTemplateDemo.MainWindow), null, "ControlTemplateの簡易デモ"),
                 new Example(typeof(DataTemplateDemo.MainWindow), null, ""),
             };
             this.ExamplesComplex = new List<Example>
             {
+                new Example(typeof(CustomButtonDemo.MainWindow), null, "カスタムボタン"),
                 new Example(typeof(AnimatedButton.MainWindow), null, "アニメーションボタン、ControlTemplate"),
             };
         }

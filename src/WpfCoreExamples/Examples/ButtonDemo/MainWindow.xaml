@@ -8,6 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <StackPanel VerticalAlignment="Center" >
+            <!--StackPane内を2倍にする-->
             <StackPanel.LayoutTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>

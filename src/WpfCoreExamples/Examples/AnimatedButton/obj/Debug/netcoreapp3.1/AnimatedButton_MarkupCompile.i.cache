@@ -1,5 +1,5 @@
 ﻿AnimatedButton
-
+1.0.0.0
 
 winexe
 C#
@@ -12,7 +12,7 @@ TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 G:\work\tak_docs\src\WpfCoreExamples\Examples\AnimatedButton\App.xaml
 11151548125
 
-41640801501
+52121626465
 1921654412462
 MainWindow.xaml;
 

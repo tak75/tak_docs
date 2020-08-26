@@ -42,7 +42,6 @@ G:\work\tak_docs\src\WpfCoreExamples\Examples\GroupBoxDemo\bin\Debug\netcoreapp3
 G:\work\tak_docs\src\WpfCoreExamples\Examples\GroupBoxDemo\bin\Debug\netcoreapp3.1\GroupBoxDemo.runtimeconfig.dev.json
 G:\work\tak_docs\src\WpfCoreExamples\Examples\GroupBoxDemo\bin\Debug\netcoreapp3.1\GroupBoxDemo.dll
 G:\work\tak_docs\src\WpfCoreExamples\Examples\GroupBoxDemo\bin\Debug\netcoreapp3.1\GroupBoxDemo.pdb
-G:\work\tak_docs\src\WpfCoreExamples\Examples\GroupBoxDemo\obj\Debug\netcoreapp3.1\GroupBoxDemo.csprojAssemblyReference.cache
 G:\work\tak_docs\src\WpfCoreExamples\Examples\GroupBoxDemo\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 G:\work\tak_docs\src\WpfCoreExamples\Examples\GroupBoxDemo\obj\Debug\netcoreapp3.1\App.g.cs
 G:\work\tak_docs\src\WpfCoreExamples\Examples\GroupBoxDemo\obj\Debug\netcoreapp3.1\GroupBoxDemo_MarkupCompile.cache
@@ -55,3 +54,4 @@ G:\work\tak_docs\src\WpfCoreExamples\Examples\GroupBoxDemo\obj\Debug\netcoreapp3
 G:\work\tak_docs\src\WpfCoreExamples\Examples\GroupBoxDemo\obj\Debug\netcoreapp3.1\GroupBoxDemo.dll
 G:\work\tak_docs\src\WpfCoreExamples\Examples\GroupBoxDemo\obj\Debug\netcoreapp3.1\GroupBoxDemo.pdb
 G:\work\tak_docs\src\WpfCoreExamples\Examples\GroupBoxDemo\obj\Debug\netcoreapp3.1\GroupBoxDemo.genruntimeconfig.cache
+G:\work\tak_docs\src\WpfCoreExamples\Examples\GroupBoxDemo\obj\Debug\netcoreapp3.1\GroupBoxDemo.csprojAssemblyReference.cache

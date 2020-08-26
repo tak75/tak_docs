@@ -42,7 +42,6 @@ G:\work\tak_docs\src\WpfCoreExamples\Examples\RadioButtonDemo\bin\Debug\netcorea
 G:\work\tak_docs\src\WpfCoreExamples\Examples\RadioButtonDemo\bin\Debug\netcoreapp3.1\RadioButtonDemo.runtimeconfig.dev.json
 G:\work\tak_docs\src\WpfCoreExamples\Examples\RadioButtonDemo\bin\Debug\netcoreapp3.1\RadioButtonDemo.dll
 G:\work\tak_docs\src\WpfCoreExamples\Examples\RadioButtonDemo\bin\Debug\netcoreapp3.1\RadioButtonDemo.pdb
-G:\work\tak_docs\src\WpfCoreExamples\Examples\RadioButtonDemo\obj\Debug\netcoreapp3.1\RadioButtonDemo.csprojAssemblyReference.cache
 G:\work\tak_docs\src\WpfCoreExamples\Examples\RadioButtonDemo\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 G:\work\tak_docs\src\WpfCoreExamples\Examples\RadioButtonDemo\obj\Debug\netcoreapp3.1\App.g.cs
 G:\work\tak_docs\src\WpfCoreExamples\Examples\RadioButtonDemo\obj\Debug\netcoreapp3.1\RadioButtonDemo_MarkupCompile.cache

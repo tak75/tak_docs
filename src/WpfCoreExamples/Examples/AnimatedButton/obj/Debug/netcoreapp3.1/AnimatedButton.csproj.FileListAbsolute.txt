@@ -23,7 +23,6 @@ G:\work\tak_docs\src\WpfCoreExamples\Examples\AnimatedButton\bin\Debug\netcoreap
 G:\work\tak_docs\src\WpfCoreExamples\Examples\AnimatedButton\bin\Debug\netcoreapp3.1\AnimatedButton.runtimeconfig.dev.json
 G:\work\tak_docs\src\WpfCoreExamples\Examples\AnimatedButton\bin\Debug\netcoreapp3.1\AnimatedButton.dll
 G:\work\tak_docs\src\WpfCoreExamples\Examples\AnimatedButton\bin\Debug\netcoreapp3.1\AnimatedButton.pdb
-G:\work\tak_docs\src\WpfCoreExamples\Examples\AnimatedButton\obj\Debug\netcoreapp3.1\AnimatedButton.csprojAssemblyReference.cache
 G:\work\tak_docs\src\WpfCoreExamples\Examples\AnimatedButton\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 G:\work\tak_docs\src\WpfCoreExamples\Examples\AnimatedButton\obj\Debug\netcoreapp3.1\App.g.cs
 G:\work\tak_docs\src\WpfCoreExamples\Examples\AnimatedButton\obj\Debug\netcoreapp3.1\AnimatedButton_MarkupCompile.cache
@@ -36,3 +35,4 @@ G:\work\tak_docs\src\WpfCoreExamples\Examples\AnimatedButton\obj\Debug\netcoreap
 G:\work\tak_docs\src\WpfCoreExamples\Examples\AnimatedButton\obj\Debug\netcoreapp3.1\AnimatedButton.dll
 G:\work\tak_docs\src\WpfCoreExamples\Examples\AnimatedButton\obj\Debug\netcoreapp3.1\AnimatedButton.pdb
 G:\work\tak_docs\src\WpfCoreExamples\Examples\AnimatedButton\obj\Debug\netcoreapp3.1\AnimatedButton.genruntimeconfig.cache
+G:\work\tak_docs\src\WpfCoreExamples\Examples\AnimatedButton\obj\Debug\netcoreapp3.1\AnimatedButton.csprojAssemblyReference.cache

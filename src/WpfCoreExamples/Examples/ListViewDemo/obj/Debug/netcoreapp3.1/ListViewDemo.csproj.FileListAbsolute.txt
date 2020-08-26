@@ -42,7 +42,6 @@ G:\work\tak_docs\src\WpfCoreExamples\Examples\ListViewDemo\bin\Debug\netcoreapp3
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ListViewDemo\bin\Debug\netcoreapp3.1\ListViewDemo.runtimeconfig.dev.json
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ListViewDemo\bin\Debug\netcoreapp3.1\ListViewDemo.dll
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ListViewDemo\bin\Debug\netcoreapp3.1\ListViewDemo.pdb
-G:\work\tak_docs\src\WpfCoreExamples\Examples\ListViewDemo\obj\Debug\netcoreapp3.1\ListViewDemo.csprojAssemblyReference.cache
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ListViewDemo\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ListViewDemo\obj\Debug\netcoreapp3.1\App.g.cs
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ListViewDemo\obj\Debug\netcoreapp3.1\ListViewDemo_MarkupCompile.cache

@@ -41,7 +41,6 @@ G:\work\tak_docs\src\WpfCoreExamples\Examples\CheckBoxDemo\bin\Debug\netcoreapp3
 G:\work\tak_docs\src\WpfCoreExamples\Examples\CheckBoxDemo\bin\Debug\netcoreapp3.1\CheckBoxDemo.runtimeconfig.dev.json
 G:\work\tak_docs\src\WpfCoreExamples\Examples\CheckBoxDemo\bin\Debug\netcoreapp3.1\CheckBoxDemo.dll
 G:\work\tak_docs\src\WpfCoreExamples\Examples\CheckBoxDemo\bin\Debug\netcoreapp3.1\CheckBoxDemo.pdb
-G:\work\tak_docs\src\WpfCoreExamples\Examples\CheckBoxDemo\obj\Debug\netcoreapp3.1\CheckBoxDemo.csprojAssemblyReference.cache
 G:\work\tak_docs\src\WpfCoreExamples\Examples\CheckBoxDemo\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 G:\work\tak_docs\src\WpfCoreExamples\Examples\CheckBoxDemo\obj\Debug\netcoreapp3.1\App.g.cs
 G:\work\tak_docs\src\WpfCoreExamples\Examples\CheckBoxDemo\obj\Debug\netcoreapp3.1\CheckBoxDemo_MarkupCompile.cache
@@ -54,3 +53,4 @@ G:\work\tak_docs\src\WpfCoreExamples\Examples\CheckBoxDemo\obj\Debug\netcoreapp3
 G:\work\tak_docs\src\WpfCoreExamples\Examples\CheckBoxDemo\obj\Debug\netcoreapp3.1\CheckBoxDemo.dll
 G:\work\tak_docs\src\WpfCoreExamples\Examples\CheckBoxDemo\obj\Debug\netcoreapp3.1\CheckBoxDemo.pdb
 G:\work\tak_docs\src\WpfCoreExamples\Examples\CheckBoxDemo\obj\Debug\netcoreapp3.1\CheckBoxDemo.genruntimeconfig.cache
+G:\work\tak_docs\src\WpfCoreExamples\Examples\CheckBoxDemo\obj\Debug\netcoreapp3.1\CheckBoxDemo.csprojAssemblyReference.cache
