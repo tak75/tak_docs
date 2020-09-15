@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
   <head>
     <meta charset="utf-8" />
-    <title>LINQ &#8212; Tak Documents  ドキュメント</title>
+    <title>VisualStudio &#8212; Tak Documents  ドキュメント</title>
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
@@ -20,7 +20,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="デザインパターン" href="../デザインパターン/index.html" />
-    <link rel="prev" title="Prism" href="Prism.html" />
+    <link rel="prev" title="LINQ" href="LINQ.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script src="_static/css3-mediaqueries.js"></script>
@@ -36,7 +36,7 @@
           <a href="../デザインパターン/index.html" title="デザインパターン"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
-          <a href="Prism.html" title="Prism"
+          <a href="LINQ.html" title="LINQ"
              accesskey="P">前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">C#</a> &#187;</li> 
@@ -58,7 +58,8 @@
 <li class="toctree-l2"><a class="reference internal" href="テスト駆動開発.html">テスト駆動開発</a></li>
 <li class="toctree-l2"><a class="reference internal" href=".NET Core + WPF.html">.NET Core + WPF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Prism.html">Prism</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">LINQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LINQ.html">LINQ</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">VisualStudio</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../デザインパターン/index.html">デザインパターン</a></li>
@@ -67,16 +68,17 @@
 
   <h3><a href="../index.html">目次</a></h3>
   <ul>
-<li><a class="reference internal" href="#">LINQ</a><ul>
-<li><a class="reference internal" href="#id1">引用元</a></li>
-<li><a class="reference internal" href="#id2">用語</a></li>
+<li><a class="reference internal" href="#">VisualStudio</a><ul>
+<li><a class="reference internal" href="#id1">ショートカット</a></li>
+<li><a class="reference internal" href="#id2">コードスニペット</a></li>
+<li><a class="reference internal" href="#id3">リファクタリング</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>前のトピックへ</h4>
-  <p class="topless"><a href="Prism.html"
-                        title="前の章へ">Prism</a></p>
+  <p class="topless"><a href="LINQ.html"
+                        title="前の章へ">LINQ</a></p>
   <h4>次のトピックへ</h4>
   <p class="topless"><a href="../デザインパターン/index.html"
                         title="次の章へ">デザインパターン</a></p>
@@ -98,26 +100,33 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="linq">
-<h1>LINQ<a class="headerlink" href="#linq" title="このヘッドラインへのパーマリンク">¶</a></h1>
+  <div class="section" id="visualstudio">
+<h1>VisualStudio<a class="headerlink" href="#visualstudio" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <div class="section" id="id1">
-<h2>引用元<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<ul class="simple">
-<li><p>C#プログラミング 新スタイルによる実践的コーディング（川俣晶）</p></li>
-<li><p>C#プログラムの効率的な書き方 LINQ to Objectsマニアックス（川俣晶）</p></li>
-</ul>
+<h2>ショートカット<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<dl class="simple">
+<dt>パラメータヒント</dt><dd><p>Ctrl + Shift + Space</p>
+</dd>
+<dt>インデント整形</dt><dd><p>Ctrl + K -&gt; Ctrl + F</p>
+</dd>
+<dt>ブロック終端移動</dt><dd><p>Ctrl + ]</p>
+</dd>
+<dt>全画面表示</dt><dd><p>Ctrl + Shift + Enter</p>
+</dd>
+<dt>ビルド</dt><dd><p>Ctrl + Shift + B</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="id2">
-<h2>用語<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<dl class="glossary simple">
-<dt id="term-linq">LINQ</dt><dd><p>Language Integrated Query の略。統合言語クエリ。
-文字列で記述されたクエリでは、その誤りは実行時に初めてエラーとして検出されるが、
-言語に統合されたクエリでは、エラーをコンパイル時に検出できるメリットがある。
-LINQは、元々.NET Framework 3.5 のクラスライブラリでサポートされたクラスライブラリである。
-そして、C#3.0で言語に統合された。
-C#4.0では、Parallel LINQ が導入され、マルチコアでの並列分散処理が容易に書けるようになった。</p>
+<h2>コードスニペット<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>構文を入力し、Tabを2回押すことで雛型を入力してくれる</p>
+</div>
+<div class="section" id="id3">
+<h2>リファクタリング<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<dl class="simple">
+<dt>フィールドのカプセル化（フィールドをプロパティに変更し、変更したプロパティを使用するように更新する）</dt><dd><p>Ctrl + R -&gt; Ctrl + E</p>
 </dd>
-<dt id="term-linq-to-objects">LINQ To Objects</dt><dd><p>.NET Framework のオブジェクトに対して問合せを行う技術。</p>
+<dt>リネーム</dt><dd><p>Ctrl + R -&gt; Ctrl + R</p>
 </dd>
 </dl>
 </div>
@@ -139,7 +148,7 @@ C#4.0では、Parallel LINQ が導入され、マルチコアでの並列分散�
           <a href="../デザインパターン/index.html" title="デザインパターン"
              >次へ</a> |</li>
         <li class="right" >
-          <a href="Prism.html" title="Prism"
+          <a href="LINQ.html" title="LINQ"
              >前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >C#</a> &#187;</li> 

@@ -10,3 +10,5 @@ C#
    .NET Core + WPF
    Prism
    LINQ
+   VisualStudio
+   

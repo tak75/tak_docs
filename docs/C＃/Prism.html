@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
   <head>
     <meta charset="utf-8" />
-    <title>LINQ &#8212; Tak Documents  ドキュメント</title>
+    <title>Prism &#8212; Tak Documents  ドキュメント</title>
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
@@ -19,8 +19,8 @@
     <script src="../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="デザインパターン" href="../デザインパターン/index.html" />
-    <link rel="prev" title="Prism" href="Prism.html" />
+    <link rel="next" title="LINQ" href="LINQ.html" />
+    <link rel="prev" title=".NET Core + WPF" href=".NET Core + WPF.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script src="_static/css3-mediaqueries.js"></script>
@@ -33,10 +33,10 @@
           <a href="../genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="../デザインパターン/index.html" title="デザインパターン"
+          <a href="LINQ.html" title="LINQ"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
-          <a href="Prism.html" title="Prism"
+          <a href=".NET Core + WPF.html" title=".NET Core + WPF"
              accesskey="P">前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">C#</a> &#187;</li> 
@@ -57,8 +57,8 @@
 <li class="toctree-l2"><a class="reference internal" href="仕様.html">仕様</a></li>
 <li class="toctree-l2"><a class="reference internal" href="テスト駆動開発.html">テスト駆動開発</a></li>
 <li class="toctree-l2"><a class="reference internal" href=".NET Core + WPF.html">.NET Core + WPF</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Prism.html">Prism</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">LINQ</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Prism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LINQ.html">LINQ</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../デザインパターン/index.html">デザインパターン</a></li>
@@ -67,19 +67,21 @@
 
   <h3><a href="../index.html">目次</a></h3>
   <ul>
-<li><a class="reference internal" href="#">LINQ</a><ul>
+<li><a class="reference internal" href="#">Prism</a><ul>
 <li><a class="reference internal" href="#id1">引用元</a></li>
 <li><a class="reference internal" href="#id2">用語</a></li>
+<li><a class="reference internal" href="#unity">Unity の使い方</a></li>
+<li><a class="reference internal" href="#id3">メモ</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>前のトピックへ</h4>
-  <p class="topless"><a href="Prism.html"
-                        title="前の章へ">Prism</a></p>
+  <p class="topless"><a href=".NET Core + WPF.html"
+                        title="前の章へ">.NET Core + WPF</a></p>
   <h4>次のトピックへ</h4>
-  <p class="topless"><a href="../デザインパターン/index.html"
-                        title="次の章へ">デザインパターン</a></p>
+  <p class="topless"><a href="LINQ.html"
+                        title="次の章へ">LINQ</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">クイック検索</h3>
     <div class="searchformwrapper">
@@ -98,28 +100,68 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="linq">
-<h1>LINQ<a class="headerlink" href="#linq" title="このヘッドラインへのパーマリンク">¶</a></h1>
+  <div class="section" id="prism">
+<h1>Prism<a class="headerlink" href="#prism" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <div class="section" id="id1">
 <h2>引用元<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
-<li><p>C#プログラミング 新スタイルによる実践的コーディング（川俣晶）</p></li>
-<li><p>C#プログラムの効率的な書き方 LINQ to Objectsマニアックス（川俣晶）</p></li>
+<li><p><a class="reference external" href="https://elf-mission.net/programming/wpf/episode01/">https://elf-mission.net/programming/wpf/episode01/</a></p></li>
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/05/07/014133">https://blog.okazuki.jp/entry/2014/05/07/014133</a></p></li>
 </ul>
 </div>
 <div class="section" id="id2">
 <h2>用語<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <dl class="glossary simple">
-<dt id="term-linq">LINQ</dt><dd><p>Language Integrated Query の略。統合言語クエリ。
-文字列で記述されたクエリでは、その誤りは実行時に初めてエラーとして検出されるが、
-言語に統合されたクエリでは、エラーをコンパイル時に検出できるメリットがある。
-LINQは、元々.NET Framework 3.5 のクラスライブラリでサポートされたクラスライブラリである。
-そして、C#3.0で言語に統合された。
-C#4.0では、Parallel LINQ が導入され、マルチコアでの並列分散処理が容易に書けるようになった。</p>
+<dt id="term-prism">Prism</dt><dd><p>MVVMパターンをサポートする機能が含まれている。
+NuGetで「Prism.Core」をインストール</p>
 </dd>
-<dt id="term-linq-to-objects">LINQ To Objects</dt><dd><p>.NET Framework のオブジェクトに対して問合せを行う技術。</p>
+<dt id="term-di">DI</dt><dd><p>Dependeny Injection。
+「依存性注入」と言うデザインパターンの 1 つ。
+依存性とはオブジェクトのことであり、コンストラクタインジェクション（コンストラクタの引数にオブジェクトを渡すこと）などを指す。</p>
+</dd>
+<dt id="term-0">DI コンテナ</dt><dd><p>DI を実行するためのライブラリ</p>
+</dd>
+<dt id="term-unity">Unity</dt><dd><p>DI コンテナ。
+DI を実行するために Prism に内蔵された機能。
+型やインスタンスを自由に出し入れできるグローバルなオブジェクト保管庫のようなもので、
+DI コンテナに登録した型やインスタンスはいつでも・どこでも取り出すことができる便利な保管庫。
+Prism.UnityはPrism.Wpfに依存し、Prism.WpfはPrism.Coreに依存するので、Prism.Unityだけインストールすればよい。</p>
+</dd>
+<dt id="term-reactiveproperty">ReactiveProperty</dt><dd><p>Reactive ExtensionsをベースとしたMVVMパターンのアプリケーションの作成をサポートするためのライブラリ。
+特徴としては、Reactive Extensionsをベースとしているため、全てをIObservableをベースとして捉えて、
+V, VM, Mすべてのレイヤをシームレスにつなぐことが可能な点。</p>
 </dd>
 </dl>
+</div>
+<div class="section" id="unity">
+<h2>Unity の使い方<a class="headerlink" href="#unity" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p>DI コンテナへインスタンスを登録する</p>
+<p>RegisterInstance メソッドを使用する。
+登録したインスタンスは Singleton のように振舞うので、
+ソリューション内のプロジェクト間で同一のインスタンスを引き回して使う場合に適している</p>
+</li>
+<li><p>DI コンテナからインスタンスを取り出す</p>
+<p>IContainerProvider.Resolve メソッドで登録された型やインスタンスを引き出すことが可能。
+ただし、VM 内部で Resolve&lt;WpfTestAppData&gt;() すると、WpfTestAppData に依存していることになるので
+DI パターンとは言えないので要注意。</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>メモ<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p>追加した UserControl をデザイナー画面で見るとレイアウトが崩れる場合の対応。
+新しい項目の追加から View を追加した場合は、極小の UserControl が表示されたりする場合がある。
+この場合は、以下の4行をxamlに追加すると解消される。</p>
+<div class="highlight-xaml notranslate"><div class="highlight"><pre><span></span>xmlns:mc=&quot;http://schemas.openxmlformats.org/markup-compatibility/2006&quot;
+xmlns:d=&quot;http://schemas.microsoft.com/expression/blend/2008&quot;
+mc:Ignorable=&quot;d&quot;
+d:DesignHeight=&quot;300&quot; d:DesignWidth=&quot;300&quot;
+</pre></div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 
@@ -136,10 +178,10 @@ C#4.0では、Parallel LINQ が導入され、マルチコアでの並列分散�
           <a href="../genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="../デザインパターン/index.html" title="デザインパターン"
+          <a href="LINQ.html" title="LINQ"
              >次へ</a> |</li>
         <li class="right" >
-          <a href="Prism.html" title="Prism"
+          <a href=".NET Core + WPF.html" title=".NET Core + WPF"
              >前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >C#</a> &#187;</li> 
