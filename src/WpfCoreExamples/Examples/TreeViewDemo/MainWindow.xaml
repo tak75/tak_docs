@@ -1,0 +1,46 @@
+﻿<Window x:Class="TreeViewDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TreeViewDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300" Width="300">
+    <Grid>
+        <StackPanel>
+            <TreeView FontSize="20">
+                <TreeViewItem Header="A部">
+                    <TreeViewItem Header="Aグループ">
+                        <TreeViewItem Header="グループ員１"/>
+                        <TreeViewItem Header="グループ員２"/>
+                        <TreeViewItem Header="グループ員３"/>
+                    </TreeViewItem>
+                </TreeViewItem>
+            </TreeView>
+
+            <TreeView FontSize="20">
+                <TreeViewItem>
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse Height="10"
+                                     Width="10"
+                                     Margin="6"
+                                     Fill="Red"/>
+                            <TextBlock Text="B部"/>
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                    <TreeViewItem Header="グループ員１"/>
+                </TreeViewItem>
+            </TreeView>
+
+            <TreeView x:Name="CTreeView" FontSize="20">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate DataType="local:Dto"
+                                              ItemsSource="{Binding Dtos}">
+                        <TextBlock Text="{Binding Name}"/>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+        </StackPanel>
+    </Grid>
+</Window>

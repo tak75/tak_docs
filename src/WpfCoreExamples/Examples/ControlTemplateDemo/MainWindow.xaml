@@ -1,0 +1,75 @@
+﻿<Window x:Class="ControlTemplateDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ControlTemplateDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="400">
+    <Grid>
+        <StackPanel Margin="10">
+            <StackPanel.Resources>
+                <!-- 自動適用スタイル -->
+                <Style TargetType="Button">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <!--TemplateBinding：コントロール・テンプレートの適用先の
+                                    コントロールに与えられたプロパティ値（本例ではButtonのBackgroud）
+                                    を取得するために利用する-->
+                                    <!--<Ellipse Fill="{TemplateBinding Background}"/>-->
+                                    <Ellipse x:Name="Inner" Fill="AliceBlue" StrokeThickness="1" Stroke="Black"/>
+                                    <!--ContentPresenter：この要素がが置かれた位置にコントロールの中身
+                                    （＝Contentプロパティに与えた値）が配置される。-->
+                                    <ContentPresenter
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="Inner" Property="Fill" Value="LightPink" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="Inner" Property="Fill" Value="Red" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </StackPanel.Resources>
+
+            <!--上記のテンプレートを適用したボタン-->
+            <Button Content="ボタン1" Background="LightBlue" Height="50" Width="50" Margin="10" />
+            <Button Content="ボタン2" Background="LightPink" Height="50" Width="50" Margin="10" />
+
+            <!--外部のカスタムボタンを利用したボタン-->
+            <local:CustomButton
+            Canvas.Left="10"
+            Canvas.Top="10"
+            Width="100"
+            Height="20"
+            Content="ボタン１"
+            />
+            <local:CustomButton
+            Canvas.Left="10"
+            Canvas.Top="40"
+            Width="100"
+            Height="20"
+            Content="ボタン２"
+            />
+            <local:CustomButton
+            Canvas.Left="10"
+            Canvas.Top="70"
+            Width="100"
+            Height="20"
+            Content="ボタン３"
+            IsEnabled="False"
+            />
+            <!--外部のLabelToggleButton-->
+            <local:LabelToggleButton Content="test" Width="60"/>
+            <ToggleButton Content="default" Width="60"/>
+        </StackPanel>
+    </Grid>
+</Window>

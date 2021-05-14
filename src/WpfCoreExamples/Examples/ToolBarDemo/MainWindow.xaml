@@ -1,0 +1,27 @@
+﻿<Window x:Class="ToolBarDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToolBarDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="200" Width="300">
+    <StackPanel>
+        <ToolBar Height="45"
+                 VerticalAlignment="Top">
+            <Button>
+                <!--使用する画像は　"ビルドアクション"＝"リソース"　にしておくこと！-->
+                <Image Source="Images\icon_002521_32.png"/>
+            </Button>
+            <Separator/>
+            <Button Click="Button_Click">
+                <Image Source="Images\icon_113431_32.png"/>
+            </Button>
+        </ToolBar>
+        <TextBlock
+            Margin="5"
+            TextWrapping="Wrap"
+            Text="使用する画像は、プロパティで、「ビルドアクション ＝ リソース」にしておくこと！">
+        </TextBlock>
+    </StackPanel>
+</Window>

@@ -1,0 +1,50 @@
+﻿<Window x:Class="TextBlock_TextBoxDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TextBlock_TextBoxDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300" Width="300">
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="AAA BBB CCC DDD EEE FFF"
+                       FontSize="20"
+                       Width="120"
+                       FontWeight="Bold"
+                       FontStyle="Italic"
+                       TextTrimming="CharacterEllipsis"
+                       />
+
+            <TextBlock Text="AAA BBB CCC DDD EEE FFF"
+                       FontSize="20"
+                       Width="120"
+                       FontWeight="Bold"
+                       FontStyle="Italic"
+                       TextTrimming="WordEllipsis"
+                       />
+
+            <TextBlock FontSize="20"
+                       Width="120">
+                <Run Text="AAA"/>
+                <LineBreak/>
+                <Run Text="BBB"/>
+            </TextBlock>
+
+            <TextBox FontSize="20"
+                     Width="120"
+                     Text="aaabbbcccdddeeefff abc"
+                     TextWrapping="NoWrap"/>
+
+            <TextBox FontSize="20"
+                     Width="120"
+                     Text="aaabbbcccdddeeefff abc"
+                     TextWrapping="Wrap"/>
+
+            <TextBox FontSize="20"
+                     Width="120"
+                     Text="aaabbbcccdddeeefff abc"
+                     TextWrapping="WrapWithOverflow"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,22 @@
+﻿<Window x:Class="MenuDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MenuDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="200" Width="300">
+    <Grid>
+        <StackPanel Margin="0 10 0 0">
+            <Menu>
+                <MenuItem Header="ファイル">
+                    <MenuItem Header="開く"/>
+                    <MenuItem Header="新規">
+                        <MenuItem Header="雛形"/>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="編集"/>
+                <MenuItem Header="印刷" Click="MenuItem_Click"/>
+            </Menu>
+        </StackPanel>
+    </Grid></Window>

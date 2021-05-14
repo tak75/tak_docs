@@ -1,0 +1,49 @@
+﻿<Window x:Class="DockPanelDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DockPanelDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300" Width="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <DockPanel LastChildFill="False">
+            <Button DockPanel.Dock="Top" Content="Top" FontSize="20"/>
+            <Button DockPanel.Dock="Left" Content="Left" FontSize="20"/>
+            <Button DockPanel.Dock="Right" Content="Right" FontSize="20"/>
+            <Button DockPanel.Dock="Bottom" FontSize="20">
+                <StackPanel>
+                    <TextBlock
+                        Text="Bottom">
+                    </TextBlock>
+                    <TextBlock
+                        TextWrapping="Wrap"
+                        Text="（LastChildFill=False）">
+                    </TextBlock>
+                </StackPanel>
+            </Button>
+        </DockPanel>
+
+        <DockPanel Grid.Column="1" LastChildFill="True">
+            <Button DockPanel.Dock="Top" Content="Top" FontSize="20"/>
+            <Button DockPanel.Dock="Left" Content="Left" FontSize="20"/>
+            <Button DockPanel.Dock="Right" Content="Right" FontSize="20"/>
+            <Button DockPanel.Dock="Bottom" FontSize="20">
+                <StackPanel>
+                    <TextBlock
+                        Text="Bottom">
+                    </TextBlock>
+                    <TextBlock
+                        TextWrapping="Wrap"
+                        Text="（LastChildFill=True の指定により、最後の要素が残りのスペースを埋める）">
+                    </TextBlock>
+                </StackPanel>
+            </Button>
+        </DockPanel>
+    </Grid>
+</Window>

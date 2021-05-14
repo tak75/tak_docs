@@ -1,0 +1,42 @@
+﻿<Window x:Class="ListBoxDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ListBoxDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300" Width="300">
+    <Grid>
+        <StackPanel>
+            <ListBox x:Name="MyListBox"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Top"
+                     Margin="10"
+                     Width="260"
+                     Height="180">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding FileName}"
+                                   Width="50"
+                                   Height="50"
+                                   Margin="10"
+                                   />
+                            <TextBlock Text="{Binding Name}"
+                                       Margin="10"
+                                       />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <StackPanel Orientation="Horizontal">
+                <RadioButton x:Name="SingleRadioButton" Content="Single" Checked="RadioButton_Checked"/>
+                <RadioButton x:Name="ExtendedRadioButton" Content="Extended" Checked="RadioButton_Checked"/>
+                <RadioButton x:Name="MultipleRadioButton" Content="Multiple" Checked="RadioButton_Checked"/>
+            </StackPanel>
+            <Button FontSize="20"
+                    Content="check"
+                    Click="Button_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
