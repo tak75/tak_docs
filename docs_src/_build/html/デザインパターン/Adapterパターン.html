@@ -2,9 +2,10 @@
 
 <!doctype html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<html lang="ja">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Adapterパターン &#8212; Tak Documents  ドキュメント</title>
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -15,13 +16,13 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/language_data.js"></script>
     <script src="../_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="Facadeパターン" href="Facadeパターン.html" />
-    <link rel="prev" title="Commandパターン" href="Commandパターン.html" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="next" title="Facadeパターン" href="Facade%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3.html" />
+    <link rel="prev" title="Commandパターン" href="Command%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <!--[if lt IE 9]>
     <script src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
@@ -33,80 +34,16 @@
           <a href="../genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="Facadeパターン.html" title="Facadeパターン"
+          <a href="Facade%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3.html" title="Facadeパターン"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
-          <a href="Commandパターン.html" title="Commandパターン"
+          <a href="Command%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3.html" title="Commandパターン"
              accesskey="P">前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">デザインパターン</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">デザインパターン</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Adapterパターン</a></li> 
       </ul>
-    </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h3><a href="../index.html">目次</a></h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../sphinx/index.html">Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../GitHub/index.html">GitHub</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../VirtualBox/index.html">VirtualBox</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Linux/index.html">Linux</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../raspberry_pi/index.html">Raspberry Pi</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Webアプリ/index.html">Webアプリ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../C#/index.html">C#</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">デザインパターン</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="全体.html">全体</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Strategyパターン.html">Strategyパターン</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Observerパターン.html">Observerパターン</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Decoratorパターン.html">Decoratorパターン</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Factoryパターン.html">Factoryパターン</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Singletonパターン.html">Singletonパターン</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Commandパターン.html">Commandパターン</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Adapterパターン</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Facadeパターン.html">Facadeパターン</a></li>
-<li class="toctree-l2"><a class="reference internal" href="TemplateMethodパターン.html">TemplateMethodパターン</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Iteratorパターン.html">Iteratorパターン</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Compositeパターン.html">Compositeパターン</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Stateパターン.html">Stateパターン</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Compoundパターン.html">Compoundパターン</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../備忘録/index.html">備忘録</a></li>
-</ul>
-
-  <h3><a href="../index.html">目次</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Adapterパターン</a><ul>
-<li><a class="reference internal" href="#id1">適用ケース</a></li>
-<li><a class="reference internal" href="#id2">定義</a></li>
-<li><a class="reference internal" href="#id3">説明</a></li>
-<li><a class="reference internal" href="#id4">図面</a><ul>
-<li><a class="reference internal" href="#id5">オブジェクトアダプタ</a></li>
-<li><a class="reference internal" href="#id7">クラスアダプタ</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-  <h4>前のトピックへ</h4>
-  <p class="topless"><a href="Commandパターン.html"
-                        title="前の章へ">Commandパターン</a></p>
-  <h4>次のトピックへ</h4>
-  <p class="topless"><a href="Facadeパターン.html"
-                        title="次の章へ">Facadeパターン</a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">クイック検索</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="検索" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-        </div>
-      </div>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -169,7 +106,73 @@
 </div>
 
 
+            <div class="clearer"></div>
           </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">目次</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VirtualBox/index.html">VirtualBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Web%E3%82%A2%E3%83%97%E3%83%AA/index.html">Webアプリ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../C%EF%BC%83/index.html">C＃</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">デザインパターン</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="%E5%85%A8%E4%BD%93.html">全体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Strategy%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3.html">Strategyパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Observer%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3.html">Observerパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Decorator%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3.html">Decoratorパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Factory%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3.html">Factoryパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Singleton%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3.html">Singletonパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Command%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3.html">Commandパターン</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Adapterパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Facade%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3.html">Facadeパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TemplateMethod%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3.html">TemplateMethodパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Iterator%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3.html">Iteratorパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Composite%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3.html">Compositeパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="State%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3.html">Stateパターン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Compound%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3.html">Compoundパターン</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../%E5%82%99%E5%BF%98%E9%8C%B2/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Adapterパターン</a><ul>
+<li><a class="reference internal" href="#id1">適用ケース</a></li>
+<li><a class="reference internal" href="#id2">定義</a></li>
+<li><a class="reference internal" href="#id3">説明</a></li>
+<li><a class="reference internal" href="#id4">図面</a><ul>
+<li><a class="reference internal" href="#id5">オブジェクトアダプタ</a></li>
+<li><a class="reference internal" href="#id7">クラスアダプタ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="Command%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3.html"
+                        title="前の章へ">Commandパターン</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="Facade%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3.html"
+                        title="次の章へ">Facadeパターン</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -181,18 +184,19 @@
           <a href="../genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="Facadeパターン.html" title="Facadeパターン"
+          <a href="Facade%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3.html" title="Facadeパターン"
              >次へ</a> |</li>
         <li class="right" >
-          <a href="Commandパターン.html" title="Commandパターン"
+          <a href="Command%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3.html" title="Commandパターン"
              >前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >デザインパターン</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >デザインパターン</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Adapterパターン</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, tak.
-      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.0 で生成しました。
+        &#169; Copyright 2021, tak.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
     </div>
   </body>
 </html>

@@ -65,7 +65,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Tak Documents'
-copyright = '2020, tak'
+copyright = '2021, tak'
 author = 'tak'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -136,8 +136,8 @@ htmlhelp_basename = 'TakDocumentsdoc'
 
 
 # 日本語で検索できるように（2018/3/7　不要？）
-html_search_language = 'ja'
-html_search_options = {'type':'default'}
+#html_search_language = 'ja'
+#html_search_options = {'type':'default'}
 
 # -- Options for LaTeX output ---------------------------------------------
 

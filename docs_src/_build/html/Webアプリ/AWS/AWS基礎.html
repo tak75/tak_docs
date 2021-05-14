@@ -2,9 +2,10 @@
 
 <!doctype html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<html lang="ja">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AWS基礎 &#8212; Tak Documents  ドキュメント</title>
     <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -15,13 +16,13 @@
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/language_data.js"></script>
     <script src="../../_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
-    <link rel="next" title="AWS応用" href="AWS応用.html" />
+    <link rel="next" title="AWS応用" href="AWS%E5%BF%9C%E7%94%A8.html" />
     <link rel="prev" title="AWS" href="index.html" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <!--[if lt IE 9]>
     <script src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
@@ -33,106 +34,17 @@
           <a href="../../genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="AWS応用.html" title="AWS応用"
+          <a href="AWS%E5%BF%9C%E7%94%A8.html" title="AWS応用"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
           <a href="index.html" title="AWS"
              accesskey="P">前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Webアプリ</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">AWS</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">AWS</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">AWS基礎</a></li> 
       </ul>
-    </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h3><a href="../../index.html">目次</a></h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../raspberry_pi/index.html">Raspberry Pi</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Webアプリ</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../用語.html">用語</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">AWS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../HTML.html">HTML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../CSS.html">CSS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Bootstrap.html">Bootstrap</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../JavaScript.html">JavaScript</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Flask/index.html">Flask</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Ruby.html">Ruby</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MySQL.html">MySQL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Ruby on Rails.html">Ruby on Rails</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../共通のメモ.html">共通のメモ</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../C#/index.html">C#</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../デザインパターン/index.html">デザインパターン</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../備忘録/index.html">備忘録</a></li>
-</ul>
-
-  <h3><a href="../../index.html">目次</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">AWS基礎</a><ul>
-<li><a class="reference internal" href="#id1">概要</a></li>
-<li><a class="reference internal" href="#id2">初期設定</a></li>
-<li><a class="reference internal" href="#id3">操作</a><ul>
-<li><a class="reference internal" href="#id4">AWS環境の基本モデル</a></li>
-<li><a class="reference internal" href="#id6">本ページで構築するAWS環境</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#vpc">【VPC】ネットワーク構築</a><ul>
-<li><a class="reference internal" href="#id8">用語</a></li>
-<li><a class="reference internal" href="#id9">手順</a></li>
-<li><a class="reference internal" href="#id10">補足</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#ec2web">【EC2】Webサーバ構築</a><ul>
-<li><a class="reference internal" href="#id11">用語</a></li>
-<li><a class="reference internal" href="#id12">手順</a></li>
-<li><a class="reference internal" href="#id13">補足</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#route53">【Route53】ドメインを登録する</a><ul>
-<li><a class="reference internal" href="#id14">用語</a></li>
-<li><a class="reference internal" href="#id15">手順</a></li>
-<li><a class="reference internal" href="#id16">補足</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#rdsdb">【RDS】DBサーバを構築する</a><ul>
-<li><a class="reference internal" href="#id17">用語</a></li>
-<li><a class="reference internal" href="#id18">手順</a></li>
-<li><a class="reference internal" href="#id19">補足</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#ec2wordpress">【EC2】WordPressを構築する</a><ul>
-<li><a class="reference internal" href="#id20">用語</a></li>
-<li><a class="reference internal" href="#id21">手順</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-  <h4>前のトピックへ</h4>
-  <p class="topless"><a href="index.html"
-                        title="前の章へ">AWS</a></p>
-  <h4>次のトピックへ</h4>
-  <p class="topless"><a href="AWS応用.html"
-                        title="次の章へ">AWS応用</a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">クイック検索</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="検索" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-        </div>
-      </div>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -184,8 +96,8 @@
 <li><p>CloudTrailで操作ログを記録</p>
 <ul>
 <li><p>デフォルトで有効になっているが、保存期間は90日のみ</p></li>
-<li><p><a class="reference internal" href="AWS応用.html#term-s3"><span class="xref std std-term">S3</span></a> に操作ログを保存することで、永久的に保存できる</p></li>
-<li><p>ただし、CloudTrail自体は無料だが、<a class="reference internal" href="AWS応用.html#term-s3"><span class="xref std std-term">S3</span></a> の料金は必要</p></li>
+<li><p><a class="reference internal" href="AWS%E5%BF%9C%E7%94%A8.html#term-S3"><span class="xref std std-term">S3</span></a> に操作ログを保存することで、永久的に保存できる</p></li>
+<li><p>ただし、CloudTrail自体は無料だが、<a class="reference internal" href="AWS%E5%BF%9C%E7%94%A8.html#term-S3"><span class="xref std std-term">S3</span></a> の料金は必要</p></li>
 </ul>
 </li>
 </ul>
@@ -230,7 +142,7 @@
 <li><p>リージョン内にはアベイラビリティゾーンが複数あり、災害等で1つが使用できなくなっても他で代替できる</p></li>
 </ul>
 </dd>
-<dt id="term-vpc">VPC</dt><dd><ul class="simple">
+<dt id="term-VPC">VPC</dt><dd><ul class="simple">
 <li><p>Virtual Private Cloud</p></li>
 <li><p>AWS上に仮想ネットワークを作成できるサービス</p></li>
 <li><p>IPv4 アドレスの範囲を CIDRブロックの形式で指定する必要がある (例: 10.0.0.0/16)。</p></li>
@@ -256,7 +168,7 @@
 <li><p>IPv4 アドレス範囲は/24が標準的</p></li>
 </ul>
 </dd>
-<dt id="term-ip">IPアドレスの表記</dt><dd><ul class="simple">
+<dt id="term-IP">IPアドレスの表記</dt><dd><ul class="simple">
 <li><p>CIDR表記（サイダー）</p>
 <ul>
 <li><p>Classless Inter-Domain Routing</p></li>
@@ -346,7 +258,7 @@
 <div class="section" id="id11">
 <h3>用語<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary">
-<dt id="term-ec2">EC2</dt><dd><ul class="simple">
+<dt id="term-EC2">EC2</dt><dd><ul class="simple">
 <li><p>Elastic Compute Cloud</p></li>
 <li><p>AWSクラウド上の仮想サーバ</p></li>
 <li><p>数分で起動し、1時間または秒単位で従量課金</p></li>
@@ -358,7 +270,7 @@
 ただし、Elastic IPアドレス（条件により課金）を使うとEC2を削除するまでIPアドレスを固定することが可能。</p>
 </div>
 </dd>
-<dt id="term-ami">AMI</dt><dd><ul class="simple">
+<dt id="term-AMI">AMI</dt><dd><ul class="simple">
 <li><p>Amazon Machine Image</p></li>
 <li><p>「アミ」と読む</p></li>
 <li><p>Amazon Machine image</p></li>
@@ -402,10 +314,10 @@
 </dd>
 <dt id="term-5">ストレージ</dt><dd><ul class="simple">
 <li><p>サーバにくっつけるデータの保管場所</p></li>
-<li><p>EC2には <a class="reference internal" href="#term-ebs"><span class="xref std std-term">EBS</span></a> と <a class="reference internal" href="#term-6"><span class="xref std std-term">インスタンスストア</span></a> の2種類がある</p></li>
+<li><p>EC2には <a class="reference internal" href="#term-EBS"><span class="xref std std-term">EBS</span></a> と <a class="reference internal" href="#term-6"><span class="xref std std-term">インスタンスストア</span></a> の2種類がある</p></li>
 </ul>
 </dd>
-<dt id="term-ebs">EBS</dt><dd><ul class="simple">
+<dt id="term-EBS">EBS</dt><dd><ul class="simple">
 <li><p>Elastic Block Store</p></li>
 <li><p>高い可用性と耐久性を持つストレージ</p></li>
 <li><p>他のインスタンスに付け替え可能</p></li>
@@ -433,7 +345,7 @@
 <li><p>一時ファイル、キャッシュなど、失われても問題がないデータを置く</p></li>
 </ul>
 </dd>
-<dt id="term-ssh">SSH</dt><dd><ul class="simple">
+<dt id="term-SSH">SSH</dt><dd><ul class="simple">
 <li><p>サーバと自分の目の前のパソコンをセキュアにつなぐサービスのこと</p></li>
 <li><p>通信内容が暗号化された遠隔ログインシステム</p></li>
 <li><p>公開鍵認証にてログインする</p></li>
@@ -479,14 +391,14 @@
 </li>
 </ul>
 </dd>
-<dt id="term-apache">Apache</dt><dd><p>HTTPリクエストがあると、それに対してレスポンスを返しWebページを表示する、Webサーバのソフトウェア。</p>
+<dt id="term-Apache">Apache</dt><dd><p>HTTPリクエストがあると、それに対してレスポンスを返しWebページを表示する、Webサーバのソフトウェア。</p>
 </dd>
 <dt id="term-9">ファイアウォール</dt><dd><ul class="simple">
 <li><p>ファイアウォールとは、ネットワークを不正アクセスから守るために、「通してよい通信だけを通して、それ以外は通さない」機能の総称</p></li>
 <li><p>AWSでは、EC2インスタンスに対して設定する <strong>セキュリティグループ</strong> がファイアウォールの役割を担っている。</p></li>
 </ul>
 </dd>
-<dt id="term-elastic-ip">Elastic IPアドレス</dt><dd><ul class="simple">
+<dt id="term-Elastic-IP">Elastic IPアドレス</dt><dd><ul class="simple">
 <li><p>固定グローバルIPアドレスを取得し、インスタンスに付与できるサービス</p></li>
 <li><p>インスタンスを削除するまで、ずっとそのIPアドレスを使用することができる</p></li>
 <li><p>Elastic IPアドレスは、EC2インスタンスに関連付けられていて、そのインスタンスが起動中であれば無料。
@@ -760,7 +672,7 @@ IPアドレスは覚えにくいため、Webサイトにアクセスするとき
 一般消費者が購入する先はレジストラとリセラである。</p></li>
 </ul>
 </dd>
-<dt id="term-dns">DNS</dt><dd><ul class="simple">
+<dt id="term-DNS">DNS</dt><dd><ul class="simple">
 <li><p>Domain Name System。ドメイン名管理システム。</p></li>
 <li><p>ドメイン名をIPアドレスに変換する</p></li>
 <li><p>ネームサーバとフルリゾルバの2つから構成されている</p>
@@ -794,7 +706,7 @@ IPアドレスは覚えにくいため、Webサイトにアクセスするとき
 （Aレコード：IPアドレス、MXレコード：メール受信サーバ、など）</p></li>
 </ul>
 </dd>
-<dt id="term-route-53">Route 53</dt><dd><ul>
+<dt id="term-Route-53">Route 53</dt><dd><ul>
 <li><p>AWSのDNSサービス。ネームサーバの役割を果たす</p></li>
 <li><p>特徴</p>
 <ul class="simple">
@@ -966,7 +878,7 @@ NSレコードの「値」項目に表示されているURL（4種）を以降�
 <div class="section" id="id17">
 <h3>用語<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
-<dt id="term-rds">RDS</dt><dd><ul class="simple">
+<dt id="term-RDS">RDS</dt><dd><ul class="simple">
 <li><p>フルマネージドなリレーショナルデータベースのサービス</p></li>
 <li><p>従来と比較して構築／運用の手間を軽減できる</p></li>
 <li><p>AWSでDBサーバを構築する方法には2種ある</p>
@@ -1251,11 +1163,11 @@ RDSを作成する際は、マルチAZができるようにするために、
 <div class="section" id="id20">
 <h3>用語<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
-<dt id="term-wordpress">WordPress</dt><dd><p>オープンソースのブログソフトウェア。
+<dt id="term-WordPress">WordPress</dt><dd><p>オープンソースのブログソフトウェア。
 PHPで開発されており、データベース管理システムとしてMySQLを利用している。
 （プラグインよりSQLiteでの使用も可能）</p>
 </dd>
-<dt id="term-tcp-ip">TCP/IP</dt><dd><ul class="simple">
+<dt id="term-TCP-IP">TCP/IP</dt><dd><ul class="simple">
 <li><p>TCP・IPを中心として、インターネットを構築する上で必要なプロトコル群の総称。</p>
 <ul>
 <li><p>アプリケーションプロトコル：HTTP、SMTP、FTP</p></li>
@@ -1267,15 +1179,15 @@ PHPで開発されており、データベース管理システムとしてMySQL
 <li><p>インターネットではTCP/IPプロトコルに基づいて通信が行われている</p></li>
 <li><p>TCP/IPでは、インターネットでコンピュータ同士が通信する一連の処理を、4階層で表現する</p>
 <ul>
-<li><p>アプリケーション層：アプリケーション同士が会話する（<a class="reference internal" href="#term-http"><span class="xref std std-term">HTTP</span></a>、DNS、SSH、SMTP）</p></li>
-<li><p><a class="reference internal" href="#term-12"><span class="xref std std-term">トランスポート層</span></a>：データの転送を制御する（<a class="reference internal" href="#term-tcp"><span class="xref std std-term">TCP</span></a>、<a class="reference internal" href="#term-udp"><span class="xref std std-term">UDP</span></a>）</p></li>
+<li><p>アプリケーション層：アプリケーション同士が会話する（<a class="reference internal" href="#term-HTTP"><span class="xref std std-term">HTTP</span></a>、DNS、SSH、SMTP）</p></li>
+<li><p><a class="reference internal" href="#term-12"><span class="xref std std-term">トランスポート層</span></a>：データの転送を制御する（<a class="reference internal" href="#term-TCP"><span class="xref std std-term">TCP</span></a>、<a class="reference internal" href="#term-UDP"><span class="xref std std-term">UDP</span></a>）</p></li>
 <li><p>ネットワーク層：IPアドレスを管理し、経路選択する（<a class="reference internal" href="#term-11"><span class="xref std std-term">IP</span></a>、ICMP、ARP）</p></li>
 <li><p>ネットワークインターフェース層：直接接続された機器同士で通信する（Ethernet、PPP）</p></li>
 </ul>
 </li>
 </ul>
 </dd>
-<dt id="term-http">HTTP</dt><dd><ul class="simple">
+<dt id="term-HTTP">HTTP</dt><dd><ul class="simple">
 <li><p>WebプラウザとWebサーバ間が通信するときに利用されるプロトコル</p></li>
 <li><p>HyperText Transfer Protocol</p></li>
 <li><p>インターネットでHTMLなどのコンテンツの送受信に用いられる通信の約束ごと</p></li>
@@ -1297,7 +1209,7 @@ PHPで開発されており、データベース管理システムとしてMySQL
 </li>
 </ul>
 </dd>
-<dt id="term-tcp">TCP</dt><dd><ul class="simple">
+<dt id="term-TCP">TCP</dt><dd><ul class="simple">
 <li><p><a class="reference internal" href="#term-12"><span class="xref std std-term">トランスポート層</span></a> のプロトコル</p></li>
 <li><p>Transmission Control Protocol</p></li>
 <li><p>信頼性のある通信を提供</p></li>
@@ -1307,7 +1219,7 @@ PHPで開発されており、データベース管理システムとしてMySQL
 <li><p>コネクション管理し、通信相手との間で通信を始める準備をしてから通信を行う</p></li>
 </ul>
 </dd>
-<dt id="term-udp">UDP</dt><dd><ul class="simple">
+<dt id="term-UDP">UDP</dt><dd><ul class="simple">
 <li><p><a class="reference internal" href="#term-12"><span class="xref std std-term">トランスポート層</span></a> のプロトコル</p></li>
 <li><p>User Datagram Protocol</p></li>
 <li><p>信頼性のない通信</p></li>
@@ -1529,7 +1441,98 @@ IPでは、各ネットワークインターフェースの最大転送単位よ
 </div>
 
 
+            <div class="clearer"></div>
           </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../index.html">目次</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Webアプリ</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../%E7%94%A8%E8%AA%9E.html">用語</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">AWS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HTML.html">HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../CSS.html">CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Bootstrap.html">Bootstrap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../JavaScript.html">JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Flask/index.html">Flask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ruby.html">Ruby</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MySQL.html">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ruby%20on%20Rails.html">Ruby on Rails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%E5%85%B1%E9%80%9A%E3%81%AE%E3%83%A1%E3%83%A2.html">共通のメモ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../C%EF%BC%83/index.html">C＃</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E5%82%99%E5%BF%98%E9%8C%B2/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">AWS基礎</a><ul>
+<li><a class="reference internal" href="#id1">概要</a></li>
+<li><a class="reference internal" href="#id2">初期設定</a></li>
+<li><a class="reference internal" href="#id3">操作</a><ul>
+<li><a class="reference internal" href="#id4">AWS環境の基本モデル</a></li>
+<li><a class="reference internal" href="#id6">本ページで構築するAWS環境</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#vpc">【VPC】ネットワーク構築</a><ul>
+<li><a class="reference internal" href="#id8">用語</a></li>
+<li><a class="reference internal" href="#id9">手順</a></li>
+<li><a class="reference internal" href="#id10">補足</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ec2web">【EC2】Webサーバ構築</a><ul>
+<li><a class="reference internal" href="#id11">用語</a></li>
+<li><a class="reference internal" href="#id12">手順</a></li>
+<li><a class="reference internal" href="#id13">補足</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#route53">【Route53】ドメインを登録する</a><ul>
+<li><a class="reference internal" href="#id14">用語</a></li>
+<li><a class="reference internal" href="#id15">手順</a></li>
+<li><a class="reference internal" href="#id16">補足</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rdsdb">【RDS】DBサーバを構築する</a><ul>
+<li><a class="reference internal" href="#id17">用語</a></li>
+<li><a class="reference internal" href="#id18">手順</a></li>
+<li><a class="reference internal" href="#id19">補足</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ec2wordpress">【EC2】WordPressを構築する</a><ul>
+<li><a class="reference internal" href="#id20">用語</a></li>
+<li><a class="reference internal" href="#id21">手順</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="index.html"
+                        title="前の章へ">AWS</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="AWS%E5%BF%9C%E7%94%A8.html"
+                        title="次の章へ">AWS応用</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -1541,19 +1544,20 @@ IPでは、各ネットワークインターフェースの最大転送単位よ
           <a href="../../genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="AWS応用.html" title="AWS応用"
+          <a href="AWS%E5%BF%9C%E7%94%A8.html" title="AWS応用"
              >次へ</a> |</li>
         <li class="right" >
           <a href="index.html" title="AWS"
              >前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Webアプリ</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" >AWS</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="index.html" >AWS</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">AWS基礎</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, tak.
-      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.0 で生成しました。
+        &#169; Copyright 2021, tak.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
     </div>
   </body>
 </html>
