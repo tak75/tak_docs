@@ -15,7 +15,7 @@ VisualStudio
   Ctrl + ]
 
 全画面表示
-  Ctrl + Shift + Enter
+  Alt + Shift + Enter
 
 ビルド
   Ctrl + Shift + B

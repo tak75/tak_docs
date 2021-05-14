@@ -1,5 +1,5 @@
 ====
-C#
+C＃
 ====
 
 .. toctree::
@@ -7,7 +7,7 @@ C#
 
    仕様
    テスト駆動開発
-   .NET Core + WPF
+   .NET Core and WPF
    Prism
    LINQ
    VisualStudio
