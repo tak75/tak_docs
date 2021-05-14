@@ -5341,6 +5341,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
             "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj": {
               "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj"
@@ -5440,6 +5441,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "imports": [
           "net461",
           "net462",
@@ -5458,7 +5460,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

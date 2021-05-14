@@ -54,3 +54,4 @@ G:\work\tak_docs\src\WpfCoreExamples\Examples\ListViewDemo\obj\Debug\netcoreapp3
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ListViewDemo\obj\Debug\netcoreapp3.1\ListViewDemo.dll
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ListViewDemo\obj\Debug\netcoreapp3.1\ListViewDemo.pdb
 G:\work\tak_docs\src\WpfCoreExamples\Examples\ListViewDemo\obj\Debug\netcoreapp3.1\ListViewDemo.genruntimeconfig.cache
+G:\work\tak_docs\src\WpfCoreExamples\Examples\ListViewDemo\obj\Debug\netcoreapp3.1\ListViewDemo.csprojAssemblyReference.cache

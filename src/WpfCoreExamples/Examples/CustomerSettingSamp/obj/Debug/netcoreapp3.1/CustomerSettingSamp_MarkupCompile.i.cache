@@ -8,7 +8,7 @@ G:\work\tak_docs\src\WpfCoreExamples\Examples\CustomerSettingSamp\obj\Debug\netc
 CustomerSettingSamp
 none
 false
-TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
+TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 G:\work\tak_docs\src\WpfCoreExamples\Examples\CustomerSettingSamp\App.xaml
 2-612280565
 
@@ -16,5 +16,5 @@ G:\work\tak_docs\src\WpfCoreExamples\Examples\CustomerSettingSamp\App.xaml
 197927245283
 MainWindow.xaml;SaveWindow.xaml;
 
-False
+True
 
