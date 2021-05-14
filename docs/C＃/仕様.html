@@ -2,9 +2,10 @@
 
 <!doctype html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<html lang="ja">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>仕様 &#8212; Tak Documents  ドキュメント</title>
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -15,13 +16,13 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/language_data.js"></script>
     <script src="../_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="テスト駆動開発" href="テスト駆動開発.html" />
-    <link rel="prev" title="C#" href="index.html" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="next" title="テスト駆動開発" href="%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html" />
+    <link rel="prev" title="C＃" href="index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <!--[if lt IE 9]>
     <script src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
@@ -33,86 +34,16 @@
           <a href="../genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="テスト駆動開発.html" title="テスト駆動開発"
+          <a href="%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html" title="テスト駆動開発"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
-          <a href="index.html" title="C#"
+          <a href="index.html" title="C＃"
              accesskey="P">前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">C#</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">C＃</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">仕様</a></li> 
       </ul>
-    </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h3><a href="../index.html">目次</a></h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../sphinx/index.html">Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../GitHub/index.html">GitHub</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../VirtualBox/index.html">VirtualBox</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Linux/index.html">Linux</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../raspberry_pi/index.html">Raspberry Pi</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Webアプリ/index.html">Webアプリ</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">C#</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">仕様</a></li>
-<li class="toctree-l2"><a class="reference internal" href="テスト駆動開発.html">テスト駆動開発</a></li>
-<li class="toctree-l2"><a class="reference internal" href=".NET Core + WPF.html">.NET Core + WPF</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Prism.html">Prism</a></li>
-<li class="toctree-l2"><a class="reference internal" href="LINQ.html">LINQ</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../デザインパターン/index.html">デザインパターン</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../備忘録/index.html">備忘録</a></li>
-</ul>
-
-  <h3><a href="../index.html">目次</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">仕様</a><ul>
-<li><a class="reference internal" href="#c-1-0">C# 1.0からの仕様</a><ul>
-<li><a class="reference internal" href="#id2">デリゲートとイベント処理</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#c-2-0">C# 2.0からの仕様</a></li>
-<li><a class="reference internal" href="#c-3-0">C# 3.0からの仕様</a><ul>
-<li><a class="reference internal" href="#var">varキーワード</a></li>
-<li><a class="reference internal" href="#id3">ラムダ式</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#c-4-0">C# 4.0からの仕様</a></li>
-<li><a class="reference internal" href="#c-5-0">C# 5.0からの仕様</a></li>
-<li><a class="reference internal" href="#c-6-0">C# 6.0からの仕様</a><ul>
-<li><a class="reference internal" href="#id4">文字列補間</a></li>
-<li><a class="reference internal" href="#null">Null条件演算子?.および?[]</a></li>
-<li><a class="reference internal" href="#id5">読み取り専用プロパティ</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#c-7-0">C# 7.0からの仕様</a></li>
-<li><a class="reference internal" href="#c-7-1">C# 7.1からの仕様</a></li>
-<li><a class="reference internal" href="#c-7-2">C# 7.2からの仕様</a></li>
-<li><a class="reference internal" href="#c-7-3">C# 7.3からの仕様</a></li>
-<li><a class="reference internal" href="#c-8">C# 8からの仕様</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>前のトピックへ</h4>
-  <p class="topless"><a href="index.html"
-                        title="前の章へ">C#</a></p>
-  <h4>次のトピックへ</h4>
-  <p class="topless"><a href="テスト駆動開発.html"
-                        title="次の章へ">テスト駆動開発</a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">クイック検索</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="検索" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-        </div>
-      </div>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -516,7 +447,80 @@ private protected アクセス修飾子
 </div>
 
 
+            <div class="clearer"></div>
           </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">目次</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VirtualBox/index.html">VirtualBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Web%E3%82%A2%E3%83%97%E3%83%AA/index.html">Webアプリ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">C＃</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">仕様</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html">テスト駆動開発</a></li>
+<li class="toctree-l2"><a class="reference internal" href=".NET%20Core%20and%20WPF.html">.NET Core and WPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prism.html">Prism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LINQ.html">LINQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VisualStudio.html">VisualStudio</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E5%82%99%E5%BF%98%E9%8C%B2/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">仕様</a><ul>
+<li><a class="reference internal" href="#c-1-0">C# 1.0からの仕様</a><ul>
+<li><a class="reference internal" href="#id2">デリゲートとイベント処理</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#c-2-0">C# 2.0からの仕様</a></li>
+<li><a class="reference internal" href="#c-3-0">C# 3.0からの仕様</a><ul>
+<li><a class="reference internal" href="#var">varキーワード</a></li>
+<li><a class="reference internal" href="#id3">ラムダ式</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#c-4-0">C# 4.0からの仕様</a></li>
+<li><a class="reference internal" href="#c-5-0">C# 5.0からの仕様</a></li>
+<li><a class="reference internal" href="#c-6-0">C# 6.0からの仕様</a><ul>
+<li><a class="reference internal" href="#id4">文字列補間</a></li>
+<li><a class="reference internal" href="#null">Null条件演算子?.および?[]</a></li>
+<li><a class="reference internal" href="#id5">読み取り専用プロパティ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#c-7-0">C# 7.0からの仕様</a></li>
+<li><a class="reference internal" href="#c-7-1">C# 7.1からの仕様</a></li>
+<li><a class="reference internal" href="#c-7-2">C# 7.2からの仕様</a></li>
+<li><a class="reference internal" href="#c-7-3">C# 7.3からの仕様</a></li>
+<li><a class="reference internal" href="#c-8">C# 8からの仕様</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="index.html"
+                        title="前の章へ">C＃</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html"
+                        title="次の章へ">テスト駆動開発</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -528,18 +532,19 @@ private protected アクセス修飾子
           <a href="../genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="テスト駆動開発.html" title="テスト駆動開発"
+          <a href="%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html" title="テスト駆動開発"
              >次へ</a> |</li>
         <li class="right" >
-          <a href="index.html" title="C#"
+          <a href="index.html" title="C＃"
              >前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >C#</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >C＃</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">仕様</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, tak.
-      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.0 で生成しました。
+        &#169; Copyright 2021, tak.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
     </div>
   </body>
 </html>

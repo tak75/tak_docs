@@ -2,9 +2,10 @@
 
 <!doctype html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<html lang="ja">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AWS応用 &#8212; Tak Documents  ドキュメント</title>
     <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -15,13 +16,13 @@
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/language_data.js"></script>
     <script src="../../_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
     <link rel="next" title="Cloud9" href="Cloud9.html" />
-    <link rel="prev" title="AWS基礎" href="AWS基礎.html" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="prev" title="AWS基礎" href="AWS%E5%9F%BA%E7%A4%8E.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <!--[if lt IE 9]>
     <script src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
@@ -36,110 +37,14 @@
           <a href="Cloud9.html" title="Cloud9"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
-          <a href="AWS基礎.html" title="AWS基礎"
+          <a href="AWS%E5%9F%BA%E7%A4%8E.html" title="AWS基礎"
              accesskey="P">前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Webアプリ</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">AWS</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">AWS</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">AWS応用</a></li> 
       </ul>
-    </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h3><a href="../../index.html">目次</a></h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../raspberry_pi/index.html">Raspberry Pi</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Webアプリ</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../用語.html">用語</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">AWS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../HTML.html">HTML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../CSS.html">CSS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Bootstrap.html">Bootstrap</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../JavaScript.html">JavaScript</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Flask/index.html">Flask</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Ruby.html">Ruby</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MySQL.html">MySQL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Ruby on Rails.html">Ruby on Rails</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../共通のメモ.html">共通のメモ</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../C#/index.html">C#</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../デザインパターン/index.html">デザインパターン</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../備忘録/index.html">備忘録</a></li>
-</ul>
-
-  <h3><a href="../../index.html">目次</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">AWS応用</a><ul>
-<li><a class="reference internal" href="#s3-cloudfront">【S3/CloudFront】画像を配信する</a><ul>
-<li><a class="reference internal" href="#id1">本項で構築するAWS環境</a></li>
-<li><a class="reference internal" href="#id2">用語</a></li>
-<li><a class="reference internal" href="#id3">説明</a><ul>
-<li><a class="reference internal" href="#id4">インフラ設計における重要な観点</a></li>
-<li><a class="reference internal" href="#webs3">画像保存場所をWebサーバではなくS3にする理由</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id5">手順</a></li>
-<li><a class="reference internal" href="#id6">補足</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#elbweb">【ELB】Webレイヤを冗長化する</a><ul>
-<li><a class="reference internal" href="#id7">本項で構築するAWS環境</a></li>
-<li><a class="reference internal" href="#id8">用語</a></li>
-<li><a class="reference internal" href="#id9">稼働率を上げるための方法</a></li>
-<li><a class="reference internal" href="#id10">サーバ構成のベストプラクティス</a></li>
-<li><a class="reference internal" href="#elb">ELBを運用する際のポイント</a></li>
-<li><a class="reference internal" href="#id11">手順</a></li>
-<li><a class="reference internal" href="#id12">ELB動作確認</a></li>
-<li><a class="reference internal" href="#id13">後片付け（無料枠を超過しないよう元に戻す）</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#rdcdb">【RDC】DBレイヤを冗長化する</a><ul>
-<li><a class="reference internal" href="#id14">説明</a></li>
-<li><a class="reference internal" href="#id15">手順</a></li>
-<li><a class="reference internal" href="#id16">後片付け（無料枠を超過しないよう元に戻す）</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#cloudwatch">【CloudWatch】システムを監視する</a><ul>
-<li><a class="reference internal" href="#id17">用語</a></li>
-<li><a class="reference internal" href="#id18">説明</a></li>
-<li><a class="reference internal" href="#id19">手順</a></li>
-<li><a class="reference internal" href="#id20">後片付け（無料枠を超過しないよう元に戻す）</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#iam">【IAM】アクセス権限を管理する</a><ul>
-<li><a class="reference internal" href="#id21">用語</a></li>
-<li><a class="reference internal" href="#id22">作業内容</a></li>
-<li><a class="reference internal" href="#id23">手順</a></li>
-<li><a class="reference internal" href="#id24">補足</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-  <h4>前のトピックへ</h4>
-  <p class="topless"><a href="AWS基礎.html"
-                        title="前の章へ">AWS基礎</a></p>
-  <h4>次のトピックへ</h4>
-  <p class="topless"><a href="Cloud9.html"
-                        title="次の章へ">Cloud9</a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">クイック検索</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="検索" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-        </div>
-      </div>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -160,7 +65,7 @@
 <div class="section" id="id2">
 <h3>用語<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
-<dt id="term-s3">S3</dt><dd><ul class="simple">
+<dt id="term-S3">S3</dt><dd><ul class="simple">
 <li><p>安価で耐久性の高いAWSのクラウドストレージサービス</p></li>
 <li><p>特徴</p>
 <ul>
@@ -216,9 +121,9 @@
 </li>
 </ul>
 </dd>
-<dt id="term-cloudfront">CloudFront</dt><dd><p>AWSにおける <a class="reference internal" href="#term-cdn"><span class="xref std std-term">CDN</span></a> のサービス</p>
+<dt id="term-CloudFront">CloudFront</dt><dd><p>AWSにおける <a class="reference internal" href="#term-CDN"><span class="xref std std-term">CDN</span></a> のサービス</p>
 </dd>
-<dt id="term-cdn">CDN</dt><dd><ul class="simple">
+<dt id="term-CDN">CDN</dt><dd><ul class="simple">
 <li><p>Content Delivery Network</p></li>
 <li><p>高速にコンテンツを配信するサービス</p></li>
 <li><p>オリジンサーバ（元となる画像を配信するサーバ。今回の場合はS3）上にあるコンテンツを、
@@ -227,9 +132,9 @@
 <li><p>効率的：エッジサーバでコンテンツのキャッシングを行うので、オリジンサーバに負荷をかけずに配信できる</p></li>
 </ul>
 </dd>
-<dt id="term-certificate-manager">Certificate Manager</dt><dd><p>証明書を発行・管理するためのAWSのサービス</p>
+<dt id="term-Certificate-Manager">Certificate Manager</dt><dd><p>証明書を発行・管理するためのAWSのサービス</p>
 </dd>
-<dt id="term-ssl">SSLサーバ証明書</dt><dd><ul class="simple">
+<dt id="term-SSL">SSLサーバ証明書</dt><dd><ul class="simple">
 <li><p>Webサーバの持ち主が実在することを示す電子証明書</p></li>
 <li><p>ブラウザとWebサーバ間で暗号化通信（https）をする時に必要</p></li>
 </ul>
@@ -254,7 +159,7 @@
 <li><p>Webサーバのストレージが画像で一杯になるのを防ぐ</p></li>
 <li><p>HTMLへのアクセスと画像へのアクセスを分けることで負荷分散する</p></li>
 <li><p>サーバの台数を増やしやすくする（画像の保存場所を分離することで、<a class="reference internal" href="#term-2"><span class="xref std std-term">スケールアウト</span></a> しやすくする）</p></li>
-<li><p>コンテンツ配信サービス（ <a class="reference internal" href="#term-cloudfront"><span class="xref std std-term">CloudFront</span></a> ）から配信することで、画像配信を高速化できる</p></li>
+<li><p>コンテンツ配信サービス（ <a class="reference internal" href="#term-CloudFront"><span class="xref std std-term">CloudFront</span></a> ）から配信することで、画像配信を高速化できる</p></li>
 </ul>
 </div>
 </div>
@@ -442,7 +347,7 @@
 </li>
 <li><p>独自ドメインから配信する</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#term-certificate-manager"><span class="xref std std-term">Certificate Manager</span></a> で <a class="reference internal" href="#term-ssl"><span class="xref std std-term">SSLサーバ証明書</span></a> の発行</p>
+<li><p><a class="reference internal" href="#term-Certificate-Manager"><span class="xref std std-term">Certificate Manager</span></a> で <a class="reference internal" href="#term-SSL"><span class="xref std std-term">SSLサーバ証明書</span></a> の発行</p>
 <ul>
 <li><p>作成されたディストリビューションのIDをクリックし、「Edit」ボタンを押す</p></li>
 <li><p>Alternate Domain Names(CNAMEs)：独自ドメインの先頭にサブドメインを付ける（例：staic.xxx.work）</p></li>
@@ -547,7 +452,7 @@
 <li><p>最低用意しておくべきがN+1構成、安心なのはN+2構成</p></li>
 </ul>
 </dd>
-<dt id="term-elb">ELB</dt><dd><ul class="simple">
+<dt id="term-ELB">ELB</dt><dd><ul class="simple">
 <li><p>Elastic Load Balancing</p></li>
 <li><p>AWS上の <a class="reference internal" href="#term-3"><span class="xref std std-term">ロードバランサー</span></a></p></li>
 <li><p>機能</p>
@@ -923,14 +828,14 @@ index.phpファイル末尾に「echo '&lt;p&gt;sample 1a&lt;/p&gt;';」を追�
 <li><p>指標を決め、指標が閾値以上・以下となっているかを把握</p></li>
 </ul>
 </dd>
-<dt id="term-cloudwatch">CloudWatch</dt><dd><ul class="simple">
+<dt id="term-CloudWatch">CloudWatch</dt><dd><ul class="simple">
 <li><p>AWSサービスの監視やモニタリングができる監視サービス</p></li>
 <li><p>AWSサービスのメトリクス（リソース状況）を監視する</p></li>
 <li><p>メトリクスに対して閾値を登録し、その条件を満たしたら通知する（アラーム発生）</p></li>
-<li><p><a class="reference internal" href="#term-amazon-sns"><span class="xref std std-term">Amazon SNS</span></a> と組み合わせて使用する</p></li>
+<li><p><a class="reference internal" href="#term-Amazon-SNS"><span class="xref std std-term">Amazon SNS</span></a> と組み合わせて使用する</p></li>
 </ul>
 </dd>
-<dt id="term-amazon-sns">Amazon SNS</dt><dd><ul class="simple">
+<dt id="term-Amazon-SNS">Amazon SNS</dt><dd><ul class="simple">
 <li><p>通知サービス</p></li>
 <li><p>Topicを作成することで、Publisherがメッセージを送信し、
 Subscriberが通知を受信するための通信チャネルとして機能する</p></li>
@@ -1070,7 +975,7 @@ EC2 → CloudWatch → SNS → ユーザの経路にて、Eメールを送信す
 <div class="section" id="id21">
 <h3>用語<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
-<dt id="term-iam">IAM</dt><dd><ul class="simple">
+<dt id="term-IAM">IAM</dt><dd><ul class="simple">
 <li><p>AWSのサービスを利用するユーザ権限を管理するサービス</p></li>
 <li><p>AWSリソースをセキュアに操作するために、認証・認可の仕組みを提供する</p></li>
 <li><p>各AWSリソースに対して別々のアクセス権限をユーザ毎に付与できる</p></li>
@@ -1298,7 +1203,105 @@ EC2やLambdaなどのAWSリソースに権限を付与するために使用</p>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../index.html">目次</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Webアプリ</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../%E7%94%A8%E8%AA%9E.html">用語</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">AWS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HTML.html">HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../CSS.html">CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Bootstrap.html">Bootstrap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../JavaScript.html">JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Flask/index.html">Flask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ruby.html">Ruby</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MySQL.html">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ruby%20on%20Rails.html">Ruby on Rails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%E5%85%B1%E9%80%9A%E3%81%AE%E3%83%A1%E3%83%A2.html">共通のメモ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../C%EF%BC%83/index.html">C＃</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E5%82%99%E5%BF%98%E9%8C%B2/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">AWS応用</a><ul>
+<li><a class="reference internal" href="#s3-cloudfront">【S3/CloudFront】画像を配信する</a><ul>
+<li><a class="reference internal" href="#id1">本項で構築するAWS環境</a></li>
+<li><a class="reference internal" href="#id2">用語</a></li>
+<li><a class="reference internal" href="#id3">説明</a><ul>
+<li><a class="reference internal" href="#id4">インフラ設計における重要な観点</a></li>
+<li><a class="reference internal" href="#webs3">画像保存場所をWebサーバではなくS3にする理由</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">手順</a></li>
+<li><a class="reference internal" href="#id6">補足</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#elbweb">【ELB】Webレイヤを冗長化する</a><ul>
+<li><a class="reference internal" href="#id7">本項で構築するAWS環境</a></li>
+<li><a class="reference internal" href="#id8">用語</a></li>
+<li><a class="reference internal" href="#id9">稼働率を上げるための方法</a></li>
+<li><a class="reference internal" href="#id10">サーバ構成のベストプラクティス</a></li>
+<li><a class="reference internal" href="#elb">ELBを運用する際のポイント</a></li>
+<li><a class="reference internal" href="#id11">手順</a></li>
+<li><a class="reference internal" href="#id12">ELB動作確認</a></li>
+<li><a class="reference internal" href="#id13">後片付け（無料枠を超過しないよう元に戻す）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rdcdb">【RDC】DBレイヤを冗長化する</a><ul>
+<li><a class="reference internal" href="#id14">説明</a></li>
+<li><a class="reference internal" href="#id15">手順</a></li>
+<li><a class="reference internal" href="#id16">後片付け（無料枠を超過しないよう元に戻す）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cloudwatch">【CloudWatch】システムを監視する</a><ul>
+<li><a class="reference internal" href="#id17">用語</a></li>
+<li><a class="reference internal" href="#id18">説明</a></li>
+<li><a class="reference internal" href="#id19">手順</a></li>
+<li><a class="reference internal" href="#id20">後片付け（無料枠を超過しないよう元に戻す）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iam">【IAM】アクセス権限を管理する</a><ul>
+<li><a class="reference internal" href="#id21">用語</a></li>
+<li><a class="reference internal" href="#id22">作業内容</a></li>
+<li><a class="reference internal" href="#id23">手順</a></li>
+<li><a class="reference internal" href="#id24">補足</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="AWS%E5%9F%BA%E7%A4%8E.html"
+                        title="前の章へ">AWS基礎</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="Cloud9.html"
+                        title="次の章へ">Cloud9</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -1313,16 +1316,17 @@ EC2やLambdaなどのAWSリソースに権限を付与するために使用</p>
           <a href="Cloud9.html" title="Cloud9"
              >次へ</a> |</li>
         <li class="right" >
-          <a href="AWS基礎.html" title="AWS基礎"
+          <a href="AWS%E5%9F%BA%E7%A4%8E.html" title="AWS基礎"
              >前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Webアプリ</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" >AWS</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="index.html" >AWS</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">AWS応用</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, tak.
-      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.0 で生成しました。
+        &#169; Copyright 2021, tak.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
     </div>
   </body>
 </html>

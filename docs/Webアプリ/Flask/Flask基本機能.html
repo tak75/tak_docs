@@ -2,9 +2,10 @@
 
 <!doctype html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<html lang="ja">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flask基本機能 &#8212; Tak Documents  ドキュメント</title>
     <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -15,13 +16,13 @@
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/language_data.js"></script>
     <script src="../../_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
     <link rel="next" title="Ruby" href="../Ruby.html" />
-    <link rel="prev" title="Flask環境構築" href="Flask環境構築.html" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="prev" title="Flask環境構築" href="Flask%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <!--[if lt IE 9]>
     <script src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
@@ -36,85 +37,14 @@
           <a href="../Ruby.html" title="Ruby"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
-          <a href="Flask環境構築.html" title="Flask環境構築"
+          <a href="Flask%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89.html" title="Flask環境構築"
              accesskey="P">前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Webアプリ</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">Flask</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">Flask</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Flask基本機能</a></li> 
       </ul>
-    </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h3><a href="../../index.html">目次</a></h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../raspberry_pi/index.html">Raspberry Pi</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Webアプリ</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../用語.html">用語</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../AWS/index.html">AWS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../HTML.html">HTML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../CSS.html">CSS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Bootstrap.html">Bootstrap</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../JavaScript.html">JavaScript</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">Flask</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Ruby.html">Ruby</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MySQL.html">MySQL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Ruby on Rails.html">Ruby on Rails</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../共通のメモ.html">共通のメモ</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../C#/index.html">C#</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../デザインパターン/index.html">デザインパターン</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../備忘録/index.html">備忘録</a></li>
-</ul>
-
-  <h3><a href="../../index.html">目次</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Flask基本機能</a><ul>
-<li><a class="reference internal" href="#id1">ルーティング</a></li>
-<li><a class="reference internal" href="#id2">テンプレート</a></li>
-<li><a class="reference internal" href="#id3">リクエストオブジェクト</a></li>
-<li><a class="reference internal" href="#id4">リダイレクト関数</a></li>
-<li><a class="reference internal" href="#id6">エラー処理</a></li>
-<li><a class="reference internal" href="#id7">ファイルアップロード</a></li>
-<li><a class="reference internal" href="#make-response">make_response()関数</a></li>
-<li><a class="reference internal" href="#id8">クッキー</a></li>
-<li><a class="reference internal" href="#id9">セッション</a></li>
-<li><a class="reference internal" href="#id10">フラッシュ</a></li>
-<li><a class="reference internal" href="#id11">ロギング</a></li>
-<li><a class="reference internal" href="#id12">ファイルダウンロード</a><ul>
-<li><a class="reference internal" href="#app-py">app.pyからの相対パスのファイルをダウンロード</a></li>
-<li><a class="reference internal" href="#id13">指定されたファイル名でダウンロード</a></li>
-<li><a class="reference internal" href="#id14">指定したディレクトリからの相対パスのファイルをダウンロード</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id15">flaskコマンド</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>前のトピックへ</h4>
-  <p class="topless"><a href="Flask環境構築.html"
-                        title="前の章へ">Flask環境構築</a></p>
-  <h4>次のトピックへ</h4>
-  <p class="topless"><a href="../Ruby.html"
-                        title="次の章へ">Ruby</a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">クイック検索</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="検索" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-        </div>
-      </div>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -129,7 +59,7 @@
 <li><p>&lt;変数名&gt;にて値を取得できる:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/rt_variable/&lt;var&gt;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">fn_rt_variable</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-  <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;var = </span><span class="si">{var}</span><span class="s1">, type(var) = {escape(type(var))}&#39;</span>
+  <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;var = </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1">, type(var) = </span><span class="si">{</span><span class="n">escape</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">var</span><span class="p">))</span><span class="si">}</span><span class="s1">&#39;</span>
 </pre></div>
 </div>
 </li>
@@ -151,7 +81,7 @@
 <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/rt_variable_m/&lt;s1&gt;/end&#39;</span><span class="p">)</span>
 <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/rt_variable_m/&lt;s1&gt;/&lt;s2&gt;/end&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">fn_rt_variable_m</span><span class="p">(</span><span class="n">s1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">s2</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">):</span>
-  <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;s1 = </span><span class="si">{s1}</span><span class="s1">, s2 = </span><span class="si">{s2}</span><span class="s1">&#39;</span>
+  <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;s1 = </span><span class="si">{</span><span class="n">s1</span><span class="si">}</span><span class="s1">, s2 = </span><span class="si">{</span><span class="n">s2</span><span class="si">}</span><span class="s1">&#39;</span>
 </pre></div>
 </div>
 </li>
@@ -421,7 +351,7 @@ RawContentLength  : 14
 <span class="k">def</span> <span class="nf">fn_cookie</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">var</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">ck</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ck&#39;</span><span class="p">)</span>      <span class="c1"># クッキー読出し</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;ck = </span><span class="si">{ck}</span><span class="s1">&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;ck = </span><span class="si">{</span><span class="n">ck</span><span class="si">}</span><span class="s1">&#39;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">resp</span> <span class="o">=</span> <span class="n">make_response</span><span class="p">(</span><span class="s1">&#39;set cookie.&#39;</span><span class="p">)</span>
         <span class="n">resp</span><span class="o">.</span><span class="n">set_cookie</span><span class="p">(</span><span class="s1">&#39;ck&#39;</span><span class="p">,</span> <span class="n">var</span><span class="p">)</span>          <span class="c1"># クッキー設定</span>
@@ -447,7 +377,7 @@ RawContentLength  : 14
 <span class="k">def</span> <span class="nf">fn_session</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">var</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">sess</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sess&#39;</span><span class="p">)</span>      <span class="c1"># セッション読出し</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;sess = </span><span class="si">{sess}</span><span class="s1">&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;sess = </span><span class="si">{</span><span class="n">sess</span><span class="si">}</span><span class="s1">&#39;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">session</span><span class="p">[</span><span class="s1">&#39;sess&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">var</span>           <span class="c1"># セッション設定</span>
         <span class="k">return</span> <span class="s1">&#39;set session.&#39;</span>
@@ -473,7 +403,7 @@ RawContentLength  : 14
 <span class="k">def</span> <span class="nf">fn_flash</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">var</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">fl</span> <span class="o">=</span> <span class="n">get_flashed_messages</span><span class="p">()</span>     <span class="c1"># 保存したメッセージの取得（取得するとメッセージは削除される）</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;fl = </span><span class="si">{fl}</span><span class="s1">&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;fl = </span><span class="si">{</span><span class="n">fl</span><span class="si">}</span><span class="s1">&#39;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">flash</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>                      <span class="c1"># メッセージの保存</span>
         <span class="k">return</span> <span class="s1">&#39;set flash.&#39;</span>
@@ -506,7 +436,7 @@ RawContentLength  : 14
 <span class="k">def</span> <span class="nf">fn_flash</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">var</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">fl</span> <span class="o">=</span> <span class="n">get_flashed_messages</span><span class="p">(</span><span class="n">with_categories</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">category_filter</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;debug&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">])</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;fl = </span><span class="si">{fl}</span><span class="s1">&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;fl = </span><span class="si">{</span><span class="n">fl</span><span class="si">}</span><span class="s1">&#39;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">flash</span><span class="p">(</span><span class="s1">&#39;DEBUG:&#39;</span> <span class="o">+</span> <span class="n">var</span><span class="p">,</span> <span class="s1">&#39;debug&#39;</span><span class="p">)</span>
         <span class="n">flash</span><span class="p">(</span><span class="s1">&#39;INFO:&#39;</span> <span class="o">+</span> <span class="n">var</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
@@ -741,7 +671,80 @@ RawContentLength  : 14
 </div>
 
 
+            <div class="clearer"></div>
           </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../index.html">目次</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Webアプリ</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../%E7%94%A8%E8%AA%9E.html">用語</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AWS/index.html">AWS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HTML.html">HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../CSS.html">CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Bootstrap.html">Bootstrap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../JavaScript.html">JavaScript</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Flask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ruby.html">Ruby</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MySQL.html">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Ruby%20on%20Rails.html">Ruby on Rails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%E5%85%B1%E9%80%9A%E3%81%AE%E3%83%A1%E3%83%A2.html">共通のメモ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../C%EF%BC%83/index.html">C＃</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E5%82%99%E5%BF%98%E9%8C%B2/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Flask基本機能</a><ul>
+<li><a class="reference internal" href="#id1">ルーティング</a></li>
+<li><a class="reference internal" href="#id2">テンプレート</a></li>
+<li><a class="reference internal" href="#id3">リクエストオブジェクト</a></li>
+<li><a class="reference internal" href="#id4">リダイレクト関数</a></li>
+<li><a class="reference internal" href="#id6">エラー処理</a></li>
+<li><a class="reference internal" href="#id7">ファイルアップロード</a></li>
+<li><a class="reference internal" href="#make-response">make_response()関数</a></li>
+<li><a class="reference internal" href="#id8">クッキー</a></li>
+<li><a class="reference internal" href="#id9">セッション</a></li>
+<li><a class="reference internal" href="#id10">フラッシュ</a></li>
+<li><a class="reference internal" href="#id11">ロギング</a></li>
+<li><a class="reference internal" href="#id12">ファイルダウンロード</a><ul>
+<li><a class="reference internal" href="#app-py">app.pyからの相対パスのファイルをダウンロード</a></li>
+<li><a class="reference internal" href="#id13">指定されたファイル名でダウンロード</a></li>
+<li><a class="reference internal" href="#id14">指定したディレクトリからの相対パスのファイルをダウンロード</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id15">flaskコマンド</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="Flask%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89.html"
+                        title="前の章へ">Flask環境構築</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="../Ruby.html"
+                        title="次の章へ">Ruby</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -756,16 +759,17 @@ RawContentLength  : 14
           <a href="../Ruby.html" title="Ruby"
              >次へ</a> |</li>
         <li class="right" >
-          <a href="Flask環境構築.html" title="Flask環境構築"
+          <a href="Flask%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89.html" title="Flask環境構築"
              >前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Webアプリ</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" >Flask</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="index.html" >Flask</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Flask基本機能</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, tak.
-      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.0 で生成しました。
+        &#169; Copyright 2021, tak.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
     </div>
   </body>
 </html>
