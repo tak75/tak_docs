@@ -5,18 +5,17 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>テスト駆動開発 &#8212; Tak Documents  ドキュメント</title>
-    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bizstyle.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
@@ -50,16 +49,18 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="id1">
+  <section id="id1">
 <h1>テスト駆動開発<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="section" id="id2">
-<h2>はじめに<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id2">
+<h2>情報１<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id3">
+<h3>はじめに<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>Visual Studio 2017を使用する。</p></li>
 </ul>
-</div>
-<div class="section" id="id3">
-<h2>テスト駆動開発とは<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</section>
+<section id="id4">
+<h3>テスト駆動開発とは<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>テストコード -&gt; 本番コード の順に実装する</p>
 <ol class="arabic">
@@ -115,9 +116,9 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="moq">
-<h2>Moq について<a class="headerlink" href="#moq" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</section>
+<section id="moq">
+<h3>Moq について<a class="headerlink" href="#moq" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>NuGetでインストールするライブラリである</p></li>
 <li><p>DBに接続しDBからの取得した値を使ってテストする場合などでは、以下が必要となるが、Moqを使うことで仮想的な環境を作成することができる</p>
@@ -145,9 +146,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="chaining-assertion">
-<h2>Chaining Assertion について<a class="headerlink" href="#chaining-assertion" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</section>
+<section id="chaining-assertion">
+<h3>Chaining Assertion について<a class="headerlink" href="#chaining-assertion" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>NuGetでインストールするライブラリである</p></li>
 <li><p>例外をテストする際に利用する</p></li>
@@ -179,16 +180,26 @@ public void 通常のテスト()
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="axocover">
-<h2>AxoCover について<a class="headerlink" href="#axocover" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</section>
+<section id="axocover">
+<h3>AxoCover について<a class="headerlink" href="#axocover" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>対応はVS2017まで？VS2019は未対応？</p></li>
 <li><p>テストの完了率を確認することができる</p></li>
 <li><p>if文などで複数分岐している箇所は、各々の箇所が1つのテストとカウントされる</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
+<section id="xunit">
+<h2>xUnit<a class="headerlink" href="#xunit" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="web">
+<h3>参考Webサイト<a class="headerlink" href="#web" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://qiita.com/takutoy/items/84fa6498f0726418825d">xUnit.net でユニットテストを始める</a></p></li>
+</ul>
+</section>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -213,6 +224,7 @@ public void 通常のテスト()
 <li class="toctree-l2"><a class="reference internal" href="Prism.html">Prism</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LINQ.html">LINQ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="VisualStudio.html">VisualStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E8%87%AA%E5%8B%95%E4%BD%9C%E6%88%90.html">ドキュメント自動作成</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.html">デザインパターン</a></li>
@@ -222,11 +234,18 @@ public void 通常のテスト()
   <h3><a href="../index.html">目次</a></h3>
   <ul>
 <li><a class="reference internal" href="#">テスト駆動開発</a><ul>
-<li><a class="reference internal" href="#id2">はじめに</a></li>
-<li><a class="reference internal" href="#id3">テスト駆動開発とは</a></li>
+<li><a class="reference internal" href="#id2">情報１</a><ul>
+<li><a class="reference internal" href="#id3">はじめに</a></li>
+<li><a class="reference internal" href="#id4">テスト駆動開発とは</a></li>
 <li><a class="reference internal" href="#moq">Moq について</a></li>
 <li><a class="reference internal" href="#chaining-assertion">Chaining Assertion について</a></li>
 <li><a class="reference internal" href="#axocover">AxoCover について</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#xunit">xUnit</a><ul>
+<li><a class="reference internal" href="#web">参考Webサイト</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -270,7 +289,7 @@ public void 通常のテスト()
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, tak.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
 </html>

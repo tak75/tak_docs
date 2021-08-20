@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\i\\.nuget\\packages\\": {}
+    "C:\\Users\\tak_i\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\ButtonDemo.csproj",
+      "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\ButtonDemo.csproj",
       "projectName": "ButtonDemo",
-      "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\ButtonDemo.csproj",
-      "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-      "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\obj\\",
+      "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\ButtonDemo.csproj",
+      "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+      "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -63,7 +63,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

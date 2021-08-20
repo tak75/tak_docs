@@ -5,18 +5,17 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>JavaScript &#8212; Tak Documents  ドキュメント</title>
-    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bizstyle.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
@@ -50,9 +49,9 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="javascript">
+  <section id="javascript">
 <h1>JavaScript<a class="headerlink" href="#javascript" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="section" id="id1">
+<section id="id1">
 <h2>関数の種類<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>function命令</p>
@@ -77,10 +76,10 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="dom">
+</section>
+<section id="dom">
 <h2>DOM操作<a class="headerlink" href="#dom" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="getelementbyid">
+<section id="getelementbyid">
 <h3>getElementById()<a class="headerlink" href="#getelementbyid" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>概要</p>
@@ -95,8 +94,8 @@
 </li>
 <li><p>指定したidを持つ要素がなければ null を返す。</p></li>
 </ul>
-</div>
-<div class="section" id="getelementsbytagname">
+</section>
+<section id="getelementsbytagname">
 <h3>getElementsByTagName()<a class="headerlink" href="#getelementsbytagname" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>概要</p>
@@ -114,8 +113,8 @@
 <li><p>戻り値は、HTMLCollection（配列と似た構造のデータ）。</p></li>
 <li><p>指定したタグ名を持つ要素がない場合は、空のHTMLCollection([])を返す。（null ではない）</p></li>
 </ul>
-</div>
-<div class="section" id="getelementsbyname">
+</section>
+<section id="getelementsbyname">
 <h3>getElementsByName()<a class="headerlink" href="#getelementsbyname" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>概要</p>
@@ -134,8 +133,8 @@
 <li><p>戻り値は、HTMLCollection（配列と似た構造のデータ）。</p></li>
 <li><p>指定したname属性が存在しない場合は、空のHTMLCollection([])を返す。（null ではない）</p></li>
 </ul>
-</div>
-<div class="section" id="getelementsbyclassname">
+</section>
+<section id="getelementsbyclassname">
 <h3>getElementsByClassName()<a class="headerlink" href="#getelementsbyclassname" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>概要</p>
@@ -154,8 +153,8 @@
 <li><p>戻り値は、HTMLCollection（配列と似た構造のデータ）。</p></li>
 <li><p>指定したclass属性が存在しない場合は、空のHTMLCollection([])を返す。（null ではない）</p></li>
 </ul>
-</div>
-<div class="section" id="createelement">
+</section>
+<section id="createelement">
 <h3>createElement()<a class="headerlink" href="#createelement" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>概要</p>
@@ -163,8 +162,8 @@
 </li>
 <li><p>ノードを作成するだけのため、別途階層に追加する処理が必要。</p></li>
 </ul>
-</div>
-<div class="section" id="createtextnode">
+</section>
+<section id="createtextnode">
 <h3>createTextNode()<a class="headerlink" href="#createtextnode" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>概要</p>
@@ -172,8 +171,8 @@
 </li>
 <li><p>ノードを作成するだけのため、別途階層に追加する処理が必要。</p></li>
 </ul>
-</div>
-<div class="section" id="appendchild">
+</section>
+<section id="appendchild">
 <h3>appendChild()<a class="headerlink" href="#appendchild" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>概要</p>
@@ -199,8 +198,8 @@
 </li>
 <li><p>戻り値は、追加した子ノード</p></li>
 </ul>
-</div>
-<div class="section" id="replacechild">
+</section>
+<section id="replacechild">
 <h3>replaceChild()<a class="headerlink" href="#replacechild" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>概要</p>
@@ -232,8 +231,8 @@
 </li>
 <li><p>newChildと、oldChildを入れ換える動作。（appendChild()と、removeChild()を同時に行う）</p></li>
 </ul>
-</div>
-<div class="section" id="removechild">
+</section>
+<section id="removechild">
 <h3>removeChild()<a class="headerlink" href="#removechild" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>概要</p>
@@ -253,11 +252,11 @@
 </li>
 <li><p>戻り値は、取り除いたノードoldChildであり、これは再利用できる</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="id2">
+</section>
+</section>
+<section id="id2">
 <h2>イベントとイベントハンドラ<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id3">
+<section id="id3">
 <h3>開始タグの中で関連付ける方法<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>1つの要素や1つのイベントに対して、1つのイベントハンドラしか設定できない。</p></li>
@@ -275,8 +274,8 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id4">
+</section>
+<section id="id4">
 <h3>プロパティで関連付ける方法<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>1つの要素や1つのイベントに対して、1つのイベントハンドラしか設定できない。</p></li>
@@ -289,8 +288,8 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="addeventlistener">
+</section>
+<section id="addeventlistener">
 <h3>addEventListener<a class="headerlink" href="#addeventlistener" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>1つの要素や1つのイベントに対して、複数のイベントハンドラを設定できる。（この方法で実装すべし！）</p></li>
@@ -305,9 +304,9 @@
 </div>
 </li>
 </ul>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -408,7 +407,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, tak.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
 </html>

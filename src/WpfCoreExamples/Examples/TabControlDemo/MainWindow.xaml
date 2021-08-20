@@ -5,23 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TabControlDemo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="200" Width="200">
+        Title="MainWindow" Height="500" Width="500">
     <Grid>
-        <TabControl x:Name="MyTabControl"
-                    Margin="20">
-            <TabItem Header="AAA">
+        <TabControl x:Name="MyTabControl" Margin="20" >
+            <TabItem x:Name="TabA" Header="AAA" Width="40">
                 <StackPanel>
                     <TextBox Margin="10"/>
                     <Button Content="Save" 
                             Margin="10"/>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="BBB">
+            <TabItem x:Name="TabB" Header="BBB" Width="40">
                 <StackPanel>
                     <TextBox Margin="10"/>
                     <Button Content="Search" 
                             Margin="10"/>
                 </StackPanel>
+            </TabItem>
+            <TabItem x:Name="TabC" Header="CCC" Visibility="Collapsed" Width="40"/>
+            <TabItem x:Name="TabD" Header="DDD" Width="40"/>
+            <TabItem x:Name="HiddenTab" Header="HHH" Visibility="Hidden" Tag="spacer"/>
+
+            <TabItem x:Name="TabZ" Header="ZZZ" Width="40">
             </TabItem>
         </TabControl>
     </Grid></Window>

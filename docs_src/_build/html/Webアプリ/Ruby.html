@@ -5,18 +5,17 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>Ruby &#8212; Tak Documents  ドキュメント</title>
-    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bizstyle.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
@@ -50,23 +49,23 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="ruby">
+  <section id="ruby">
 <h1>Ruby<a class="headerlink" href="#ruby" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="section" id="id1">
+<section id="id1">
 <h2>用語<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <dl class="glossary simple">
-<dt id="term-Ruby">Ruby</dt><dd><ul class="simple">
+<dt id="term-Ruby">Ruby<a class="headerlink" href="#term-Ruby" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>日本人が開発したプログラミング言語。</p></li>
 <li><p>関連用語： <a class="reference internal" href="Ruby%20on%20Rails.html#term-Ruby-on-Rails"><span class="xref std std-term">Ruby on Rails</span></a></p></li>
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="ruby-cloud9">
+</section>
+<section id="ruby-cloud9">
 <h2>Rubyのバージョン管理コマンド（Cloud9のコマンドラインで入力し使用）<a class="headerlink" href="#ruby-cloud9" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>現在のRubyのバージョンを表示する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ruby -v
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ruby -v
 
 <span class="go">//出力例</span>
 <span class="go">ruby 2.3.8p459 (2018-10-18 revision 65136) [x86_64-linux]</span>
@@ -74,53 +73,53 @@
 </div>
 </li>
 <li><p>現在インストールされているRubyのバージョンリストを表示する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rvm list
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rvm list
 
 <span class="go">//出力例</span>
 <span class="go">   ruby-2.3.1 [ x86_64 ]</span>
 <span class="go">=&gt; ruby-2.3.8 [ x86_64 ]</span>
 <span class="go"> * ruby-2.6.3 [ x86_64 ]</span>
 
-<span class="gp">#</span> <span class="o">=</span>&gt; - <span class="nv">current</span>
-<span class="gp">#</span> <span class="o">=</span>* - current <span class="o">&amp;&amp;</span> default
-<span class="gp">#</span>  * - default
+<span class="gp"># </span><span class="o">=</span>&gt; - <span class="nv">current</span>
+<span class="gp"># </span><span class="o">=</span>* - current <span class="o">&amp;&amp;</span> default
+<span class="gp">#  </span>* - default
 </pre></div>
 </div>
 </li>
 <li><p>特定のバージョンをインストールする</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rvm install <span class="m">2</span>.3.4
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rvm install <span class="m">2</span>.3.4
 </pre></div>
 </div>
 </li>
 <li><p>特定のメジャーバージョンの最新版をインストールする</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rvm install <span class="m">2</span>.3   // <span class="m">2</span>.3.x の最新版がインストールされる
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rvm install <span class="m">2</span>.3   // <span class="m">2</span>.3.x の最新版がインストールされる
 </pre></div>
 </div>
 </li>
 <li><p>特定のバージョンを使用する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rvm use <span class="m">2</span>.6.3
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rvm use <span class="m">2</span>.6.3
 </pre></div>
 </div>
 </li>
 <li><p>特定のバージョンをアンインストールする</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rvm remove <span class="m">2</span>.3.1
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rvm remove <span class="m">2</span>.3.1
 </pre></div>
 </div>
 </li>
 <li><p>特定のバージョンをデフォルトで使用するバージョンに設定する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rvm --default <span class="m">2</span>.6.3
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rvm --default <span class="m">2</span>.6.3
 </pre></div>
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id2">
+</section>
+<section id="id2">
 <h2>開発環境<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
 <li><p>AWS Cloud9を使用する</p></li>
 </ul>
-</div>
-<div class="section" id="id3">
+</section>
+<section id="id3">
 <h2>Rubyを動かす方法<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>irbを使う</p>
@@ -128,8 +127,8 @@
 <li><p>Interactive Rubyの略</p></li>
 <li><p>対話型</p></li>
 <li><p>Cloud9のコマンドラインで以下のように入力し使用する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> irb       // 開始時
-<span class="gp">&gt;</span> <span class="nb">exit</span>      // 終了時
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>irb       // 開始時
+<span class="go">&gt; exit      // 終了時</span>
 </pre></div>
 </div>
 </li>
@@ -139,17 +138,17 @@
 <ul>
 <li><p>ファイル拡張子は.rb</p></li>
 <li><p>Cloud9のコマンドラインにて、実行ファイルのディレクトリに移動（cd）した上で、以下を入力し実行する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ruby xxx.rb   // xxx.rbはファイル名
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ruby xxx.rb   // xxx.rbはファイル名
 </pre></div>
 </div>
 </li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="id4">
+</section>
+<section id="id4">
 <h2>言語仕様<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id5">
+<section id="id5">
 <h3>文字列<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>文字列を囲う記号は「ダブルクォート&quot;&quot;」と「シングルクォート''」の2種がある。
@@ -178,16 +177,16 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id6">
+</section>
+<section id="id6">
 <h3>条件分岐<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="section" id="if">
+<section id="if">
 <h4>if文<a class="headerlink" href="#if" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <ul class="simple">
 <li><p>if/elsif/else/end の並び。</p></li>
 </ul>
-</div>
-<div class="section" id="unless">
+</section>
+<section id="unless">
 <h4>unless文<a class="headerlink" href="#unless" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <ul>
 <li><p>unless/else/end の並び。</p></li>
@@ -202,8 +201,8 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="case">
+</section>
+<section id="case">
 <h4>case文<a class="headerlink" href="#case" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <ul>
 <li><p>case/when/else/end の並び。</p>
@@ -222,9 +221,9 @@
 </div>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="id7">
+</section>
+</section>
+<section id="id7">
 <h3>関数<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># 例1</span>
 <span class="c1"># 引数がない場合は括弧()は不要</span>
@@ -238,10 +237,10 @@
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="puts-print-p">
+</section>
+<section id="puts-print-p">
 <h3>puts,print,p メソッド<a class="headerlink" href="#puts-print-p" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="section" id="puts">
+<section id="puts">
 <h4>puts メソッド<a class="headerlink" href="#puts" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <ul class="simple">
 <li><p>改行を加えてターミナルに出力する</p></li>
@@ -252,8 +251,8 @@
 <span class="o">=&gt;</span> <span class="kp">nil</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="print">
+</section>
+<section id="print">
 <h4>print メソッド<a class="headerlink" href="#print" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <ul class="simple">
 <li><p>改行なしでターミナルに出力する</p></li>
@@ -263,8 +262,8 @@
 <span class="n">nakamura</span> <span class="o">=&gt;</span> <span class="kp">nil</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="p">
+</section>
+<section id="p">
 <h4>p メソッド<a class="headerlink" href="#p" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <ul class="simple">
 <li><p>デバッグ用</p></li>
@@ -275,9 +274,9 @@
 <span class="o">=&gt;</span> <span class="s2">&quot;nakamura&quot;</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="id8">
+</section>
+</section>
+<section id="id8">
 <h3>配列<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># 空の配列を作成する</span>
 <span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">006</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="o">[]</span>
@@ -358,10 +357,10 @@
 <span class="o">=&gt;</span> <span class="s2">&quot;my name is nakamura&quot;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id9">
+</section>
+<section id="id9">
 <h3>ハッシュ<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="section" id="id10">
+<section id="id10">
 <h4>基本操作1<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># 空のハッシュを作成する</span>
 <span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">001</span> <span class="o">&gt;</span> <span class="n">h</span> <span class="o">=</span> <span class="p">{}</span>
@@ -424,8 +423,8 @@
 <span class="o">=&gt;</span> <span class="kp">nil</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id11">
+</section>
+<section id="id11">
 <h4>要素を1つずつ処理<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">020</span> <span class="o">&gt;</span> <span class="n">scores</span> <span class="o">=</span> <span class="p">{</span><span class="ss">luke</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="ss">jack</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="ss">robert</span><span class="p">:</span> <span class="mi">70</span><span class="p">}</span>
 <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:luke</span><span class="o">=&gt;</span><span class="mi">100</span><span class="p">,</span> <span class="ss">:jack</span><span class="o">=&gt;</span><span class="mi">90</span><span class="p">,</span> <span class="ss">:robert</span><span class="o">=&gt;</span><span class="mi">70</span><span class="p">}</span>
@@ -458,8 +457,8 @@
 <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:luke</span><span class="o">=&gt;</span><span class="mi">100</span><span class="p">,</span> <span class="ss">:jack</span><span class="o">=&gt;</span><span class="mi">90</span><span class="p">,</span> <span class="ss">:robert</span><span class="o">=&gt;</span><span class="mi">70</span><span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id12">
+</section>
+<section id="id12">
 <h4>基本操作2<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># ハッシュ内のキー一覧を表示</span>
 <span class="mi">2</span><span class="o">.</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span><span class="mo">032</span> <span class="o">&gt;</span> <span class="n">scores</span><span class="o">.</span><span class="n">keys</span>
@@ -480,11 +479,11 @@
 <span class="o">=&gt;</span> <span class="mi">3</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="id13">
+</section>
+</section>
+<section id="id13">
 <h3>繰り返し処理<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="section" id="each">
+<section id="each">
 <h4>each<a class="headerlink" href="#each" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># 配列の要素を変数numberに1つずつ取り出しながら処理を実行する</span>
 <span class="c1"># 方法その1</span>
@@ -507,8 +506,8 @@
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="for">
+</section>
+<section id="for">
 <h4>for<a class="headerlink" href="#for" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <ul class="simple">
 <li><p><strong>forは原則使わない</strong></p></li>
@@ -522,8 +521,8 @@
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="times">
+</section>
+<section id="times">
 <h4>times<a class="headerlink" href="#times" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <ul class="simple">
 <li><p>配列を使わず、単純にn回処理を繰り返したい時に使う。</p></li>
@@ -545,8 +544,8 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="while">
+</section>
+<section id="while">
 <h4>while<a class="headerlink" href="#while" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <ul class="simple">
 <li><p>指定した条件が真である間、処理を繰り返す</p></li>
@@ -559,8 +558,8 @@
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="upto">
+</section>
+<section id="upto">
 <h4>upto<a class="headerlink" href="#upto" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <ul class="simple">
 <li><p>nからmまで数値を1ずつ増やしながら処理を実行する場合に使用する</p></li>
@@ -569,8 +568,8 @@
 <span class="mi">10</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">n</span><span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="downto">
+</section>
+<section id="downto">
 <h4>downto<a class="headerlink" href="#downto" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <ul class="simple">
 <li><p>nからmまで数値を1ずつ減らしながら処理を実行する場合に使用する</p></li>
@@ -579,8 +578,8 @@
 <span class="mi">14</span><span class="o">.</span><span class="n">downto</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">n</span><span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="step">
+</section>
+<section id="step">
 <h4>step<a class="headerlink" href="#step" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <ul class="simple">
 <li><p>nからmまで数値をxずつ増やしながら処理を実行する場合に使用する</p></li>
@@ -594,8 +593,8 @@
 <span class="mi">10</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">n</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">n</span><span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="loop-break">
+</section>
+<section id="loop-break">
 <h4>loop, break<a class="headerlink" href="#loop-break" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <ul class="simple">
 <li><p>あえて無限ループを作りたい時に利用する</p></li>
@@ -608,8 +607,8 @@
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="next">
+</section>
+<section id="next">
 <h4>next<a class="headerlink" href="#next" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="o">]</span>
 <span class="n">numbers</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span>
@@ -620,9 +619,9 @@
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="id14">
+</section>
+</section>
+<section id="id14">
 <h3>クラス<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>インスタンス変数は&quot;&#64;～&quot;と記載</p></li>
@@ -645,8 +644,8 @@
 <span class="n">emma</span><span class="o">.</span><span class="n">hello</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id15">
+</section>
+<section id="id15">
 <h3>アクセサ<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># 自分でget/setアクセサを書く場合</span>
 <span class="k">class</span> <span class="nc">User</span>
@@ -660,7 +659,7 @@
   <span class="k">end</span>
 
   <span class="c1"># setアクセサ</span>
-  <span class="k">def</span> <span class="nf">name</span><span class="o">=</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+  <span class="k">def</span> <span class="nf">name=</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
     <span class="vi">@name</span> <span class="o">=</span> <span class="n">value</span>
   <span class="k">end</span>
 
@@ -687,8 +686,8 @@
 <span class="kp">attr_writer</span> <span class="ss">:name</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id16">
+</section>
+<section id="id16">
 <h3>クラスメソッド、クラス変数<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span>
   <span class="no">REGION</span> <span class="o">=</span> <span class="s1">&#39;USA&#39;</span>
@@ -720,8 +719,8 @@
 <span class="nb">puts</span> <span class="no">User</span><span class="o">::</span><span class="no">REGION</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id17">
+</section>
+<section id="id17">
 <h3>クラスの継承<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># Userクラスを継承</span>
 <span class="k">class</span> <span class="nc">AdminUser</span> <span class="o">&lt;</span> <span class="no">User</span>
@@ -733,8 +732,8 @@
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id18">
+</section>
+<section id="id18">
 <h3>メソッドのアクセス権<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>public/protected/private の3種</p></li>
@@ -753,8 +752,8 @@
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id19">
+</section>
+<section id="id19">
 <h3>モジュール<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>クラスメソッドや定数のみを持つクラス？</p></li>
@@ -774,8 +773,8 @@
 <span class="no">Driver</span><span class="o">.</span><span class="n">stop</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id20">
+</section>
+<section id="id20">
 <h3>例外<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="nb">puts</span> <span class="s1">&#39;---数値を入力してください---&#39;</span>
 <span class="n">i</span> <span class="o">=</span> <span class="nb">gets</span><span class="o">.</span><span class="n">to_i</span>
@@ -794,8 +793,8 @@
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id21">
+</section>
+<section id="id21">
 <h3>コーディングルール<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>インデントは半角スペース <strong>2字</strong></p></li>
@@ -809,8 +808,8 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="id22">
+</section>
+<section id="id22">
 <h3>その他<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>nil</p>
@@ -818,9 +817,9 @@
 </li>
 <li><p>インクリメント&quot;++&quot;やデクリメント&quot;--&quot;はrubyにはない。代わりに&quot;+=&quot;と&quot;-=&quot;を使う。</p></li>
 </ul>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -951,7 +950,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, tak.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
 </html>

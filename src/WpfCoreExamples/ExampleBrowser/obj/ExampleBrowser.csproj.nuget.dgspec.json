@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\ExampleBrowser\\ExampleBrowser.csproj": {}
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\ExampleBrowser\\ExampleBrowser.csproj": {}
   },
   "projects": {
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\ExampleBrowser\\ExampleBrowser.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\ExampleBrowser\\ExampleBrowser.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\ExampleBrowser\\ExampleBrowser.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\ExampleBrowser\\ExampleBrowser.csproj",
         "projectName": "ExampleBrowser",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\ExampleBrowser\\ExampleBrowser.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\ExampleBrowser\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\ExampleBrowser\\ExampleBrowser.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\ExampleBrowser\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,92 +28,92 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\ButtonDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\ButtonDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\ButtonDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\ButtonDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CanvasDemo\\CanvasDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CanvasDemo\\CanvasDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CanvasDemo\\CanvasDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CanvasDemo\\CanvasDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CheckBoxDemo\\CheckBoxDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CheckBoxDemo\\CheckBoxDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CheckBoxDemo\\CheckBoxDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CheckBoxDemo\\CheckBoxDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ComboBoxDemo\\ComboBoxDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ComboBoxDemo\\ComboBoxDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ComboBoxDemo\\ComboBoxDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ComboBoxDemo\\ComboBoxDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ControlTemplateDemo\\ControlTemplateDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ControlTemplateDemo\\ControlTemplateDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ControlTemplateDemo\\ControlTemplateDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ControlTemplateDemo\\ControlTemplateDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CustomButtonDemo\\CustomButtonDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CustomButtonDemo\\CustomButtonDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CustomButtonDemo\\CustomButtonDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CustomButtonDemo\\CustomButtonDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\DataTemplateDemo\\DataTemplateDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\DataTemplateDemo\\DataTemplateDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\DataTemplateDemo\\DataTemplateDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\DataTemplateDemo\\DataTemplateDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\DockPanelDemo\\DockPanelDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\DockPanelDemo\\DockPanelDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\DockPanelDemo\\DockPanelDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\DockPanelDemo\\DockPanelDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ExpanderDemo\\ExpanderDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ExpanderDemo\\ExpanderDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ExpanderDemo\\ExpanderDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ExpanderDemo\\ExpanderDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\GridDemo\\GridDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\GridDemo\\GridDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\GridDemo\\GridDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\GridDemo\\GridDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\GroupBoxDemo\\GroupBoxDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\GroupBoxDemo\\GroupBoxDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\GroupBoxDemo\\GroupBoxDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\GroupBoxDemo\\GroupBoxDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\HelloWorld\\HelloWorld.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\HelloWorld\\HelloWorld.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\HelloWorld\\HelloWorld.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\HelloWorld\\HelloWorld.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ListBoxDemo\\ListBoxDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ListBoxDemo\\ListBoxDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ListBoxDemo\\ListBoxDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ListBoxDemo\\ListBoxDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ListViewDemo\\ListViewDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ListViewDemo\\ListViewDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ListViewDemo\\ListViewDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ListViewDemo\\ListViewDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\MenuDemo\\MenuDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\MenuDemo\\MenuDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\MenuDemo\\MenuDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\MenuDemo\\MenuDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ProgressBarDemo\\ProgressBarDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ProgressBarDemo\\ProgressBarDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ProgressBarDemo\\ProgressBarDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ProgressBarDemo\\ProgressBarDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\RadioButtonDemo\\RadioButtonDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\RadioButtonDemo\\RadioButtonDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\RadioButtonDemo\\RadioButtonDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\RadioButtonDemo\\RadioButtonDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\SliderDemo\\SliderDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\SliderDemo\\SliderDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\SliderDemo\\SliderDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\SliderDemo\\SliderDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\SQLiteDemo\\SQLiteDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\SQLiteDemo\\SQLiteDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\SQLiteDemo\\SQLiteDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\SQLiteDemo\\SQLiteDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\StatusBarDemo\\StatusBarDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\StatusBarDemo\\StatusBarDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\StatusBarDemo\\StatusBarDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\StatusBarDemo\\StatusBarDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TabControlDemo\\TabControlDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TabControlDemo\\TabControlDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TabControlDemo\\TabControlDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TabControlDemo\\TabControlDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TextBlock_TextBoxDemo\\TextBlock_TextBoxDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TextBlock_TextBoxDemo\\TextBlock_TextBoxDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TextBlock_TextBoxDemo\\TextBlock_TextBoxDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TextBlock_TextBoxDemo\\TextBlock_TextBoxDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ToolBarDemo\\ToolBarDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ToolBarDemo\\ToolBarDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ToolBarDemo\\ToolBarDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ToolBarDemo\\ToolBarDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TreeViewDemo\\TreeViewDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TreeViewDemo\\TreeViewDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TreeViewDemo\\TreeViewDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TreeViewDemo\\TreeViewDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TriggerDemo\\TriggerDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TriggerDemo\\TriggerDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TriggerDemo\\TriggerDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TriggerDemo\\TriggerDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\VariousButtons\\VariousButtonsDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\VariousButtons\\VariousButtonsDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\VariousButtons\\VariousButtonsDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\VariousButtons\\VariousButtonsDemo.csproj"
               },
-              "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\WrapPanelDemo\\WrapPanelDemo.csproj": {
-                "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\WrapPanelDemo\\WrapPanelDemo.csproj"
+              "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\WrapPanelDemo\\WrapPanelDemo.csproj": {
+                "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\WrapPanelDemo\\WrapPanelDemo.csproj"
               }
             }
           }
@@ -145,21 +145,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj",
         "projectName": "AnimatedButton",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -202,21 +202,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\ButtonDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\ButtonDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\ButtonDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\ButtonDemo.csproj",
         "projectName": "ButtonDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\ButtonDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\ButtonDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -259,21 +259,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CanvasDemo\\CanvasDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CanvasDemo\\CanvasDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CanvasDemo\\CanvasDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CanvasDemo\\CanvasDemo.csproj",
         "projectName": "CanvasDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CanvasDemo\\CanvasDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CanvasDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CanvasDemo\\CanvasDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CanvasDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -316,21 +316,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CheckBoxDemo\\CheckBoxDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CheckBoxDemo\\CheckBoxDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CheckBoxDemo\\CheckBoxDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CheckBoxDemo\\CheckBoxDemo.csproj",
         "projectName": "CheckBoxDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CheckBoxDemo\\CheckBoxDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CheckBoxDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CheckBoxDemo\\CheckBoxDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CheckBoxDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -373,21 +373,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ComboBoxDemo\\ComboBoxDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ComboBoxDemo\\ComboBoxDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ComboBoxDemo\\ComboBoxDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ComboBoxDemo\\ComboBoxDemo.csproj",
         "projectName": "ComboBoxDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ComboBoxDemo\\ComboBoxDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ComboBoxDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ComboBoxDemo\\ComboBoxDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ComboBoxDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -430,21 +430,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ControlTemplateDemo\\ControlTemplateDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ControlTemplateDemo\\ControlTemplateDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ControlTemplateDemo\\ControlTemplateDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ControlTemplateDemo\\ControlTemplateDemo.csproj",
         "projectName": "ControlTemplateDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ControlTemplateDemo\\ControlTemplateDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ControlTemplateDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ControlTemplateDemo\\ControlTemplateDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ControlTemplateDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -487,21 +487,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CustomButtonDemo\\CustomButtonDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CustomButtonDemo\\CustomButtonDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CustomButtonDemo\\CustomButtonDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CustomButtonDemo\\CustomButtonDemo.csproj",
         "projectName": "CustomButtonDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CustomButtonDemo\\CustomButtonDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CustomButtonDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CustomButtonDemo\\CustomButtonDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CustomButtonDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -544,21 +544,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj",
         "projectName": "CustomerSettingSamp",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -607,21 +607,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\DataTemplateDemo\\DataTemplateDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\DataTemplateDemo\\DataTemplateDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\DataTemplateDemo\\DataTemplateDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\DataTemplateDemo\\DataTemplateDemo.csproj",
         "projectName": "DataTemplateDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\DataTemplateDemo\\DataTemplateDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\DataTemplateDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\DataTemplateDemo\\DataTemplateDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\DataTemplateDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -664,21 +664,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\DockPanelDemo\\DockPanelDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\DockPanelDemo\\DockPanelDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\DockPanelDemo\\DockPanelDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\DockPanelDemo\\DockPanelDemo.csproj",
         "projectName": "DockPanelDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\DockPanelDemo\\DockPanelDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\DockPanelDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\DockPanelDemo\\DockPanelDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\DockPanelDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -721,21 +721,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ExpanderDemo\\ExpanderDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ExpanderDemo\\ExpanderDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ExpanderDemo\\ExpanderDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ExpanderDemo\\ExpanderDemo.csproj",
         "projectName": "ExpanderDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ExpanderDemo\\ExpanderDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ExpanderDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ExpanderDemo\\ExpanderDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ExpanderDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -778,21 +778,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\GridDemo\\GridDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\GridDemo\\GridDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\GridDemo\\GridDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\GridDemo\\GridDemo.csproj",
         "projectName": "GridDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\GridDemo\\GridDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\GridDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\GridDemo\\GridDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\GridDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -835,21 +835,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\GroupBoxDemo\\GroupBoxDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\GroupBoxDemo\\GroupBoxDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\GroupBoxDemo\\GroupBoxDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\GroupBoxDemo\\GroupBoxDemo.csproj",
         "projectName": "GroupBoxDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\GroupBoxDemo\\GroupBoxDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\GroupBoxDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\GroupBoxDemo\\GroupBoxDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\GroupBoxDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -892,21 +892,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\HelloWorld\\HelloWorld.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\HelloWorld\\HelloWorld.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\HelloWorld\\HelloWorld.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\HelloWorld\\HelloWorld.csproj",
         "projectName": "HelloWorld",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\HelloWorld\\HelloWorld.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\HelloWorld\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\HelloWorld\\HelloWorld.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\HelloWorld\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -949,21 +949,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ListBoxDemo\\ListBoxDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ListBoxDemo\\ListBoxDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ListBoxDemo\\ListBoxDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ListBoxDemo\\ListBoxDemo.csproj",
         "projectName": "ListBoxDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ListBoxDemo\\ListBoxDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ListBoxDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ListBoxDemo\\ListBoxDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ListBoxDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -1006,21 +1006,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ListViewDemo\\ListViewDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ListViewDemo\\ListViewDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ListViewDemo\\ListViewDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ListViewDemo\\ListViewDemo.csproj",
         "projectName": "ListViewDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ListViewDemo\\ListViewDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ListViewDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ListViewDemo\\ListViewDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ListViewDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -1063,21 +1063,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\MenuDemo\\MenuDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\MenuDemo\\MenuDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\MenuDemo\\MenuDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\MenuDemo\\MenuDemo.csproj",
         "projectName": "MenuDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\MenuDemo\\MenuDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\MenuDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\MenuDemo\\MenuDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\MenuDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -1120,21 +1120,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ProgressBarDemo\\ProgressBarDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ProgressBarDemo\\ProgressBarDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ProgressBarDemo\\ProgressBarDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ProgressBarDemo\\ProgressBarDemo.csproj",
         "projectName": "ProgressBarDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ProgressBarDemo\\ProgressBarDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ProgressBarDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ProgressBarDemo\\ProgressBarDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ProgressBarDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -1177,21 +1177,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\RadioButtonDemo\\RadioButtonDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\RadioButtonDemo\\RadioButtonDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\RadioButtonDemo\\RadioButtonDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\RadioButtonDemo\\RadioButtonDemo.csproj",
         "projectName": "RadioButtonDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\RadioButtonDemo\\RadioButtonDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\RadioButtonDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\RadioButtonDemo\\RadioButtonDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\RadioButtonDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -1234,21 +1234,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\SliderDemo\\SliderDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\SliderDemo\\SliderDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\SliderDemo\\SliderDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\SliderDemo\\SliderDemo.csproj",
         "projectName": "SliderDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\SliderDemo\\SliderDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\SliderDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\SliderDemo\\SliderDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\SliderDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -1291,21 +1291,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\SQLiteDemo\\SQLiteDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\SQLiteDemo\\SQLiteDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\SQLiteDemo\\SQLiteDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\SQLiteDemo\\SQLiteDemo.csproj",
         "projectName": "SQLiteDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\SQLiteDemo\\SQLiteDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\SQLiteDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\SQLiteDemo\\SQLiteDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\SQLiteDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -1354,21 +1354,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\StatusBarDemo\\StatusBarDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\StatusBarDemo\\StatusBarDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\StatusBarDemo\\StatusBarDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\StatusBarDemo\\StatusBarDemo.csproj",
         "projectName": "StatusBarDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\StatusBarDemo\\StatusBarDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\StatusBarDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\StatusBarDemo\\StatusBarDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\StatusBarDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -1411,21 +1411,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TabControlDemo\\TabControlDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TabControlDemo\\TabControlDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TabControlDemo\\TabControlDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TabControlDemo\\TabControlDemo.csproj",
         "projectName": "TabControlDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TabControlDemo\\TabControlDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TabControlDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TabControlDemo\\TabControlDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TabControlDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -1468,21 +1468,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TextBlock_TextBoxDemo\\TextBlock_TextBoxDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TextBlock_TextBoxDemo\\TextBlock_TextBoxDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TextBlock_TextBoxDemo\\TextBlock_TextBoxDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TextBlock_TextBoxDemo\\TextBlock_TextBoxDemo.csproj",
         "projectName": "TextBlock_TextBoxDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TextBlock_TextBoxDemo\\TextBlock_TextBoxDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TextBlock_TextBoxDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TextBlock_TextBoxDemo\\TextBlock_TextBoxDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TextBlock_TextBoxDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -1525,21 +1525,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ToolBarDemo\\ToolBarDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ToolBarDemo\\ToolBarDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ToolBarDemo\\ToolBarDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ToolBarDemo\\ToolBarDemo.csproj",
         "projectName": "ToolBarDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ToolBarDemo\\ToolBarDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ToolBarDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ToolBarDemo\\ToolBarDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ToolBarDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -1582,21 +1582,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TreeViewDemo\\TreeViewDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TreeViewDemo\\TreeViewDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TreeViewDemo\\TreeViewDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TreeViewDemo\\TreeViewDemo.csproj",
         "projectName": "TreeViewDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TreeViewDemo\\TreeViewDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TreeViewDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TreeViewDemo\\TreeViewDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TreeViewDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -1639,21 +1639,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TriggerDemo\\TriggerDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TriggerDemo\\TriggerDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TriggerDemo\\TriggerDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TriggerDemo\\TriggerDemo.csproj",
         "projectName": "TriggerDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TriggerDemo\\TriggerDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\TriggerDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TriggerDemo\\TriggerDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TriggerDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -1696,21 +1696,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\VariousButtons\\VariousButtonsDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\VariousButtons\\VariousButtonsDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\VariousButtons\\VariousButtonsDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\VariousButtons\\VariousButtonsDemo.csproj",
         "projectName": "VariousButtonsDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\VariousButtons\\VariousButtonsDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\VariousButtons\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\VariousButtons\\VariousButtonsDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\VariousButtons\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -1753,21 +1753,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\WrapPanelDemo\\WrapPanelDemo.csproj": {
+    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\WrapPanelDemo\\WrapPanelDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\WrapPanelDemo\\WrapPanelDemo.csproj",
+        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\WrapPanelDemo\\WrapPanelDemo.csproj",
         "projectName": "WrapPanelDemo",
-        "projectPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\WrapPanelDemo\\WrapPanelDemo.csproj",
-        "packagesPath": "C:\\Users\\i\\.nuget\\packages\\",
-        "outputPath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\WrapPanelDemo\\obj\\",
+        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\WrapPanelDemo\\WrapPanelDemo.csproj",
+        "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
+        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\WrapPanelDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -1810,7 +1810,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

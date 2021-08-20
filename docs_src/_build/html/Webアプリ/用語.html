@@ -5,18 +5,17 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>用語 &#8212; Tak Documents  ドキュメント</title>
-    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bizstyle.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
@@ -50,18 +49,18 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="id1">
+  <section id="id1">
 <h1>用語<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <dl class="glossary simple">
-<dt id="term-SocketIO">SocketIO</dt><dd><p>WebSocketを含むリアルタイムWeb技術を簡単に扱うことができるライブラリ</p>
+<dt id="term-SocketIO">SocketIO<a class="headerlink" href="#term-SocketIO" title="Permalink to this term">¶</a></dt><dd><p>WebSocketを含むリアルタイムWeb技術を簡単に扱うことができるライブラリ</p>
 </dd>
-<dt id="term-WebSocket">WebSocket</dt><dd><p>リアルタイムWeb技術の一種であり、リアルタイムかつ双方向な通信を実現するプロトコル。
+<dt id="term-WebSocket">WebSocket<a class="headerlink" href="#term-WebSocket" title="Permalink to this term">¶</a></dt><dd><p>リアルタイムWeb技術の一種であり、リアルタイムかつ双方向な通信を実現するプロトコル。
 WebSocket通信では、コネクション確立時にHTTPからWebSocketへプロトコルを切り替える。
 1度コネクションが確立されると、「ws:」または「wss:」から始まるURIスキーム上でクライアント〜サーバ間のデータのやりとりを行う。</p>
 </dd>
-<dt id="term-Kafka">Kafka</dt><dd><p>マイクロサービス間の非同期通信に利用。TCPプロトコル</p>
+<dt id="term-Kafka">Kafka<a class="headerlink" href="#term-Kafka" title="Permalink to this term">¶</a></dt><dd><p>マイクロサービス間の非同期通信に利用。TCPプロトコル</p>
 </dd>
-<dt id="term-NoSQL">NoSQL</dt><dd><p>Not Only SQL。
+<dt id="term-NoSQL">NoSQL<a class="headerlink" href="#term-NoSQL" title="Permalink to this term">¶</a></dt><dd><p>Not Only SQL。
 SQL言語を使わずにデータの操作ができるデータベース。
 Key-Value型データベースを指して言うことが多い。
 これは、Key-Valueストア（KVS）とも呼ばれる。
@@ -69,12 +68,12 @@ Key-Valueストア以外には、XMLやJSONなどがよく利用されている�
 大量のデータを保持することに向いている。
 データの参照には適しているが、データの更新や削除には向いていないので、取っておく必要はあるけど、普段頻繁に利用しないデータには最適。</p>
 </dd>
-<dt id="term-0">トランザクション処理</dt><dd><p>処理の一貫性を保証するために、関連する一連の処理全体を一つの処理単位として管理する仕組み。
+<dt id="term-0">トランザクション処理<a class="headerlink" href="#term-0" title="Permalink to this term">¶</a></dt><dd><p>処理の一貫性を保証するために、関連する一連の処理全体を一つの処理単位として管理する仕組み。
 つまり同時に処理が行われることを防げる。
 たとえば、ECサイトでものを買うとき、在庫が一点しかないのに、AさんとBさんが同じタイミングで購入ボタンを押した場合、両方に購入できたらダメ。
 こういう一貫性を保つ必要があるデータにトランザクションは必須。</p>
 </dd>
-<dt id="term-Spring-Framework">Spring Framework</dt><dd><p>JavaでWEBアプリ開発を行う場合に使用するフレームワーク。</p>
+<dt id="term-Spring-Framework">Spring Framework<a class="headerlink" href="#term-Spring-Framework" title="Permalink to this term">¶</a></dt><dd><p>JavaでWEBアプリ開発を行う場合に使用するフレームワーク。</p>
 <ul class="simple">
 <li><p>変更に強い：依存性のあるプログラムは外部から取り入れるため、1つ1つのプログラムを独立させやすい。</p></li>
 <li><p>テストが簡単：「Spring MVC Test」という専用のテストプログラムを使うことができる。
@@ -84,22 +83,22 @@ Key-Valueストア以外には、XMLやJSONなどがよく利用されている�
 <li><p>再利用性が高い：</p></li>
 </ul>
 </dd>
-<dt id="term-AOP">AOP</dt><dd><p>Aspect Oriented Programming。
+<dt id="term-AOP">AOP<a class="headerlink" href="#term-AOP" title="Permalink to this term">¶</a></dt><dd><p>Aspect Oriented Programming。
 コンピュータプログラムの特定の振る舞いを「アスペクト」と呼ばれる機能単位として分離して記述し、プログラム中の様々な対象に適用できるようにする手法。
 既存のオブジェクト指向プログラミング言語や開発環境に補助的に導入されることが多い。
 例えば、クラスには「本質的な処理」のみを書いて、「本質的ではない処理（共通化出来る処理）」を別に書くといった具合。
 主に必要となる処理とそうではない処理を分けることで、コードをわかりやすくする効果がある。</p>
 </dd>
-<dt id="term-1">リフレクション</dt><dd><p>クラス名やメソッド名の文字列から、クラスのインスタンス生成やインスタンスのメソッド呼び出しを行う技術。
+<dt id="term-1">リフレクション<a class="headerlink" href="#term-1" title="Permalink to this term">¶</a></dt><dd><p>クラス名やメソッド名の文字列から、クラスのインスタンス生成やインスタンスのメソッド呼び出しを行う技術。
 リフレクションを使って記述すれば、後はクラス名やメソッド名など変数に代入する値を変更するだけで異なるクラスやメソッドを実行することができる。
 プログラムをテストする場合などで使用すると便利。</p>
 </dd>
-<dt id="term-ReactJS">ReactJS</dt><dd><p>React はフロントエンドの UI のパーツ（構成部品）を作るためのライブラリ</p>
+<dt id="term-ReactJS">ReactJS<a class="headerlink" href="#term-ReactJS" title="Permalink to this term">¶</a></dt><dd><p>React はフロントエンドの UI のパーツ（構成部品）を作るためのライブラリ</p>
 </dd>
-<dt id="term-Redux">Redux</dt><dd><p>Redux は、JavaScript アプリ内コンポーネントの状態を管理するコンテナモデル</p>
+<dt id="term-Redux">Redux<a class="headerlink" href="#term-Redux" title="Permalink to this term">¶</a></dt><dd><p>Redux は、JavaScript アプリ内コンポーネントの状態を管理するコンテナモデル</p>
 </dd>
 </dl>
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -174,7 +173,7 @@ Key-Valueストア以外には、XMLやJSONなどがよく利用されている�
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, tak.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
 </html>

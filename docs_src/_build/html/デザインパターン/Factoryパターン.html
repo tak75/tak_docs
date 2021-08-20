@@ -5,18 +5,17 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>Factoryパターン &#8212; Tak Documents  ドキュメント</title>
-    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bizstyle.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
@@ -50,45 +49,49 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="factory">
+  <section id="factory">
 <h1>Factoryパターン<a class="headerlink" href="#factory" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="section" id="simple-factory">
+<section id="simple-factory">
 <h2>Simple Factoryパターン<a class="headerlink" href="#simple-factory" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id1">
+<section id="id1">
 <h3>説明<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>Simple Factory は <strong>デザインパターンではなく</strong> 、プログラミングのイディオム。</p></li>
 <li><p>インスタンスの作成を１つのクラスにカプセル化することで、実装が変わった際に変更すべき部分が１つだけになる。</p></li>
 <li><p>クライアントコードから具象クラスのインスタンス化を取り除くことができる。</p></li>
 </ul>
-</div>
-<div class="section" id="id2">
+</section>
+<section id="id2">
 <h3>図面<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>クラス図の例を <a class="reference internal" href="#simplefactory"><span class="std std-numref">図 19</span></a> に、シーケンス図を <a class="reference internal" href="#id3"><span class="std std-numref">図 20</span></a> に各々示す。</p>
-<div class="figure align-default" id="simplefactory">
+<figure class="align-default" id="simplefactory">
 <a class="reference internal image-reference" href="../_images/SimpleFactoryパターン_クラス図.png"><img alt="../_images/SimpleFactoryパターン_クラス図.png" src="../_images/SimpleFactoryパターン_クラス図.png" style="width: 816.85px; height: 278.8px;" /></a>
-<p class="caption"><span class="caption-number">図 19 </span><span class="caption-text">Simple Factoryパターン クラス図</span><a class="headerlink" href="#simplefactory" title="この画像へのパーマリンク">¶</a></p>
-</div>
-<div class="figure align-default" id="id3">
+<figcaption>
+<p><span class="caption-number">図 19 </span><span class="caption-text">Simple Factoryパターン クラス図</span><a class="headerlink" href="#simplefactory" title="この画像へのパーマリンク">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="../_images/SimpleFactoryパターン_シーケンス図.png"><img alt="../_images/SimpleFactoryパターン_シーケンス図.png" src="../_images/SimpleFactoryパターン_シーケンス図.png" style="width: 892.5px; height: 557.6px;" /></a>
-<p class="caption"><span class="caption-number">図 20 </span><span class="caption-text">Simple Factoryパターン シーケンス図</span><a class="headerlink" href="#id3" title="この画像へのパーマリンク">¶</a></p>
-</div>
-</div>
-</div>
-<div class="section" id="factory-method">
+<figcaption>
+<p><span class="caption-number">図 20 </span><span class="caption-text">Simple Factoryパターン シーケンス図</span><a class="headerlink" href="#id3" title="この画像へのパーマリンク">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="factory-method">
 <h2>Factory Methodパターン<a class="headerlink" href="#factory-method" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id4">
+<section id="id4">
 <h3>適用ケース<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>複数の製品（インスタンス）を作成する必要がある場合に有効。</p></li>
 </ul>
-</div>
-<div class="section" id="id5">
+</section>
+<section id="id5">
 <h3>定義<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>Factory Method パターンはオブジェクト作成のためのインスタフェースを定義するが、どのクラスをインスタンス化するかについてはサブクラスに決定させる。
 Factory Method により、クラスはサブクラスにインスタンス化を先送りできる。</p>
-</div>
-<div class="section" id="id6">
+</section>
+<section id="id6">
 <h3>説明<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>Factoryに製品名などを渡すことで、Product（具象クラスのインスタンス）を作ることができる。</p></li>
@@ -97,62 +100,70 @@ Factory Method により、クラスはサブクラスにインスタンス化�
 製品の実装と使用を分離できることにメリットがある。
 製品を追加したり製品の実装を変更しても Factory には影響が及ばない。</p></li>
 </ul>
-</div>
-<div class="section" id="id7">
+</section>
+<section id="id7">
 <h3>Simple Factory との違い<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>Simple Factory は一発勝負と考えられるのに対し、Factory Method は使用する実装をサブクラスに決定させるフレームワークを作成している。
 Simple Factory ではオブジェクト作成をカプセル化する方法は提供するが、作成する製品を変更する方法がないので、Facotry Method のような柔軟性はない。
 Facotory Method では、** 元のクラスを修正することなく** 新たな ConcreteFactory クラスを作成することで、作成する製品を変更することができる。</p>
-</div>
-<div class="section" id="id8">
+</section>
+<section id="id8">
 <h3>図面<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>クラス図の例を <a class="reference internal" href="#factorymethod"><span class="std std-numref">図 21</span></a> に、シーケンス図を <a class="reference internal" href="#id9"><span class="std std-numref">図 22</span></a> に各々示す。</p>
-<div class="figure align-default" id="factorymethod">
+<figure class="align-default" id="factorymethod">
 <a class="reference internal image-reference" href="../_images/FactoryMethodパターン_クラス図.png"><img alt="../_images/FactoryMethodパターン_クラス図.png" src="../_images/FactoryMethodパターン_クラス図.png" style="width: 803.25px; height: 477.7px;" /></a>
-<p class="caption"><span class="caption-number">図 21 </span><span class="caption-text">Factory Methodパターン クラス図</span><a class="headerlink" href="#factorymethod" title="この画像へのパーマリンク">¶</a></p>
-</div>
-<div class="figure align-default" id="id9">
+<figcaption>
+<p><span class="caption-number">図 21 </span><span class="caption-text">Factory Methodパターン クラス図</span><a class="headerlink" href="#factorymethod" title="この画像へのパーマリンク">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id9">
 <a class="reference internal image-reference" href="../_images/FactoryMethodパターン_シーケンス図.png"><img alt="../_images/FactoryMethodパターン_シーケンス図.png" src="../_images/FactoryMethodパターン_シーケンス図.png" style="width: 639.1999999999999px; height: 718.25px;" /></a>
-<p class="caption"><span class="caption-number">図 22 </span><span class="caption-text">Factory Methodパターン シーケンス図</span><a class="headerlink" href="#id9" title="この画像へのパーマリンク">¶</a></p>
-</div>
-</div>
-</div>
-<div class="section" id="abstract-factory">
+<figcaption>
+<p><span class="caption-number">図 22 </span><span class="caption-text">Factory Methodパターン シーケンス図</span><a class="headerlink" href="#id9" title="この画像へのパーマリンク">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="abstract-factory">
 <h2>Abstract Factory パターン<a class="headerlink" href="#abstract-factory" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id10">
+<section id="id10">
 <h3>適用ケース<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>工場が複数存在する（増える可能性がある）場合に有効。</p></li>
 <li><p>部品や製品が増える可能性がある場合は困難。
 （部品や製品を増やすためには、既存のfactoryパッケージ、およびconcretefactoryパッケージともに修正が必要となる）</p></li>
 </ul>
-</div>
-<div class="section" id="id11">
+</section>
+<section id="id11">
 <h3>定義<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>Abstract Factory パターンは、 <strong>具象クラスを指定することなく</strong> 、一連の関連オブジェクトや依存オブジェクトを作成するためのインスタフェースを提供する。</p>
-</div>
-<div class="section" id="id12">
+</section>
+<section id="id12">
 <h3>説明<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>Client（依頼者）は、具象クラスについては一切知る必要がない。
 抽象クラスに対して処理するだけでよい。
 このため、後で工場が増えたとしても、Clientに新しい工場のインスタンスを渡すだけで、Clientの修正なしに新しい工場を使用することができる。</p></li>
 </ul>
-</div>
-<div class="section" id="id13">
+</section>
+<section id="id13">
 <h3>図面<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>クラス図の例を <a class="reference internal" href="#abstractfactory"><span class="std std-numref">図 23</span></a> に、シーケンス図を <a class="reference internal" href="#id14"><span class="std std-numref">図 24</span></a> に各々示す。</p>
-<div class="figure align-default" id="abstractfactory">
+<figure class="align-default" id="abstractfactory">
 <a class="reference internal image-reference" href="../_images/AbstractFactoryパターン_クラス図.png"><img alt="../_images/AbstractFactoryパターン_クラス図.png" src="../_images/AbstractFactoryパターン_クラス図.png" style="width: 891.65px; height: 765.85px;" /></a>
-<p class="caption"><span class="caption-number">図 23 </span><span class="caption-text">Abstract Factoryパターン クラス図</span><a class="headerlink" href="#abstractfactory" title="この画像へのパーマリンク">¶</a></p>
-</div>
-<div class="figure align-default" id="id14">
+<figcaption>
+<p><span class="caption-number">図 23 </span><span class="caption-text">Abstract Factoryパターン クラス図</span><a class="headerlink" href="#abstractfactory" title="この画像へのパーマリンク">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id14">
 <a class="reference internal image-reference" href="../_images/AbstractFactoryパターン_シーケンス図.png"><img alt="../_images/AbstractFactoryパターン_シーケンス図.png" src="../_images/AbstractFactoryパターン_シーケンス図.png" style="width: 958.8px; height: 776.05px;" /></a>
-<p class="caption"><span class="caption-number">図 24 </span><span class="caption-text">Abstract Factoryパターン シーケンス図</span><a class="headerlink" href="#id14" title="この画像へのパーマリンク">¶</a></p>
-</div>
-</div>
-</div>
-</div>
+<figcaption>
+<p><span class="caption-number">図 24 </span><span class="caption-text">Abstract Factoryパターン シーケンス図</span><a class="headerlink" href="#id14" title="この画像へのパーマリンク">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -257,7 +268,7 @@ Facotory Method では、** 元のクラスを修正することなく** 新た�
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, tak.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
 </html>

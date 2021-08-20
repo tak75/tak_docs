@@ -5,18 +5,17 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>AWS応用 &#8212; Tak Documents  ドキュメント</title>
-    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bizstyle.css" />
     
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
     <script src="../../_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
@@ -51,21 +50,23 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="aws">
+  <section id="aws">
 <h1>AWS応用<a class="headerlink" href="#aws" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="section" id="s3-cloudfront">
+<section id="s3-cloudfront">
 <h2>【S3/CloudFront】画像を配信する<a class="headerlink" href="#s3-cloudfront" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id1">
+<section id="id1">
 <h3>本項で構築するAWS環境<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="figure align-default" id="aws1-cloudfront">
+<figure class="align-default" id="aws1-cloudfront">
 <a class="reference internal image-reference" href="../../_images/AWS応用1_CloudFront.png"><img alt="../../_images/AWS応用1_CloudFront.png" src="../../_images/AWS応用1_CloudFront.png" style="width: 640px;" /></a>
-<p class="caption"><span class="caption-number">図 7 </span><span class="caption-text">本項で構築するAWS環境（CloudFront）</span><a class="headerlink" href="#aws1-cloudfront" title="この画像へのパーマリンク">¶</a></p>
-</div>
-</div>
-<div class="section" id="id2">
+<figcaption>
+<p><span class="caption-number">図 7 </span><span class="caption-text">本項で構築するAWS環境（CloudFront）</span><a class="headerlink" href="#aws1-cloudfront" title="この画像へのパーマリンク">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id2">
 <h3>用語<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
-<dt id="term-S3">S3</dt><dd><ul class="simple">
+<dt id="term-S3">S3<a class="headerlink" href="#term-S3" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>安価で耐久性の高いAWSのクラウドストレージサービス</p></li>
 <li><p>特徴</p>
 <ul>
@@ -121,9 +122,9 @@
 </li>
 </ul>
 </dd>
-<dt id="term-CloudFront">CloudFront</dt><dd><p>AWSにおける <a class="reference internal" href="#term-CDN"><span class="xref std std-term">CDN</span></a> のサービス</p>
+<dt id="term-CloudFront">CloudFront<a class="headerlink" href="#term-CloudFront" title="Permalink to this term">¶</a></dt><dd><p>AWSにおける <a class="reference internal" href="#term-CDN"><span class="xref std std-term">CDN</span></a> のサービス</p>
 </dd>
-<dt id="term-CDN">CDN</dt><dd><ul class="simple">
+<dt id="term-CDN">CDN<a class="headerlink" href="#term-CDN" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>Content Delivery Network</p></li>
 <li><p>高速にコンテンツを配信するサービス</p></li>
 <li><p>オリジンサーバ（元となる画像を配信するサーバ。今回の場合はS3）上にあるコンテンツを、
@@ -132,18 +133,18 @@
 <li><p>効率的：エッジサーバでコンテンツのキャッシングを行うので、オリジンサーバに負荷をかけずに配信できる</p></li>
 </ul>
 </dd>
-<dt id="term-Certificate-Manager">Certificate Manager</dt><dd><p>証明書を発行・管理するためのAWSのサービス</p>
+<dt id="term-Certificate-Manager">Certificate Manager<a class="headerlink" href="#term-Certificate-Manager" title="Permalink to this term">¶</a></dt><dd><p>証明書を発行・管理するためのAWSのサービス</p>
 </dd>
-<dt id="term-SSL">SSLサーバ証明書</dt><dd><ul class="simple">
+<dt id="term-SSL">SSLサーバ証明書<a class="headerlink" href="#term-SSL" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>Webサーバの持ち主が実在することを示す電子証明書</p></li>
 <li><p>ブラウザとWebサーバ間で暗号化通信（https）をする時に必要</p></li>
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="id3">
+</section>
+<section id="id3">
 <h3>説明<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="section" id="id4">
+<section id="id4">
 <h4>インフラ設計における重要な観点<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <ul class="simple">
 <li><p>可用性：サービスを継続的に利用できるか（一番重要）</p></li>
@@ -152,8 +153,8 @@
 <li><p>セキュリティ：情報が安全に守られているか</p></li>
 <li><p>移行性：現行システムを他のシステムに移行しやすくなっているか</p></li>
 </ul>
-</div>
-<div class="section" id="webs3">
+</section>
+<section id="webs3">
 <h4>画像保存場所をWebサーバではなくS3にする理由<a class="headerlink" href="#webs3" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <ul class="simple">
 <li><p>Webサーバのストレージが画像で一杯になるのを防ぐ</p></li>
@@ -161,9 +162,9 @@
 <li><p>サーバの台数を増やしやすくする（画像の保存場所を分離することで、<a class="reference internal" href="#term-2"><span class="xref std std-term">スケールアウト</span></a> しやすくする）</p></li>
 <li><p>コンテンツ配信サービス（ <a class="reference internal" href="#term-CloudFront"><span class="xref std std-term">CloudFront</span></a> ）から配信することで、画像配信を高速化できる</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="id5">
+</section>
+</section>
+<section id="id5">
 <h3>手順<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>AWS側の準備</p>
@@ -241,13 +242,13 @@
 <li><p>必要なライブラリをEC2にインストール</p>
 <ul>
 <li><p>EC2にSSH接続し、インストール</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo yum install -y php-xml
-<span class="gp">$</span> sudo yum install -y php-gd
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo yum install -y php-xml
+<span class="gp">$ </span>sudo yum install -y php-gd
 </pre></div>
 </div>
 </li>
 <li><p>インストールしたライブラリを読み込ますためにサーバを再起動させる</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo systemctl restart httpd.service
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo systemctl restart httpd.service
 </pre></div>
 </div>
 </li>
@@ -266,16 +267,16 @@
 </div>
 </li>
 <li><p>EC2へのSSH接続画面にて、</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /var/www/html/
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> /var/www/html/
 
-<span class="gp">$</span> ls
+<span class="gp">$ </span>ls
 <span class="go">index.php        wp-blog-header.php    wp-cron.php        wp-mail.php</span>
 <span class="go">license.txt      wp-comments-post.php  wp-includes        wp-settings.php</span>
 <span class="go">readme.html      wp-config.php         wp-links-opml.php  wp-signup.php</span>
 <span class="go">wp-activate.php  wp-config-sample.php  wp-load.php        wp-trackback.php</span>
 <span class="go">wp-admin         wp-content            wp-login.php       xmlrpc.php</span>
 
-<span class="gp">$</span> vim wp-config.php
+<span class="gp">$ </span>vim wp-config.php
 <span class="go">// 開いたファイルの最後の方のdefine(～);の最後に、上記でコピーした内容を貼り付ける</span>
 <span class="go">// &#39;**・・&#39;の箇所は、S3の権限を持ったIAMユーザ作成時に保存したcsvファイルを開き、</span>
 <span class="go">// Access key ID と Secret access key をコピーし貼り付ける</span>
@@ -410,8 +411,8 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="id6">
+</section>
+<section id="id6">
 <h3>補足<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>S3のバケットに複数の画像が保管されるのを停止する</p>
@@ -424,35 +425,37 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="elbweb">
+</section>
+</section>
+<section id="elbweb">
 <h2>【ELB】Webレイヤを冗長化する<a class="headerlink" href="#elbweb" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id7">
+<section id="id7">
 <h3>本項で構築するAWS環境<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="figure align-default" id="aws2-web">
+<figure class="align-default" id="aws2-web">
 <a class="reference internal image-reference" href="../../_images/AWS応用2_Webサーバの冗長化.png"><img alt="../../_images/AWS応用2_Webサーバの冗長化.png" src="../../_images/AWS応用2_Webサーバの冗長化.png" style="width: 640px;" /></a>
-<p class="caption"><span class="caption-number">図 8 </span><span class="caption-text">本項で構築するAWS環境（Webサーバの冗長化）</span><a class="headerlink" href="#aws2-web" title="この画像へのパーマリンク">¶</a></p>
-</div>
-</div>
-<div class="section" id="id8">
+<figcaption>
+<p><span class="caption-number">図 8 </span><span class="caption-text">本項で構築するAWS環境（Webサーバの冗長化）</span><a class="headerlink" href="#aws2-web" title="この画像へのパーマリンク">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id8">
 <h3>用語<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
-<dt id="term-0">プロビジョニング</dt><dd><p>アクセス数などを予測して適切にリソースを準備すること</p>
+<dt id="term-0">プロビジョニング<a class="headerlink" href="#term-0" title="Permalink to this term">¶</a></dt><dd><p>アクセス数などを予測して適切にリソースを準備すること</p>
 </dd>
-<dt id="term-1">スケールアップ</dt><dd><ul class="simple">
+<dt id="term-1">スケールアップ<a class="headerlink" href="#term-1" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>個々の要素の性能を向上させる</p></li>
 <li><p>ある程度の規模まではスケールアップがコストパフォーマンスがよいが、
 一定範囲を超えると悪くなる</p></li>
 </ul>
 </dd>
-<dt id="term-2">スケールアウト</dt><dd><ul class="simple">
+<dt id="term-2">スケールアウト<a class="headerlink" href="#term-2" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>個々の要素の数を増やす（サーバの台数を増やす）</p></li>
 <li><p>ある程度の規模を超えそうであれば、スケールアウトで対応する</p></li>
 <li><p>最低用意しておくべきがN+1構成、安心なのはN+2構成</p></li>
 </ul>
 </dd>
-<dt id="term-ELB">ELB</dt><dd><ul class="simple">
+<dt id="term-ELB">ELB<a class="headerlink" href="#term-ELB" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>Elastic Load Balancing</p></li>
 <li><p>AWS上の <a class="reference internal" href="#term-3"><span class="xref std std-term">ロードバランサー</span></a></p></li>
 <li><p>機能</p>
@@ -473,16 +476,16 @@
 </li>
 </ul>
 </dd>
-<dt id="term-3">ロードバランサー</dt><dd><p>各サーバにアクセスを振り分け、負荷を分散する装置</p>
+<dt id="term-3">ロードバランサー<a class="headerlink" href="#term-3" title="Permalink to this term">¶</a></dt><dd><p>各サーバにアクセスを振り分け、負荷を分散する装置</p>
 </dd>
-<dt id="term-4">ステートレス</dt><dd><p>システムが現在の状態を表すデータなどを保持せず、入力の内容によってのみ出力が決定される方式。
+<dt id="term-4">ステートレス<a class="headerlink" href="#term-4" title="Permalink to this term">¶</a></dt><dd><p>システムが現在の状態を表すデータなどを保持せず、入力の内容によってのみ出力が決定される方式。
 同じ入力に対する出力は常に同じになる。
 Webサーバでは、データなどをWebサーバが保持せず、DBサーバやS3に一元管理することで、
 Webサーバに冗長性を持たせても（Webサーバを複数台設置して負荷分散しても）必ず同じ応答にすることができる。</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="id9">
+</section>
+<section id="id9">
 <h3>稼働率を上げるための方法<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>稼働率を上げるための基本的な考え方</p>
@@ -518,8 +521,8 @@ Webサーバに冗長性を持たせても（Webサーバを複数台設置し�
 </div></blockquote>
 </li>
 </ul>
-</div>
-<div class="section" id="id10">
+</section>
+<section id="id10">
 <h3>サーバ構成のベストプラクティス<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Webサーバ x 1、DBサーバ x 1 構成</p></li>
@@ -548,15 +551,15 @@ Webサーバに冗長性を持たせても（Webサーバを複数台設置し�
 <li><p>AWSでは、「マスタスレーブ方式」のことを「マルチAZ」と呼ぶ</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="elb">
+</section>
+<section id="elb">
 <h3>ELBを運用する際のポイント<a class="headerlink" href="#elb" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>サーバをアベイラリティゾーンをまたがって配置する</p></li>
 <li><p>Webサーバは <a class="reference internal" href="#term-4"><span class="xref std std-term">ステートレス</span></a> に構築する</p></li>
 </ul>
-</div>
-<div class="section" id="id11">
+</section>
+<section id="id11">
 <h3>手順<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>AMIからEC2を作成</p>
@@ -635,16 +638,16 @@ Webサーバに冗長性を持たせても（Webサーバを複数台設置し�
 <li><p>EC2インスタンスの説明を追加する</p>
 <ul>
 <li><p>EC2（10.0.10.10）へのSSH接続画面にて、</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /var/www/html/
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> /var/www/html/
 
-<span class="gp">$</span> ls
+<span class="gp">$ </span>ls
 <span class="go">index.php        wp-blog-header.php    wp-cron.php        wp-mail.php</span>
 <span class="go">license.txt      wp-comments-post.php  wp-includes        wp-settings.php</span>
 <span class="go">readme.html      wp-config.php         wp-links-opml.php  wp-signup.php</span>
 <span class="go">wp-activate.php  wp-config-sample.php  wp-load.php        wp-trackback.php</span>
 <span class="go">wp-admin         wp-content            wp-login.php       xmlrpc.php</span>
 
-<span class="gp">$</span> sudo vim index.php
+<span class="gp">$ </span>sudo vim index.php
 <span class="go">// 開いたファイルの末尾に「echo &#39;&lt;p&gt;sample 1a&lt;/p&gt;&#39;;」を追加し上書き保存</span>
 </pre></div>
 </div>
@@ -741,13 +744,13 @@ index.phpファイル末尾に「echo '&lt;p&gt;sample 1a&lt;/p&gt;';」を追�
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="id12">
+</section>
+<section id="id12">
 <h3>ELB動作確認<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>1aのEC2インスタンスが停止中の場合の動作を確認する</p></li>
 <li><p>EC2（10.0.10.10）にSSH接続し、Apacheを停止させる</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo systemctl stop httpd.service
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo systemctl stop httpd.service
 </pre></div>
 </div>
 </li>
@@ -756,14 +759,14 @@ index.phpファイル末尾に「echo '&lt;p&gt;sample 1a&lt;/p&gt;';」を追�
 <li><p>AWS -&gt; EC2 -&gt; ロードバランシング -&gt; ターゲットグループ -&gt; 事前作成のターゲットグループを選択 -&gt; 下のターゲットタブをクリック
 → 登録済みターゲットの1aがunhealthyに、1cがhealthyとなっている</p></li>
 <li><p>EC2（10.0.10.10）にSSH接続し、Apacheを再開させる</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo systemctl start httpd.service
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo systemctl start httpd.service
 </pre></div>
 </div>
 </li>
 <li><p>独自ドメイン「xxx.work」にアクセスし画面をリロードすると「sample 1a/1c」が交互に表示される</p></li>
 </ul>
-</div>
-<div class="section" id="id13">
+</section>
+<section id="id13">
 <h3>後片付け（無料枠を超過しないよう元に戻す）<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>1cをロードバランサーのターゲットから外す</p>
@@ -777,19 +780,19 @@ index.phpファイル末尾に「echo '&lt;p&gt;sample 1a&lt;/p&gt;';」を追�
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="rdcdb">
+</section>
+</section>
+<section id="rdcdb">
 <h2>【RDC】DBレイヤを冗長化する<a class="headerlink" href="#rdcdb" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id14">
+<section id="id14">
 <h3>説明<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>RDSでは、マルチAZ機能を使ってマスタスレーブ構成を構築する</p></li>
 <li><p>マスタDBに障害が発生してスレープDBに切り替わった場合は、IPアドレスは変わるが、DBのエンドポイントは変わらない。
 よって、特に何もしなくても使い続けることができる。</p></li>
 </ul>
-</div>
-<div class="section" id="id15">
+</section>
+<section id="id15">
 <h3>手順<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>AWS -&gt; RDS -&gt; データベース -&gt; 作成済みDB -&gt; 「変更」ボタンを押す</p>
@@ -803,39 +806,39 @@ index.phpファイル末尾に「echo '&lt;p&gt;sample 1a&lt;/p&gt;';」を追�
 <li><p>概要 -&gt; 情報　が「変更中」から「利用可能」に変わるまで待機する
 （結構時間がかかる）</p></li>
 </ul>
-</div>
-<div class="section" id="id16">
+</section>
+<section id="id16">
 <h3>後片付け（無料枠を超過しないよう元に戻す）<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>上記手順の逆手順でマルチAZ配置をOFFする</p>
-</div>
-</div>
-<div class="section" id="cloudwatch">
+</section>
+</section>
+<section id="cloudwatch">
 <h2>【CloudWatch】システムを監視する<a class="headerlink" href="#cloudwatch" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id17">
+<section id="id17">
 <h3>用語<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
-<dt id="term-5">システム監視</dt><dd><ul class="simple">
+<dt id="term-5">システム監視<a class="headerlink" href="#term-5" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>システムを正常な状態に保てるよう、稼働状況やリソースを監視すること</p></li>
 <li><p>大別して、 <span class="xref std std-term">死活監視</span> と <a class="reference internal" href="#term-7"><span class="xref std std-term">メトリクス監視</span></a> の2種類がある</p></li>
 </ul>
 </dd>
-<dt id="term-6">しかつかんし（死活監視）</dt><dd><ul class="simple">
+<dt id="term-6">しかつかんし（死活監視）<a class="headerlink" href="#term-6" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>正常にシステムが動作していることを確認</p></li>
 </ul>
 </dd>
-<dt id="term-7">メトリクス監視</dt><dd><ul class="simple">
+<dt id="term-7">メトリクス監視<a class="headerlink" href="#term-7" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>パフォーマンスを定量的に確認</p></li>
 <li><p>指標を決め、指標が閾値以上・以下となっているかを把握</p></li>
 </ul>
 </dd>
-<dt id="term-CloudWatch">CloudWatch</dt><dd><ul class="simple">
+<dt id="term-CloudWatch">CloudWatch<a class="headerlink" href="#term-CloudWatch" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>AWSサービスの監視やモニタリングができる監視サービス</p></li>
 <li><p>AWSサービスのメトリクス（リソース状況）を監視する</p></li>
 <li><p>メトリクスに対して閾値を登録し、その条件を満たしたら通知する（アラーム発生）</p></li>
 <li><p><a class="reference internal" href="#term-Amazon-SNS"><span class="xref std std-term">Amazon SNS</span></a> と組み合わせて使用する</p></li>
 </ul>
 </dd>
-<dt id="term-Amazon-SNS">Amazon SNS</dt><dd><ul class="simple">
+<dt id="term-Amazon-SNS">Amazon SNS<a class="headerlink" href="#term-Amazon-SNS" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>通知サービス</p></li>
 <li><p>Topicを作成することで、Publisherがメッセージを送信し、
 Subscriberが通知を受信するための通信チャネルとして機能する</p></li>
@@ -843,8 +846,8 @@ Subscriberが通知を受信するための通信チャネルとして機能す�
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="id18">
+</section>
+<section id="id18">
 <h3>説明<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>監視する際のポイント</p>
@@ -855,8 +858,8 @@ Subscriberが通知を受信するための通信チャネルとして機能す�
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="id19">
+</section>
+<section id="id19">
 <h3>手順<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>以降では、CPU使用率が60%を超えたら、
@@ -914,12 +917,12 @@ EC2 → CloudWatch → SNS → ユーザの経路にて、Eメールを送信す
 <ul>
 <li><p>EC2インスタンスにSSH接続する</p></li>
 <li><p>EC2が高負荷となるようコマンドを実行する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> yes &gt; /dev/null <span class="p">&amp;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>yes &gt; /dev/null <span class="p">&amp;</span>
 </pre></div>
 </div>
 </li>
 <li><p>CPU使用率を確認</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> top
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>top
 <span class="go">PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND</span>
 <span class="go">4838 ec2-user  20   0  114632    740    676 R 18.9  0.1   0:19.70 yes</span>
 <span class="go">4839 ec2-user  20   0  114632    740    676 R 18.9  0.1   0:19.47 yes</span>
@@ -942,14 +945,14 @@ EC2 → CloudWatch → SNS → ユーザの経路にて、Eメールを送信す
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="id20">
+</section>
+<section id="id20">
 <h3>後片付け（無料枠を超過しないよう元に戻す）<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>EC2インスタンスにSSH接続する</p></li>
 <li><p>yesコマンドを解除する</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// yesコマンドのプロセスを表示する</span>
-<span class="gp">$</span> ps aux <span class="p">|</span> grep yes
+<span class="gp">$ </span>ps aux <span class="p">|</span> grep yes
 <span class="go">ec2-user  4836 19.7  0.0 114632   748 pts/0    R    12:47   1:50 yes</span>
 <span class="go">ec2-user  4837 19.2  0.0 114632   772 pts/0    R    12:47   1:46 yes</span>
 <span class="go">ec2-user  4838 19.1  0.0 114632   740 pts/0    R    12:47   1:45 yes</span>
@@ -959,44 +962,44 @@ EC2 → CloudWatch → SNS → ユーザの経路にて、Eメールを送信す
 
 <span class="go">// yesコマンドのプロセスを停止する</span>
 <span class="go">// 4836-4840：yesコマンドのプロセスID</span>
-<span class="gp">$</span> <span class="nb">kill</span> -9 <span class="m">4836</span>
-<span class="gp">$</span> <span class="nb">kill</span> -9 <span class="m">4837</span>
-<span class="gp">$</span> <span class="nb">kill</span> -9 <span class="m">4838</span>
-<span class="gp">$</span> <span class="nb">kill</span> -9 <span class="m">4839</span>
-<span class="gp">$</span> <span class="nb">kill</span> -9 <span class="m">4840</span>
+<span class="gp">$ </span><span class="nb">kill</span> -9 <span class="m">4836</span>
+<span class="gp">$ </span><span class="nb">kill</span> -9 <span class="m">4837</span>
+<span class="gp">$ </span><span class="nb">kill</span> -9 <span class="m">4838</span>
+<span class="gp">$ </span><span class="nb">kill</span> -9 <span class="m">4839</span>
+<span class="gp">$ </span><span class="nb">kill</span> -9 <span class="m">4840</span>
 </pre></div>
 </div>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="iam">
+</section>
+</section>
+<section id="iam">
 <h2>【IAM】アクセス権限を管理する<a class="headerlink" href="#iam" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id21">
+<section id="id21">
 <h3>用語<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
-<dt id="term-IAM">IAM</dt><dd><ul class="simple">
+<dt id="term-IAM">IAM<a class="headerlink" href="#term-IAM" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>AWSのサービスを利用するユーザ権限を管理するサービス</p></li>
 <li><p>AWSリソースをセキュアに操作するために、認証・認可の仕組みを提供する</p></li>
 <li><p>各AWSリソースに対して別々のアクセス権限をユーザ毎に付与できる</p></li>
 <li><p>AWS IAM自体の利用は無料</p></li>
 </ul>
 </dd>
-<dt id="term-8">IAMポリシー</dt><dd><p>アクセス許可の定義。
+<dt id="term-8">IAMポリシー<a class="headerlink" href="#term-8" title="Permalink to this term">¶</a></dt><dd><p>アクセス許可の定義。
 「どのAWSサービスの」「どのリソースに対して」「どんな操作を」「許可する（許可しない）」を定義</p>
 </dd>
-<dt id="term-9">IAMユーザ</dt><dd><p>個々のアカウントのユーザ</p>
+<dt id="term-9">IAMユーザ<a class="headerlink" href="#term-9" title="Permalink to this term">¶</a></dt><dd><p>個々のアカウントのユーザ</p>
 </dd>
-<dt id="term-10">IAMグループ</dt><dd><p>IAMユーザの集合。
+<dt id="term-10">IAMグループ<a class="headerlink" href="#term-10" title="Permalink to this term">¶</a></dt><dd><p>IAMユーザの集合。
 複数のユーザにアクセス許可を付与する作業を簡素化。
 グループに対してポリシーを設定できる</p>
 </dd>
-<dt id="term-11">IAMロール</dt><dd><p>一時的にアクセスを許可したアカウントを発行できる。
+<dt id="term-11">IAMロール<a class="headerlink" href="#term-11" title="Permalink to this term">¶</a></dt><dd><p>一時的にアクセスを許可したアカウントを発行できる。
 EC2やLambdaなどのAWSリソースに権限を付与するために使用</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="id22">
+</section>
+<section id="id22">
 <h3>作業内容<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>作成するポリシー</p>
@@ -1033,8 +1036,8 @@ EC2やLambdaなどのAWSリソースに権限を付与するために使用</p>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="id23">
+</section>
+<section id="id23">
 <h3>手順<a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>IAMポリシーを作成する</p>
@@ -1135,7 +1138,7 @@ EC2やLambdaなどのAWSリソースに権限を付与するために使用</p>
 <li><p>EC2へのSSH接続画面にて、</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// S3バケットリストの出力コマンドを実行すると、</span>
 <span class="go">// エラーメッセージが出力される</span>
-<span class="gp">$</span> aws s3 ls
+<span class="gp">$ </span>aws s3 ls
 <span class="go">Unable to locate credentials.</span>
 <span class="go">You can configure credentials by running &quot;aws configure&quot;.</span>
 </pre></div>
@@ -1175,7 +1178,7 @@ EC2やLambdaなどのAWSリソースに権限を付与するために使用</p>
 <ul>
 <li><p>EC2へのSSH接続画面にて、</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// S3バケットリストの出力コマンドを実行する</span>
-<span class="gp">$</span> aws s3 ls
+<span class="gp">$ </span>aws s3 ls
 <span class="go">2020-02-27 13:48:33 aws-and-infra-wp-tak</span>
 </pre></div>
 </div>
@@ -1183,8 +1186,8 @@ EC2やLambdaなどのAWSリソースに権限を付与するために使用</p>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="id24">
+</section>
+<section id="id24">
 <h3>補足<a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>IAMのベストプラクティス</p>
@@ -1198,9 +1201,9 @@ EC2やLambdaなどのAWSリソースに権限を付与するために使用</p>
 </ul>
 </li>
 </ul>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -1326,7 +1329,7 @@ EC2やLambdaなどのAWSリソースに権限を付与するために使用</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, tak.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
 </html>

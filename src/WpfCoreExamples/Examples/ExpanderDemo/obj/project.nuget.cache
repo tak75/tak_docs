@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Hpjk5EMMM6mKWnPw6OzMsszjp741+jOJMQMuqLtH4z4OObgp4TJr8JwyuD5epvN/FWqHMBli0YyOXItvfscm7Q==",
+  "dgSpecHash": "3aDVll0Z/JAXw/FpUo+NxUbMYfaFd9Fso+0G6MRKd7wyQ+mlM2uBeXJ712izjX/d0+jhUCxiY+6XX5cvwqoBjQ==",
   "success": true,
-  "projectFilePath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ExpanderDemo\\ExpanderDemo.csproj",
+  "projectFilePath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ExpanderDemo\\ExpanderDemo.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

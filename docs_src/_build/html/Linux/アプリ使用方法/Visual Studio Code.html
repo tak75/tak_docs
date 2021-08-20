@@ -5,18 +5,17 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>Visual Studio Code &#8212; Tak Documents  ドキュメント</title>
-    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bizstyle.css" />
     
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
     <script src="../../_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
@@ -51,9 +50,9 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="visual-studio-code">
+  <section id="visual-studio-code">
 <h1>Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="section" id="id1">
+<section id="id1">
 <h2>はじめに<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>使用実績は以下の通り</p>
 <ul class="simple">
@@ -63,8 +62,8 @@
 <p class="admonition-title">注釈</p>
 <p>python開発環境としては使いにくい。名前変更のリファクタリングができない。</p>
 </div>
-</div>
-<div class="section" id="id2">
+</section>
+<section id="id2">
 <h2>インストール<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>Raspberry Pi へのインストールは以下の通り:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># インストール</span>
@@ -74,10 +73,10 @@
 <span class="n">メニュー</span> <span class="o">-&gt;</span> <span class="n">プログラミング</span> <span class="o">-&gt;</span> <span class="n">Code</span><span class="o">-</span><span class="n">OSS</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id3">
+</section>
+<section id="id3">
 <h2>仮想環境構築<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="vs-code">
+<section id="vs-code">
 <h3>VS codeのターミナルを使用する場合<a class="headerlink" href="#vs-code" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>仮想環境を作成する（仮想環境名 = kivyの場合）:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">py</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">kivy</span>
@@ -86,8 +85,8 @@
 <p>仮想環境を作成したら、コマンドパレットで「interpreter」などと入力して［Python: インタープリターを選択］コマンドを実行して、
 今作成した仮想環境を選択しておく（これにより、ワークスペース設定のpython.pythonPath項目の値が、作成した仮想環境に含まれるpythonコマンドに設定される）。
 （少々時間を要する）</p>
-</div>
-<div class="section" id="conda">
+</section>
+<section id="conda">
 <h3>condaを使用する場合<a class="headerlink" href="#conda" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p><a class="reference external" href="https://www.closetoyou.jp/kivy/introduction-to-kivy01/">https://www.closetoyou.jp/kivy/introduction-to-kivy01/</a></p>
 <p>仮想環境を作成する（仮想環境名 = kivy、pythonバージョン = 3.6 の場合）:</p>
@@ -115,11 +114,11 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">py27</span> <span class="n">python</span><span class="o">=</span><span class="mf">2.7</span> <span class="n">Anaconda</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="python">
+</section>
+</section>
+<section id="python">
 <h2>Python開発環境構築<a class="headerlink" href="#python" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id4">
+<section id="id4">
 <h3>各種インストール<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p><a class="reference external" href="https://qiita.com/84zume/items/27d143f529396c9fa1cc">https://qiita.com/84zume/items/27d143f529396c9fa1cc</a></p>
 <ul>
@@ -137,8 +136,8 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id5">
+</section>
+<section id="id5">
 <h3>ユーザ設定<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p><a class="reference external" href="https://qiita.com/Atupon0302/items/ee3303629ce0b2ae58d7">https://qiita.com/Atupon0302/items/ee3303629ce0b2ae58d7</a></p>
 <p>ファイル -&gt; 基本設定 -&gt; 設定:</p>
@@ -165,8 +164,8 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id6">
+</section>
+<section id="id6">
 <h3>ワークスペースの設定<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>ファイル -&gt; 基本設定 -&gt; 設定:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -186,9 +185,9 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -275,7 +274,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, tak.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
 </html>

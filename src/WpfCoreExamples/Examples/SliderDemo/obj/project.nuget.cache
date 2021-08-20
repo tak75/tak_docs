@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dUp3v9Vnsrr41jCU+t5rvbClsIsimSCq8vrBErv8anPuyqhbzAvq9l9Tg5PxRuhAqxrMABhNQhiBy7R9HXxGIw==",
+  "dgSpecHash": "PDFJLrBzNGVddok0/5sVVy+GJPP4Rsa8KZfiB92624AleIb8mLjv9PdUcbpuq3NOGtlJd4h3w9UDfLKYGwylmA==",
   "success": true,
-  "projectFilePath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\SliderDemo\\SliderDemo.csproj",
+  "projectFilePath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\SliderDemo\\SliderDemo.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

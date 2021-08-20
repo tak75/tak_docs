@@ -5,18 +5,17 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>Flask環境構築 &#8212; Tak Documents  ドキュメント</title>
-    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bizstyle.css" />
     
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
     <script src="../../_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
@@ -51,9 +50,9 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="flask">
+  <section id="flask">
 <h1>Flask環境構築<a class="headerlink" href="#flask" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="section" id="id1">
+<section id="id1">
 <h2>学習用の仮想環境を構築する<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>仮想環境とは、OSにインスト―ルしたpythonの環境とは別にpythonの環境を作成すること。これにより、利用するpythonやパッケージを任意に切り替えることができる。</p></li>
@@ -73,15 +72,15 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id2">
+</section>
+<section id="id2">
 <h2>仮想環境でのFlask実行方法<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flask</span> <span class="n">run</span>               <span class="c1"># ポート番号5000（デフォルト）で起動</span>
 <span class="n">flask</span> <span class="n">run</span> <span class="o">-</span><span class="n">p</span> <span class="mi">1234</span>       <span class="c1"># ポート番号1234で起動</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id3">
+</section>
+<section id="id3">
 <h2>Flaskの環境変数<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>実行アプリケーション名設定</p>
@@ -106,8 +105,8 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="id4">
+</section>
+<section id="id4">
 <h2>デバッグ機能の使い方<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>&quot;flask run&quot;時に出力されるPIN番号を記録する:</p>
@@ -125,22 +124,28 @@
 </ul>
 </li>
 </ul>
-<div class="figure align-default" id="id5">
+<figure class="align-default" id="id5">
 <a class="reference internal image-reference" href="../../_images/デバッグ機能の使い方01.png"><img alt="../../_images/デバッグ機能の使い方01.png" src="../../_images/デバッグ機能の使い方01.png" style="width: 640px;" /></a>
-<p class="caption"><span class="caption-number">図 9 </span><span class="caption-text">デバッグ機能の使い方01</span><a class="headerlink" href="#id5" title="この画像へのパーマリンク">¶</a></p>
-</div>
-<div class="figure align-default" id="id6">
+<figcaption>
+<p><span class="caption-number">図 9 </span><span class="caption-text">デバッグ機能の使い方01</span><a class="headerlink" href="#id5" title="この画像へのパーマリンク">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id6">
 <a class="reference internal image-reference" href="../../_images/デバッグ機能の使い方02.png"><img alt="../../_images/デバッグ機能の使い方02.png" src="../../_images/デバッグ機能の使い方02.png" style="width: 640px;" /></a>
-<p class="caption"><span class="caption-number">図 10 </span><span class="caption-text">デバッグ機能の使い方02</span><a class="headerlink" href="#id6" title="この画像へのパーマリンク">¶</a></p>
-</div>
-<div class="figure align-default" id="id7">
+<figcaption>
+<p><span class="caption-number">図 10 </span><span class="caption-text">デバッグ機能の使い方02</span><a class="headerlink" href="#id6" title="この画像へのパーマリンク">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id7">
 <a class="reference internal image-reference" href="../../_images/デバッグ機能の使い方03.png"><img alt="../../_images/デバッグ機能の使い方03.png" src="../../_images/デバッグ機能の使い方03.png" style="width: 640px;" /></a>
-<p class="caption"><span class="caption-number">図 11 </span><span class="caption-text">デバッグ機能の使い方03</span><a class="headerlink" href="#id7" title="この画像へのパーマリンク">¶</a></p>
-</div>
-</div>
-<div class="section" id="id8">
+<figcaption>
+<p><span class="caption-number">図 11 </span><span class="caption-text">デバッグ機能の使い方03</span><a class="headerlink" href="#id7" title="この画像へのパーマリンク">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id8">
 <h2>ハマったこと<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="unicodedecodeerror">
+<section id="unicodedecodeerror">
 <h3>UnicodeDecodeError<a class="headerlink" href="#unicodedecodeerror" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>Python2.7でFlaskのアプリケーションを起動したときUnicodeDecodeErrorが出た時の対処法。
 Flaskで簡単なアプリを作って起動してみたところ、以下のエラーが発生した。:</p>
@@ -155,9 +160,9 @@ Flaskで簡単なアプリを作って起動してみたところ、以下のエ
 <span class="n">sys</span><span class="o">.</span><span class="n">setdefaultencoding</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -248,7 +253,7 @@ Flaskで簡単なアプリを作って起動してみたところ、以下のエ
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, tak.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
 </html>

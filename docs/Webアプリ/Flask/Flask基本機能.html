@@ -5,18 +5,17 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>Flask基本機能 &#8212; Tak Documents  ドキュメント</title>
-    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bizstyle.css" />
     
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
     <script src="../../_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
@@ -51,9 +50,9 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="flask">
+  <section id="flask">
 <h1>Flask基本機能<a class="headerlink" href="#flask" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="section" id="id1">
+<section id="id1">
 <h2>ルーティング<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>&lt;変数名&gt;にて値を取得できる:</p>
@@ -86,8 +85,8 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id2">
+</section>
+<section id="id2">
 <h2>テンプレート<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p><a class="reference external" href="http://python.zombie-hunting-club.com/entry/2017/11/03/223503">http://python.zombie-hunting-club.com/entry/2017/11/03/223503</a></p>
 <p><a class="reference external" href="http://www.subarunari.com/entry/2017/09/30/003944">http://www.subarunari.com/entry/2017/09/30/003944</a></p>
@@ -122,8 +121,8 @@
 <li><p>{{...}} はPythonの値をHTMLに出力するために用いるもので、Directiveと呼ぶ。</p></li>
 <li><p>{%...%} はif文などの式を埋め込みたい場合に用いるもの。</p></li>
 </ul>
-</div>
-<div class="section" id="id3">
+</section>
+<section id="id3">
 <h2>リクエストオブジェクト<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>リクエストオブジェクト利用のためのインポート:</p>
@@ -156,17 +155,19 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id4">
+</section>
+<section id="id4">
 <h2>リダイレクト関数<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>リダイレクトとは、処理中のページから別のページ（ファイル）へ処理を移す方法</p></li>
 <li><p>クラアイアントがページXを要求すると、サーバがページYを要求する指示をクライアントに戻す。これによって“クライアントは自動的に”ページYを要求し、結果としてページYがクライアントに戻される（ページXとページYは、必ずしも同一サーバからのレスポンスではない）。（<a class="reference internal" href="#id5"><span class="std std-numref">図 12</span></a>）</p>
 <blockquote>
-<div><div class="figure align-default" id="id5">
+<div><figure class="align-default" id="id5">
 <img alt="../../_images/リダイレクト.jpg" src="../../_images/リダイレクト.jpg" />
-<p class="caption"><span class="caption-number">図 12 </span><span class="caption-text">リダイレクト</span><a class="headerlink" href="#id5" title="この画像へのパーマリンク">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">図 12 </span><span class="caption-text">リダイレクト</span><a class="headerlink" href="#id5" title="この画像へのパーマリンク">¶</a></p>
+</figcaption>
+</figure>
 </div></blockquote>
 </li>
 <li><p>リダイレクト関数利用のためのインポート:</p>
@@ -190,8 +191,8 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id6">
+</section>
+<section id="id6">
 <h2>エラー処理<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>例外の発生方法について</p>
@@ -265,8 +266,8 @@
 </div></blockquote>
 </li>
 </ul>
-</div>
-<div class="section" id="id7">
+</section>
+<section id="id7">
 <h2>ファイルアップロード<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><ul>
@@ -296,8 +297,8 @@
 使用するためには、&quot;from werkzeug.utils import secure_filename&quot; が必要</p>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="make-response">
+</section>
+<section id="make-response">
 <h2>make_response()関数<a class="headerlink" href="#make-response" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>make_response()関数を使うことによって、レスポンスの内容（レスポンスヘッダやHTTPステータスなど）を細かく設定可能</p></li>
@@ -341,8 +342,8 @@ RawContentLength  : 14
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id8">
+</section>
+<section id="id8">
 <h2>クッキー<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>使用例:</p>
@@ -360,8 +361,8 @@ RawContentLength  : 14
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id9">
+</section>
+<section id="id9">
 <h2>セッション<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>セッション利用のためのインポート:</p>
@@ -385,8 +386,8 @@ RawContentLength  : 14
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id10">
+</section>
+<section id="id10">
 <h2>フラッシュ<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>一度だけ表示したいメッセージなどに利用できる機能</p></li>
@@ -446,8 +447,8 @@ RawContentLength  : 14
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id11">
+</section>
+<section id="id11">
 <h2>ロギング<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>pythonのロギング機能を簡単に利用できるようになっている。</p></li>
@@ -507,10 +508,10 @@ RawContentLength  : 14
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id12">
+</section>
+<section id="id12">
 <h2>ファイルダウンロード<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="app-py">
+<section id="app-py">
 <h3>app.pyからの相対パスのファイルをダウンロード<a class="headerlink" href="#app-py" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>必要なインポート:</p>
@@ -527,8 +528,8 @@ RawContentLength  : 14
 </li>
 <li><p>上記例では、&lt;path:var&gt;で指定したapp.pyからの相対パスのファイルをダウンロードしファイルに保存する。例えば、&quot;localhost:5000/ex_send_file/app.py&quot;と入力すると、app.pyを任意の場所にダウンロードできる。</p></li>
 </ul>
-</div>
-<div class="section" id="id13">
+</section>
+<section id="id13">
 <h3>指定されたファイル名でダウンロード<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>使用例:</p>
@@ -541,8 +542,8 @@ RawContentLength  : 14
 </li>
 <li><p>上記例では、&lt;var&gt;の内容の&quot;test.txt&quot;ファイルをダウンロードし保存する。例えば、&quot;localhost:5000/ex_send_file_obj/TEST&quot;と入力すると、&quot;TEST&quot;と記載された&quot;test.txt&quot;ファイルを任意の場所にダウンロードできる。</p></li>
 </ul>
-</div>
-<div class="section" id="id14">
+</section>
+<section id="id14">
 <h3>指定したディレクトリからの相対パスのファイルをダウンロード<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>必要なインポート:</p>
@@ -559,9 +560,9 @@ RawContentLength  : 14
 </li>
 <li><p>上記例では、&lt;path:var&gt;で指定した'C:/flask_work/'からの相対パスのファイルをダウンロードしファイルに保存する。例えば、&quot;localhost:5000/ex_send_from_dir/app.py&quot;と入力すると、'C:/flask_work/app.py'を任意の場所にダウンロードできる。</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="id15">
+</section>
+</section>
+<section id="id15">
 <h2>flaskコマンド<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>PowerShellの仮想環境において:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flask</span>
@@ -667,8 +668,8 @@ RawContentLength  : 14
 <span class="n">static</span>            <span class="n">GET</span>        <span class="o">/</span><span class="n">static</span><span class="o">/&lt;</span><span class="n">path</span><span class="p">:</span><span class="n">filename</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -769,7 +770,7 @@ RawContentLength  : 14
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, tak.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
 </html>

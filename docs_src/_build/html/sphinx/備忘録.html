@@ -5,18 +5,17 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>備忘録 &#8212; Tak Documents  ドキュメント</title>
-    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bizstyle.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
@@ -50,22 +49,22 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="id1">
+  <section id="id1">
 <h1>備忘録<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="section" id="id2">
+<section id="id2">
 <h2>プロジェクト新規作成<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id3">
+<section id="id3">
 <h3>通常プロジェクト<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>新規に &quot;project_name&quot; プロジェクトを作成する場合、以下のコマンドを実行する:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sphinx</span><span class="o">-</span><span class="n">quickstart</span> <span class="n">project_name</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="api">
+</section>
+<section id="api">
 <h3>APIドキュメントのプロジェクト<a class="headerlink" href="#api" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p><a class="reference internal" href="python%20API%20%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E4%BD%9C%E6%88%90.html#python-api-label"><span class="std std-ref">python API ドキュメント作成</span></a> 参照のこと。</p>
-</div>
-<div class="section" id="html-theme">
+</section>
+<section id="html-theme">
 <h3>html_theme の種類<a class="headerlink" href="#html-theme" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>Sphinxに予め組込まれたテーマは10種。
 <a class="reference external" href="http://www.sphinx-doc.org/ja/stable/theming.html#builtin-themes">http://www.sphinx-doc.org/ja/stable/theming.html#builtin-themes</a></p>
@@ -77,9 +76,9 @@
 </ul>
 </div></blockquote>
 <p>の３種くらいがよさそう</p>
-</div>
-</div>
-<div class="section" id="id4">
+</section>
+</section>
+<section id="id4">
 <h2>ビルド方法<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>ルートディレクトリ（index.rstが入っているディレクトリ）右クリック-&gt;コマンドプロンプトで開く　にて、コマンドプロンプトを開く</p></li>
@@ -97,8 +96,8 @@ make epub
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id5">
+</section>
+<section id="id5">
 <h2>動画をリンクする方法<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>動画をリンクするには、html5 の video タグをそのまま書く必要がある。
 （youtube などへのリンクは、sphinx の拡張モジュールをインストールすると簡単にできるようになるらしいけれど・・・）
@@ -118,8 +117,8 @@ make epub
 </div>
 <p>ただ、ディレクトリ構造を変えてしまうと相対パスが変わってしまうので、その場合は1つずつ修正する必要が生じる。
 できればサーバを使用したいところではあるが。。。</p>
-</div>
-<div class="section" id="id6">
+</section>
+<section id="id6">
 <h2>画像ファイル、動画ファイルの置き場所<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>画像ファイルは、各プロジェクトのルートの直下に images ディレクトリを作成し、そこに置くのがよさそう。
 仮に同じファイル名であってもビルド時に自動でファイル名を変えてくれるみたい。
@@ -134,8 +133,8 @@ make epub
    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;../../../_static/RoboTak2005_1.mp4&quot;</span><span class="o">&gt;</span><span class="n">動画</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -220,7 +219,7 @@ make epub
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, tak.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
 </html>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vfZzl98ZnKet9onakRAJlPFayBI9qZoaZXMXUDbmFMu612HN/znQ9tw1pjnkAP6d5cN/I8q29WVhKh2QNv79rg==",
+  "dgSpecHash": "ROWPjVg2EnYjdl3rRPZXuhrSA+eloYduBjI+3OiQy1Jk0sn2+f/SqRoDNYcyZPA3iG/Bcd+tVG03IwggCSt0mA==",
   "success": true,
-  "projectFilePath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\ButtonDemo.csproj",
+  "projectFilePath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\ButtonDemo.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

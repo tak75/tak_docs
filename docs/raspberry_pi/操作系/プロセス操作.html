@@ -5,18 +5,17 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>プロセス操作 &#8212; Tak Documents  ドキュメント</title>
-    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bizstyle.css" />
     
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
     <script src="../../_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
@@ -51,29 +50,29 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="id1">
+  <section id="id1">
 <h1>プロセス操作<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <ul>
 <li><p>手動で起動／終了する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo systemctl start webiopi  <span class="c1"># 起動する場合</span>
-<span class="gp">$</span> sudo systemctl stop webiopi   <span class="c1"># 終了する場合</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo systemctl start webiopi  <span class="c1"># 起動する場合</span>
+<span class="gp">$ </span>sudo systemctl stop webiopi   <span class="c1"># 終了する場合</span>
 </pre></div>
 </div>
 </li>
 <li><p>システム起動時に自動的に起動させる</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo systemctl <span class="nb">enable</span> webiopi   <span class="c1"># 自動起動させる</span>
-<span class="gp">$</span> sudo systemctl disable webiopi  <span class="c1"># 自動起動させない</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo systemctl <span class="nb">enable</span> webiopi   <span class="c1"># 自動起動させる</span>
+<span class="gp">$ </span>sudo systemctl disable webiopi  <span class="c1"># 自動起動させない</span>
 </pre></div>
 </div>
 </li>
 <li><p>現在の起動状態を調べる</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo systemctl status webiopi
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo systemctl status webiopi
 <span class="go">結果がactive(running)となっていれば起動状態</span>
 </pre></div>
 </div>
 </li>
 <li><p>自動起動設定であるか確認する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo systemctl is-enabled webiopi
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo systemctl is-enabled webiopi
 <span class="go">enabled</span>
 </pre></div>
 </div>
@@ -83,7 +82,7 @@
 <p class="admonition-title">注釈</p>
 <p>上記は全てwebiopiが対象プロセスの場合の例</p>
 </div>
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -154,7 +153,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, tak.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
 </html>

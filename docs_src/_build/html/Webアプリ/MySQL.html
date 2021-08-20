@@ -5,18 +5,17 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>MySQL &#8212; Tak Documents  ドキュメント</title>
-    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bizstyle.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
@@ -50,45 +49,45 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="mysql">
+  <section id="mysql">
 <h1>MySQL<a class="headerlink" href="#mysql" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="section" id="cloud9">
+<section id="cloud9">
 <h2>Cloud9での環境構築<a class="headerlink" href="#cloud9" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>Cloud9にはデフォルトでMySQLがインストールされている</p></li>
 <li><p>現在のバージョンを表示する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> mysql --version
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mysql --version
 <span class="go">mysql  Ver 14.14 Distrib 5.5.62, for Linux (x86_64) using readline 5.1</span>
 </pre></div>
 </div>
 </li>
 <li><p>現在のバージョンより最新の安定版がある場合は、サービスを停止し、最新版を再インストールする</p></li>
 <li><p>例）一旦5.5系をアンインストールし、安定版5.7系の最新バージョンをインストールする</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo service mysqld stop
-<span class="gp">$</span> sudo yum -y remove mysql-config mysql55-server mysql55-libs mysql55
-<span class="gp">$</span> sudo yum -y install mysql57-server mysql57
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo service mysqld stop
+<span class="gp">$ </span>sudo yum -y remove mysql-config mysql55-server mysql55-libs mysql55
+<span class="gp">$ </span>sudo yum -y install mysql57-server mysql57
 </pre></div>
 </div>
 </li>
 <li><p>サービスを開始する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo service mysqld start
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo service mysqld start
 </pre></div>
 </div>
 </li>
 <li><p>現在のステータスを表示する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> service mysqld status
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>service mysqld status
 </pre></div>
 </div>
 </li>
 <li><p>rootユーザでログインする（パスワード不要）</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> mysql -u root
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mysql -u root
 <span class="go">mysql&gt; exit    // 終了する場合</span>
 </pre></div>
 </div>
 </li>
 <li><p>日本語の文字コードをUTF8に変える</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// 現在の文字セットを確認</span>
-<span class="gp">$</span> mysql -u root
+<span class="gp">$ </span>mysql -u root
 
 <span class="go">mysql&gt; show variables like &#39;%char%&#39;;</span>
 <span class="go">+--------------------------+------------------------------+</span>
@@ -106,24 +105,24 @@
 </pre></div>
 </div>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// 現在の設定ファイルをチェック（lessを抜ける際は&quot;Q&quot;+&quot;Enter&quot;）</span>
-<span class="gp">$</span> less /etc/my.cnf
+<span class="gp">$ </span>less /etc/my.cnf
 
 <span class="go">// 念のため現在の設定ファイルをバックアップ</span>
-<span class="gp">$</span> sudo cp /etc/my.cnf /etc/my.cnf.bk
+<span class="gp">$ </span>sudo cp /etc/my.cnf /etc/my.cnf.bk
 
 <span class="go">// 文字コードをUTF8に変更</span>
 <span class="go">// [mysqld]の最後に&quot;character-set-server = utf8&quot;を追記する</span>
-<span class="gp">$</span> sudo vim /etc/my.cnf
+<span class="gp">$ </span>sudo vim /etc/my.cnf
 
 <span class="go">// 念のため設定ファイルを再確認（lessを抜ける際は&quot;Q&quot;+&quot;Enter&quot;）</span>
-<span class="gp">$</span> less /etc/my.cnf
+<span class="gp">$ </span>less /etc/my.cnf
 
 <span class="go">// MySQLをリスタート</span>
-<span class="gp">$</span> sudo service mysqld restart
+<span class="gp">$ </span>sudo service mysqld restart
 </pre></div>
 </div>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// 文字セットを確認</span>
-<span class="gp">$</span> mysql -u root
+<span class="gp">$ </span>mysql -u root
 
 <span class="go">mysql&gt; show variables like &#39;%char%&#39;;</span>
 <span class="go">+--------------------------+------------------------------+</span>
@@ -143,17 +142,17 @@
 </li>
 <li><p>MySQLを自動起動に設定する</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// 自動起動に設定</span>
-<span class="gp">$</span> sudo chkconfig mysqld on
+<span class="gp">$ </span>sudo chkconfig mysqld on
 
 <span class="go">// 自動起動に設定されたか確認</span>
-<span class="gp">$</span> sudo chkconfig <span class="p">|</span> grep mysql
+<span class="gp">$ </span>sudo chkconfig <span class="p">|</span> grep mysql
 <span class="go">mysqld          0:off   1:off   2:on    3:on    4:on    5:on    6:off</span>
 </pre></div>
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id1">
+</section>
+<section id="id1">
 <h2>使用方法<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>現在のDBを表示する</p>
@@ -187,18 +186,18 @@
 </div>
 </li>
 <li><p>操作対象のDBを&quot;xxx&quot;にセットしてログインする</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> mysql -u root db01
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mysql -u root db01
 </pre></div>
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id2">
+</section>
+<section id="id2">
 <h2>作業用ユーザの作成<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>rootユーザは全ての権限を持っており危険であるため、作業用のユーザを作成する。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// rootユーザでログインする</span>
-<span class="gp">$</span> mysql -u root
+<span class="gp">$ </span>mysql -u root
 </pre></div>
 </div>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- localhostからアクセスするユーザ&quot;dbuser01&quot;を作成し、パスワードを&quot;xxx&quot;に設定する</span>
@@ -211,7 +210,7 @@
 </li>
 <li><p>作業用ユーザでログインする</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// ユーザ&quot;dbuser01&quot;（要パスワード）でログインする</span>
-<span class="gp">$</span> mysql -u dbuser01 -p
+<span class="gp">$ </span>mysql -u dbuser01 -p
 </pre></div>
 </div>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- 以下が表示されるので設定したパスワードを入力しEnterキーを押す</span>
@@ -231,7 +230,7 @@
 </li>
 <li><p>ユーザとDBを削除する場合</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// rootユーザでログインする</span>
-<span class="gp">$</span> mysql -u root
+<span class="gp">$ </span>mysql -u root
 </pre></div>
 </div>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- DB&quot;xxx&quot;を削除する</span>
@@ -243,8 +242,8 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="sqlsql">
+</section>
+<section id="sqlsql">
 <h2>SQLファイルからSQLを実行<a class="headerlink" href="#sqlsql" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>&quot;initialize.sql&quot;ファイルを作成する（例）</p>
@@ -262,13 +261,13 @@
 </div>
 </li>
 <li><p>&quot;initialize.sql&quot;ファイルをrootユーザ権限で実行する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> mysql -u root &lt; initialize.sql
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mysql -u root &lt; initialize.sql
 </pre></div>
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id3">
+</section>
+<section id="id3">
 <h2>テーブル操作<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- DB&quot;mydb&quot;を使用</span>
@@ -304,8 +303,8 @@
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="id4">
+</section>
+<section id="id4">
 <h2>データの挿入<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- データの挿入</span>
@@ -390,8 +389,8 @@
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="id5">
+</section>
+<section id="id5">
 <h2>値の取得<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- テーブル&quot;users&quot;から全ての値を取り出す</span>
@@ -438,8 +437,8 @@
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="id6">
+</section>
+<section id="id6">
 <h2>条件を指定して値を取得<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- テーブル&quot;users&quot;からnameが&#39;sato&#39;の値を取り出す</span>
@@ -518,8 +517,8 @@
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="id7">
+</section>
+<section id="id7">
 <h2>パターンマッチ<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>&quot;%&quot;はワイルドカードとして認識され、文字数は指定されない。</p></li>
@@ -600,8 +599,8 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id8">
+</section>
+<section id="id8">
 <h2>並び替え<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- テーブル&quot;users&quot;からageを昇順にソートして全ての値を取り出す</span>
@@ -636,8 +635,8 @@
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="id9">
+</section>
+<section id="id9">
 <h2>件数の制限<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- テーブル&quot;users&quot;から3件値を取り出す</span>
@@ -683,8 +682,8 @@
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="id10">
+</section>
+<section id="id10">
 <h2>データの更新<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span><span class="p">;</span>
@@ -762,8 +761,8 @@
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="id11">
+</section>
+<section id="id11">
 <h2>データの削除<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">users</span><span class="p">;</span>
@@ -810,8 +809,8 @@
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -906,7 +905,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, tak.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
 </html>

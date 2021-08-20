@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-G:\work\tak_docs\src\WpfCoreExamples\Examples\CustomerSettingSamp\obj\Debug\netcoreapp3.1\
+D:\work\tak_docs.git\trunk\src\WpfCoreExamples\Examples\CustomerSettingSamp\obj\Debug\netcoreapp3.1\
 CustomerSettingSamp
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
-G:\work\tak_docs\src\WpfCoreExamples\Examples\CustomerSettingSamp\App.xaml
-2-612280565
+D:\work\tak_docs.git\trunk\src\WpfCoreExamples\Examples\CustomerSettingSamp\App.xaml
+2-1573690101
 
-7-950107562
-197927245283
+7-240263251
+197107442633
 MainWindow.xaml;SaveWindow.xaml;
 
-True
+False
 

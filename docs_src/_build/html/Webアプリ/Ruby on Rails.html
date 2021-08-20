@@ -5,18 +5,17 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>Ruby on Rails &#8212; Tak Documents  ドキュメント</title>
-    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bizstyle.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
@@ -50,25 +49,25 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="ruby-on-rails">
+  <section id="ruby-on-rails">
 <h1>Ruby on Rails<a class="headerlink" href="#ruby-on-rails" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="section" id="id1">
+<section id="id1">
 <h2>用語<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <dl class="glossary">
-<dt id="term-Ruby-on-Rails">Ruby on Rails</dt><dd><ul class="simple">
+<dt id="term-Ruby-on-Rails">Ruby on Rails<a class="headerlink" href="#term-Ruby-on-Rails" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>Rubyで書かれたWebアプリケーションフレームワーク</p></li>
 <li><p>RoR, Railsと呼ばれることもある</p></li>
 <li><p><a class="reference external" href="https://rubyonrails.org/">公式サイト</a></p></li>
 <li><p><a class="reference external" href="https://railsguides.jp/">Ruby on Rails ガイド</a></p></li>
 </ul>
 </dd>
-<dt id="term-RubyGems">RubyGems</dt><dd><ul class="simple">
+<dt id="term-RubyGems">RubyGems<a class="headerlink" href="#term-RubyGems" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>幅広いライブラリが&quot;gem&quot;という形式で公開されている</p></li>
 <li><p>RubyGemsは、ライブラリの作成や公開、インストールを助けるシステム</p></li>
 <li><p><a class="reference external" href="https://rubygems.org/">gemを探す</a></p></li>
 </ul>
 </dd>
-<dt id="term-erbRails">erb【Rails】</dt><dd><ul>
+<dt id="term-erbRails">erb【Rails】<a class="headerlink" href="#term-erbRails" title="Permalink to this term">¶</a></dt><dd><ul>
 <li><p>Embedded Ruby</p></li>
 <li><p>拡張子</p></li>
 <li><p>テンプレートエンジン</p></li>
@@ -85,7 +84,7 @@
 </li>
 </ul>
 </dd>
-<dt id="term-Rails">ヘルパー【Rails】</dt><dd><p>Ruby on Rails において、ビューでの共通処理をメソッドとして定義し、簡単に使いまわせるようにした機能。
+<dt id="term-Rails">ヘルパー【Rails】<a class="headerlink" href="#term-Rails" title="Permalink to this term">¶</a></dt><dd><p>Ruby on Rails において、ビューでの共通処理をメソッドとして定義し、簡単に使いまわせるようにした機能。
 &quot;link_to&quot; や &quot;check_box_tag&quot; など</p>
 <ul>
 <li><p>link_to（文字列のリンクを生成）</p>
@@ -108,51 +107,51 @@ Rails5.1以降では、form_forヘルパーの代わりにform_withヘルパー�
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="id2">
+</section>
+<section id="id2">
 <h2>開発環境構築<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>AWS Cloud9を使用する</p></li>
 <li><p>rubyのバージョンを確認する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ruby -v
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ruby -v
 <span class="go">ruby 2.6.3p62 (2019-04-16 revision 67580) [x86_64-linux]</span>
 </pre></div>
 </div>
 </li>
 <li><p>railsをバージョンを指定してインストールする</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// --no-documentはドキュメントなしでインストールする場合</span>
-<span class="gp">$</span> gem install rails --version<span class="o">=</span><span class="s2">&quot;5.1.4&quot;</span> --no-document
+<span class="gp">$ </span>gem install rails --version<span class="o">=</span><span class="s2">&quot;5.1.4&quot;</span> --no-document
 </pre></div>
 </div>
 </li>
 <li><p>railsのバージョンを確認する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rails -v
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rails -v
 <span class="go">Rails 5.1.4</span>
 </pre></div>
 </div>
 </li>
 <li><p>sqlite3のバージョンを確認する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sqlite3 --version
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sqlite3 --version
 <span class="go">3.7.17 2013-05-20 00:56:22 118a3b35693b134d56ebd780123b7fd6f1497668</span>
 </pre></div>
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="hello">
+</section>
+<section id="hello">
 <h2>helloプロジェクト<a class="headerlink" href="#hello" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id3">
+<section id="id3">
 <h3>新規プロジェクトの作成<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>Cloud9 作業1</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// バージョンを指定して&quot;hello&quot;プロジェクトを新規作成する</span>
-<span class="gp">$</span> rails _5.1.4_ new hello
+<span class="gp">$ </span>rails _5.1.4_ new hello
 
 <span class="go">// 作成したプロジェクトに移動する</span>
-<span class="gp">$</span> <span class="nb">cd</span> hello/
+<span class="gp">$ </span><span class="nb">cd</span> hello/
 
 <span class="go">// 必要なgem（ライブラリ）をインストールする</span>
-<span class="gp">$</span> bundle install
+<span class="gp">$ </span>bundle install
 </pre></div>
 </div>
 </li>
@@ -167,21 +166,21 @@ Rails5.1以降では、form_forヘルパーの代わりにform_withヘルパー�
 </li>
 <li><p>Cloud9 作業2</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// &quot;bundle&quot;ライブラリをアップデートする</span>
-<span class="gp">$</span> bundle update
+<span class="gp">$ </span>bundle update
 
 <span class="go">// DBを作成する</span>
-<span class="gp">$</span> rails db:create
+<span class="gp">$ </span>rails db:create
 
 <span class="go">// RailsのWebサーバ(puma)を起動する（引数の&quot;s&quot;はサーバを意味する）</span>
-<span class="gp">$</span> rails s
+<span class="gp">$ </span>rails s
 </pre></div>
 </div>
 </li>
 <li><p>Preview-&gt;Preview Running Applicationを選択し、
 表示される画面の右上↗ボタンを押すことで、Webアプリ画面が表示される</p></li>
 </ul>
-</div>
-<div class="section" id="id4">
+</section>
+<section id="id4">
 <h3>ディレクトリ構成<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>app：主要なプログラムを配置してメインで使っていく</p>
@@ -201,15 +200,15 @@ Rails5.1以降では、form_forヘルパーの代わりにform_withヘルパー�
 <li><p>基本的には、configとdbの設定を行いつつ、appディレクトリの中の
 models, views, controllers を開発していく流れとなる</p></li>
 </ul>
-</div>
-<div class="section" id="id5">
+</section>
+<section id="id5">
 <h3>コントローラの作成<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>helloコントローラを作成し、indexアクションメソッドを追加する</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// g：generateの略で、&quot;generate&quot;と記述してもOK</span>
 <span class="go">// hello：コントローラの名前</span>
 <span class="go">// index：アクションメソッドの名前</span>
-<span class="gp">$</span> rails g controller hello index
+<span class="gp">$ </span>rails g controller hello index
 <span class="go">create  app/controllers/hello_controller.rb</span>
 <span class="go">  route  get &#39;hello/index&#39;      invoke  erb</span>
 <span class="go">create    app/views/hello      create    app/views/hello/index.html.erb</span>
@@ -253,7 +252,7 @@ models, views, controllers を開発していく流れとなる</p></li>
 </ul>
 </li>
 <li><p>ルーティング設定を確認する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rails routes
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rails routes
 <span class="go">Prefix Verb URI Pattern            Controller#Action</span>
 <span class="go">hello_index GET  /hello/index(.:format) hello#index</span>
 <span class="go">// /hello/indexにアクセスすると、helloコントローラのindexアクションがコールされる</span>
@@ -269,27 +268,27 @@ models, views, controllers を開発していく流れとなる</p></li>
 </div>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="todo">
+</section>
+</section>
+<section id="todo">
 <h2>TODOプロジェクト<a class="headerlink" href="#todo" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id6">
+<section id="id6">
 <h3>新規プロジェクトの作成<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>Cloud9 作業</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rails _5.1.4_ new todo
-<span class="gp">$</span> <span class="nb">cd</span> todo/
-<span class="gp">$</span> bundle install
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rails _5.1.4_ new todo
+<span class="gp">$ </span><span class="nb">cd</span> todo/
+<span class="gp">$ </span>bundle install
 </pre></div>
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id7">
+</section>
+<section id="id7">
 <h3>コントローラの作成<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>&quot;Tasks&quot;コントローラを作成する（複数形であることに注意）</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rails g controller Tasks
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rails g controller Tasks
 <span class="go">create  app/controllers/tasks_controller.rb    // 重要！</span>
 <span class="go">invoke  erb</span>
 <span class="go">create    app/views/tasks</span>
@@ -307,15 +306,15 @@ models, views, controllers を開発していく流れとなる</p></li>
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id8">
+</section>
+<section id="id8">
 <h3>モデルの作成<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>&quot;Task&quot;モデルを作成する</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// Task：モデル名（単数形であることに注意）</span>
 <span class="go">// title：タスクの名前を保持するカラム</span>
 <span class="go">// done：タスクの完了状態を保持するカラム</span>
-<span class="gp">$</span> rails g model Task title:string <span class="k">done</span>:boolean
+<span class="gp">$ </span>rails g model Task title:string <span class="k">done</span>:boolean
 <span class="go">invoke  active_record</span>
 <span class="go">create    db/migrate/20200311051750_create_tasks.rb   // 重要！</span>
 <span class="go">create    app/models/task.rb                          // 重要！</span>
@@ -344,8 +343,8 @@ models, views, controllers を開発していく流れとなる</p></li>
 </li>
 <li><p>マイグレーションファイルを実行することで、その内容に基づいたデータテーブルを生成してくれる</p></li>
 </ul>
-</div>
-<div class="section" id="id9">
+</section>
+<section id="id9">
 <h3>マイグレーションファイルの編集<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>&quot;done&quot;のデフォルト値がfalseになるよう、マイグレーションファイルを編集する</p>
@@ -363,12 +362,12 @@ models, views, controllers を開発していく流れとなる</p></li>
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="db-db-db">
+</section>
+<section id="db-db-db">
 <h3>DBスキーマ（DBの構造）をDBに反映させる<a class="headerlink" href="#db-db-db" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>DBの構造をDBに反映させる</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rails db:migrate
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rails db:migrate
 <span class="go">== 20200311051750 CreateTasks: migrating ======================================</span>
 <span class="go">-- create_table(:tasks)</span>
 <span class="go">  -&gt; 0.0015s</span>
@@ -387,7 +386,7 @@ railsでも実行できるようになった。
 このファイルにDBのデータが入っている</p></li>
 <li><p>DBの構造を確認する</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// DBコマンドラインツールを起動する</span>
-<span class="gp">$</span> rails db
+<span class="gp">$ </span>rails db
 <span class="go">SQLite version 3.7.17 2013-05-20 00:56:22</span>
 <span class="go">Enter &quot;.help&quot; for instructions</span>
 <span class="go">Enter SQL statements terminated with a &quot;;&quot;</span>
@@ -411,14 +410,14 @@ railsでも実行できるようになった。
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id10">
+</section>
+<section id="id10">
 <h3>初期データの作成<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>複数の方法があるが、ここではRailsコンソールを使用する</p></li>
 <li><p>Railsコンソールでは、Railsの環境をロードした状態でirbが起動するので、Modelの操作やデバッグに便利</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// Railsコンソールを起動する</span>
-<span class="gp">$</span> rails console
+<span class="gp">$ </span>rails console
 
 <span class="go">// 任意のレコードを追加する</span>
 <span class="go">2.6.3 :001 &gt; Task.create(title:&quot;test1&quot;)</span>
@@ -430,8 +429,8 @@ railsでも実行できるようになった。
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id11">
+</section>
+<section id="id11">
 <h3>ルーティングの設定<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>ファイルを編集する（config/routes.rb）</p>
@@ -449,10 +448,10 @@ railsでも実行できるようになった。
 </li>
 </ul>
 <dl class="glossary">
-<dt id="term-resourcesRails">resourcesメソッド【Rails】</dt><dd><p>railsで定義されている7つのアクションのルーティングを自動で作成するメソッド。
+<dt id="term-resourcesRails">resourcesメソッド【Rails】<a class="headerlink" href="#term-resourcesRails" title="Permalink to this term">¶</a></dt><dd><p>railsで定義されている7つのアクションのルーティングを自動で作成するメソッド。
 resourcesメソッドを使うことにより、簡単にルーティングを作成することができる。</p>
 <table class="colwidths-given docutils align-default" id="id25">
-<caption><span class="caption-number">表 13 </span><span class="caption-text">resourcesメソッドで自動生成されるルーティング</span><a class="headerlink" href="#id25" title="このテーブルへのパーマリンク">¶</a></caption>
+<caption><span class="caption-number">表 14 </span><span class="caption-text">resourcesメソッドで自動生成されるルーティング</span><a class="headerlink" href="#id25" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 80%" />
@@ -490,7 +489,7 @@ resourcesメソッドを使うことにより、簡単にルーティングを�
 </dl>
 <ul>
 <li><p>ルーティングを確認する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rails routes
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rails routes
 <span class="go">   Prefix Verb   URI Pattern               Controller#Action</span>
 <span class="go">    tasks GET    /tasks(.:format)          tasks#index    # ※</span>
 <span class="go">          POST   /tasks(.:format)          tasks#create   # ※</span>
@@ -505,8 +504,8 @@ resourcesメソッドを使うことにより、簡単にルーティングを�
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="controller">
+</section>
+<section id="controller">
 <h3>一覧画面のcontrollerを開発<a class="headerlink" href="#controller" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>タスク一覧ページがリクエストされた時に呼ばれる、Tasksコントローラのindexメソッドを実装する</p></li>
@@ -522,8 +521,8 @@ resourcesメソッドを使うことにより、簡単にルーティングを�
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="view">
+</section>
+<section id="view">
 <h3>一覧画面のviewを開発<a class="headerlink" href="#view" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>ファイルを作成する（app/views/tasks/index.html.erb）</p>
@@ -541,8 +540,8 @@ resourcesメソッドを使うことにより、簡単にルーティングを�
 </li>
 <li><p>上記の&quot;check_box_tag&quot;は、htmlのチェックボックスを作成する <a class="reference internal" href="#term-Rails"><span class="xref std std-term">ヘルパー【Rails】</span></a></p></li>
 </ul>
-</div>
-<div class="section" id="id12">
+</section>
+<section id="id12">
 <h3>一覧画面へ新規追加画面へのリンクを追加<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>ファイルの末尾に以下を追加する（app/views/tasks/index.html.erb）</p>
@@ -554,19 +553,19 @@ resourcesメソッドを使うことにより、簡単にルーティングを�
 <li><p>Webアプリで表示される&quot;新規追加&quot;リンクをクリックすると、&quot;/tasks/new&quot;のページが表示される</p></li>
 </ul>
 <dl class="glossary">
-<dt id="term-PrefixRails">Prefix【Rails】</dt><dd><p>パスが代入されている変数のようなもの。
+<dt id="term-PrefixRails">Prefix【Rails】<a class="headerlink" href="#term-PrefixRails" title="Permalink to this term">¶</a></dt><dd><p>パスが代入されている変数のようなもの。
 resourcesメソッドを使ってルーティングを定義すると自動で作成される。
 Prefixを使うときは末尾に&quot;_path&quot;と追記すればパスとなる。
 例えば、以下の&quot;rails routes&quot;コマンドで出力される&quot;/tasks/new&quot;のパスは、&quot;new_task_path&quot;となる</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rails routes
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rails routes
 <span class="go">  Prefix Verb   URI Pattern               Controller#Action</span>
 <span class="go">new_task GET    /tasks/new(.:format)      tasks#new</span>
 </pre></div>
 </div>
 </dd>
 </dl>
-</div>
-<div class="section" id="id13">
+</section>
+<section id="id13">
 <h3>新規追加画面のviewを開発<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>ファイルを作成する（app/views/tasks/new.html.erb）</p>
@@ -585,8 +584,8 @@ Prefixを使うときは末尾に&quot;_path&quot;と追記すればパスとな
 </li>
 <li><p>上記の&quot;form_for&quot;は、フォームを作成する <a class="reference internal" href="#term-Rails"><span class="xref std std-term">ヘルパー【Rails】</span></a></p></li>
 </ul>
-</div>
-<div class="section" id="id14">
+</section>
+<section id="id14">
 <h3>新規追加画面のcontrollerを開発<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>&quot;新規追加&quot;リンクをクリックした際の処理を記述する
@@ -625,8 +624,8 @@ Prefixを使うときは末尾に&quot;_path&quot;と追記すればパスとな
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id15">
+</section>
+<section id="id15">
 <h3>バリデートの追加<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>タイトルが未入力の場合／タイトル文字数が5文字未満の場合にエラー出力するための処理を記述する
@@ -640,8 +639,8 @@ Prefixを使うときは末尾に&quot;_path&quot;と追記すればパスとな
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id16">
+</section>
+<section id="id16">
 <h3>一覧画面から編集画面へのリンクを追加<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>一覧画面に編集リンクを追加する（app/views/tasks/index.html.erb）</p>
@@ -660,8 +659,8 @@ Prefixを使うときは末尾に&quot;_path&quot;と追記すればパスとな
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id17">
+</section>
+<section id="id17">
 <h3>編集機能のviewを開発<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>編集機能は新規追加とほぼ同じなので、&quot;new.html.erb&quot;をコピーし作成する
@@ -684,8 +683,8 @@ Prefixを使うときは末尾に&quot;_path&quot;と追記すればパスとな
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id18">
+</section>
+<section id="id18">
 <h3>編集画面のcontrollerを開発<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>createメソッドの下に追記する（app/controllers/tasks_controller.rb）</p>
@@ -706,8 +705,8 @@ Prefixを使うときは末尾に&quot;_path&quot;と追記すればパスとな
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id19">
+</section>
+<section id="id19">
 <h3>削除機能のviewを開発<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>一覧画面に削除リンクを追加する（app/views/tasks/index.html.erb）</p>
@@ -728,7 +727,7 @@ Prefixを使うときは末尾に&quot;_path&quot;と追記すればパスとな
 <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rails routes
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rails routes
 <span class="go">   Prefix Verb   URI Pattern               Controller#Action</span>
 <span class="go">     task GET    /tasks/:id(.:format)      tasks#show</span>
 <span class="go">          PATCH  /tasks/:id(.:format)      tasks#update</span>
@@ -738,8 +737,8 @@ Prefixを使うときは末尾に&quot;_path&quot;と追記すればパスとな
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id20">
+</section>
+<section id="id20">
 <h3>削除機能のcontrollerを開発<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>updateメソッドの下に追記する（app/controllers/tasks_controller.rb）</p>
@@ -752,11 +751,11 @@ Prefixを使うときは末尾に&quot;_path&quot;と追記すればパスとな
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id21">
+</section>
+<section id="id21">
 <h3>チェックボックスのトグル動作について<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
-<dt id="term-Ajax">Ajax</dt><dd><ul class="simple">
+<dt id="term-Ajax">Ajax<a class="headerlink" href="#term-Ajax" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>Asynchronous JavaScript + XML</p></li>
 <li><p>ウェブブラウザ内で非同期通信を行いながらインタフェースの構築を行うプログラミング手法</p></li>
 <li><p>言い換えると、画面を遷移しなくても、サーバとの通信を行いながら、
@@ -767,8 +766,8 @@ Prefixを使うときは末尾に&quot;_path&quot;と追記すればパスとな
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="jquery">
+</section>
+<section id="jquery">
 <h3>jQueryインストール<a class="headerlink" href="#jquery" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>ファイルを修正し以下を追記する（Gemfile）:</p>
@@ -777,7 +776,7 @@ Prefixを使うときは末尾に&quot;_path&quot;と追記すればパスとな
 </div>
 </li>
 <li><p>jquery-railsをインストールする</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> bundle install
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>bundle install
 </pre></div>
 </div>
 </li>
@@ -789,8 +788,8 @@ jQuery3を使用するためファイル末尾に以下を追記する（app/ass
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id22">
+</section>
+<section id="id22">
 <h3>ルーティング設定<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>ファイルを編集する（config/routes.rb）</p>
@@ -804,7 +803,7 @@ jQuery3を使用するためファイル末尾に以下を追記する（app/ass
 </div>
 </li>
 <li><p>上記を追記することで、以下のルート※が追加される</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> rails routes
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rails routes
 <span class="go">   Prefix Verb   URI Pattern               Controller#Action</span>
 <span class="go">     root GET    /                           tasks#index</span>
 <span class="go">          POST   /tasks/:id/toggle(.:format) tasks#toggle   # ※</span>
@@ -812,8 +811,8 @@ jQuery3を使用するためファイル末尾に以下を追記する（app/ass
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id23">
+</section>
+<section id="id23">
 <h3>チェックボックスのトグル動作のcontrollerを開発<a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>destroyメソッドの下に追記する（app/controllers/tasks_controller.rb）</p>
@@ -828,8 +827,8 @@ jQuery3を使用するためファイル末尾に以下を追記する（app/ass
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id24">
+</section>
+<section id="id24">
 <h3>チェックボックスのトグル動作のクライアント側の開発<a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>一覧画面に削除リンクを追加する（app/views/tasks/index.html.erb）</p>
@@ -863,9 +862,9 @@ jQuery3を使用するためファイル末尾に以下を追記する（app/ass
 </div>
 </li>
 </ul>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -881,6 +880,8 @@ jQuery3を使用するためファイル末尾に以下を追記する（app/ass
 <li class="toctree-l1"><a class="reference internal" href="../VirtualBox/index.html">VirtualBox</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Linux/index.html">Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Matplotlib/index.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Jupyter/index.html">Jupyter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../raspberry_pi/index.html">Raspberry Pi</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Webアプリ</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="%E7%94%A8%E8%AA%9E.html">用語</a></li>
@@ -981,7 +982,7 @@ jQuery3を使用するためファイル末尾に以下を追記する（app/ass
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, tak.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
 </html>

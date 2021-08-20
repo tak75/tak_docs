@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EOgYEpfjJLMTlxxEeXKyEbJDuRQn81Rrd35bo7AG/KDA76kaS6jqou05dphKrrH7yKrat09lPN6zHbD7aMQ9TA==",
+  "dgSpecHash": "4wRkMJI4jN5aNKVFuKjG8/pzIBwBEZb2QJRN0LTPJCQsJoLl/6n0osGgtFxQHMDDeCdZPlOKNZzFMKeWyJnPpQ==",
   "success": true,
-  "projectFilePath": "G:\\work\\tak_docs\\src\\WpfCoreExamples\\Examples\\HelloWorld\\HelloWorld.csproj",
+  "projectFilePath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\HelloWorld\\HelloWorld.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

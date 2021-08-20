@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-G:\work\tak_docs\src\WpfCoreExamples\ExampleBrowser\obj\Debug\netcoreapp3.1\
+D:\work\tak_docs.git\trunk\src\WpfCoreExamples\ExampleBrowser\obj\Debug\netcoreapp3.1\
 ExampleBrowser
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
-G:\work\tak_docs\src\WpfCoreExamples\ExampleBrowser\App.xaml
-11151548125
+D:\work\tak_docs.git\trunk\src\WpfCoreExamples\ExampleBrowser\App.xaml
+11407045341
 
-61512662859
-226-38420266
+61338338457
+226925383475
 MainWindow.xaml;
 
 True

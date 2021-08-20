@@ -5,18 +5,17 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>全体 &#8212; Tak Documents  ドキュメント</title>
-    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bizstyle.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
@@ -50,12 +49,12 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="id1">
+  <section id="id1">
 <h1>全体<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="section" id="id2">
+<section id="id2">
 <h2>概要<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <table class="docutils align-default" id="id6">
-<caption><span class="caption-number">表 14 </span><span class="caption-text">デザインパターン概要</span><a class="headerlink" href="#id6" title="このテーブルへのパーマリンク">¶</a></caption>
+<caption><span class="caption-number">表 15 </span><span class="caption-text">デザインパターン概要</span><a class="headerlink" href="#id6" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 29%" />
 <col style="width: 71%" />
@@ -107,11 +106,11 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="id3">
+</section>
+<section id="id3">
 <h2>類似パターン<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <table class="docutils align-default" id="id7">
-<caption><span class="caption-number">表 15 </span><span class="caption-text">ラップパターン</span><a class="headerlink" href="#id7" title="このテーブルへのパーマリンク">¶</a></caption>
+<caption><span class="caption-number">表 16 </span><span class="caption-text">ラップパターン</span><a class="headerlink" href="#id7" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -134,7 +133,7 @@
 </tbody>
 </table>
 <table class="docutils align-default" id="id8">
-<caption><span class="caption-number">表 16 </span><span class="caption-text">誰が何をする？</span><a class="headerlink" href="#id8" title="このテーブルへのパーマリンク">¶</a></caption>
+<caption><span class="caption-number">表 17 </span><span class="caption-text">誰が何をする？</span><a class="headerlink" href="#id8" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -156,8 +155,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="oo">
+</section>
+<section id="oo">
 <h2>OOの原則<a class="headerlink" href="#oo" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
 <li><p>変化する部分をカプセル化する。
@@ -174,8 +173,8 @@
 複数の責務を持つことは、変更される可能性のある部分が複数あることを意味する。
 この原則は、各クラスに1つだけの責務を与えるよう指導している）</p></li>
 </ul>
-</div>
-<div class="section" id="id4">
+</section>
+<section id="id4">
 <h2>設計原則<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
 <li><p>アプリケーション内の変化する部分を特定し、不変な部分と分離する。</p></li>
@@ -186,16 +185,16 @@
 <li><p>ハリウッドの原則 - こちらを呼び出さないでください。こちらから呼び出します。(Don't call us, we'll call you.)</p></li>
 <li><p>クラスは、変更される理由を1つだけ持つべきである。</p></li>
 </ul>
-</div>
-<div class="section" id="id5">
+</section>
+<section id="id5">
 <h2>備考<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
 <li><p>デザインパターンでの「インタフェースを実装する」という表現は必ずしも&quot;interface&quot;キーワードを使ってクラス宣言することではない。
 （クラスまたはインタフェースである）スーパータイプのメソッドを実装する具象クラスが、そのスーパータイプの「インタフェースを実装している」と考えられる。
 つまり、「インタフェース」　＝　「親クラス」または「インタフェース」と考えられる。</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -211,6 +210,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../VirtualBox/index.html">VirtualBox</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Linux/index.html">Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Matplotlib/index.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Jupyter/index.html">Jupyter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../raspberry_pi/index.html">Raspberry Pi</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Web%E3%82%A2%E3%83%97%E3%83%AA/index.html">Webアプリ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../C%EF%BC%83/index.html">C＃</a></li>
@@ -285,7 +286,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, tak.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
 </html>

@@ -5,18 +5,17 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>基本コマンド &#8212; Tak Documents  ドキュメント</title>
-    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bizstyle.css" />
     
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
     <script src="../../_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
@@ -51,26 +50,26 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="id1">
+  <section id="id1">
 <h1>基本コマンド<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="section" id="cd">
+<section id="cd">
 <h2>cd<a class="headerlink" href="#cd" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>コンソール起動時のディレクトリは、各ユーザのホームディレクトリ <strong>home/pi</strong> である。</p></li>
 <li><p>カレントディレクトリからの相対移動の場合は、</p>
 <ul>
 <li><p>cdに続けて直接ディレクトリ名を指定する。</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> Public
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> Public
 </pre></div>
 </div>
 </li>
 <li><p>1つ上のディレクトリに移動する場合は <strong>..</strong> を使用する。</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> ..
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> ..
 </pre></div>
 </div>
 </li>
 <li><p>1つ上のディレクトリからのパス（つまりカレントディレクトリの兄弟ディレクトリ）を指定することも可能。</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> ../home
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> ../home
 </pre></div>
 </div>
 </li>
@@ -79,17 +78,17 @@
 <li><p>絶対移動の場合は、</p>
 <ul>
 <li><p>ルートディレクトリ（ツリー構造の最上位）からの絶対パスを指定する場合は、 <strong>/</strong> を使用する。</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /home/pi/Public
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> /home/pi/Public
 </pre></div>
 </div>
 </li>
 <li><p>ホームディレクトリ直下のディレクトリに移動するには、 <strong>~(チルダ）</strong> を使用する。</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> ~/Public
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> ~/Public
 </pre></div>
 </div>
 </li>
 <li><p><strong>cd</strong> のみを実行した場合は、ホームディレクトリに移動する。</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span>
 </pre></div>
 </div>
 </li>
@@ -97,8 +96,8 @@
 </li>
 <li><p><a class="reference external" href="http://hooktail.org/computer/index.php?%BA%C7%C4%E3%B8%C2%B3%D0%A4%A8%A4%C6%A4%AA%A4%AF%A4%D9%A4%AD%BB%F6#content_1_5">参考</a></p></li>
 </ul>
-</div>
-<div class="section" id="ssh">
+</section>
+<section id="ssh">
 <h2>ssh<a class="headerlink" href="#ssh" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>以下の例のようにSSH接続する</p>
@@ -108,8 +107,8 @@
 </li>
 <li><p>コンソールには、Git Bash や Tera Term などを使用する。</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -189,7 +188,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, tak.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
 </html>

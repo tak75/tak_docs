@@ -10,8 +10,11 @@ tak documents
    VirtualBox/index
    Linux/index
    python/index
+   Matplotlib/index
+   Jupyter/index
    raspberry_pi/index
    Webアプリ/index
    C＃/index
    デザインパターン/index
+   データ分析/index
    備忘録/index

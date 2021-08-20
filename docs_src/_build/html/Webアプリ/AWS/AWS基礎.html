@@ -5,18 +5,17 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>AWS基礎 &#8212; Tak Documents  ドキュメント</title>
-    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bizstyle.css" />
     
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
     <script src="../../_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
@@ -51,9 +50,9 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="aws">
+  <section id="aws">
 <h1>AWS基礎<a class="headerlink" href="#aws" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="section" id="id1">
+<section id="id1">
 <h2>概要<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>サービスの数は世界最大</p></li>
@@ -63,8 +62,8 @@
 <p>AWSログイン時に表示される画面のこと</p>
 </li>
 </ul>
-</div>
-<div class="section" id="id2">
+</section>
+<section id="id2">
 <h2>初期設定<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
 <li><p>CloudWatchで料金アラートを設定</p>
@@ -101,8 +100,8 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="id3">
+</section>
+<section id="id3">
 <h2>操作<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
 <li><p>操作ログ閲覧方法</p>
@@ -112,37 +111,41 @@
 </ul>
 </li>
 </ul>
-<div class="section" id="id4">
+<section id="id4">
 <h3>AWS環境の基本モデル<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="figure align-default" id="id5">
+<figure class="align-default" id="id5">
 <a class="reference internal image-reference" href="../../_images/AWS基本モデル.png"><img alt="../../_images/AWS基本モデル.png" src="../../_images/AWS基本モデル.png" style="width: 640px;" /></a>
-<p class="caption"><span class="caption-number">図 5 </span><span class="caption-text">AWS環境の基本モデル</span><a class="headerlink" href="#id5" title="この画像へのパーマリンク">¶</a></p>
-</div>
-</div>
-<div class="section" id="id6">
+<figcaption>
+<p><span class="caption-number">図 5 </span><span class="caption-text">AWS環境の基本モデル</span><a class="headerlink" href="#id5" title="この画像へのパーマリンク">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id6">
 <h3>本ページで構築するAWS環境<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="figure align-default" id="id7">
+<figure class="align-default" id="id7">
 <a class="reference internal image-reference" href="../../_images/AWS基礎.png"><img alt="../../_images/AWS基礎.png" src="../../_images/AWS基礎.png" style="width: 640px;" /></a>
-<p class="caption"><span class="caption-number">図 6 </span><span class="caption-text">本ページ（AWS基礎）で構築するAWS環境</span><a class="headerlink" href="#id7" title="この画像へのパーマリンク">¶</a></p>
-</div>
-</div>
-</div>
-<div class="section" id="vpc">
+<figcaption>
+<p><span class="caption-number">図 6 </span><span class="caption-text">本ページ（AWS基礎）で構築するAWS環境</span><a class="headerlink" href="#id7" title="この画像へのパーマリンク">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="vpc">
 <h2>【VPC】ネットワーク構築<a class="headerlink" href="#vpc" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id8">
+<section id="id8">
 <h3>用語<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
-<dt id="term-0">リージョン</dt><dd><ul class="simple">
+<dt id="term-0">リージョン<a class="headerlink" href="#term-0" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>AWSの各サービスが提供されている地域のことであり、各国に存在する</p></li>
 <li><p>基本的には、最新サービスはまずアメリカリージョンで提供され、それから他のリージョンに展開される</p></li>
 </ul>
 </dd>
-<dt id="term-1">アベイラビリティゾーン</dt><dd><ul class="simple">
+<dt id="term-1">アベイラビリティゾーン<a class="headerlink" href="#term-1" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>独立したデータセンターのこと</p></li>
 <li><p>リージョン内にはアベイラビリティゾーンが複数あり、災害等で1つが使用できなくなっても他で代替できる</p></li>
 </ul>
 </dd>
-<dt id="term-VPC">VPC</dt><dd><ul class="simple">
+<dt id="term-VPC">VPC<a class="headerlink" href="#term-VPC" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>Virtual Private Cloud</p></li>
 <li><p>AWS上に仮想ネットワークを作成できるサービス</p></li>
 <li><p>IPv4 アドレスの範囲を CIDRブロックの形式で指定する必要がある (例: 10.0.0.0/16)。</p></li>
@@ -160,7 +163,7 @@
 </li>
 </ul>
 </dd>
-<dt id="term-2">サブネット</dt><dd><ul class="simple">
+<dt id="term-2">サブネット<a class="headerlink" href="#term-2" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>VPCを細かく区切ったネットワークであり、プライベート／パブリックの設定が可能</p></li>
 <li><p>これにより、サブネットAは公開するが、サブネットBは非公開とする、という設定が可能となり、
 セキュリティを高める運用が可能</p></li>
@@ -168,7 +171,7 @@
 <li><p>IPv4 アドレス範囲は/24が標準的</p></li>
 </ul>
 </dd>
-<dt id="term-IP">IPアドレスの表記</dt><dd><ul class="simple">
+<dt id="term-IP">IPアドレスの表記<a class="headerlink" href="#term-IP" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>CIDR表記（サイダー）</p>
 <ul>
 <li><p>Classless Inter-Domain Routing</p></li>
@@ -183,15 +186,15 @@
 </li>
 </ul>
 </dd>
-<dt id="term-3">ルートテーブル</dt><dd><ul class="simple">
+<dt id="term-3">ルートテーブル<a class="headerlink" href="#term-3" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>VPCと各サブネットに対して設定できる</p></li>
 <li><p>ルートテーブルに設定している送信先IPアドレス範囲（CIDRブロック）以外の通信は破棄される</p></li>
 <li><p>&quot;0.0.0.0/0&quot;で、ルートテーブルに設定しているIPアドレス範囲以外のIPアドレスを意味する</p></li>
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="id9">
+</section>
+<section id="id9">
 <h3>手順<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>VPCを作成する</p>
@@ -244,21 +247,21 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="id10">
+</section>
+<section id="id10">
 <h3>補足<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>異なるシステムの場合はアカウントを分けること</p></li>
 <li><p>同一システムで本番環境とステージング環境を分けたい場合は、同一アカウントでVPCとリージョンを分けるのがオススメ</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="ec2web">
+</section>
+</section>
+<section id="ec2web">
 <h2>【EC2】Webサーバ構築<a class="headerlink" href="#ec2web" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id11">
+<section id="id11">
 <h3>用語<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary">
-<dt id="term-EC2">EC2</dt><dd><ul class="simple">
+<dt id="term-EC2">EC2<a class="headerlink" href="#term-EC2" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>Elastic Compute Cloud</p></li>
 <li><p>AWSクラウド上の仮想サーバ</p></li>
 <li><p>数分で起動し、1時間または秒単位で従量課金</p></li>
@@ -270,7 +273,7 @@
 ただし、Elastic IPアドレス（条件により課金）を使うとEC2を削除するまでIPアドレスを固定することが可能。</p>
 </div>
 </dd>
-<dt id="term-AMI">AMI</dt><dd><ul class="simple">
+<dt id="term-AMI">AMI<a class="headerlink" href="#term-AMI" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>Amazon Machine Image</p></li>
 <li><p>「アミ」と読む</p></li>
 <li><p>Amazon Machine image</p></li>
@@ -281,7 +284,7 @@
 <li><p>AMIから何台でもEC2インスタンスを起動可能</p></li>
 </ul>
 </dd>
-<dt id="term-4">インスタンスタイプ</dt><dd><ul class="simple">
+<dt id="term-4">インスタンスタイプ<a class="headerlink" href="#term-4" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>サーバのスペックを定義したもの</p></li>
 <li><p>インスタンスタイプにより、CPU、メモリ、ストレージ、ネットワーク帯域が異なる</p></li>
 <li><p>例：m5.xlarge</p>
@@ -312,12 +315,12 @@
 </li>
 </ul>
 </dd>
-<dt id="term-5">ストレージ</dt><dd><ul class="simple">
+<dt id="term-5">ストレージ<a class="headerlink" href="#term-5" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>サーバにくっつけるデータの保管場所</p></li>
 <li><p>EC2には <a class="reference internal" href="#term-EBS"><span class="xref std std-term">EBS</span></a> と <a class="reference internal" href="#term-6"><span class="xref std std-term">インスタンスストア</span></a> の2種類がある</p></li>
 </ul>
 </dd>
-<dt id="term-EBS">EBS</dt><dd><ul class="simple">
+<dt id="term-EBS">EBS<a class="headerlink" href="#term-EBS" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>Elastic Block Store</p></li>
 <li><p>高い可用性と耐久性を持つストレージ</p></li>
 <li><p>他のインスタンスに付け替え可能</p></li>
@@ -338,14 +341,14 @@
 無料枠で使用したい場合は、不要なEC2インスタンスは&quot;stopped&quot;するのではなく&quot;terminated&quot;にすること。</p>
 </div>
 </dd>
-<dt id="term-6">インスタンスストア</dt><dd><ul class="simple">
+<dt id="term-6">インスタンスストア<a class="headerlink" href="#term-6" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>インスタンス専用の一時的なストレージ</p></li>
 <li><p>他のインスタンスに付け替えることはできない</p></li>
 <li><p>追加費用なし（無料）</p></li>
 <li><p>一時ファイル、キャッシュなど、失われても問題がないデータを置く</p></li>
 </ul>
 </dd>
-<dt id="term-SSH">SSH</dt><dd><ul class="simple">
+<dt id="term-SSH">SSH<a class="headerlink" href="#term-SSH" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>サーバと自分の目の前のパソコンをセキュアにつなぐサービスのこと</p></li>
 <li><p>通信内容が暗号化された遠隔ログインシステム</p></li>
 <li><p>公開鍵認証にてログインする</p></li>
@@ -354,7 +357,7 @@
 <li><p>SSH接続のツールはTeraTermなど複数あるが、rloginがオススメ</p></li>
 </ul>
 </dd>
-<dt id="term-7">こうかいかぎにんしょう（公開鍵認証）</dt><dd><ul class="simple">
+<dt id="term-7">こうかいかぎにんしょう（公開鍵認証）<a class="headerlink" href="#term-7" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>サーバ側が「公開鍵」を保有し、ユーザ側が「秘密鍵」を保有する</p></li>
 <li><p>EC2作成時にダウンロードしたSSHキーペアが「秘密鍵」となる</p></li>
 <li><p>ログインフロー</p>
@@ -368,7 +371,7 @@
 </li>
 </ul>
 </dd>
-<dt id="term-8">ポート番号</dt><dd><ul class="simple">
+<dt id="term-8">ポート番号<a class="headerlink" href="#term-8" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>ポート番号は、プログラムのアドレス</p></li>
 <li><p>同一コンピュータ内で通信を行うプログラムを識別する時に利用</p></li>
 <li><p>ポート番号を決める方法は2種類ある</p>
@@ -391,14 +394,14 @@
 </li>
 </ul>
 </dd>
-<dt id="term-Apache">Apache</dt><dd><p>HTTPリクエストがあると、それに対してレスポンスを返しWebページを表示する、Webサーバのソフトウェア。</p>
+<dt id="term-Apache">Apache<a class="headerlink" href="#term-Apache" title="Permalink to this term">¶</a></dt><dd><p>HTTPリクエストがあると、それに対してレスポンスを返しWebページを表示する、Webサーバのソフトウェア。</p>
 </dd>
-<dt id="term-9">ファイアウォール</dt><dd><ul class="simple">
+<dt id="term-9">ファイアウォール<a class="headerlink" href="#term-9" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>ファイアウォールとは、ネットワークを不正アクセスから守るために、「通してよい通信だけを通して、それ以外は通さない」機能の総称</p></li>
 <li><p>AWSでは、EC2インスタンスに対して設定する <strong>セキュリティグループ</strong> がファイアウォールの役割を担っている。</p></li>
 </ul>
 </dd>
-<dt id="term-Elastic-IP">Elastic IPアドレス</dt><dd><ul class="simple">
+<dt id="term-Elastic-IP">Elastic IPアドレス<a class="headerlink" href="#term-Elastic-IP" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>固定グローバルIPアドレスを取得し、インスタンスに付与できるサービス</p></li>
 <li><p>インスタンスを削除するまで、ずっとそのIPアドレスを使用することができる</p></li>
 <li><p>Elastic IPアドレスは、EC2インスタンスに関連付けられていて、そのインスタンスが起動中であれば無料。
@@ -406,8 +409,8 @@
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="id12">
+</section>
+<section id="id12">
 <h3>手順<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>EC2インスタンスを設置する</p>
@@ -502,24 +505,24 @@ CPUクレジットが消費され尽くすと、バーストモードでは動�
 <li><p>パッケージを更新する</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// yum：Linuxのパッケージ管理ツール。&quot;yum update&quot;でyumが管理する全パッケージを更新する。</span>
 <span class="go">// -y：&quot;Yes&quot;オプション。全パッケージの更新を&quot;Yes&quot;にする。付けないと都度Yes/Noを聞かれる</span>
-<span class="gp">$</span> sudo yum update -y
+<span class="gp">$ </span>sudo yum update -y
 </pre></div>
 </div>
 </li>
 <li><p>Apacheをインストールする</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// httpd：Apacheを構成する実行ファイル</span>
-<span class="gp">$</span> sudo yum -y install httpd
+<span class="gp">$ </span>sudo yum -y install httpd
 </pre></div>
 </div>
 </li>
 <li><p>Apacheを起動させる</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// httpd.service：Apacheのこと</span>
-<span class="gp">$</span> sudo systemctl start httpd.service
+<span class="gp">$ </span>sudo systemctl start httpd.service
 </pre></div>
 </div>
 </li>
 <li><p>Apacheが起動しているか確認する1（Apacheのステータスを確認）</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo systemctl status httpd.service
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo systemctl status httpd.service
 <span class="go">● httpd.service - The Apache HTTP Server</span>
 <span class="go">  Loaded: loaded (/usr/lib/systemd/system/httpd.service; disabled; vendor preset: disabled)</span>
 <span class="go">  Active: active (running) since Tue 2020-02-11 13:18:43 UTC; 33s ago</span>
@@ -540,7 +543,7 @@ CPUクレジットが消費され尽くすと、バーストモードでは動�
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// ps：プロセスを表示するコマンド</span>
 <span class="go">// -ax：全てのプロセスを表示するオプション</span>
 <span class="go">// u：CPUやメモリ使用率を付けて表示するオプション</span>
-<span class="gp">$</span> ps -axu
+<span class="gp">$ </span>ps -axu
 <span class="go">USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</span>
 <span class="go">・・ 省略 ・・</span>
 <span class="go">apache   21786  0.0  0.6 298484  6512 ?        Sl   13:18   0:00 /usr/sbin/httpd</span>
@@ -555,7 +558,7 @@ CPUクレジットが消費され尽くすと、バーストモードでは動�
 <li><p>Apacheが起動しているか確認する3（Apacheのプロセスを確認）</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// |：パイプライン。左のコマンドの実行結果を右のコマンドに渡す</span>
 <span class="go">// grep：引数の文字列を検索して表示する</span>
-<span class="gp">$</span> ps -axu <span class="p">|</span> grep httpd
+<span class="gp">$ </span>ps -axu <span class="p">|</span> grep httpd
 <span class="go">root     21785  0.0  0.9 257372  9716 ?        Ss   13:18   0:00 /usr/sbin/http  -DFOREGROUND</span>
 <span class="go">apache   21786  0.0  0.6 298484  6512 ?        Sl   13:18   0:00 /usr/sbin/http  -DFOREGROUND</span>
 <span class="go">apache   21787  0.0  0.6 298484  6512 ?        Sl   13:18   0:00 /usr/sbin/http  -DFOREGROUND</span>
@@ -567,12 +570,12 @@ CPUクレジットが消費され尽くすと、バーストモードでは動�
 </div>
 </li>
 <li><p>Apacheをサーバ起動に合わせて自動起動するよう設定する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo systemctl <span class="nb">enable</span> httpd.service
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo systemctl <span class="nb">enable</span> httpd.service
 </pre></div>
 </div>
 </li>
 <li><p>自動起動設定となったか確認する</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo systemctl is-enabled httpd.service
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo systemctl is-enabled httpd.service
 <span class="go">enabled</span>
 </pre></div>
 </div>
@@ -614,8 +617,8 @@ CPUクレジットが消費され尽くすと、バーストモードでは動�
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id13">
+</section>
+<section id="id13">
 <h3>補足<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>どのポート番号でどのプログラムが待ち受けているかを調べる</p>
@@ -626,7 +629,7 @@ CPUクレジットが消費され尽くすと、バーストモードでは動�
 <span class="go">// -P：ポート番号をサービス名に変換しないオプション</span>
 <span class="go">// &quot;LISTEN&quot;：他のコンピュータから待ち受けているポートを示す。</span>
 <span class="go">// &quot;ESTABLISHED&quot;：現在通信中のポートを示す。</span>
-<span class="gp">$</span> sudo lsof -i -n -P
+<span class="gp">$ </span>sudo lsof -i -n -P
 <span class="go">COMMAND    PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME</span>
 <span class="go">rpcbind   2679      rpc    6u  IPv4  16789      0t0  UDP *:111</span>
 <span class="go">rpcbind   2679      rpc    7u  IPv4  16793      0t0  UDP *:727</span>
@@ -649,14 +652,14 @@ CPUクレジットが消費され尽くすと、バーストモードでは動�
 このため、SSH接続できるのである。</p>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="route53">
+</section>
+</section>
+<section id="route53">
 <h2>【Route53】ドメインを登録する<a class="headerlink" href="#route53" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id14">
+<section id="id14">
 <h3>用語<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary">
-<dt id="term-10">ドメイン</dt><dd><ul class="simple">
+<dt id="term-10">ドメイン<a class="headerlink" href="#term-10" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>インターネット上の住所のようなもの。
 IPアドレスは覚えにくいため、Webサイトにアクセスするときはドメインを使用する。</p></li>
 <li><p>「www.example.co.jp」の場合、以下にように呼称する</p>
@@ -672,7 +675,7 @@ IPアドレスは覚えにくいため、Webサイトにアクセスするとき
 一般消費者が購入する先はレジストラとリセラである。</p></li>
 </ul>
 </dd>
-<dt id="term-DNS">DNS</dt><dd><ul class="simple">
+<dt id="term-DNS">DNS<a class="headerlink" href="#term-DNS" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>Domain Name System。ドメイン名管理システム。</p></li>
 <li><p>ドメイン名をIPアドレスに変換する</p></li>
 <li><p>ネームサーバとフルリゾルバの2つから構成されている</p>
@@ -706,7 +709,7 @@ IPアドレスは覚えにくいため、Webサイトにアクセスするとき
 （Aレコード：IPアドレス、MXレコード：メール受信サーバ、など）</p></li>
 </ul>
 </dd>
-<dt id="term-Route-53">Route 53</dt><dd><ul>
+<dt id="term-Route-53">Route 53<a class="headerlink" href="#term-Route-53" title="Permalink to this term">¶</a></dt><dd><ul>
 <li><p>AWSのDNSサービス。ネームサーバの役割を果たす</p></li>
 <li><p>特徴</p>
 <ul class="simple">
@@ -735,8 +738,8 @@ IPアドレスは覚えにくいため、Webサイトにアクセスするとき
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="id15">
+</section>
+<section id="id15">
 <h3>手順<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>ドメインを購入する</p>
@@ -811,8 +814,8 @@ NSレコードの「値」項目に表示されているURL（4種）を以降�
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="id16">
+</section>
+<section id="id16">
 <h3>補足<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>ドメイン購入のお店について</p>
@@ -841,7 +844,7 @@ NSレコードの「値」項目に表示されているURL（4種）を以降�
 <span class="go">// NS：ネームサーバを表示するためのオプション</span>
 <span class="go">// +short：digコマンドではいろいろな情報が表示されるので、</span>
 <span class="go">//         ネームサーバのみを表示するためのオプション</span>
-<span class="gp">$</span> dig xxx.work NS +short
+<span class="gp">$ </span>dig xxx.work NS +short
 <span class="go">dns2.onamae.com.    // お名前.comのネームサーバ</span>
 <span class="go">dns1.onamae.com.    // お名前.comのネームサーバ</span>
 
@@ -855,7 +858,7 @@ NSレコードの「値」項目に表示されているURL（4種）を以降�
 </li>
 <li><p>ネームサーバをお名前.comからRoute53に変更した後</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// 以下のようにRoute53のネームサーバが表示されるようになった</span>
-<span class="gp">$</span> dig xxx.work NS +short
+<span class="gp">$ </span>dig xxx.work NS +short
 <span class="go">ns-1154.awsdns-16.org.</span>
 <span class="go">ns-1920.awsdns-48.co.uk.</span>
 <span class="go">ns-165.awsdns-20.com.</span>
@@ -863,7 +866,7 @@ NSレコードの「値」項目に表示されているURL（4種）を以降�
 
 <span class="go">// なお、以下のようにするとIPアドレスを確認できる</span>
 <span class="go">// A：Aレコード（IPアドレス）を表示させるオプション</span>
-<span class="gp">$</span> dig xxx.work A +short
+<span class="gp">$ </span>dig xxx.work A +short
 <span class="go">x.xxx.xxx.12    // IPアドレスが表示される</span>
 </pre></div>
 </div>
@@ -871,14 +874,14 @@ NSレコードの「値」項目に表示されているURL（4種）を以降�
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="rdsdb">
+</section>
+</section>
+<section id="rdsdb">
 <h2>【RDS】DBサーバを構築する<a class="headerlink" href="#rdsdb" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id17">
+<section id="id17">
 <h3>用語<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
-<dt id="term-RDS">RDS</dt><dd><ul class="simple">
+<dt id="term-RDS">RDS<a class="headerlink" href="#term-RDS" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>フルマネージドなリレーショナルデータベースのサービス</p></li>
 <li><p>従来と比較して構築／運用の手間を軽減できる</p></li>
 <li><p>AWSでDBサーバを構築する方法には2種ある</p>
@@ -951,8 +954,8 @@ NSレコードの「値」項目に表示されているURL（4種）を以降�
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="id18">
+</section>
+<section id="id18">
 <h3>手順<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>はじめに</p>
@@ -1114,7 +1117,7 @@ RDSを作成する際は、マルチAZができるようにするために、
 <ul>
 <li><p>webサーバにSSH接続する（TeraTerm）</p></li>
 <li><p>WebサーバにMySQLをインストール</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo yum -y install mysql
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo yum -y install mysql
 </pre></div>
 </div>
 </li>
@@ -1124,7 +1127,7 @@ RDSを作成する際は、マルチAZができるようにするために、
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// -h：エンドポイントを指定</span>
 <span class="go">// -u：ユーザ名を指定</span>
 <span class="go">// -p：パスワード入力要求</span>
-<span class="gp">$</span> mysql -h aws-and-infra-web.xxxxx.ap-northeast-1.rds.amazonaws.com -u root -p
+<span class="gp">$ </span>mysql -h aws-and-infra-web.xxxxx.ap-northeast-1.rds.amazonaws.com -u root -p
 <span class="go">Enter password:   // 設定パスワード（password）入力</span>
 <span class="go">MySQL [(none)]&gt;</span>
 </pre></div>
@@ -1133,8 +1136,8 @@ RDSを作成する際は、マルチAZができるようにするために、
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="id19">
+</section>
+<section id="id19">
 <h3>補足<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>スナップショット</p>
@@ -1156,18 +1159,18 @@ RDSを作成する際は、マルチAZができるようにするために、
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="ec2wordpress">
+</section>
+</section>
+<section id="ec2wordpress">
 <h2>【EC2】WordPressを構築する<a class="headerlink" href="#ec2wordpress" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id20">
+<section id="id20">
 <h3>用語<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <dl class="glossary simple">
-<dt id="term-WordPress">WordPress</dt><dd><p>オープンソースのブログソフトウェア。
+<dt id="term-WordPress">WordPress<a class="headerlink" href="#term-WordPress" title="Permalink to this term">¶</a></dt><dd><p>オープンソースのブログソフトウェア。
 PHPで開発されており、データベース管理システムとしてMySQLを利用している。
 （プラグインよりSQLiteでの使用も可能）</p>
 </dd>
-<dt id="term-TCP-IP">TCP/IP</dt><dd><ul class="simple">
+<dt id="term-TCP-IP">TCP/IP<a class="headerlink" href="#term-TCP-IP" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>TCP・IPを中心として、インターネットを構築する上で必要なプロトコル群の総称。</p>
 <ul>
 <li><p>アプリケーションプロトコル：HTTP、SMTP、FTP</p></li>
@@ -1187,7 +1190,7 @@ PHPで開発されており、データベース管理システムとしてMySQL
 </li>
 </ul>
 </dd>
-<dt id="term-HTTP">HTTP</dt><dd><ul class="simple">
+<dt id="term-HTTP">HTTP<a class="headerlink" href="#term-HTTP" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>WebプラウザとWebサーバ間が通信するときに利用されるプロトコル</p></li>
 <li><p>HyperText Transfer Protocol</p></li>
 <li><p>インターネットでHTMLなどのコンテンツの送受信に用いられる通信の約束ごと</p></li>
@@ -1209,7 +1212,7 @@ PHPで開発されており、データベース管理システムとしてMySQL
 </li>
 </ul>
 </dd>
-<dt id="term-TCP">TCP</dt><dd><ul class="simple">
+<dt id="term-TCP">TCP<a class="headerlink" href="#term-TCP" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p><a class="reference internal" href="#term-12"><span class="xref std std-term">トランスポート層</span></a> のプロトコル</p></li>
 <li><p>Transmission Control Protocol</p></li>
 <li><p>信頼性のある通信を提供</p></li>
@@ -1219,7 +1222,7 @@ PHPで開発されており、データベース管理システムとしてMySQL
 <li><p>コネクション管理し、通信相手との間で通信を始める準備をしてから通信を行う</p></li>
 </ul>
 </dd>
-<dt id="term-UDP">UDP</dt><dd><ul class="simple">
+<dt id="term-UDP">UDP<a class="headerlink" href="#term-UDP" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p><a class="reference internal" href="#term-12"><span class="xref std std-term">トランスポート層</span></a> のプロトコル</p></li>
 <li><p>User Datagram Protocol</p></li>
 <li><p>信頼性のない通信</p></li>
@@ -1228,7 +1231,7 @@ PHPで開発されており、データベース管理システムとしてMySQL
 <li><p>コネクションレスなのでいつでもデータを送信できる</p></li>
 </ul>
 </dd>
-<dt id="term-11">IP</dt><dd><ul class="simple">
+<dt id="term-11">IP<a class="headerlink" href="#term-11" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>ネットワーク層のプロトコル</p></li>
 <li><p>役割</p>
 <ul>
@@ -1243,15 +1246,15 @@ IPでは、各ネットワークインターフェースの最大転送単位よ
 <li><p>IPヘッダに、送信元IPアドレスと宛先IPアドレスが含まれている</p></li>
 </ul>
 </dd>
-<dt id="term-12">トランスポート層</dt><dd><ul class="simple">
+<dt id="term-12">トランスポート層<a class="headerlink" href="#term-12" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>アプリケーション間コネクションの確立・切断を担う</p></li>
 <li><p>どのアプリケーションと通信するかを指定する役割も担う。
 どのアプリケーションかを指定するのがポート番号</p></li>
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="id21">
+</section>
+<section id="id21">
 <h3>手順<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul>
 <li><p>WordPress用のDB作成</p>
@@ -1318,7 +1321,7 @@ IPでは、各ネットワークインターフェースの最大転送単位よ
 </div>
 </li>
 <li><p>WebサーバからRDSへmysqlコマンドで&quot;aws_and_infra&quot;ユーザで接続できるか確認</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> mysql -h aws-and-infra-web.cwabjdc2qra8.ap-northeast-1.rds.amazonaws.com -u aws_and_infra -p
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mysql -h aws-and-infra-web.cwabjdc2qra8.ap-northeast-1.rds.amazonaws.com -u aws_and_infra -p
 <span class="go">Enter password:   // 設定パスワード（password）入力</span>
 <span class="go">MySQL [(none)]&gt;</span>
 </pre></div>
@@ -1333,24 +1336,24 @@ IPでは、各ネットワークインターフェースの最大転送単位よ
 <span class="go">// 通常の&quot;sudo yum -y install php&quot;ではphp5.4がインストールされる。</span>
 <span class="go">// 最新のWordPressではphp5.6以上が必要。</span>
 <span class="go">// このため以下のコマンドを用いる。</span>
-<span class="gp">$</span> sudo amazon-linux-extras install -y php7.2
+<span class="gp">$ </span>sudo amazon-linux-extras install -y php7.2
 
 <span class="go">// php関連のライブラリをyumからインストール</span>
 <span class="go">// 先に&quot;amazon-linux-extras install&quot;コマンドでphp7.2をインストール</span>
 <span class="go">// しておくと、yumコマンドでphp7.2の関連ライブラリをインストールできる</span>
-<span class="gp">$</span> sudo yum install -y php php-mbstring
+<span class="gp">$ </span>sudo yum install -y php php-mbstring
 </pre></div>
 </div>
 </li>
 <li><p>WordPressのダウンロード</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// ホームディレクトリに移動しておく</span>
-<span class="gp">$</span> <span class="nb">cd</span> ~
+<span class="gp">$ </span><span class="nb">cd</span> ~
 
 <span class="go">// wget：URLを指定してファイルをダウンロードするコマンド</span>
-<span class="gp">$</span> wget https://ja.wordpress.org/latest-ja.tar.gz
+<span class="gp">$ </span>wget https://ja.wordpress.org/latest-ja.tar.gz
 
 <span class="go">// ダウンロードファイルを確認</span>
-<span class="gp">$</span> ls
+<span class="gp">$ </span>ls
 <span class="go">latest-ja.tar.gz</span>
 </pre></div>
 </div>
@@ -1361,14 +1364,14 @@ IPでは、各ネットワークインターフェースの最大転送単位よ
 <span class="go">// z：gzipを使用するオプション</span>
 <span class="go">// v：圧縮／解凍状況を表示するオプション</span>
 <span class="go">// f：圧縮ファイル名を指定するオプション</span>
-<span class="gp">$</span> tar xzvf latest-ja.tar.gz
+<span class="gp">$ </span>tar xzvf latest-ja.tar.gz
 
 <span class="go">// 解凍ファイルを確認</span>
-<span class="gp">$</span> ls
+<span class="gp">$ </span>ls
 <span class="go">latest-ja.tar.gz  wordpress</span>
 
 <span class="go">// &quot;wordpress&quot;ディレクトリへ移動</span>
-<span class="gp">$</span> <span class="nb">cd</span> wordpress/
+<span class="gp">$ </span><span class="nb">cd</span> wordpress/
 </pre></div>
 </div>
 </li>
@@ -1376,7 +1379,7 @@ IPでは、各ネットワークインターフェースの最大転送単位よ
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// cp：ファイルをコピーするコマンド</span>
 <span class="go">// -r *：現ディレクトリ以下全てのファイルとディレクトリを指定するオプション</span>
 <span class="go">// /var/www/html/：コピー先ディレクトリ（Apacheが参照するディレクトリ）</span>
-<span class="gp">$</span> sudo cp -r * /var/www/html/
+<span class="gp">$ </span>sudo cp -r * /var/www/html/
 </pre></div>
 </div>
 </li>
@@ -1384,20 +1387,20 @@ IPでは、各ネットワークインターフェースの最大転送単位よ
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// chown：change owner。ファイルの所有者・所有グループ変更コマンド</span>
 <span class="go">// apache:apache：ファイルの所有者と所有グループをapacheに変更するの意</span>
 <span class="go">// /var/www/html/ -R：&quot;/var/www/html/&quot;以下全てのファイルを対象</span>
-<span class="gp">$</span> sudo chown apache:apache /var/www/html/ -R
+<span class="gp">$ </span>sudo chown apache:apache /var/www/html/ -R
 </pre></div>
 </div>
 </li>
 <li><p>Apacheの再起動（これによりApacheがWordPressのファイルを読み取ってくれるようになる）</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// 現在のapacheの起動状態を確認</span>
-<span class="gp">$</span> sudo systemctl status httpd.service
+<span class="gp">$ </span>sudo systemctl status httpd.service
 <span class="go">Active: active (running)    // 起動中の意味</span>
 
 <span class="go">// もし上記が起動中でない場合は起動させる</span>
-<span class="gp">$</span> sudo systemctl start httpd.service
+<span class="gp">$ </span>sudo systemctl start httpd.service
 
 <span class="go">// Apacheを再起動させる</span>
-<span class="gp">$</span> sudo systemctl restart httpd.service
+<span class="gp">$ </span>sudo systemctl restart httpd.service
 </pre></div>
 </div>
 </li>
@@ -1436,9 +1439,9 @@ IPでは、各ネットワークインターフェースの最大転送単位よ
 </ul>
 </li>
 </ul>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -1557,7 +1560,7 @@ IPでは、各ネットワークインターフェースの最大転送単位よ
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, tak.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
 </html>

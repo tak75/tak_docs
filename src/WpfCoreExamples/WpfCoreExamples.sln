@@ -59,11 +59,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DockPanelDemo", "Examples\D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CanvasDemo", "Examples\CanvasDemo\CanvasDemo.csproj", "{B53509F7-60C6-4DC4-8068-DBA59CEE17C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriggerDemo", "Examples\TriggerDemo\TriggerDemo.csproj", "{8BE05D44-B353-4141-BEAE-68236F9221DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TriggerDemo", "Examples\TriggerDemo\TriggerDemo.csproj", "{8BE05D44-B353-4141-BEAE-68236F9221DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlTemplateDemo", "Examples\ControlTemplateDemo\ControlTemplateDemo.csproj", "{FB0ADE39-7DFD-46C2-93C5-53A6341D39D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControlTemplateDemo", "Examples\ControlTemplateDemo\ControlTemplateDemo.csproj", "{FB0ADE39-7DFD-46C2-93C5-53A6341D39D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomButtonDemo", "Examples\CustomButtonDemo\CustomButtonDemo.csproj", "{73E66725-21DF-43D6-8A11-FC4CBAC32F75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomButtonDemo", "Examples\CustomButtonDemo\CustomButtonDemo.csproj", "{73E66725-21DF-43D6-8A11-FC4CBAC32F75}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TabControlDemo2", "TabControlDemo2\TabControlDemo2.csproj", "{8247641A-7771-44E2-9FE6-5F51652C816D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriggerDemo2", "Examples\TriggerDemo2\TriggerDemo2.csproj", "{FF6F5126-C70A-4417-8880-217BA2B8F6BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -191,6 +195,14 @@ Global
 		{73E66725-21DF-43D6-8A11-FC4CBAC32F75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73E66725-21DF-43D6-8A11-FC4CBAC32F75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73E66725-21DF-43D6-8A11-FC4CBAC32F75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8247641A-7771-44E2-9FE6-5F51652C816D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8247641A-7771-44E2-9FE6-5F51652C816D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8247641A-7771-44E2-9FE6-5F51652C816D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8247641A-7771-44E2-9FE6-5F51652C816D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF6F5126-C70A-4417-8880-217BA2B8F6BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF6F5126-C70A-4417-8880-217BA2B8F6BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF6F5126-C70A-4417-8880-217BA2B8F6BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF6F5126-C70A-4417-8880-217BA2B8F6BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -225,6 +237,8 @@ Global
 		{8BE05D44-B353-4141-BEAE-68236F9221DA} = {8E2EB6C9-971E-4D1A-8847-0FE20F785B4D}
 		{FB0ADE39-7DFD-46C2-93C5-53A6341D39D0} = {8E2EB6C9-971E-4D1A-8847-0FE20F785B4D}
 		{73E66725-21DF-43D6-8A11-FC4CBAC32F75} = {8E2EB6C9-971E-4D1A-8847-0FE20F785B4D}
+		{8247641A-7771-44E2-9FE6-5F51652C816D} = {8E2EB6C9-971E-4D1A-8847-0FE20F785B4D}
+		{FF6F5126-C70A-4417-8880-217BA2B8F6BF} = {8E2EB6C9-971E-4D1A-8847-0FE20F785B4D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EF99BDAF-001B-4728-8C75-CC8FDB1FDE0C}
