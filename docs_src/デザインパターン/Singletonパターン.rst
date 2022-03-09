@@ -28,6 +28,7 @@ Singleton パターンは、クラスがインスタンスを1つしか持たな
 ====
 
 クラス図の例を :numref:`Singletonパターン_クラス図` に、シーケンス図を :numref:`Singletonパターン_シーケンス図` に各々示す。
+ただし、C#の場合は、クラスをstatic宣言すればよいだけ。
 
 .. figure:: images/Singletonパターン_クラス図.png
    :scale: 85%
