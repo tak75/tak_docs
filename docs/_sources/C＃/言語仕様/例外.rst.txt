@@ -1,0 +1,32 @@
+====
+例外
+====
+
+例外の考え方
+============
+
+* 通常起こりえないケースについては例外をスローする
+* 大元でキャッチし、ログ出力する（Fatalで）（※）
+* 上記は実装時のデバッグ対策である
+* 製品時は例外はスローされない（はず）
+
+※メッセージダイアログ表示でもよいが、製品時は表示させずに処理を継続する方がよい
+
+よく使う例外
+============
+
+.. csv-table:: よく使う例外
+  :header-rows: 1
+  :widths: 1, 2
+
+  例外,説明
+  System.Exception,アプリケーションの実行中に発生するエラー
+  System.ArgumentException,メソッドに渡された引数のいずれかが無効な場合にスローされる例外
+  System.ArgumentNullException,null 参照 (Visual Basic では Nothing) を有効な引数として受け付けないメソッドに null 参照を渡した場合にスローされる例外
+  System.ArgumentOutOfRangeException,呼び出されたメソッドで定義されている許容範囲外の値が引数として渡された場合にスローされる例外
+  System.FormatException,引数の書式が、呼び出されたメソッドのパラメーターの仕様に一致していない場合にスローされる例外　
+  System.InvalidOperationException,オブジェクトの現在の状態に対して無効なメソッド呼び出しが行われた場合にスローされる例外
+  System.NotImplementedException,要求されたメソッドまたは操作が実装されない場合にスローされる例外
+  System.NotSupportedException,呼び出されたメソッドがサポートされていない場合、または呼び出された機能を備えていないストリームに対して読み取り、シーク、書き込みが試行された場合にスローされる例外
+
+
