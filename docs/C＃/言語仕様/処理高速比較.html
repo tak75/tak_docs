@@ -1,0 +1,174 @@
+
+
+<!doctype html>
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>処理高速比較 &#8212; Tak Documents  ドキュメント</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bizstyle.css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <script src="../../_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="next" title="WPF" href="../WPF/index.html" />
+    <link rel="prev" title="例外" href="%E4%BE%8B%E5%A4%96.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../WPF/index.html" title="WPF"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="%E4%BE%8B%E5%A4%96.html" title="例外"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >C＃</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">言語仕様</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">処理高速比較</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="id1">
+<h1>処理高速比較<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<section id="listfor-foreach">
+<h2>配列/List、for/foreach 比較<a class="headerlink" href="#listfor-foreach" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p>全く同じ処理を for と foreach で行った場合、Listではfor、配列では foreach の方が早い</p></li>
+<li><p>早い順に、配列のforeach -&gt; 配列のfor -&gt; Listのfor -&gt; Listのforeach</p></li>
+<li><p>Listとは、～.ToList()で得られるコレクション</p></li>
+<li><p>配列とは、～.ToArray()で得られるコレクション</p></li>
+<li><p><a class="reference external" href="https://takap-tech.com/entry/2020/10/20/234610">https://takap-tech.com/entry/2020/10/20/234610</a></p></li>
+</ul>
+</section>
+<section id="foreach-foreach">
+<h2>foreach/ForEach 比較<a class="headerlink" href="#foreach-foreach" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>foreach文よりも、コレクションのメソッドが持つForEachメソッドの方が高速である。</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>int[] a = {2,3,0,5,6};
+Array.ForEach(a, (n) =&gt;
+{
+  Console.WriteLine(n);
+});
+
+ただし、条件判断でbreak分により繰り返し処理を打ち切ることはできない。
+処理を打ち切りたい場合は、Findを使用すればよい。
+（本来Findはデータを探すためのメソッドであり、繰り返し制御に使う発想の転換が必要）
+
+Array.Find(a, (n) =&gt;
+{
+  if(n==0) return true;
+  Console.WriteLine(n);
+  return false;
+});
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../index.html">目次</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Matplotlib/index.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Jupyter/index.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Web%E3%82%A2%E3%83%97%E3%83%AA/index.html">Webアプリ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">C＃</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">言語仕様</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WPF/index.html">WPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../VisualStudio.html">VisualStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E8%87%AA%E5%8B%95%E4%BD%9C%E6%88%90.html">ドキュメント自動作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html">テスト駆動開発</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90/index.html">データ分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E5%82%99%E5%BF%98%E9%8C%B2/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">処理高速比較</a><ul>
+<li><a class="reference internal" href="#listfor-foreach">配列/List、for/foreach 比較</a></li>
+<li><a class="reference internal" href="#foreach-foreach">foreach/ForEach 比較</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="%E4%BE%8B%E5%A4%96.html"
+                        title="前の章へ">例外</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="../WPF/index.html"
+                        title="次の章へ">WPF</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="../WPF/index.html" title="WPF"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="%E4%BE%8B%E5%A4%96.html" title="例外"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >C＃</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >言語仕様</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">処理高速比較</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, tak.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
+    </div>
+  </body>
+</html>
