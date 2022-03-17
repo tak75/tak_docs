@@ -25,3 +25,33 @@ LINQ
   LINQ To Objects
 
     .NET Framework のオブジェクトに対して問合せを行う技術。
+
+IEnumerable -> List 変換
+========================
+
+  .. code-block:: csharp
+
+    var list = enumerableCollection.ToList();
+
+辞書型
+======
+
+  .. code-block:: csharp
+   
+    var groupList = this.SampleDict
+      .Select(x => x.Value)
+      .Distinct()
+      .OrderBy(x => x);       // 昇順に並び替える
+
+インデックスリストの取得
+========================
+
+  .. code-block:: csharp
+
+    // グループチェックされているインデックスリスト
+    var indexes = this.GroupIsCheckedCollection
+      // 以下は.Select((Value, Index) => new { Value, Index }) でもOK
+      .Select((v, i) => new { Value = v, Index = i }) 
+      .Where(x => x.Value == true)
+      .Select(x => x.Index);
+

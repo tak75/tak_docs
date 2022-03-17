@@ -19,8 +19,8 @@
     <script src="../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="VisualStudio" href="VisualStudio.html" />
-    <link rel="prev" title="Prism" href="Prism.html" />
+    <link rel="next" title=".NET Core and WPF" href=".NET%20Core%20and%20WPF.html" />
+    <link rel="prev" title="イベント、デリゲート" href="%E9%9B%9B%E5%BD%A2/%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <!--[if lt IE 9]>
     <script src="_static/css3-mediaqueries.js"></script>
@@ -33,10 +33,10 @@
           <a href="../genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="VisualStudio.html" title="VisualStudio"
+          <a href=".NET%20Core%20and%20WPF.html" title=".NET Core and WPF"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
-          <a href="Prism.html" title="Prism"
+          <a href="%E9%9B%9B%E5%BD%A2/%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html" title="イベント、デリゲート"
              accesskey="P">前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">C＃</a> &#187;</li>
@@ -72,6 +72,38 @@ C#4.0では、Parallel LINQ が導入され、マルチコアでの並列分散�
 </dd>
 </dl>
 </section>
+<section id="ienumerable-list">
+<h2>IEnumerable -&gt; List 変換<a class="headerlink" href="#ienumerable-list" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">list</span> <span class="p">=</span> <span class="n">enumerableCollection</span><span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id3">
+<h2>辞書型<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">groupList</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">SampleDict</span>
+  <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span>
+  <span class="p">.</span><span class="n">Distinct</span><span class="p">()</span>
+  <span class="p">.</span><span class="n">OrderBy</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">);</span>       <span class="c1">// 昇順に並び替える</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id4">
+<h2>インデックスリストの取得<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// グループチェックされているインデックスリスト</span>
+<span class="kt">var</span> <span class="n">indexes</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">GroupIsCheckedCollection</span>
+  <span class="c1">// 以下は.Select((Value, Index) =&gt; new { Value, Index }) でもOK</span>
+  <span class="p">.</span><span class="n">Select</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="p">{</span> <span class="n">Value</span> <span class="p">=</span> <span class="n">v</span><span class="p">,</span> <span class="n">Index</span> <span class="p">=</span> <span class="n">i</span> <span class="p">})</span>
+  <span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Value</span> <span class="p">==</span> <span class="k">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Index</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
 </section>
 
 
@@ -94,12 +126,15 @@ C#4.0では、Parallel LINQ が導入され、マルチコアでの並列分散�
 <li class="toctree-l1"><a class="reference internal" href="../Web%E3%82%A2%E3%83%97%E3%83%AA/index.html">Webアプリ</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">C＃</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="%E4%BB%95%E6%A7%98.html">仕様</a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html">テスト駆動開発</a></li>
-<li class="toctree-l2"><a class="reference internal" href=".NET%20Core%20and%20WPF.html">.NET Core and WPF</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Prism.html">Prism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E5%85%A8%E8%88%AC.html">全般</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E9%9B%9B%E5%BD%A2/index.html">雛形</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">LINQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href=".NET%20Core%20and%20WPF.html">.NET Core and WPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WPF.html">WPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prism.html">Prism</a></li>
 <li class="toctree-l2"><a class="reference internal" href="VisualStudio.html">VisualStudio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E8%87%AA%E5%8B%95%E4%BD%9C%E6%88%90.html">ドキュメント自動作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html">テスト駆動開発</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.html">デザインパターン</a></li>
@@ -112,16 +147,19 @@ C#4.0では、Parallel LINQ が導入され、マルチコアでの並列分散�
 <li><a class="reference internal" href="#">LINQ</a><ul>
 <li><a class="reference internal" href="#id1">引用元</a></li>
 <li><a class="reference internal" href="#id2">用語</a></li>
+<li><a class="reference internal" href="#ienumerable-list">IEnumerable -&gt; List 変換</a></li>
+<li><a class="reference internal" href="#id3">辞書型</a></li>
+<li><a class="reference internal" href="#id4">インデックスリストの取得</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>前のトピックへ</h4>
-  <p class="topless"><a href="Prism.html"
-                        title="前の章へ">Prism</a></p>
+  <p class="topless"><a href="%E9%9B%9B%E5%BD%A2/%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html"
+                        title="前の章へ">イベント、デリゲート</a></p>
   <h4>次のトピックへ</h4>
-  <p class="topless"><a href="VisualStudio.html"
-                        title="次の章へ">VisualStudio</a></p>
+  <p class="topless"><a href=".NET%20Core%20and%20WPF.html"
+                        title="次の章へ">.NET Core and WPF</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">クイック検索</h3>
     <div class="searchformwrapper">
@@ -143,10 +181,10 @@ C#4.0では、Parallel LINQ が導入され、マルチコアでの並列分散�
           <a href="../genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="VisualStudio.html" title="VisualStudio"
+          <a href=".NET%20Core%20and%20WPF.html" title=".NET Core and WPF"
              >次へ</a> |</li>
         <li class="right" >
-          <a href="Prism.html" title="Prism"
+          <a href="%E9%9B%9B%E5%BD%A2/%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html" title="イベント、デリゲート"
              >前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >C＃</a> &#187;</li>

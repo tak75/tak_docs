@@ -5,12 +5,8 @@ C＃
 .. toctree::
    :maxdepth: 2
 
-   仕様
-   全般
-   テスト駆動開発
-   .NET Core and WPF
-   Prism
-   LINQ
+   言語仕様/index
+   WPF/index
    VisualStudio
    ドキュメント自動作成
-   雛形/index
+   テスト駆動開発

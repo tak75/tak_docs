@@ -1,0 +1,555 @@
+
+
+<!doctype html>
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>仕様 &#8212; Tak Documents  ドキュメント</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bizstyle.css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <script src="../../_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="next" title="全般" href="%E5%85%A8%E8%88%AC.html" />
+    <link rel="prev" title="言語仕様" href="index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="%E5%85%A8%E8%88%AC.html" title="全般"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="言語仕様"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >C＃</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">言語仕様</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">仕様</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="id1">
+<h1>仕様<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<section id="c-1-0">
+<h2>C# 1.0からの仕様<a class="headerlink" href="#c-1-0" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id2">
+<h3>デリゲートとイベント処理<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p>C#で宣言される型には、クラス、構造体、列挙体、インタフェース、デリゲートの5種がある。
+デリゲートは型の一種とみなされる。
+型であるデリゲートは、独立して宣言され、様々なクラスから参照される</p></li>
+<li><p>デリゲート型変数は関数を入れるための変数である</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// デリゲートの宣言</span>
+<span class="k">public</span> <span class="k">delegate</span> <span class="k">void</span> <span class="nf">SampleDelegate</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">);</span>
+<span class="k">class</span> <span class="nc">DelegateFirst</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="n">vboid</span> <span class="nf">Reverse</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">){</span><span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(-</span><span class="n">n</span><span class="p">);}</span>
+    <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">()</span>
+    <span class="p">{</span>
+       <span class="c1">// デリゲート型変数の宣言</span>
+        <span class="n">SampleDelegate</span> <span class="n">d</span> <span class="p">=</span> <span class="n">Revarse</span><span class="p">;</span>
+        <span class="n">d</span><span class="p">(</span><span class="m">3</span><span class="p">);</span>       <span class="c1">// 結果：-3</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>複数のメソッドを登録しておき、一度の呼び出しでまとめて実行する機能（マルチキャスティング）がある</p></li>
+<li><p>例１：データを返さないイベントの場合（推奨は、方法2 &gt; 方法1 の順）。
+EventHandlerデリゲートと、EventArgsクラスを使うことで、デリゲート宣言と、返すデータのクラスの宣言を省略できる。</p>
+<ul>
+<li><p>方法1</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// イベントを発生する側のクラス</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">SleepClass</span>
+<span class="p">{</span>
+    <span class="c1">// データを持たないイベントデリゲートの宣言</span>
+    <span class="c1">//ここでは&quot;Time&quot;というイベントデリゲートを宣言する</span>
+    <span class="k">public</span> <span class="k">event</span> <span class="n">EventHandler</span> <span class="n">Time</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Start</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">5000</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">Time</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">//&quot;Time&quot;イベントの発生</span>
+            <span class="n">Time</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">EventArgs</span><span class="p">.</span><span class="n">Empty</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// イベントを受取り処理を行う側のクラス</span>
+<span class="k">private</span> <span class="k">void</span> <span class="nf">button1_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">SleepClass</span> <span class="n">clsSleep</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SleepClass</span><span class="p">();</span>
+    <span class="c1">//イベントハンドラの追加</span>
+    <span class="n">clsSleep</span><span class="p">.</span><span class="n">Time</span> <span class="p">+=</span> <span class="k">new</span> <span class="n">EventHandler</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">SleepClass_Time</span><span class="p">);</span>
+    <span class="n">clsSleep</span><span class="p">.</span><span class="n">Start</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="k">void</span> <span class="nf">SleepClass_Time</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">//イベントが発生したとき</span>
+    <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">&quot;OK!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>方法2（イベントを受取り処理を行う側のクラスについては方法1と同様）</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// イベントを発生する側のクラス</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">SleepClass</span>
+<span class="p">{</span>
+    <span class="c1">// データを持たないイベントデリゲートの宣言</span>
+    <span class="k">public</span> <span class="k">event</span> <span class="n">EventHandler</span> <span class="n">Time</span><span class="p">;</span>
+
+    <span class="c1">// SleepClassを継承して新たなクラスを作ることを考えるとvirtualにした方がよい</span>
+    <span class="k">protected</span> <span class="k">virtual</span> <span class="k">void</span> <span class="nf">OnTime</span><span class="p">(</span><span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">Time</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Time</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Start</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">5000</span><span class="p">);</span>
+        <span class="n">OnTime</span><span class="p">(</span><span class="n">EventArgs</span><span class="p">.</span><span class="n">Empty</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>例２：データを返すイベントの場合</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// イベントを発生する側のクラス</span>
+<span class="c1">//Timeイベントで返されるデータ</span>
+<span class="c1">//ここではstring型のひとつのデータのみ返すものとする</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">TimeEventArgs</span> <span class="p">:</span> <span class="n">EventArgs</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Message</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">SleepClass</span>
+<span class="p">{</span>
+    <span class="c1">//デリゲートの宣言</span>
+    <span class="c1">//TimeEventArgs型のオブジェクトを返すようにする</span>
+    <span class="k">public</span> <span class="k">delegate</span> <span class="k">void</span> <span class="nf">TimeEventHandler</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">TimeEventArgs</span> <span class="n">e</span><span class="p">);</span>
+
+    <span class="c1">//イベントデリゲートの宣言</span>
+    <span class="k">public</span> <span class="k">event</span> <span class="n">TimeEventHandler</span> <span class="n">Time</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="k">virtual</span> <span class="k">void</span> <span class="nf">OnTime</span><span class="p">(</span><span class="n">TimeEventArgs</span> <span class="n">e</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">Time</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Time</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Start</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">5000</span><span class="p">);</span>
+        <span class="c1">//返すデータの設定</span>
+        <span class="n">TimeEventArgs</span> <span class="n">e</span> <span class="p">=</span> <span class="k">new</span> <span class="n">TimeEventArgs</span><span class="p">();</span>
+        <span class="n">e</span><span class="p">.</span><span class="n">Message</span> <span class="p">=</span> <span class="s">&quot;終わったよ。&quot;</span><span class="p">;</span>
+        <span class="c1">//イベントの発生</span>
+        <span class="n">OnTime</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// イベントを受取り処理を行う側のクラス</span>
+<span class="k">private</span> <span class="k">void</span> <span class="nf">button1_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">SleepClass</span> <span class="n">clsSleep</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SleepClass</span><span class="p">();</span>
+    <span class="n">clsSleep</span><span class="p">.</span><span class="n">Time</span> <span class="p">+=</span> <span class="k">new</span> <span class="n">SleepClass</span><span class="p">.</span><span class="n">TimeEventHandler</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">SleepClass_Time</span><span class="p">);</span>
+    <span class="n">clsSleep</span><span class="p">.</span><span class="n">Start</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="k">void</span> <span class="nf">SleepClass_Time</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">TimeEventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">//返されたデータを取得し表示</span>
+    <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>EventArgsの派生クラスを使わない方法でも動作はするが、EventArgsの派生クラスを使った方法が
+.NETでは推奨された方法なので、使うべきではない。</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">//デリゲートの宣言（非推奨の方法！）</span>
+<span class="k">public</span> <span class="k">delegate</span> <span class="k">void</span> <span class="nf">TimeEventHandler</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">,</span> <span class="kt">int</span> <span class="n">number</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="c-2-0">
+<h2>C# 2.0からの仕様<a class="headerlink" href="#c-2-0" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>部分型
+ジェネリクス
+静的クラス
+yieldキーワード
+匿名デリゲート
+プロパティに対する個別のアクセス制御
+Null許容型とnull結合演算子</p>
+</section>
+<section id="c-3-0">
+<h2>C# 3.0からの仕様<a class="headerlink" href="#c-3-0" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="var">
+<h3>varキーワード<a class="headerlink" href="#var" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p>ローカル変数でのみ利用可能</p></li>
+</ul>
+<p>拡張メソッド
+部分メソッド</p>
+</section>
+<section id="id3">
+<h3>ラムダ式<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p><a class="reference external" href="https://tech-lab.sios.jp/archives/15318">多分わかりやすいC#のDelegateとラムダ式入門</a></p></li>
+<li><p>ラムダ式により、Delegateが不要となった</p></li>
+<li><p>変遷としては、①Delegate -&gt; ②Action、Func -&gt; ③ラムダ式＋Action、Func</p></li>
+<li><p>ラムダ式無名関数が長い処理の場合や、他でも利用されている場合などは、②がよいと思われる</p></li>
+<li><p>①Delegate</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">delegate</span> <span class="k">void</span> <span class="nf">Callback</span><span class="p">(</span><span class="n">HttpResponseMessage</span> <span class="n">res</span><span class="p">);</span>
+
+    <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Callback</span> <span class="n">callback</span> <span class="p">=</span> <span class="n">GetStatusCode</span><span class="p">;</span>
+        <span class="n">HttpRequest</span><span class="p">(</span><span class="s">&quot;http://www.yahoo.co.jp/&quot;</span><span class="p">,</span><span class="n">callback</span><span class="p">);</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">static</span> <span class="k">void</span> <span class="nf">GetStatusCode</span><span class="p">(</span><span class="n">HttpResponseMessage</span> <span class="n">res</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">StatusCode</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">async</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">HttpRequest</span><span class="p">(</span><span class="n">String</span> <span class="n">url</span><span class="p">,</span><span class="n">Callback</span> <span class="n">callback</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">using</span> <span class="p">(</span><span class="n">HttpClient</span> <span class="n">httpClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HttpClient</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="n">HttpResponseMessage</span> <span class="n">res</span> <span class="p">=</span> <span class="k">await</span> <span class="n">httpClient</span><span class="p">.</span><span class="n">GetAsync</span><span class="p">(</span><span class="n">url</span><span class="p">);</span>
+            <span class="n">callback</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>②Action、Func</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">HttpRequest</span><span class="p">(</span><span class="s">&quot;http://www.yahoo.co.jp/&quot;</span><span class="p">,</span> <span class="n">GetStatusCode</span><span class="p">);</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">static</span> <span class="k">void</span> <span class="nf">GetStatusCode</span><span class="p">(</span><span class="n">HttpResponseMessage</span> <span class="n">res</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">StatusCode</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">async</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">HttpRequest</span><span class="p">(</span><span class="n">String</span> <span class="n">url</span><span class="p">,</span> <span class="n">Action</span><span class="p">&lt;</span><span class="n">HttpResponseMessage</span><span class="p">&gt;</span> <span class="n">callback</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">using</span> <span class="p">(</span><span class="n">HttpClient</span> <span class="n">httpClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HttpClient</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="n">HttpResponseMessage</span> <span class="n">res</span> <span class="p">=</span> <span class="k">await</span> <span class="n">httpClient</span><span class="p">.</span><span class="n">GetAsync</span><span class="p">(</span><span class="n">url</span><span class="p">);</span>
+            <span class="n">callback</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>③ラムダ式＋Action、Func</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">HttpRequest</span><span class="p">(</span><span class="s">&quot;http://www.yahoo.co.jp/&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">StatusCode</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
+        <span class="p">});</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">async</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">HttpRequest</span><span class="p">(</span><span class="n">String</span> <span class="n">url</span><span class="p">,</span> <span class="n">Action</span><span class="p">&lt;</span><span class="n">HttpResponseMessage</span><span class="p">&gt;</span> <span class="n">callback</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">using</span> <span class="p">(</span><span class="n">HttpClient</span> <span class="n">httpClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HttpClient</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="n">HttpResponseMessage</span> <span class="n">res</span> <span class="p">=</span> <span class="k">await</span> <span class="n">httpClient</span><span class="p">.</span><span class="n">GetAsync</span><span class="p">(</span><span class="n">url</span><span class="p">);</span>
+            <span class="n">callback</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>オブジェクト
+初期化の簡略化
+自動実装プロパティ
+匿名型
+配列宣言の型省略
+クエリ式</p>
+</section>
+</section>
+<section id="c-4-0">
+<h2>C# 4.0からの仕様<a class="headerlink" href="#c-4-0" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>dynamicキーワード
+オプション引数・名前付き引数
+ジェネリクスの共変性・反変性</p>
+</section>
+<section id="c-5-0">
+<h2>C# 5.0からの仕様<a class="headerlink" href="#c-5-0" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</section>
+<section id="c-6-0">
+<h2>C# 6.0からの仕様<a class="headerlink" href="#c-6-0" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id4">
+<h3>文字列補間<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul>
+<li><p>先頭に「$」記号が付いた文字列</p></li>
+<li><p>その中の波かっこ「{}」で囲まれた部分の式を評価して文字列に当てはめてくれる</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>Text1.Text = $&quot;現在時刻は{DateTimeOffset.Now:HH:mm}&quot;;
+// Text1.Text = 「現在時刻は12:00」などとなる
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="null">
+<h3>Null条件演算子?.および?[]<a class="headerlink" href="#null" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>Null 条件付き演算子は、そのオペランドが null 以外と評価された場合にのみ、
+オペランドにメンバー アクセス操作 (?.) または要素アクセス操作 (?[]) を適用し、
+それ以外の場合は、null を返す。</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="nf">SumNumbers</span><span class="p">(</span><span class="n">List</span><span class="p">&lt;</span><span class="kt">double</span><span class="p">[]&gt;</span> <span class="n">setsOfNumbers</span><span class="p">,</span> <span class="kt">int</span> <span class="n">indexOfSetToSum</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">setsOfNumbers</span><span class="p">?[</span><span class="n">indexOfSetToSum</span><span class="p">]?.</span><span class="n">Sum</span><span class="p">()</span> <span class="p">??</span> <span class="kt">double</span><span class="p">.</span><span class="n">NaN</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">var</span> <span class="n">sum1</span> <span class="p">=</span> <span class="n">SumNumbers</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">sum1</span><span class="p">);</span>  <span class="c1">// output: NaN</span>
+
+<span class="kt">var</span> <span class="n">numberSets</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">double</span><span class="p">[]&gt;</span>
+<span class="p">{</span>
+    <span class="k">new</span><span class="p">[]</span> <span class="p">{</span> <span class="m">1.0</span><span class="p">,</span> <span class="m">2.0</span><span class="p">,</span> <span class="m">3.0</span> <span class="p">},</span>
+    <span class="k">null</span>
+<span class="p">};</span>
+
+<span class="kt">var</span> <span class="n">sum2</span> <span class="p">=</span> <span class="n">SumNumbers</span><span class="p">(</span><span class="n">numberSets</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">sum2</span><span class="p">);</span>  <span class="c1">// output: 6</span>
+
+<span class="kt">var</span> <span class="n">sum3</span> <span class="p">=</span> <span class="n">SumNumbers</span><span class="p">(</span><span class="n">numberSets</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">sum3</span><span class="p">);</span>  <span class="c1">// output: NaN</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3>読み取り専用プロパティ<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>式形式[=&gt;]（ラムダ式ではない）を使用して読み取り専用プロパティを定義できる。
+下記例の[1]～[3]は同義である。</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// [1]</span>
+<span class="k">public</span> <span class="kt">string</span> <span class="n">Title</span> <span class="p">=&gt;</span> <span class="s">&quot;タイトル&quot;</span><span class="p">;</span>
+
+<span class="c1">// [2]</span>
+<span class="k">public</span> <span class="kt">string</span> <span class="n">Title</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="s">&quot;タイトル&quot;</span><span class="p">;</span>
+
+<span class="c1">// [3]</span>
+<span class="k">public</span> <span class="kt">string</span> <span class="n">Title</span> <span class="p">{</span> <span class="k">get</span> <span class="p">=&gt;</span> <span class="s">&quot;タイトル&quot;</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>[3]はC# 7.0からの仕様であり、setについても定義できる。</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="kt">string</span> <span class="n">locationName</span><span class="p">;</span>
+<span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span>
+<span class="p">{</span>
+    <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">locationName</span><span class="p">;</span>
+    <span class="k">set</span> <span class="p">=&gt;</span> <span class="n">locationName</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>静的 using ディレクティブ
+例外フィルタ</p>
+</section>
+</section>
+<section id="c-7-0">
+<h2>C# 7.0からの仕様<a class="headerlink" href="#c-7-0" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>出力変数宣言
+パターンマッチング
+1       is 式の拡張
+2       switch 文の拡張
+タプル
+1       タプル記法
+2       分解
+値の破棄
+ref戻り値、ref変数
+1       ref戻り値
+2       ref変数</p>
+</section>
+<section id="c-7-1">
+<h2>C# 7.1からの仕様<a class="headerlink" href="#c-7-1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>非同期なMainメソッド
+default式</p>
+</section>
+<section id="c-7-2">
+<h2>C# 7.2からの仕様<a class="headerlink" href="#c-7-2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>値型の参照セマンティクス
+1       in参照渡し、ref readonly参照戻り値
+2       readonly構造体
+3       ref構造体
+末尾以外の場所での名前付き引数
+private protected アクセス修飾子
+数値リテラルの改善</p>
+</section>
+<section id="c-7-3">
+<h2>C# 7.3からの仕様<a class="headerlink" href="#c-7-3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</section>
+<section id="c-8">
+<h2>C# 8からの仕様<a class="headerlink" href="#c-8" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>null許容参照型
+1       null許容コンテキスト
+2       null免除演算子
+インターフェイスの既定メンバー
+パターンマッチングの拡張
+非同期ストリーム
+範囲指定
+その他の仕様</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../index.html">目次</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Matplotlib/index.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Jupyter/index.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Web%E3%82%A2%E3%83%97%E3%83%AA/index.html">Webアプリ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">C＃</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">言語仕様</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../.NET%20Core%20and%20WPF.html">.NET Core and WPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WPF.html">WPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Prism.html">Prism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../VisualStudio.html">VisualStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E8%87%AA%E5%8B%95%E4%BD%9C%E6%88%90.html">ドキュメント自動作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html">テスト駆動開発</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90/index.html">データ分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E5%82%99%E5%BF%98%E9%8C%B2/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">仕様</a><ul>
+<li><a class="reference internal" href="#c-1-0">C# 1.0からの仕様</a><ul>
+<li><a class="reference internal" href="#id2">デリゲートとイベント処理</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#c-2-0">C# 2.0からの仕様</a></li>
+<li><a class="reference internal" href="#c-3-0">C# 3.0からの仕様</a><ul>
+<li><a class="reference internal" href="#var">varキーワード</a></li>
+<li><a class="reference internal" href="#id3">ラムダ式</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#c-4-0">C# 4.0からの仕様</a></li>
+<li><a class="reference internal" href="#c-5-0">C# 5.0からの仕様</a></li>
+<li><a class="reference internal" href="#c-6-0">C# 6.0からの仕様</a><ul>
+<li><a class="reference internal" href="#id4">文字列補間</a></li>
+<li><a class="reference internal" href="#null">Null条件演算子?.および?[]</a></li>
+<li><a class="reference internal" href="#id5">読み取り専用プロパティ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#c-7-0">C# 7.0からの仕様</a></li>
+<li><a class="reference internal" href="#c-7-1">C# 7.1からの仕様</a></li>
+<li><a class="reference internal" href="#c-7-2">C# 7.2からの仕様</a></li>
+<li><a class="reference internal" href="#c-7-3">C# 7.3からの仕様</a></li>
+<li><a class="reference internal" href="#c-8">C# 8からの仕様</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="index.html"
+                        title="前の章へ">言語仕様</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="%E5%85%A8%E8%88%AC.html"
+                        title="次の章へ">全般</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="%E5%85%A8%E8%88%AC.html" title="全般"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="言語仕様"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >C＃</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >言語仕様</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">仕様</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, tak.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
+    </div>
+  </body>
+</html>

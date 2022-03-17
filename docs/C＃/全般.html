@@ -19,7 +19,7 @@
     <script src="../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="テスト駆動開発" href="%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html" />
+    <link rel="next" title="雛形" href="%E9%9B%9B%E5%BD%A2/index.html" />
     <link rel="prev" title="仕様" href="%E4%BB%95%E6%A7%98.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <!--[if lt IE 9]>
@@ -33,7 +33,7 @@
           <a href="../genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html" title="テスト駆動開発"
+          <a href="%E9%9B%9B%E5%BD%A2/index.html" title="雛形"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
           <a href="%E4%BB%95%E6%A7%98.html" title="仕様"
@@ -96,8 +96,8 @@ if(b != null)
 </div>
 </div></blockquote>
 <p>サフィックスは以下の通り。</p>
-<table class="colwidths-given docutils align-default" id="id10">
-<caption><span class="caption-number">表 15 </span><span class="caption-text">サフィックス</span><a class="headerlink" href="#id10" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id14">
+<caption><span class="caption-number">表 15 </span><span class="caption-text">サフィックス</span><a class="headerlink" href="#id14" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 60%" />
 <col style="width: 40%" />
@@ -131,8 +131,8 @@ if(b != null)
 </section>
 <section id="decimaldouble">
 <h2>decimal型とdouble型<a class="headerlink" href="#decimaldouble" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<table class="colwidths-given docutils align-default" id="id11">
-<caption><span class="caption-number">表 16 </span><span class="caption-text">decimal型とdouble型</span><a class="headerlink" href="#id11" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id15">
+<caption><span class="caption-number">表 16 </span><span class="caption-text">decimal型とdouble型</span><a class="headerlink" href="#id15" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 13%" />
 <col style="width: 44%" />
@@ -193,6 +193,19 @@ if(b != null)
 </div>
 </div></blockquote>
 </section>
+<section id="null-null">
+<h2>null条件演算子（?）、null合体演算子（??）<a class="headerlink" href="#null-null" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">result3</span> <span class="p">=</span> <span class="n">n</span><span class="p">?.</span><span class="n">ToString</span><span class="p">()</span> <span class="p">??</span> <span class="k">null</span><span class="p">;</span>            <span class="c1">// [1]</span>
+<span class="kt">var</span> <span class="n">result3</span> <span class="p">=</span> <span class="n">n</span><span class="p">.</span><span class="n">HasValue</span> <span class="p">?</span> <span class="n">n</span><span class="p">.</span><span class="n">ToString</span><span class="p">()</span> <span class="p">:</span> <span class="k">null</span><span class="p">;</span> <span class="c1">// [2]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>[1][2]は同意である。
+[2]の三項演算子を使用した場合は、n.HasValueの評価時にはn!=nullでも、
+n.ToString()の処理までにn=nullとなる可能性があり、その場合は例外をスローする。
+[1]のnull条件演算子を使用した場合では、スレッドセーフとなっている</p>
+</section>
 <section id="id5">
 <h2>null許容型使用時の留意点<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>以下のように、nullを含む演算はnullとなる点に留意すること。</p>
@@ -205,16 +218,38 @@ if(b != null)
 <p>null許容型を使用する場合は、以下のようにキャストではなく、NuNullable&lt;T&gt;構造体メンバを使用する方がよい。</p>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">int?</span> <span class="n">a</span> <span class="p">=</span> <span class="m">123</span><span class="p">;</span>
-<span class="k">if</span><span class="p">(</span><span class="n">a</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="n">m</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">a</span><span class="p">);</span>    <span class="c1">// △：キャストを使った書き方</span>
-<span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">HasValue</span><span class="p">)</span> <span class="n">m</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">Value</span><span class="p">);</span>  <span class="c1">// ◎：NuNullable&lt;T&gt;構造体メンバを使った書き方</span>
+<span class="k">if</span><span class="p">(</span><span class="n">a</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="n">m</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">a</span><span class="p">);</span>    <span class="c1">// △ : キャストを使った書き方</span>
+<span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">HasValue</span><span class="p">)</span> <span class="n">m</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">Value</span><span class="p">);</span>  <span class="c1">// ◎ : NuNullable&lt;T&gt;構造体メンバを使った書き方</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="foreach">
+<h2>辞書型をforeachで使用<a class="headerlink" href="#foreach" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="k">value</span><span class="p">)</span> <span class="k">in</span> <span class="k">this</span><span class="p">.</span><span class="n">MeasUnitDict</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div></blockquote>
 </section>
 <section id="id6">
-<h2>ジェネリック<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>変換<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="intenum">
+<h3>int→enum変換<a class="headerlink" href="#intenum" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">intValue</span> <span class="p">=</span> <span class="m">3</span><span class="p">;</span>
+<span class="n">Color</span> <span class="n">enumValue</span> <span class="p">=</span> <span class="p">(</span><span class="n">Color</span><span class="p">)</span><span class="n">Enum</span><span class="p">.</span><span class="n">ToObject</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">Color</span><span class="p">),</span> <span class="n">intValue</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
 <section id="id7">
-<h3>基本形<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h2>ジェネリック<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id8">
+<h3>基本形<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyClass</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span>
 <span class="p">{</span>
@@ -227,8 +262,8 @@ if(b != null)
 </div>
 </div></blockquote>
 </section>
-<section id="id8">
-<h3>制約<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<section id="id9">
+<h3>制約<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>以下の「where T:X, new()」が制約</p>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// where : 制約を示すキーワード</span>
@@ -247,8 +282,8 @@ if(b != null)
 </div></blockquote>
 </section>
 </section>
-<section id="id9">
-<h2>スレッドプール<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id10">
+<h2>スレッドプール<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>以下のように、スレッドプールを使用して、デリゲートをスレッドで実行することができる。</p>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 別途、void say(Object number){} 関数が定義されているものとする</span>
@@ -277,6 +312,73 @@ if(b != null)
 新規にスレッドを作成する場合にオーバヘッドとして実測1秒程度かかる（実測）。
 このため、アイドル状態のスレッドを適切に設定しておくことがパフォーマンス向上に寄与する。</p>
 </section>
+<section id="id11">
+<h2>属性<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id12">
+<h3>既定の属性<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>属性は、その属性を扱うプログラムに対する一種のメタデータである。
+属性はメソッドに付加する。</p>
+<table class="colwidths-given docutils align-default" id="id16">
+<caption><span class="caption-number">表 17 </span><span class="caption-text">属性</span><a class="headerlink" href="#id16" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>属性</p></th>
+<th class="head"><p>説明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[Conditional(&quot;DEBUG&quot;)]</p></td>
+<td><p>デバッグビルド時のみ実行される</p></td>
+</tr>
+<tr class="row-odd"><td><p>[Conditional(&quot;XXXXX&quot;)]</p></td>
+<td><p>マクロXXXXXが定義されている場合のみ実行される</p></td>
+</tr>
+<tr class="row-even"><td><p>[Obsolete]</p></td>
+<td><p>互換のために残しているが、新規に呼び出すべきではない</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id13">
+<h3>属性の自作とリフレション<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>属性を自作するとともに、それを読みだす処理も作成する必要がある。</p>
+<ul>
+<li><p>System.Attributeクラスを継承したクラスを自作する。この際、自作するクラスの名前は「Attribute」で終わるようにする</p></li>
+<li><p>属性として記述するときは、Attributeを略した名前でも使用できる</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">SampleAttribute</span> <span class="p">:</span> <span class="n">Attribute</span><span class="p">{}</span>
+
+<span class="k">class</span> <span class="nc">Program</span><span class="p">{</span>
+<span class="p">{</span>
+  <span class="c1">// [SampleAttribute]と記載してもOK</span>
+<span class="na">  [Sample]</span>
+  <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">oldSample</span><span class="p">()</span>
+  <span class="p">{</span>
+  <span class="p">}</span>
+
+  <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Programクラスに定義された static なメソッドを列挙する</span>
+    <span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">n</span> <span class="k">in</span> <span class="k">typeof</span><span class="p">(</span><span class="n">Program</span><span class="p">).</span><span class="n">GetMethods</span><span class="p">())</span>
+    <span class="p">{</span>
+      <span class="c1">// SampleAttribute は Sample と略してもOK</span>
+      <span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="n">GetCustomAttributes</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">SampleAttribute</span><span class="p">),</span><span class="k">false</span><span class="p">).</span><span class="n">Length</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">n</span><span class="p">.</span><span class="n">Invoke</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
 </section>
 
 
@@ -300,13 +402,14 @@ if(b != null)
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">C＃</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="%E4%BB%95%E6%A7%98.html">仕様</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">全般</a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html">テスト駆動開発</a></li>
-<li class="toctree-l2"><a class="reference internal" href=".NET%20Core%20and%20WPF.html">.NET Core and WPF</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Prism.html">Prism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E9%9B%9B%E5%BD%A2/index.html">雛形</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LINQ.html">LINQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href=".NET%20Core%20and%20WPF.html">.NET Core and WPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WPF.html">WPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prism.html">Prism</a></li>
 <li class="toctree-l2"><a class="reference internal" href="VisualStudio.html">VisualStudio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E8%87%AA%E5%8B%95%E4%BD%9C%E6%88%90.html">ドキュメント自動作成</a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E9%9B%9B%E5%BD%A2/index.html">雛形</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html">テスト駆動開発</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.html">デザインパターン</a></li>
@@ -323,13 +426,24 @@ if(b != null)
 <li><a class="reference internal" href="#id3">引数の既定値</a></li>
 <li><a class="reference internal" href="#id4">名前付き引数</a></li>
 <li><a class="reference internal" href="#null">null合体演算子（??演算子）</a></li>
+<li><a class="reference internal" href="#null-null">null条件演算子（?）、null合体演算子（??）</a></li>
 <li><a class="reference internal" href="#id5">null許容型使用時の留意点</a></li>
-<li><a class="reference internal" href="#id6">ジェネリック</a><ul>
-<li><a class="reference internal" href="#id7">基本形</a></li>
-<li><a class="reference internal" href="#id8">制約</a></li>
+<li><a class="reference internal" href="#foreach">辞書型をforeachで使用</a></li>
+<li><a class="reference internal" href="#id6">変換</a><ul>
+<li><a class="reference internal" href="#intenum">int→enum変換</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id9">スレッドプール</a></li>
+<li><a class="reference internal" href="#id7">ジェネリック</a><ul>
+<li><a class="reference internal" href="#id8">基本形</a></li>
+<li><a class="reference internal" href="#id9">制約</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10">スレッドプール</a></li>
+<li><a class="reference internal" href="#id11">属性</a><ul>
+<li><a class="reference internal" href="#id12">既定の属性</a></li>
+<li><a class="reference internal" href="#id13">属性の自作とリフレション</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -338,8 +452,8 @@ if(b != null)
   <p class="topless"><a href="%E4%BB%95%E6%A7%98.html"
                         title="前の章へ">仕様</a></p>
   <h4>次のトピックへ</h4>
-  <p class="topless"><a href="%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html"
-                        title="次の章へ">テスト駆動開発</a></p>
+  <p class="topless"><a href="%E9%9B%9B%E5%BD%A2/index.html"
+                        title="次の章へ">雛形</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">クイック検索</h3>
     <div class="searchformwrapper">
@@ -361,7 +475,7 @@ if(b != null)
           <a href="../genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html" title="テスト駆動開発"
+          <a href="%E9%9B%9B%E5%BD%A2/index.html" title="雛形"
              >次へ</a> |</li>
         <li class="right" >
           <a href="%E4%BB%95%E6%A7%98.html" title="仕様"

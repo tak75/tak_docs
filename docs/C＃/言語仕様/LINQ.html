@@ -1,0 +1,230 @@
+
+
+<!doctype html>
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>LINQ &#8212; Tak Documents  ドキュメント</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bizstyle.css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <script src="../../_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="next" title="イベント、デリゲート" href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html" />
+    <link rel="prev" title="全般" href="%E5%85%A8%E8%88%AC.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html" title="イベント、デリゲート"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="%E5%85%A8%E8%88%AC.html" title="全般"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >C＃</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">言語仕様</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">LINQ</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="linq">
+<h1>LINQ<a class="headerlink" href="#linq" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<section id="id1">
+<h2>引用元<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p>C#プログラミング 新スタイルによる実践的コーディング（川俣晶）</p></li>
+<li><p>C#プログラムの効率的な書き方 LINQ to Objectsマニアックス（川俣晶）</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>用語<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<dl class="glossary simple">
+<dt id="term-LINQ">LINQ<a class="headerlink" href="#term-LINQ" title="Permalink to this term">¶</a></dt><dd><p>Language Integrated Query の略。統合言語クエリ。
+文字列で記述されたクエリでは、その誤りは実行時に初めてエラーとして検出されるが、
+言語に統合されたクエリでは、エラーをコンパイル時に検出できるメリットがある。
+LINQは、元々.NET Framework 3.5 のクラスライブラリでサポートされたクラスライブラリである。
+そして、C#3.0で言語に統合された。
+C#4.0では、Parallel LINQ が導入され、マルチコアでの並列分散処理が容易に書けるようになった。</p>
+</dd>
+<dt id="term-LINQ-To-Objects">LINQ To Objects<a class="headerlink" href="#term-LINQ-To-Objects" title="Permalink to this term">¶</a></dt><dd><p>.NET Framework のオブジェクトに対して問合せを行う技術。</p>
+</dd>
+</dl>
+</section>
+<section id="ienumerable-list">
+<h2>IEnumerable -&gt; List 変換<a class="headerlink" href="#ienumerable-list" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">list</span> <span class="p">=</span> <span class="n">enumerableCollection</span><span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id3">
+<h2>2次元 -&gt; 1次元 変更<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">list1dm</span> <span class="p">=</span> <span class="n">list2dm</span>
+  <span class="p">.</span><span class="n">SelectMany</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">)</span>
+  <span class="p">.</span><span class="n">OrderBy</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Index</span><span class="p">)</span>  <span class="c1">// OrderByは必要に応じて、かつIndexなどで順番を管理していれば</span>
+  <span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id4">
+<h2>辞書型<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">groupList</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">SampleDict</span>
+  <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span>
+  <span class="p">.</span><span class="n">Distinct</span><span class="p">()</span>
+  <span class="p">.</span><span class="n">OrderBy</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">);</span>       <span class="c1">// 昇順に並び替える</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id5">
+<h2>インデックスリストの取得<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// グループチェックされているインデックスリスト</span>
+<span class="kt">var</span> <span class="n">indexes</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">GroupIsCheckedCollection</span>
+  <span class="c1">// 以下は.Select((Value, Index) =&gt; new { Value, Index }) でもOK</span>
+  <span class="p">.</span><span class="n">Select</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="p">{</span> <span class="n">Value</span> <span class="p">=</span> <span class="n">v</span><span class="p">,</span> <span class="n">Index</span> <span class="p">=</span> <span class="n">i</span> <span class="p">})</span>
+  <span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Value</span> <span class="p">==</span> <span class="k">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Index</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id6">
+<h2>その他参考例<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// COMリストの数だけ、接続確認等の処理に使用するデバイスリストを作成する</span>
+<span class="c1">// tempDeviceは、タプル内要素に付けた名前</span>
+<span class="kt">var</span> <span class="n">comList</span> <span class="p">=</span> <span class="n">MakeComList</span><span class="p">()</span>
+  <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">comNo</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">comNo</span><span class="p">,</span> <span class="n">tempDevice</span><span class="p">:</span><span class="k">new</span> <span class="n">DeviceCommunication</span><span class="p">(</span><span class="m">1</span><span class="p">)))</span>
+  <span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
+
+<span class="c1">// 接続失敗したCOM番号について、各リストから削除する</span>
+<span class="n">taskList</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">task</span> <span class="p">=&gt;</span> <span class="n">task</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">result</span> <span class="p">==</span> <span class="k">false</span><span class="p">)</span>
+  <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">task</span> <span class="p">=&gt;</span> <span class="n">comList</span><span class="p">.</span><span class="n">Remove</span>
+  <span class="p">(</span>
+    <span class="n">comList</span><span class="p">.</span><span class="n">FirstOrDefault</span><span class="p">(</span><span class="n">com</span> <span class="p">=&gt;</span> <span class="n">com</span><span class="p">.</span><span class="n">comNo</span> <span class="p">==</span> <span class="n">task</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">comNo</span><span class="p">)</span>
+  <span class="p">));</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../index.html">目次</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Matplotlib/index.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Jupyter/index.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Web%E3%82%A2%E3%83%97%E3%83%AA/index.html">Webアプリ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">C＃</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">言語仕様</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../.NET%20Core%20and%20WPF.html">.NET Core and WPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WPF.html">WPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Prism.html">Prism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../VisualStudio.html">VisualStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E8%87%AA%E5%8B%95%E4%BD%9C%E6%88%90.html">ドキュメント自動作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html">テスト駆動開発</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90/index.html">データ分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E5%82%99%E5%BF%98%E9%8C%B2/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">LINQ</a><ul>
+<li><a class="reference internal" href="#id1">引用元</a></li>
+<li><a class="reference internal" href="#id2">用語</a></li>
+<li><a class="reference internal" href="#ienumerable-list">IEnumerable -&gt; List 変換</a></li>
+<li><a class="reference internal" href="#id3">2次元 -&gt; 1次元 変更</a></li>
+<li><a class="reference internal" href="#id4">辞書型</a></li>
+<li><a class="reference internal" href="#id5">インデックスリストの取得</a></li>
+<li><a class="reference internal" href="#id6">その他参考例</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="%E5%85%A8%E8%88%AC.html"
+                        title="前の章へ">全般</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html"
+                        title="次の章へ">イベント、デリゲート</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html" title="イベント、デリゲート"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="%E5%85%A8%E8%88%AC.html" title="全般"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >C＃</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >言語仕様</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">LINQ</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, tak.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
+    </div>
+  </body>
+</html>
