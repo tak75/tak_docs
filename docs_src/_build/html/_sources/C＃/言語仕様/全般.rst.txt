@@ -1,0 +1,286 @@
+=====
+全般
+=====
+
+
+as演算子とis演算子
+==================
+
+キャストに失敗すると例外を投げるため、実行速度のコストが大きな問題となりうる。
+そこで、事前に型チェックした上でキャストする方法がある。
+これにはis演算子を使用する。
+
+  .. code-block:: csharp
+
+    object a = new ClassA();
+    if(a is ClassA)
+    {
+      var b = (ClassA)a;
+      b.～
+    }
+
+しかし、as演算子を使用すると例外を投げない変換が可能となる。
+キャストよりas演算子の方が高速であるので、as演算子の方がオススメ？
+
+  .. code-block:: csharp
+
+    object a = new ClassA();
+    ClassA b = a as ClassA;
+    if(b != null)
+    {
+      b.～
+    }
+
+サフィックス
+============
+
+  .. code-block:: csharp
+
+    decimal e = 0.123;
+
+上記のコードはコンパイルエラーとなる。
+理由は、0.123がdouble型の定数であるのに、decimal型の変数に代入しているため。
+(decimal)でキャストしてもエラーは解除されるが、実行効率は下がる。
+この場合は、以下のようにサフィックスを付加するべき。
+
+  .. code-block:: csharp
+
+    decimal e = 0.123m;
+
+サフィックスは以下の通り。
+
+.. csv-table:: サフィックス
+   :header-rows: 1
+   :widths: 3, 2
+
+   サフィックス,型
+   U u,uint型
+   L l,long型
+   UL Ul uL ul LU Lu lU lu,ulong型
+   F f,float型
+   D d,double型
+   M m,decimal型
+
+decimal型とdouble型
+===================
+
+.. csv-table:: decimal型とdouble型
+   :header-rows: 1
+   :widths: 2, 7, 7
+
+   型,メリット,デメリット
+   decimal型,表現できる桁数なら誤差は生じないため、お金の計算に向いている。100000000000000 + 0.01m = 100000000000000.01となる,double型と違い、極端に大きな数や極端に小さな数は扱えない
+   double型,天文学的数値を表すことができる,誤差が生じる。100000000000000 + 0.01m = 100000000000000となる
+
+引数の既定値
+============
+
+以下のように、メソッド引数に既定値を設定することができる。ただし、既定値は定数であること。
+
+  .. code-block:: csharp
+
+    class A
+    {
+      public static void WriteIt(TextWriter write, string name = "I", string obj = "a boy")
+      {
+        // 省略
+      }
+    }
+
+名前付き引数
+============
+
+以下のように、メソッド呼び出しの引数に名前を指定することができる。"="ではなく":"である点に注意！
+
+  .. code-block:: csharp
+
+    A.WriteIt(writer: Console.Out, obj: "a girl");
+
+null合体演算子（??演算子）
+==========================
+
+??演算子は、1つ目がnullでない場合はそれを採用し、nullの場合は2つ目を評価して採用する機能を持つ。
+以下の例では、aがnullの場合はDateTime.Nowが採用される。
+
+  .. code-block:: csharp
+
+    private static void dump(DateTime? a)
+    {
+      Console.WriteLine(a ?? DateTime.Now);
+    }
+
+null条件演算子（?）、null合体演算子（??）
+=========================================
+
+  .. code-block:: csharp
+
+    var result3 = n?.ToString() ?? null;            // [1]
+    var result3 = n.HasValue ? n.ToString() : null; // [2]
+
+[1][2]は同意である。
+[2]の三項演算子を使用した場合は、n.HasValueの評価時にはn!=nullでも、
+n.ToString()の処理までにn=nullとなる可能性があり、その場合は例外をスローする。
+[1]のnull条件演算子を使用した場合では、スレッドセーフとなっている
+
+null許容型使用時の留意点
+========================
+
+以下のように、nullを含む演算はnullとなる点に留意すること。
+
+  .. code-block:: csharp
+
+    int? a = null, b = 123;
+    Console.WriteLine((a + b) == null);   // この結果はTrueとなる
+
+null許容型を使用する場合は、以下のようにキャストではなく、NuNullable<T>構造体メンバを使用する方がよい。
+
+  .. code-block:: csharp
+
+    int? a = 123;
+    if(a != null) m((int)a);    // △ : キャストを使った書き方
+    if(a.HasValue) m(a.Value);  // ◎ : NuNullable<T>構造体メンバを使った書き方
+
+辞書型をforeachで使用
+=====================
+
+  .. code-block:: csharp
+
+    foreach(var (key, value) in this.MeasUnitDict)
+    {
+    }
+
+変換
+====
+
+---------------
+int -> enum変換
+---------------
+
+  .. code-block:: csharp
+
+    int intValue = 3;
+    Color enumValue = (Color)Enum.ToObject(typeof(Color), intValue);
+
+ジェネリック
+============
+
+------
+基本形
+------
+
+  .. code-block:: csharp
+
+    class MyClass<T>
+    {
+      internal static T GetSomeValue()
+      {
+        return default(T);  
+      }
+    }
+
+----
+制約
+----
+
+以下の「where T:X, new()」が制約
+
+  .. code-block:: csharp
+
+    // where : 制約を示すキーワード
+    // T     : 対象とする型パラメータ
+    // X     : クラス名で、少なくともTがクラスXを継承していなければならないことを示す
+    // new() : new制約と呼ばれるもので、new可能であることを制約としている
+    class MyClass<T> where T:X, new()
+    {
+      internal static T GetSomeValue()
+      {
+        new T().Say());  
+      }
+    }
+
+スレッドプール
+==============
+
+以下のように、スレッドプールを使用して、デリゲートをスレッドで実行することができる。
+
+  .. code-block:: csharp
+
+    // 別途、void say(Object number){} 関数が定義されているものとする
+    // say : スレッドで実行するデリゲート
+    // 1   : デリゲートに渡す引数
+    ThreadPool.QueueUserWorkItem(say, 1);
+
+スレッドプールが持つワーカスレッドの最小数を適切に設定しないと、使用するスレッド数が設定数を超える場合に、実行できない処理が発生したり、処理が遅延する場合がある。
+このため、ワーカスレッドの最小数を適切に設定する必要がある。
+なお、ワーカスレッドの最小数のデフォルト設定値は、CPUのコア数となっている。
+
+  .. code-block:: csharp
+
+    // ワーカスレッドの最小数（必要な数を設定する）
+    private static readonly int _minWorkerThread = 25;
+
+    // I/O完了スレッドの最小数は設定されている値を再設定し、ワーカスレッドの最小数のみを設定する
+    int minWorkerThread, minCompletionPortThread;
+    ThreadPool.GetMinThreads(out minWorkerThread, out minCompletionPortThread);
+    ThreadPool.SetMinThreads(_minWorkerThread, minCompletionPortThread);
+
+Taskを使用した非同期制御では、スレッドをスレッドプールから取り出し、そのスレッド上で処理を行う。
+アイドル状態のスレッドがある場合はそのスレッドをすぐに使うことができるが、アイドル状態のスレッドがない場合は新規にスレッドを作成し使う必要がある。
+新規にスレッドを作成する場合にオーバヘッドとして実測1秒程度かかる（実測）。
+このため、アイドル状態のスレッドを適切に設定しておくことがパフォーマンス向上に寄与する。
+
+属性
+====
+
+----------
+既定の属性
+----------
+
+属性は、その属性を扱うプログラムに対する一種のメタデータである。
+属性はメソッドに付加する。
+
+.. csv-table:: 属性
+  :header-rows: 1
+  :widths: 1, 2
+
+  属性,説明
+  [Conditional("DEBUG")],デバッグビルド時のみ実行される
+  [Conditional("XXXXX")],マクロXXXXXが定義されている場合のみ実行される
+  [Obsolete],互換のために残しているが、新規に呼び出すべきではない
+
+------------------------
+属性の自作とリフレション
+------------------------
+
+属性を自作するとともに、それを読みだす処理も作成する必要がある。
+
+* System.Attributeクラスを継承したクラスを自作する。この際、自作するクラスの名前は「Attribute」で終わるようにする
+* 属性として記述するときは、Attributeを略した名前でも使用できる
+
+  .. code-block:: csharp
+
+    using System;
+
+    class SampleAttribute : Attribute{}
+
+    class Program{
+    {
+      // [SampleAttribute]と記載してもOK
+      [Sample]
+      public static void oldSample()
+      {
+      }
+
+      static void Main(string[] args)
+      {
+        // Programクラスに定義された static なメソッドを列挙する
+        foreach(var n in typeof(Program).GetMethods())
+        {
+          // SampleAttribute は Sample と略してもOK 
+          if(n.GetCustomAttributes(typeof(SampleAttribute),false).Length > 0)
+          {
+            n.Invoke(null, null);
+          }
+        }
+      }
+    }

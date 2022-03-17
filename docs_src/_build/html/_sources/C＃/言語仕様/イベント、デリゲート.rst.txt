@@ -1,0 +1,74 @@
+====================
+イベント、デリゲート
+====================
+
+イベント
+========
+
+EventHandler はデリゲート型である。
+よって、下記コードで event を削除し、handlerの登録を+=ではなく=とすると、デリゲート呼び出しになる。
+
+  .. code-block:: csharp
+
+    class Sample
+    {
+        // デフォルトのイベントハンドラを登録しておけば、デバッグに便利
+        public event EventHandler<CommandSentEventArgs> CommandSent 
+            = (s, e) => System.Diagnostics.Debug.WriteLine("CommandSent");
+
+        private void Send(List<byte> byteList)
+        {
+            CommandSend(this, new CommandSentEventArgs(byteList));
+        }
+    }
+
+    // イベント引数クラス
+    public class CommandSentEventArgs : EventArgs
+    {
+        public List<byte> ByteList { get; private set; }
+
+        public CommandSentEventArgs(List<byte> byteList)
+        {
+            this.ByteList = byteList;
+        }
+    }
+
+    class Program
+    {
+        private string SendReceiveHistory = "";
+
+        private void WriteSendHistory(object sender, CommandSentEventArgs e)
+        {
+            this.SendReceiveHistory += System.BitConverter.ToString(e.ByteList.ToArray());
+        }
+
+        void Main(string[] args)
+        {
+            var sample = new Sample();
+            sample.CommandSent += WriteSendHistory;
+
+            var byteList = new List<byte>();
+            // byteList.Add(・・); ・・・・
+            sample.Send(byteList);
+        }
+    }
+
+ラムダ式
+========
+
+  .. code-block:: csharp
+
+    class Program
+    {
+        private static void b(Action sample)
+        {
+            sample();
+        }
+        static void Main(string[] args)
+        {
+            b(() => 
+            {
+               Console.WriteLine("I'm a method!");
+            });
+        }
+    }

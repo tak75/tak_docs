@@ -1,0 +1,28 @@
+====================
+Anaconda 環境構築
+====================
+
+はじめに
+==========
+
+
+
+
+Anaconda
+========
+
+
+Matplotlib
+==========
+
+--------
+日本語化
+--------
+
+* 無料フォント（`IPAexGotic <https://moji.or.jp/ipafont/ipafontdownload/>`_）をダウンロード
+
+　・ダウンロードページを開き、IPAexゴシック（ipaexg00401.zip(4MB)）というファイルをダウンロード
+
+* ダウンロードしたフォントファイル（ipaexg.ttf）をMatplotlibのフォントフォルダにコピー
+
+　・C:\Users\~~\anaconda3\Lib\site-packages\matplotlib\mpl-data\fonts\ttfの中にコピー

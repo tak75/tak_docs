@@ -1,0 +1,36 @@
+============
+処理高速比較
+============
+
+配列/List、for/foreach 比較
+===========================
+
+* 全く同じ処理を for と foreach で行った場合、Listではfor、配列では foreach の方が早い
+* 早い順に、配列のforeach -> 配列のfor -> Listのfor -> Listのforeach
+* Listとは、～.ToList()で得られるコレクション
+* 配列とは、～.ToArray()で得られるコレクション
+* https://takap-tech.com/entry/2020/10/20/234610
+
+foreach/ForEach 比較
+====================
+
+foreach文よりも、コレクションのメソッドが持つForEachメソッドの方が高速である。
+
+  .. code-block:: csharp
+
+    int[] a = {2,3,0,5,6};
+    Array.ForEach(a, (n) =>
+    {
+      Console.WriteLine(n);
+    });
+
+    ただし、条件判断でbreak分により繰り返し処理を打ち切ることはできない。
+    処理を打ち切りたい場合は、Findを使用すればよい。
+    （本来Findはデータを探すためのメソッドであり、繰り返し制御に使う発想の転換が必要）
+
+    Array.Find(a, (n) => 
+    {
+      if(n==0) return true;
+      Console.WriteLine(n);
+      return false;
+    });
