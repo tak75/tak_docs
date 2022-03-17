@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
-    <title>タスク &#8212; Tak Documents  ドキュメント</title>
+    <title>Task &#8212; Tak Documents  ドキュメント</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/bizstyle.css" />
     
@@ -41,7 +41,7 @@
         <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >C＃</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">言語仕様</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">タスク</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Task</a></li> 
       </ul>
     </div>  
 
@@ -50,10 +50,10 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="id1">
-<h1>タスク<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<section id="task">
-<h2>戻り値のあるTaskの例<a class="headerlink" href="#task" title="このヘッドラインへのパーマリンク">¶</a></h2>
+  <section id="task">
+<h1>Task<a class="headerlink" href="#task" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<section id="id1">
+<h2>戻り値のあるTaskの例<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">taskList</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Task</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;&gt;();</span>
 <span class="c1">// 追加されたデバイスに接続する（COM番号を書込む）</span>
@@ -115,6 +115,12 @@
 </div>
 </div></blockquote>
 </section>
+<section id="task-run">
+<h2>Task.Run()について<a class="headerlink" href="#task-run" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Task.Run()では、スレッドプールを使用する。
+スレッドプールはバックグラウンドスレッドである。
+よって、大元のアプリ終了時には、Task.Run()で開始したスレッドも自動的に終了する。</p>
+</section>
 </section>
 
 
@@ -137,9 +143,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Web%E3%82%A2%E3%83%97%E3%83%AA/index.html">Webアプリ</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">C＃</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">言語仕様</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../.NET%20Core%20and%20WPF.html">.NET Core and WPF</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../WPF.html">WPF</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Prism.html">Prism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WPF/index.html">WPF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../VisualStudio.html">VisualStudio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E8%87%AA%E5%8B%95%E4%BD%9C%E6%88%90.html">ドキュメント自動作成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html">テスト駆動開発</a></li>
@@ -152,9 +156,10 @@
 
   <h3><a href="../../index.html">目次</a></h3>
   <ul>
-<li><a class="reference internal" href="#">タスク</a><ul>
-<li><a class="reference internal" href="#task">戻り値のあるTaskの例</a></li>
+<li><a class="reference internal" href="#">Task</a><ul>
+<li><a class="reference internal" href="#id1">戻り値のあるTaskの例</a></li>
 <li><a class="reference internal" href="#task2">戻り値のあるTaskの例2（複数のタスク結果に各々名前をつける）</a></li>
+<li><a class="reference internal" href="#task-run">Task.Run()について</a></li>
 </ul>
 </li>
 </ul>
@@ -194,7 +199,7 @@
         <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >C＃</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="index.html" >言語仕様</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">タスク</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Task</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

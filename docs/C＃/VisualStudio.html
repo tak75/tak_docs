@@ -20,7 +20,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="ドキュメント自動作成" href="%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E8%87%AA%E5%8B%95%E4%BD%9C%E6%88%90.html" />
-    <link rel="prev" title="Prism" href="Prism.html" />
+    <link rel="prev" title="ReactiveProperty" href="WPF/ReactiveProperty.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <!--[if lt IE 9]>
     <script src="_static/css3-mediaqueries.js"></script>
@@ -36,7 +36,7 @@
           <a href="%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E8%87%AA%E5%8B%95%E4%BD%9C%E6%88%90.html" title="ドキュメント自動作成"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
-          <a href="Prism.html" title="Prism"
+          <a href="WPF/ReactiveProperty.html" title="ReactiveProperty"
              accesskey="P">前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">C＃</a> &#187;</li>
@@ -53,18 +53,47 @@
 <h1>VisualStudio<a class="headerlink" href="#visualstudio" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <section id="id1">
 <h2>ショートカット<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<dl class="simple">
-<dt>パラメータヒント</dt><dd><p>Ctrl + Shift + Space</p>
-</dd>
-<dt>インデント整形</dt><dd><p>Ctrl + K -&gt; Ctrl + F</p>
-</dd>
-<dt>ブロック終端移動</dt><dd><p>Ctrl + ]</p>
-</dd>
-<dt>全画面表示</dt><dd><p>Alt + Shift + Enter</p>
-</dd>
-<dt>ビルド</dt><dd><p>Ctrl + Shift + B</p>
-</dd>
-</dl>
+<table class="colwidths-given docutils align-default" id="id5">
+<caption><span class="caption-number">表 19 </span><span class="caption-text">ショートカット</span><a class="headerlink" href="#id5" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ショートカット</p></th>
+<th class="head"><p>説明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ctrl + Shift + F</p></td>
+<td><p>検索</p></td>
+</tr>
+<tr class="row-odd"><td><p>F12</p></td>
+<td><p>変数などの定義位置に移動</p></td>
+</tr>
+<tr class="row-even"><td><p>Shift + F12</p></td>
+<td><p>変数などが使用されている箇所を列挙</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ctrl + F12</p></td>
+<td><p>インタフェースのメソッドを実装している箇所（クラス）を列挙</p></td>
+</tr>
+<tr class="row-even"><td><p>Ctrl + Shift + Space</p></td>
+<td><p>パラメータヒント</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ctrl + K -&gt; Ctrl + F</p></td>
+<td><p>インデント整形</p></td>
+</tr>
+<tr class="row-even"><td><p>Ctrl + ]</p></td>
+<td><p>ブロック終端移動</p></td>
+</tr>
+<tr class="row-odd"><td><p>Alt + Shift + Enter</p></td>
+<td><p>全画面表示</p></td>
+</tr>
+<tr class="row-even"><td><p>Ctrl + Shift + B</p></td>
+<td><p>ビルド</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="id2">
 <h2>コードスニペット<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -72,12 +101,78 @@
 </section>
 <section id="id3">
 <h2>リファクタリング<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<dl class="simple">
-<dt>フィールドのカプセル化（フィールドをプロパティに変更し、変更したプロパティを使用するように更新する）</dt><dd><p>Ctrl + R -&gt; Ctrl + E</p>
-</dd>
-<dt>リネーム</dt><dd><p>Ctrl + R -&gt; Ctrl + R</p>
-</dd>
-</dl>
+<table class="colwidths-given docutils align-default" id="id6">
+<caption><span class="caption-number">表 20 </span><span class="caption-text">ショートカット</span><a class="headerlink" href="#id6" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ショートカット</p></th>
+<th class="head"><p>説明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ctrl + R -&gt; Ctrl + E</p></td>
+<td><p>フィールドのカプセル化（フィールドをプロパティに変更し、変更したプロパティを使用するように更新する）</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ctrl + R -&gt; Ctrl + R</p></td>
+<td><p>リネーム</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id4">
+<h2>タスク・リスト機能<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>以下は標準の内容である。</p>
+<table class="colwidths-given docutils align-default" id="id7">
+<caption><span class="caption-number">表 21 </span><span class="caption-text">タスク・リスト機能</span><a class="headerlink" href="#id7" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>キーワード</p></th>
+<th class="head"><p>説明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TODO</p></td>
+<td><p>未実装のため、新たにコードを追加する必要がある個所</p></td>
+</tr>
+<tr class="row-odd"><td><p>HACK</p></td>
+<td><p>実装済みだが、コードをさらに改善する必要がある個所</p></td>
+</tr>
+<tr class="row-even"><td><p>UNDONE</p></td>
+<td><p>未完成のため、さらにコードを編集する必要がある個所</p></td>
+</tr>
+</tbody>
+</table>
+<p>カスタム定義することも可能。</p>
+<table class="colwidths-given docutils align-default" id="id8">
+<caption><span class="caption-number">表 22 </span><span class="caption-text">カスタム定義例</span><a class="headerlink" href="#id8" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>キーワード</p></th>
+<th class="head"><p>説明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NOTE</p></td>
+<td><p>注意書き等のメモ</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="oss">
+<h2>使用しているOSS情報の出力方法<a class="headerlink" href="#oss" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Nugetパッケージマネージャーコンソールで、以下のコマンドを入力する。</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;Get-Package | Select-Object Id,version,LicenseUrl</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -101,9 +196,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Web%E3%82%A2%E3%83%97%E3%83%AA/index.html">Webアプリ</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">C＃</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="%E8%A8%80%E8%AA%9E%E4%BB%95%E6%A7%98/index.html">言語仕様</a></li>
-<li class="toctree-l2"><a class="reference internal" href=".NET%20Core%20and%20WPF.html">.NET Core and WPF</a></li>
-<li class="toctree-l2"><a class="reference internal" href="WPF.html">WPF</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Prism.html">Prism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WPF/index.html">WPF</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">VisualStudio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E8%87%AA%E5%8B%95%E4%BD%9C%E6%88%90.html">ドキュメント自動作成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html">テスト駆動開発</a></li>
@@ -120,13 +213,15 @@
 <li><a class="reference internal" href="#id1">ショートカット</a></li>
 <li><a class="reference internal" href="#id2">コードスニペット</a></li>
 <li><a class="reference internal" href="#id3">リファクタリング</a></li>
+<li><a class="reference internal" href="#id4">タスク・リスト機能</a></li>
+<li><a class="reference internal" href="#oss">使用しているOSS情報の出力方法</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>前のトピックへ</h4>
-  <p class="topless"><a href="Prism.html"
-                        title="前の章へ">Prism</a></p>
+  <p class="topless"><a href="WPF/ReactiveProperty.html"
+                        title="前の章へ">ReactiveProperty</a></p>
   <h4>次のトピックへ</h4>
   <p class="topless"><a href="%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E8%87%AA%E5%8B%95%E4%BD%9C%E6%88%90.html"
                         title="次の章へ">ドキュメント自動作成</a></p>
@@ -154,7 +249,7 @@
           <a href="%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E8%87%AA%E5%8B%95%E4%BD%9C%E6%88%90.html" title="ドキュメント自動作成"
              >次へ</a> |</li>
         <li class="right" >
-          <a href="Prism.html" title="Prism"
+          <a href="WPF/ReactiveProperty.html" title="ReactiveProperty"
              >前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >C＃</a> &#187;</li>

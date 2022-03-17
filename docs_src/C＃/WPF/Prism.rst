@@ -66,19 +66,3 @@ Unity の使い方
   ただし、VM 内部で Resolve<WpfTestAppData>() すると、WpfTestAppData に依存していることになるので
   DI パターンとは言えないので要注意。
 
-
-メモ
-====
-
-* 追加した UserControl をデザイナー画面で見るとレイアウトが崩れる場合の対応。
-  新しい項目の追加から View を追加した場合は、極小の UserControl が表示されたりする場合がある。
-  この場合は、以下の4行をxamlに追加すると解消される。
-
-  .. code-block:: xaml
-
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    mc:Ignorable="d"
-    d:DesignHeight="300" d:DesignWidth="300"
-
-    

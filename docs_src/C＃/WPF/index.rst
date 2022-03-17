@@ -8,3 +8,4 @@ WPF
    .NET Core and WPF
    WPF
    Prism
+   ReactiveProperty
