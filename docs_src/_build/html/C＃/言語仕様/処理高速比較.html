@@ -66,22 +66,24 @@
 <h2>foreach/ForEach 比較<a class="headerlink" href="#foreach-foreach" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>foreach文よりも、コレクションのメソッドが持つForEachメソッドの方が高速である。</p>
 <blockquote>
-<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>int[] a = {2,3,0,5,6};
-Array.ForEach(a, (n) =&gt;
-{
-  Console.WriteLine(n);
-});
-
-ただし、条件判断でbreak分により繰り返し処理を打ち切ることはできない。
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">[]</span> <span class="n">a</span> <span class="p">=</span> <span class="p">{</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">};</span>
+<span class="n">Array</span><span class="p">.</span><span class="n">ForEach</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+  <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>ただし、条件判断でbreak分により繰り返し処理を打ち切ることはできない。
 処理を打ち切りたい場合は、Findを使用すればよい。
-（本来Findはデータを探すためのメソッドであり、繰り返し制御に使う発想の転換が必要）
-
-Array.Find(a, (n) =&gt;
-{
-  if(n==0) return true;
-  Console.WriteLine(n);
-  return false;
-});
+（本来Findはデータを探すためのメソッドであり、繰り返し制御に使う発想の転換が必要）</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">Array</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="p">==</span><span class="m">0</span><span class="p">)</span> <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+  <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+  <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+<span class="p">});</span>
 </pre></div>
 </div>
 </div></blockquote>
