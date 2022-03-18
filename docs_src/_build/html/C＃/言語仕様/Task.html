@@ -117,9 +117,11 @@
 </section>
 <section id="task-run">
 <h2>Task.Run()について<a class="headerlink" href="#task-run" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>Task.Run()では、スレッドプールを使用する。
-スレッドプールはバックグラウンドスレッドである。
-よって、大元のアプリ終了時には、Task.Run()で開始したスレッドも自動的に終了する。</p>
+<ul class="simple">
+<li><p>Task.Run()では、スレッドプールを使用する。</p></li>
+<li><p>スレッドプールはバックグラウンドスレッドである。</p></li>
+<li><p>よって、スレッドを保有するオブジェクトがGCに回収された時点で自動的にスレッドは停止する（大元のアプリ終了時には、Task.Run()で開始したスレッドも自動的に終了する）</p></li>
+</ul>
 </section>
 </section>
 
@@ -203,7 +205,7 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, tak.
+        &#169; Copyright 2022, tak.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>

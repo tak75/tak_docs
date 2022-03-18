@@ -52,6 +52,12 @@
             
   <section id="reactiveproperty">
 <h1>ReactiveProperty<a class="headerlink" href="#reactiveproperty" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<section id="id1">
+<h2>メモリリークに注意<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>自身が値を保持するだけの ReactiveProperty の場合は Dispose する必要は無いが、
+Subscribe 等で値の変更を監視しているような場合は Dispose しないとメモリリークする可能性がある。
+ようは、デリゲートを登録している場合ってことか？</p>
+</section>
 </section>
 
 
@@ -83,6 +89,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.html">デザインパターン</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90/index.html">データ分析</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../%E5%82%99%E5%BF%98%E9%8C%B2/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">ReactiveProperty</a><ul>
+<li><a class="reference internal" href="#id1">メモリリークに注意</a></li>
+</ul>
+</li>
 </ul>
 
   <h4>前のトピックへ</h4>
@@ -124,7 +138,7 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, tak.
+        &#169; Copyright 2022, tak.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>

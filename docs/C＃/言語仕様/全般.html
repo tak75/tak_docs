@@ -97,8 +97,8 @@ if(b != null)
 </div>
 </div></blockquote>
 <p>サフィックスは以下の通り。</p>
-<table class="colwidths-given docutils align-default" id="id14">
-<caption><span class="caption-number">表 15 </span><span class="caption-text">サフィックス</span><a class="headerlink" href="#id14" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id16">
+<caption><span class="caption-number">表 15 </span><span class="caption-text">サフィックス</span><a class="headerlink" href="#id16" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 60%" />
 <col style="width: 40%" />
@@ -132,8 +132,8 @@ if(b != null)
 </section>
 <section id="decimaldouble">
 <h2>decimal型とdouble型<a class="headerlink" href="#decimaldouble" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<table class="colwidths-given docutils align-default" id="id15">
-<caption><span class="caption-number">表 16 </span><span class="caption-text">decimal型とdouble型</span><a class="headerlink" href="#id15" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id17">
+<caption><span class="caption-number">表 16 </span><span class="caption-text">decimal型とdouble型</span><a class="headerlink" href="#id17" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 13%" />
 <col style="width: 44%" />
@@ -285,7 +285,8 @@ n.ToString()の処理までにn=nullとなる可能性があり、その場合�
 </section>
 <section id="id10">
 <h2>スレッドプール<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>以下のように、スレッドプールを使用して、デリゲートをスレッドで実行することができる。</p>
+<p>以下のように、スレッドプールを使用して、デリゲートをスレッドで実行することができる。
+（これは.NET1.1での書き方であり、.NET4.5以降では、Task.Run()を使用すべき）</p>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 別途、void say(Object number){} 関数が定義されているものとする</span>
 <span class="c1">// say : スレッドで実行するデリゲート</span>
@@ -319,8 +320,8 @@ n.ToString()の処理までにn=nullとなる可能性があり、その場合�
 <h3>既定の属性<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>属性は、その属性を扱うプログラムに対する一種のメタデータである。
 属性はメソッドに付加する。</p>
-<table class="colwidths-given docutils align-default" id="id16">
-<caption><span class="caption-number">表 17 </span><span class="caption-text">属性</span><a class="headerlink" href="#id16" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id18">
+<caption><span class="caption-number">表 17 </span><span class="caption-text">属性</span><a class="headerlink" href="#id18" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -379,6 +380,68 @@ n.ToString()の処理までにn=nullとなる可能性があり、その場合�
 </li>
 </ul>
 </section>
+</section>
+<section id="id14">
+<h2>インタフェースでのアクセシビリティ<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>・メソッドにアクセシビリティを付ける必要はない（通常付けない？）
+・付ける場合はpublic？</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">interface</span> <span class="n">IControl</span>
+<span class="p">{</span>
+    <span class="k">void</span> <span class="nf">Paint</span><span class="p">();</span> <span class="c1">// ←　publicは不要</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id15">
+<h2>変数のスレッドセーフ<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>以下が良さそう。
+ただし、マルチコアを考えた場合がよくわからん（コア毎にキャッシュがあるので・・）</p>
+<ul>
+<li><p>int,double型はInterlockedを使用</p></li>
+<li><p>enum型はintにキャストしてInterlockedを使用</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="kt">int</span> <span class="n">_field</span><span class="p">;</span>
+<span class="k">public</span> <span class="n">MyEnum</span> <span class="n">Field</span>
+<span class="p">{</span>
+  <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">MyEnum</span><span class="p">)</span><span class="n">Interlocked</span><span class="p">.</span><span class="n">CompareExchange</span><span class="p">(</span><span class="k">ref</span> <span class="n">_field</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span> <span class="p">}</span>
+  <span class="k">set</span> <span class="p">{</span> <span class="n">Interlocked</span><span class="p">.</span><span class="n">Exchange</span><span class="p">(</span><span class="k">ref</span> <span class="n">_field</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="k">value</span><span class="p">);</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>bool型はThreadSafeBoolクラス（内部でInterlockedを使用した独自クラス）を使用</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">ThreadSafeBool</span>
+<span class="p">{</span>
+  <span class="k">private</span> <span class="kt">int</span> <span class="n">_threadSafeBoolBackValue</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+  <span class="k">public</span> <span class="kt">bool</span> <span class="n">ThreadSafeBool</span>
+  <span class="p">{</span>
+      <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">Interlocked</span><span class="p">.</span><span class="n">CompareExchange</span><span class="p">(</span><span class="k">ref</span> <span class="n">_threadSafeBoolBackValue</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span> <span class="p">==</span> <span class="m">1</span><span class="p">);</span> <span class="p">}</span>
+      <span class="k">set</span>
+      <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="k">value</span><span class="p">)</span> <span class="n">Interlocked</span><span class="p">.</span><span class="n">CompareExchange</span><span class="p">(</span><span class="k">ref</span> <span class="n">_threadSafeBoolBackValue</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+          <span class="k">else</span> <span class="n">Interlocked</span><span class="p">.</span><span class="n">CompareExchange</span><span class="p">(</span><span class="k">ref</span> <span class="n">_threadSafeBoolBackValue</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">public</span> <span class="nf">ThreadSafeBool</span><span class="p">(</span><span class="kt">bool</span> <span class="n">val</span><span class="p">)</span>
+  <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="n">Value</span> <span class="p">=</span> <span class="n">val</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="dispose">
+<h2>デストラクタ、Dispose<a class="headerlink" href="#dispose" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p>Disposeにはマネージ／アンマネージのリソースの後処理を書く</p></li>
+<li><p>アンマネージのリソースがある場合はデストラクタでDispose()をコール（外部からDispose()がコールされなかった場合の対応）</p></li>
+<li><p>デストラクタはGC回収時にコールされる（タイミングはGC任せ）</p></li>
+<li><p>Disposeは外部からコールするので、タイミングを決められる</p></li>
+<li><p>マネージのリソースのみの場合は、Disposeもデストラクタも不要？（少なくとも、Task.Run()で走らせたスレッドはバックグラウンドスレッドなので、スレッドを保有するオブジェクトがGCに回収された時点で自動的にスレッドは停止する）</p></li>
+</ul>
 </section>
 </section>
 
@@ -440,6 +503,9 @@ n.ToString()の処理までにn=nullとなる可能性があり、その場合�
 <li><a class="reference internal" href="#id13">属性の自作とリフレション</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#id14">インタフェースでのアクセシビリティ</a></li>
+<li><a class="reference internal" href="#id15">変数のスレッドセーフ</a></li>
+<li><a class="reference internal" href="#dispose">デストラクタ、Dispose</a></li>
 </ul>
 </li>
 </ul>
@@ -483,7 +549,7 @@ n.ToString()の処理までにn=nullとなる可能性があり、その場合�
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, tak.
+        &#169; Copyright 2022, tak.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>

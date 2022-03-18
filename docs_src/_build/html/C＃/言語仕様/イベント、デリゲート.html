@@ -54,18 +54,21 @@
 <h1>イベント、デリゲート<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <section id="id2">
 <h2>イベント<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>EventHandler はデリゲート型である。
-よって、下記コードで event を削除し、handlerの登録を+=ではなく=とすると、デリゲート呼び出しになる。</p>
-<blockquote>
-<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sample</span>
+<ul>
+<li><p>EventHandler 型はデリゲート型である。</p></li>
+<li><p>よって、下記コードで event を削除し、handlerの登録を+=ではなく=とすると、デリゲート呼び出しになる。</p></li>
+<li><p>イベントハンドラは必ずvoid型であること</p></li>
+<li><p>戻り値ありとなる場合は、デリゲート呼び出し（委譲メソッド）を検討すること</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sample</span>
 <span class="p">{</span>
+    <span class="c1">// イベント定義（デフォルトでイベントフックしておきたい場合）</span>
     <span class="c1">// デフォルトのイベントハンドラを登録しておけば、デバッグに便利</span>
     <span class="k">public</span> <span class="k">event</span> <span class="n">EventHandler</span><span class="p">&lt;</span><span class="n">CommandSentEventArgs</span><span class="p">&gt;</span> <span class="n">CommandSent</span>
         <span class="p">=</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">System</span><span class="p">.</span><span class="n">Diagnostics</span><span class="p">.</span><span class="n">Debug</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;CommandSent&quot;</span><span class="p">);</span>
 
     <span class="k">private</span> <span class="k">void</span> <span class="nf">Send</span><span class="p">(</span><span class="n">List</span><span class="p">&lt;</span><span class="kt">byte</span><span class="p">&gt;</span> <span class="n">byteList</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="n">CommandSend</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">new</span> <span class="n">CommandSentEventArgs</span><span class="p">(</span><span class="n">byteList</span><span class="p">));</span>
+        <span class="n">CommandSent</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">new</span> <span class="n">CommandSentEventArgs</span><span class="p">(</span><span class="n">byteList</span><span class="p">));</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -84,6 +87,7 @@
 <span class="p">{</span>
     <span class="k">private</span> <span class="kt">string</span> <span class="n">SendReceiveHistory</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
 
+    <span class="c1">// イベントハンドラメソッド</span>
     <span class="k">private</span> <span class="k">void</span> <span class="nf">WriteSendHistory</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">CommandSentEventArgs</span> <span class="n">e</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="n">SendReceiveHistory</span> <span class="p">+=</span> <span class="n">System</span><span class="p">.</span><span class="n">BitConverter</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">ByteList</span><span class="p">.</span><span class="n">ToArray</span><span class="p">());</span>
@@ -92,6 +96,7 @@
     <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="kt">var</span> <span class="n">sample</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Sample</span><span class="p">();</span>
+        <span class="c1">// イベントハンドラ登録</span>
         <span class="n">sample</span><span class="p">.</span><span class="n">CommandSent</span> <span class="p">+=</span> <span class="n">WriteSendHistory</span><span class="p">;</span>
 
         <span class="kt">var</span> <span class="n">byteList</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">byte</span><span class="p">&gt;();</span>
@@ -101,10 +106,22 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-</div></blockquote>
+</li>
+</ul>
 </section>
 <section id="id3">
-<h2>ラムダ式<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>デリゲート呼び出し<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">Func</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">func</span> <span class="p">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="m">1</span><span class="p">;</span>
+<span class="n">func</span> <span class="p">+=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="m">2</span><span class="p">;</span>            <span class="c1">// 複数登録を防ぐことができない</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">func</span><span class="p">());</span>  <span class="c1">// 2が出力</span>
+                            <span class="c1">// 複数登録の場合、最後に登録されたもののみが有効</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id4">
+<h2>ラムダ式<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span>
 <span class="p">{</span>
@@ -161,7 +178,8 @@
   <ul>
 <li><a class="reference internal" href="#">イベント、デリゲート</a><ul>
 <li><a class="reference internal" href="#id2">イベント</a></li>
-<li><a class="reference internal" href="#id3">ラムダ式</a></li>
+<li><a class="reference internal" href="#id3">デリゲート呼び出し</a></li>
+<li><a class="reference internal" href="#id4">ラムダ式</a></li>
 </ul>
 </li>
 </ul>
@@ -205,7 +223,7 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, tak.
+        &#169; Copyright 2022, tak.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
     </div>
   </body>
