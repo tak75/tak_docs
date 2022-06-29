@@ -89,6 +89,59 @@ d:DesignHeight=&quot;500&quot; d:DesignWidth=&quot;500&quot;
 </ul>
 </section>
 </section>
+<section id="viewview">
+<h2>Viewの中にViewを配置する方法<a class="headerlink" href="#viewview" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="requestnavigate">
+<h3>RequestNavigateで配置<a class="headerlink" href="#requestnavigate" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>パラメータを渡すことはできるが、DependencyPropertyではない（値が変更されても通知されない？）
+パラメータが参照型で、かつ受け取ったViewがReactivePropertyなどでパラメータを定義しておけば問題ない？</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">param</span> <span class="p">=</span> <span class="k">new</span> <span class="n">NavigationParameters</span><span class="p">();</span>
+<span class="n">param</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;property1&quot;</span><span class="p">,</span> <span class="n">Property1</span><span class="p">);</span>
+
+<span class="c1">// view1を配置</span>
+<span class="k">this</span><span class="p">.</span><span class="n">_regionManager</span><span class="p">.</span><span class="n">RequestNavigate</span><span class="p">(</span><span class="s">&quot;XXXRegion&quot;</span><span class="p">,</span> <span class="n">nameof</span><span class="p">(</span><span class="n">View1</span><span class="p">),</span> <span class="n">param</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="xaml">
+<h3>xaml内に配置<a class="headerlink" href="#xaml" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>Messageプロパティは、View1のコードビハインドでDependencyPropertyとして定義必要</p>
+<div class="highlight-xaml notranslate"><div class="highlight"><pre><span></span>&lt;Grid x:Name=&quot;grid&quot;&gt;
+    &lt;Grid.RowDefinitions&gt;
+        &lt;RowDefinition Height=&quot;Auto&quot;/&gt;
+        &lt;RowDefinition/&gt;
+    &lt;/Grid.RowDefinitions&gt;
+
+    &lt;TextBlock Grid.Row=&quot;0&quot; Text=&quot;Test Message&quot;/&gt;
+    &lt;v:View1 Message = &quot;aaaaa&quot;/&gt;
+&lt;/Grid&gt;
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>コードビハインドで配置<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>xaml</p>
+<div class="highlight-xaml notranslate"><div class="highlight"><pre><span></span>&lt;Grid x:Name=&quot;grid&quot;&gt;
+    &lt;Grid.RowDefinitions&gt;
+        &lt;RowDefinition Height=&quot;Auto&quot;/&gt;
+        &lt;RowDefinition/&gt;
+    &lt;/Grid.RowDefinitions&gt;
+
+    &lt;TextBlock Grid.Row=&quot;0&quot; Text=&quot;Test Message&quot;/&gt;
+    // ※ここにview1を配置する
+&lt;/Grid&gt;
+</pre></div>
+</div>
+<p>コードビハインド</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">_view1</span> <span class="p">=</span> <span class="k">new</span> <span class="n">View1</span><span class="p">();</span>
+<span class="n">_view1</span><span class="p">.</span><span class="n">Message</span><span class="p">.</span><span class="n">Value</span> <span class="p">=</span> <span class="s">&quot;aaaaa&quot;</span><span class="p">;</span> <span class="c1">// view1のpublicなフィールドやプロパティを直接設定できる</span>
+                                <span class="c1">// （②に対するメリット？）</span>
+<span class="n">Grid</span><span class="p">.</span><span class="n">SetRow</span><span class="p">(</span><span class="n">_view1</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="n">grid</span><span class="p">.</span><span class="n">Children</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">_view1</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
 
@@ -129,6 +182,12 @@ d:DesignHeight=&quot;500&quot; d:DesignWidth=&quot;500&quot;
 <li><a class="reference internal" href="#dispatcher">Dispatcherについて</a></li>
 <li><a class="reference internal" href="#id1">エラーメッセージ</a><ul>
 <li><a class="reference internal" href="#id2">他のスレッドで作成されているためアクセスできない</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#viewview">Viewの中にViewを配置する方法</a><ul>
+<li><a class="reference internal" href="#requestnavigate">RequestNavigateで配置</a></li>
+<li><a class="reference internal" href="#xaml">xaml内に配置</a></li>
+<li><a class="reference internal" href="#id3">コードビハインドで配置</a></li>
 </ul>
 </li>
 </ul>

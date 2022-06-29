@@ -5,6 +5,8 @@ VisualStudio
 ショートカット
 ==============
 
+https://baba-s.hatenablog.com/entry/2017/09/22/100000
+
 .. csv-table:: ショートカット
   :header-rows: 1
   :widths: 1, 2

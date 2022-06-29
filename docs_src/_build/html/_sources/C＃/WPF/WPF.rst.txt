@@ -37,3 +37,66 @@ Dispatcherについて
 * ViewにバインドするオブジェクトはUIスレッドで作成する必要がある。
 * Task.Run()など、他のスレッド上で生成している場合にエラーとなる。
 
+Viewの中にViewを配置する方法
+============================
+
+-----------------------
+RequestNavigateで配置
+-----------------------
+
+パラメータを渡すことはできるが、DependencyPropertyではない（値が変更されても通知されない？）
+パラメータが参照型で、かつ受け取ったViewがReactivePropertyなどでパラメータを定義しておけば問題ない？
+
+.. code-block:: csharp
+
+  var param = new NavigationParameters();
+  param.Add("property1", Property1);
+
+  // view1を配置
+  this._regionManager.RequestNavigate("XXXRegion", nameof(View1), param);
+
+------------
+xaml内に配置
+------------
+
+Messageプロパティは、View1のコードビハインドでDependencyPropertyとして定義必要
+
+.. code-block:: xaml
+
+  <Grid x:Name="grid">
+      <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition/>
+      </Grid.RowDefinitions>
+
+      <TextBlock Grid.Row="0" Text="Test Message"/>
+      <v:View1 Message = "aaaaa"/>
+  </Grid>
+
+----------------------
+コードビハインドで配置
+----------------------
+
+xaml
+
+.. code-block:: xaml
+
+  <Grid x:Name="grid">
+      <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition/>
+      </Grid.RowDefinitions>
+
+      <TextBlock Grid.Row="0" Text="Test Message"/>
+      // ※ここにview1を配置する
+  </Grid>
+
+コードビハインド
+
+.. code-block:: csharp
+
+	var _view1 = new View1();
+	_view1.Message.Value = "aaaaa"; // view1のpublicなフィールドやプロパティを直接設定できる
+                                        // （②に対するメリット？）
+	Grid.SetRow(_view1, 1);
+	this.grid.Children.Add(_view1);
