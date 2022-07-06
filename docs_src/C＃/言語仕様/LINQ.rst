@@ -46,12 +46,21 @@ IEnumerable -> List 変換
 辞書型
 ======
 
+* 辞書型コレクションの値を重複なく取り出し昇順に並び替えリスト化
+
   .. code-block:: csharp
    
     var groupList = this.SampleDict
       .Select(x => x.Value)
       .Distinct()
       .OrderBy(x => x);       // 昇順に並び替える
+
+* 2次元辞書のデータを全て列挙
+
+  .. code-block:: csharp
+   
+    public Dictionary<Sensor, Dictionary<int, double>> Data { get; set; }
+    this.Data.Values.SelectMany(x => x.Values).Where(x => x.Flag).ToList();
 
 インデックスリストの取得
 ========================

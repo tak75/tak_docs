@@ -158,7 +158,7 @@ int -> enum変換
 
   .. code-block:: csharp
 
-    int intValue = 3;
+    int intValue = 3;   // enum型の値
     Color enumValue = (Color)Enum.ToObject(typeof(Color), intValue);
 
 ジェネリック
@@ -289,8 +289,8 @@ Taskを使用した非同期制御では、スレッドをスレッドプール�
 インタフェースでのアクセシビリティ
 ==================================
 
-・メソッドにアクセシビリティを付ける必要はない（通常付けない？）
-・付ける場合はpublic？
+* メソッドにアクセシビリティを付ける必要はない（通常付けない？）
+* 付ける場合はpublic？
 
   .. code-block:: csharp
 
@@ -347,3 +347,34 @@ Taskを使用した非同期制御では、スレッドをスレッドプール�
 * デストラクタはGC回収時にコールされる（タイミングはGC任せ）
 * Disposeは外部からコールするので、タイミングを決められる
 * マネージのリソースのみの場合は、Disposeもデストラクタも不要？（少なくとも、Task.Run()で走らせたスレッドはバックグラウンドスレッドなので、スレッドを保有するオブジェクトがGCに回収された時点で自動的にスレッドは停止する）
+
+共用体（union）
+===============
+
+.. code-block:: csharp
+
+  using System.Runtime.InteropServices;
+
+  namespace Test
+  {
+    [StructLayout(LayoutKind.Explicit)]
+    struct State
+    {
+      [FieldOffset(0)] public uint all;
+      [FieldOffset(0)] public Flag flag;
+    }
+    
+    // Enum型をビット・フィールド化
+    [Flags]
+    public enum Flag:uint
+    {
+      A = 0x01,
+      B = 0x02,
+      C = 0x04,
+      D = 0x08,
+      E = 0x10,
+      F = 0x20,
+      G = 0x40,
+      H = 0x80,
+    }
+  }

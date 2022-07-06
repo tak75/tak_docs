@@ -22,6 +22,9 @@
         private void Send(List<byte> byteList)
         {
             CommandSent(this, new CommandSentEventArgs(byteList));
+            
+            // 以下でもよい？
+            CommandSent?.Invoke(this, new CommandSentEventArgs(byteList));
         }
     }
 
@@ -58,7 +61,6 @@
         }
     }
 
-
 デリゲート呼び出し
 ==================
 
@@ -89,3 +91,11 @@
         }
     }
 
+子イベントを親に透過
+====================
+
+透過させるのがベストの場合は以下でよいが、新たなイベントを作成して発火させる方法でもよい。
+
+  .. code-block:: csharp
+
+    this.dataGrid.AddHandler(DataGrid.MouseUpEvent, new MouseButtonEventHandler((sender,e)=> {/* ～～; */}), true);

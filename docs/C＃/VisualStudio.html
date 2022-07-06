@@ -168,10 +168,63 @@
 </tbody>
 </table>
 </section>
+<section id="nuget">
+<h2>NuGet設定<a class="headerlink" href="#nuget" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>WPFの場合、ツール -&gt; オプション -&gt; NuGetパッケージマネージャー -&gt; 全般　において、
+既定のパッケージ管理形式は「PackageReference」にしておく（たぶん）</p>
+</section>
 <section id="oss">
 <h2>使用しているOSS情報の出力方法<a class="headerlink" href="#oss" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>Nugetパッケージマネージャーコンソールで、以下のコマンドを入力する。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;Get-Package | Select-Object Id,version,LicenseUrl</span>
+</pre></div>
+</div>
+</section>
+<section id="region">
+<h2>よく使うregion雛形<a class="headerlink" href="#region" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="cp">#region メンバー定数 ----------------------------------------------------------------------------</span>
+<span class="cp">#region メンバー変数 ----------------------------------------------------------------------------</span>
+<span class="cp">#region デリゲート ------------------------------------------------------------------------------</span>
+<span class="cp">#region 委譲メソッド ----------------------------------------------------------------------------</span>
+<span class="cp">#region イベント --------------------------------------------------------------------------------</span>
+<span class="cp">#region コールバック ----------------------------------------------------------------------------</span>
+<span class="cp">#region 初期化／終了関数 ------------------------------------------------------------------------</span>
+<span class="cp">#region メソッド（自動生成） --------------------------------------------------------------------</span>
+<span class="cp">#region メソッド（ユーザ定義） ------------------------------------------------------------------</span>
+<span class="cp">#region イベントハンドラ ------------------------------------------------------------------------</span>
+<span class="cp">#region ボタンイベントハンドラ ------------------------------------------------------------------</span>
+<span class="cp">#region プロパティ ------------------------------------------------------------------------------</span>
+<span class="cp">#region プロパティ（排他制御） ------------------------------------------------------------------</span>
+<span class="cp">#region マイコンへのコマンド --------------------------------------------------------------------</span>
+<span class="cp">#region コマンド --------------------------------------------------------------------------------</span>
+
+<span class="cp">#region【独自プロパティ】StrokeThicknessFrame ---------------------------------------------------</span>
+<span class="cp">#region【独自プロパティ】Enabled ----------------------------------------------------------------</span>
+<span class="cp">#region【独自プロパティ】IsVisible --------------------------------------------------------------</span>
+
+<span class="cp">#region private 列挙体宣言 ----------------------------------------------------------------------</span>
+<span class="cp">#region 内部クラス ------------------------------------------------------------------------------</span>
+<span class="cp">#region 内部列挙体 ------------------------------------------------------------------------------</span>
+<span class="cp">#region コンストラクタ --------------------------------------------------------------------------</span>
+<span class="cp">#region デストラクタ ----------------------------------------------------------------------------</span>
+<span class="cp">#region メソッド --------------------------------------------------------------------------------</span>
+<span class="cp">#region ボタンアクション ------------------------------------------------------------------------</span>
+<span class="cp">#region アクション ------------------------------------------------------------------------------</span>
+<span class="cp">#region オーバライド ----------------------------------------------------------------------------</span>
+<span class="cp">#region インタフェース実装 ----------------------------------------------------------------------</span>
+<span class="cp">#region Dispose ---------------------------------------------------------------------------------</span>
+
+<span class="cp">#endregion</span>
+
+
+<span class="cp">#region ■プロパティ初期化</span>
+<span class="cp">#region ■プロパティの初期値設定</span>
+<span class="cp">#region ■プロパティ変更時の処理</span>
+<span class="cp">#region ■コマンド初期化</span>
+<span class="cp">#region ■イベント送信処理</span>
+<span class="cp">#region ■イベント受信処理</span>
+
+<span class="cp">#endregion</span>
 </pre></div>
 </div>
 </section>
@@ -215,7 +268,9 @@
 <li><a class="reference internal" href="#id2">コードスニペット</a></li>
 <li><a class="reference internal" href="#id3">リファクタリング</a></li>
 <li><a class="reference internal" href="#id4">タスク・リスト機能</a></li>
+<li><a class="reference internal" href="#nuget">NuGet設定</a></li>
 <li><a class="reference internal" href="#oss">使用しているOSS情報の出力方法</a></li>
+<li><a class="reference internal" href="#region">よく使うregion雛形</a></li>
 </ul>
 </li>
 </ul>

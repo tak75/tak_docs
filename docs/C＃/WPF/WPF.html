@@ -19,7 +19,7 @@
     <script src="../../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
-    <link rel="next" title="Prism" href="Prism.html" />
+    <link rel="next" title="xaml" href="xaml.html" />
     <link rel="prev" title=".NET Core and WPF" href=".NET%20Core%20and%20WPF.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <!--[if lt IE 9]>
@@ -33,7 +33,7 @@
           <a href="../../genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="Prism.html" title="Prism"
+          <a href="xaml.html" title="xaml"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
           <a href=".NET%20Core%20and%20WPF.html" title=".NET Core and WPF"
@@ -52,16 +52,6 @@
             
   <section id="wpf">
 <h1>WPF<a class="headerlink" href="#wpf" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<section id="view">
-<h2>Viewについての便利メモ<a class="headerlink" href="#view" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>xamlに以下の4 行を追加すると、土台となる UserControl が指定したサイズで表示されるようになるため、デザイン時に実行時のイメージがつかみやすくなる。</p>
-<div class="highlight-xaml notranslate"><div class="highlight"><pre><span></span>xmlns:mc=&quot;http://schemas.openxmlformats.org/markup-compatibility/2006&quot;
-xmlns:d=&quot;http://schemas.microsoft.com/expression/blend/2008&quot;
-mc:Ignorable=&quot;d&quot;
-d:DesignHeight=&quot;500&quot; d:DesignWidth=&quot;500&quot;
-</pre></div>
-</div>
-</section>
 <section id="dispatcher">
 <h2>Dispatcherについて<a class="headerlink" href="#dispatcher" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
@@ -142,6 +132,21 @@ d:DesignHeight=&quot;500&quot; d:DesignWidth=&quot;500&quot;
 </div>
 </section>
 </section>
+<section id="datacontext">
+<h2>DataContextの設定方法<a class="headerlink" href="#datacontext" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p>指定しなければ親DataContextを参照する</p></li>
+<li><p>親Viewから子View生成時に指定する(xaml or コードビハインド)</p></li>
+<li><p>子View生成時に自分でインスタンス生成する(xaml or コードビハインド)
+（PrismのAutoWireViewMode=”True”と同じ（多分））</p>
+<div class="highlight-xaml notranslate"><div class="highlight"><pre><span></span>&lt;UserControl.DataContext&gt;
+    &lt;local:View2ViewModel/&gt;
+&lt;/UserControl.DataContext&gt;
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
 </section>
 
 
@@ -178,7 +183,6 @@ d:DesignHeight=&quot;500&quot; d:DesignWidth=&quot;500&quot;
   <h3><a href="../../index.html">目次</a></h3>
   <ul>
 <li><a class="reference internal" href="#">WPF</a><ul>
-<li><a class="reference internal" href="#view">Viewについての便利メモ</a></li>
 <li><a class="reference internal" href="#dispatcher">Dispatcherについて</a></li>
 <li><a class="reference internal" href="#id1">エラーメッセージ</a><ul>
 <li><a class="reference internal" href="#id2">他のスレッドで作成されているためアクセスできない</a></li>
@@ -190,6 +194,7 @@ d:DesignHeight=&quot;500&quot; d:DesignWidth=&quot;500&quot;
 <li><a class="reference internal" href="#id3">コードビハインドで配置</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#datacontext">DataContextの設定方法</a></li>
 </ul>
 </li>
 </ul>
@@ -198,8 +203,8 @@ d:DesignHeight=&quot;500&quot; d:DesignWidth=&quot;500&quot;
   <p class="topless"><a href=".NET%20Core%20and%20WPF.html"
                         title="前の章へ">.NET Core and WPF</a></p>
   <h4>次のトピックへ</h4>
-  <p class="topless"><a href="Prism.html"
-                        title="次の章へ">Prism</a></p>
+  <p class="topless"><a href="xaml.html"
+                        title="次の章へ">xaml</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">クイック検索</h3>
     <div class="searchformwrapper">
@@ -221,7 +226,7 @@ d:DesignHeight=&quot;500&quot; d:DesignWidth=&quot;500&quot;
           <a href="../../genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="Prism.html" title="Prism"
+          <a href="xaml.html" title="xaml"
              >次へ</a> |</li>
         <li class="right" >
           <a href=".NET%20Core%20and%20WPF.html" title=".NET Core and WPF"

@@ -1,0 +1,112 @@
+======
+文字列
+======
+
+ファイル名、ディレクトリ名
+==========================
+
+* ディレクトリ名の取得
+
+  .. code-block:: csharp
+
+    string dirPath = @"C:\My Documents\My Pictures\サンプル.jpg";
+    dirPath = System.IO.Path.GetDirectoryName(dirPath);
+    //結果: C:\My Documents\My Pictures
+    System.IO.Path.GetDirectoryName(dirPath);
+    //結果: C:\My Documents
+
+* 拡張子の取得
+
+  .. code-block:: csharp
+
+    System.IO.Path.GetExtension(@"C:\My Documents\My Pictures\サンプル.jpg");
+    //結果: .jpg
+
+* ファイル名の取得
+
+  .. code-block:: csharp
+
+    System.IO.Path.GetFileName(@"C:\My Documents\My Pictures\サンプル.jpg");
+    //結果: サンプル.jpg
+
+* ファイル名（拡張子なし）の取得
+
+  .. code-block:: csharp
+
+    System.IO.Path.GetFileNameWithoutExtension(@"C:\My Documents\My Pictures\サンプル.jpg");
+    //結果: サンプル
+
+* ルートディレクトリ名の取得
+
+  .. code-block:: csharp
+
+    System.IO.Path.GetPathRoot(@"C:\My Documents\My Pictures\サンプル.jpg");
+    //結果: C:\
+
+* ディレクトリパス＋ファイル名（結合）
+
+  .. code-block:: csharp
+
+    string fileName = "サンプル.jpg";
+    string dirPath = @"C:\My Documents\My Pictures";
+    string filePath = Path.Combine(dirPath, fileName);
+    //結果: C:\My Documents\My Pictures\サンプル.jpg
+
+
+フォーマット文字列
+==================
+
+https://dobon.net/vb/dotnet/string/inttostring.html
+
+* F: 固定小数点
+
+  .. code-block:: csharp
+
+    (10000).ToString("C") = "\10,000"
+    (-100.5).ToString("C") = "-\101"
+    (12345.5555).ToString("C2") = "\12,345.56"
+
+* D: 10進数（整数型のみ）
+
+  .. code-block:: csharp
+
+    (12345).ToString("D") = "12345"
+    (12345).ToString("D8") = "00012345"
+    (-12345).ToString("D6") = "-012345"
+    (12345).ToString("D4") = "12345"
+
+* F: 固定小数点
+
+  .. code-block:: csharp
+
+    (123.456).ToString("F") = "123.46"
+    (1).ToString("F") = "1.00"
+    (-123.456789).ToString("F4") = "-123.4568"
+    (0.1).ToString("F6") = "0.100000"
+
+* N: 桁区切り記号つき
+
+  .. code-block:: csharp
+
+    (1234.56789).ToString("N") = "1,234.57"
+    (10000).ToString("N") = "10,000.00"
+    (-1234.56789).ToString("n4") = "-1,234.5679"
+
+* X: 16進数
+
+  .. code-block:: csharp
+
+    (10).ToString("X") = "A"
+    (-1).ToString("x") = "ffffffff"
+    (10).ToString("X4") = "000A"
+
+* C: 通貨
+
+  .. code-block:: csharp
+
+    (10000).ToString("C") = "\10,000"
+    (-100.5).ToString("C") = "-\101"
+    (12345.5555).ToString("C2") = "\12,345.56"
+
+
+

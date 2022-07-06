@@ -69,6 +69,9 @@
     <span class="k">private</span> <span class="k">void</span> <span class="nf">Send</span><span class="p">(</span><span class="n">List</span><span class="p">&lt;</span><span class="kt">byte</span><span class="p">&gt;</span> <span class="n">byteList</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="n">CommandSent</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">new</span> <span class="n">CommandSentEventArgs</span><span class="p">(</span><span class="n">byteList</span><span class="p">));</span>
+
+        <span class="c1">// 以下でもよい？</span>
+        <span class="n">CommandSent</span><span class="p">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">new</span> <span class="n">CommandSentEventArgs</span><span class="p">(</span><span class="n">byteList</span><span class="p">));</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -141,6 +144,15 @@
 </div>
 </div></blockquote>
 </section>
+<section id="id5">
+<h2>子イベントを親に透過<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>透過させるのがベストの場合は以下でよいが、新たなイベントを作成して発火させる方法でもよい。</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">this</span><span class="p">.</span><span class="n">dataGrid</span><span class="p">.</span><span class="n">AddHandler</span><span class="p">(</span><span class="n">DataGrid</span><span class="p">.</span><span class="n">MouseUpEvent</span><span class="p">,</span> <span class="k">new</span> <span class="n">MouseButtonEventHandler</span><span class="p">((</span><span class="n">sender</span><span class="p">,</span><span class="n">e</span><span class="p">)=&gt;</span> <span class="p">{</span><span class="cm">/* ～～; */</span><span class="p">}),</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
 </section>
 
 
@@ -180,6 +192,7 @@
 <li><a class="reference internal" href="#id2">イベント</a></li>
 <li><a class="reference internal" href="#id3">デリゲート呼び出し</a></li>
 <li><a class="reference internal" href="#id4">ラムダ式</a></li>
+<li><a class="reference internal" href="#id5">子イベントを親に透過</a></li>
 </ul>
 </li>
 </ul>

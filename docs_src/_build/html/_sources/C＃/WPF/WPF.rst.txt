@@ -2,18 +2,6 @@
 WPF
 ===
 
-Viewについての便利メモ
-======================
-
-xamlに以下の4 行を追加すると、土台となる UserControl が指定したサイズで表示されるようになるため、デザイン時に実行時のイメージがつかみやすくなる。
-
-.. code-block:: xaml
-
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    mc:Ignorable="d"
-    d:DesignHeight="500" d:DesignWidth="500"
-
 Dispatcherについて
 ==================
 
@@ -100,3 +88,18 @@ xaml
                                         // （②に対するメリット？）
 	Grid.SetRow(_view1, 1);
 	this.grid.Children.Add(_view1);
+
+DataContextの設定方法
+=====================
+
+* 指定しなければ親DataContextを参照する
+* 親Viewから子View生成時に指定する(xaml or コードビハインド)
+* 子View生成時に自分でインスタンス生成する(xaml or コードビハインド)
+  （PrismのAutoWireViewMode=”True”と同じ（多分））
+
+  .. code-block:: xaml
+
+    <UserControl.DataContext>
+        <local:View2ViewModel/>
+    </UserControl.DataContext>
+

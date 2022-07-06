@@ -58,6 +58,303 @@
 Subscribe 等で値の変更を監視しているような場合は Dispose しないとメモリリークする可能性がある。
 ようは、デリゲートを登録している場合ってことか？</p>
 </section>
+<section id="usercontrol-navigation">
+<h2>UserControl（Navigation用）<a class="headerlink" href="#usercontrol-navigation" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id2">
+<h3>追加方法<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>Viewsフォルダにて、追加→新しい項目→Prism→WPF→Prism UserControl(WPF)</p>
+</section>
+<section id="id3">
+<h3>雛形<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">xxxViewModel</span> <span class="p">:</span> <span class="n">BindableBase</span><span class="p">,</span> <span class="n">IDestructible</span><span class="p">,</span> <span class="n">INavigationAware</span><span class="p">,</span> <span class="n">IRegionMemberLifetime</span>
+<span class="p">{</span>
+    <span class="cp">#region メンバー変数 ----------------------------------------------------------------------------</span>
+    <span class="k">private</span> <span class="n">IRegionManager</span> <span class="n">_regionManager</span><span class="p">;</span>
+    <span class="k">private</span> <span class="n">IEventAggregator</span> <span class="n">_eventAggregator</span><span class="p">;</span>
+    <span class="k">private</span> <span class="n">IRegionNavigationJournal</span> <span class="n">_journal</span><span class="p">;</span>
+    <span class="k">private</span> <span class="n">CompositeDisposable</span> <span class="n">_disposables</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CompositeDisposable</span><span class="p">();</span>
+    <span class="cp">#endregion</span>
+
+    <span class="cp">#region プロパティ ------------------------------------------------------------------------------</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// View が 非 Active になった際に View を保持するか否か（true:保持する、false:破棄する）</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="n">KeepAlive</span> <span class="p">=&gt;</span> <span class="k">false</span><span class="p">;</span>
+    <span class="cp">#endregion</span>
+
+    <span class="cp">#region コマンド --------------------------------------------------------------------------------</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// BackボタンのCommand</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="k">public</span> <span class="n">ReactiveCommand</span> <span class="n">ButtonBackCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+    <span class="cp">#endregion</span>
+
+    <span class="cp">#region コンストラクタ --------------------------------------------------------------------------</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// コンストラクタ</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="c1">/// &lt;param name=&quot;regionManager&quot;&gt;&lt;/param&gt;</span>
+    <span class="c1">/// &lt;param name=&quot;eventAggregator&quot;&gt;&lt;/param&gt;</span>
+    <span class="k">public</span> <span class="nf">xxxViewModel</span><span class="p">(</span><span class="n">IRegionManager</span> <span class="n">regionManager</span><span class="p">,</span> <span class="n">IEventAggregator</span> <span class="n">eventAggregator</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">_regionManager</span> <span class="p">=</span> <span class="n">regionManager</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">_eventAggregator</span> <span class="p">=</span> <span class="n">eventAggregator</span><span class="p">;</span>
+
+        <span class="c1">// ■プロパティ初期化</span>
+
+        <span class="c1">// ■プロパティの初期値設定</span>
+
+        <span class="c1">// ■プロパティ変更時の処理</span>
+
+        <span class="c1">// ■コマンド初期化</span>
+
+        <span class="c1">// ■イベント送信処理</span>
+
+        <span class="c1">// ■イベント受信処理</span>
+    <span class="p">}</span>
+    <span class="cp">#endregion</span>
+
+    <span class="cp">#region ボタンアクション ------------------------------------------------------------------------</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// Backボタンアクション</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="k">private</span> <span class="k">void</span> <span class="nf">ButtonBackAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 元の画面に戻る</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">_journal</span><span class="p">.</span><span class="n">GoBack</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="cp">#endregion</span>
+
+    <span class="cp">#region インタフェース実装 ----------------------------------------------------------------------</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// Viewを破棄する</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Destroy</span><span class="p">()</span> <span class="p">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="n">_disposables</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+
+    <span class="c1">// ナビゲーションが移る前にコールされる。</span>
+    <span class="c1">// trueを返すと、このインスタンスが使いまわされる。</span>
+    <span class="c1">// falseを返すと、別のインスタンスが作成される。</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">IsNavigationTarget</span><span class="p">(</span><span class="n">NavigationContext</span> <span class="n">navigationContext</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ナビゲーションが他に移る時にコールされる。</span>
+    <span class="c1">// 終了処理があればここに記述する</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">OnNavigatedFrom</span><span class="p">(</span><span class="n">NavigationContext</span> <span class="n">navigationContext</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ナビゲーションが移ってきた時にコールされる。</span>
+    <span class="c1">// パラメータを受取りたい場合は、ここで navigationContext より取得できる</span>
+    <span class="c1">// 本処理はコンストラクタ実行後に実行される処理である</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">OnNavigatedTo</span><span class="p">(</span><span class="n">NavigationContext</span> <span class="n">navigationContext</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">_journal</span> <span class="p">=</span> <span class="n">navigationContext</span><span class="p">.</span><span class="n">NavigationService</span><span class="p">.</span><span class="n">Journal</span><span class="p">;</span>
+
+        <span class="c1">// コール元から渡されたパラメータより、オブジェクトを受取る</span>
+        <span class="kt">var</span> <span class="n">obj</span> <span class="p">=</span> <span class="n">navigationContext</span><span class="p">.</span><span class="n">Parameters</span><span class="p">[</span><span class="s">&quot;obj&quot;</span><span class="p">]</span> <span class="k">as</span> <span class="n">TestClass</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">obj</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">_obj</span><span class="p">=</span> <span class="n">obj</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="c1">// 元の画面に戻る</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">_journal</span><span class="p">.</span><span class="n">GoBack</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="c1">// パラメータを渡して画面XXXを表示</span>
+        <span class="kt">var</span> <span class="n">param</span> <span class="p">=</span> <span class="k">new</span> <span class="n">NavigationParameters</span><span class="p">();</span>
+        <span class="n">param</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;obj&quot;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="n">_obj</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">_regionManager</span><span class="p">.</span><span class="n">RequestNavigate</span><span class="p">(</span><span class="s">&quot;XXXRegion&quot;</span><span class="p">,</span> <span class="n">nameof</span><span class="p">(</span><span class="n">XXX</span><span class="p">),</span> <span class="n">param</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="cp">#endregion</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<section id="id4">
+<h2>プロパティ初期化<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>this.Value = new ReactivePropertySlim&lt;Assay&gt;(new Value())
+    .AddTo(this._disposables);
+
+// 姓と名の変更を購読して、フルネームにする
+NameRorps = Observable
+    .CombineLatest(NameRp, NameRps, (x, y) =&gt; $&quot;{x}={y}&quot;)
+    .ToReadOnlyReactivePropertySlim();
+
+// オブジェクトのプロパティ（ReactiveProperty型）からReactivePropertyを生成する方法
+// オブジェクトの参照先が変わる場合は、オブジェクトもReactiveProperty型である必要がある
+this.ProjectStatus = this.Project
+    .ObserveProperty(x =&gt; x.Value.StatusRP.Value)
+    .ToReadOnlyReactivePropertySlim()
+    .AddTo(this._disposables);
+
+this.Assay = dataContext.Assay
+    .ToReactivePropertySlimAsSynchronized(x =&gt; x.Value)
+    .AddTo(this._disposables);
+
+this.MotFileName = this.MeasurementUnitSelected
+    .ObserveProperty(x =&gt; x.Value.MotFilePath.Value)
+    .Select(x =&gt; Path.GetFileName(x))
+    .ToReadOnlyReactivePropertySlim()
+    .AddTo(this._disposables);
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id5">
+<h2>プロパティ変更時の処理<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">this</span><span class="p">.</span><span class="n">PropertyX</span>
+    <span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">_eventAggregator</span><span class="p">.</span><span class="n">GetEvent</span><span class="p">&lt;</span><span class="n">NotifyXXXEvent</span><span class="p">&gt;().</span><span class="n">Publish</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+    <span class="p">});</span>
+
+
+<span class="c1">// コレクション内の特定のプロパティが変化した場合</span>
+<span class="c1">// 監視するプロパティが ReactiveProperty の場合に ObserveElementObservableProperty() が使用可</span>
+<span class="k">this</span><span class="p">.</span><span class="n">PrepareInfoCollection</span>
+    <span class="p">.</span><span class="n">ObserveElementObservableProperty</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">StateName</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="c1">// 全てのプレートIDが、キャリブレーションA用プレートセット状態である場合にStartボタンを活性化させる</span>
+        <span class="kt">var</span> <span class="n">count1</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">PrepareInfoCollection</span><span class="p">.</span><span class="n">Count</span><span class="p">();</span>
+        <span class="kt">var</span> <span class="n">count2</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">PrepareInfoCollection</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">StateName</span><span class="p">.</span><span class="n">Value</span> <span class="p">==</span> <span class="n">StateNames</span><span class="p">.</span><span class="n">CalibA_PlateSet</span><span class="p">).</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">).</span><span class="n">Count</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">CanStart</span><span class="p">.</span><span class="n">Value</span> <span class="p">=</span> <span class="p">(</span><span class="n">count1</span> <span class="p">==</span> <span class="n">count2</span><span class="p">)</span> <span class="p">?</span> <span class="k">true</span> <span class="p">:</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">});</span>
+
+<span class="c1">// グラフ情報変更時の処理（置き換え時）</span>
+<span class="k">this</span><span class="p">.</span><span class="n">WellIsCheckedCollection</span>
+    <span class="p">.</span><span class="n">ObserveReplaceChanged</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="n">GraphInfoChanged</span><span class="p">());</span>    <span class="c1">// 引数は変化した値であり、インデックス情報は取得できない？</span>
+
+<span class="c1">// エラーログコレクション変更時の処理（追加時）</span>
+<span class="k">this</span><span class="p">.</span><span class="n">ErrorLogCollection</span>
+    <span class="p">.</span><span class="n">ObserveAddChanged</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="n">_errorLogCollectionChanged</span><span class="p">?.</span><span class="n">Invoke</span><span class="p">());</span>
+
+<span class="c1">//リアルタイムフィルタリング</span>
+<span class="n">TemplateList</span><span class="p">.</span><span class="n">ObserveElementProperty</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Remarks</span><span class="p">.</span><span class="n">Value</span><span class="p">).</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="n">FilterdList</span><span class="p">.</span><span class="n">Refresh</span><span class="p">());</span>
+<span class="n">TemplateList</span><span class="p">.</span><span class="n">ObserveAddChanged</span><span class="p">().</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="n">FilterdList</span><span class="p">.</span><span class="n">Refresh</span><span class="p">());</span>
+<span class="n">TemplateList</span><span class="p">.</span><span class="n">ObserveAddChanged</span><span class="p">().</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="n">FilterdList</span><span class="p">.</span><span class="n">Refresh</span><span class="p">());</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id6">
+<h2>コマンド初期化<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 基本</span>
+<span class="k">this</span><span class="p">.</span><span class="n">BackCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ReactiveCommand</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">WithSubscribe</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">BackAction</span><span class="p">())</span>
+    <span class="p">.</span><span class="n">AddTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_disposables</span><span class="p">);</span>
+
+<span class="c1">// ファイル名が入力されたらボタンを活性化</span>
+<span class="k">this</span><span class="p">.</span><span class="n">OKCommand</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">FileName</span>
+    <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="p">!(</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>    <span class="c1">// 空欄の場合はボタン非活性</span>
+    <span class="p">.</span><span class="n">ToReactiveCommand</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">WithSubscribe</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">OKAction</span><span class="p">())</span>
+    <span class="p">.</span><span class="n">AddTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_disposables</span><span class="p">);</span>
+
+<span class="c1">// アッセイがnullでなく、プロジェクト名が空欄でない場合にボタンを活性化</span>
+<span class="k">this</span><span class="p">.</span><span class="n">StartCommand</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">Assay</span>
+    <span class="p">.</span><span class="n">CombineLatest</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">ProjectName</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">x</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">&amp;&amp;</span> <span class="p">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+    <span class="p">.</span><span class="n">ToReactiveCommand</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">WithSubscribe</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">ButtonStartActionAsync</span><span class="p">())</span>
+    <span class="p">.</span><span class="n">AddTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_disposables</span><span class="p">);</span>
+
+<span class="c1">// プロジェクトがIdle状態の場合のみボタンを活性化</span>
+<span class="c1">// this.ProjectStatus を Model.GetInstance().CurrentProject.Value.StatusRP に置き換えることは不可</span>
+<span class="c1">// この書き方では、CurrentProjectの参照先が変わった場合に古いインスタンスのStatusRPを参照し続けることとなる</span>
+<span class="k">this</span><span class="p">.</span><span class="n">LoadTemplateCommand</span> <span class="p">=</span> <span class="n">Model</span><span class="p">.</span><span class="n">GetInstance</span><span class="p">().</span><span class="n">CurrentProject</span>
+    <span class="p">.</span><span class="n">CombineLatest</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">ProjectStatus</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">y</span> <span class="p">==</span> <span class="n">ProjectStatuses</span><span class="p">.</span><span class="n">Idle</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">ToReactiveCommand</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">WithSubscribe</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">ButtonLoadTemplateAction</span><span class="p">())</span>
+    <span class="p">.</span><span class="n">AddTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_disposables</span><span class="p">);</span>
+
+<span class="k">this</span><span class="p">.</span><span class="n">UpdateFWCommand</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">MeasurementUnitSelected</span>
+    <span class="p">.</span><span class="n">ObserveProperty</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Value</span><span class="p">.</span><span class="n">UpdatingFW</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span>                 <span class="c1">// ←これ重要</span>
+                                                            <span class="c1">// （x =&gt; x.Value.UpdatingFW　だとダメ）</span>
+    <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="p">!</span><span class="n">x</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">ToReactiveCommand</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">WithSubscribe</span><span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{})</span>
+    <span class="p">.</span><span class="n">AddTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_disposables</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id7">
+<h2>イベント送信処理<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">this</span><span class="p">.</span><span class="n">_eventAggregator</span><span class="p">.</span><span class="n">GetEvent</span><span class="p">&lt;</span><span class="n">NotifyXXXEvent</span><span class="p">&gt;().</span><span class="n">Publish</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id8">
+<h2>イベント受信処理<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">this</span><span class="p">.</span><span class="n">_eventAggregator</span><span class="p">.</span><span class="n">GetEvent</span><span class="p">&lt;</span><span class="n">NotifyXXXEvent</span><span class="p">&gt;()</span>
+    <span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+    <span class="p">});</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id9">
+<h2>イベント定義<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Power Off を通知</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">NotifyPowerOffEvent</span> <span class="p">:</span> <span class="n">PubSubEvent</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+<span class="c1">// 数値を通知</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">NotifyNumberEvent</span> <span class="p">:</span> <span class="n">PubSubEvent</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span>
+<span class="p">{</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="reactivecollection-ui">
+<h2>ReactiveCollectionの追加/削除処理をUIスレッド上で行う方法<a class="headerlink" href="#reactivecollection-ui" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>AddOnScheduler()、RemoveOnScheduler()を使用する。
+これにより、ReactiveCollectionをBinding設定にしていても、例外が発生しなくなる。
+それでも発生する場合は、Binding先のVMに以下を記述する。</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>// 複数スレッドからコレクション操作できるようにする
+BindingOperations.EnableCollectionSynchronization(Binding元のコレクション, new object());
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id10">
+<h2>ボタンの連打を抑制<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>AsyncReactiveCommandを使用し、戻り値がTaskのメソッドをWithSubscribe()に設定することで、
+メソッド実行完了までボタンを非活性化し、ボタンの連打を抑制できる。</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="n">AsyncReactiveCommand</span> <span class="n">ButtonStartCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="k">this</span><span class="p">.</span><span class="n">ButtonStartCommand</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">Assay</span>
+    <span class="p">.</span><span class="n">CombineLatest</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">ProjectName</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">x</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">&amp;&amp;</span> <span class="p">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+    <span class="p">.</span><span class="n">ToAsyncReactiveCommand</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">WithSubscribe</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">ButtonStartActionAsync</span><span class="p">())</span>
+    <span class="p">.</span><span class="n">AddTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_disposables</span><span class="p">);</span>
+
+<span class="k">private</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">ButtonStartActionAsync</span><span class="p">(){}</span>       <span class="c1">// ←Taskである必要あり</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
 </section>
 
 
@@ -95,6 +392,19 @@ Subscribe 等で値の変更を監視しているような場合は Dispose し�
   <ul>
 <li><a class="reference internal" href="#">ReactiveProperty</a><ul>
 <li><a class="reference internal" href="#id1">メモリリークに注意</a></li>
+<li><a class="reference internal" href="#usercontrol-navigation">UserControl（Navigation用）</a><ul>
+<li><a class="reference internal" href="#id2">追加方法</a></li>
+<li><a class="reference internal" href="#id3">雛形</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">プロパティ初期化</a></li>
+<li><a class="reference internal" href="#id5">プロパティ変更時の処理</a></li>
+<li><a class="reference internal" href="#id6">コマンド初期化</a></li>
+<li><a class="reference internal" href="#id7">イベント送信処理</a></li>
+<li><a class="reference internal" href="#id8">イベント受信処理</a></li>
+<li><a class="reference internal" href="#id9">イベント定義</a></li>
+<li><a class="reference internal" href="#reactivecollection-ui">ReactiveCollectionの追加/削除処理をUIスレッド上で行う方法</a></li>
+<li><a class="reference internal" href="#id10">ボタンの連打を抑制</a></li>
 </ul>
 </li>
 </ul>

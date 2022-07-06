@@ -240,7 +240,7 @@ n.ToString()の処理までにn=nullとなる可能性があり、その場合�
 <section id="int-enum">
 <h3>int -&gt; enum変換<a class="headerlink" href="#int-enum" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <blockquote>
-<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">intValue</span> <span class="p">=</span> <span class="m">3</span><span class="p">;</span>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">intValue</span> <span class="p">=</span> <span class="m">3</span><span class="p">;</span>   <span class="c1">// enum型の値</span>
 <span class="n">Color</span> <span class="n">enumValue</span> <span class="p">=</span> <span class="p">(</span><span class="n">Color</span><span class="p">)</span><span class="n">Enum</span><span class="p">.</span><span class="n">ToObject</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">Color</span><span class="p">),</span> <span class="n">intValue</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -383,16 +383,17 @@ n.ToString()の処理までにn=nullとなる可能性があり、その場合�
 </section>
 <section id="id14">
 <h2>インタフェースでのアクセシビリティ<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>・メソッドにアクセシビリティを付ける必要はない（通常付けない？）
-・付ける場合はpublic？</p>
-<blockquote>
-<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">interface</span> <span class="n">IControl</span>
+<ul>
+<li><p>メソッドにアクセシビリティを付ける必要はない（通常付けない？）</p></li>
+<li><p>付ける場合はpublic？</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">interface</span> <span class="n">IControl</span>
 <span class="p">{</span>
     <span class="k">void</span> <span class="nf">Paint</span><span class="p">();</span> <span class="c1">// ←　publicは不要</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-</div></blockquote>
+</li>
+</ul>
 </section>
 <section id="id15">
 <h2>変数のスレッドセーフ<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -442,6 +443,36 @@ n.ToString()の処理までにn=nullとなる可能性があり、その場合�
 <li><p>Disposeは外部からコールするので、タイミングを決められる</p></li>
 <li><p>マネージのリソースのみの場合は、Disposeもデストラクタも不要？（少なくとも、Task.Run()で走らせたスレッドはバックグラウンドスレッドなので、スレッドを保有するオブジェクトがGCに回収された時点で自動的にスレッドは停止する）</p></li>
 </ul>
+</section>
+<section id="union">
+<h2>共用体（union）<a class="headerlink" href="#union" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System.Runtime.InteropServices</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">Test</span>
+<span class="p">{</span>
+<span class="na">  [StructLayout(LayoutKind.Explicit)]</span>
+  <span class="k">struct</span> <span class="nc">State</span>
+  <span class="p">{</span>
+<span class="na">    [FieldOffset(0)]</span> <span class="k">public</span> <span class="kt">uint</span> <span class="n">all</span><span class="p">;</span>
+<span class="na">    [FieldOffset(0)]</span> <span class="k">public</span> <span class="n">Flag</span> <span class="n">flag</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Enum型をビット・フィールド化</span>
+<span class="na">  [Flags]</span>
+  <span class="k">public</span> <span class="k">enum</span> <span class="n">Flag</span><span class="p">:</span><span class="kt">uint</span>
+  <span class="p">{</span>
+    <span class="n">A</span> <span class="p">=</span> <span class="m">0</span><span class="n">x01</span><span class="p">,</span>
+    <span class="n">B</span> <span class="p">=</span> <span class="m">0</span><span class="n">x02</span><span class="p">,</span>
+    <span class="n">C</span> <span class="p">=</span> <span class="m">0</span><span class="n">x04</span><span class="p">,</span>
+    <span class="n">D</span> <span class="p">=</span> <span class="m">0</span><span class="n">x08</span><span class="p">,</span>
+    <span class="n">E</span> <span class="p">=</span> <span class="m">0</span><span class="n">x10</span><span class="p">,</span>
+    <span class="n">F</span> <span class="p">=</span> <span class="m">0</span><span class="n">x20</span><span class="p">,</span>
+    <span class="n">G</span> <span class="p">=</span> <span class="m">0</span><span class="n">x40</span><span class="p">,</span>
+    <span class="n">H</span> <span class="p">=</span> <span class="m">0</span><span class="n">x80</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -506,6 +537,7 @@ n.ToString()の処理までにn=nullとなる可能性があり、その場合�
 <li><a class="reference internal" href="#id14">インタフェースでのアクセシビリティ</a></li>
 <li><a class="reference internal" href="#id15">変数のスレッドセーフ</a></li>
 <li><a class="reference internal" href="#dispose">デストラクタ、Dispose</a></li>
+<li><a class="reference internal" href="#union">共用体（union）</a></li>
 </ul>
 </li>
 </ul>
