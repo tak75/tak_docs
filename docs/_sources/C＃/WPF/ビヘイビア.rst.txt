@@ -1,0 +1,70 @@
+==========
+ビヘイビア
+==========
+
+例1 Slider
+==========
+
+Sliderで、ドラッグ中は値を反映させず、ドラッグ完了後に値を繁栄させる。
+また、スライダ位置はReactivePropertyのオブジェクトをバインドし、双方向で値を更新する。
+
+* xaml
+
+  .. code-block:: xaml
+
+    <Slider Minimum="0" Maximum="20" Width="{StaticResource SliderWidth}" 
+            Foreground="Black" TickPlacement="None" IsSnapToTickEnabled="True" 
+            AutoToolTipPlacement="BottomRight" AutoToolTipPrecision="2"
+            TickFrequency="0.01" SmallChange="0.01" LargeChange="0.01">
+        <i:Interaction.Behaviors>
+            <b:SliderDragEndValueBehavior 
+                Value="{Binding Param.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </i:Interaction.Behaviors>
+    </Slider>
+
+* コード
+
+  .. code-block:: csharp
+
+    public class SliderDragEndValueBehavior : Behavior<Slider>
+    {
+        private bool dragStarted = false;
+
+        public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(
+            "Value", typeof(float), typeof(SliderDragEndValueBehavior), new PropertyMetadata(default(float)));
+
+        public float Value
+        {
+            get { return (float)GetValue(ValueProperty); }
+            set { SetValue(ValueProperty, value); }
+        }
+
+        protected override void OnAttached()
+        {
+            AssociatedObject.AddHandler(Thumb.DragCompletedEvent, (RoutedEventHandler)AssociatedObject_DragCompleted);
+            AssociatedObject.AddHandler(Thumb.DragStartedEvent, (RoutedEventHandler)AssociatedObject_DragStarted);
+        }
+
+        private void AssociatedObject_DragCompleted(object sender, RoutedEventArgs e)
+        {
+            Value = (float)AssociatedObject.Value;
+            this.dragStarted = false;
+        }
+
+        private void AssociatedObject_DragStarted(object sender, RoutedEventArgs e)
+        {
+            this.dragStarted = true;
+        }
+
+        protected override void OnChanged()
+        {
+            if (!dragStarted)
+                AssociatedObject.Value = Value;
+        }
+
+        protected override void OnDetaching()
+        {
+            AssociatedObject.RemoveHandler(Thumb.DragCompletedEvent, (RoutedEventHandler)AssociatedObject_DragCompleted);
+            AssociatedObject.RemoveHandler(Thumb.DragStartedEvent, (RoutedEventHandler)AssociatedObject_DragStarted);
+        }
+    }

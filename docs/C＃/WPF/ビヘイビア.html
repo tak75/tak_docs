@@ -1,0 +1,205 @@
+
+
+<!doctype html>
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>ビヘイビア &#8212; Tak Documents  ドキュメント</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bizstyle.css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <script src="../../_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="next" title="VisualStudio" href="../VisualStudio.html" />
+    <link rel="prev" title="ReactiveProperty" href="ReactiveProperty.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../VisualStudio.html" title="VisualStudio"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="ReactiveProperty.html" title="ReactiveProperty"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >C＃</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">WPF</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ビヘイビア</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="id1">
+<h1>ビヘイビア<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<section id="slider">
+<h2>例1 Slider<a class="headerlink" href="#slider" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Sliderで、ドラッグ中は値を反映させず、ドラッグ完了後に値を繁栄させる。
+また、スライダ位置はReactivePropertyのオブジェクトをバインドし、双方向で値を更新する。</p>
+<ul>
+<li><p>xaml</p>
+<div class="highlight-xaml notranslate"><div class="highlight"><pre><span></span>&lt;Slider Minimum=&quot;0&quot; Maximum=&quot;20&quot; Width=&quot;{StaticResource SliderWidth}&quot;
+        Foreground=&quot;Black&quot; TickPlacement=&quot;None&quot; IsSnapToTickEnabled=&quot;True&quot;
+        AutoToolTipPlacement=&quot;BottomRight&quot; AutoToolTipPrecision=&quot;2&quot;
+        TickFrequency=&quot;0.01&quot; SmallChange=&quot;0.01&quot; LargeChange=&quot;0.01&quot;&gt;
+    &lt;i:Interaction.Behaviors&gt;
+        &lt;b:SliderDragEndValueBehavior
+            Value=&quot;{Binding Param.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}&quot;/&gt;
+    &lt;/i:Interaction.Behaviors&gt;
+&lt;/Slider&gt;
+</pre></div>
+</div>
+</li>
+<li><p>コード</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">SliderDragEndValueBehavior</span> <span class="p">:</span> <span class="n">Behavior</span><span class="p">&lt;</span><span class="n">Slider</span><span class="p">&gt;</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="kt">bool</span> <span class="n">dragStarted</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">DependencyProperty</span> <span class="n">ValueProperty</span> <span class="p">=</span> <span class="n">DependencyProperty</span><span class="p">.</span><span class="n">Register</span><span class="p">(</span>
+        <span class="s">&quot;Value&quot;</span><span class="p">,</span> <span class="k">typeof</span><span class="p">(</span><span class="kt">float</span><span class="p">),</span> <span class="k">typeof</span><span class="p">(</span><span class="n">SliderDragEndValueBehavior</span><span class="p">),</span> <span class="k">new</span> <span class="n">PropertyMetadata</span><span class="p">(</span><span class="k">default</span><span class="p">(</span><span class="kt">float</span><span class="p">)));</span>
+
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">Value</span>
+    <span class="p">{</span>
+        <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">GetValue</span><span class="p">(</span><span class="n">ValueProperty</span><span class="p">);</span> <span class="p">}</span>
+        <span class="k">set</span> <span class="p">{</span> <span class="n">SetValue</span><span class="p">(</span><span class="n">ValueProperty</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnAttached</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">AssociatedObject</span><span class="p">.</span><span class="n">AddHandler</span><span class="p">(</span><span class="n">Thumb</span><span class="p">.</span><span class="n">DragCompletedEvent</span><span class="p">,</span> <span class="p">(</span><span class="n">RoutedEventHandler</span><span class="p">)</span><span class="n">AssociatedObject_DragCompleted</span><span class="p">);</span>
+        <span class="n">AssociatedObject</span><span class="p">.</span><span class="n">AddHandler</span><span class="p">(</span><span class="n">Thumb</span><span class="p">.</span><span class="n">DragStartedEvent</span><span class="p">,</span> <span class="p">(</span><span class="n">RoutedEventHandler</span><span class="p">)</span><span class="n">AssociatedObject_DragStarted</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">void</span> <span class="nf">AssociatedObject_DragCompleted</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Value</span> <span class="p">=</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">AssociatedObject</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">dragStarted</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">void</span> <span class="nf">AssociatedObject_DragStarted</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">dragStarted</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnChanged</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(!</span><span class="n">dragStarted</span><span class="p">)</span>
+            <span class="n">AssociatedObject</span><span class="p">.</span><span class="n">Value</span> <span class="p">=</span> <span class="n">Value</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnDetaching</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">AssociatedObject</span><span class="p">.</span><span class="n">RemoveHandler</span><span class="p">(</span><span class="n">Thumb</span><span class="p">.</span><span class="n">DragCompletedEvent</span><span class="p">,</span> <span class="p">(</span><span class="n">RoutedEventHandler</span><span class="p">)</span><span class="n">AssociatedObject_DragCompleted</span><span class="p">);</span>
+        <span class="n">AssociatedObject</span><span class="p">.</span><span class="n">RemoveHandler</span><span class="p">(</span><span class="n">Thumb</span><span class="p">.</span><span class="n">DragStartedEvent</span><span class="p">,</span> <span class="p">(</span><span class="n">RoutedEventHandler</span><span class="p">)</span><span class="n">AssociatedObject_DragStarted</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../index.html">目次</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Matplotlib/index.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Jupyter/index.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Web%E3%82%A2%E3%83%97%E3%83%AA/index.html">Webアプリ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">C＃</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../%E8%A8%80%E8%AA%9E%E4%BB%95%E6%A7%98/index.html">言語仕様</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">WPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../VisualStudio.html">VisualStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E8%87%AA%E5%8B%95%E4%BD%9C%E6%88%90.html">ドキュメント自動作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html">テスト駆動開発</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90/index.html">データ分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E5%82%99%E5%BF%98%E9%8C%B2/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">ビヘイビア</a><ul>
+<li><a class="reference internal" href="#slider">例1 Slider</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="ReactiveProperty.html"
+                        title="前の章へ">ReactiveProperty</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="../VisualStudio.html"
+                        title="次の章へ">VisualStudio</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="../VisualStudio.html" title="VisualStudio"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="ReactiveProperty.html" title="ReactiveProperty"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >C＃</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >WPF</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ビヘイビア</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, tak.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
+    </div>
+  </body>
+</html>

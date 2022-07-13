@@ -1,0 +1,66 @@
+======================
+ファイル／ディレクトリ
+======================
+
+パスから名前などを取得
+======================
+
+* ディレクトリ名の取得
+
+  .. code-block:: csharp
+
+    string dirPath = @"C:\My Documents\My Pictures\サンプル.jpg";
+    dirPath = System.IO.Path.GetDirectoryName(dirPath);
+    //結果: C:\My Documents\My Pictures
+    System.IO.Path.GetDirectoryName(dirPath);
+    //結果: C:\My Documents
+
+* 拡張子の取得
+
+  .. code-block:: csharp
+
+    System.IO.Path.GetExtension(@"C:\My Documents\My Pictures\サンプル.jpg");
+    //結果: .jpg
+
+* ファイル名の取得
+
+  .. code-block:: csharp
+
+    System.IO.Path.GetFileName(@"C:\My Documents\My Pictures\サンプル.jpg");
+    //結果: サンプル.jpg
+
+* ファイル名（拡張子なし）の取得
+
+  .. code-block:: csharp
+
+    System.IO.Path.GetFileNameWithoutExtension(@"C:\My Documents\My Pictures\サンプル.jpg");
+    //結果: サンプル
+
+* ルートディレクトリ名の取得
+
+  .. code-block:: csharp
+
+    System.IO.Path.GetPathRoot(@"C:\My Documents\My Pictures\サンプル.jpg");
+    //結果: C:\
+
+ディレクトリパス
+================
+
+* exeディレクトリパスの取得
+
+  .. code-block:: csharp
+
+    Environment.CurrentDirectory
+
+その他操作
+==========
+
+* ディレクトリパス＋ファイル名（結合）
+
+  .. code-block:: csharp
+
+    string fileName = "サンプル.jpg";
+    string dirPath = @"C:\My Documents\My Pictures";
+    string filePath = Path.Combine(dirPath, fileName);
+    //結果: C:\My Documents\My Pictures\サンプル.jpg
+
