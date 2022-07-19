@@ -43,7 +43,14 @@
     System.IO.Path.GetPathRoot(@"C:\My Documents\My Pictures\サンプル.jpg");
     //結果: C:\
 
-ディレクトリパス
+* ディレクトリ名の取得
+
+  .. code-block:: csharp
+
+    System.IO.Path.GetFileName(@"C:\My Documents\My Pictures");
+    //結果: My Pictures
+
+ディレクトリ操作
 ================
 
 * exeディレクトリパスの取得
@@ -51,6 +58,27 @@
   .. code-block:: csharp
 
     Environment.CurrentDirectory
+
+ファイル操作
+============
+
+* ファイルパス一覧の取得
+
+  .. code-block:: csharp
+
+    // ファイルパス一覧を取得し、ファイル数を制限する
+    // （ファイル数が上弦を超過する場合はファイル名でソートし順に削除）
+    filePathList = Directory.GetFiles(_dirPath, "*.zip", SearchOption.TopDirectoryOnly);
+    if (filePathList.Count() > _fileRotationNum)
+    {
+        var delNum = filePathList.Count() - _fileRotationNum;
+        foreach (var filePath in filePathList.OrderBy(x => x))
+        {
+            File.Delete(filePath);
+            delNum--;
+            if (delNum <= 0) break;
+        }
+    }
 
 その他操作
 ==========

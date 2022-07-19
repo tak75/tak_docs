@@ -19,7 +19,7 @@
     <script src="../../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
-    <link rel="next" title="VisualStudio" href="../VisualStudio.html" />
+    <link rel="next" title="ビヘイビア" href="%E3%83%93%E3%83%98%E3%82%A4%E3%83%93%E3%82%A2.html" />
     <link rel="prev" title="Prism" href="Prism.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <!--[if lt IE 9]>
@@ -33,7 +33,7 @@
           <a href="../../genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="../VisualStudio.html" title="VisualStudio"
+          <a href="%E3%83%93%E3%83%98%E3%82%A4%E3%83%93%E3%82%A2.html" title="ビヘイビア"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
           <a href="Prism.html" title="Prism"
@@ -53,10 +53,18 @@
   <section id="reactiveproperty">
 <h1>ReactiveProperty<a class="headerlink" href="#reactiveproperty" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <section id="id1">
-<h2>メモリリークに注意<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>注意事項<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p>メモリリーク</p>
 <p>自身が値を保持するだけの ReactiveProperty の場合は Dispose する必要は無いが、
 Subscribe 等で値の変更を監視しているような場合は Dispose しないとメモリリークする可能性がある。
 ようは、デリゲートを登録している場合ってことか？</p>
+</li>
+<li><p>ReactiveCommandの引数</p>
+<p>ReactiveCommandの引数とCommandParameterにバインドする値の型が異なる場合は、コマンドが実行されない
+例 : 引数をstringにし、バインドをintにすると、コマンドは実行されない</p>
+</li>
+</ul>
 </section>
 <section id="usercontrol-navigation">
 <h2>UserControl（Navigation用）<a class="headerlink" href="#usercontrol-navigation" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -391,7 +399,7 @@ BindingOperations.EnableCollectionSynchronization(Binding元のコレクショ�
   <h3><a href="../../index.html">目次</a></h3>
   <ul>
 <li><a class="reference internal" href="#">ReactiveProperty</a><ul>
-<li><a class="reference internal" href="#id1">メモリリークに注意</a></li>
+<li><a class="reference internal" href="#id1">注意事項</a></li>
 <li><a class="reference internal" href="#usercontrol-navigation">UserControl（Navigation用）</a><ul>
 <li><a class="reference internal" href="#id2">追加方法</a></li>
 <li><a class="reference internal" href="#id3">雛形</a></li>
@@ -413,8 +421,8 @@ BindingOperations.EnableCollectionSynchronization(Binding元のコレクショ�
   <p class="topless"><a href="Prism.html"
                         title="前の章へ">Prism</a></p>
   <h4>次のトピックへ</h4>
-  <p class="topless"><a href="../VisualStudio.html"
-                        title="次の章へ">VisualStudio</a></p>
+  <p class="topless"><a href="%E3%83%93%E3%83%98%E3%82%A4%E3%83%93%E3%82%A2.html"
+                        title="次の章へ">ビヘイビア</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">クイック検索</h3>
     <div class="searchformwrapper">
@@ -436,7 +444,7 @@ BindingOperations.EnableCollectionSynchronization(Binding元のコレクショ�
           <a href="../../genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="../VisualStudio.html" title="VisualStudio"
+          <a href="%E3%83%93%E3%83%98%E3%82%A4%E3%83%93%E3%82%A2.html" title="ビヘイビア"
              >次へ</a> |</li>
         <li class="right" >
           <a href="Prism.html" title="Prism"

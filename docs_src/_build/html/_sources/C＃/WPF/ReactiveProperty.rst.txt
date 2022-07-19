@@ -2,12 +2,19 @@
 ReactiveProperty
 ================
 
-メモリリークに注意
-==================
+注意事項
+========
 
-自身が値を保持するだけの ReactiveProperty の場合は Dispose する必要は無いが、
-Subscribe 等で値の変更を監視しているような場合は Dispose しないとメモリリークする可能性がある。
-ようは、デリゲートを登録している場合ってことか？
+* メモリリーク
+  
+  自身が値を保持するだけの ReactiveProperty の場合は Dispose する必要は無いが、
+  Subscribe 等で値の変更を監視しているような場合は Dispose しないとメモリリークする可能性がある。
+  ようは、デリゲートを登録している場合ってことか？
+
+* ReactiveCommandの引数
+
+  ReactiveCommandの引数とCommandParameterにバインドする値の型が異なる場合は、コマンドが実行されない
+  例 : 引数をstringにし、バインドをintにすると、コマンドは実行されない
 
 UserControl（Navigation用）
 ===========================
