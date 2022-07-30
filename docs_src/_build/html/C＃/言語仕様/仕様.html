@@ -439,11 +439,55 @@ private protected アクセス修飾子
 <p>null許容参照型
 1       null許容コンテキスト
 2       null免除演算子
-インターフェイスの既定メンバー
-パターンマッチングの拡張
-非同期ストリーム
+インターフェイスの既定メンバー</p>
+<section id="id6">
+<h3>パターンマッチングの拡張<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p>switch構文: var y = x switch { ... }</p></li>
+<li><p>以下の1,2は同一</p></li>
+<li><p><a class="reference external" href="https://ufcpp.net/blog/2018/12/cs8switchexpr/">https://ufcpp.net/blog/2018/12/cs8switchexpr/</a></p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>// 1
+public void M(年号 e)
+{
+    int y;
+    switch (e)
+    {
+        case 明治:
+            y = 45;
+            break;
+        case 大正:
+            y = 15;
+            break;
+        case 昭和:
+            y = 64;
+            break;
+        case 平成:
+            y = 31;
+            break;
+        default: throw new InvalidOperationException();
+    }
+}
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>// 2
+public void M(年号 e)
+{
+    var y = e switch
+    {
+        明治 =&gt; 45,
+        大正 =&gt; 15,
+        昭和 =&gt; 64,
+        平成 =&gt; 31,
+        _ =&gt; throw new InvalidOperationException()
+    };
+}
+</pre></div>
+</div>
+<p>非同期ストリーム
 範囲指定
 その他の仕様</p>
+</section>
 </section>
 </section>
 
@@ -503,7 +547,10 @@ private protected アクセス修飾子
 <li><a class="reference internal" href="#c-7-1">C# 7.1からの仕様</a></li>
 <li><a class="reference internal" href="#c-7-2">C# 7.2からの仕様</a></li>
 <li><a class="reference internal" href="#c-7-3">C# 7.3からの仕様</a></li>
-<li><a class="reference internal" href="#c-8">C# 8からの仕様</a></li>
+<li><a class="reference internal" href="#c-8">C# 8からの仕様</a><ul>
+<li><a class="reference internal" href="#id6">パターンマッチングの拡張</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

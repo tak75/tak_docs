@@ -7,15 +7,20 @@ xaml
 
 xamlに以下の4 行を追加すると、土台となる UserControl が指定したサイズで表示されるようになるため、デザイン時に実行時のイメージがつかみやすくなる。
 
-.. code-block:: xaml
+.. code-block:: XML
 
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     mc:Ignorable="d"
     d:DesignHeight="500" d:DesignWidth="500"
 
-コードビハインドのプロパティをバインドする方法
-==============================================
+
+バインド
+========
+
+--------------------------------------
+コードビハインドのプロパティをバインド
+--------------------------------------
 
 * CLRプロパティやDependencyPropertyはViewインスタンス（上でいう子View）に属するもの
 * VMのプロパティはDataContextに設定された別インスタンスに属するもの
@@ -23,30 +28,33 @@ xamlに以下の4 行を追加すると、土台となる UserControl が指定�
 である。
 Viewで自身のCLRプロパティやDependencyPropertyをバインドする場合は、バインドデータに以下の記載が必要
 
-.. code-block:: xaml
+.. code-block:: XML
 
   RelativeSource={RelativeSource AncestorType=UserControl}
 
-RelativeSourceの使用例
-======================
+--------------
+RelativeSource
+--------------
 
 * 自分の親をさかのぼり最初のExpanderのActualWidthを自分のWidthにバインディングする
 
-  .. code-block:: xaml
+  .. code-block:: XML
 
     Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}, Path=ActualWidth}"
 
 
-Region名のバインディングについて
-================================
+------------------
+Region名のバインド
+------------------
 
 RegionNameはバインディングすることはできるが、バインディングしている名前を途中で変更してはいけない。
 例外が発生する。
 
-様々なイベントへのバインディング
-================================
+------------------
+イベントのバインド
+------------------
 
-.. code-block:: xaml
+.. code-block:: XML
 
   xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
   xmlns:interactivity="clr-namespace:Reactive.Bindings.Interactivity;assembly=ReactiveProperty.WPF"
@@ -59,13 +67,110 @@ RegionNameはバインディングすることはできるが、バインディ�
       </i:Interaction.Triggers>
   </ComboBox>
 
+------------------------------------------
 バインドした値がNullやなしの場合の挙動設定
-==========================================
+------------------------------------------
 
 * Value=null、もしくは、Value.Project.Value=null の場合は、FallbackValueが実行される
-* Value.Project.Value.MeasurableRemainingTime.Value=null の場合は、TargetNullValueが実行される
+* Value.Project.Value.RemainingTime.Value=null の場合は、TargetNullValueが実行される
 
-.. code-block:: xaml
+.. code-block:: XML
 
-  Text="{Binding Value.Project.Value.MeasurableRemainingTime.Value, TargetNullValue='-', FallbackValue='--'}"
+  Text="{Binding Value.Project.Value.RemainingTime.Value, TargetNullValue='-', FallbackValue='--'}"
 
+--------------------------
+Staticプロパティのバインド
+--------------------------
+
+.. code-block:: XML
+
+  xmlns:data="clr-namespace:XXXXX.Data;assembly=XXXXX"
+
+  <Slider LargeChange="{Binding Source={x:Static data:TestValue}}"/>
+
+トリガ
+======
+
+----------------
+プロパティトリガ
+----------------
+
+自分のプロパティの値に応じて、自分の見た目にかかわるプロパティの値を変える
+
+.. code-block:: XML
+
+  <Trigger Property="IsMouseOver" Value="True">
+      <Setter Property="Fill" Value="GreenYellow"/>
+  </Trigger>
+
+------------
+データトリガ
+------------
+
+ViewModel等のプロパティの値に応じて見た目を変える
+
+.. code-block:: XML
+
+  <DataTrigger Binding="{Binding ColorChangeFlag}" Value="true">
+      <Setter Property="Fill" Value="Blue"/>
+  </DataTrigger>
+
+.. code-block:: XML
+
+  <!--ボタン-->
+  <ToggleButton x:Name="Toggle1">
+      <Image Stretch="None">
+          <Image.Style>
+              <Style TargetType="Image">
+                  <Setter Property="Source" Value="../Resources/icon_1.png"/>
+                  <Style.Triggers>
+                      <DataTrigger Binding="{Binding ElementName=Toggle1, Path=IsChecked}" Value="true">
+                          <Setter Property="Source" Value="../Resources/icon_2.png"/>
+                      </DataTrigger>
+                  </Style.Triggers>
+              </Style>
+          </Image.Style>
+      </Image>
+  </ToggleButton>
+
+スタイル
+========
+
+----------------
+トグルボタンの例
+----------------
+
+トグルボタンの上部左右角を丸にし、トグルボタン内に三角マークを表示する例
+
+.. code-block:: XML
+
+  <!--上角丸トグルボタン + 三角マーク-->
+  <Style x:Key="TopCornerRadiusToggleButton" TargetType="ToggleButton">
+      <Setter Property="Background" Value="White" />
+      <Setter Property="Foreground" Value="Black" />
+      <Setter Property="Template">
+          <Setter.Value>
+              <ControlTemplate TargetType="ButtonBase">
+                  <Border x:Name="border" Background="White" BorderThickness="1" BorderBrush="Black" 
+                          SnapsToDevicePixels="true" CornerRadius="6 6 0 0">
+                      <Grid>
+                          <ContentPresenter x:Name="contentPresenter" Focusable="False" 
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                            Margin="5" RecognizesAccessKey="True" 
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                          <Path HorizontalAlignment="Left" VerticalAlignment="Top" Fill="Gray" Stretch="None"  
+                                StrokeThickness="0"
+                            Data="M 4,44 L 4,50 L 10,50 L 4,44 Z" />
+                      </Grid>
+                  </Border>
+                  <ControlTemplate.Triggers>
+                      <Trigger Property="IsEnabled" Value="false">
+                          <Setter Property="Background" TargetName="border" Value="Gray"/>
+                          <Setter Property="Foreground" Value="Black"/>
+                      </Trigger>
+                  </ControlTemplate.Triggers>
+              </ControlTemplate>
+          </Setter.Value>
+      </Setter>
+  </Style>
