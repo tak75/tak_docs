@@ -145,10 +145,10 @@ Viewsフォルダにて、追加→新しい項目→Prism→WPF→Prism UserCon
 
     this.Value = new ReactivePropertySlim<Assay>(new Value())
         .AddTo(this._disposables);
-        
+   
     // 姓と名の変更を購読して、フルネームにする
     NameRorps = Observable
-        .CombineLatest(NameRp, NameRps, (x, y) => $"{x}={y}")
+        .CombineLatest(NameRp, NameRps, (x, y) => /*$*/"{x}={y}")
         .ToReadOnlyReactivePropertySlim();
 
     // オブジェクトのプロパティ（ReactiveProperty型）からReactivePropertyを生成する方法
@@ -169,7 +169,7 @@ Viewsフォルダにて、追加→新しい項目→Prism→WPF→Prism UserCon
         .AddTo(this._disposables);
 
     // Units[i].HasSound.Value の1つ以上がtrueである場合にanySoundsはtrueとなる
-    private List<Unit> Units;
+    List<Unit> Units;
     var anySounds = Units
         // ObserveProperty()はIObservableなオブジェクトを返すメソッド
         .Select(x => x.ObserveProperty(x => x.HasSound.Value))
@@ -189,7 +189,6 @@ Viewsフォルダにて、追加→新しい項目→Prism→WPF→Prism UserCon
         {
             this._eventAggregator.GetEvent<NotifyXXXEvent>().Publish(x);
         });
-        
 
     // コレクション内の特定のプロパティが変化した場合
     // 監視するプロパティが ReactiveProperty の場合に ObserveElementObservableProperty() が使用可
@@ -302,7 +301,7 @@ AddOnScheduler()、RemoveOnScheduler()を使用する。
   .. code-block:: csharp
 
     // 複数スレッドからコレクション操作できるようにする
-    BindingOperations.EnableCollectionSynchronization(Binding元のコレクション, new object());
+    BindingOperations.EnableCollectionSynchronization(/*Binding元のコレクション*/, new object());
 
 ボタンの連打を抑制
 ==================

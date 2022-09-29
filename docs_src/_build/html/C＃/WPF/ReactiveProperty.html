@@ -188,41 +188,41 @@ Subscribe 等で値の変更を監視しているような場合は Dispose し�
 <section id="id4">
 <h2>プロパティ初期化<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
-<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>this.Value = new ReactivePropertySlim&lt;Assay&gt;(new Value())
-    .AddTo(this._disposables);
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">this</span><span class="p">.</span><span class="n">Value</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ReactivePropertySlim</span><span class="p">&lt;</span><span class="n">Assay</span><span class="p">&gt;(</span><span class="k">new</span> <span class="n">Value</span><span class="p">())</span>
+    <span class="p">.</span><span class="n">AddTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_disposables</span><span class="p">);</span>
 
-// 姓と名の変更を購読して、フルネームにする
-NameRorps = Observable
-    .CombineLatest(NameRp, NameRps, (x, y) =&gt; $&quot;{x}={y}&quot;)
-    .ToReadOnlyReactivePropertySlim();
+<span class="c1">// 姓と名の変更を購読して、フルネームにする</span>
+<span class="n">NameRorps</span> <span class="p">=</span> <span class="n">Observable</span>
+    <span class="p">.</span><span class="n">CombineLatest</span><span class="p">(</span><span class="n">NameRp</span><span class="p">,</span> <span class="n">NameRps</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="cm">/*$*/</span><span class="s">&quot;{x}={y}&quot;</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">ToReadOnlyReactivePropertySlim</span><span class="p">();</span>
 
-// オブジェクトのプロパティ（ReactiveProperty型）からReactivePropertyを生成する方法
-// オブジェクトの参照先が変わる場合は、オブジェクトもReactiveProperty型である必要がある
-this.ProjectStatus = this.Project
-    .ObserveProperty(x =&gt; x.Value.StatusRP.Value)
-    .ToReadOnlyReactivePropertySlim()
-    .AddTo(this._disposables);
+<span class="c1">// オブジェクトのプロパティ（ReactiveProperty型）からReactivePropertyを生成する方法</span>
+<span class="c1">// オブジェクトの参照先が変わる場合は、オブジェクトもReactiveProperty型である必要がある</span>
+<span class="k">this</span><span class="p">.</span><span class="n">ProjectStatus</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">Project</span>
+    <span class="p">.</span><span class="n">ObserveProperty</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Value</span><span class="p">.</span><span class="n">StatusRP</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">ToReadOnlyReactivePropertySlim</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">AddTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_disposables</span><span class="p">);</span>
 
-this.Assay = dataContext.Assay
-    .ToReactivePropertySlimAsSynchronized(x =&gt; x.Value)
-    .AddTo(this._disposables);
+<span class="k">this</span><span class="p">.</span><span class="n">Assay</span> <span class="p">=</span> <span class="n">dataContext</span><span class="p">.</span><span class="n">Assay</span>
+    <span class="p">.</span><span class="n">ToReactivePropertySlimAsSynchronized</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">AddTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_disposables</span><span class="p">);</span>
 
-this.MotFileName = this.MeasurementUnitSelected
-    .ObserveProperty(x =&gt; x.Value.MotFilePath.Value)
-    .Select(x =&gt; Path.GetFileName(x))
-    .ToReadOnlyReactivePropertySlim()
-    .AddTo(this._disposables);
+<span class="k">this</span><span class="p">.</span><span class="n">MotFileName</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">MeasurementUnitSelected</span>
+    <span class="p">.</span><span class="n">ObserveProperty</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Value</span><span class="p">.</span><span class="n">MotFilePath</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">Path</span><span class="p">.</span><span class="n">GetFileName</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="p">.</span><span class="n">ToReadOnlyReactivePropertySlim</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">AddTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_disposables</span><span class="p">);</span>
 
-// Units[i].HasSound.Value の1つ以上がtrueである場合にanySoundsはtrueとなる
-private List&lt;Unit&gt; Units;
-var anySounds = Units
-    // ObserveProperty()はIObservableなオブジェクトを返すメソッド
-    .Select(x =&gt; x.ObserveProperty(x =&gt; x.HasSound.Value))
-    .CombineLatest()    // Units[i].HasSound.Value変更時に、Units[0].HasSound～Units[n],HasSoundのリストを返す？
-    .Select(x =&gt; x.Any(hasSound =&gt; hasSound))
-    .ObserveOnUIDispatcher()    // UIスレッドで処理する。ToReactiveCommand()でボタンの活性化制御する場合に必要？
-    .ToReadOnlyReactivePropertySlim()
-    .AddTo(Disposable);
+<span class="c1">// Units[i].HasSound.Value の1つ以上がtrueである場合にanySoundsはtrueとなる</span>
+<span class="n">List</span><span class="p">&lt;</span><span class="n">Unit</span><span class="p">&gt;</span> <span class="n">Units</span><span class="p">;</span>
+<span class="kt">var</span> <span class="n">anySounds</span> <span class="p">=</span> <span class="n">Units</span>
+    <span class="c1">// ObserveProperty()はIObservableなオブジェクトを返すメソッド</span>
+    <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">ObserveProperty</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">HasSound</span><span class="p">.</span><span class="n">Value</span><span class="p">))</span>
+    <span class="p">.</span><span class="n">CombineLatest</span><span class="p">()</span>    <span class="c1">// Units[i].HasSound.Value変更時に、Units[0].HasSound～Units[n],HasSoundのリストを返す？</span>
+    <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Any</span><span class="p">(</span><span class="n">hasSound</span> <span class="p">=&gt;</span> <span class="n">hasSound</span><span class="p">))</span>
+    <span class="p">.</span><span class="n">ObserveOnUIDispatcher</span><span class="p">()</span>    <span class="c1">// UIスレッドで処理する。ToReactiveCommand()でボタンの活性化制御する場合に必要？</span>
+    <span class="p">.</span><span class="n">ToReadOnlyReactivePropertySlim</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">AddTo</span><span class="p">(</span><span class="n">Disposable</span><span class="p">);</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -235,7 +235,6 @@ var anySounds = Units
     <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="n">_eventAggregator</span><span class="p">.</span><span class="n">GetEvent</span><span class="p">&lt;</span><span class="n">NotifyXXXEvent</span><span class="p">&gt;().</span><span class="n">Publish</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
     <span class="p">});</span>
-
 
 <span class="c1">// コレクション内の特定のプロパティが変化した場合</span>
 <span class="c1">// 監視するプロパティが ReactiveProperty の場合に ObserveElementObservableProperty() が使用可</span>
@@ -350,8 +349,8 @@ var anySounds = Units
 これにより、ReactiveCollectionをBinding設定にしていても、例外が発生しなくなる。
 それでも発生する場合は、Binding先のVMに以下を記述する。</p>
 <blockquote>
-<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>// 複数スレッドからコレクション操作できるようにする
-BindingOperations.EnableCollectionSynchronization(Binding元のコレクション, new object());
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 複数スレッドからコレクション操作できるようにする</span>
+<span class="n">BindingOperations</span><span class="p">.</span><span class="n">EnableCollectionSynchronization</span><span class="p">(</span><span class="cm">/*Binding元のコレクション*/</span><span class="p">,</span> <span class="k">new</span> <span class="kt">object</span><span class="p">());</span>
 </pre></div>
 </div>
 </div></blockquote>
