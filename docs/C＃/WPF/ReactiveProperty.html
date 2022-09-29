@@ -212,6 +212,17 @@ this.MotFileName = this.MeasurementUnitSelected
     .Select(x =&gt; Path.GetFileName(x))
     .ToReadOnlyReactivePropertySlim()
     .AddTo(this._disposables);
+
+// Units[i].HasSound.Value の1つ以上がtrueである場合にanySoundsはtrueとなる
+private List&lt;Unit&gt; Units;
+var anySounds = Units
+    // ObserveProperty()はIObservableなオブジェクトを返すメソッド
+    .Select(x =&gt; x.ObserveProperty(x =&gt; x.HasSound.Value))
+    .CombineLatest()    // Units[i].HasSound.Value変更時に、Units[0].HasSound～Units[n],HasSoundのリストを返す？
+    .Select(x =&gt; x.Any(hasSound =&gt; hasSound))
+    .ObserveOnUIDispatcher()    // UIスレッドで処理する。ToReactiveCommand()でボタンの活性化制御する場合に必要？
+    .ToReadOnlyReactivePropertySlim()
+    .AddTo(Disposable);
 </pre></div>
 </div>
 </div></blockquote>

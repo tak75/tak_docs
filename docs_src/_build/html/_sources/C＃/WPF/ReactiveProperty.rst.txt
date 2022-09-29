@@ -168,6 +168,16 @@ Viewsフォルダにて、追加→新しい項目→Prism→WPF→Prism UserCon
         .ToReadOnlyReactivePropertySlim()
         .AddTo(this._disposables);
 
+    // Units[i].HasSound.Value の1つ以上がtrueである場合にanySoundsはtrueとなる
+    private List<Unit> Units;
+    var anySounds = Units
+        // ObserveProperty()はIObservableなオブジェクトを返すメソッド
+        .Select(x => x.ObserveProperty(x => x.HasSound.Value))
+        .CombineLatest()    // Units[i].HasSound.Value変更時に、Units[0].HasSound～Units[n],HasSoundのリストを返す？
+        .Select(x => x.Any(hasSound => hasSound))
+        .ObserveOnUIDispatcher()    // UIスレッドで処理する。ToReactiveCommand()でボタンの活性化制御する場合に必要？
+        .ToReadOnlyReactivePropertySlim()
+        .AddTo(Disposable);
 
 プロパティ変更時の処理
 ======================
