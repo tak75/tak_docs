@@ -33,6 +33,23 @@ IEnumerable -> List 変換
 
     var list = enumerableCollection.ToList();
 
+遅延実行、即時実行
+==================
+
+  .. code-block:: csharp
+
+    // 遅延実行
+    var values = new List<string>(){"ABC","DEF","GHI"};
+    var res = values.Where(x => x.Contains("A"));
+    values.Add("AAA");
+    Console.WriteLine(string.Join(",", res1));  // ABC,AAA
+
+    // 即時実行
+    var values = new List<string>(){"ABC","DEF","GHI"};
+    var res = values.Where(x => x.Contains("A").ToList());
+    values.Add("AAA");
+    Console.WriteLine(string.Join(",", res1));  // ABC
+
 2次元 -> 1次元 変更
 ===================
 

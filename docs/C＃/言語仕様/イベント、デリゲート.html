@@ -19,7 +19,7 @@
     <script src="../../_static/bizstyle.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
-    <link rel="next" title="Task" href="Task.html" />
+    <link rel="next" title="スレッド" href="%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89.html" />
     <link rel="prev" title="LINQ" href="LINQ.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <!--[if lt IE 9]>
@@ -33,7 +33,7 @@
           <a href="../../genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="Task.html" title="Task"
+          <a href="%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89.html" title="スレッド"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
           <a href="LINQ.html" title="LINQ"
@@ -113,7 +113,15 @@
 </ul>
 </section>
 <section id="id3">
-<h2>デリゲート呼び出し<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>デリゲート<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p>Action : 任意個の引数を取り、かつ、戻り値のないメソッドへのDelegate</p></li>
+<li><p>Func : 任意個の引数を取り、かつ、戻り値のあるメソッドへのDelegate</p></li>
+<li><p>Predicate : 任意個の引数を取り、かつ、戻り値の型がBooleanであるメソッドへのDelegate。つまり、Func&lt;T,bool&gt;などに相当</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>デリゲート呼び出し<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">Func</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">func</span> <span class="p">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="m">1</span><span class="p">;</span>
 <span class="n">func</span> <span class="p">+=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="m">2</span><span class="p">;</span>            <span class="c1">// 複数登録を防ぐことができない</span>
@@ -123,10 +131,19 @@
 </div>
 </div></blockquote>
 </section>
-<section id="id4">
-<h2>ラムダ式<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<blockquote>
-<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span>
+<section id="id5">
+<h2>ラムダ式<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p>&quot;=&gt;&quot;&quot; は&quot;ゴーズ・トゥー&quot;と読む</p></li>
+<li><p>左辺のパラメータの書き方</p>
+<ul class="simple">
+<li><p>0個 : () =&gt; XXX</p></li>
+<li><p>1個 : s =&gt; XXX</p></li>
+<li><p>複数 : (a,b) =&gt; a.XX &amp;&amp; b.xx</p></li>
+</ul>
+</li>
+<li><p>右辺が式のみの場合は return を書かなくてよい</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span>
 <span class="p">{</span>
     <span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">b</span><span class="p">(</span><span class="n">Action</span> <span class="n">sample</span><span class="p">)</span>
     <span class="p">{</span>
@@ -142,10 +159,11 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-</div></blockquote>
+</li>
+</ul>
 </section>
-<section id="id5">
-<h2>子イベントを親に透過<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id6">
+<h2>子イベントを親に透過<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>透過させるのがベストの場合は以下でよいが、新たなイベントを作成して発火させる方法でもよい。</p>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">this</span><span class="p">.</span><span class="n">dataGrid</span><span class="p">.</span><span class="n">AddHandler</span><span class="p">(</span><span class="n">DataGrid</span><span class="p">.</span><span class="n">MouseUpEvent</span><span class="p">,</span> <span class="k">new</span> <span class="n">MouseButtonEventHandler</span><span class="p">((</span><span class="n">sender</span><span class="p">,</span><span class="n">e</span><span class="p">)=&gt;</span> <span class="p">{</span><span class="cm">/* ～～; */</span><span class="p">}),</span> <span class="k">true</span><span class="p">);</span>
@@ -190,9 +208,10 @@
   <ul>
 <li><a class="reference internal" href="#">イベント、デリゲート</a><ul>
 <li><a class="reference internal" href="#id2">イベント</a></li>
-<li><a class="reference internal" href="#id3">デリゲート呼び出し</a></li>
-<li><a class="reference internal" href="#id4">ラムダ式</a></li>
-<li><a class="reference internal" href="#id5">子イベントを親に透過</a></li>
+<li><a class="reference internal" href="#id3">デリゲート</a></li>
+<li><a class="reference internal" href="#id4">デリゲート呼び出し</a></li>
+<li><a class="reference internal" href="#id5">ラムダ式</a></li>
+<li><a class="reference internal" href="#id6">子イベントを親に透過</a></li>
 </ul>
 </li>
 </ul>
@@ -201,8 +220,8 @@
   <p class="topless"><a href="LINQ.html"
                         title="前の章へ">LINQ</a></p>
   <h4>次のトピックへ</h4>
-  <p class="topless"><a href="Task.html"
-                        title="次の章へ">Task</a></p>
+  <p class="topless"><a href="%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89.html"
+                        title="次の章へ">スレッド</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">クイック検索</h3>
     <div class="searchformwrapper">
@@ -224,7 +243,7 @@
           <a href="../../genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="Task.html" title="Task"
+          <a href="%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89.html" title="スレッド"
              >次へ</a> |</li>
         <li class="right" >
           <a href="LINQ.html" title="LINQ"

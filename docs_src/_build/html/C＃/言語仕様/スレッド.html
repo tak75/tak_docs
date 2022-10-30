@@ -1,0 +1,364 @@
+
+
+<!doctype html>
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>スレッド &#8212; Tak Documents  ドキュメント</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bizstyle.css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <script src="../../_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="next" title="例外" href="%E4%BE%8B%E5%A4%96.html" />
+    <link rel="prev" title="イベント、デリゲート" href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="%E4%BE%8B%E5%A4%96.html" title="例外"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html" title="イベント、デリゲート"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >C＃</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">言語仕様</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">スレッド</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="id1">
+<h1>スレッド<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<section id="id2">
+<h2>スレッドの歴史<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p>スレッドの元祖     : Thread</p></li>
+<li><p>.Net 3.5までの主流 : ThreadPool</p></li>
+<li><p>.Net 4  以降の主流 : Task</p></li>
+<li><p>.Net 4.5以降の主流 : async/await</p></li>
+</ul>
+<section id="thread">
+<h3>Threadの例<a class="headerlink" href="#thread" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="k">void</span> <span class="nf">button1_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">t</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">GetData</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">Start</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="k">void</span> <span class="nf">GetData</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">DTO</span><span class="p">&gt;();</span>
+    <span class="c1">// 何かしらコード</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="n">Invoke</span><span class="p">((</span><span class="n">Action</span><span class="p">)</span><span class="k">delegate</span> <span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// UIスレッドで実施する内容を書く</span>
+        <span class="n">dataGridView1</span><span class="p">.</span><span class="n">DataSource</span> <span class="p">=</span> <span class="n">result</span><span class="p">;</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="threadpool">
+<h3>ThreadPoolの例<a class="headerlink" href="#threadpool" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="k">void</span> <span class="nf">button1_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">ThreadPool</span><span class="p">.</span><span class="n">QueueUserWorkItem</span><span class="p">(</span><span class="n">GetData</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="k">void</span> <span class="nf">GetData</span><span class="p">(</span><span class="kt">object</span> <span class="n">o</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">DTO</span><span class="p">&gt;();</span>
+    <span class="c1">// 何かしらコード</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="n">Invoke</span><span class="p">((</span><span class="n">Action</span><span class="p">)</span><span class="k">delegate</span> <span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// UIスレッドで実施する内容を書く</span>
+        <span class="n">dataGridView1</span><span class="p">.</span><span class="n">DataSource</span> <span class="p">=</span> <span class="n">result</span><span class="p">;</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="task">
+<h3>Taskの例<a class="headerlink" href="#task" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="k">void</span> <span class="nf">button1_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">context</span> <span class="p">=</span> <span class="n">TaskScheduler</span><span class="p">.</span><span class="n">FromCurrentSynchronizationContext</span><span class="p">();</span>
+    <span class="n">Task</span><span class="p">.</span><span class="n">Run</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">GetData</span><span class="p">())</span>
+    <span class="p">.</span><span class="n">ContinueWith</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="c1">// UIスレッドで実施する内容を書く</span>
+        <span class="n">dataGridView1</span><span class="p">.</span><span class="n">DataSource</span> <span class="p">=</span> <span class="n">x</span><span class="p">.</span><span class="n">Result</span><span class="p">;</span>
+    <span class="p">},</span> <span class="n">context</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">DTO</span><span class="p">&gt;</span> <span class="n">GetData</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">DTO</span><span class="p">&gt;();</span>
+    <span class="c1">// 何かしらコード</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="async-await">
+<h3>async/awaitの例<a class="headerlink" href="#async-await" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="k">async</span> <span class="k">void</span> <span class="nf">button1_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">dataGridView1</span><span class="p">.</span><span class="n">DataSource</span> <span class="p">=</span> <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">Run</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">GetData</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">DTO</span><span class="p">&gt;</span> <span class="n">GetData</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">DTO</span><span class="p">&gt;();</span>
+    <span class="c1">// 何かしらコード</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id3">
+<h3>キャンセルの例<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">CancellationTokenSource</span> <span class="n">_token</span><span class="p">;</span>
+<span class="k">private</span> <span class="k">async</span> <span class="k">void</span> <span class="nf">button1_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">try</span>
+    <span class="p">{</span>
+        <span class="n">_token</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">CancellationTokenSource</span><span class="p">();</span>
+        <span class="c1">// 【重要】Task.Runの第2引数にキャンセルトークンを投げておくと、</span>
+        <span class="c1">// 既にキャンセルされている場合にタスクが動かずすぐに止まる</span>
+        <span class="c1">// （OperationCanceledExceptionの例外が発生）</span>
+        <span class="n">dataGridView1</span><span class="p">.</span><span class="n">DataSource</span> <span class="p">=</span> <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">Run</span><span class="p">(</span>
+            <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">GetData</span><span class="p">(</span><span class="n">_token</span><span class="p">.</span><span class="n">Token</span><span class="p">),</span> <span class="n">_token</span><span class="p">.</span><span class="n">Token</span><span class="p">);</span>
+        <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">&quot;完了&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">catch</span><span class="p">(</span><span class="n">OperationCanceledException</span> <span class="n">o</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">&quot;キャンセルされました&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">finally</span>
+    <span class="p">{</span>
+        <span class="n">_token</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+        <span class="n">_token</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="k">void</span> <span class="nf">CancvelButton_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">_token</span><span class="p">?.</span><span class="n">Cancel</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">DTO</span><span class="p">&gt;</span> <span class="n">GetData</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">CancellationToken</span> <span class="n">token</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">DTO</span><span class="p">&gt;();</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">=</span><span class="m">0</span><span class="p">;</span> <span class="n">i</span><span class="p">&lt;</span><span class="m">5</span><span class="p">;</span> <span class="n">i</span><span class="p">++&gt;)</span>
+    <span class="p">{</span>
+        <span class="n">token</span><span class="p">.</span><span class="n">ThrowIfCancellationRequested</span><span class="p">();</span>
+        <span class="c1">// 何かしらコード</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<section id="id4">
+<h2>戻り値のあるTaskの例<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">taskList</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Task</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;&gt;();</span>
+<span class="c1">// 追加されたデバイスに接続する（COM番号を書込む）</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">device</span> <span class="k">in</span> <span class="n">deviceList</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Task</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="n">task</span> <span class="p">=</span> <span class="n">Task</span><span class="p">.</span><span class="n">Run</span><span class="p">(()</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(!</span><span class="n">device</span><span class="p">.</span><span class="n">Connect</span><span class="p">(</span><span class="n">deviceInfo</span><span class="p">.</span><span class="n">ComNum</span><span class="p">))</span> <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">device</span><span class="p">.</span><span class="n">SendRequest_IDParamRead</span><span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">!=</span> <span class="n">ResponseResults</span><span class="p">.</span><span class="n">OK</span><span class="p">)</span> <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">});</span>
+    <span class="n">taskList</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">task</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">WhenAll</span><span class="p">(</span><span class="n">taskList</span><span class="p">);</span>
+
+<span class="k">if</span><span class="p">(</span><span class="n">taskList</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Result</span> <span class="p">==</span> <span class="k">false</span><span class="p">).</span><span class="n">Count</span><span class="p">()</span> <span class="p">!=</span> <span class="m">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="task2">
+<h2>戻り値のあるTaskの例2（複数のタスク結果に各々名前をつける）<a class="headerlink" href="#task2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">taskList</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Task</span><span class="p">&lt;(</span><span class="kt">int</span> <span class="n">comNum</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">result</span><span class="p">,</span> <span class="n">IDParam</span> <span class="n">idParam</span><span class="p">)&gt;&gt;();</span>
+<span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">comNum</span> <span class="k">in</span> <span class="n">comNumList</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Task</span><span class="p">&lt;(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">bool</span><span class="p">,</span> <span class="n">IDParam</span><span class="p">)&gt;</span> <span class="n">task</span> <span class="p">=</span> <span class="n">Task</span><span class="p">.</span><span class="n">Run</span><span class="p">(()</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">deviceCom</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DeviceCommunication</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>     <span class="c1">// デバイスIDは仮IDでOK</span>
+        <span class="k">if</span> <span class="p">(!</span><span class="n">deviceCom</span><span class="p">.</span><span class="n">Connect</span><span class="p">(</span><span class="n">comNum</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="k">false</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">comNum</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="kt">var</span> <span class="n">res</span> <span class="p">=</span> <span class="n">deviceCom</span><span class="p">.</span><span class="n">SendRequest_IDParamRead</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+        <span class="n">deviceCom</span><span class="p">.</span><span class="n">Disconnect</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+
+        <span class="c1">// 通信NGの場合</span>
+        <span class="k">if</span> <span class="p">((</span><span class="n">res</span> <span class="p">==</span> <span class="n">ResponseResults</span><span class="p">.</span><span class="n">Disconnected</span><span class="p">)</span>
+            <span class="p">||</span> <span class="p">(</span><span class="n">res</span> <span class="p">==</span> <span class="n">ResponseResults</span><span class="p">.</span><span class="n">ResponseTimeout</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">comNum</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">comNum</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="n">deviceCom</span><span class="p">.</span><span class="n">IDParam</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="n">taskList</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">task</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">WhenAll</span><span class="p">(</span><span class="n">taskList</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="task-run">
+<h2>Task.Run()について<a class="headerlink" href="#task-run" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p>Task.Run()では、スレッドプールを使用する。</p></li>
+<li><p>スレッドプールはバックグラウンドスレッドである。</p></li>
+<li><p>よって、スレッドを保有するオブジェクトがGCに回収された時点で自動的にスレッドは停止する（大元のアプリ終了時には、Task.Run()で開始したスレッドも自動的に終了する）</p></li>
+</ul>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../index.html">目次</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Matplotlib/index.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Jupyter/index.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Web%E3%82%A2%E3%83%97%E3%83%AA/index.html">Webアプリ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">C＃</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">言語仕様</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WPF/index.html">WPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../VisualStudio.html">VisualStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E8%87%AA%E5%8B%95%E4%BD%9C%E6%88%90.html">ドキュメント自動作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html">テスト駆動開発</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90/index.html">データ分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E5%82%99%E5%BF%98%E9%8C%B2/index.html">備忘録</a></li>
+</ul>
+
+  <h3><a href="../../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">スレッド</a><ul>
+<li><a class="reference internal" href="#id2">スレッドの歴史</a><ul>
+<li><a class="reference internal" href="#thread">Threadの例</a></li>
+<li><a class="reference internal" href="#threadpool">ThreadPoolの例</a></li>
+<li><a class="reference internal" href="#task">Taskの例</a></li>
+<li><a class="reference internal" href="#async-await">async/awaitの例</a></li>
+<li><a class="reference internal" href="#id3">キャンセルの例</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">戻り値のあるTaskの例</a></li>
+<li><a class="reference internal" href="#task2">戻り値のあるTaskの例2（複数のタスク結果に各々名前をつける）</a></li>
+<li><a class="reference internal" href="#task-run">Task.Run()について</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html"
+                        title="前の章へ">イベント、デリゲート</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="%E4%BE%8B%E5%A4%96.html"
+                        title="次の章へ">例外</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="%E4%BE%8B%E5%A4%96.html" title="例外"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html" title="イベント、デリゲート"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >C＃</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >言語仕様</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">スレッド</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, tak.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
+    </div>
+  </body>
+</html>

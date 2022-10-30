@@ -20,7 +20,7 @@
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
     <link rel="next" title="イベント、デリゲート" href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html" />
-    <link rel="prev" title="文字列" href="%E6%96%87%E5%AD%97%E5%88%97.html" />
+    <link rel="prev" title="ファイル／ディレクトリ" href="%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%EF%BC%8F%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <!--[if lt IE 9]>
     <script src="_static/css3-mediaqueries.js"></script>
@@ -36,7 +36,7 @@
           <a href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html" title="イベント、デリゲート"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
-          <a href="%E6%96%87%E5%AD%97%E5%88%97.html" title="文字列"
+          <a href="%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%EF%BC%8F%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA.html" title="ファイル／ディレクトリ"
              accesskey="P">前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >C＃</a> &#187;</li>
@@ -82,7 +82,25 @@ C#4.0では、Parallel LINQ が導入され、マルチコアでの並列分散�
 </div></blockquote>
 </section>
 <section id="id3">
-<h2>2次元 -&gt; 1次元 変更<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>遅延実行、即時実行<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 遅延実行</span>
+<span class="kt">var</span> <span class="n">values</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(){</span><span class="s">&quot;ABC&quot;</span><span class="p">,</span><span class="s">&quot;DEF&quot;</span><span class="p">,</span><span class="s">&quot;GHI&quot;</span><span class="p">};</span>
+<span class="kt">var</span> <span class="n">res</span> <span class="p">=</span> <span class="n">values</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">));</span>
+<span class="n">values</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;AAA&quot;</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Join</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="n">res1</span><span class="p">));</span>  <span class="c1">// ABC,AAA</span>
+
+<span class="c1">// 即時実行</span>
+<span class="kt">var</span> <span class="n">values</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(){</span><span class="s">&quot;ABC&quot;</span><span class="p">,</span><span class="s">&quot;DEF&quot;</span><span class="p">,</span><span class="s">&quot;GHI&quot;</span><span class="p">};</span>
+<span class="kt">var</span> <span class="n">res</span> <span class="p">=</span> <span class="n">values</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">).</span><span class="n">ToList</span><span class="p">());</span>
+<span class="n">values</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;AAA&quot;</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Join</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="n">res1</span><span class="p">));</span>  <span class="c1">// ABC</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id4">
+<h2>2次元 -&gt; 1次元 変更<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">list1dm</span> <span class="p">=</span> <span class="n">list2dm</span>
   <span class="p">.</span><span class="n">SelectMany</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">)</span>
@@ -92,8 +110,8 @@ C#4.0では、Parallel LINQ が導入され、マルチコアでの並列分散�
 </div>
 </div></blockquote>
 </section>
-<section id="id4">
-<h2>辞書型<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id5">
+<h2>辞書型<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>辞書型コレクションの値を重複なく取り出し昇順に並び替えリスト化</p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">groupList</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">SampleDict</span>
@@ -111,8 +129,8 @@ C#4.0では、Parallel LINQ が導入され、マルチコアでの並列分散�
 </li>
 </ul>
 </section>
-<section id="id5">
-<h2>インデックスリストの取得<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id6">
+<h2>インデックスリストの取得<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// グループチェックされているインデックスリスト</span>
 <span class="kt">var</span> <span class="n">indexes</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">GroupIsCheckedCollection</span>
@@ -124,8 +142,8 @@ C#4.0では、Parallel LINQ が導入され、マルチコアでの並列分散�
 </div>
 </div></blockquote>
 </section>
-<section id="id6">
-<h2>その他参考例<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id7">
+<h2>その他参考例<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// COMリストの数だけ、接続確認等の処理に使用するデバイスリストを作成する</span>
 <span class="c1">// tempDeviceは、タプル内要素に付けた名前</span>
@@ -182,17 +200,18 @@ C#4.0では、Parallel LINQ が導入され、マルチコアでの並列分散�
 <li><a class="reference internal" href="#id1">引用元</a></li>
 <li><a class="reference internal" href="#id2">用語</a></li>
 <li><a class="reference internal" href="#ienumerable-list">IEnumerable -&gt; List 変換</a></li>
-<li><a class="reference internal" href="#id3">2次元 -&gt; 1次元 変更</a></li>
-<li><a class="reference internal" href="#id4">辞書型</a></li>
-<li><a class="reference internal" href="#id5">インデックスリストの取得</a></li>
-<li><a class="reference internal" href="#id6">その他参考例</a></li>
+<li><a class="reference internal" href="#id3">遅延実行、即時実行</a></li>
+<li><a class="reference internal" href="#id4">2次元 -&gt; 1次元 変更</a></li>
+<li><a class="reference internal" href="#id5">辞書型</a></li>
+<li><a class="reference internal" href="#id6">インデックスリストの取得</a></li>
+<li><a class="reference internal" href="#id7">その他参考例</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>前のトピックへ</h4>
-  <p class="topless"><a href="%E6%96%87%E5%AD%97%E5%88%97.html"
-                        title="前の章へ">文字列</a></p>
+  <p class="topless"><a href="%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%EF%BC%8F%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA.html"
+                        title="前の章へ">ファイル／ディレクトリ</a></p>
   <h4>次のトピックへ</h4>
   <p class="topless"><a href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html"
                         title="次の章へ">イベント、デリゲート</a></p>
@@ -220,7 +239,7 @@ C#4.0では、Parallel LINQ が導入され、マルチコアでの並列分散�
           <a href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html" title="イベント、デリゲート"
              >次へ</a> |</li>
         <li class="right" >
-          <a href="%E6%96%87%E5%AD%97%E5%88%97.html" title="文字列"
+          <a href="%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%EF%BC%8F%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA.html" title="ファイル／ディレクトリ"
              >前へ</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >C＃</a> &#187;</li>

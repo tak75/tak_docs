@@ -1,0 +1,216 @@
+========
+スレッド
+========
+
+スレッドの歴史
+==============
+
+* スレッドの元祖     : Thread
+* .Net 3.5までの主流 : ThreadPool
+* .Net 4  以降の主流 : Task
+* .Net 4.5以降の主流 : async/await
+
+----------
+Threadの例
+----------
+
+  .. code-block:: csharp
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+        var t = new System.Threading.Thread(GetData);
+        t.Start();
+    }
+
+    private void GetData()
+    {
+        var result = new List<DTO>();
+        // 何かしらコード
+        
+        this.Invoke((Action)delegate ()
+        {
+            // UIスレッドで実施する内容を書く
+            dataGridView1.DataSource = result;
+        });
+    }
+
+--------------
+ThreadPoolの例
+--------------
+
+  .. code-block:: csharp
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+        System.Threading.ThreadPool.QueueUserWorkItem(GetData);
+    }
+
+    private void GetData(object o)
+    {
+        var result = new List<DTO>();
+        // 何かしらコード
+        
+        this.Invoke((Action)delegate ()
+        {
+            // UIスレッドで実施する内容を書く
+            dataGridView1.DataSource = result;
+        });
+    }
+
+--------
+Taskの例
+--------
+
+  .. code-block:: csharp
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+        var context = TaskScheduler.FromCurrentSynchronizationContext();
+        Task.Run(() => GetData())
+        .ContinueWith(x => 
+        {
+            // UIスレッドで実施する内容を書く
+            dataGridView1.DataSource = x.Result;
+        }, context);
+    }
+
+    private List<DTO> GetData()
+    {
+        var result = new List<DTO>();
+        // 何かしらコード
+        return result;
+    }
+
+---------------
+async/awaitの例
+---------------
+
+  .. code-block:: csharp
+
+    private async void button1_Click(object sender, EventArgs e)
+    {
+        dataGridView1.DataSource = await Task.Run(() => GetData());
+    }
+
+    private List<DTO> GetData()
+    {
+        var result = new List<DTO>();
+        // 何かしらコード
+        return result;
+    }
+
+--------------
+キャンセルの例
+--------------
+
+  .. code-block:: csharp
+
+    System.Threading.CancellationTokenSource _token;
+    private async void button1_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            _token = new System.Threading.CancellationTokenSource(); 
+            // 【重要】Task.Runの第2引数にキャンセルトークンを投げておくと、
+            // 既にキャンセルされている場合にタスクが動かずすぐに止まる
+            // （OperationCanceledExceptionの例外が発生）
+            dataGridView1.DataSource = await Task.Run(
+                () => GetData(_token.Token), _token.Token);
+            MessageBox.Show("完了");
+        }
+        catch(OperationCanceledException o)
+        {
+            MessageBox.Show("キャンセルされました");
+        }
+        finally
+        {
+            _token.Dispose();
+            _token = null;
+        }
+    }
+
+    private void CancvelButton_Click(object sender, EventArgs e)
+    {
+        _token?.Cancel();
+    }
+
+    private List<DTO> GetData(System.Threading.CancellationToken token)
+    {
+        var result = new List<DTO>();
+        for(int i=0; i<5; i++>)
+        {
+            token.ThrowIfCancellationRequested();
+            // 何かしらコード
+        }
+        return result;
+    }
+  
+
+戻り値のあるTaskの例
+====================
+
+  .. code-block:: csharp
+
+    var taskList = new List<Task<bool>>();
+    // 追加されたデバイスに接続する（COM番号を書込む）
+    foreach (var device in deviceList)
+    {
+        Task<bool> task = Task.Run(() =>
+        {
+            if(!device.Connect(deviceInfo.ComNum)) return false;
+            if(device.SendRequest_IDParamRead(true) != ResponseResults.OK) return false;
+            return true;
+        });
+        taskList.Add(task);
+    }
+    await Task.WhenAll(taskList);
+
+    if(taskList.Where(x => x.Result == false).Count() != 0)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+
+戻り値のあるTaskの例2（複数のタスク結果に各々名前をつける）
+===========================================================
+
+  .. code-block:: csharp
+
+    var taskList = new List<Task<(int comNum, bool result, IDParam idParam)>>();
+    foreach(var comNum in comNumList)
+    {
+        Task<(int, bool, IDParam)> task = Task.Run(() =>
+        {
+            var deviceCom = new DeviceCommunication(1);     // デバイスIDは仮IDでOK
+            if (!deviceCom.Connect(comNum, true, false))
+            {
+                return (comNum, false, null);
+            }
+            var res = deviceCom.SendRequest_IDParamRead(true);
+            deviceCom.Disconnect(false);
+
+            // 通信NGの場合
+            if ((res == ResponseResults.Disconnected)
+                || (res == ResponseResults.ResponseTimeout))
+            {
+                return (comNum, false, null);
+            }
+            else
+            {
+                return (comNum, true, deviceCom.IDParam);
+            }
+        });
+        taskList.Add(task);
+    }
+    await Task.WhenAll(taskList);
+
+Task.Run()について
+==================
+
+* Task.Run()では、スレッドプールを使用する。
+* スレッドプールはバックグラウンドスレッドである。
+* よって、スレッドを保有するオブジェクトがGCに回収された時点で自動的にスレッドは停止する（大元のアプリ終了時には、Task.Run()で開始したスレッドも自動的に終了する）
+

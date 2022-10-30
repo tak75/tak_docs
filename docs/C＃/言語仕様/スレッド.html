@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
-    <title>Task &#8212; Tak Documents  ドキュメント</title>
+    <title>スレッド &#8212; Tak Documents  ドキュメント</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/bizstyle.css" />
     
@@ -41,7 +41,7 @@
         <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >C＃</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">言語仕様</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Task</a></li> 
+        <li class="nav-item nav-item-this"><a href="">スレッド</a></li> 
       </ul>
     </div>  
 
@@ -50,10 +50,154 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="task">
-<h1>Task<a class="headerlink" href="#task" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<section id="id1">
-<h2>戻り値のあるTaskの例<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+  <section id="id1">
+<h1>スレッド<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<section id="id2">
+<h2>スレッドの歴史<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p>スレッドの元祖     : Thread</p></li>
+<li><p>.Net 3.5までの主流 : ThreadPool</p></li>
+<li><p>.Net 4  以降の主流 : Task</p></li>
+<li><p>.Net 4.5以降の主流 : async/await</p></li>
+</ul>
+<section id="thread">
+<h3>Threadの例<a class="headerlink" href="#thread" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="k">void</span> <span class="nf">button1_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">t</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">GetData</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">Start</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="k">void</span> <span class="nf">GetData</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">DTO</span><span class="p">&gt;();</span>
+    <span class="c1">// 何かしらコード</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="n">Invoke</span><span class="p">((</span><span class="n">Action</span><span class="p">)</span><span class="k">delegate</span> <span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// UIスレッドで実施する内容を書く</span>
+        <span class="n">dataGridView1</span><span class="p">.</span><span class="n">DataSource</span> <span class="p">=</span> <span class="n">result</span><span class="p">;</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="threadpool">
+<h3>ThreadPoolの例<a class="headerlink" href="#threadpool" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="k">void</span> <span class="nf">button1_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">ThreadPool</span><span class="p">.</span><span class="n">QueueUserWorkItem</span><span class="p">(</span><span class="n">GetData</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="k">void</span> <span class="nf">GetData</span><span class="p">(</span><span class="kt">object</span> <span class="n">o</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">DTO</span><span class="p">&gt;();</span>
+    <span class="c1">// 何かしらコード</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="n">Invoke</span><span class="p">((</span><span class="n">Action</span><span class="p">)</span><span class="k">delegate</span> <span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// UIスレッドで実施する内容を書く</span>
+        <span class="n">dataGridView1</span><span class="p">.</span><span class="n">DataSource</span> <span class="p">=</span> <span class="n">result</span><span class="p">;</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="task">
+<h3>Taskの例<a class="headerlink" href="#task" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="k">void</span> <span class="nf">button1_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">context</span> <span class="p">=</span> <span class="n">TaskScheduler</span><span class="p">.</span><span class="n">FromCurrentSynchronizationContext</span><span class="p">();</span>
+    <span class="n">Task</span><span class="p">.</span><span class="n">Run</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">GetData</span><span class="p">())</span>
+    <span class="p">.</span><span class="n">ContinueWith</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="c1">// UIスレッドで実施する内容を書く</span>
+        <span class="n">dataGridView1</span><span class="p">.</span><span class="n">DataSource</span> <span class="p">=</span> <span class="n">x</span><span class="p">.</span><span class="n">Result</span><span class="p">;</span>
+    <span class="p">},</span> <span class="n">context</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">DTO</span><span class="p">&gt;</span> <span class="n">GetData</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">DTO</span><span class="p">&gt;();</span>
+    <span class="c1">// 何かしらコード</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="async-await">
+<h3>async/awaitの例<a class="headerlink" href="#async-await" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="k">async</span> <span class="k">void</span> <span class="nf">button1_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">dataGridView1</span><span class="p">.</span><span class="n">DataSource</span> <span class="p">=</span> <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">Run</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">GetData</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">DTO</span><span class="p">&gt;</span> <span class="n">GetData</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">DTO</span><span class="p">&gt;();</span>
+    <span class="c1">// 何かしらコード</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id3">
+<h3>キャンセルの例<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">CancellationTokenSource</span> <span class="n">_token</span><span class="p">;</span>
+<span class="k">private</span> <span class="k">async</span> <span class="k">void</span> <span class="nf">button1_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">try</span>
+    <span class="p">{</span>
+        <span class="n">_token</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">CancellationTokenSource</span><span class="p">();</span>
+        <span class="c1">// 【重要】Task.Runの第2引数にキャンセルトークンを投げておくと、</span>
+        <span class="c1">// 既にキャンセルされている場合にタスクが動かずすぐに止まる</span>
+        <span class="c1">// （OperationCanceledExceptionの例外が発生）</span>
+        <span class="n">dataGridView1</span><span class="p">.</span><span class="n">DataSource</span> <span class="p">=</span> <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">Run</span><span class="p">(</span>
+            <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">GetData</span><span class="p">(</span><span class="n">_token</span><span class="p">.</span><span class="n">Token</span><span class="p">),</span> <span class="n">_token</span><span class="p">.</span><span class="n">Token</span><span class="p">);</span>
+        <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">&quot;完了&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">catch</span><span class="p">(</span><span class="n">OperationCanceledException</span> <span class="n">o</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">&quot;キャンセルされました&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">finally</span>
+    <span class="p">{</span>
+        <span class="n">_token</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+        <span class="n">_token</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="k">void</span> <span class="nf">CancvelButton_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">_token</span><span class="p">?.</span><span class="n">Cancel</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">DTO</span><span class="p">&gt;</span> <span class="n">GetData</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">CancellationToken</span> <span class="n">token</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">DTO</span><span class="p">&gt;();</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">=</span><span class="m">0</span><span class="p">;</span> <span class="n">i</span><span class="p">&lt;</span><span class="m">5</span><span class="p">;</span> <span class="n">i</span><span class="p">++&gt;)</span>
+    <span class="p">{</span>
+        <span class="n">token</span><span class="p">.</span><span class="n">ThrowIfCancellationRequested</span><span class="p">();</span>
+        <span class="c1">// 何かしらコード</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<section id="id4">
+<h2>戻り値のあるTaskの例<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">taskList</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Task</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;&gt;();</span>
 <span class="c1">// 追加されたデバイスに接続する（COM番号を書込む）</span>
@@ -158,8 +302,16 @@
 
   <h3><a href="../../index.html">目次</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Task</a><ul>
-<li><a class="reference internal" href="#id1">戻り値のあるTaskの例</a></li>
+<li><a class="reference internal" href="#">スレッド</a><ul>
+<li><a class="reference internal" href="#id2">スレッドの歴史</a><ul>
+<li><a class="reference internal" href="#thread">Threadの例</a></li>
+<li><a class="reference internal" href="#threadpool">ThreadPoolの例</a></li>
+<li><a class="reference internal" href="#task">Taskの例</a></li>
+<li><a class="reference internal" href="#async-await">async/awaitの例</a></li>
+<li><a class="reference internal" href="#id3">キャンセルの例</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">戻り値のあるTaskの例</a></li>
 <li><a class="reference internal" href="#task2">戻り値のあるTaskの例2（複数のタスク結果に各々名前をつける）</a></li>
 <li><a class="reference internal" href="#task-run">Task.Run()について</a></li>
 </ul>
@@ -201,7 +353,7 @@
         <li class="nav-item nav-item-0"><a href="../../index.html">Tak Documents  ドキュメント</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >C＃</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="index.html" >言語仕様</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Task</a></li> 
+        <li class="nav-item nav-item-this"><a href="">スレッド</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

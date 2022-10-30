@@ -1,0 +1,50 @@
+======
+文字列
+======
+
+フォーマット文字列
+==================
+
+https://dobon.net/vb/dotnet/string/inttostring.html
+
+* D: 10進数（整数型のみ）
+
+  .. code-block:: csharp
+
+    (12345).ToString("D") = "12345"
+    (12345).ToString("D8") = "00012345"
+    (-12345).ToString("D6") = "-012345"
+    (12345).ToString("D4") = "12345"
+
+* F: 固定小数点
+
+  .. code-block:: csharp
+
+    (123.456).ToString("F") = "123.46"
+    (1).ToString("F") = "1.00"
+    (-123.456789).ToString("F4") = "-123.4568"
+    (0.1).ToString("F6") = "0.100000"
+
+* N: 桁区切り記号つき
+
+  .. code-block:: csharp
+
+    (1234.56789).ToString("N") = "1,234.57"
+    (10000).ToString("N") = "10,000.00"
+    (-1234.56789).ToString("n4") = "-1,234.5679"
+
+* X: 16進数
+
+  .. code-block:: csharp
+
+    (10).ToString("X") = "A"
+    (-1).ToString("x") = "ffffffff"
+    (10).ToString("X4") = "000A"
+
+* C: 通貨
+
+  .. code-block:: csharp
+
+    (10000).ToString("C") = "\10,000"
+    (-100.5).ToString("C") = "-\101"
+    (12345.5555).ToString("C2") = "\12,345.56"
