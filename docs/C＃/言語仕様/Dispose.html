@@ -53,32 +53,41 @@
   <section id="dispose">
 <h1>Dispose<a class="headerlink" href="#dispose" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <section id="id1">
-<h2>デストラクタ、Dispose<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>Dispose<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
 <li><p>Disposeにはマネージ/アンマネージのリソースの後処理を書く</p></li>
-<li><p>アンマネージのリソースがある場合はデストラクタでDispose()をコール（外部からDispose()がコールされなかった場合の対応）</p></li>
-<li><p>デストラクタはGC回収時にコールされる（タイミングはGC任せ）</p></li>
-<li><p>Disposeは外部からコールするので、タイミングを決められる</p></li>
+<li><p>Disposeコール時にデストラクタがコールされるわけではない</p></li>
+<li><p>Disposeコール時は、そのオブジェクトへの参照が切られるだけである</p></li>
+<li><p>デストラクタがコールされるタイミングはGC任せであり、メモリが解放されるのはそのタイミングとなる</p></li>
 <li><p>マネージのリソースのみの場合は、Disposeもデストラクタも不要？（少なくとも、Task.Run()で走らせたスレッドはバックグラウンドスレッドなので、スレッドを保有するオブジェクトがGCに回収された時点で自動的にスレッドは停止する）</p></li>
 </ul>
 </section>
 <section id="id2">
-<h2>メモリリークチェックの方法<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>// コンストラクタとデストラクタでDebug.WriteLineしておき、デバッガ上でコールされているか確認する
-#if MEMORY_LEAK_CHECK
-    // コンストラクタ
-    static int count = 0;
-    XXXXX ()
-    {
-        System.Diagnostics.Debug.WriteLine($&quot;XXXXX Allocate {++count}&quot;);
-    }
-#endif
-#if MEMORY_LEAK_CHECK
-    // デストラクタ
-    ~ XXXXX ()
-    {
-        System.Diagnostics.Debug.WriteLine($&quot;XXXXX Free {--count}&quot;);
-    }
+<h2>デストラクタ<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p>通常は使用しない</p></li>
+<li><p>アンマネージのリソースがある場合はデストラクタでDispose()をコールしておく（外部からDispose()がコールされなかった場合の保険）</p></li>
+<li><p>ただし、デストラクタはGC回収時にコールされるため、それまではオブジェクトへの参照も維持され、メモリも解放されない</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>メモリリークチェックの方法<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>コンストラクタとデストラクタでDebug.WriteLineしておき、デバッガ上でコールされているか確認する</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="cp">#if MEMORY_LEAK_CHECK</span>
+    <span class="c1">// コンストラクタ</span>
+    <span class="k">static</span> <span class="kt">int</span> <span class="n">count</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+    <span class="n">XXXXX</span> <span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="n">Diagnostics</span><span class="p">.</span><span class="n">Debug</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;XXXXX Allocate {++count}&quot;</span><span class="p">);</span> <span class="c1">// $必要</span>
+    <span class="p">}</span>
+<span class="cp">#endif</span>
+<span class="cp">#if MEMORY_LEAK_CHECK</span>
+    <span class="c1">// デストラクタ</span>
+    <span class="p">~</span> <span class="n">XXXXX</span> <span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="n">Diagnostics</span><span class="p">.</span><span class="n">Debug</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;XXXXX Free {--count}&quot;</span><span class="p">);</span> <span class="c1">// $必要</span>
+    <span class="p">}</span>
+<span class="cp">#endif</span>
 </pre></div>
 </div>
 </section>
@@ -118,8 +127,9 @@
   <h3><a href="../../index.html">目次</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Dispose</a><ul>
-<li><a class="reference internal" href="#id1">デストラクタ、Dispose</a></li>
-<li><a class="reference internal" href="#id2">メモリリークチェックの方法</a></li>
+<li><a class="reference internal" href="#id1">Dispose</a></li>
+<li><a class="reference internal" href="#id2">デストラクタ</a></li>
+<li><a class="reference internal" href="#id3">メモリリークチェックの方法</a></li>
 </ul>
 </li>
 </ul>

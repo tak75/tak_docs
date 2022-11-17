@@ -1,0 +1,15 @@
+====
+全般
+====
+
+変換
+====
+
+byte列->float型
+---------------
+
+.. code-block:: c
+
+  uint8_t byte_array[4];
+  float fval = *((float*)(byte_array));
+

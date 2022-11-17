@@ -14,6 +14,7 @@ tak documents
    Jupyter/index
    raspberry_pi/index
    Webアプリ/index
+   C/index
    C＃/index
    デザインパターン/index
    データ分析/index
