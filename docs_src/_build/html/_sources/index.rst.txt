@@ -16,6 +16,7 @@ tak documents
    Webアプリ/index
    C/index
    C＃/index
+   UML/index
    デザインパターン/index
    データ分析/index
    備忘録/index
