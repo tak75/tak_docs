@@ -53,7 +53,14 @@
   <section id="reactiveproperty">
 <h1>ReactiveProperty<a class="headerlink" href="#reactiveproperty" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <section id="id1">
-<h2>注意事項<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>参考資料<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://qiita.com/YSRKEN/items/5a36fb8071104a989fb8">https://qiita.com/YSRKEN/items/5a36fb8071104a989fb8</a></p></li>
+<li><p><a class="reference external" href="https://qiita.com/okazuki/items/7572f46848d0e93516b1">https://qiita.com/okazuki/items/7572f46848d0e93516b1</a></p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>注意事項<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>メモリリーク</p>
 <p>自身が値を保持するだけの ReactiveProperty の場合は Dispose する必要は無いが、
@@ -68,12 +75,12 @@ Subscribe 等で値の変更を監視しているような場合は Dispose し�
 </section>
 <section id="usercontrol-navigation">
 <h2>UserControl（Navigation用）<a class="headerlink" href="#usercontrol-navigation" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<section id="id2">
-<h3>追加方法<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<section id="id3">
+<h3>追加方法<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>Viewsフォルダにて、追加→新しい項目→Prism→WPF→Prism UserControl(WPF)</p>
 </section>
-<section id="id3">
-<h3>雛形<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<section id="id4">
+<h3>雛形<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">xxxViewModel</span> <span class="p">:</span> <span class="n">BindableBase</span><span class="p">,</span> <span class="n">IDestructible</span><span class="p">,</span> <span class="n">INavigationAware</span><span class="p">,</span> <span class="n">IRegionMemberLifetime</span>
 <span class="p">{</span>
@@ -185,8 +192,8 @@ Subscribe 等で値の変更を監視しているような場合は Dispose し�
 </div></blockquote>
 </section>
 </section>
-<section id="id4">
-<h2>プロパティ初期化<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id5">
+<h2>プロパティ初期化<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">this</span><span class="p">.</span><span class="n">Value</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ReactivePropertySlim</span><span class="p">&lt;</span><span class="n">Assay</span><span class="p">&gt;(</span><span class="k">new</span> <span class="n">Value</span><span class="p">())</span>
     <span class="p">.</span><span class="n">AddTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_disposables</span><span class="p">);</span>
@@ -216,19 +223,28 @@ Subscribe 等で値の変更を監視しているような場合は Dispose し�
 <span class="c1">// Units[i].HasSound.Value の1つ以上がtrueである場合にanySoundsはtrueとなる</span>
 <span class="n">List</span><span class="p">&lt;</span><span class="n">Unit</span><span class="p">&gt;</span> <span class="n">Units</span><span class="p">;</span>
 <span class="kt">var</span> <span class="n">anySounds</span> <span class="p">=</span> <span class="n">Units</span>
-    <span class="c1">// ObserveProperty()はIObservableなオブジェクトを返すメソッド</span>
-    <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">ObserveProperty</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">HasSound</span><span class="p">.</span><span class="n">Value</span><span class="p">))</span>
+    <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">HasSound</span><span class="p">))</span>
     <span class="p">.</span><span class="n">CombineLatest</span><span class="p">()</span>    <span class="c1">// Units[i].HasSound.Value変更時に、Units[0].HasSound～Units[n],HasSoundのリストを返す？</span>
     <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Any</span><span class="p">(</span><span class="n">hasSound</span> <span class="p">=&gt;</span> <span class="n">hasSound</span><span class="p">))</span>
     <span class="p">.</span><span class="n">ObserveOnUIDispatcher</span><span class="p">()</span>    <span class="c1">// UIスレッドで処理する。ToReactiveCommand()でボタンの活性化制御する場合に必要？</span>
     <span class="p">.</span><span class="n">ToReadOnlyReactivePropertySlim</span><span class="p">()</span>
     <span class="p">.</span><span class="n">AddTo</span><span class="p">(</span><span class="n">Disposable</span><span class="p">);</span>
+
+<span class="c1">// BindingのModeがTwoWayなプロパティ(つまり双方向)</span>
+<span class="n">ReactiveProperty</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">Property1</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">ToReactivePropertyAsSynchronized</span><span class="p">(</span><span class="n">m</span> <span class="p">=&gt;</span> <span class="n">m</span><span class="p">.</span><span class="n">X</span><span class="p">);</span>
+
+<span class="c1">// BindingのModeがOneWayなプロパティ(つまりView→ViewModelのみ)</span>
+<span class="c1">// ObserveProperty()はIObservableなオブジェクトを返すメソッド</span>
+<span class="n">ReactiveProperty</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">Property2</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">ObserveProperty</span><span class="p">(</span><span class="n">m</span> <span class="p">=&gt;</span> <span class="n">m</span><span class="p">.</span><span class="n">X</span><span class="p">).</span><span class="n">ToReactiveProperty</span><span class="p">();</span>
+
+<span class="c1">// BindingのModeがOneWayToSourceなプロパティ(つまりViewModel→Viewのみ)</span>
+<span class="n">ReactiveProperty</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">Property3</span> <span class="p">=</span> <span class="n">ReactiveProperty</span><span class="p">.</span><span class="n">FromObject</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">m</span> <span class="p">=&gt;</span> <span class="n">m</span><span class="p">.</span><span class="n">X</span><span class="p">);</span>
 </pre></div>
 </div>
 </div></blockquote>
 </section>
-<section id="id5">
-<h2>プロパティ変更時の処理<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id6">
+<h2>プロパティ変更時の処理<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">this</span><span class="p">.</span><span class="n">PropertyX</span>
     <span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span>
@@ -266,8 +282,8 @@ Subscribe 等で値の変更を監視しているような場合は Dispose し�
 </div>
 </div></blockquote>
 </section>
-<section id="id6">
-<h2>コマンド初期化<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id7">
+<h2>コマンド初期化<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 基本</span>
 <span class="k">this</span><span class="p">.</span><span class="n">BackCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ReactiveCommand</span><span class="p">()</span>
@@ -308,16 +324,16 @@ Subscribe 等で値の変更を監視しているような場合は Dispose し�
 </div>
 </div></blockquote>
 </section>
-<section id="id7">
-<h2>イベント送信処理<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id8">
+<h2>イベント送信処理<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">this</span><span class="p">.</span><span class="n">_eventAggregator</span><span class="p">.</span><span class="n">GetEvent</span><span class="p">&lt;</span><span class="n">NotifyXXXEvent</span><span class="p">&gt;().</span><span class="n">Publish</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
 </pre></div>
 </div>
 </div></blockquote>
 </section>
-<section id="id8">
-<h2>イベント受信処理<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id9">
+<h2>イベント受信処理<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">this</span><span class="p">.</span><span class="n">_eventAggregator</span><span class="p">.</span><span class="n">GetEvent</span><span class="p">&lt;</span><span class="n">NotifyXXXEvent</span><span class="p">&gt;()</span>
     <span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span>
@@ -327,8 +343,8 @@ Subscribe 等で値の変更を監視しているような場合は Dispose し�
 </div>
 </div></blockquote>
 </section>
-<section id="id9">
-<h2>イベント定義<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id10">
+<h2>イベント定義<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Power Off を通知</span>
 <span class="k">public</span> <span class="k">class</span> <span class="nc">NotifyPowerOffEvent</span> <span class="p">:</span> <span class="n">PubSubEvent</span>
@@ -355,8 +371,8 @@ Subscribe 等で値の変更を監視しているような場合は Dispose し�
 </div>
 </div></blockquote>
 </section>
-<section id="id10">
-<h2>ボタンの連打を抑制<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id11">
+<h2>ボタンの連打を抑制<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>AsyncReactiveCommandを使用し、戻り値がTaskのメソッドをWithSubscribe()に設定することで、
 メソッド実行完了までボタンを非活性化し、ボタンの連打を抑制できる。</p>
 <blockquote>
@@ -393,14 +409,17 @@ Subscribe 等で値の変更を監視しているような場合は Dispose し�
 <li class="toctree-l1"><a class="reference internal" href="../../Jupyter/index.html">Jupyter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../raspberry_pi/index.html">Raspberry Pi</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Web%E3%82%A2%E3%83%97%E3%83%AA/index.html">Webアプリ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../C/index.html">C</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">C＃</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../%E8%A8%80%E8%AA%9E%E4%BB%95%E6%A7%98/index.html">言語仕様</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">WPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReactiveExtensions/index.html">ReactiveExtensions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../VisualStudio.html">VisualStudio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E8%87%AA%E5%8B%95%E4%BD%9C%E6%88%90.html">ドキュメント自動作成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html">テスト駆動開発</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../UML/index.html">UML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.html">デザインパターン</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90/index.html">データ分析</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../%E5%82%99%E5%BF%98%E9%8C%B2/index.html">備忘録</a></li>
@@ -409,20 +428,21 @@ Subscribe 等で値の変更を監視しているような場合は Dispose し�
   <h3><a href="../../index.html">目次</a></h3>
   <ul>
 <li><a class="reference internal" href="#">ReactiveProperty</a><ul>
-<li><a class="reference internal" href="#id1">注意事項</a></li>
+<li><a class="reference internal" href="#id1">参考資料</a></li>
+<li><a class="reference internal" href="#id2">注意事項</a></li>
 <li><a class="reference internal" href="#usercontrol-navigation">UserControl（Navigation用）</a><ul>
-<li><a class="reference internal" href="#id2">追加方法</a></li>
-<li><a class="reference internal" href="#id3">雛形</a></li>
+<li><a class="reference internal" href="#id3">追加方法</a></li>
+<li><a class="reference internal" href="#id4">雛形</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id4">プロパティ初期化</a></li>
-<li><a class="reference internal" href="#id5">プロパティ変更時の処理</a></li>
-<li><a class="reference internal" href="#id6">コマンド初期化</a></li>
-<li><a class="reference internal" href="#id7">イベント送信処理</a></li>
-<li><a class="reference internal" href="#id8">イベント受信処理</a></li>
-<li><a class="reference internal" href="#id9">イベント定義</a></li>
+<li><a class="reference internal" href="#id5">プロパティ初期化</a></li>
+<li><a class="reference internal" href="#id6">プロパティ変更時の処理</a></li>
+<li><a class="reference internal" href="#id7">コマンド初期化</a></li>
+<li><a class="reference internal" href="#id8">イベント送信処理</a></li>
+<li><a class="reference internal" href="#id9">イベント受信処理</a></li>
+<li><a class="reference internal" href="#id10">イベント定義</a></li>
 <li><a class="reference internal" href="#reactivecollection-ui">ReactiveCollectionの追加/削除処理をUIスレッド上で行う方法</a></li>
-<li><a class="reference internal" href="#id10">ボタンの連打を抑制</a></li>
+<li><a class="reference internal" href="#id11">ボタンの連打を抑制</a></li>
 </ul>
 </li>
 </ul>

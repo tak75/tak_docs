@@ -2,6 +2,11 @@
 xaml
 ====
 
+参考資料
+========
+
+* https://qiita.com/YSRKEN/items/5a36fb8071104a989fb8
+
 最初に準備すべきこと
 ====================
 
@@ -66,6 +71,23 @@ RegionNameはバインディングすることはできるが、バインディ�
           </i:EventTrigger>
       </i:Interaction.Triggers>
   </ComboBox>
+
+.. code-block:: XML
+
+  <Window xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity">
+      <Grid>
+          <TextBlock x:Name="lblMessage">
+              <i:Interaction.Triggers>
+                  <i:EventTrigger EventName="MouseEnter">
+                      <i:InvokeCommandAction Command="{Binding MouseEnterCommand}"/>
+                  </i:EventTrigger>
+                  <i:EventTrigger EventName="MouseLeave">
+                      <i:InvokeCommandAction Command="{Binding MouseLeaveCommand}"/>
+                  </i:EventTrigger>
+              </i:Interaction.Triggers>
+          </TextBlock>
+      </Grid>
+  </Window>
 
 ------------------------------------------
 バインドした値がNullやなしの場合の挙動設定

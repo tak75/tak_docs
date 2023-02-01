@@ -85,10 +85,20 @@
 </section>
 <section id="id7">
 <h2>補足<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<ul class="simple">
+<ul>
+<li><p>Facadeの作り方は2種類ある</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>static型 : 既に存在するレガシー機能をまとめる場合に有効</p></li>
+<li><p>インタフェース型 : これから新規でシステムを作る場合に有効。Facadeを外注する場合など、納品まではMockでテストできるので、開発効率が上がる</p></li>
+</ul>
+</div></blockquote>
+</li>
 <li><p>Facadeクラスは、XXXFacadeのように書いておくと分かりやすい</p></li>
 <li><p>Facadeが扱う他のクラスについては、まとめて別のディレクトリ（例えばObjectsなどの名前）に入れておくと、Facadeが際立つのでさらに分かりやすい</p></li>
 <li><p>Objects内のクラスについては、クラスのアクセス修飾子もメソッドのアクセス修飾子も全てinternalにしておけばよい（外部から余計なものを見せない）</p></li>
+<li><p>実装手順としては、各機能のクラスやメソッドをinternalにしておき、Facadeでそれらの機能を公開する。
+各機能単位で公開が必要なものについては、その状況が発生したタイミングでpublicにすればよい</p></li>
 </ul>
 </section>
 </section>

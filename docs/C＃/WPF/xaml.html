@@ -53,7 +53,13 @@
   <section id="xaml">
 <h1>xaml<a class="headerlink" href="#xaml" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <section id="id1">
-<h2>最初に準備すべきこと<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>参考資料<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://qiita.com/YSRKEN/items/5a36fb8071104a989fb8">https://qiita.com/YSRKEN/items/5a36fb8071104a989fb8</a></p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>最初に準備すべきこと<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>xamlに以下の4 行を追加すると、土台となる UserControl が指定したサイズで表示されるようになるため、デザイン時に実行時のイメージがつかみやすくなる。</p>
 <div class="highlight-XML notranslate"><div class="highlight"><pre><span></span>xmlns:mc=&quot;http://schemas.openxmlformats.org/markup-compatibility/2006&quot;
 xmlns:d=&quot;http://schemas.microsoft.com/expression/blend/2008&quot;
@@ -62,10 +68,10 @@ d:DesignHeight=&quot;500&quot; d:DesignWidth=&quot;500&quot;
 </pre></div>
 </div>
 </section>
-<section id="id2">
-<h2>バインド<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <section id="id3">
-<h3>コードビハインドのプロパティをバインド<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h2>バインド<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id4">
+<h3>コードビハインドのプロパティをバインド<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>CLRプロパティやDependencyPropertyはViewインスタンス（上でいう子View）に属するもの</p></li>
 <li><p>VMのプロパティはDataContextに設定された別インスタンスに属するもの</p></li>
@@ -91,8 +97,8 @@ Viewで自身のCLRプロパティやDependencyPropertyをバインドする場�
 <p>RegionNameはバインディングすることはできるが、バインディングしている名前を途中で変更してはいけない。
 例外が発生する。</p>
 </section>
-<section id="id4">
-<h3>イベントのバインド<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<section id="id5">
+<h3>イベントのバインド<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-XML notranslate"><div class="highlight"><pre><span></span>xmlns:i=&quot;http://schemas.microsoft.com/xaml/behaviors&quot;
 xmlns:interactivity=&quot;clr-namespace:Reactive.Bindings.Interactivity;assembly=ReactiveProperty.WPF&quot;
 
@@ -103,6 +109,22 @@ xmlns:interactivity=&quot;clr-namespace:Reactive.Bindings.Interactivity;assembly
         <span class="nt">&lt;/i:EventTrigger&gt;</span>
     <span class="nt">&lt;/i:Interaction.Triggers&gt;</span>
 <span class="nt">&lt;/ComboBox&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Window</span> <span class="na">xmlns:i=</span><span class="s">&quot;clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Grid&gt;</span>
+        <span class="nt">&lt;TextBlock</span> <span class="na">x:Name=</span><span class="s">&quot;lblMessage&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;i:Interaction.Triggers&gt;</span>
+                <span class="nt">&lt;i:EventTrigger</span> <span class="na">EventName=</span><span class="s">&quot;MouseEnter&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;i:InvokeCommandAction</span> <span class="na">Command=</span><span class="s">&quot;{Binding MouseEnterCommand}&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;/i:EventTrigger&gt;</span>
+                <span class="nt">&lt;i:EventTrigger</span> <span class="na">EventName=</span><span class="s">&quot;MouseLeave&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;i:InvokeCommandAction</span> <span class="na">Command=</span><span class="s">&quot;{Binding MouseLeaveCommand}&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;/i:EventTrigger&gt;</span>
+            <span class="nt">&lt;/i:Interaction.Triggers&gt;</span>
+        <span class="nt">&lt;/TextBlock&gt;</span>
+    <span class="nt">&lt;/Grid&gt;</span>
+<span class="nt">&lt;/Window&gt;</span>
 </pre></div>
 </div>
 </section>
@@ -125,10 +147,10 @@ xmlns:interactivity=&quot;clr-namespace:Reactive.Bindings.Interactivity;assembly
 </div>
 </section>
 </section>
-<section id="id5">
-<h2>トリガ<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <section id="id6">
-<h3>プロパティトリガ<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h2>トリガ<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id7">
+<h3>プロパティトリガ<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>自分のプロパティの値に応じて、自分の見た目にかかわるプロパティの値を変える</p>
 <div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Trigger</span> <span class="na">Property=</span><span class="s">&quot;IsMouseOver&quot;</span> <span class="na">Value=</span><span class="s">&quot;True&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">&quot;Fill&quot;</span> <span class="na">Value=</span><span class="s">&quot;GreenYellow&quot;</span><span class="nt">/&gt;</span>
@@ -136,8 +158,8 @@ xmlns:interactivity=&quot;clr-namespace:Reactive.Bindings.Interactivity;assembly
 </pre></div>
 </div>
 </section>
-<section id="id7">
-<h3>データトリガ<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<section id="id8">
+<h3>データトリガ<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>ViewModel等のプロパティの値に応じて見た目を変える</p>
 <div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;DataTrigger</span> <span class="na">Binding=</span><span class="s">&quot;{Binding ColorChangeFlag}&quot;</span> <span class="na">Value=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">&quot;Fill&quot;</span> <span class="na">Value=</span><span class="s">&quot;Blue&quot;</span><span class="nt">/&gt;</span>
@@ -163,10 +185,10 @@ xmlns:interactivity=&quot;clr-namespace:Reactive.Bindings.Interactivity;assembly
 </div>
 </section>
 </section>
-<section id="id8">
-<h2>スタイル<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <section id="id9">
-<h3>トグルボタンの例<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h2>スタイル<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id10">
+<h3>トグルボタンの例<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>トグルボタンの上部左右角を丸にし、トグルボタン内に三角マークを表示する例</p>
 <div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!--上角丸トグルボタン + 三角マーク--&gt;</span>
 <span class="nt">&lt;Style</span> <span class="na">x:Key=</span><span class="s">&quot;TopCornerRadiusToggleButton&quot;</span> <span class="na">TargetType=</span><span class="s">&quot;ToggleButton&quot;</span><span class="nt">&gt;</span>
@@ -222,6 +244,7 @@ xmlns:interactivity=&quot;clr-namespace:Reactive.Bindings.Interactivity;assembly
 <li class="toctree-l1"><a class="reference internal" href="../../Jupyter/index.html">Jupyter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../raspberry_pi/index.html">Raspberry Pi</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Web%E3%82%A2%E3%83%97%E3%83%AA/index.html">Webアプリ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../C/index.html">C</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">C＃</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../%E8%A8%80%E8%AA%9E%E4%BB%95%E6%A7%98/index.html">言語仕様</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">WPF</a></li>
@@ -230,6 +253,7 @@ xmlns:interactivity=&quot;clr-namespace:Reactive.Bindings.Interactivity;assembly
 <li class="toctree-l2"><a class="reference internal" href="../%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html">テスト駆動開発</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../UML/index.html">UML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.html">デザインパターン</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90/index.html">データ分析</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../%E5%82%99%E5%BF%98%E9%8C%B2/index.html">備忘録</a></li>
@@ -238,23 +262,24 @@ xmlns:interactivity=&quot;clr-namespace:Reactive.Bindings.Interactivity;assembly
   <h3><a href="../../index.html">目次</a></h3>
   <ul>
 <li><a class="reference internal" href="#">xaml</a><ul>
-<li><a class="reference internal" href="#id1">最初に準備すべきこと</a></li>
-<li><a class="reference internal" href="#id2">バインド</a><ul>
-<li><a class="reference internal" href="#id3">コードビハインドのプロパティをバインド</a></li>
+<li><a class="reference internal" href="#id1">参考資料</a></li>
+<li><a class="reference internal" href="#id2">最初に準備すべきこと</a></li>
+<li><a class="reference internal" href="#id3">バインド</a><ul>
+<li><a class="reference internal" href="#id4">コードビハインドのプロパティをバインド</a></li>
 <li><a class="reference internal" href="#relativesource">RelativeSource</a></li>
 <li><a class="reference internal" href="#region">Region名のバインド</a></li>
-<li><a class="reference internal" href="#id4">イベントのバインド</a></li>
+<li><a class="reference internal" href="#id5">イベントのバインド</a></li>
 <li><a class="reference internal" href="#null">バインドした値がNullやなしの場合の挙動設定</a></li>
 <li><a class="reference internal" href="#static">Staticプロパティのバインド</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id5">トリガ</a><ul>
-<li><a class="reference internal" href="#id6">プロパティトリガ</a></li>
-<li><a class="reference internal" href="#id7">データトリガ</a></li>
+<li><a class="reference internal" href="#id6">トリガ</a><ul>
+<li><a class="reference internal" href="#id7">プロパティトリガ</a></li>
+<li><a class="reference internal" href="#id8">データトリガ</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id8">スタイル</a><ul>
-<li><a class="reference internal" href="#id9">トグルボタンの例</a></li>
+<li><a class="reference internal" href="#id9">スタイル</a><ul>
+<li><a class="reference internal" href="#id10">トグルボタンの例</a></li>
 </ul>
 </li>
 </ul>

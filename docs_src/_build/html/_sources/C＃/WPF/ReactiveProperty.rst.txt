@@ -2,6 +2,12 @@
 ReactiveProperty
 ================
 
+参考資料
+========
+
+* https://qiita.com/YSRKEN/items/5a36fb8071104a989fb8
+* https://qiita.com/okazuki/items/7572f46848d0e93516b1
+
 注意事項
 ========
 
@@ -171,13 +177,22 @@ Viewsフォルダにて、追加→新しい項目→Prism→WPF→Prism UserCon
     // Units[i].HasSound.Value の1つ以上がtrueである場合にanySoundsはtrueとなる
     List<Unit> Units;
     var anySounds = Units
-        // ObserveProperty()はIObservableなオブジェクトを返すメソッド
-        .Select(x => x.ObserveProperty(x => x.HasSound.Value))
+        .Select(x => x.HasSound))
         .CombineLatest()    // Units[i].HasSound.Value変更時に、Units[0].HasSound～Units[n],HasSoundのリストを返す？
         .Select(x => x.Any(hasSound => hasSound))
         .ObserveOnUIDispatcher()    // UIスレッドで処理する。ToReactiveCommand()でボタンの活性化制御する場合に必要？
         .ToReadOnlyReactivePropertySlim()
         .AddTo(Disposable);
+
+    // BindingのModeがTwoWayなプロパティ(つまり双方向)
+    ReactiveProperty<T> Property1 = model.ToReactivePropertyAsSynchronized(m => m.X);
+
+    // BindingのModeがOneWayなプロパティ(つまりView→ViewModelのみ)
+    // ObserveProperty()はIObservableなオブジェクトを返すメソッド
+    ReactiveProperty<T> Property2 = model.ObserveProperty(m => m.X).ToReactiveProperty();
+
+    // BindingのModeがOneWayToSourceなプロパティ(つまりViewModel→Viewのみ)
+    ReactiveProperty<T> Property3 = ReactiveProperty.FromObject(model, m => m.X);
 
 プロパティ変更時の処理
 ======================

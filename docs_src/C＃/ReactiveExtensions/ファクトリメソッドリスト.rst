@@ -1,0 +1,11 @@
+=======================
+ファクトリメソッドリスト
+=======================
+
+.. csv-table:: IObservableのファクトリメソッドリスト
+   :header-rows: 1
+   :widths: 2, 2, 7
+
+   Class/Interface,メソッド名,説明
+   Observable,:term:`Return`,指定した値を通知する
+   Observable,:term:`Repeat`,同じ値を指定した回数発行する

@@ -1,0 +1,82 @@
+=====================
+ファクトリメソッド説明
+=====================
+
+.. glossary::
+
+    Return
+        * 指定した値を通知する
+        * SubscribeするとOnNextの後にCompletedが呼ばる
+        * 2回目Subscribeを行うと値の発行と終了の通知を再び行う
+
+        .. code-block:: csharp
+
+            // 10を発行するIObservable<int>を作成する
+            var source = Observable.Return(10);
+            // 購読
+            var subscription = source.Subscribe(
+                i => Console.WriteLine("OnNext({0})", i),
+                ex => Console.WriteLine("OnError({0})", ex.Message),
+                () => Console.WriteLine("Completed()"));
+            // 購読の停止（この場合意味はない）
+            subscription.Dispose();
+
+            // 上記の実行結果
+            OnNext(10)
+            Completed()
+
+        .. code-block:: csharp
+
+            NoAcctionCommand = Observable.Return(false).ToAsyncReactiveCommand().AddTo(Disposable);
+
+    Repeat
+        * 同じ値を指定した回数発行する
+
+        .. code-block:: csharp
+
+            // 2を5回発行するIObservable<int>を作成する
+            var source = Observable.Repeat(2, 5);
+            // 購読
+            var subscription = source.Subscribe(
+                i => Console.WriteLine("OnNext({0})", i),
+                ex => Console.WriteLine("OnError({0})", ex.Message),
+                () => Console.WriteLine("Completed()"));
+            // 購読停止（この場合意味はない）
+            subscription.Dispose();
+
+            // 上記の実行結果
+            OnNext(2)
+            OnNext(2)
+            OnNext(2)
+            OnNext(2)
+            OnNext(2)
+            Completed()
+
+    Range
+
+        * 指定した値から1ずつカウントアップした値を指定した個数だけ返す
+
+        .. code-block:: csharp
+
+            // 1から始まる値を10個発行するIObservable<int>を作成する
+            var source = Observable.Range(1, 10);
+            // 購読
+            var subscription = source.Subscribe(
+                i => Console.WriteLine("OnNext({0})", i),
+                ex => Console.WriteLine("OnError({0})", ex.Message),
+                () => Console.WriteLine("Completed()"));
+            // 購読停止（この場合意味はない）
+            subscription.Dispose();
+            
+            // 上記の実行結果
+            OnNext(1)
+            OnNext(2)
+            OnNext(3)
+            OnNext(4)
+            OnNext(5)
+            OnNext(6)
+            OnNext(7)
+            OnNext(8)
+            OnNext(9)
+            OnNext(10)
+            Completed()
