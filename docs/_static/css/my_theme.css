@@ -15,3 +15,8 @@ h1,h2,h3,h4,h5,h6 {
 colgroup {
     display: none;
 }
+
+@import url("theme.css");
+
+tt { font-size: 30%; }
+
