@@ -16,7 +16,7 @@ colgroup {
     display: none;
 }
 
-@import url("theme.css");
+@import url("sphinx_rtd_theme.css");
 
 tt { font-size: 30%; }
 
