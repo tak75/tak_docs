@@ -8,11 +8,8 @@ h1,h2,h3,h4,h5,h6 {
     border-bottom: 1px solid #ccc;
 }
 
-*{font-size: 50%;}
 h1{
-    color: #000000;
-    font-size: 15pt;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 20pt;
     background-color: #e8e9ea;
 }
 /* 
