@@ -1,21 +1,20 @@
 @import url("theme.css");
  
-.wy-nav-content {
+/* .wy-nav-content {
     max-width: none;
-}
+} */
 
-h1,h2,h3,h4,h5,h6 {
-    border-bottom: 1px solid #ccc;
-}
 h1 {
+    font-size: 22px;
     color: #364e96;/*文字色*/
-    padding: 0.5em 0;/*上下の余白*/
+    padding: 0.3em 0;/*上下の余白*/
     border-top: solid 3px #364e96;/*上線*/
     border-bottom: solid 3px #364e96;/*下線*/
 }
 
 h2 {
-    padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
+    font-size: 20px;
+    padding: 0.2em 0.5em;/*文字の上下 左右の余白*/
     color: #494949;/*文字色*/
     background: #f4f4f4;/*背景色*/
     border-left: solid 5px #7db4e6;/*左線*/
@@ -23,12 +22,17 @@ h2 {
 }
 
 h3 {
-    /*線の種類（実線） 太さ 色*/
+    font-size: 18px;
+   /*線の種類（実線） 太さ 色*/
     border-bottom: solid 3px black;
 }
 
+h4,h5,h6 {
+    border-bottom: 1px solid #ccc;
+}
+
 /* h1{
-    font-size: 15pt;
+    font-size: 22pt;
     background-color: #e8e9ea;
 } */
 /* 
@@ -40,22 +44,13 @@ h2{
     color: #335183;
     font-size: 8pt;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-p{
-    font-size: 5pt;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-} */
+}*/
 
 .wy-table-responsive table td, .wy-table-responsive table th {
     white-space: normal;
 }
 
-/* .wy-table-responsive table {
-    font-size: 8px;
-}
- */
 .rst-content table.docutils td,.rst-content table.docutils th {
-    font-size: 8px;
     padding: 5px 5px;
 }
 
@@ -73,9 +68,9 @@ p{
     background-color: #eee
   } */
 
-/* colgroup {
+colgroup {
     display: none;
-} */
+} 
 
 /* .wy-nav-top {
     background: #006400;
