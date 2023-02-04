@@ -1,8 +1,8 @@
 @import url("theme.css");
  
-/* .wy-nav-content {
+.wy-nav-content {
     max-width: none;
-} */
+}
 
 h1 {
     font-size: 22px;
@@ -46,11 +46,13 @@ h2{
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }*/
 
+/* テーブルにスクロールバーが表示されるのを防止 */
 .wy-table-responsive table td, .wy-table-responsive table th {
     white-space: normal;
 }
 
-.rst-content table.docutils td,.rst-content table.docutils th {
+/* テーブルのヘッダ／データ文字列のパディング調整 */
+.rst-content table.docutils th,.rst-content table.docutils td {
     padding: 5px 5px;
 }
 
@@ -68,10 +70,11 @@ h2{
     background-color: #eee
   } */
 
-colgroup {
+/* colgroup {
     display: none;
-} 
+}  */
 
+/* ナビゲーショントップ／サイドの背景色変更 */
 /* .wy-nav-top {
     background: #006400;
 }
