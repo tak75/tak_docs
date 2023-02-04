@@ -4,9 +4,11 @@
 
 .. csv-table:: IObservableのファクトリメソッドリスト
    :header-rows: 1
-   :widths: 2, 2, 5
+   :widths: 2, 5, 2
 
-   クラス,メソッド,説明
-   Observable,:term:`Return`,指定した値を通知する
-   Observable,:term:`Repeat`,同じ値を指定した回数発行する
-   Observable,:term:`Range`,指定した値から1ずつカウントアップした値を指定した個数だけ返す
+   メソッド,説明,例
+   :term:`Return`,指定した値を通知する,"2"
+   :term:`Repeat`,同じ値を指定した回数発行する,"2,2,2,2,2"
+   :term:`Range`,指定した値から1ずつカウントアップした値を指定した個数だけ返す,"1,2,3"
+   :term:`Generate`,指定した範囲の値を用いて算出される値を返す,":math:`1^2,2^2,3^2`"
+   :term:`Range`,指定した値から1ずつカウントアップした値を指定した個数だけ返す
