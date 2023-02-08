@@ -57,9 +57,11 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">xaml</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id1">参考資料</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id2">最初に準備すべきこと</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">バインド</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">トリガ</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">スタイル</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">基本的なこと</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">レイアウトコントロール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">バインド</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">トリガ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">スタイル</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%82%B3%E3%83%BC%E3%83%89%E3%83%93%E3%83%8F%E3%82%A4%E3%83%B3%E3%83%89.html">コードビハインド</a></li>
@@ -125,9 +127,134 @@ d:DesignHeight=&quot;500&quot; d:DesignWidth=&quot;500&quot;
 </div>
 </section>
 <section id="id3">
-<h2>バインド<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>基本的なこと<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <section id="id4">
-<h3>コードビハインドのプロパティをバインド<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>コンテンツプロパティの指定方法<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p>ButtonクラスのContentプロパティでは、以下のように省略して書くことができる</p></li>
+<li><p>これは、BButtonクラスのContentプロパティが、以下のようにコンテンツプロパティとして指定されているためである</p></li>
+</ul>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span>// 省略しない場合
+<span class="nt">&lt;Button&gt;</span>
+    <span class="nt">&lt;Button.Content&gt;</span>ボタン名<span class="nt">&lt;/Button.Content&gt;</span>
+<span class="nt">&lt;/Button&gt;</span>
+
+// 省略する場合
+<span class="nt">&lt;Button&gt;</span>ボタン名<span class="nt">&lt;/Button&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Contentプロパティをコンテンツプロパティとして指定</span>
+<span class="na">[ContentProperty(&quot;Content&quot;)]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">Button</span>
+<span class="p">{</span>
+    <span class="c1">// その他いろいろ省略</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Content</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id5">
+<h2>レイアウトコントロール<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="border">
+<h3>Borderコントロール<a class="headerlink" href="#border" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p><a class="reference external" href="https://blog.okazuki.jp/entry/20130104/1357309697">https://blog.okazuki.jp/entry/20130104/1357309697</a></p>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Border</span>
+    <span class="na">Padding=</span><span class="s">&quot;5, 10, 15, 20&quot;</span>
+    <span class="na">BorderThickness=</span><span class="s">&quot;5,10,15,20&quot;</span>
+    <span class="na">BorderBrush=</span><span class="s">&quot;Red&quot;</span>
+    <span class="na">CornerRadius=</span><span class="s">&quot;5, 10, 15, 20&quot;</span>
+    <span class="na">Background=</span><span class="s">&quot;Blue&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;中身&quot;</span> <span class="na">Background=</span><span class="s">&quot;Black&quot;</span> <span class="na">Foreground=</span><span class="s">&quot;White&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/Border&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="bulletdecorator">
+<h3>BulletDecoratorコントロール<a class="headerlink" href="#bulletdecorator" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p><a class="reference external" href="https://blog.okazuki.jp/entry/20130104/1357309697">https://blog.okazuki.jp/entry/20130104/1357309697</a></p>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;BulletDecorator</span> <span class="na">Background=</span><span class="s">&quot;Cyan&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;BulletDecorator.Bullet&gt;</span>
+        <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;行頭&quot;</span> <span class="na">Foreground=</span><span class="s">&quot;White&quot;</span> <span class="na">Background=</span><span class="s">&quot;Black&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/BulletDecorator.Bullet&gt;</span>
+    <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;子要素&quot;</span> <span class="na">Foreground=</span><span class="s">&quot;White&quot;</span> <span class="na">Background=</span><span class="s">&quot;Red&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/BulletDecorator&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="canvas">
+<h3>Canvasコントロール<a class="headerlink" href="#canvas" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20130104/1357315810">https://blog.okazuki.jp/entry/20130104/1357315810</a></p></li>
+<li><p>Canvasの上下左右を起点として位置を指定する</p></li>
+</ul>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Canvas&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Canvas.Top=</span><span class="s">&quot;10&quot;</span> <span class="na">Canvas.Left=</span><span class="s">&quot;10&quot;</span> <span class="na">Content=</span><span class="s">&quot;Button1&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Canvas.Top=</span><span class="s">&quot;10&quot;</span> <span class="na">Canvas.Right=</span><span class="s">&quot;10&quot;</span> <span class="na">Content=</span><span class="s">&quot;Button2&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Canvas.Bottom=</span><span class="s">&quot;10&quot;</span> <span class="na">Canvas.Left=</span><span class="s">&quot;10&quot;</span> <span class="na">Content=</span><span class="s">&quot;Button3&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Canvas.Bottom=</span><span class="s">&quot;10&quot;</span> <span class="na">Canvas.Right=</span><span class="s">&quot;10&quot;</span> <span class="na">Content=</span><span class="s">&quot;Button4&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/Canvas&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="dockpanel">
+<h3>DockPanelコントロール<a class="headerlink" href="#dockpanel" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p><a class="reference external" href="https://blog.okazuki.jp/entry/20130105/1357395569">https://blog.okazuki.jp/entry/20130105/1357395569</a></p>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;DockPanel&gt;</span>
+    <span class="c">&lt;!-- メニューやツールバー --&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">DockPanel.Dock=</span><span class="s">&quot;Top&quot;</span> <span class="na">Content=</span><span class="s">&quot;Menu&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">DockPanel.Dock=</span><span class="s">&quot;Top&quot;</span> <span class="na">Content=</span><span class="s">&quot;Toolbar&quot;</span> <span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- ステータスバー --&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">DockPanel.Dock=</span><span class="s">&quot;Bottom&quot;</span> <span class="na">Content=</span><span class="s">&quot;StatusBar&quot;</span> <span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- ツリーが表示される場所 最低限の幅確保のためMinWidthプロパティを指定 --&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">DockPanel.Dock=</span><span class="s">&quot;Left&quot;</span> <span class="na">Content=</span><span class="s">&quot;Tree&quot;</span> <span class="na">MinWidth=</span><span class="s">&quot;150&quot;</span> <span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- エクスプローラーの右側の領域 --&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Content&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/DockPanel&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="wrappanel">
+<h3>WrapPanelコントロール<a class="headerlink" href="#wrappanel" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20130105/1357395569">https://blog.okazuki.jp/entry/20130105/1357395569</a></p></li>
+<li><p>子要素が外にはみ出したときは、折り返して表示</p></li>
+<li><p>子要素サイズをItemHeight、ItemWidthで指定できる</p></li>
+</ul>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;WrapPanel</span> <span class="na">Orientation=</span><span class="s">&quot;Vertical&quot;</span> <span class="na">ItemHeight=</span><span class="s">&quot;75&quot;</span> <span class="na">ItemWidth=</span><span class="s">&quot;50&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button&quot;</span> <span class="na">Width=</span><span class="s">&quot;75&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button&quot;</span> <span class="na">Width=</span><span class="s">&quot;75&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button&quot;</span> <span class="na">Width=</span><span class="s">&quot;75&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button&quot;</span> <span class="na">Width=</span><span class="s">&quot;75&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button&quot;</span> <span class="na">Width=</span><span class="s">&quot;75&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button&quot;</span> <span class="na">Width=</span><span class="s">&quot;75&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button&quot;</span> <span class="na">Width=</span><span class="s">&quot;75&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button&quot;</span> <span class="na">Width=</span><span class="s">&quot;75&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button&quot;</span> <span class="na">Width=</span><span class="s">&quot;75&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/WrapPanel&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="viewbox">
+<h3>ViewBoxコントロール<a class="headerlink" href="#viewbox" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p><a class="reference external" href="https://blog.okazuki.jp/entry/20130105/1357400239">https://blog.okazuki.jp/entry/20130105/1357400239</a></p>
+<section id="scrollviewer">
+<h4>ScrollViewerコントロール<a class="headerlink" href="#scrollviewer" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20130106/1357475541">https://blog.okazuki.jp/entry/20130106/1357475541</a></p></li>
+<li></li>
+</ul>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="id6">
+<h2>バインド<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id7">
+<h3>コードビハインドのプロパティをバインド<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>CLRプロパティやDependencyPropertyはViewインスタンス（上でいう子View）に属するもの</p></li>
 <li><p>VMのプロパティはDataContextに設定された別インスタンスに属するもの</p></li>
@@ -153,8 +280,8 @@ Viewで自身のCLRプロパティやDependencyPropertyをバインドする場�
 <p>RegionNameはバインディングすることはできるが、バインディングしている名前を途中で変更してはいけない。
 例外が発生する。</p>
 </section>
-<section id="id5">
-<h3>イベントのバインド<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<section id="id8">
+<h3>イベントのバインド<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-XML notranslate"><div class="highlight"><pre><span></span>xmlns:i=&quot;http://schemas.microsoft.com/xaml/behaviors&quot;
 xmlns:interactivity=&quot;clr-namespace:Reactive.Bindings.Interactivity;assembly=ReactiveProperty.WPF&quot;
 
@@ -203,10 +330,10 @@ xmlns:interactivity=&quot;clr-namespace:Reactive.Bindings.Interactivity;assembly
 </div>
 </section>
 </section>
-<section id="id6">
-<h2>トリガ<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<section id="id7">
-<h3>プロパティトリガ<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<section id="id9">
+<h2>トリガ<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id10">
+<h3>プロパティトリガ<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>自分のプロパティの値に応じて、自分の見た目にかかわるプロパティの値を変える</p>
 <div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Trigger</span> <span class="na">Property=</span><span class="s">&quot;IsMouseOver&quot;</span> <span class="na">Value=</span><span class="s">&quot;True&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">&quot;Fill&quot;</span> <span class="na">Value=</span><span class="s">&quot;GreenYellow&quot;</span><span class="nt">/&gt;</span>
@@ -214,8 +341,8 @@ xmlns:interactivity=&quot;clr-namespace:Reactive.Bindings.Interactivity;assembly
 </pre></div>
 </div>
 </section>
-<section id="id8">
-<h3>データトリガ<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<section id="id11">
+<h3>データトリガ<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>ViewModel等のプロパティの値に応じて見た目を変える</p>
 <div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;DataTrigger</span> <span class="na">Binding=</span><span class="s">&quot;{Binding ColorChangeFlag}&quot;</span> <span class="na">Value=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">&quot;Fill&quot;</span> <span class="na">Value=</span><span class="s">&quot;Blue&quot;</span><span class="nt">/&gt;</span>
@@ -241,10 +368,10 @@ xmlns:interactivity=&quot;clr-namespace:Reactive.Bindings.Interactivity;assembly
 </div>
 </section>
 </section>
-<section id="id9">
-<h2>スタイル<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<section id="id10">
-<h3>トグルボタンの例<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<section id="id12">
+<h2>スタイル<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id13">
+<h3>トグルボタンの例<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>トグルボタンの上部左右角を丸にし、トグルボタン内に三角マークを表示する例</p>
 <div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!--上角丸トグルボタン + 三角マーク--&gt;</span>
 <span class="nt">&lt;Style</span> <span class="na">x:Key=</span><span class="s">&quot;TopCornerRadiusToggleButton&quot;</span> <span class="na">TargetType=</span><span class="s">&quot;ToggleButton&quot;</span><span class="nt">&gt;</span>

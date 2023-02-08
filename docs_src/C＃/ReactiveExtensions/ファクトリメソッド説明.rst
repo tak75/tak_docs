@@ -80,3 +80,34 @@
             OnNext(9)
             OnNext(10)
             Completed()
+
+    Generate
+
+        * 指定した値から1ずつカウントアップした値を指定した個数だけ返す
+
+        .. code-block:: csharp
+
+            // 初期値0, 値が10より小さい間, 値は1ずつインクリメントして, 値を二乗したものを発行する
+            // IObservable<int>を作成する。
+            // for (int i = 0; i < 10; i++) { yield return i * i; }のようなイメージ
+            var source = Observable.Generate(0, i => i < 10, i => ++i, i => i * i);
+            // 購読
+            var subscription = source.Subscribe(
+                i => Console.WriteLine("OnNext({0})", i),
+                ex => Console.WriteLine("OnError({0})", ex.Message),
+                () => Console.WriteLine("Completed()"));
+            // 購読停止（この場合意味はない）
+            subscription.Dispose();
+            
+            // 上記の実行結果
+            OnNext(0)
+            OnNext(1)
+            OnNext(4)
+            OnNext(9)
+            OnNext(16)
+            OnNext(25)
+            OnNext(36)
+            OnNext(49)
+            OnNext(64)
+            OnNext(81)
+            Completed()

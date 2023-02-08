@@ -19,6 +19,145 @@ xamlに以下の4 行を追加すると、土台となる UserControl が指定�
     mc:Ignorable="d"
     d:DesignHeight="500" d:DesignWidth="500"
 
+基本的なこと
+============
+
+------------------------------
+コンテンツプロパティの指定方法
+------------------------------
+
+* ButtonクラスのContentプロパティでは、以下のように省略して書くことができる
+* これは、BButtonクラスのContentプロパティが、以下のようにコンテンツプロパティとして指定されているためである
+
+.. code-block:: XML
+
+    // 省略しない場合
+    <Button>
+        <Button.Content>ボタン名</Button.Content>
+    </Button>
+
+    // 省略する場合
+    <Button>ボタン名</Button>
+
+.. code-block:: csharp
+
+    // Contentプロパティをコンテンツプロパティとして指定
+    [ContentProperty("Content")]
+    public class Button
+    {
+        // その他いろいろ省略
+
+        public string Content { get; set; }
+    }
+
+レイアウトコントロール
+======================
+
+------------------
+Borderコントロール
+------------------
+
+https://blog.okazuki.jp/entry/20130104/1357309697
+
+.. code-block:: XML
+
+    <Border 
+        Padding="5, 10, 15, 20"
+        BorderThickness="5,10,15,20" 
+        BorderBrush="Red" 
+        CornerRadius="5, 10, 15, 20" 
+        Background="Blue">
+        <TextBlock Text="中身" Background="Black" Foreground="White" />
+    </Border>
+
+---------------------------
+BulletDecoratorコントロール
+---------------------------
+
+https://blog.okazuki.jp/entry/20130104/1357309697
+
+.. code-block:: XML
+
+    <BulletDecorator Background="Cyan">
+        <BulletDecorator.Bullet>
+            <TextBlock Text="行頭" Foreground="White" Background="Black" />
+        </BulletDecorator.Bullet>
+        <TextBlock Text="子要素" Foreground="White" Background="Red" />
+    </BulletDecorator>
+
+------------------
+Canvasコントロール
+------------------
+
+* https://blog.okazuki.jp/entry/20130104/1357315810
+* Canvasの上下左右を起点として位置を指定する
+
+.. code-block:: XML
+
+    <Canvas>
+        <Button Canvas.Top="10" Canvas.Left="10" Content="Button1" />
+        <Button Canvas.Top="10" Canvas.Right="10" Content="Button2" />
+        <Button Canvas.Bottom="10" Canvas.Left="10" Content="Button3" />
+        <Button Canvas.Bottom="10" Canvas.Right="10" Content="Button4" />
+    </Canvas>
+
+---------------------
+DockPanelコントロール
+---------------------
+
+https://blog.okazuki.jp/entry/20130105/1357395569
+
+.. code-block:: XML
+
+    <DockPanel>
+        <!-- メニューやツールバー -->
+        <Button DockPanel.Dock="Top" Content="Menu" />
+        <Button DockPanel.Dock="Top" Content="Toolbar" />
+        <!-- ステータスバー -->
+        <Button DockPanel.Dock="Bottom" Content="StatusBar" />
+        <!-- ツリーが表示される場所 最低限の幅確保のためMinWidthプロパティを指定 -->
+        <Button DockPanel.Dock="Left" Content="Tree" MinWidth="150" />
+        <!-- エクスプローラーの右側の領域 -->
+        <Button Content="Content" />
+    </DockPanel>
+
+---------------------
+WrapPanelコントロール
+---------------------
+
+* https://blog.okazuki.jp/entry/20130105/1357395569
+* 子要素が外にはみ出したときは、折り返して表示
+* 子要素サイズをItemHeight、ItemWidthで指定できる
+
+.. code-block:: XML
+
+    <WrapPanel Orientation="Vertical" ItemHeight="75" ItemWidth="50">
+        <Button Content="Button" Width="75" />
+        <Button Content="Button" Width="75" />
+        <Button Content="Button" Width="75" />
+        <Button Content="Button" Width="75" />
+        <Button Content="Button" Width="75" />
+        <Button Content="Button" Width="75" />
+        <Button Content="Button" Width="75" />
+        <Button Content="Button" Width="75" />
+        <Button Content="Button" Width="75" />
+    </WrapPanel>
+
+-------------------
+ViewBoxコントロール
+-------------------
+
+https://blog.okazuki.jp/entry/20130105/1357400239
+
+ScrollViewerコントロール
+------------------------
+
+* https://blog.okazuki.jp/entry/20130106/1357475541
+* 
+
+.. code-block:: XML
+
+
 
 バインド
 ========

@@ -7,3 +7,4 @@ Python
 
    python 開発環境
    Anaconda 環境構築
+   言語仕様
