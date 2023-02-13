@@ -147,15 +147,144 @@ WrapPanelコントロール
 ViewBoxコントロール
 -------------------
 
-https://blog.okazuki.jp/entry/20130105/1357400239
+* https://blog.okazuki.jp/entry/20130105/1357400239
+* 子要素を拡大縮小して表示するコントロール
 
+.. code-block:: XML
+
+    <WrapPanel>
+        <Viewbox Width="75" Height="75" Stretch="None">
+            <Button Content="Button" />
+        </Viewbox>
+        <Viewbox Width="75" Height="75" Stretch="Fill">
+            <Button Content="Button" />
+        </Viewbox>
+        <Viewbox Width="75" Height="75" Stretch="Uniform">
+            <Button Content="Button" />
+        </Viewbox>
+        <Viewbox Width="75" Height="75" Stretch="UniformToFill">
+            <Button Content="Button" />
+        </Viewbox>
+    </WrapPanel>
+
+------------------------
 ScrollViewerコントロール
 ------------------------
 
 * https://blog.okazuki.jp/entry/20130106/1357475541
-* 
+* CanContentScroll
+  * スクロール時に論理単位でスクロール(要素単位でスクロール)するか物理単位でスクロール(ピクセル単位でスクロール)するか指定可能
+  * ボタンなどのコントロールの途中で止まる／止まらないなど
+
+------------------------
+GridSplitterコントロール
+------------------------
+
+* https://blog.okazuki.jp/entry/20130107/1357571958
+* Gridコントロールをマウスでサイズ変更する
+
+レイアウトに影響を与えるプロパティ
+==================================
+
+* MinWidth,MaxWidth：コントロールの最小,最大の幅を設定
+* ピクセル以外に指定できる
+  
+  * 10in：インチで指定
+  * 10cm：センチメートルで指定
+  * 10pt：ポイントで指定
+
+コンテンツモデル
+================
+
+* https://blog.okazuki.jp/entry/20130113/1358094630
+* WPFでは、単一の要素を表示するコントロールとしてContentControlというものが定義
+* このコントロールは、ButtonやLabelなどの多くのコントロールの親クラス
+* ContentControlにはContentという名前のobject型のプロパティが定義されていて、 **そこに設定されたクラスの型に応じて表示方法が切り替わる**
+* 表示ロジックは以下のとおり
+
+  * UIElement型(ButtonやRectangleなどのコントロール)の場合はそのまま表示する。
+  * **ContentTemplateにデータテンプレートが設定されている場合は、それを使って表示する。**
+  * Contentプロパティに設定された型に対してデータテンプレートが定義されている場合は、それを使って表示する。
+  * UIElement型へ変換するTypeConverterがある場合は、それを使ってUIElement型に変換して表示する。
+  * string型へ変換するTypeConverterがある場合は、それを使って文字列に変換してTextBlockのTextプロパティに設定して表示する。
+  * ToStringメソッドの呼び出し結果をTextBlockのTextプロパティに設定して表示する。
+
+Buttonコントロール
+==================
+
+------------------------
+RepeatButtonコントロール
+------------------------
+
+* https://blog.okazuki.jp/entry/20130114/1358172834
+* ボタンの上でマウスが押されている間、一定間隔でClickイベントを発行する
+* Clickイベントの発行間隔は、以下のプロパティで設定
+ 
+  * Delay：ボタンが押されている間にClickイベントの繰り返しが開始するまでに待つ時間（ミリ秒）を指定
+  * Interal：Clickイベントの繰り返しの感覚（ミリ秒）を指定
 
 .. code-block:: XML
+
+    <RepeatButton Content="0回" Click="Button_Click" 
+                  Delay="1000" 
+                  Interval="2000" />
+
+DataGridコントロール
+====================
+
+----------------------------------------------------
+自動生成機能＋コードビハインドでカスタマイズする方法
+----------------------------------------------------
+
+* https://blog.okazuki.jp/entry/20130218/1358172834
+* DataGridの列の自動生成は、列を自動生成するタイミングで発生するAutoGeneratingColumnイベントである程度カスタマイズすることができ、
+  DataGridにAutoGeneratingColumnイベントハンドラを作成し下記のように記述すればよい
+* ただし、単純なケースへの対応や、属性を利用した汎用的なデータの表示機能を開発するケースでのみ使用される方法であり、一般的な方法ではない
+
+.. code-block:: csharp
+
+    private void dataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+    {
+        // プロパティ名をもとに自動生成する列をカスタマイズします
+        switch (e.PropertyName)
+        {
+            case "Name":
+                // Name列は最初に表示してヘッダーを名前にする
+                e.Column.Header = "名前";
+                e.Column.DisplayIndex = 0;
+                break;
+            case "Age":
+                // Ageプロパティは1番目に表示してヘッダーを年齢にする
+                e.Column.Header = "年齢";
+                e.Column.DisplayIndex = 1;
+                break;
+            case "Gender":
+                // Genderプロパティは表示しない
+                e.Cancel = true;
+                break;
+            case "AuthMember":
+                // AuthMemberプロパティは2番目に表示してヘッダーを承認済みにする
+                e.Column.Header = "承認済み";
+                e.Column.DisplayIndex = 2;
+                break;
+            default:
+                throw new InvalidOperationException();
+        }
+    }
+
+----------------------
+自分で列を定義する方法
+----------------------
+
+* https://blog.okazuki.jp/entry/20130224/1361693816
+* 「自動生成機能＋コードビハインド」より、こちらが一般的な方法
+
+TreeViewコントロール
+====================
+
+* https://blog.okazuki.jp/entry/20130409/1365479109
+* DataTemplateを拡張したHierarchicalDataTemplateを使用
+* DataTemplateと異なる点は、ItemsSourceプロパティに、現在表示している要素の子にあたるものをItemsSourceプロパティに設定する点
 
 
 

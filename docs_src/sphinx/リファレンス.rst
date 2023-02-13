@@ -563,6 +563,25 @@ c言語の場合
        *a = c++;
    }
 
+c#言語の場合
+
+.. code-block:: csharp
+
+  class TextClass
+  {
+    public void method()
+    {
+    }
+  }
+
+XMLやXamlの場合
+
+.. code-block:: XML
+
+    <RepeatButton Content="0回" Click="Button_Click" 
+                  Delay="1000" 
+                  Interval="2000" />
+
 rubyの場合
 
 .. code-block:: ruby
@@ -613,6 +632,25 @@ erbテンプレートエンジンの場合
         static int c = 0;
         *a = c++;
     }
+
+ c#言語の場合
+
+ .. code-block:: csharp
+
+    class TextClass
+    {
+      public void method()
+      {
+      }
+    }
+
+ XMLやXamlの場合
+
+ .. code-block:: XML
+
+    <RepeatButton Content="0回" Click="Button_Click" 
+                  Delay="1000" 
+                  Interval="2000" />
 
  rubyの場合
 
