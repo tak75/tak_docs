@@ -1,6 +1,6 @@
-===========
+============
 コントロール
-===========
+============
 
 レイアウトコントロール
 ======================
@@ -237,4 +237,21 @@ TreeViewコントロール
 * https://blog.okazuki.jp/entry/20130409/1365479109
 * DataTemplateを拡張したHierarchicalDataTemplateを使用
 * DataTemplateと異なる点は、ItemsSourceプロパティに、現在表示している要素の子にあたるものをItemsSourceプロパティに設定する点
+
+Calendarコントロール
+====================
+
+* https://blog.okazuki.jp/entry/2013/07/08/233948
+
+ContextMenuコントロール
+=======================
+
+* https://blog.okazuki.jp/entry/2014/08/11/220008
+* 特定のコントロールに対して固有のメニュー（主に右クリックしたときに表示されるメニュー）を提供するためのコントロール
+
+Menuコントロール
+================
+
+* https://blog.okazuki.jp/entry/2014/08/12/122541
+
 
