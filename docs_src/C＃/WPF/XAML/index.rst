@@ -3,7 +3,7 @@ XAML
 ====
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    全般
    コントロール
