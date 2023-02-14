@@ -3,7 +3,7 @@ C＃
 ====
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    言語仕様/index
    WPF/index

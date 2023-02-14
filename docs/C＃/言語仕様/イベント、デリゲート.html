@@ -57,11 +57,12 @@
 <li class="toctree-l3"><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%EF%BC%8F%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA.html">ファイル／ディレクトリ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LINQ.html">LINQ</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">イベント、デリゲート</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">イベント</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">デリゲート</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">デリゲート呼び出し</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">ラムダ式</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">子イベントを親に透過</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">トリガ、イベント、ハンドラ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">イベント</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">デリゲート</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">デリゲート呼び出し</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">ラムダ式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">子イベントを親に透過</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89.html">スレッド</a></li>
@@ -112,7 +113,15 @@
   <section id="id1">
 <h1>イベント、デリゲート<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <section id="id2">
-<h2>イベント<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>トリガ、イベント、ハンドラ<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p>トリガとは、イベントを発行させるための外部動作のこと。例えば、マウスクリックなど</p></li>
+<li><p>トリガ -&gt; イベント -&gt; ハンドラ　の順に生じる</p></li>
+<li><p>マウスクリック -&gt; クリックイベント -&gt; クリックイベントハンドラ（実処理）</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>イベント<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>EventHandler 型はデリゲート型である。</p></li>
 <li><p>よって、下記コードで event を削除し、handlerの登録を+=ではなく=とすると、デリゲート呼び出しになる。</p></li>
@@ -171,16 +180,16 @@
 </li>
 </ul>
 </section>
-<section id="id3">
-<h2>デリゲート<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id4">
+<h2>デリゲート<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
 <li><p>Action : 任意個の引数を取り、かつ、戻り値のないメソッドへのDelegate</p></li>
 <li><p>Func : 任意個の引数を取り、かつ、戻り値のあるメソッドへのDelegate</p></li>
 <li><p>Predicate : 任意個の引数を取り、かつ、戻り値の型がBooleanであるメソッドへのDelegate。つまり、Func&lt;T,bool&gt;などに相当</p></li>
 </ul>
 </section>
-<section id="id4">
-<h2>デリゲート呼び出し<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id5">
+<h2>デリゲート呼び出し<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">Func</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">func</span> <span class="p">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="m">1</span><span class="p">;</span>
 <span class="n">func</span> <span class="p">+=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="m">2</span><span class="p">;</span>            <span class="c1">// 複数登録を防ぐことができない</span>
@@ -190,8 +199,8 @@
 </div>
 </div></blockquote>
 </section>
-<section id="id5">
-<h2>ラムダ式<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id6">
+<h2>ラムダ式<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>&quot;=&gt;&quot;&quot; は&quot;ゴーズ・トゥー&quot;と読む</p></li>
 <li><p>左辺のパラメータの書き方</p>
@@ -221,8 +230,8 @@
 </li>
 </ul>
 </section>
-<section id="id6">
-<h2>子イベントを親に透過<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id7">
+<h2>子イベントを親に透過<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>透過させるのがベストの場合は以下でよいが、新たなイベントを作成して発火させる方法でもよい。</p>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">this</span><span class="p">.</span><span class="n">dataGrid</span><span class="p">.</span><span class="n">AddHandler</span><span class="p">(</span><span class="n">DataGrid</span><span class="p">.</span><span class="n">MouseUpEvent</span><span class="p">,</span> <span class="k">new</span> <span class="n">MouseButtonEventHandler</span><span class="p">((</span><span class="n">sender</span><span class="p">,</span><span class="n">e</span><span class="p">)=&gt;</span> <span class="p">{</span><span class="cm">/* ～～; */</span><span class="p">}),</span> <span class="k">true</span><span class="p">);</span>

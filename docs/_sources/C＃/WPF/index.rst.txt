@@ -7,7 +7,7 @@ WPF
 
    .NET Core and WPF
    WPF
-   xaml
+   XAML/index
    コードビハインド
    Prism
    ReactiveProperty

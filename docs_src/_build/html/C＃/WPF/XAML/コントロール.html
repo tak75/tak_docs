@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>コントロール &mdash; Tak Documents  ドキュメント</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/translations.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="検索" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Tak Documents
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../VirtualBox/index.html">VirtualBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Matplotlib/index.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Jupyter/index.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Web%E3%82%A2%E3%83%97%E3%83%AA/index.html">Webアプリ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../C/index.html">C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">C＃</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../UML/index.html">UML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90/index.html">データ分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../%E5%82%99%E5%BF%98%E9%8C%B2/index.html">備忘録</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Tak Documents</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">コントロール</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/C＃/WPF/XAML/コントロール.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>コントロール<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<section id="id2">
+<h2>レイアウトコントロール<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="border">
+<h3>Borderコントロール<a class="headerlink" href="#border" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p><a class="reference external" href="https://blog.okazuki.jp/entry/20130104/1357309697">https://blog.okazuki.jp/entry/20130104/1357309697</a></p>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Border</span>
+    <span class="na">Padding=</span><span class="s">&quot;5, 10, 15, 20&quot;</span>
+    <span class="na">BorderThickness=</span><span class="s">&quot;5,10,15,20&quot;</span>
+    <span class="na">BorderBrush=</span><span class="s">&quot;Red&quot;</span>
+    <span class="na">CornerRadius=</span><span class="s">&quot;5, 10, 15, 20&quot;</span>
+    <span class="na">Background=</span><span class="s">&quot;Blue&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;中身&quot;</span> <span class="na">Background=</span><span class="s">&quot;Black&quot;</span> <span class="na">Foreground=</span><span class="s">&quot;White&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/Border&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="bulletdecorator">
+<h3>BulletDecoratorコントロール<a class="headerlink" href="#bulletdecorator" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p><a class="reference external" href="https://blog.okazuki.jp/entry/20130104/1357309697">https://blog.okazuki.jp/entry/20130104/1357309697</a></p>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;BulletDecorator</span> <span class="na">Background=</span><span class="s">&quot;Cyan&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;BulletDecorator.Bullet&gt;</span>
+        <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;行頭&quot;</span> <span class="na">Foreground=</span><span class="s">&quot;White&quot;</span> <span class="na">Background=</span><span class="s">&quot;Black&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/BulletDecorator.Bullet&gt;</span>
+    <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;子要素&quot;</span> <span class="na">Foreground=</span><span class="s">&quot;White&quot;</span> <span class="na">Background=</span><span class="s">&quot;Red&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/BulletDecorator&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="canvas">
+<h3>Canvasコントロール<a class="headerlink" href="#canvas" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20130104/1357315810">https://blog.okazuki.jp/entry/20130104/1357315810</a></p></li>
+<li><p>Canvasの上下左右を起点として位置を指定する</p></li>
+</ul>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Canvas&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Canvas.Top=</span><span class="s">&quot;10&quot;</span> <span class="na">Canvas.Left=</span><span class="s">&quot;10&quot;</span> <span class="na">Content=</span><span class="s">&quot;Button1&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Canvas.Top=</span><span class="s">&quot;10&quot;</span> <span class="na">Canvas.Right=</span><span class="s">&quot;10&quot;</span> <span class="na">Content=</span><span class="s">&quot;Button2&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Canvas.Bottom=</span><span class="s">&quot;10&quot;</span> <span class="na">Canvas.Left=</span><span class="s">&quot;10&quot;</span> <span class="na">Content=</span><span class="s">&quot;Button3&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Canvas.Bottom=</span><span class="s">&quot;10&quot;</span> <span class="na">Canvas.Right=</span><span class="s">&quot;10&quot;</span> <span class="na">Content=</span><span class="s">&quot;Button4&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/Canvas&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="dockpanel">
+<h3>DockPanelコントロール<a class="headerlink" href="#dockpanel" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p><a class="reference external" href="https://blog.okazuki.jp/entry/20130105/1357395569">https://blog.okazuki.jp/entry/20130105/1357395569</a></p>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;DockPanel&gt;</span>
+    <span class="c">&lt;!-- メニューやツールバー --&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">DockPanel.Dock=</span><span class="s">&quot;Top&quot;</span> <span class="na">Content=</span><span class="s">&quot;Menu&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">DockPanel.Dock=</span><span class="s">&quot;Top&quot;</span> <span class="na">Content=</span><span class="s">&quot;Toolbar&quot;</span> <span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- ステータスバー --&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">DockPanel.Dock=</span><span class="s">&quot;Bottom&quot;</span> <span class="na">Content=</span><span class="s">&quot;StatusBar&quot;</span> <span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- ツリーが表示される場所 最低限の幅確保のためMinWidthプロパティを指定 --&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">DockPanel.Dock=</span><span class="s">&quot;Left&quot;</span> <span class="na">Content=</span><span class="s">&quot;Tree&quot;</span> <span class="na">MinWidth=</span><span class="s">&quot;150&quot;</span> <span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- エクスプローラーの右側の領域 --&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Content&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/DockPanel&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="wrappanel">
+<h3>WrapPanelコントロール<a class="headerlink" href="#wrappanel" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20130105/1357395569">https://blog.okazuki.jp/entry/20130105/1357395569</a></p></li>
+<li><p>子要素が外にはみ出したときは、折り返して表示</p></li>
+<li><p>子要素サイズをItemHeight、ItemWidthで指定できる</p></li>
+</ul>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;WrapPanel</span> <span class="na">Orientation=</span><span class="s">&quot;Vertical&quot;</span> <span class="na">ItemHeight=</span><span class="s">&quot;75&quot;</span> <span class="na">ItemWidth=</span><span class="s">&quot;50&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button&quot;</span> <span class="na">Width=</span><span class="s">&quot;75&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button&quot;</span> <span class="na">Width=</span><span class="s">&quot;75&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button&quot;</span> <span class="na">Width=</span><span class="s">&quot;75&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button&quot;</span> <span class="na">Width=</span><span class="s">&quot;75&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button&quot;</span> <span class="na">Width=</span><span class="s">&quot;75&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button&quot;</span> <span class="na">Width=</span><span class="s">&quot;75&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button&quot;</span> <span class="na">Width=</span><span class="s">&quot;75&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button&quot;</span> <span class="na">Width=</span><span class="s">&quot;75&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button&quot;</span> <span class="na">Width=</span><span class="s">&quot;75&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/WrapPanel&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="viewbox">
+<h3>ViewBoxコントロール<a class="headerlink" href="#viewbox" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20130105/1357400239">https://blog.okazuki.jp/entry/20130105/1357400239</a></p></li>
+<li><p>子要素を拡大縮小して表示するコントロール</p></li>
+</ul>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;WrapPanel&gt;</span>
+    <span class="nt">&lt;Viewbox</span> <span class="na">Width=</span><span class="s">&quot;75&quot;</span> <span class="na">Height=</span><span class="s">&quot;75&quot;</span> <span class="na">Stretch=</span><span class="s">&quot;None&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Viewbox&gt;</span>
+    <span class="nt">&lt;Viewbox</span> <span class="na">Width=</span><span class="s">&quot;75&quot;</span> <span class="na">Height=</span><span class="s">&quot;75&quot;</span> <span class="na">Stretch=</span><span class="s">&quot;Fill&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Viewbox&gt;</span>
+    <span class="nt">&lt;Viewbox</span> <span class="na">Width=</span><span class="s">&quot;75&quot;</span> <span class="na">Height=</span><span class="s">&quot;75&quot;</span> <span class="na">Stretch=</span><span class="s">&quot;Uniform&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Viewbox&gt;</span>
+    <span class="nt">&lt;Viewbox</span> <span class="na">Width=</span><span class="s">&quot;75&quot;</span> <span class="na">Height=</span><span class="s">&quot;75&quot;</span> <span class="na">Stretch=</span><span class="s">&quot;UniformToFill&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Viewbox&gt;</span>
+<span class="nt">&lt;/WrapPanel&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="scrollviewer">
+<h3>ScrollViewerコントロール<a class="headerlink" href="#scrollviewer" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20130106/1357475541">https://blog.okazuki.jp/entry/20130106/1357475541</a></p></li>
+<li><p>CanContentScroll
+* スクロール時に論理単位でスクロール(要素単位でスクロール)するか物理単位でスクロール(ピクセル単位でスクロール)するか指定可能
+* ボタンなどのコントロールの途中で止まる／止まらないなど</p></li>
+</ul>
+</section>
+<section id="gridsplitter">
+<h3>GridSplitterコントロール<a class="headerlink" href="#gridsplitter" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20130107/1357571958">https://blog.okazuki.jp/entry/20130107/1357571958</a></p></li>
+<li><p>Gridコントロールをマウスでサイズ変更する</p></li>
+</ul>
+</section>
+</section>
+<section id="id3">
+<h2>レイアウトに影響を与えるプロパティ<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p>MinWidth,MaxWidth：コントロールの最小,最大の幅を設定</p></li>
+<li><p>ピクセル以外に指定できる</p>
+<ul>
+<li><p>10in：インチで指定</p></li>
+<li><p>10cm：センチメートルで指定</p></li>
+<li><p>10pt：ポイントで指定</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id4">
+<h2>コンテンツモデル<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20130113/1358094630">https://blog.okazuki.jp/entry/20130113/1358094630</a></p></li>
+<li><p>WPFでは、単一の要素を表示するコントロールとしてContentControlというものが定義</p></li>
+<li><p>このコントロールは、ButtonやLabelなどの多くのコントロールの親クラス</p></li>
+<li><p>ContentControlにはContentという名前のobject型のプロパティが定義されていて、 <strong>そこに設定されたクラスの型に応じて表示方法が切り替わる</strong></p></li>
+<li><p>表示ロジックは以下のとおり</p>
+<ul>
+<li><p>UIElement型(ButtonやRectangleなどのコントロール)の場合はそのまま表示する。</p></li>
+<li><p><strong>ContentTemplateにデータテンプレートが設定されている場合は、それを使って表示する。</strong></p></li>
+<li><p>Contentプロパティに設定された型に対してデータテンプレートが定義されている場合は、それを使って表示する。</p></li>
+<li><p>UIElement型へ変換するTypeConverterがある場合は、それを使ってUIElement型に変換して表示する。</p></li>
+<li><p>string型へ変換するTypeConverterがある場合は、それを使って文字列に変換してTextBlockのTextプロパティに設定して表示する。</p></li>
+<li><p>ToStringメソッドの呼び出し結果をTextBlockのTextプロパティに設定して表示する。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="button">
+<h2>Buttonコントロール<a class="headerlink" href="#button" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="repeatbutton">
+<h3>RepeatButtonコントロール<a class="headerlink" href="#repeatbutton" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20130114/1358172834">https://blog.okazuki.jp/entry/20130114/1358172834</a></p></li>
+<li><p>ボタンの上でマウスが押されている間、一定間隔でClickイベントを発行する</p></li>
+<li><p>Clickイベントの発行間隔は、以下のプロパティで設定</p>
+<ul>
+<li><p>Delay：ボタンが押されている間にClickイベントの繰り返しが開始するまでに待つ時間（ミリ秒）を指定</p></li>
+<li><p>Interal：Clickイベントの繰り返しの感覚（ミリ秒）を指定</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;RepeatButton</span> <span class="na">Content=</span><span class="s">&quot;0回&quot;</span> <span class="na">Click=</span><span class="s">&quot;Button_Click&quot;</span>
+              <span class="na">Delay=</span><span class="s">&quot;1000&quot;</span>
+              <span class="na">Interval=</span><span class="s">&quot;2000&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="datagrid">
+<h2>DataGridコントロール<a class="headerlink" href="#datagrid" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id5">
+<h3>自動生成機能＋コードビハインドでカスタマイズする方法<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20130218/1358172834">https://blog.okazuki.jp/entry/20130218/1358172834</a></p></li>
+<li><p>DataGridの列の自動生成は、列を自動生成するタイミングで発生するAutoGeneratingColumnイベントである程度カスタマイズすることができ、
+DataGridにAutoGeneratingColumnイベントハンドラを作成し下記のように記述すればよい</p></li>
+<li><p>ただし、単純なケースへの対応や、属性を利用した汎用的なデータの表示機能を開発するケースでのみ使用される方法であり、一般的な方法ではない</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="k">void</span> <span class="nf">dataGrid_AutoGeneratingColumn</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">DataGridAutoGeneratingColumnEventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// プロパティ名をもとに自動生成する列をカスタマイズします</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">PropertyName</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">case</span> <span class="s">&quot;Name&quot;</span><span class="p">:</span>
+            <span class="c1">// Name列は最初に表示してヘッダーを名前にする</span>
+            <span class="n">e</span><span class="p">.</span><span class="n">Column</span><span class="p">.</span><span class="n">Header</span> <span class="p">=</span> <span class="s">&quot;名前&quot;</span><span class="p">;</span>
+            <span class="n">e</span><span class="p">.</span><span class="n">Column</span><span class="p">.</span><span class="n">DisplayIndex</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="s">&quot;Age&quot;</span><span class="p">:</span>
+            <span class="c1">// Ageプロパティは1番目に表示してヘッダーを年齢にする</span>
+            <span class="n">e</span><span class="p">.</span><span class="n">Column</span><span class="p">.</span><span class="n">Header</span> <span class="p">=</span> <span class="s">&quot;年齢&quot;</span><span class="p">;</span>
+            <span class="n">e</span><span class="p">.</span><span class="n">Column</span><span class="p">.</span><span class="n">DisplayIndex</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="s">&quot;Gender&quot;</span><span class="p">:</span>
+            <span class="c1">// Genderプロパティは表示しない</span>
+            <span class="n">e</span><span class="p">.</span><span class="n">Cancel</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="s">&quot;AuthMember&quot;</span><span class="p">:</span>
+            <span class="c1">// AuthMemberプロパティは2番目に表示してヘッダーを承認済みにする</span>
+            <span class="n">e</span><span class="p">.</span><span class="n">Column</span><span class="p">.</span><span class="n">Header</span> <span class="p">=</span> <span class="s">&quot;承認済み&quot;</span><span class="p">;</span>
+            <span class="n">e</span><span class="p">.</span><span class="n">Column</span><span class="p">.</span><span class="n">DisplayIndex</span> <span class="p">=</span> <span class="m">2</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">default</span><span class="p">:</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">InvalidOperationException</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3>自分で列を定義する方法<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20130224/1361693816">https://blog.okazuki.jp/entry/20130224/1361693816</a></p></li>
+<li><p>「自動生成機能＋コードビハインド」より、こちらが一般的な方法</p></li>
+</ul>
+</section>
+</section>
+<section id="treeview">
+<h2>TreeViewコントロール<a class="headerlink" href="#treeview" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20130409/1365479109">https://blog.okazuki.jp/entry/20130409/1365479109</a></p></li>
+<li><p>DataTemplateを拡張したHierarchicalDataTemplateを使用</p></li>
+<li><p>DataTemplateと異なる点は、ItemsSourceプロパティに、現在表示している要素の子にあたるものをItemsSourceプロパティに設定する点</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, tak.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

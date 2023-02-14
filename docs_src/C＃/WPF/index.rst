@@ -3,11 +3,11 @@ WPF
 ===
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    .NET Core and WPF
    WPF
-   xaml
+   XAML/index
    コードビハインド
    Prism
    ReactiveProperty

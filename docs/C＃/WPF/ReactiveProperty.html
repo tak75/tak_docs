@@ -292,6 +292,10 @@ Subscribe 等で値の変更を監視しているような場合は Dispose し�
     <span class="p">.</span><span class="n">ToReadOnlyReactivePropertySlim</span><span class="p">()</span>
     <span class="p">.</span><span class="n">AddTo</span><span class="p">(</span><span class="n">Disposable</span><span class="p">);</span>
 
+<span class="n">Project</span><span class="p">.</span><span class="n">ObserveProperty</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Value</span><span class="p">.</span><span class="n">IsFinished</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">ToReactiveProperty</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">AddTo</span><span class="p">(</span><span class="n">Disposable</span><span class="p">);</span>
+
 <span class="c1">// BindingのModeがTwoWayなプロパティ(つまり双方向)</span>
 <span class="n">ReactiveProperty</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">Property1</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">ToReactivePropertyAsSynchronized</span><span class="p">(</span><span class="n">m</span> <span class="p">=&gt;</span> <span class="n">m</span><span class="p">.</span><span class="n">X</span><span class="p">);</span>
 
@@ -382,6 +386,17 @@ Subscribe 等で値の変更を監視しているような場合は Dispose し�
     <span class="p">.</span><span class="n">ToReactiveCommand</span><span class="p">()</span>
     <span class="p">.</span><span class="n">WithSubscribe</span><span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{})</span>
     <span class="p">.</span><span class="n">AddTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_disposables</span><span class="p">);</span>
+
+<span class="c1">// ReadOnlyReactiveProperty&lt;ReactiveCommand&gt;</span>
+<span class="n">MainCommand</span> <span class="p">=</span> <span class="n">State</span><span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span> <span class="k">switch</span>
+    <span class="p">{</span>
+        <span class="m">0</span> <span class="p">=&gt;</span> <span class="n">SubCommand0</span><span class="p">,</span>
+        <span class="m">1</span> <span class="p">=&gt;</span> <span class="n">SubCommand1</span><span class="p">,</span>
+        <span class="m">2</span> <span class="p">=&gt;</span> <span class="n">SubCommand2</span><span class="p">,</span>
+        <span class="n">_</span> <span class="p">=&gt;</span> <span class="n">NoCommand</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="n">ToReadOnlyReactivePropertySlim</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">AddTo</span><span class="p">(</span><span class="n">Disposable</span><span class="p">);</span>
 </pre></div>
 </div>
 </div></blockquote>

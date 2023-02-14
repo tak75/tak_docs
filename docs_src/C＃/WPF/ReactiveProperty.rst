@@ -184,6 +184,10 @@ Viewsフォルダにて、追加→新しい項目→Prism→WPF→Prism UserCon
         .ToReadOnlyReactivePropertySlim()
         .AddTo(Disposable);
 
+    Project.ObserveProperty(x => x.Value.IsFinished.Value)
+        .ToReactiveProperty()
+        .AddTo(Disposable);
+
     // BindingのModeがTwoWayなプロパティ(つまり双方向)
     ReactiveProperty<T> Property1 = model.ToReactivePropertyAsSynchronized(m => m.X);
 
@@ -273,6 +277,17 @@ Viewsフォルダにて、追加→新しい項目→Prism→WPF→Prism UserCon
         .ToReactiveCommand()
         .WithSubscribe(async () => {})
         .AddTo(this._disposables);
+
+    // ReadOnlyReactiveProperty<ReactiveCommand>
+    MainCommand = State.Select(s => s switch
+        {
+            0 => SubCommand0,
+            1 => SubCommand1,
+            2 => SubCommand2,
+            _ => NoCommand
+        })
+        .ToReadOnlyReactivePropertySlim()
+        .AddTo(Disposable);
 
 イベント送信処理
 ================
