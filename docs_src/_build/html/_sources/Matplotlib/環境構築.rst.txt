@@ -1,0 +1,29 @@
+========
+環境構築
+========
+
+はじめに
+========
+
+* Anacondaがインストールされていることを前提とする
+
+日本語化
+========
+
+* 無料フォント（`IPAexGotic <https://moji.or.jp/ipafont/ipafontdownload/>`_）をダウンロード
+  
+  * `ipaexg00401.zip(4MB) <https://moji.or.jp/wp-content/ipafont/IPAexfont/ipaexg00401.zip>`_
+  
+* ダウンロードしたフォントファイル（ipaexg.ttf）を下記ディレクトリにコピー
+  
+  * C:\\Users\\xxx\\anaconda3\\Lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf
+
+* matplotlibrcを修正
+ 
+  * C:\\Users\\xxx\\anaconda3\\Lib\\site-packages\\matplotlib\\mpl-data\\matplotlibrc
+  * #font.family : sans-serif　⇒　font.family : IPAexGothic
+
+備考
+====
+
+* seaborn というライブラリも色々なプロットに使えるらしい

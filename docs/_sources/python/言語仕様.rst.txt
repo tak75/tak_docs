@@ -1,0 +1,78 @@
+========
+言語仕様
+========
+
+計算
+====
+
+----
+累乗
+----
+
+.. code-block:: python
+
+  cal = 2 ** 3    # 2^3=8
+
+配列
+====
+
+.. code-block:: python
+
+  # タプル
+  tuple = (1,2,3)
+
+  # リスト
+  list = [1,2,3]
+
+  # 辞書
+  dict = {1:'one',2:'two',3:'three'}
+
+文字列
+======
+
+--------
+format()
+--------
+
+.. code-block:: python
+
+  fruit = 'apple'
+  number = 100
+  print('{}: {}'.format(fruit, number))  # apple: 100
+ 
+--------
+f-string
+--------
+
+.. code-block:: python
+
+  fruit = 'apple'
+  number = 100
+  print(f'{fruit}: {number}')  # apple: 100
+
+演算子
+======
+
+---
+in
+---
+
+* 値がタプルやリストなどに含まれているかどうかを判定
+
+.. code-block:: python
+
+  x = 5
+
+  # リスト
+  x in [1, 3, 5, 7]   # True
+
+  # タプル
+  x in (5, 10, 15)    # False
+
+その他
+======
+
+.. code-block:: python
+
+  def func():
+    pass    # 何も実行しない場合

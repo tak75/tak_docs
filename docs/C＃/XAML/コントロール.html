@@ -64,6 +64,13 @@
 <li class="toctree-l4"><a class="reference internal" href="#calendar">Calendarコントロール</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#contextmenu">ContextMenuコントロール</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#menu">Menuコントロール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolbar">ToolBarコントロール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checkbox">CheckBoxコントロール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#combobox">ComboBoxコントロール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#listbox">ListBoxコントロール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#radiobutton">RadioButtonコントロール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#slider">Sliderコントロール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tabcontrol">TabControlコントロール</a></li>
 </ul>
 </li>
 </ul>
@@ -329,15 +336,49 @@ DataGridにAutoGeneratingColumnイベントハンドラを作成し下記のよ�
 <li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20130224/1361693816">https://blog.okazuki.jp/entry/20130224/1361693816</a></p></li>
 <li><p>「自動生成機能＋コードビハインド」より、こちらが一般的な方法</p></li>
 </ul>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!-- 見た目を定義するフォーマット --&gt;</span>
+<span class="nt">&lt;DataGridTemplateColumn&gt;</span>
+    <span class="nt">&lt;DataGridTemplateColumn.HeaderStyle&gt;</span>
+        <span class="nt">&lt;Style</span> <span class="na">TargetType=</span><span class="s">&quot;DataGridColumnHeader&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">&quot;HorizontalContentAlignment&quot;</span> <span class="na">Value=</span><span class="s">&quot;Stretch&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/Style&gt;</span>
+    <span class="nt">&lt;/DataGridTemplateColumn.HeaderStyle&gt;</span>
+    <span class="nt">&lt;DataGridTemplateColumn.HeaderTemplate&gt;</span>
+        <span class="nt">&lt;DataTemplate&gt;</span>
+            <span class="c">&lt;!-- ヘッダの見た目 --&gt;</span>
+        <span class="nt">&lt;/DataTemplate&gt;</span>
+    <span class="nt">&lt;/DataGridTemplateColumn.HeaderTemplate&gt;</span>
+    <span class="nt">&lt;DataGridTemplateColumn.CellTemplate&gt;</span>
+        <span class="nt">&lt;DataTemplate&gt;</span>
+            <span class="c">&lt;!-- セルの見た目 --&gt;</span>
+        <span class="nt">&lt;/DataTemplate&gt;</span>
+    <span class="nt">&lt;/DataGridTemplateColumn.CellTemplate&gt;</span>
+    <span class="nt">&lt;DataGridTemplateColumn.CellEditingTemplate&gt;</span>
+        <span class="nt">&lt;DataTemplate&gt;</span>
+            <span class="c">&lt;!-- セル編集時の見た目 --&gt;</span>
+        <span class="nt">&lt;/DataTemplate&gt;</span>
+    <span class="nt">&lt;/DataGridTemplateColumn.CellEditingTemplate&gt;</span>
+<span class="nt">&lt;/DataGridTemplateColumn&gt;</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section id="treeview">
 <h2>TreeViewコントロール<a class="headerlink" href="#treeview" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20130409/1365479109">https://blog.okazuki.jp/entry/20130409/1365479109</a></p></li>
-<li><p>DataTemplateを拡張したHierarchicalDataTemplateを使用</p></li>
 <li><p>DataTemplateと異なる点は、ItemsSourceプロパティに、現在表示している要素の子にあたるものをItemsSourceプロパティに設定する点</p></li>
 </ul>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!-- 見た目を定義するフォーマット --&gt;</span>
+<span class="nt">&lt;TreeView&gt;</span>
+    <span class="nt">&lt;TreeView.ItemTemplate&gt;</span>
+        <span class="nt">&lt;HierarchicalDataTemplate</span> <span class="na">DataType=</span><span class="s">&quot;xxx&quot;</span><span class="nt">&gt;</span>
+            <span class="c">&lt;!-- アイテムの見た目 --&gt;</span>
+        <span class="nt">&lt;/HierarchicalDataTemplate&gt;</span>
+    <span class="nt">&lt;/TreeView.ItemTemplate&gt;</span>
+<span class="nt">&lt;/TreeView&gt;</span>
+</pre></div>
+</div>
 </section>
 <section id="calendar">
 <h2>Calendarコントロール<a class="headerlink" href="#calendar" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -357,6 +398,85 @@ DataGridにAutoGeneratingColumnイベントハンドラを作成し下記のよ�
 <ul class="simple">
 <li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/12/122541">https://blog.okazuki.jp/entry/2014/08/12/122541</a></p></li>
 </ul>
+</section>
+<section id="toolbar">
+<h2>ToolBarコントロール<a class="headerlink" href="#toolbar" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/12/215209">https://blog.okazuki.jp/entry/2014/08/12/215209</a></p></li>
+</ul>
+</section>
+<section id="checkbox">
+<h2>CheckBoxコントロール<a class="headerlink" href="#checkbox" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/12/230248">https://blog.okazuki.jp/entry/2014/08/12/230248</a></p></li>
+</ul>
+</section>
+<section id="combobox">
+<h2>ComboBoxコントロール<a class="headerlink" href="#combobox" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/14/201047">https://blog.okazuki.jp/entry/2014/08/14/201047</a></p></li>
+<li><p>IsEditableプロパティをtrueに設定することで、選択肢にない項目の入力が可能</p></li>
+</ul>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!-- 見た目を定義するフォーマット --&gt;</span>
+<span class="nt">&lt;ComboBox&gt;</span>
+    <span class="nt">&lt;ComboBox.ItemTemplate&gt;</span>
+        <span class="nt">&lt;DataTemplate&gt;</span>
+            <span class="c">&lt;!-- アイテムの見た目 --&gt;</span>
+        <span class="nt">&lt;/DataTemplate&gt;</span>
+    <span class="nt">&lt;/ComboBox.ItemTemplate&gt;</span>
+<span class="nt">&lt;/ComboBox&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="listbox">
+<h2>ListBoxコントロール<a class="headerlink" href="#listbox" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/14/205338">https://blog.okazuki.jp/entry/2014/08/14/205338</a></p></li>
+</ul>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!-- 見た目を定義するフォーマット --&gt;</span>
+<span class="nt">&lt;ListBox&gt;</span>
+    <span class="nt">&lt;ListBox.ItemTemplate&gt;</span>
+        <span class="nt">&lt;DataTemplate&gt;</span>
+            <span class="c">&lt;!-- アイテムの見た目 --&gt;</span>
+        <span class="nt">&lt;/DataTemplate&gt;</span>
+    <span class="nt">&lt;/ListBox.ItemTemplate&gt;</span>
+<span class="nt">&lt;/ListBox&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="radiobutton">
+<h2>RadioButtonコントロール<a class="headerlink" href="#radiobutton" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/15/124703">https://blog.okazuki.jp/entry/2014/08/15/124703</a></p></li>
+</ul>
+</section>
+<section id="slider">
+<h2>Sliderコントロール<a class="headerlink" href="#slider" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/15/220915">https://blog.okazuki.jp/entry/2014/08/15/220915</a></p></li>
+</ul>
+</section>
+<section id="tabcontrol">
+<h2>TabControlコントロール<a class="headerlink" href="#tabcontrol" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/15/232445">https://blog.okazuki.jp/entry/2014/08/15/232445</a></p></li>
+<li><p>ItemsSourceプロパティにコレクションを設定すると、ItemTemplateプロパティに従ってTabのヘッダを表示することができる</p></li>
+</ul>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!-- 見た目を定義するフォーマット --&gt;</span>
+<span class="nt">&lt;TabControl&gt;</span>
+    <span class="nt">&lt;TabControl.ItemTemplate&gt;</span>
+        <span class="nt">&lt;DataTemplate&gt;</span>
+            <span class="c">&lt;!-- Tabのヘッダの見た目 --&gt;</span>
+        <span class="nt">&lt;/DataTemplate&gt;</span>
+    <span class="nt">&lt;/TabControl.ItemTemplate&gt;</span>
+    <span class="nt">&lt;TabControl.ContentTemplate&gt;</span>
+        <span class="nt">&lt;DataTemplate&gt;</span>
+            <span class="c">&lt;!-- Tabページの内容 --&gt;</span>
+        <span class="nt">&lt;/DataTemplate&gt;</span>
+    <span class="nt">&lt;/TabControl.ContentTemplate&gt;</span>
+<span class="nt">&lt;/TabControl&gt;</span>
+</pre></div>
+</div>
 </section>
 </section>
 

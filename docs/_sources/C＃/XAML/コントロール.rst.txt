@@ -231,12 +231,48 @@ DataGridコントロール
 * https://blog.okazuki.jp/entry/20130224/1361693816
 * 「自動生成機能＋コードビハインド」より、こちらが一般的な方法
 
+.. code-block:: XML
+
+    <!-- 見た目を定義するフォーマット -->
+    <DataGridTemplateColumn>
+        <DataGridTemplateColumn.HeaderStyle>
+            <Style TargetType="DataGridColumnHeader">
+                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            </Style>
+        </DataGridTemplateColumn.HeaderStyle>
+        <DataGridTemplateColumn.HeaderTemplate>
+            <DataTemplate>
+                <!-- ヘッダの見た目 -->
+            </DataTemplate>
+        </DataGridTemplateColumn.HeaderTemplate>
+        <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+                <!-- セルの見た目 -->
+            </DataTemplate>
+        </DataGridTemplateColumn.CellTemplate>
+        <DataGridTemplateColumn.CellEditingTemplate>
+            <DataTemplate>
+                <!-- セル編集時の見た目 -->
+            </DataTemplate>
+        </DataGridTemplateColumn.CellEditingTemplate>
+    </DataGridTemplateColumn>
+
 TreeViewコントロール
 ====================
 
 * https://blog.okazuki.jp/entry/20130409/1365479109
-* DataTemplateを拡張したHierarchicalDataTemplateを使用
 * DataTemplateと異なる点は、ItemsSourceプロパティに、現在表示している要素の子にあたるものをItemsSourceプロパティに設定する点
+
+.. code-block:: XML
+
+    <!-- 見た目を定義するフォーマット -->
+    <TreeView>
+        <TreeView.ItemTemplate>
+            <HierarchicalDataTemplate DataType="xxx">
+                <!-- アイテムの見た目 -->
+            </HierarchicalDataTemplate>
+        </TreeView.ItemTemplate>
+    </TreeView>
 
 Calendarコントロール
 ====================
@@ -254,4 +290,78 @@ Menuコントロール
 
 * https://blog.okazuki.jp/entry/2014/08/12/122541
 
+ToolBarコントロール
+===================
+
+* https://blog.okazuki.jp/entry/2014/08/12/215209
+
+CheckBoxコントロール
+=====================
+
+* https://blog.okazuki.jp/entry/2014/08/12/230248
+
+ComboBoxコントロール
+=====================
+
+* https://blog.okazuki.jp/entry/2014/08/14/201047
+* IsEditableプロパティをtrueに設定することで、選択肢にない項目の入力が可能
+
+.. code-block:: XML
+
+    <!-- 見た目を定義するフォーマット -->
+    <ComboBox>
+        <ComboBox.ItemTemplate>
+            <DataTemplate>
+                <!-- アイテムの見た目 -->
+            </DataTemplate>
+        </ComboBox.ItemTemplate>
+    </ComboBox>
+
+ListBoxコントロール
+====================
+
+* https://blog.okazuki.jp/entry/2014/08/14/205338
+
+.. code-block:: XML
+
+    <!-- 見た目を定義するフォーマット -->
+    <ListBox>
+        <ListBox.ItemTemplate>
+            <DataTemplate>
+                <!-- アイテムの見た目 -->
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
+
+RadioButtonコントロール
+=========================
+
+* https://blog.okazuki.jp/entry/2014/08/15/124703
+
+Sliderコントロール
+===================
+
+* https://blog.okazuki.jp/entry/2014/08/15/220915
+
+TabControlコントロール
+========================
+
+* https://blog.okazuki.jp/entry/2014/08/15/232445
+* ItemsSourceプロパティにコレクションを設定すると、ItemTemplateプロパティに従ってTabのヘッダを表示することができる 
+
+.. code-block:: XML
+
+    <!-- 見た目を定義するフォーマット -->
+    <TabControl>
+        <TabControl.ItemTemplate>
+            <DataTemplate>
+                <!-- Tabのヘッダの見た目 -->
+            </DataTemplate>
+        </TabControl.ItemTemplate>
+        <TabControl.ContentTemplate>
+            <DataTemplate>
+                <!-- Tabページの内容 -->
+            </DataTemplate>
+        </TabControl.ContentTemplate>
+    </TabControl>
 
