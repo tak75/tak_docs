@@ -15,6 +15,8 @@ Dispatcherについて
   * Application.Current.Dispatcherは常にUIスレッドのディスパッチャを提供
   * これは唯一のApplicationインスタンスを起動するスレッドだからである
 
+* DispatcherObjectを継承したクラスの例（https://blog.okazuki.jp/entry/2014/08/17/142413）
+
 エラーメッセージ
 ================
 

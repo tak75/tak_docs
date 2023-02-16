@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WPF &mdash; Tak Documents  ドキュメント</title>
+  <title>全般 &mdash; Tak Documents  ドキュメント</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/my_theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -53,9 +53,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../%E8%A8%80%E8%AA%9E%E4%BB%95%E6%A7%98/index.html">言語仕様</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">WPF</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href=".NET%20Core%20and%20WPF.html">.NET Core and WPF</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">WPF</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">全般</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#dispatcher">Dispatcherについて</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">エラーメッセージ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">エラーメッセージ</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#viewview">Viewの中にViewを配置する方法</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datacontext">DataContextの設定方法</a></li>
 </ul>
@@ -95,9 +95,9 @@
       <li><a href="../../index.html" class="icon icon-home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">C＃</a></li>
           <li class="breadcrumb-item"><a href="index.html">WPF</a></li>
-      <li class="breadcrumb-item active">WPF</li>
+      <li class="breadcrumb-item active">全般</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/C＃/WPF/WPF.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/C＃/WPF/全般.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -105,8 +105,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="wpf">
-<h1>WPF<a class="headerlink" href="#wpf" title="このヘッドラインへのパーマリンク">¶</a></h1>
+  <section id="id1">
+<h1>全般<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <section id="dispatcher">
 <h2>Dispatcherについて<a class="headerlink" href="#dispatcher" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
@@ -125,10 +125,10 @@
 <li><p>DispatcherObjectを継承したクラスの例（<a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/17/142413">https://blog.okazuki.jp/entry/2014/08/17/142413</a>）</p></li>
 </ul>
 </section>
-<section id="id1">
-<h2>エラーメッセージ<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <section id="id2">
-<h3>他のスレッドで作成されているためアクセスできない<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h2>エラーメッセージ<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id3">
+<h3>他のスレッドで作成されているためアクセスできない<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p>ViewにバインドするオブジェクトはUIスレッドで作成する必要がある。</p></li>
 <li><p>Task.Run()など、他のスレッド上で生成している場合にエラーとなる。</p></li>
@@ -152,30 +152,30 @@
 <section id="xaml">
 <h3>xaml内に配置<a class="headerlink" href="#xaml" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>Messageプロパティは、View1のコードビハインドでDependencyPropertyとして定義必要</p>
-<div class="highlight-xaml notranslate"><div class="highlight"><pre><span></span>&lt;Grid x:Name=&quot;grid&quot;&gt;
-    &lt;Grid.RowDefinitions&gt;
-        &lt;RowDefinition Height=&quot;Auto&quot;/&gt;
-        &lt;RowDefinition/&gt;
-    &lt;/Grid.RowDefinitions&gt;
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Grid</span> <span class="na">x:Name=</span><span class="s">&quot;grid&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Grid.RowDefinitions&gt;</span>
+        <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&quot;Auto&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;RowDefinition/&gt;</span>
+    <span class="nt">&lt;/Grid.RowDefinitions&gt;</span>
 
-    &lt;TextBlock Grid.Row=&quot;0&quot; Text=&quot;Test Message&quot;/&gt;
-    &lt;v:View1 Message = &quot;aaaaa&quot;/&gt;
-&lt;/Grid&gt;
+    <span class="nt">&lt;TextBlock</span> <span class="na">Grid.Row=</span><span class="s">&quot;0&quot;</span> <span class="na">Text=</span><span class="s">&quot;Test Message&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;v:View1</span> <span class="na">Message =</span> <span class="s">&quot;aaaaa&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/Grid&gt;</span>
 </pre></div>
 </div>
 </section>
-<section id="id3">
-<h3>コードビハインドで配置<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<section id="id4">
+<h3>コードビハインドで配置<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>xaml</p>
-<div class="highlight-xaml notranslate"><div class="highlight"><pre><span></span>&lt;Grid x:Name=&quot;grid&quot;&gt;
-    &lt;Grid.RowDefinitions&gt;
-        &lt;RowDefinition Height=&quot;Auto&quot;/&gt;
-        &lt;RowDefinition/&gt;
-    &lt;/Grid.RowDefinitions&gt;
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Grid</span> <span class="na">x:Name=</span><span class="s">&quot;grid&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Grid.RowDefinitions&gt;</span>
+        <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&quot;Auto&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;RowDefinition/&gt;</span>
+    <span class="nt">&lt;/Grid.RowDefinitions&gt;</span>
 
-    &lt;TextBlock Grid.Row=&quot;0&quot; Text=&quot;Test Message&quot;/&gt;
+    <span class="nt">&lt;TextBlock</span> <span class="na">Grid.Row=</span><span class="s">&quot;0&quot;</span> <span class="na">Text=</span><span class="s">&quot;Test Message&quot;</span><span class="nt">/&gt;</span>
     // ※ここにview1を配置する
-&lt;/Grid&gt;
+<span class="nt">&lt;/Grid&gt;</span>
 </pre></div>
 </div>
 <p>コードビハインド</p>
@@ -195,9 +195,9 @@
 <li><p>親Viewから子View生成時に指定する(xaml or コードビハインド)</p></li>
 <li><p>子View生成時に自分でインスタンス生成する(xaml or コードビハインド)
 （PrismのAutoWireViewMode=”True”と同じ（多分））</p>
-<div class="highlight-xaml notranslate"><div class="highlight"><pre><span></span>&lt;UserControl.DataContext&gt;
-    &lt;local:View2ViewModel/&gt;
-&lt;/UserControl.DataContext&gt;
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;UserControl.DataContext&gt;</span>
+    <span class="nt">&lt;local:View2ViewModel/&gt;</span>
+<span class="nt">&lt;/UserControl.DataContext&gt;</span>
 </pre></div>
 </div>
 </li>

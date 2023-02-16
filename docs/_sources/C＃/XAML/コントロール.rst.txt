@@ -365,3 +365,93 @@ TabControlコントロール
         </TabControl.ContentTemplate>
     </TabControl>
 
+Labelコントロール
+=================
+
+* https://blog.okazuki.jp/entry/2014/08/16/150009
+* 「_アルファベット」でアクセスキーを提供して、Targetプロパティに設定したコントロールにフォーカスをうつす機能がある
+* 下記の例では、Alt+FでtextBox1へフォーカスが移動し、Alt+EでtextBox2へフォーカスが移動する
+
+.. code-block:: XML
+
+    <StackPanel Margin="5">
+        <Label Content="ファイル(_F)" Target="{Binding ElementName=textBox1}" />
+        <TextBox x:Name="textBox1" />
+        <Label Content="編集(_E)" Target="{Binding ElementName=textBox2}" />
+        <TextBox x:Name="textBox2" />
+    </StackPanel>
+
+ProgressBarコントロール
+=======================
+
+* https://blog.okazuki.jp/entry/2014/08/16/150009
+* IsIndeterminateプロパティをtrueに設定することで、固定の値ではなく、何かの作業をしていることを示すアニメーションを表示することができる
+
+StatusBarコントロール
+=====================
+
+* https://blog.okazuki.jp/entry/2014/08/16/150009
+
+TextBlockコントロール
+=====================
+
+* https://blog.okazuki.jp/entry/2014/08/16/150009
+* Inlinesというプロパティもあり、ここにRunやHyperlinkをつかって書式付のテキストやハイパーリンクを挿入することもできる
+* 改行もできる
+
+.. code-block:: XML
+
+    <TextBlock>
+        <Run Text="いろいろ指定できる" />
+        <Hyperlink NavigateUri="http://www.bing.com">リンクできる</Hyperlink>
+        <Run Foreground="Red" Text="色も付けれる" />
+        <Run FontFamily="メイリオ" Text="フォントも変えれます" />
+        <LineBreak />
+        <Run Text="改行も入れることができます" />
+    </TextBlock>
+
+Popupコントロール
+=================
+
+* https://blog.okazuki.jp/entry/2014/08/16/221447
+* 画面上に別ウィンドウとして項目を表示するためのコントロール
+* インテリセンスの自前実装などに使用できる
+
+ToolTipコントロール
+=====================
+
+* https://blog.okazuki.jp/entry/2014/08/16/221447
+* 以下のように、ToolTip内に画像を表示することも可能
+
+.. code-block:: XML
+
+    <Button Content="Button">
+        <Button.ToolTip>
+            <ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="anthem.jpg" Height="100" />
+                    <TextBlock Text="アンセム" />
+                </StackPanel>
+            </ToolTip>
+        </Button.ToolTip>
+    </Button>
+
+TextBoxコントロール
+=====================
+
+* https://blog.okazuki.jp/entry/2014/08/16/221447
+* 改行や、タブの挿入が可能で、横スクロールバーと縦スクロールバーが常に表示されるTextBoxコントロールは以下のように定義する
+
+.. code-block:: XML
+
+    <TextBox 
+        AcceptsReturn="True"
+        AcceptsTab="True"
+        HorizontalScrollBarVisibility="Visible"
+        VerticalScrollBarVisibility="Visible"/>
+
+MediaElementコントロール
+========================
+
+* https://blog.okazuki.jp/entry/2014/08/16/221447
+* 音楽や動画を再生するためのコントロール

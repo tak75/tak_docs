@@ -6,7 +6,7 @@ WPF
    :maxdepth: 2
 
    .NET Core and WPF
-   WPF
+   全般
    コードビハインド
    Prism
    ReactiveProperty

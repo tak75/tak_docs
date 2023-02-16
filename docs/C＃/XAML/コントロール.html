@@ -71,6 +71,14 @@
 <li class="toctree-l4"><a class="reference internal" href="#radiobutton">RadioButtonコントロール</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#slider">Sliderコントロール</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#tabcontrol">TabControlコントロール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#label">Labelコントロール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#progressbar">ProgressBarコントロール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#statusbar">StatusBarコントロール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#textblock">TextBlockコントロール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#popup">Popupコントロール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tooltip">ToolTipコントロール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#textbox">TextBoxコントロール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mediaelement">MediaElementコントロール</a></li>
 </ul>
 </li>
 </ul>
@@ -477,6 +485,101 @@ DataGridにAutoGeneratingColumnイベントハンドラを作成し下記のよ�
 <span class="nt">&lt;/TabControl&gt;</span>
 </pre></div>
 </div>
+</section>
+<section id="label">
+<h2>Labelコントロール<a class="headerlink" href="#label" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/16/150009">https://blog.okazuki.jp/entry/2014/08/16/150009</a></p></li>
+<li><p>「_アルファベット」でアクセスキーを提供して、Targetプロパティに設定したコントロールにフォーカスをうつす機能がある</p></li>
+<li><p>下記の例では、Alt+FでtextBox1へフォーカスが移動し、Alt+EでtextBox2へフォーカスが移動する</p></li>
+</ul>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;StackPanel</span> <span class="na">Margin=</span><span class="s">&quot;5&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Label</span> <span class="na">Content=</span><span class="s">&quot;ファイル(_F)&quot;</span> <span class="na">Target=</span><span class="s">&quot;{Binding ElementName=textBox1}&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;TextBox</span> <span class="na">x:Name=</span><span class="s">&quot;textBox1&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Label</span> <span class="na">Content=</span><span class="s">&quot;編集(_E)&quot;</span> <span class="na">Target=</span><span class="s">&quot;{Binding ElementName=textBox2}&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;TextBox</span> <span class="na">x:Name=</span><span class="s">&quot;textBox2&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/StackPanel&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="progressbar">
+<h2>ProgressBarコントロール<a class="headerlink" href="#progressbar" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/16/150009">https://blog.okazuki.jp/entry/2014/08/16/150009</a></p></li>
+<li><p>IsIndeterminateプロパティをtrueに設定することで、固定の値ではなく、何かの作業をしていることを示すアニメーションを表示することができる</p></li>
+</ul>
+</section>
+<section id="statusbar">
+<h2>StatusBarコントロール<a class="headerlink" href="#statusbar" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/16/150009">https://blog.okazuki.jp/entry/2014/08/16/150009</a></p></li>
+</ul>
+</section>
+<section id="textblock">
+<h2>TextBlockコントロール<a class="headerlink" href="#textblock" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/16/150009">https://blog.okazuki.jp/entry/2014/08/16/150009</a></p></li>
+<li><p>Inlinesというプロパティもあり、ここにRunやHyperlinkをつかって書式付のテキストやハイパーリンクを挿入することもできる</p></li>
+<li><p>改行もできる</p></li>
+</ul>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;TextBlock&gt;</span>
+    <span class="nt">&lt;Run</span> <span class="na">Text=</span><span class="s">&quot;いろいろ指定できる&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Hyperlink</span> <span class="na">NavigateUri=</span><span class="s">&quot;http://www.bing.com&quot;</span><span class="nt">&gt;</span>リンクできる<span class="nt">&lt;/Hyperlink&gt;</span>
+    <span class="nt">&lt;Run</span> <span class="na">Foreground=</span><span class="s">&quot;Red&quot;</span> <span class="na">Text=</span><span class="s">&quot;色も付けれる&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Run</span> <span class="na">FontFamily=</span><span class="s">&quot;メイリオ&quot;</span> <span class="na">Text=</span><span class="s">&quot;フォントも変えれます&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;LineBreak</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Run</span> <span class="na">Text=</span><span class="s">&quot;改行も入れることができます&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/TextBlock&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="popup">
+<h2>Popupコントロール<a class="headerlink" href="#popup" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/16/221447">https://blog.okazuki.jp/entry/2014/08/16/221447</a></p></li>
+<li><p>画面上に別ウィンドウとして項目を表示するためのコントロール</p></li>
+<li><p>インテリセンスの自前実装などに使用できる</p></li>
+</ul>
+</section>
+<section id="tooltip">
+<h2>ToolTipコントロール<a class="headerlink" href="#tooltip" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/16/221447">https://blog.okazuki.jp/entry/2014/08/16/221447</a></p></li>
+<li><p>以下のように、ToolTip内に画像を表示することも可能</p></li>
+</ul>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Button.ToolTip&gt;</span>
+        <span class="nt">&lt;ToolTip&gt;</span>
+            <span class="nt">&lt;StackPanel</span> <span class="na">Orientation=</span><span class="s">&quot;Horizontal&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;Image</span> <span class="na">Source=</span><span class="s">&quot;anthem.jpg&quot;</span> <span class="na">Height=</span><span class="s">&quot;100&quot;</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;アンセム&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/StackPanel&gt;</span>
+        <span class="nt">&lt;/ToolTip&gt;</span>
+    <span class="nt">&lt;/Button.ToolTip&gt;</span>
+<span class="nt">&lt;/Button&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="textbox">
+<h2>TextBoxコントロール<a class="headerlink" href="#textbox" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/16/221447">https://blog.okazuki.jp/entry/2014/08/16/221447</a></p></li>
+<li><p>改行や、タブの挿入が可能で、横スクロールバーと縦スクロールバーが常に表示されるTextBoxコントロールは以下のように定義する</p></li>
+</ul>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;TextBox</span>
+    <span class="na">AcceptsReturn=</span><span class="s">&quot;True&quot;</span>
+    <span class="na">AcceptsTab=</span><span class="s">&quot;True&quot;</span>
+    <span class="na">HorizontalScrollBarVisibility=</span><span class="s">&quot;Visible&quot;</span>
+    <span class="na">VerticalScrollBarVisibility=</span><span class="s">&quot;Visible&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="mediaelement">
+<h2>MediaElementコントロール<a class="headerlink" href="#mediaelement" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/16/221447">https://blog.okazuki.jp/entry/2014/08/16/221447</a></p></li>
+<li><p>音楽や動画を再生するためのコントロール</p></li>
+</ul>
 </section>
 </section>
 

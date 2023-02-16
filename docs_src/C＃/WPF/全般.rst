@@ -1,6 +1,6 @@
-===
-WPF
-===
+====
+全般
+====
 
 Dispatcherについて
 ==================
@@ -14,6 +14,8 @@ Dispatcherについて
   * Application.Current.Dispatcher.～を使う
   * Application.Current.Dispatcherは常にUIスレッドのディスパッチャを提供
   * これは唯一のApplicationインスタンスを起動するスレッドだからである
+
+* DispatcherObjectを継承したクラスの例（https://blog.okazuki.jp/entry/2014/08/17/142413）
 
 エラーメッセージ
 ================
@@ -49,7 +51,7 @@ xaml内に配置
 
 Messageプロパティは、View1のコードビハインドでDependencyPropertyとして定義必要
 
-.. code-block:: xaml
+.. code-block:: XML
 
   <Grid x:Name="grid">
       <Grid.RowDefinitions>
@@ -67,7 +69,7 @@ Messageプロパティは、View1のコードビハインドでDependencyPropert
 
 xaml
 
-.. code-block:: xaml
+.. code-block:: XML
 
   <Grid x:Name="grid">
       <Grid.RowDefinitions>
@@ -97,7 +99,7 @@ DataContextの設定方法
 * 子View生成時に自分でインスタンス生成する(xaml or コードビハインド)
   （PrismのAutoWireViewMode=”True”と同じ（多分））
 
-  .. code-block:: xaml
+  .. code-block:: XML
 
     <UserControl.DataContext>
         <local:View2ViewModel/>
