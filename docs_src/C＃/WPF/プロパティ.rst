@@ -1,0 +1,105 @@
+==========
+プロパティ
+==========
+
+依存関係プロパティ
+==================
+
+* https://blog.okazuki.jp/entry/2014/08/17/220810
+* 依存関係プロパティは、DependencyObjectを直接、または間接的に継承したクラスで定義可能
+* 以下に雛形を示す
+
+.. code-block:: csharp
+
+    public class Person : DependencyObject
+    {
+        // ※は設定しなくてもよい
+        public static readonly DependencyProperty AgeProperty =
+            DependencyProperty.Register(
+                "Age",               // プロパティ名を指定
+                typeof(int),         // プロパティの型を指定
+                typeof(Person),      // プロパティを所有する型を指定
+                new PropertyMetadata(// メタデータを指定
+                    0,               // デフォルト値の設定
+                    AgeChanged,      // ※プロパティの変更時に呼ばれるコールバックの設定
+                    CoerceAgeValue), // ※プロパティの値が有効範囲でない場合の矯正
+                ValidateAgeValue);   // ※プロパティの妥当性検証（不正な値が設定されたときに例外をスロー）
+
+        // プロパティの変更時に呼ばれるコールバック
+        private static void AgeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            Console.WriteLine("Ageプロパティが{0}から{1}に変わりました。", e.OldValue, e.NewValue);
+        }
+
+        // プロパティの妥当性検証（不正な値が設定されたときに例外をスロー）
+        private static object CoerceAgeValue(DependencyObject d, object baseValue)
+        {
+            // 年齢は0-120の間
+            var value = (int)baseValue;
+            if (value < 0) return 0;
+            if (value > 120) return 120;
+            return value;
+        }
+
+        // プロパティの妥当性検証（不正な値が設定されたときに例外をスロー）
+        private static bool ValidateAgeValue(object value)
+        {
+            // MinValueとMaxValueはやりすぎだろ
+            int age = (int)value;
+            return age != int.MaxValue && age != int.MinValue;
+        }
+
+        // 依存関係プロパティのCLRのプロパティのラッパー
+        public int Age
+        {
+            get { return (int)GetValue(AgeProperty); }
+            set { SetValue(AgeProperty, value); }
+        }
+    }
+
+読み取り専用の依存関係プロパティ
+================================
+  
+* https://blog.okazuki.jp/entry/2014/08/18/083455
+* DependencyPropertyKeyを使用
+
+.. code-block:: csharp
+
+    // RegisterReadOnlyメソッドでDependencyPropertyKeyを取得
+    private static readonly DependencyPropertyKey BirthdayPropertyKey =
+        DependencyProperty.RegisterReadOnly(
+            "Birthday",
+            typeof(DateTime),
+            typeof(Person),
+            new PropertyMetadata(DateTime.Now));
+    // DependencyPropertyは、DependencyPropertyKeyから取得する
+    public static readonly DependencyProperty BirthdayProperty = BirthdayPropertyKey.DependencyProperty;
+
+    public DateTime Birthday
+    {
+        // getは従来通り
+        get { return (DateTime)GetValue(BirthdayProperty); }
+        // setはDependencyPropertyKeyを使って行う
+        private set { SetValue(BirthdayPropertyKey, value); }
+    }
+
+メタデータ
+==========
+
+* https://blog.okazuki.jp/entry/2014/08/18/213553
+* 依存関係プロパティのメタデータには以下がある
+  * PropertyMetadata
+  * UIPropertyMetadata
+  
+    WPFのアニメーションを無効化にする機能を提供
+
+  * FrameworkPropertyMetadata
+    
+    カスタムコントロールを作成する場合に使用
+
+添付プロパティ
+==============
+
+* https://blog.okazuki.jp/entry/2014/08/20/081810
+* RegisterAttachメソッドを使用
+* 定義するクラス自体にはDependencyObjectクラスの継承は必要ない

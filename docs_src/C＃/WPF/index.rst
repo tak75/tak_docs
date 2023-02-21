@@ -8,6 +8,8 @@ WPF
    .NET Core and WPF
    全般
    コードビハインド
+   プロパティ
+   イベント
    Prism
    ReactiveProperty
    ビヘイビア

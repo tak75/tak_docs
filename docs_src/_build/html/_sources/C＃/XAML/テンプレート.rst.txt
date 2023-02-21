@@ -1,0 +1,120 @@
+============
+テンプレート
+============
+
+レイアウトに影響を与えるプロパティ
+==================================
+
+* MinWidth,MaxWidth：コントロールの最小,最大の幅を設定
+* ピクセル以外に指定できる
+  
+  * 10in：インチで指定
+  * 10cm：センチメートルで指定
+  * 10pt：ポイントで指定
+
+コンテンツモデル
+================
+
+* https://blog.okazuki.jp/entry/20130113/1358094630
+* https://blog.okazuki.jp/entry/2014/08/25/164331
+* WPFでは、単一の要素を表示するコントロールとしてContentControlというものが定義
+* このコントロールは、ButtonやLabelなどの多くのコントロールの親クラス
+* ContentControlにはContentという名前のobject型のプロパティが定義されていて、 **そこに設定されたクラスの型に応じて表示方法が切り替わる**
+* 表示ロジックは以下のとおり。端的にいうと、可能な限りUIElementに変換できるか試した後に、ダメだったら文字列型にしてTextBlockに格納して表示するというロジック
+
+  * **ContentTemplateにDataTemplateが設定されている場合、ContentプロパティにContentTemplateを適用した結果を表示する。**
+  * ContentTemplateSelectorにDataTemplateSelectorが設定されている場合、ContentプロパティにContentTemplateSelectorが返したDataTemplateを適用した結果を表示する。
+  * Contentプロパティに設定された値の型に紐づけられたDataTemplateがある場合、そのDataTemplateを適用した結果を表示する。
+  * ContentプロパティがUIElement型の場合、そのまま表示する。（UIElementにすでに親がいる場合は例外が出る）
+  * Contentプロパティに設定された値の型に紐づけられたTypeConverterでUIElementに変換するものがある場合は、変換した結果を表示する。
+  * Contentプロパティに設定された値の型に紐づけられたTypeConverterでString型に変換するものがある場合はString型に変換してTextBlockにラップして表示する。
+  * Contentプロパティに設定された値の型がXmlElementの場合は、InnerTextプロパティの値をTextBlockにラップして表示する。
+  * Contentプロパティに設定された値をToStringした結果をTextBlockにラップして表示する。
+
+DataTemplate
+============
+
+* DataTemplateは、主にContentプロパティにオブジェクトが設定されている場合に、どのようにそのオブジェクトを表示するかを定義
+
+.. code-block:: XML
+
+  <Window.Resources>
+      <DataTemplate x:Key="PersonTemplate" DataType="{x:Type local:Person}">
+          <Border BorderBrush="Red" BorderThickness="1" Padding="5">
+              <StackPanel Orientation="Horizontal">
+                  <Label Content="Name" />
+                  <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+                  <Label Content="Age" />
+                  <TextBlock Text="{Binding Age}" VerticalAlignment="Center"/>
+              </StackPanel>
+          </Border> 
+      </DataTemplate>
+  </Window.Resources>
+  <Grid>
+      <ListBox x:Name="listBox" ItemTemplate="{StaticResource PersonTemplate}"/>
+  </Grid>
+
+* Resourcesに定義されたDataTemplateは、x:Keyを指定せずにDataTypeだけ設定したときに、デフォルトでその型のDataTemplateとして使われるという動きをする
+* デフォルトとして扱う場合は、以下のように書く
+
+.. code-block:: XML
+
+  <Window.Resources>
+      <DataTemplate DataType="{x:Type local:Person}">
+          <!-- 省略 -->
+      </DataTemplate>
+  </Window.Resources>
+  <Grid>
+      <ListBox x:Name="listBox"/>
+  </Grid>
+
+DataTrigger
+===========
+
+* DataTemplateには、データの値に応じて表示の見た目を切り替えるロジックを書く
+* DataTriggerはDataTemplateのTriggersプロパティに設定する
+
+.. code-block:: XML
+
+  <DataTemplate DataType="{x:Type local:Person}">
+      <Border x:Name="border" BorderBrush="Red" BorderThickness="1" Padding="5">
+          <StackPanel Orientation="Horizontal">
+              <Label Content="Name" />
+              <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+              <Label Content="Age" />
+              <TextBlock Text="{Binding Age}" VerticalAlignment="Center"/>
+          </StackPanel>
+      </Border>
+      <DataTemplate.Triggers>
+          <DataTrigger Binding="{Binding IsOver40}" Value="True">
+              <Setter TargetName="border" Property="BorderBrush" Value="Blue" />
+          </DataTrigger>
+      </DataTemplate.Triggers>
+  </DataTemplate>
+
+DateTemplateSelector
+====================
+
+* DataTemplateSelectorは、条件に応じてDataTemplateを切り替える仕組み
+* DataTemplateSelectorは、C#のコードでDataTemplateSelectorクラスを継承して作成する
+
+.. code-block:: csharp
+
+  public class PersonDataTemplateSelector : DataTemplateSelector
+  {
+      public override DataTemplate SelectTemplate(object item, DependencyObject container)
+      {
+          var p = (Person)item;
+          if (p.Age < 40)
+          {
+              // Ageが40より小さければPersonTemplate1
+              return (DataTemplate)((FrameworkElement)container).FindResource("PersonTemplate1");
+          }
+          else
+          {
+              // Ageが40以上ならPersonTemplate2
+              return (DataTemplate)((FrameworkElement)container).FindResource("PersonTemplate2");
+          }
+      }
+  }
+
