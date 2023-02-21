@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>プロパティ &mdash; Tak Documents  ドキュメント</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="next" title="イベント" href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88.html" />
+    <link rel="prev" title="コードビハインド" href="%E3%82%B3%E3%83%BC%E3%83%89%E3%83%93%E3%83%8F%E3%82%A4%E3%83%B3%E3%83%89.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Tak Documents
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Matplotlib/index.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Jupyter/index.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Web%E3%82%A2%E3%83%97%E3%83%AA/index.html">Webアプリ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../C/index.html">C</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">C＃</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../%E8%A8%80%E8%AA%9E%E4%BB%95%E6%A7%98/index.html">言語仕様</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">WPF</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href=".NET%20Core%20and%20WPF.html">.NET Core and WPF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E5%85%A8%E8%88%AC.html">全般</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%82%B3%E3%83%BC%E3%83%89%E3%83%93%E3%83%8F%E3%82%A4%E3%83%B3%E3%83%89.html">コードビハインド</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">プロパティ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">依存関係プロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">読み取り専用の依存関係プロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">メタデータ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">添付プロパティ</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88.html">イベント</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Prism.html">Prism</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ReactiveProperty.html">ReactiveProperty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%83%93%E3%83%98%E3%82%A4%E3%83%93%E3%82%A2.html">ビヘイビア</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../XAML/index.html">XAML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReactiveExtensions/index.html">ReactiveExtensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../VisualStudio.html">VisualStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E8%87%AA%E5%8B%95%E4%BD%9C%E6%88%90.html">ドキュメント自動作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html">テスト駆動開発</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../UML/index.html">UML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90/index.html">データ分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E5%82%99%E5%BF%98%E9%8C%B2/index.html">備忘録</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Tak Documents</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">C＃</a></li>
+          <li class="breadcrumb-item"><a href="index.html">WPF</a></li>
+      <li class="breadcrumb-item active">プロパティ</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/C＃/WPF/プロパティ.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>プロパティ<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<section id="id2">
+<h2>依存関係プロパティ<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/17/220810">https://blog.okazuki.jp/entry/2014/08/17/220810</a></p></li>
+<li><p>依存関係プロパティは、DependencyObjectを直接、または間接的に継承したクラスで定義可能</p></li>
+<li><p>以下に雛形を示す</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span> <span class="p">:</span> <span class="n">DependencyObject</span>
+<span class="p">{</span>
+    <span class="c1">// ※は設定しなくてもよい</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">DependencyProperty</span> <span class="n">AgeProperty</span> <span class="p">=</span>
+        <span class="n">DependencyProperty</span><span class="p">.</span><span class="n">Register</span><span class="p">(</span>
+            <span class="s">&quot;Age&quot;</span><span class="p">,</span>               <span class="c1">// プロパティ名を指定</span>
+            <span class="k">typeof</span><span class="p">(</span><span class="kt">int</span><span class="p">),</span>         <span class="c1">// プロパティの型を指定</span>
+            <span class="k">typeof</span><span class="p">(</span><span class="n">Person</span><span class="p">),</span>      <span class="c1">// プロパティを所有する型を指定</span>
+            <span class="k">new</span> <span class="nf">PropertyMetadata</span><span class="p">(</span><span class="c1">// メタデータを指定</span>
+                <span class="m">0</span><span class="p">,</span>               <span class="c1">// デフォルト値の設定</span>
+                <span class="n">AgeChanged</span><span class="p">,</span>      <span class="c1">// ※プロパティの変更時に呼ばれるコールバックの設定</span>
+                <span class="n">CoerceAgeValue</span><span class="p">),</span> <span class="c1">// ※プロパティの値が有効範囲でない場合の矯正</span>
+            <span class="n">ValidateAgeValue</span><span class="p">);</span>   <span class="c1">// ※プロパティの妥当性検証（不正な値が設定されたときに例外をスロー）</span>
+
+    <span class="c1">// プロパティの変更時に呼ばれるコールバック</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">AgeChanged</span><span class="p">(</span><span class="n">DependencyObject</span> <span class="n">d</span><span class="p">,</span> <span class="n">DependencyPropertyChangedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Ageプロパティが{0}から{1}に変わりました。&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">OldValue</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">NewValue</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// プロパティの妥当性検証（不正な値が設定されたときに例外をスロー）</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="kt">object</span> <span class="nf">CoerceAgeValue</span><span class="p">(</span><span class="n">DependencyObject</span> <span class="n">d</span><span class="p">,</span> <span class="kt">object</span> <span class="n">baseValue</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// 年齢は0-120の間</span>
+        <span class="kt">var</span> <span class="k">value</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">baseValue</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">value</span> <span class="p">&lt;</span> <span class="m">0</span><span class="p">)</span> <span class="k">return</span> <span class="m">0</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">value</span> <span class="p">&gt;</span> <span class="m">120</span><span class="p">)</span> <span class="k">return</span> <span class="m">120</span><span class="p">;</span>
+        <span class="k">return</span> <span class="k">value</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// プロパティの妥当性検証（不正な値が設定されたときに例外をスロー）</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">ValidateAgeValue</span><span class="p">(</span><span class="kt">object</span> <span class="k">value</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// MinValueとMaxValueはやりすぎだろ</span>
+        <span class="kt">int</span> <span class="n">age</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="k">value</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">age</span> <span class="p">!=</span> <span class="kt">int</span><span class="p">.</span><span class="n">MaxValue</span> <span class="p">&amp;&amp;</span> <span class="n">age</span> <span class="p">!=</span> <span class="kt">int</span><span class="p">.</span><span class="n">MinValue</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 依存関係プロパティのCLRのプロパティのラッパー</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Age</span>
+    <span class="p">{</span>
+        <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">GetValue</span><span class="p">(</span><span class="n">AgeProperty</span><span class="p">);</span> <span class="p">}</span>
+        <span class="k">set</span> <span class="p">{</span> <span class="n">SetValue</span><span class="p">(</span><span class="n">AgeProperty</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>読み取り専用の依存関係プロパティ<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/18/083455">https://blog.okazuki.jp/entry/2014/08/18/083455</a></p></li>
+<li><p>DependencyPropertyKeyを使用</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// RegisterReadOnlyメソッドでDependencyPropertyKeyを取得</span>
+<span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">DependencyPropertyKey</span> <span class="n">BirthdayPropertyKey</span> <span class="p">=</span>
+    <span class="n">DependencyProperty</span><span class="p">.</span><span class="n">RegisterReadOnly</span><span class="p">(</span>
+        <span class="s">&quot;Birthday&quot;</span><span class="p">,</span>
+        <span class="k">typeof</span><span class="p">(</span><span class="n">DateTime</span><span class="p">),</span>
+        <span class="k">typeof</span><span class="p">(</span><span class="n">Person</span><span class="p">),</span>
+        <span class="k">new</span> <span class="nf">PropertyMetadata</span><span class="p">(</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">));</span>
+<span class="c1">// DependencyPropertyは、DependencyPropertyKeyから取得する</span>
+<span class="k">public</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">DependencyProperty</span> <span class="n">BirthdayProperty</span> <span class="p">=</span> <span class="n">BirthdayPropertyKey</span><span class="p">.</span><span class="n">DependencyProperty</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="n">DateTime</span> <span class="n">Birthday</span>
+<span class="p">{</span>
+    <span class="c1">// getは従来通り</span>
+    <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">DateTime</span><span class="p">)</span><span class="n">GetValue</span><span class="p">(</span><span class="n">BirthdayProperty</span><span class="p">);</span> <span class="p">}</span>
+    <span class="c1">// setはDependencyPropertyKeyを使って行う</span>
+    <span class="k">private</span> <span class="k">set</span> <span class="p">{</span> <span class="n">SetValue</span><span class="p">(</span><span class="n">BirthdayPropertyKey</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2>メタデータ<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/18/213553">https://blog.okazuki.jp/entry/2014/08/18/213553</a></p></li>
+<li><p>依存関係プロパティのメタデータには以下がある
+* PropertyMetadata
+* UIPropertyMetadata</p>
+<blockquote>
+<div><p>WPFのアニメーションを無効化にする機能を提供</p>
+</div></blockquote>
+<ul>
+<li><p>FrameworkPropertyMetadata</p>
+<p>カスタムコントロールを作成する場合に使用</p>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id5">
+<h2>添付プロパティ<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/20/081810">https://blog.okazuki.jp/entry/2014/08/20/081810</a></p></li>
+<li><p>RegisterAttachメソッドを使用</p></li>
+<li><p>定義するクラス自体にはDependencyObjectクラスの継承は必要ない</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="%E3%82%B3%E3%83%BC%E3%83%89%E3%83%93%E3%83%8F%E3%82%A4%E3%83%B3%E3%83%89.html" class="btn btn-neutral float-left" title="コードビハインド" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88.html" class="btn btn-neutral float-right" title="イベント" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, tak.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

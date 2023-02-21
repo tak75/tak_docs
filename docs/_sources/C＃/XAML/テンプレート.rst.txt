@@ -34,6 +34,7 @@
 DataTemplate
 ============
 
+* https://blog.okazuki.jp/entry/2014/08/25/164331
 * DataTemplateは、主にContentプロパティにオブジェクトが設定されている場合に、どのようにそのオブジェクトを表示するかを定義
 
 .. code-block:: XML
@@ -71,6 +72,7 @@ DataTemplate
 DataTrigger
 ===========
 
+* https://blog.okazuki.jp/entry/2014/08/25/164331
 * DataTemplateには、データの値に応じて表示の見た目を切り替えるロジックを書く
 * DataTriggerはDataTemplateのTriggersプロパティに設定する
 
@@ -95,8 +97,9 @@ DataTrigger
 DateTemplateSelector
 ====================
 
+* https://blog.okazuki.jp/entry/2014/08/25/164331
 * DataTemplateSelectorは、条件に応じてDataTemplateを切り替える仕組み
-* DataTemplateSelectorは、C#のコードでDataTemplateSelectorクラスを継承して作成する
+* DataTemplateSelectorは、**C#のコードで** DataTemplateSelectorクラスを継承して作成する
 
 .. code-block:: csharp
 
@@ -117,4 +120,32 @@ DateTemplateSelector
           }
       }
   }
+
+.. code-block:: XML
+
+  <Window.Resources>
+    <!-- NameとAgeを表示 -->
+    <DataTemplate x:Key="PersonTemplate1" DataType="{x:Type local:Person}">
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Name" />
+            <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+            <Label Content="Age" />
+            <TextBlock Text="{Binding Age}" VerticalAlignment="Center"/>
+        </StackPanel>
+    </DataTemplate>
+    <!-- Nameだけ表示 -->
+    <DataTemplate x:Key="PersonTemplate2" DataType="{x:Type local:Person}">
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Name" />
+            <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+        </StackPanel>
+    </DataTemplate>
+  </Window.Resources>
+  <Grid>
+    <ListBox x:Name="listBox">
+        <ListBox.ItemTemplateSelector>
+            <local:PersonDataTemplateSelector />
+        </ListBox.ItemTemplateSelector>
+    </ListBox>
+  </Grid>
 

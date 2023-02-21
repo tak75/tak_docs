@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>イベント &mdash; Tak Documents  ドキュメント</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="next" title="Prism" href="Prism.html" />
+    <link rel="prev" title="プロパティ" href="%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Tak Documents
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Matplotlib/index.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Jupyter/index.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Web%E3%82%A2%E3%83%97%E3%83%AA/index.html">Webアプリ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../C/index.html">C</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">C＃</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../%E8%A8%80%E8%AA%9E%E4%BB%95%E6%A7%98/index.html">言語仕様</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">WPF</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href=".NET%20Core%20and%20WPF.html">.NET Core and WPF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E5%85%A8%E8%88%AC.html">全般</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%82%B3%E3%83%BC%E3%83%89%E3%83%93%E3%83%8F%E3%82%A4%E3%83%B3%E3%83%89.html">コードビハインド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3.html">プロパティ</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">イベント</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">ルーティングイベントの定義方法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">添付イベント</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Prism.html">Prism</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ReactiveProperty.html">ReactiveProperty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%83%93%E3%83%98%E3%82%A4%E3%83%93%E3%82%A2.html">ビヘイビア</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../XAML/index.html">XAML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReactiveExtensions/index.html">ReactiveExtensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../VisualStudio.html">VisualStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E8%87%AA%E5%8B%95%E4%BD%9C%E6%88%90.html">ドキュメント自動作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html">テスト駆動開発</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../UML/index.html">UML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90/index.html">データ分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E5%82%99%E5%BF%98%E9%8C%B2/index.html">備忘録</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Tak Documents</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">C＃</a></li>
+          <li class="breadcrumb-item"><a href="index.html">WPF</a></li>
+      <li class="breadcrumb-item active">イベント</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/C＃/WPF/イベント.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>イベント<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<section id="id2">
+<h2>概要<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/22/211021">https://blog.okazuki.jp/entry/2014/08/22/211021</a></p></li>
+<li><p>バブルイベント（親←子：発生元）</p>
+<ul>
+<li><p>イベント発生元でイベントが処理されなかった場合親要素へイベントを伝搬させる機能をもったイベント</p></li>
+</ul>
+</li>
+<li><p>トンネルイベント（親→子：発生元）</p>
+<ul>
+<li><p>ルートの要素からイベント発生元のオブジェクトの順番でイベントが伝搬</p></li>
+<li><p>一般的にPreviewという命名規則で始まるイベント</p></li>
+<li><p>ユーザーの入力を処理するイベントに対して、プログラムが処理前に割り込むポイントを提供するために使用</p></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>ルーティングイベント</p>
+<ul>
+<li><p>バブルイベントやトンネルイベントなどのように、イベントの発生元だけでなくWPFのコントロールのツリー上の他のオブジェクトに対しても影響を与えるイベント</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id3">
+<h2>ルーティングイベントの定義方法<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/22/211021">https://blog.okazuki.jp/entry/2014/08/22/211021</a></p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>添付イベント<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/22/211021">https://blog.okazuki.jp/entry/2014/08/22/211021</a></p></li>
+<li><p>以下が例</p></li>
+</ul>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;StackPanel</span> <span class="na">Button.Click=</span><span class="s">&quot;StackPanel_Click&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Button1&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/StackPanel&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3.html" class="btn btn-neutral float-left" title="プロパティ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Prism.html" class="btn btn-neutral float-right" title="Prism" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, tak.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

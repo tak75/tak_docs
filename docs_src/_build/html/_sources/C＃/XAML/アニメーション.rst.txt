@@ -1,0 +1,97 @@
+==============
+アニメーション
+==============
+
+アニメーションの種類
+====================
+
+* https://blog.okazuki.jp/entry/2014/08/27/214003
+* DoubleAnimation：
+* ColorAnimation：SolidColorBrushなどの色をアニメーション
+* PointAnimation：Point型をアニメーション
+
+アニメーションの基本
+====================
+
+* https://blog.okazuki.jp/entry/2014/08/27/214003
+
+.. code-block:: XML
+
+  <Window.Resources>
+      <Storyboard x:Key="rectAnimation">  
+          <!-- 添付プロパティなので(括弧)付き -->
+          <!-- Fromは省略可能で、その場合は現在位置からToまでの意味となる -->
+          <!-- Durationは時:分:秒 -->
+          <DoubleAnimation
+              Storyboard.TargetName="rect"
+              Storyboard.TargetProperty="(Canvas.Left)" 
+              To="300"
+              Duration="0:0:5" />
+      </Storyboard>
+  </Window.Resources>
+  <Canvas>
+      <Button Canvas.Top="10" Canvas.Left="10" Content="Animation start">
+          <Button.Triggers>
+              <EventTrigger RoutedEvent="Button.Click">
+                  <BeginStoryboard Storyboard="{StaticResource rectAnimation}" />
+              </EventTrigger>
+          </Button.Triggers>
+      </Button>
+      <!-- アニメーションのターゲット -->
+      <Rectangle
+          x:Name="rect"
+          Canvas.Top="50" Canvas.Left="10"
+          Width="50" Height="50" Fill="Red"/>
+  </Canvas>
+
+* Byは相対値指定で、下記例では、現在値+100の意味
+
+.. code-block:: XML
+
+  <Storyboard x:Key="rectAnimationBy">
+      <DoubleAnimation
+          Storyboard.TargetName="rect"
+          Storyboard.TargetProperty="(Canvas.Left)"
+          By="100" 
+          Duration="0:0:5" />
+  </Storyboard>
+
+アニメーションの繰り返し
+========================
+
+* https://blog.okazuki.jp/entry/2014/08/27/214003
+
+.. code-block:: XML
+
+  <Storyboard x:Key="rectAnimationRepeat">
+      <!-- RepeatBehaviorにアニメーションを繰り返す時間を指定。Foreverを指定すると無限 -->
+      <!-- AutoReverseを指定すると、アニメーションが終了したあと、逆方向のアニメーションを再生 -->
+      <DoubleAnimation
+          Storyboard.TargetName="rect"
+          Storyboard.TargetProperty="(Canvas.Left)"
+          To="300" 
+          Duration="0:0:5"
+          RepeatBehavior="0:0:13"
+          AutoReverse="True"/>
+  </Storyboard>
+
+コードでアニメーション
+======================
+
+* https://blog.okazuki.jp/entry/2014/08/27/214003
+
+.. code-block:: csharp
+
+  var storyboard = new Storyboard();
+
+  var a = new DoubleAnimation();
+  // TargetName添付プロパティではなく、Target添付プロパティで
+  // 直接アニメーションのターゲットを指定しています。
+  Storyboard.SetTarget(a, rect);
+  Storyboard.SetTargetProperty(a, new PropertyPath("(Canvas.Left)"));
+  a.To = 300;
+  a.Duration = TimeSpan.FromSeconds(5);
+  storyboard.Children.Add(a);
+
+  // アニメーションを開始します
+  storyboard.Begin();
