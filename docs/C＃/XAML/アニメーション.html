@@ -54,13 +54,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../WPF/index.html">WPF</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">XAML</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="%E5%85%A8%E8%88%AC.html">全般</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9.html">リソース</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%AB.html">コントロール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB.html">スタイル</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88.html">テンプレート</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">アニメーション</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">アニメーションの種類</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">アニメーションの基本</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">アニメーションの繰り返し</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id5">コードでアニメーション</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">キーフレームアニメーション</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">イージング関数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#blend">Blendによるアニメーションの作成</a></li>
 </ul>
 </li>
 </ul>
@@ -199,6 +204,60 @@
 <span class="n">storyboard</span><span class="p">.</span><span class="n">Begin</span><span class="p">();</span>
 </pre></div>
 </div>
+</section>
+<section id="id6">
+<h2>キーフレームアニメーション<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/31/200320">https://blog.okazuki.jp/entry/2014/08/31/200320</a></p></li>
+<li><p>連続したアニメーションの定義</p></li>
+<li><p>LinearDoubleKeyFrameは値の間を線形補間する</p></li>
+<li><p>線形補間させない場合は、LinearDoubleKeyFrameの代わりにDiscreteDoubleKeyFrameを使用する</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="n">Storyboard</span> <span class="n">x</span><span class="p">:</span><span class="n">Key</span><span class="p">=</span><span class="s">&quot;rectAnimation&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="n">DoubleAnimationUsingKeyFrames</span>
+        <span class="n">Storyboard</span><span class="p">.</span><span class="n">TargetName</span><span class="p">=</span><span class="s">&quot;rect&quot;</span>
+        <span class="n">Storyboard</span><span class="p">.</span><span class="n">TargetProperty</span><span class="p">=</span><span class="s">&quot;(Canvas.Left)&quot;</span>
+        <span class="n">Duration</span><span class="p">=</span><span class="s">&quot;0:0:10&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="n">LinearDoubleKeyFrame</span> <span class="n">KeyTime</span><span class="p">=</span><span class="s">&quot;0:0:2&quot;</span> <span class="n">Value</span><span class="p">=</span><span class="s">&quot;300&quot;</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="n">LinearDoubleKeyFrame</span> <span class="n">KeyTime</span><span class="p">=</span><span class="s">&quot;0:0:4&quot;</span> <span class="n">Value</span><span class="p">=</span><span class="s">&quot;0&quot;</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="n">LinearDoubleKeyFrame</span> <span class="n">KeyTime</span><span class="p">=</span><span class="s">&quot;0:0:6&quot;</span> <span class="n">Value</span><span class="p">=</span><span class="s">&quot;200&quot;</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="n">LinearDoubleKeyFrame</span> <span class="n">KeyTime</span><span class="p">=</span><span class="s">&quot;0:0:8&quot;</span> <span class="n">Value</span><span class="p">=</span><span class="s">&quot;100&quot;</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="n">LinearDoubleKeyFrame</span> <span class="n">KeyTime</span><span class="p">=</span><span class="s">&quot;0:0:10&quot;</span> <span class="n">Value</span><span class="p">=</span><span class="s">&quot;300&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="n">DoubleAnimationUsingKeyFrames</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="n">Storyboard</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h2>イージング関数<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/31/200320">https://blog.okazuki.jp/entry/2014/08/31/200320</a></p></li>
+<li><p>BoundEase：弾むようなバウンド効果を作成</p></li>
+<li><p>CircleEase：円関数を使って加速と減速のアニメーションを作成</p></li>
+<li><p>ElasticEase：バネが伸び縮みしながら最終的に停止するアニメーションを作成</p></li>
+<li><p>SineEase：サイン式を使って加速と減速のアニメーションを作成</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>&lt;!-- 5秒間で300に向けてバウンドするアニメーション --&gt;
+&lt;Storyboard x:Key=&quot;rectAnimation&quot;&gt;
+    &lt;DoubleAnimation
+        Storyboard.TargetName=&quot;rect&quot;
+        Storyboard.TargetProperty=&quot;(Canvas.Left)&quot;
+        Duration=&quot;0:0:5&quot;
+        To=&quot;300&quot;&gt;
+        &lt;DoubleAnimation.EasingFunction&gt;
+            &lt;BounceEase EasingMode=&quot;EaseOut&quot; /&gt;
+        &lt;/DoubleAnimation.EasingFunction&gt;
+    &lt;/DoubleAnimation&gt;
+&lt;/Storyboard&gt;
+</pre></div>
+</div>
+</section>
+<section id="blend">
+<h2>Blendによるアニメーションの作成<a class="headerlink" href="#blend" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/31/200320">https://blog.okazuki.jp/entry/2014/08/31/200320</a></p></li>
+<li><p>Blend for Visual Studioを使用して複雑なアニメーションの作成が可能</p></li>
+</ul>
 </section>
 </section>
 

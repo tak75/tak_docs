@@ -1,0 +1,52 @@
+==========
+スタイル
+==========
+
+スタイルの継承
+==============
+
+* https://blog.okazuki.jp/entry/2014/09/04/200304
+* コントロールに設定するプロパティの値のセットを集めるためのもの
+
+.. code-block:: XML
+
+  <Window.Resources>
+      <!-- 継承元のスタイル -->
+      <Style x:Key="DefaultTextStyle" TargetType="{x:Type TextBlock}">
+          <Setter Property="FontFamily" Value="Meiryo UI" />
+          <Setter Property="FontSize" Value="12" />
+      </Style>
+      
+      <!-- 継承先のスタイル -->
+      <Style x:Key="TitleTextStyle" TargetType="{x:Type TextBlock}" 
+  BasedOn="{StaticResource DefaultTextStyle}">
+          <Setter Property="FontSize" Value="24" />
+          <Setter Property="Foreground" Value="Red" />
+      </Style>
+  </Window.Resources>
+
+  <!-- 適用する側のTextBlockのコード例 -->
+  <StackPanel>
+      <TextBlock Text="タイトル" Style="{StaticResource TitleTextStyle}" />
+      <TextBlock Text="デフォルトのテキスト" Style="{StaticResource DefaultTextStyle}" />
+  </StackPanel>
+
+トリガー
+========
+
+* https://blog.okazuki.jp/entry/2014/09/04/200304
+* TriggerのPropertyに設定可能なプロパティは、 **依存関係プロパティ**
+
+.. code-block:: XML
+
+  <Style x:Key="DefaultTextStyle" TargetType="{x:Type TextBlock}">
+      <Setter Property="FontFamily" Value="Meiryo UI" />
+      <Setter Property="FontSize" Value="12" />
+      <Style.Triggers>
+          <Trigger Property="IsMouseOver" Value="True">
+              <Setter Property="Background" Value="Blue" />
+          </Trigger>
+      </Style.Triggers>
+  </Style>
+
+

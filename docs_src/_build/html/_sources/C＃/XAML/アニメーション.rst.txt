@@ -95,3 +95,63 @@
 
   // アニメーションを開始します
   storyboard.Begin();
+
+キーフレームアニメーション
+==========================
+
+* https://blog.okazuki.jp/entry/2014/08/31/200320
+* 連続したアニメーションの定義
+* LinearDoubleKeyFrameは値の間を線形補間する
+* 線形補間させない場合は、LinearDoubleKeyFrameの代わりにDiscreteDoubleKeyFrameを使用する
+
+.. code-block:: csharp
+
+  <Storyboard x:Key="rectAnimation">
+      <DoubleAnimationUsingKeyFrames
+          Storyboard.TargetName="rect"
+          Storyboard.TargetProperty="(Canvas.Left)"
+          Duration="0:0:10">
+          <LinearDoubleKeyFrame KeyTime="0:0:2" Value="300" />
+          <LinearDoubleKeyFrame KeyTime="0:0:4" Value="0" />
+          <LinearDoubleKeyFrame KeyTime="0:0:6" Value="200" />
+          <LinearDoubleKeyFrame KeyTime="0:0:8" Value="100" />
+          <LinearDoubleKeyFrame KeyTime="0:0:10" Value="300" />
+      </DoubleAnimationUsingKeyFrames>
+  </Storyboard>
+
+イージング関数
+==============
+
+* https://blog.okazuki.jp/entry/2014/08/31/200320
+* BoundEase：弾むようなバウンド効果を作成
+* CircleEase：円関数を使って加速と減速のアニメーションを作成
+* ElasticEase：バネが伸び縮みしながら最終的に停止するアニメーションを作成
+* SineEase：サイン式を使って加速と減速のアニメーションを作成
+ 
+.. code-block:: csharp
+
+  <!-- 5秒間で300に向けてバウンドするアニメーション -->
+  <Storyboard x:Key="rectAnimation">
+      <DoubleAnimation
+          Storyboard.TargetName="rect"
+          Storyboard.TargetProperty="(Canvas.Left)"
+          Duration="0:0:5"
+          To="300">
+          <DoubleAnimation.EasingFunction>
+              <BounceEase EasingMode="EaseOut" />
+          </DoubleAnimation.EasingFunction>
+      </DoubleAnimation>
+  </Storyboard>
+
+Blendによるアニメーションの作成
+===============================
+
+* https://blog.okazuki.jp/entry/2014/08/31/200320
+* Blend for Visual Studioを使用して複雑なアニメーションの作成が可能
+
+
+
+
+
+
+

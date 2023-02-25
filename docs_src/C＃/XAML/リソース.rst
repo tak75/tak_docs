@@ -1,0 +1,11 @@
+==========
+リソース
+==========
+
+
+* https://blog.okazuki.jp/entry/2014/09/06/124431
+
+
+.. code-block:: XML
+
+
