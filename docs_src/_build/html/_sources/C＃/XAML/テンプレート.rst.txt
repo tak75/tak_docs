@@ -2,16 +2,6 @@
 テンプレート
 ============
 
-レイアウトに影響を与えるプロパティ
-==================================
-
-* MinWidth,MaxWidth：コントロールの最小,最大の幅を設定
-* ピクセル以外に指定できる
-  
-  * 10in：インチで指定
-  * 10cm：センチメートルで指定
-  * 10pt：ポイントで指定
-
 コンテンツモデル
 ================
 
@@ -31,8 +21,20 @@
   * Contentプロパティに設定された値の型がXmlElementの場合は、InnerTextプロパティの値をTextBlockにラップして表示する。
   * Contentプロパティに設定された値をToStringした結果をTextBlockにラップして表示する。
 
-DataTemplate
-============
+テンプレートの種類
+==================
+
+* `DataTemplate`_
+
+  主にContentプロパティにオブジェクトが設定されている場合に、どのようにそのオブジェクトを表示するかを定義
+
+* `ControlTemplate`_
+
+  * 見た目を完全にカスタマイズする方法
+  * TemplateというプロパティにControlTemplateを設定
+
+_`DataTemplate`
+===============
 
 * https://blog.okazuki.jp/entry/2014/08/25/164331
 * DataTemplateは、主にContentプロパティにオブジェクトが設定されている場合に、どのようにそのオブジェクトを表示するかを定義
@@ -148,4 +150,69 @@ DateTemplateSelector
         </ListBox.ItemTemplateSelector>
     </ListBox>
   </Grid>
+
+_`ControlTemplate`
+==================
+
+* https://blog.okazuki.jp/entry/2014/09/07/195335
+* 見た目を完全にカスタマイズする方法
+* TemplateというプロパティにControlTemplateを設定
+* WPFの各コントロールに関するスタイルトテンプレートについては、MSDNを参照（http://msdn.microsoft.com/ja-jp/library/aa970773(v=vs.110).aspx）
+
+.. code-block:: XML
+
+  <!-- Buttonコントロールの見た目をLabelにして、Click可能なLabelを実現する例 -->
+  <Button Content="ラベル" Click="Button_Click">
+      <Button.Template>
+          <ControlTemplate TargetType="{x:Type Button}">
+              <!-- TemplateBindingでコントロールのプロパティをバインド -->
+              <!-- 本例ではButtonのContentに設定された値をLabelのContentにBinding -->
+              <Label Content="{TemplateBinding Content}" />
+          </ControlTemplate>
+      </Button.Template>
+  </Button>
+
+* ContentPresenter（※）は、ContentControl系のコントロールのControlTemplateでContentプロパティを表示するのに使用するコントロール
+
+.. code-block:: XML
+
+  <!-- Windowの見た目を変える例 -->
+  <ControlTemplate x:Key="WindowTemplate" TargetType="{x:Type Window}">
+      <Border Background="{TemplateBinding Background}" Padding="10">
+          <Grid>
+              <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="*" />
+                  <RowDefinition Height="Auto" />
+              </Grid.RowDefinitions>
+
+              <Grid>
+                  <TextBlock Text="System title" FontSize="24" />
+                  <Button Content="Common command" HorizontalAlignment="Right" />
+              </Grid>
+              
+              <!-- ※ -->
+              <ContentPresenter Grid.Row="1" Margin="0, 10"/>
+              
+              <Grid Grid.Row="2">
+                  <TextBlock Text="Footer" />
+              </Grid>
+          </Grid>
+      </Border>
+  </ControlTemplate>
+
+.. code-block:: XML
+
+  <!-- 上記テンプレートを使用する例 -->
+  <Window x:Class="ControlTemplateSample02.MainWindow"
+          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+          Title="MainWindow" Height="350" Width="525"
+          Template="{StaticResource WindowTemplate}">
+     <!-- 上記テンプレートのContentPresenter※ -->
+     <Grid>
+          <Button Content="Window content"/>
+     </Grid>
+  </Window>
+
 

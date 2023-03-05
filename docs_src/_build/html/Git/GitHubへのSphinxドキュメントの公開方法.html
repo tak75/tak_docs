@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHubへのSphinxドキュメントの公開方法 &mdash; Tak Documents  ドキュメント</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="VirtualBox" href="../VirtualBox/index.html" />
+    <link rel="prev" title="使い方" href="%E4%BD%BF%E3%81%84%E6%96%B9.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Tak Documents
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Git</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="%E4%BD%BF%E3%81%84%E6%96%B9.html">使い方</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GitHubへのSphinxドキュメントの公開方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">ディレクトリ構成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nojekyll">.nojekyllファイルの作成方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#html-copy-bat">html_copy.batの内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">参考</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../VirtualBox/index.html">VirtualBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Matplotlib/index.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Jupyter/index.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Web%E3%82%A2%E3%83%97%E3%83%AA/index.html">Webアプリ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../C/index.html">C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../C%EF%BC%83/index.html">C＃</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../UML/index.html">UML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90/index.html">データ分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E5%82%99%E5%BF%98%E9%8C%B2/index.html">備忘録</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Tak Documents</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Git</a></li>
+      <li class="breadcrumb-item active">GitHubへのSphinxドキュメントの公開方法</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Git/GitHubへのSphinxドキュメントの公開方法.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="githubsphinx">
+<h1>GitHubへのSphinxドキュメントの公開方法<a class="headerlink" href="#githubsphinx" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<section id="id1">
+<h2>ディレクトリ構成<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>github_sphinx_example
+├── .gitignore
+├── docs
+│   ├── .nojekyll（Jekyllを使用しないようにするために必要）
+│   ├── 公開するhtmlファイル（buildで作成されるhtmlファイルをコピーする）
+├── docs_src
+│    ├── build元のrstファイル
+├── html_copy.bat（”docs_src\build”を”docs”にコピーするためのバッチファイル）
+└── README.rst
+</pre></div>
+</div>
+</section>
+<section id="nojekyll">
+<h2>.nojekyllファイルの作成方法<a class="headerlink" href="#nojekyll" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>コマンドプロンプトにて、以下入力でOK:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">null</span> <span class="o">&gt;</span> <span class="o">.</span><span class="n">nojekyll</span>
+</pre></div>
+</div>
+</section>
+<section id="html-copy-bat">
+<h2>html_copy.batの内容<a class="headerlink" href="#html-copy-bat" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xcopy</span> <span class="n">docs_src</span>\<span class="n">_build</span>\<span class="n">html</span> <span class="n">docs</span> <span class="o">/</span><span class="n">D</span> <span class="o">/</span><span class="n">E</span> <span class="o">/</span><span class="n">Y</span>
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default" id="id3">
+<caption><span class="caption-number">表 10 </span><span class="caption-text">オプション説明</span><a class="headerlink" href="#id3" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 83%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>オプション</p></th>
+<th class="head"><p>説明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/A</p></td>
+<td><p>アーカイブ属性のファイルのみコピーする</p></td>
+</tr>
+<tr class="row-odd"><td><p>/M</p></td>
+<td><p>アーカイブ属性のファイルのみコピーし、アーカイブ属性を解除する</p></td>
+</tr>
+<tr class="row-even"><td><p>/D:MM/DD/YYYY</p></td>
+<td><p>指定した日付以降に更新されたファイルのみコピーする</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>/D</strong></p></td>
+<td><p><strong>コピー先に同名のファイルが存在する場合に更新日が新しいファイルのみコピーする</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>/P</p></td>
+<td><p>コピー前に確認メッセージを表示する</p></td>
+</tr>
+<tr class="row-odd"><td><p>/S</p></td>
+<td><p>ファイルが存在する場合のみディレクトリごとコピーする</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>/E</strong></p></td>
+<td><p><strong>ファイルが存在しなくてもディレクトリごとコピーする</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>/V</p></td>
+<td><p>ファイルの内容が正しいか検査する</p></td>
+</tr>
+<tr class="row-even"><td><p>/W</p></td>
+<td><p>キー入力を待ってコピーを開始する</p></td>
+</tr>
+<tr class="row-odd"><td><p>/C</p></td>
+<td><p>コピー時のエラーを無視する</p></td>
+</tr>
+<tr class="row-even"><td><p>/I</p></td>
+<td><p>コピー先のディレクトリが存在しない場合は新規にディレクトリを作成する</p></td>
+</tr>
+<tr class="row-odd"><td><p>/Q</p></td>
+<td><p>コピーしたファイル名を表示しない</p></td>
+</tr>
+<tr class="row-even"><td><p>/F</p></td>
+<td><p>コピー元とコピー先のファイル名を詳細表示する</p></td>
+</tr>
+<tr class="row-odd"><td><p>/L</p></td>
+<td><p>コピーされるファイルを確認する（コピーは行わない）</p></td>
+</tr>
+<tr class="row-even"><td><p>/G</p></td>
+<td><p>暗号化を解除してコピーする（XP Only）</p></td>
+</tr>
+<tr class="row-odd"><td><p>/H</p></td>
+<td><p>隠しファイルやシステムファイルも全てコピーする</p></td>
+</tr>
+<tr class="row-even"><td><p>/R</p></td>
+<td><p>読み取り専用属性のファイルも上書きコピーできるようにする</p></td>
+</tr>
+<tr class="row-odd"><td><p>/T</p></td>
+<td><p>ファイルが存在するディレクトリのディレクトリのみコピーする</p></td>
+</tr>
+<tr class="row-even"><td><p>/U</p></td>
+<td><p>コピー先に同名のファイルがある場合のみコピーする</p></td>
+</tr>
+<tr class="row-odd"><td><p>/K</p></td>
+<td><p>通常は解除される読み取り専用属性を維持したままコピーする</p></td>
+</tr>
+<tr class="row-even"><td><p>/O</p></td>
+<td><p>ファイルの所有権やアクセス権限もそのままコピーする</p></td>
+</tr>
+<tr class="row-odd"><td><p>/N</p></td>
+<td><p>コピー元のファイル名が長い場合、コピー先のファイル名を短く（8+3形式）する</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>/Y</strong></p></td>
+<td><p><strong>同名のファイルが存在する場合、上書きの確認を行わない</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>/-Y</p></td>
+<td><p>同名のファイルが存在する場合、上書きの確認を行う</p></td>
+</tr>
+<tr class="row-even"><td><p>/Z</p></td>
+<td><p>ネットワーク経由のコピーでネットワーク切断が発生した場合、コピーを再開できるようにする</p></td>
+</tr>
+<tr class="row-odd"><td><p>/EXCLUDE:file name</p></td>
+<td><p>指定したファイルをコピー対象から外す（複数ファイル指定時は&quot;+&quot;でくくる）</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id2">
+<h2>参考<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://sky-joker.github.io/github_sphinx_example/#">Sphinxで作ったドキュメントをGithubで公開</a></p></li>
+<li><p><a class="reference external" href="https://win.just4fun.biz/?%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%83%97%E3%83%AD%E3%83%B3%E3%83%97%E3%83%88/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B5%E3%82%A4%E3%82%BA0%E3%81%AE%E7%A9%BA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90%E6%96%B9%E6%B3%95">コマンドプロンプト/ファイルサイズ0の空ファイルの作成方法</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="%E4%BD%BF%E3%81%84%E6%96%B9.html" class="btn btn-neutral float-left" title="使い方" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../VirtualBox/index.html" class="btn btn-neutral float-right" title="VirtualBox" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, tak.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

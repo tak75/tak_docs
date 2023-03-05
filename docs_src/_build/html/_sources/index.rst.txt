@@ -6,7 +6,7 @@ tak documents
    :maxdepth: 2
 
    sphinx/index
-   GitHub/index
+   Git/index
    VirtualBox/index
    Linux/index
    python/index

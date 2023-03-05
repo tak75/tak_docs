@@ -19,8 +19,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
-    <link rel="next" title="ReactiveExtensions" href="../ReactiveExtensions/index.html" />
-    <link rel="prev" title="全般" href="%E5%85%A8%E8%88%AC.html" /> 
+    <link rel="next" title="スタイル" href="%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB.html" />
+    <link rel="prev" title="リソース" href="%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -54,10 +54,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../WPF/index.html">WPF</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">XAML</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="%E5%85%A8%E8%88%AC.html">全般</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9.html">リソース</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">コントロール</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">レイアウトコントロール</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">レイアウトに影響を与えるプロパティ</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">コンテンツモデル</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">レイアウトに影響を与えるプロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">レイアウトコントロール</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#button">Buttonコントロール</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datagrid">DataGridコントロール</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#treeview">TreeViewコントロール</a></li>
@@ -81,6 +81,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#mediaelement">MediaElementコントロール</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB.html">スタイル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88.html">テンプレート</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%82%A2%E3%83%8B%E3%83%A1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3.html">アニメーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%83%A6%E3%83%BC%E3%82%B6%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%AB.html">ユーザコントロール</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../ReactiveExtensions/index.html">ReactiveExtensions</a></li>
@@ -124,7 +128,20 @@
   <section id="id1">
 <h1>コントロール<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <section id="id2">
-<h2>レイアウトコントロール<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>レイアウトに影響を与えるプロパティ<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p>MinWidth,MaxWidth：コントロールの最小,最大の幅を設定</p></li>
+<li><p>ピクセル以外に指定できる</p>
+<ul>
+<li><p>10in：インチで指定</p></li>
+<li><p>10cm：センチメートルで指定</p></li>
+<li><p>10pt：ポイントで指定</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id3">
+<h2>レイアウトコントロール<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <section id="border">
 <h3>Borderコントロール<a class="headerlink" href="#border" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p><a class="reference external" href="https://blog.okazuki.jp/entry/20130104/1357309697">https://blog.okazuki.jp/entry/20130104/1357309697</a></p>
@@ -244,38 +261,6 @@
 </ul>
 </section>
 </section>
-<section id="id3">
-<h2>レイアウトに影響を与えるプロパティ<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<ul class="simple">
-<li><p>MinWidth,MaxWidth：コントロールの最小,最大の幅を設定</p></li>
-<li><p>ピクセル以外に指定できる</p>
-<ul>
-<li><p>10in：インチで指定</p></li>
-<li><p>10cm：センチメートルで指定</p></li>
-<li><p>10pt：ポイントで指定</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="id4">
-<h2>コンテンツモデル<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20130113/1358094630">https://blog.okazuki.jp/entry/20130113/1358094630</a></p></li>
-<li><p>WPFでは、単一の要素を表示するコントロールとしてContentControlというものが定義</p></li>
-<li><p>このコントロールは、ButtonやLabelなどの多くのコントロールの親クラス</p></li>
-<li><p>ContentControlにはContentという名前のobject型のプロパティが定義されていて、 <strong>そこに設定されたクラスの型に応じて表示方法が切り替わる</strong></p></li>
-<li><p>表示ロジックは以下のとおり</p>
-<ul>
-<li><p>UIElement型(ButtonやRectangleなどのコントロール)の場合はそのまま表示する。</p></li>
-<li><p><strong>ContentTemplateにデータテンプレートが設定されている場合は、それを使って表示する。</strong></p></li>
-<li><p>Contentプロパティに設定された型に対してデータテンプレートが定義されている場合は、それを使って表示する。</p></li>
-<li><p>UIElement型へ変換するTypeConverterがある場合は、それを使ってUIElement型に変換して表示する。</p></li>
-<li><p>string型へ変換するTypeConverterがある場合は、それを使って文字列に変換してTextBlockのTextプロパティに設定して表示する。</p></li>
-<li><p>ToStringメソッドの呼び出し結果をTextBlockのTextプロパティに設定して表示する。</p></li>
-</ul>
-</li>
-</ul>
-</section>
 <section id="button">
 <h2>Buttonコントロール<a class="headerlink" href="#button" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <section id="repeatbutton">
@@ -299,8 +284,8 @@
 </section>
 <section id="datagrid">
 <h2>DataGridコントロール<a class="headerlink" href="#datagrid" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<section id="id5">
-<h3>自動生成機能＋コードビハインドでカスタマイズする方法<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<section id="id4">
+<h3>自動生成機能＋コードビハインドでカスタマイズする方法<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20130218/1358172834">https://blog.okazuki.jp/entry/20130218/1358172834</a></p></li>
 <li><p>DataGridの列の自動生成は、列を自動生成するタイミングで発生するAutoGeneratingColumnイベントである程度カスタマイズすることができ、
@@ -338,8 +323,8 @@ DataGridにAutoGeneratingColumnイベントハンドラを作成し下記のよ�
 </pre></div>
 </div>
 </section>
-<section id="id6">
-<h3>自分で列を定義する方法<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<section id="id5">
+<h3>自分で列を定義する方法<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20130224/1361693816">https://blog.okazuki.jp/entry/20130224/1361693816</a></p></li>
 <li><p>「自動生成機能＋コードビハインド」より、こちらが一般的な方法</p></li>
@@ -587,8 +572,8 @@ DataGridにAutoGeneratingColumnイベントハンドラを作成し下記のよ�
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="%E5%85%A8%E8%88%AC.html" class="btn btn-neutral float-left" title="全般" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../ReactiveExtensions/index.html" class="btn btn-neutral float-right" title="ReactiveExtensions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9.html" class="btn btn-neutral float-left" title="リソース" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB.html" class="btn btn-neutral float-right" title="スタイル" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -2,10 +2,44 @@
 リソース
 ==========
 
+リソースの定義
+==============
 
 * https://blog.okazuki.jp/entry/2014/09/06/124431
-
+* ResourceDictionaryクラスの中には、画像・文字列・オブジェクトなど様々なものを名前をつけて保持することが出来る
 
 .. code-block:: XML
 
+    <Application.Resources>
+        <ImageBrush x:Key="AnthemBrush" ImageSource="anthem.jpg" />
+        <SolidColorBrush x:Key="RedBrush" Color="Red" />
+    </Application.Resources>
 
+リソースの参照方法
+==================
+
+* https://blog.okazuki.jp/entry/2014/09/06/124431
+* 方法は3種
+ 
+  #. StaticResourceマークアップ拡張
+  #. DynamicResourceマークアップ拡張
+
+        .. code-block:: XML
+
+            <Border x:Name="border" Width="100" Height="100" Background="{StaticResource AnthemBrush}" />
+            <Border Width="100" Height="100" Background="{DynamicResource AnthemBrush}" />
+
+        .. code-block:: csharp
+
+            // AnthemBrushの置き換え
+            App.Current.Resources["AnthemBrush"] = new SolidColorBrush(Colors.Blue);
+
+  #. プログラムからアクセス
+
+        .. code-block:: csharp
+
+            // FindResourceメソッドを使うことで、起点となるインスタンス（Windowなど）からAppクラスまで親へ親へリソースを探して最初にみつかったものを返す
+            // 見つからない場合は例外を返す
+            // 存在するかどうかがわからないリソースを参照する場合はTryFindResourceメソッドを使う
+            var brush = (SolidColorBrush)this.FindResource("RedBrush");
+            this.border.Background = brush;

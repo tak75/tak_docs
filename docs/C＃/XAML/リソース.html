@@ -54,7 +54,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../WPF/index.html">WPF</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">XAML</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="%E5%85%A8%E8%88%AC.html">全般</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">リソース</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">リソース</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">リソースの定義</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">リソースの参照方法</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%AB.html">コントロール</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB.html">スタイル</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88.html">テンプレート</a></li>
@@ -101,12 +105,53 @@
              
   <section id="id1">
 <h1>リソース<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<section id="id2">
+<h2>リソースの定義<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/09/06/124431">https://blog.okazuki.jp/entry/2014/09/06/124431</a></p></li>
+<li><p>ResourceDictionaryクラスの中には、画像・文字列・オブジェクトなど様々なものを名前をつけて保持することが出来る</p></li>
 </ul>
-<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Application.Resources&gt;</span>
+    <span class="nt">&lt;ImageBrush</span> <span class="na">x:Key=</span><span class="s">&quot;AnthemBrush&quot;</span> <span class="na">ImageSource=</span><span class="s">&quot;anthem.jpg&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;SolidColorBrush</span> <span class="na">x:Key=</span><span class="s">&quot;RedBrush&quot;</span> <span class="na">Color=</span><span class="s">&quot;Red&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/Application.Resources&gt;</span>
 </pre></div>
 </div>
+</section>
+<section id="id3">
+<h2>リソースの参照方法<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/09/06/124431">https://blog.okazuki.jp/entry/2014/09/06/124431</a></p></li>
+<li><p>方法は3種</p>
+<ol class="arabic">
+<li><p>StaticResourceマークアップ拡張</p></li>
+<li><p>DynamicResourceマークアップ拡張</p>
+<blockquote>
+<div><div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Border</span> <span class="na">x:Name=</span><span class="s">&quot;border&quot;</span> <span class="na">Width=</span><span class="s">&quot;100&quot;</span> <span class="na">Height=</span><span class="s">&quot;100&quot;</span> <span class="na">Background=</span><span class="s">&quot;{StaticResource AnthemBrush}&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;Border</span> <span class="na">Width=</span><span class="s">&quot;100&quot;</span> <span class="na">Height=</span><span class="s">&quot;100&quot;</span> <span class="na">Background=</span><span class="s">&quot;{DynamicResource AnthemBrush}&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// AnthemBrushの置き換え</span>
+<span class="n">App</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">Resources</span><span class="p">[</span><span class="s">&quot;AnthemBrush&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SolidColorBrush</span><span class="p">(</span><span class="n">Colors</span><span class="p">.</span><span class="n">Blue</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>プログラムからアクセス</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// FindResourceメソッドを使うことで、起点となるインスタンス（Windowなど）からAppクラスまで親へ親へリソースを探して最初にみつかったものを返す</span>
+<span class="c1">// 見つからない場合は例外を返す</span>
+<span class="c1">// 存在するかどうかがわからないリソースを参照する場合はTryFindResourceメソッドを使う</span>
+<span class="kt">var</span> <span class="n">brush</span> <span class="p">=</span> <span class="p">(</span><span class="n">SolidColorBrush</span><span class="p">)</span><span class="k">this</span><span class="p">.</span><span class="n">FindResource</span><span class="p">(</span><span class="s">&quot;RedBrush&quot;</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="n">border</span><span class="p">.</span><span class="n">Background</span> <span class="p">=</span> <span class="n">brush</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</li>
+</ul>
+</section>
 </section>
 
 

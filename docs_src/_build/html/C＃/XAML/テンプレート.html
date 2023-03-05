@@ -20,7 +20,7 @@
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
     <link rel="next" title="アニメーション" href="%E3%82%A2%E3%83%8B%E3%83%A1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3.html" />
-    <link rel="prev" title="コントロール" href="%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%AB.html" /> 
+    <link rel="prev" title="スタイル" href="%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -54,16 +54,20 @@
 <li class="toctree-l2"><a class="reference internal" href="../WPF/index.html">WPF</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">XAML</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="%E5%85%A8%E8%88%AC.html">全般</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9.html">リソース</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%AB.html">コントロール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB.html">スタイル</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">テンプレート</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">レイアウトに影響を与えるプロパティ</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">コンテンツモデル</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#datatemplate">DataTemplate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">コンテンツモデル</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">テンプレートの種類</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">DataTemplate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datatrigger">DataTrigger</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datetemplateselector">DateTemplateSelector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">ControlTemplate</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%82%A2%E3%83%8B%E3%83%A1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3.html">アニメーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%83%A6%E3%83%BC%E3%82%B6%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%AB.html">ユーザコントロール</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../ReactiveExtensions/index.html">ReactiveExtensions</a></li>
@@ -107,20 +111,7 @@
   <section id="id1">
 <h1>テンプレート<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <section id="id2">
-<h2>レイアウトに影響を与えるプロパティ<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<ul class="simple">
-<li><p>MinWidth,MaxWidth：コントロールの最小,最大の幅を設定</p></li>
-<li><p>ピクセル以外に指定できる</p>
-<ul>
-<li><p>10in：インチで指定</p></li>
-<li><p>10cm：センチメートルで指定</p></li>
-<li><p>10pt：ポイントで指定</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="id3">
-<h2>コンテンツモデル<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>コンテンツモデル<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20130113/1358094630">https://blog.okazuki.jp/entry/20130113/1358094630</a></p></li>
 <li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/25/164331">https://blog.okazuki.jp/entry/2014/08/25/164331</a></p></li>
@@ -141,8 +132,22 @@
 </li>
 </ul>
 </section>
-<section id="datatemplate">
-<h2>DataTemplate<a class="headerlink" href="#datatemplate" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id3">
+<h2>テンプレートの種類<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p><a class="reference internal" href="#datatemplate">DataTemplate</a></p>
+<p>主にContentプロパティにオブジェクトが設定されている場合に、どのようにそのオブジェクトを表示するかを定義</p>
+</li>
+<li><p><a class="reference internal" href="#controltemplate">ControlTemplate</a></p>
+<ul class="simple">
+<li><p>見た目を完全にカスタマイズする方法</p></li>
+<li><p>TemplateというプロパティにControlTemplateを設定</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id4">
+<h2><span class="target" id="datatemplate">DataTemplate</span><a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/08/25/164331">https://blog.okazuki.jp/entry/2014/08/25/164331</a></p></li>
 <li><p>DataTemplateは、主にContentプロパティにオブジェクトが設定されている場合に、どのようにそのオブジェクトを表示するかを定義</p></li>
@@ -258,13 +263,76 @@
 </pre></div>
 </div>
 </section>
+<section id="id5">
+<h2><span class="target" id="controltemplate">ControlTemplate</span><a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/2014/09/07/195335">https://blog.okazuki.jp/entry/2014/09/07/195335</a></p></li>
+<li><p>見た目を完全にカスタマイズする方法</p></li>
+<li><p>TemplateというプロパティにControlTemplateを設定</p></li>
+<li><p>WPFの各コントロールに関するスタイルトテンプレートについては、MSDNを参照（<a class="reference external" href="http://msdn.microsoft.com/ja-jp/library/aa970773(v=vs.110).aspx">http://msdn.microsoft.com/ja-jp/library/aa970773(v=vs.110).aspx</a>）</p></li>
+</ul>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!-- Buttonコントロールの見た目をLabelにして、Click可能なLabelを実現する例 --&gt;</span>
+<span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;ラベル&quot;</span> <span class="na">Click=</span><span class="s">&quot;Button_Click&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Button.Template&gt;</span>
+        <span class="nt">&lt;ControlTemplate</span> <span class="na">TargetType=</span><span class="s">&quot;{x:Type Button}&quot;</span><span class="nt">&gt;</span>
+            <span class="c">&lt;!-- TemplateBindingでコントロールのプロパティをバインド --&gt;</span>
+            <span class="c">&lt;!-- 本例ではButtonのContentに設定された値をLabelのContentにBinding --&gt;</span>
+            <span class="nt">&lt;Label</span> <span class="na">Content=</span><span class="s">&quot;{TemplateBinding Content}&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/ControlTemplate&gt;</span>
+    <span class="nt">&lt;/Button.Template&gt;</span>
+<span class="nt">&lt;/Button&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>ContentPresenter（※）は、ContentControl系のコントロールのControlTemplateでContentプロパティを表示するのに使用するコントロール</p></li>
+</ul>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!-- Windowの見た目を変える例 --&gt;</span>
+<span class="nt">&lt;ControlTemplate</span> <span class="na">x:Key=</span><span class="s">&quot;WindowTemplate&quot;</span> <span class="na">TargetType=</span><span class="s">&quot;{x:Type Window}&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Border</span> <span class="na">Background=</span><span class="s">&quot;{TemplateBinding Background}&quot;</span> <span class="na">Padding=</span><span class="s">&quot;10&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Grid&gt;</span>
+            <span class="nt">&lt;Grid.RowDefinitions&gt;</span>
+                <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&quot;Auto&quot;</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&quot;*&quot;</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&quot;Auto&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/Grid.RowDefinitions&gt;</span>
+
+            <span class="nt">&lt;Grid&gt;</span>
+                <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;System title&quot;</span> <span class="na">FontSize=</span><span class="s">&quot;24&quot;</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Common command&quot;</span> <span class="na">HorizontalAlignment=</span><span class="s">&quot;Right&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/Grid&gt;</span>
+
+            <span class="c">&lt;!-- ※ --&gt;</span>
+            <span class="nt">&lt;ContentPresenter</span> <span class="na">Grid.Row=</span><span class="s">&quot;1&quot;</span> <span class="na">Margin=</span><span class="s">&quot;0, 10&quot;</span><span class="nt">/&gt;</span>
+
+            <span class="nt">&lt;Grid</span> <span class="na">Grid.Row=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&quot;Footer&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/Grid&gt;</span>
+        <span class="nt">&lt;/Grid&gt;</span>
+    <span class="nt">&lt;/Border&gt;</span>
+<span class="nt">&lt;/ControlTemplate&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!-- 上記テンプレートを使用する例 --&gt;</span>
+<span class="nt">&lt;Window</span> <span class="na">x:Class=</span><span class="s">&quot;ControlTemplateSample02.MainWindow&quot;</span>
+        <span class="na">xmlns=</span><span class="s">&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;</span>
+        <span class="na">xmlns:x=</span><span class="s">&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;</span>
+        <span class="na">Title=</span><span class="s">&quot;MainWindow&quot;</span> <span class="na">Height=</span><span class="s">&quot;350&quot;</span> <span class="na">Width=</span><span class="s">&quot;525&quot;</span>
+        <span class="na">Template=</span><span class="s">&quot;{StaticResource WindowTemplate}&quot;</span><span class="nt">&gt;</span>
+   <span class="c">&lt;!-- 上記テンプレートのContentPresenter※ --&gt;</span>
+   <span class="nt">&lt;Grid&gt;</span>
+        <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">&quot;Window content&quot;</span><span class="nt">/&gt;</span>
+   <span class="nt">&lt;/Grid&gt;</span>
+<span class="nt">&lt;/Window&gt;</span>
+</pre></div>
+</div>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%AB.html" class="btn btn-neutral float-left" title="コントロール" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB.html" class="btn btn-neutral float-left" title="スタイル" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="%E3%82%A2%E3%83%8B%E3%83%A1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3.html" class="btn btn-neutral float-right" title="アニメーション" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
