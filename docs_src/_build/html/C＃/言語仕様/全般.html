@@ -71,6 +71,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#union">共用体（union）</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id16">具象クラスからの継承について</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id17">拡張メソッド</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">比較方法</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="%E6%96%87%E5%AD%97%E5%88%97.html">文字列</a></li>
@@ -170,8 +171,8 @@ if(b != null)
 </div>
 </div></blockquote>
 <p>サフィックスは以下の通り。</p>
-<table class="colwidths-given docutils align-default" id="id19">
-<caption><span class="caption-number">表 15 </span><span class="caption-text">サフィックス</span><a class="headerlink" href="#id19" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id22">
+<caption><span class="caption-number">表 15 </span><span class="caption-text">サフィックス</span><a class="headerlink" href="#id22" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 60%" />
 <col style="width: 40%" />
@@ -205,8 +206,8 @@ if(b != null)
 </section>
 <section id="decimaldouble">
 <h2>decimal型とdouble型<a class="headerlink" href="#decimaldouble" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<table class="colwidths-given docutils align-default" id="id20">
-<caption><span class="caption-number">表 16 </span><span class="caption-text">decimal型とdouble型</span><a class="headerlink" href="#id20" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id23">
+<caption><span class="caption-number">表 16 </span><span class="caption-text">decimal型とdouble型</span><a class="headerlink" href="#id23" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 13%" />
 <col style="width: 44%" />
@@ -393,8 +394,8 @@ n.ToString()の処理までにn=nullとなる可能性があり、その場合�
 <h3>既定の属性<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>属性は、その属性を扱うプログラムに対する一種のメタデータである。
 属性はメソッドに付加する。</p>
-<table class="colwidths-given docutils align-default" id="id21">
-<caption><span class="caption-number">表 17 </span><span class="caption-text">属性</span><a class="headerlink" href="#id21" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id24">
+<caption><span class="caption-number">表 17 </span><span class="caption-text">属性</span><a class="headerlink" href="#id24" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -580,6 +581,31 @@ n.ToString()の処理までにn=nullとなる可能性があり、その場合�
 <span class="p">}</span>
 </pre></div>
 </div>
+</section>
+</section>
+<section id="id19">
+<h2>比較方法<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p>SerializeJson() した上で、SequenceEqual() で比較する</p></li>
+</ul>
+<section id="id20">
+<h3>オブジェクトの比較<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="n">SerializeJson</span><span class="p">().</span><span class="n">SequenceEqual</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">SerializeJson</span><span class="p">());</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id21">
+<h3>リストの比較<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">list1</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">Info1</span><span class="p">.</span><span class="n">SelectMany</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Info2</span><span class="p">.</span><span class="n">SelectMany</span><span class="p">(</span><span class="n">w</span> <span class="p">=&gt;</span> <span class="n">w</span><span class="p">).</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">AValue</span><span class="p">,</span> <span class="n">x</span><span class="p">.</span><span class="n">BValue</span><span class="p">))).</span><span class="n">ToList</span><span class="p">();</span>
+<span class="kt">var</span> <span class="n">list2</span> <span class="p">=</span> <span class="n">other</span><span class="p">.</span><span class="n">Info1</span><span class="p">.</span><span class="n">SelectMany</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Info2</span><span class="p">.</span><span class="n">SelectMany</span><span class="p">(</span><span class="n">w</span> <span class="p">=&gt;</span> <span class="n">w</span><span class="p">).</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">AValue</span><span class="p">,</span> <span class="n">x</span><span class="p">.</span><span class="n">BValue</span><span class="p">))).</span><span class="n">ToList</span><span class="p">();</span>
+
+<span class="k">return</span> <span class="n">list1</span><span class="p">.</span><span class="n">SequenceEqual</span><span class="p">(</span><span class="n">list2</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
 </section>
 </section>
 </section>
