@@ -70,7 +70,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#id15">変数のスレッドセーフ</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#union">共用体（union）</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id16">具象クラスからの継承について</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id17">拡張クラス</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">拡張メソッド</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="%E6%96%87%E5%AD%97%E5%88%97.html">文字列</a></li>
@@ -550,12 +550,13 @@ n.ToString()の処理までにn=nullとなる可能性があり、その場合�
 </ul>
 </section>
 <section id="id17">
-<h2>拡張クラス<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>拡張メソッド<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <section id="id18">
-<h3>列挙体の拡張クラス<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>列挙体の拡張メソッド<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
-<li><p>列挙体のToString()はオーバロードできない</p></li>
-<li><p>代替策としては、以下のように拡張クラスで別名のメソッドを作成すればよい</p></li>
+<li><p>列挙体の要素名リストを取得したい場合、ToString()を使用すると、要素名そのものの文字列が出力される</p></li>
+<li><p>これを好きな要素名リストとしたい場合、クラスであればToString()をオーバロードできるが、列挙体の場合はできない</p></li>
+<li><p>代替策としては、以下のように拡張クラスを使用すればよい</p></li>
 </ul>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">enum</span> <span class="n">DataType</span>
 <span class="p">{</span>
@@ -566,6 +567,7 @@ n.ToString()の処理までにn=nullとなる可能性があり、その場合�
 
 <span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">DataTypeExtension</span>
 <span class="p">{</span>
+  <span class="c1">// 列挙体の要素名辞書</span>
   <span class="k">static</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">DataType</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="n">DataTypeNames</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">DataType</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span>
   <span class="p">{</span>
     <span class="p">{</span><span class="n">DataType</span><span class="p">.</span><span class="n">Data1</span><span class="p">,</span> <span class="s">&quot;data 1&quot;</span> <span class="p">},</span>
@@ -573,6 +575,7 @@ n.ToString()の処理までにn=nullとなる可能性があり、その場合�
     <span class="p">{</span><span class="n">DataType</span><span class="p">.</span><span class="n">Data3</span><span class="p">,</span> <span class="s">&quot;data 3&quot;</span> <span class="p">}</span>
   <span class="p">};</span>
 
+  <span class="c1">// ToString()の代わりとなる拡張メソッド</span>
   <span class="k">public</span> <span class="k">static</span> <span class="kt">string</span> <span class="nf">ToName</span><span class="p">(</span><span class="k">this</span> <span class="n">DataType</span> <span class="n">dataType</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">DataTypeNames</span><span class="p">[</span><span class="n">dataType</span><span class="p">];</span>
 <span class="p">}</span>
 </pre></div>

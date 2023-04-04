@@ -379,15 +379,16 @@ Taskを使用した非同期制御では、スレッドをスレッドプール�
   このため、具象クラスである必然性はない。
 * 抽象クラスであれば、継承先クラスにメソッドの実装を強制できるので、抽象クラスが推奨されている
  
-拡張クラス
-==========
+拡張メソッド
+============
 
-------------------
-列挙体の拡張クラス
-------------------
+--------------------
+列挙体の拡張メソッド
+--------------------
 
-* 列挙体のToString()はオーバロードできない
-* 代替策としては、以下のように拡張クラスで別名のメソッドを作成すればよい
+* 列挙体の要素名リストを取得したい場合、ToString()を使用すると、要素名そのものの文字列が出力される
+* これを好きな要素名リストとしたい場合、クラスであればToString()をオーバロードできるが、列挙体の場合はできない
+* 代替策としては、以下のように拡張クラスを使用すればよい
 
 .. code-block:: csharp
 
@@ -400,6 +401,7 @@ Taskを使用した非同期制御では、スレッドをスレッドプール�
 
   public static class DataTypeExtension
   {
+    // 列挙体の要素名辞書
     static Dictionary<DataType, string> DataTypeNames = new Dictionary<DataType, string>
     {
       {DataType.Data1, "data 1" },
@@ -407,5 +409,6 @@ Taskを使用した非同期制御では、スレッドをスレッドプール�
       {DataType.Data3, "data 3" }
     };
 
+    // ToString()の代わりとなる拡張メソッド
     public static string ToName(this DataType dataType) => DataTypeNames[dataType];
   }
