@@ -41,7 +41,17 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../sphinx/index.html">Sphinx</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Git</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">使い方</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">使い方</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">インストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">リポジトリ作成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">ファイルの追加</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">コミット</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">変更を確認</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">ファイルの削除</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">ファイルの移動</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#github">GitHubにプッシュ</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="GitHub%E3%81%B8%E3%81%AESphinx%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E3%81%AE%E5%85%AC%E9%96%8B%E6%96%B9%E6%B3%95.html">GitHubへのSphinxドキュメントの公開方法</a></li>
 </ul>
 </li>
@@ -87,6 +97,106 @@
              
   <section id="id1">
 <h1>使い方<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<section id="id2">
+<h2>インストール<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</section>
+<section id="id3">
+<h2>リポジトリ作成<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// ディレクトリ作成</span>
+<span class="gp">$ </span>mkdir test_dir
+<span class="gp">$ </span><span class="nb">cd</span> test_dir
+
+<span class="go">// リポジトリを新規作成</span>
+<span class="go">// これにより、.git/ ディレクトリが作成される</span>
+<span class="gp">$ </span>git init
+
+<span class="go">// GitHubからリポジトリを作成</span>
+<span class="gp">$ </span>git clone https://~~
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2>ファイルの追加<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// ステージへのファイル（の変更）の追加</span>
+<span class="go">// （全てのファイルの変更を追加する場合）</span>
+<span class="gp">$ </span>git add .
+<span class="go">// （ファイル名を指定して追加する場合）</span>
+<span class="gp">$ </span>git add index.html
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>コミット<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// コミット</span>
+<span class="go">// （入力後にエディタが開く）</span>
+<span class="gp">$ </span>git commit
+<span class="go">// （メッセージを直接入力。エディタは開かない）</span>
+<span class="gp">$ </span>git commit -m <span class="s2">&quot;テストメッセージ&quot;</span>
+<span class="go">// （変更箇所をエディタに表示）</span>
+<span class="gp">$ </span>git commit -v
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h2>変更を確認<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// 変更状況を確認</span>
+<span class="go">// ワークツリー⇔ステージ間、ステージ⇔リポジトリ間の変更を確認する</span>
+<span class="go">// 前者はまだAddしていないファイルがある、後者はまだCommitしていないファイルがあることを意味する</span>
+<span class="gp">$ </span>git status
+
+<span class="go">// 変更差分を確認</span>
+<span class="go">// （git addする前の変更分）</span>
+<span class="gp">$ </span>git diff
+<span class="gp">$ </span>git diff index.html
+<span class="go">// （git addした後の変更分）</span>
+<span class="gp">$ </span>git diff --staged
+
+<span class="go">// 変更履歴を確認</span>
+<span class="go">// （一行で表示）</span>
+<span class="gp">$ </span>git log --oneline
+<span class="go">// （ファイルの変更差分を表示）</span>
+<span class="gp">$ </span>git log -p index.html
+<span class="go">// （表示するコミット数を制限）</span>
+<span class="gp">$ </span>git log -n &lt;コミット数&gt;
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h2>ファイルの削除<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// リポジトリ／ワークツリーのファイルを削除</span>
+<span class="gp">$ </span>git rm &lt;ファイル名&gt;
+<span class="gp">$ </span>git rm -r &lt;ディレクトリ名&gt;
+
+<span class="go">// リポジトリのファイルは削除</span>
+<span class="go">// ワークツリーのファイルは削除しない</span>
+<span class="gp">$ </span>git rm --cached &lt;ファイル名&gt;
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h2>ファイルの移動<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git mv &lt;旧ファイル名&gt; &lt;新ファイル名&gt;
+
+<span class="go">// 以下のコマンドと同じ</span>
+<span class="gp">$ </span>mv &lt;旧ファイル名&gt; &lt;新ファイル名&gt;
+<span class="gp">$ </span>git rm &lt;旧ファイル名&gt;
+<span class="gp">$ </span>git add &lt;新ファイル名&gt;
+</pre></div>
+</div>
+</section>
+<section id="github">
+<h2>GitHubにプッシュ<a class="headerlink" href="#github" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// originというショートカットでurlのリモートリポジトリを登録する</span>
+<span class="go">// 以降では、originという名前でGitHubリポジトリにアクセスできるようになる</span>
+<span class="gp">$ </span>git remote add origin https://github.com/user/repo.git
+
+<span class="go">// リモートリポジトリ（GitHub）へ送信</span>
+<span class="go">// -uオプションは、最初のpushに付けておくと、次回以降は git push のみでpushできるようになる</span>
+<span class="gp">$ </span>git push &lt;リモート名&gt; &lt;ブランチ名&gt;
+<span class="gp">$ </span>git push -u origin master
+</pre></div>
+</div>
+</section>
 </section>
 
 

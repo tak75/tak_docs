@@ -50,6 +50,14 @@
     System.IO.Path.GetFileName(@"C:\My Documents\My Pictures");
     //結果: My Pictures
 
+* exeディレクトリ名の取得
+
+  .. code-block:: csharp
+
+    // ソフトAから本ソフトBを起動する場合、ソフトBが自分自身のexeディレクトリを取得するには、Assembly.GetEntryAssembly()を使う
+    // Directory.GetCurrentDirectory()やEnvironment.CurrentDirectoryでは、ソフトAのexeディレクトリが取得されてしまうので要注意！！
+    Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+
 ディレクトリ操作
 ================
 

@@ -40,7 +40,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Git/index.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
@@ -64,6 +64,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#id5">辞書型</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id6">インデックスリストの取得</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id7">その他参考例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">比較方法</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html">イベント、デリゲート</a></li>
@@ -223,6 +224,31 @@ C#4.0では、Parallel LINQ が導入され、マルチコアでの並列分散�
 </pre></div>
 </div>
 </div></blockquote>
+</section>
+<section id="id8">
+<h2>比較方法<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p>SerializeJson() した上で、SequenceEqual() で比較する</p></li>
+</ul>
+<section id="id9">
+<h3>オブジェクトの比較<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="n">SerializeJson</span><span class="p">().</span><span class="n">SequenceEqual</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">SerializeJson</span><span class="p">());</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id10">
+<h3>リストの比較<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">list1</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">Info1</span><span class="p">.</span><span class="n">SelectMany</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Info2</span><span class="p">.</span><span class="n">SelectMany</span><span class="p">(</span><span class="n">w</span> <span class="p">=&gt;</span> <span class="n">w</span><span class="p">).</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">AValue</span><span class="p">,</span> <span class="n">x</span><span class="p">.</span><span class="n">BValue</span><span class="p">))).</span><span class="n">ToList</span><span class="p">();</span>
+<span class="kt">var</span> <span class="n">list2</span> <span class="p">=</span> <span class="n">other</span><span class="p">.</span><span class="n">Info1</span><span class="p">.</span><span class="n">SelectMany</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Info2</span><span class="p">.</span><span class="n">SelectMany</span><span class="p">(</span><span class="n">w</span> <span class="p">=&gt;</span> <span class="n">w</span><span class="p">).</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">AValue</span><span class="p">,</span> <span class="n">x</span><span class="p">.</span><span class="n">BValue</span><span class="p">))).</span><span class="n">ToList</span><span class="p">();</span>
+
+<span class="k">return</span> <span class="n">list1</span><span class="p">.</span><span class="n">SequenceEqual</span><span class="p">(</span><span class="n">list2</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
 </section>
 </section>
 

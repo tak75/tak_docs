@@ -2,3 +2,112 @@
 使い方
 ======
 
+インストール
+============
+
+
+リポジトリ作成
+==============
+
+.. code-block:: console
+
+  // ディレクトリ作成
+  $ mkdir test_dir
+  $ cd test_dir
+
+  // リポジトリを新規作成
+  // これにより、.git/ ディレクトリが作成される
+  $ git init
+
+  // GitHubからリポジトリを作成
+  $ git clone https://~~
+
+ファイルの追加
+==============
+
+.. code-block:: console
+  
+  // ステージへのファイル（の変更）の追加
+  // （全てのファイルの変更を追加する場合）
+  $ git add .
+  // （ファイル名を指定して追加する場合）
+  $ git add index.html
+
+コミット
+========
+
+.. code-block:: console
+  
+  // コミット
+  // （入力後にエディタが開く）
+  $ git commit
+  // （メッセージを直接入力。エディタは開かない）
+  $ git commit -m "テストメッセージ"
+  // （変更箇所をエディタに表示）
+  $ git commit -v
+
+変更を確認
+==========
+
+.. code-block:: console
+  
+  // 変更状況を確認
+  // ワークツリー⇔ステージ間、ステージ⇔リポジトリ間の変更を確認する
+  // 前者はまだAddしていないファイルがある、後者はまだCommitしていないファイルがあることを意味する
+  $ git status
+
+  // 変更差分を確認
+  // （git addする前の変更分）
+  $ git diff
+  $ git diff index.html
+  // （git addした後の変更分）
+  $ git diff --staged
+
+  // 変更履歴を確認
+  // （一行で表示）
+  $ git log --oneline
+  // （ファイルの変更差分を表示）
+  $ git log -p index.html
+  // （表示するコミット数を制限）
+  $ git log -n <コミット数>
+
+ファイルの削除
+==============
+
+.. code-block:: console
+  
+  // リポジトリ／ワークツリーのファイルを削除
+  $ git rm <ファイル名>
+  $ git rm -r <ディレクトリ名>
+
+  // リポジトリのファイルは削除
+  // ワークツリーのファイルは削除しない
+  $ git rm --cached <ファイル名>
+
+ファイルの移動
+==============
+
+.. code-block:: console
+  
+  $ git mv <旧ファイル名> <新ファイル名>
+
+  // 以下のコマンドと同じ
+  $ mv <旧ファイル名> <新ファイル名>
+  $ git rm <旧ファイル名>
+  $ git add <新ファイル名>
+ 
+GitHubにプッシュ
+================
+
+.. code-block:: console
+  
+  // originというショートカットでurlのリモートリポジトリを登録する
+  // 以降では、originという名前でGitHubリポジトリにアクセスできるようになる
+  $ git remote add origin https://github.com/user/repo.git
+
+  // リモートリポジトリ（GitHub）へ送信
+  // -uオプションは、最初のpushに付けておくと、次回以降は git push のみでpushできるようになる
+  $ git push <リモート名> <ブランチ名>
+  $ git push -u origin master
+
+

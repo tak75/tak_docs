@@ -378,3 +378,34 @@ Taskを使用した非同期制御では、スレッドをスレッドプール�
 * 具象クラスと同様に、抽象クラスでも具体的なコードを有するメソッドを定義することができる。
   このため、具象クラスである必然性はない。
 * 抽象クラスであれば、継承先クラスにメソッドの実装を強制できるので、抽象クラスが推奨されている
+ 
+拡張クラス
+==========
+
+------------------
+列挙体の拡張クラス
+------------------
+
+* 列挙体のToString()はオーバロードできない
+* 代替策としては、以下のように拡張クラスで別名のメソッドを作成すればよい
+
+.. code-block:: csharp
+
+  public enum DataType
+  {
+    Data1,
+    Data2,
+    Data3
+  }
+
+  public static class DataTypeExtension
+  {
+    static Dictionary<DataType, string> DataTypeNames = new Dictionary<DataType, string>
+    {
+      {DataType.Data1, "data 1" },
+      {DataType.Data2, "data 2" },
+      {DataType.Data3, "data 3" }
+    };
+
+    public static string ToName(this DataType dataType) => DataTypeNames[dataType];
+  }

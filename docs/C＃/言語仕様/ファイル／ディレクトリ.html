@@ -40,7 +40,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Git/index.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
@@ -150,6 +150,13 @@
 <li><p>ディレクトリ名の取得</p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">Path</span><span class="p">.</span><span class="n">GetFileName</span><span class="p">(</span><span class="s">@&quot;C:\My Documents\My Pictures&quot;</span><span class="p">);</span>
 <span class="c1">//結果: My Pictures</span>
+</pre></div>
+</div>
+</li>
+<li><p>exeディレクトリ名の取得</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// ソフトAから本ソフトBを起動する場合、ソフトBが自分自身のexeディレクトリを取得するには、Assembly.GetEntryAssembly()を使う</span>
+<span class="c1">// Directory.GetCurrentDirectory()やEnvironment.CurrentDirectoryでは、ソフトAのexeディレクトリが取得されてしまうので要注意！！</span>
+<span class="n">Path</span><span class="p">.</span><span class="n">GetDirectoryName</span><span class="p">(</span><span class="n">Assembly</span><span class="p">.</span><span class="n">GetEntryAssembly</span><span class="p">().</span><span class="n">Location</span><span class="p">);</span>
 </pre></div>
 </div>
 </li>

@@ -3,7 +3,7 @@ Sphinx
 ======
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    備忘録
    リファレンス

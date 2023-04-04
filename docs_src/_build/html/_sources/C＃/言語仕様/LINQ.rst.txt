@@ -108,3 +108,27 @@ IEnumerable -> List 変換
       (
         comList.FirstOrDefault(com => com.comNo == task.Result.comNo)
       ));
+
+比較方法
+========
+
+* SerializeJson() した上で、SequenceEqual() で比較する
+
+------------------
+オブジェクトの比較
+------------------
+
+  .. code-block:: csharp
+
+    return this.SerializeJson().SequenceEqual(other.SerializeJson());
+
+------------
+リストの比較
+------------
+
+  .. code-block:: csharp
+
+    var list1 = this.Info1.SelectMany(p => p.Info2.SelectMany(w => w).Select(x => (x.AValue, x.BValue))).ToList();
+    var list2 = other.Info1.SelectMany(p => p.Info2.SelectMany(w => w).Select(x => (x.AValue, x.BValue))).ToList();
+
+    return list1.SequenceEqual(list2);
