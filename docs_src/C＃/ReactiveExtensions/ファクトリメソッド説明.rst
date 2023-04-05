@@ -5,6 +5,8 @@
 .. glossary::
 
     Return
+
+        * https://blog.okazuki.jp/entry/20111104/1320409976
         * 指定した値を通知する
         * SubscribeするとOnNextの後にCompletedが呼ばる
         * 2回目Subscribeを行うと値の発行と終了の通知を再び行う
@@ -27,9 +29,11 @@
 
         .. code-block:: csharp
 
-            NoAcctionCommand = Observable.Return(false).ToAsyncReactiveCommand().AddTo(Disposable);
+            NoActionCommand = Observable.Return(false).ToAsyncReactiveCommand().AddTo(Disposable);
 
     Repeat
+
+        * https://blog.okazuki.jp/entry/20111104/1320409976
         * 同じ値を指定した回数発行する
 
         .. code-block:: csharp
@@ -54,6 +58,7 @@
 
     Range
 
+        * https://blog.okazuki.jp/entry/20111104/1320409976
         * 指定した値から1ずつカウントアップした値を指定した個数だけ返す
 
         .. code-block:: csharp
@@ -83,6 +88,7 @@
 
     Generate
 
+        * https://blog.okazuki.jp/entry/20111104/1320409976
         * 指定した範囲の値を用いて算出される値を返す
 
         .. code-block:: csharp
@@ -114,7 +120,54 @@
         
     Defer
 
+        * https://blog.okazuki.jp/entry/20111104/1320409976
         * IObservableを直接返すラムダ式を引数に渡す
+
+        .. code-block:: csharp
+
+            // 1, 2, 3と順番に値を発行して終了するIObservable<int>を生成する
+            var source = Observable.Defer<int>(() =>
+            {
+                Console.WriteLine("# Defar method called.");
+                // ReplaySubject<T>はSubject<T>の亜種でSubscribeされると
+                // 今まで行われた操作を全てリプレイする。
+                var s = new ReplaySubject<int>();
+                s.OnNext(1);
+                s.OnNext(2);
+                s.OnNext(3);
+                s.OnCompleted();
+                // AsObservableでIObservable<T>へ変換できる。
+                return s.AsObservable();
+            });
+            // 購読(sourceはReplaySubjectで作っているのでDeferメソッド内でした操作が再生される)
+            var subscription1 = source.Subscribe(
+                i => Console.WriteLine("OnNext({0})", i),
+                ex => Console.WriteLine("OnError({0})", ex.Message),
+                () => Console.WriteLine("Completed()"));
+            var subscription2 = source.Subscribe(
+                i => Console.WriteLine("OnNext({0})", i),
+                ex => Console.WriteLine("OnError({0})", ex.Message),
+                () => Console.WriteLine("Completed()"));
+            // 購読停止（この場合意味はない）
+            subscription1.Dispose();
+            subscription2.Dispose();
+            
+            // 上記の実行結果
+            # Defar method called.
+            OnNext(1)
+            OnNext(2)
+            OnNext(3)
+            Completed()
+            # Defar method called.
+            OnNext(1)
+            OnNext(2)
+            OnNext(3)
+            Completed()
+
+    Create
+
+        * https://blog.okazuki.jp/entry/20111104/1320409976
+        * 指定した範囲の値を用いて算出される値を返す
 
         .. code-block:: csharp
 
@@ -142,3 +195,37 @@
             OnNext(64)
             OnNext(81)
             Completed()
+
+        
+    Throw
+
+        * https://blog.okazuki.jp/entry/20111104/1320409976
+        * 指定した範囲の値を用いて算出される値を返す
+
+        .. code-block:: csharp
+
+            // 初期値0, 値が10より小さい間, 値は1ずつインクリメントして, 値を二乗したものを発行する
+            // IObservable<int>を作成する。
+            // for (int i = 0; i < 10; i++) { yield return i * i; }のようなイメージ
+            var source = Observable.Generate(0, i => i < 10, i => ++i, i => i * i);
+            // 購読
+            var subscription = source.Subscribe(
+                i => Console.WriteLine("OnNext({0})", i),
+                ex => Console.WriteLine("OnError({0})", ex.Message),
+                () => Console.WriteLine("Completed()"));
+            // 購読停止（この場合意味はない）
+            subscription.Dispose();
+            
+            // 上記の実行結果
+            OnNext(0)
+            OnNext(1)
+            OnNext(4)
+            OnNext(9)
+            OnNext(16)
+            OnNext(25)
+            OnNext(36)
+            OnNext(49)
+            OnNext(64)
+            OnNext(81)
+            Completed()
+

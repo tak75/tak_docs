@@ -40,7 +40,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Git/index.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
@@ -99,6 +99,7 @@
 <h1>ファクトリメソッド説明<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <dl class="glossary">
 <dt id="term-Return">Return<a class="headerlink" href="#term-Return" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">https://blog.okazuki.jp/entry/20111104/1320409976</a></p></li>
 <li><p>指定した値を通知する</p></li>
 <li><p>SubscribeするとOnNextの後にCompletedが呼ばる</p></li>
 <li><p>2回目Subscribeを行うと値の発行と終了の通知を再び行う</p></li>
@@ -118,11 +119,12 @@
 <span class="n">Completed</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">NoAcctionCommand</span> <span class="p">=</span> <span class="n">Observable</span><span class="p">.</span><span class="n">Return</span><span class="p">(</span><span class="k">false</span><span class="p">).</span><span class="n">ToAsyncReactiveCommand</span><span class="p">().</span><span class="n">AddTo</span><span class="p">(</span><span class="n">Disposable</span><span class="p">);</span>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">NoActionCommand</span> <span class="p">=</span> <span class="n">Observable</span><span class="p">.</span><span class="n">Return</span><span class="p">(</span><span class="k">false</span><span class="p">).</span><span class="n">ToAsyncReactiveCommand</span><span class="p">().</span><span class="n">AddTo</span><span class="p">(</span><span class="n">Disposable</span><span class="p">);</span>
 </pre></div>
 </div>
 </dd>
 <dt id="term-Repeat">Repeat<a class="headerlink" href="#term-Repeat" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">https://blog.okazuki.jp/entry/20111104/1320409976</a></p></li>
 <li><p>同じ値を指定した回数発行する</p></li>
 </ul>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 2を5回発行するIObservable&lt;int&gt;を作成する</span>
@@ -146,6 +148,7 @@
 </div>
 </dd>
 <dt id="term-Range">Range<a class="headerlink" href="#term-Range" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">https://blog.okazuki.jp/entry/20111104/1320409976</a></p></li>
 <li><p>指定した値から1ずつカウントアップした値を指定した個数だけ返す</p></li>
 </ul>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 1から始まる値を10個発行するIObservable&lt;int&gt;を作成する</span>
@@ -174,6 +177,7 @@
 </div>
 </dd>
 <dt id="term-Generate">Generate<a class="headerlink" href="#term-Generate" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">https://blog.okazuki.jp/entry/20111104/1320409976</a></p></li>
 <li><p>指定した範囲の値を用いて算出される値を返す</p></li>
 </ul>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 初期値0, 値が10より小さい間, 値は1ずつインクリメントして, 値を二乗したものを発行する</span>
@@ -204,7 +208,84 @@
 </div>
 </dd>
 <dt id="term-Defer">Defer<a class="headerlink" href="#term-Defer" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">https://blog.okazuki.jp/entry/20111104/1320409976</a></p></li>
 <li><p>IObservableを直接返すラムダ式を引数に渡す</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>// 1, 2, 3と順番に値を発行して終了するIObservable&lt;int&gt;を生成する
+var source = Observable.Defer&lt;int&gt;(() =&gt;
+{
+    Console.WriteLine(&quot;# Defar method called.&quot;);
+    // ReplaySubject&lt;T&gt;はSubject&lt;T&gt;の亜種でSubscribeされると
+    // 今まで行われた操作を全てリプレイする。
+    var s = new ReplaySubject&lt;int&gt;();
+    s.OnNext(1);
+    s.OnNext(2);
+    s.OnNext(3);
+    s.OnCompleted();
+    // AsObservableでIObservable&lt;T&gt;へ変換できる。
+    return s.AsObservable();
+});
+// 購読(sourceはReplaySubjectで作っているのでDeferメソッド内でした操作が再生される)
+var subscription1 = source.Subscribe(
+    i =&gt; Console.WriteLine(&quot;OnNext({0})&quot;, i),
+    ex =&gt; Console.WriteLine(&quot;OnError({0})&quot;, ex.Message),
+    () =&gt; Console.WriteLine(&quot;Completed()&quot;));
+var subscription2 = source.Subscribe(
+    i =&gt; Console.WriteLine(&quot;OnNext({0})&quot;, i),
+    ex =&gt; Console.WriteLine(&quot;OnError({0})&quot;, ex.Message),
+    () =&gt; Console.WriteLine(&quot;Completed()&quot;));
+// 購読停止（この場合意味はない）
+subscription1.Dispose();
+subscription2.Dispose();
+
+// 上記の実行結果
+# Defar method called.
+OnNext(1)
+OnNext(2)
+OnNext(3)
+Completed()
+# Defar method called.
+OnNext(1)
+OnNext(2)
+OnNext(3)
+Completed()
+</pre></div>
+</div>
+</dd>
+<dt id="term-Create">Create<a class="headerlink" href="#term-Create" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">https://blog.okazuki.jp/entry/20111104/1320409976</a></p></li>
+<li><p>指定した範囲の値を用いて算出される値を返す</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 初期値0, 値が10より小さい間, 値は1ずつインクリメントして, 値を二乗したものを発行する</span>
+<span class="c1">// IObservable&lt;int&gt;を作成する。</span>
+<span class="c1">// for (int i = 0; i &lt; 10; i++) { yield return i * i; }のようなイメージ</span>
+<span class="kt">var</span> <span class="n">source</span> <span class="p">=</span> <span class="n">Observable</span><span class="p">.</span><span class="n">Generate</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">i</span> <span class="p">=&gt;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">10</span><span class="p">,</span> <span class="n">i</span> <span class="p">=&gt;</span> <span class="p">++</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="p">=&gt;</span> <span class="n">i</span> <span class="p">*</span> <span class="n">i</span><span class="p">);</span>
+<span class="c1">// 購読</span>
+<span class="kt">var</span> <span class="n">subscription</span> <span class="p">=</span> <span class="n">source</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span>
+    <span class="n">i</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;OnNext({0})&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span>
+    <span class="n">ex</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;OnError({0})&quot;</span><span class="p">,</span> <span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">),</span>
+    <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Completed()&quot;</span><span class="p">));</span>
+<span class="c1">// 購読停止（この場合意味はない）</span>
+<span class="n">subscription</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+
+<span class="c1">// 上記の実行結果</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">4</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">9</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">16</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">25</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">36</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">49</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">64</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">81</span><span class="p">)</span>
+<span class="n">Completed</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+<dt id="term-Throw">Throw<a class="headerlink" href="#term-Throw" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">https://blog.okazuki.jp/entry/20111104/1320409976</a></p></li>
+<li><p>指定した範囲の値を用いて算出される値を返す</p></li>
 </ul>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 初期値0, 値が10より小さい間, 値は1ずつインクリメントして, 値を二乗したものを発行する</span>
 <span class="c1">// IObservable&lt;int&gt;を作成する。</span>
