@@ -40,7 +40,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Git/index.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
@@ -63,12 +63,15 @@
 <li class="toctree-l4"><a class="reference internal" href="#id5">デリゲート呼び出し</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id6">ラムダ式</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id7">子イベントを親に透過</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c-1-0">デリゲートとイベント処理（C# 1.0）</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89.html">スレッド</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E4%BE%8B%E5%A4%96.html">例外</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E5%87%A6%E7%90%86%E9%AB%98%E9%80%9F%E6%AF%94%E8%BC%83.html">処理高速比較</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Dispose.html">Dispose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yield.html">yield</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Null.html">Null</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../WPF/index.html">WPF</a></li>
@@ -229,6 +232,88 @@
 </pre></div>
 </div>
 </li>
+<li><p><a class="reference external" href="https://tech-lab.sios.jp/archives/15318">多分わかりやすいC#のDelegateとラムダ式入門</a></p></li>
+<li><p>ラムダ式により、Delegateが不要となった</p></li>
+<li><p>変遷としては、①Delegate -&gt; ②Action、Func -&gt; ③ラムダ式＋Action、Func</p></li>
+<li><p>ラムダ式無名関数が長い処理の場合や、他でも利用されている場合などは、②がよいと思われる</p></li>
+<li><p>①Delegate</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">delegate</span> <span class="k">void</span> <span class="nf">Callback</span><span class="p">(</span><span class="n">HttpResponseMessage</span> <span class="n">res</span><span class="p">);</span>
+
+    <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Callback</span> <span class="n">callback</span> <span class="p">=</span> <span class="n">GetStatusCode</span><span class="p">;</span>
+        <span class="n">HttpRequest</span><span class="p">(</span><span class="s">&quot;http://www.yahoo.co.jp/&quot;</span><span class="p">,</span><span class="n">callback</span><span class="p">);</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">static</span> <span class="k">void</span> <span class="nf">GetStatusCode</span><span class="p">(</span><span class="n">HttpResponseMessage</span> <span class="n">res</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">StatusCode</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">async</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">HttpRequest</span><span class="p">(</span><span class="n">String</span> <span class="n">url</span><span class="p">,</span><span class="n">Callback</span> <span class="n">callback</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">using</span> <span class="p">(</span><span class="n">HttpClient</span> <span class="n">httpClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HttpClient</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="n">HttpResponseMessage</span> <span class="n">res</span> <span class="p">=</span> <span class="k">await</span> <span class="n">httpClient</span><span class="p">.</span><span class="n">GetAsync</span><span class="p">(</span><span class="n">url</span><span class="p">);</span>
+            <span class="n">callback</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>②Action、Func</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">HttpRequest</span><span class="p">(</span><span class="s">&quot;http://www.yahoo.co.jp/&quot;</span><span class="p">,</span> <span class="n">GetStatusCode</span><span class="p">);</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">static</span> <span class="k">void</span> <span class="nf">GetStatusCode</span><span class="p">(</span><span class="n">HttpResponseMessage</span> <span class="n">res</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">StatusCode</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">async</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">HttpRequest</span><span class="p">(</span><span class="n">String</span> <span class="n">url</span><span class="p">,</span> <span class="n">Action</span><span class="p">&lt;</span><span class="n">HttpResponseMessage</span><span class="p">&gt;</span> <span class="n">callback</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">using</span> <span class="p">(</span><span class="n">HttpClient</span> <span class="n">httpClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HttpClient</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="n">HttpResponseMessage</span> <span class="n">res</span> <span class="p">=</span> <span class="k">await</span> <span class="n">httpClient</span><span class="p">.</span><span class="n">GetAsync</span><span class="p">(</span><span class="n">url</span><span class="p">);</span>
+            <span class="n">callback</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>③ラムダ式＋Action、Func</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">HttpRequest</span><span class="p">(</span><span class="s">&quot;http://www.yahoo.co.jp/&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">StatusCode</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
+        <span class="p">});</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">async</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">HttpRequest</span><span class="p">(</span><span class="n">String</span> <span class="n">url</span><span class="p">,</span> <span class="n">Action</span><span class="p">&lt;</span><span class="n">HttpResponseMessage</span><span class="p">&gt;</span> <span class="n">callback</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">using</span> <span class="p">(</span><span class="n">HttpClient</span> <span class="n">httpClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HttpClient</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="n">HttpResponseMessage</span> <span class="n">res</span> <span class="p">=</span> <span class="k">await</span> <span class="n">httpClient</span><span class="p">.</span><span class="n">GetAsync</span><span class="p">(</span><span class="n">url</span><span class="p">);</span>
+            <span class="n">callback</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
 </ul>
 </section>
 <section id="id7">
@@ -239,6 +324,161 @@
 </pre></div>
 </div>
 </div></blockquote>
+</section>
+<section id="c-1-0">
+<h2>デリゲートとイベント処理（C# 1.0）<a class="headerlink" href="#c-1-0" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p>C#で宣言される型には、クラス、構造体、列挙体、インタフェース、デリゲートの5種がある。
+デリゲートは型の一種とみなされる。
+型であるデリゲートは、独立して宣言され、様々なクラスから参照される</p></li>
+<li><p>デリゲート型変数は関数を入れるための変数である</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// デリゲートの宣言</span>
+<span class="k">public</span> <span class="k">delegate</span> <span class="k">void</span> <span class="nf">SampleDelegate</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">);</span>
+<span class="k">class</span> <span class="nc">DelegateFirst</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="n">vboid</span> <span class="nf">Reverse</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">){</span><span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(-</span><span class="n">n</span><span class="p">);}</span>
+    <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">()</span>
+    <span class="p">{</span>
+       <span class="c1">// デリゲート型変数の宣言</span>
+        <span class="n">SampleDelegate</span> <span class="n">d</span> <span class="p">=</span> <span class="n">Revarse</span><span class="p">;</span>
+        <span class="n">d</span><span class="p">(</span><span class="m">3</span><span class="p">);</span>       <span class="c1">// 結果：-3</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>複数のメソッドを登録しておき、一度の呼び出しでまとめて実行する機能（マルチキャスティング）がある</p></li>
+<li><p>例１：データを返さないイベントの場合（推奨は、方法2 &gt; 方法1 の順）。
+EventHandlerデリゲートと、EventArgsクラスを使うことで、デリゲート宣言と、返すデータのクラスの宣言を省略できる。</p>
+<ul>
+<li><p>方法1</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// イベントを発生する側のクラス</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">SleepClass</span>
+<span class="p">{</span>
+    <span class="c1">// データを持たないイベントデリゲートの宣言</span>
+    <span class="c1">//ここでは&quot;Time&quot;というイベントデリゲートを宣言する</span>
+    <span class="k">public</span> <span class="k">event</span> <span class="n">EventHandler</span> <span class="n">Time</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Start</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">5000</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">Time</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">//&quot;Time&quot;イベントの発生</span>
+            <span class="n">Time</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">EventArgs</span><span class="p">.</span><span class="n">Empty</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// イベントを受取り処理を行う側のクラス</span>
+<span class="k">private</span> <span class="k">void</span> <span class="nf">button1_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">SleepClass</span> <span class="n">clsSleep</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SleepClass</span><span class="p">();</span>
+    <span class="c1">//イベントハンドラの追加</span>
+    <span class="n">clsSleep</span><span class="p">.</span><span class="n">Time</span> <span class="p">+=</span> <span class="k">new</span> <span class="n">EventHandler</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">SleepClass_Time</span><span class="p">);</span>
+    <span class="n">clsSleep</span><span class="p">.</span><span class="n">Start</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="k">void</span> <span class="nf">SleepClass_Time</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">//イベントが発生したとき</span>
+    <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">&quot;OK!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>方法2（イベントを受取り処理を行う側のクラスについては方法1と同様）</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// イベントを発生する側のクラス</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">SleepClass</span>
+<span class="p">{</span>
+    <span class="c1">// データを持たないイベントデリゲートの宣言</span>
+    <span class="k">public</span> <span class="k">event</span> <span class="n">EventHandler</span> <span class="n">Time</span><span class="p">;</span>
+
+    <span class="c1">// SleepClassを継承して新たなクラスを作ることを考えるとvirtualにした方がよい</span>
+    <span class="k">protected</span> <span class="k">virtual</span> <span class="k">void</span> <span class="nf">OnTime</span><span class="p">(</span><span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">Time</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Time</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Start</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">5000</span><span class="p">);</span>
+        <span class="n">OnTime</span><span class="p">(</span><span class="n">EventArgs</span><span class="p">.</span><span class="n">Empty</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>例２：データを返すイベントの場合</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// イベントを発生する側のクラス</span>
+<span class="c1">//Timeイベントで返されるデータ</span>
+<span class="c1">//ここではstring型のひとつのデータのみ返すものとする</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">TimeEventArgs</span> <span class="p">:</span> <span class="n">EventArgs</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Message</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">SleepClass</span>
+<span class="p">{</span>
+    <span class="c1">//デリゲートの宣言</span>
+    <span class="c1">//TimeEventArgs型のオブジェクトを返すようにする</span>
+    <span class="k">public</span> <span class="k">delegate</span> <span class="k">void</span> <span class="nf">TimeEventHandler</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">TimeEventArgs</span> <span class="n">e</span><span class="p">);</span>
+
+    <span class="c1">//イベントデリゲートの宣言</span>
+    <span class="k">public</span> <span class="k">event</span> <span class="n">TimeEventHandler</span> <span class="n">Time</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="k">virtual</span> <span class="k">void</span> <span class="nf">OnTime</span><span class="p">(</span><span class="n">TimeEventArgs</span> <span class="n">e</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">Time</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Time</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Start</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">5000</span><span class="p">);</span>
+        <span class="c1">//返すデータの設定</span>
+        <span class="n">TimeEventArgs</span> <span class="n">e</span> <span class="p">=</span> <span class="k">new</span> <span class="n">TimeEventArgs</span><span class="p">();</span>
+        <span class="n">e</span><span class="p">.</span><span class="n">Message</span> <span class="p">=</span> <span class="s">&quot;終わったよ。&quot;</span><span class="p">;</span>
+        <span class="c1">//イベントの発生</span>
+        <span class="n">OnTime</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// イベントを受取り処理を行う側のクラス</span>
+<span class="k">private</span> <span class="k">void</span> <span class="nf">button1_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">SleepClass</span> <span class="n">clsSleep</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SleepClass</span><span class="p">();</span>
+    <span class="n">clsSleep</span><span class="p">.</span><span class="n">Time</span> <span class="p">+=</span> <span class="k">new</span> <span class="n">SleepClass</span><span class="p">.</span><span class="n">TimeEventHandler</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">SleepClass_Time</span><span class="p">);</span>
+    <span class="n">clsSleep</span><span class="p">.</span><span class="n">Start</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="k">void</span> <span class="nf">SleepClass_Time</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">TimeEventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">//返されたデータを取得し表示</span>
+    <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>EventArgsの派生クラスを使わない方法でも動作はするが、EventArgsの派生クラスを使った方法が
+.NETでは推奨された方法なので、使うべきではない。</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">//デリゲートの宣言（非推奨の方法！）</span>
+<span class="k">public</span> <span class="k">delegate</span> <span class="k">void</span> <span class="nf">TimeEventHandler</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">,</span> <span class="kt">int</span> <span class="n">number</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
 </section>
 </section>
 

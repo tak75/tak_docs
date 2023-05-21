@@ -17,3 +17,4 @@
    Dispose
    yield
    Null
+   switch

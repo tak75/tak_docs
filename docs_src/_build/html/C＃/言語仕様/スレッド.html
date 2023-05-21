@@ -40,7 +40,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Git/index.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
@@ -62,11 +62,14 @@
 <li class="toctree-l4"><a class="reference internal" href="#id4">戻り値のあるTaskの例</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#task2">戻り値のあるTaskの例2（複数のタスク結果に各々名前をつける）</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#task-run">Task.Run()について</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">スレッドプール</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="%E4%BE%8B%E5%A4%96.html">例外</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E5%87%A6%E7%90%86%E9%AB%98%E9%80%9F%E6%AF%94%E8%BC%83.html">処理高速比較</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Dispose.html">Dispose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yield.html">yield</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Null.html">Null</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../WPF/index.html">WPF</a></li>
@@ -325,6 +328,37 @@
 <li><p>スレッドプールはバックグラウンドスレッドである。</p></li>
 <li><p>よって、スレッドを保有するオブジェクトがGCに回収された時点で自動的にスレッドは停止する（大元のアプリ終了時には、Task.Run()で開始したスレッドも自動的に終了する）</p></li>
 </ul>
+</section>
+<section id="id5">
+<h2>スレッドプール<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>以下のように、スレッドプールを使用して、デリゲートをスレッドで実行することができる。
+（これは.NET1.1での書き方であり、.NET4.5以降では、Task.Run()を使用すべき）</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 別途、void say(Object number){} 関数が定義されているものとする</span>
+<span class="c1">// say : スレッドで実行するデリゲート</span>
+<span class="c1">// 1   : デリゲートに渡す引数</span>
+<span class="n">ThreadPool</span><span class="p">.</span><span class="n">QueueUserWorkItem</span><span class="p">(</span><span class="n">say</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>スレッドプールが持つワーカスレッドの最小数を適切に設定しないと、使用するスレッド数が設定数を超える場合に、実行できない処理が発生したり、処理が遅延する場合がある。
+このため、ワーカスレッドの最小数を適切に設定する必要がある。
+なお、ワーカスレッドの最小数のデフォルト設定値は、CPUのコア数となっている。</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// ワーカスレッドの最小数（必要な数を設定する）</span>
+<span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="kt">int</span> <span class="n">_minWorkerThread</span> <span class="p">=</span> <span class="m">25</span><span class="p">;</span>
+
+<span class="c1">// I/O完了スレッドの最小数は設定されている値を再設定し、ワーカスレッドの最小数のみを設定する</span>
+<span class="kt">int</span> <span class="n">minWorkerThread</span><span class="p">,</span> <span class="n">minCompletionPortThread</span><span class="p">;</span>
+<span class="n">ThreadPool</span><span class="p">.</span><span class="n">GetMinThreads</span><span class="p">(</span><span class="k">out</span> <span class="n">minWorkerThread</span><span class="p">,</span> <span class="k">out</span> <span class="n">minCompletionPortThread</span><span class="p">);</span>
+<span class="n">ThreadPool</span><span class="p">.</span><span class="n">SetMinThreads</span><span class="p">(</span><span class="n">_minWorkerThread</span><span class="p">,</span> <span class="n">minCompletionPortThread</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Taskを使用した非同期制御では、スレッドをスレッドプールから取り出し、そのスレッド上で処理を行う。
+アイドル状態のスレッドがある場合はそのスレッドをすぐに使うことができるが、アイドル状態のスレッドがない場合は新規にスレッドを作成し使う必要がある。
+新規にスレッドを作成する場合にオーバヘッドとして実測1秒程度かかる（実測）。
+このため、アイドル状態のスレッドを適切に設定しておくことがパフォーマンス向上に寄与する。</p>
 </section>
 </section>
 

@@ -19,7 +19,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
-    <link rel="next" title="WPF" href="../WPF/index.html" />
+    <link rel="next" title="switch" href="switch.html" />
     <link rel="prev" title="yield" href="yield.html" /> 
 </head>
 
@@ -64,11 +64,13 @@
 <li class="toctree-l3"><a class="reference internal" href="yield.html">yield</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Null</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id1">引用元</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">null合体演算子（??演算子）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">null許容型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">null合体演算子（??演算子）</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#null-null">null条件演算子（?）、null合体演算子（??）</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">null許容型使用時の留意点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Null条件演算子?.および?[]</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="switch.html">switch</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../WPF/index.html">WPF</a></li>
@@ -116,21 +118,41 @@
 <section id="id1">
 <h2>引用元<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
-<li></li>
+<li><p>C#プログラミング 新スタイルによる実践的コーディング（川俣晶）</p></li>
 </ul>
 </section>
 <section id="id2">
-<h2>null合体演算子（??演算子）<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>??演算子は、1つ目がnullでない場合はそれを採用し、nullの場合は2つ目を評価して採用する機能を持つ。
-以下の例では、aがnullの場合はDateTime.Nowが採用される。</p>
-<blockquote>
-<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">dump</span><span class="p">(</span><span class="n">DateTime</span><span class="p">?</span> <span class="n">a</span><span class="p">)</span>
+<h2>null許容型<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p>null許容型は、実行速度が低下し（100倍近く低下）、メモリ使用量も増加するため、使用については要注意</p></li>
+<li><p>以下のように、null を含む演算は null となる</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">int?</span> <span class="n">a</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> <span class="m">123</span><span class="p">;</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">((</span><span class="n">a</span> <span class="p">+</span> <span class="n">b</span><span class="p">)</span> <span class="p">==</span> <span class="k">null</span><span class="p">);</span>   <span class="c1">// この結果はTrueとなる</span>
+</pre></div>
+</div>
+</li>
+<li><p>null許容型を使用する場合は、以下のようにキャストではなく、Nullable&lt;T&gt;構造体メンバを使用する方がよい</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">int?</span> <span class="n">a</span> <span class="p">=</span> <span class="m">123</span><span class="p">;</span>
+<span class="k">if</span><span class="p">(</span><span class="n">a</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="n">m</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">a</span><span class="p">);</span>    <span class="c1">// △ : キャストを使った書き方</span>
+<span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">HasValue</span><span class="p">)</span> <span class="n">m</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">Value</span><span class="p">);</span>  <span class="c1">// ◎ : Nullable&lt;T&gt;構造体メンバを使った書き方</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="id3">
+<h2>null合体演算子（??演算子）<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p>??演算子は、1つ目が null でない場合はそれを採用し、null の場合は2つ目を評価して採用する機能を持つ</p></li>
+<li><p>以下の例では、a が null の場合は DateTime.Now が採用される</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">dump</span><span class="p">(</span><span class="n">DateTime</span><span class="p">?</span> <span class="n">a</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">a</span> <span class="p">??</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-</div></blockquote>
+</li>
+</ul>
 </section>
 <section id="null-null">
 <h2>null条件演算子（?）、null合体演算子（??）<a class="headerlink" href="#null-null" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -140,28 +162,40 @@
 </pre></div>
 </div>
 </div></blockquote>
-<p>[1][2]は同意である。
-[2]の三項演算子を使用した場合は、n.HasValueの評価時にはn!=nullでも、
-n.ToString()の処理までにn=nullとなる可能性があり、その場合は例外をスローする。
-[1]のnull条件演算子を使用した場合では、スレッドセーフとなっている</p>
+<ul class="simple">
+<li><p>[1][2]は同意である</p></li>
+<li><p>[2]の三項演算子を使用した場合は、n.HasValue の評価時には n!=null でも、n.ToString() の処理までに n=null となる可能性があり、その場合は例外をスローする</p></li>
+<li><p>[1]のnull条件演算子を使用した場合では、スレッドセーフとなっている</p></li>
+</ul>
 </section>
-<section id="id3">
-<h2>null許容型使用時の留意点<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>以下のように、nullを含む演算はnullとなる点に留意すること。</p>
-<blockquote>
-<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">int?</span> <span class="n">a</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> <span class="m">123</span><span class="p">;</span>
-<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">((</span><span class="n">a</span> <span class="p">+</span> <span class="n">b</span><span class="p">)</span> <span class="p">==</span> <span class="k">null</span><span class="p">);</span>   <span class="c1">// この結果はTrueとなる</span>
+<section id="id4">
+<h2>Null条件演算子?.および?[]<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p>C# 6.0からの仕様</p></li>
+<li><p>Null 条件付き演算子は、そのオペランドが null 以外と評価された場合にのみ、オペランドにメンバー アクセス操作 (?.) または要素アクセス操作 (?[]) を適用し、それ以外の場合は、null を返す</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="nf">SumNumbers</span><span class="p">(</span><span class="n">List</span><span class="p">&lt;</span><span class="kt">double</span><span class="p">[]&gt;</span> <span class="n">setsOfNumbers</span><span class="p">,</span> <span class="kt">int</span> <span class="n">indexOfSetToSum</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">setsOfNumbers</span><span class="p">?[</span><span class="n">indexOfSetToSum</span><span class="p">]?.</span><span class="n">Sum</span><span class="p">()</span> <span class="p">??</span> <span class="kt">double</span><span class="p">.</span><span class="n">NaN</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">var</span> <span class="n">sum1</span> <span class="p">=</span> <span class="n">SumNumbers</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">sum1</span><span class="p">);</span>  <span class="c1">// 出力:NaN</span>
+
+<span class="kt">var</span> <span class="n">numberSets</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">double</span><span class="p">[]&gt;</span>
+<span class="p">{</span>
+    <span class="k">new</span><span class="p">[]</span> <span class="p">{</span> <span class="m">1.0</span><span class="p">,</span> <span class="m">2.0</span><span class="p">,</span> <span class="m">3.0</span> <span class="p">},</span>
+    <span class="k">null</span>
+<span class="p">};</span>
+
+<span class="kt">var</span> <span class="n">sum2</span> <span class="p">=</span> <span class="n">SumNumbers</span><span class="p">(</span><span class="n">numberSets</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">sum2</span><span class="p">);</span>  <span class="c1">// 出力:6</span>
+
+<span class="kt">var</span> <span class="n">sum3</span> <span class="p">=</span> <span class="n">SumNumbers</span><span class="p">(</span><span class="n">numberSets</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">sum3</span><span class="p">);</span>  <span class="c1">// 出力:NaN</span>
 </pre></div>
 </div>
-</div></blockquote>
-<p>null許容型を使用する場合は、以下のようにキャストではなく、Nullable&lt;T&gt;構造体メンバを使用する方がよい。</p>
-<blockquote>
-<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">int?</span> <span class="n">a</span> <span class="p">=</span> <span class="m">123</span><span class="p">;</span>
-<span class="k">if</span><span class="p">(</span><span class="n">a</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="n">m</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">a</span><span class="p">);</span>    <span class="c1">// △ : キャストを使った書き方</span>
-<span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">HasValue</span><span class="p">)</span> <span class="n">m</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">Value</span><span class="p">);</span>  <span class="c1">// ◎ : Nullable&lt;T&gt;構造体メンバを使った書き方</span>
-</pre></div>
-</div>
-</div></blockquote>
+</li>
+</ul>
 </section>
 </section>
 
@@ -170,7 +204,7 @@ n.ToString()の処理までにn=nullとなる可能性があり、その場合�
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="yield.html" class="btn btn-neutral float-left" title="yield" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../WPF/index.html" class="btn btn-neutral float-right" title="WPF" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="switch.html" class="btn btn-neutral float-right" title="switch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
