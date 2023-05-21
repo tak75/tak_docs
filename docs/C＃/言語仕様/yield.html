@@ -63,7 +63,11 @@
 <li class="toctree-l3"><a class="reference internal" href="Dispose.html">Dispose</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">yield</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id1">引用元</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#yield-return">yield return 例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">説明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yield-return-1">yield return 例1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yield-return-2">yield return 例2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1クラスに複数の列挙機能を付ける</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">クラスではなくメソッド定義で列挙オブジェクトを作成してもよい</a></li>
 </ul>
 </li>
 </ul>
@@ -116,35 +120,141 @@
 <li><p>C#プログラミング 新スタイルによる実践的コーディング（川俣晶）</p></li>
 </ul>
 </section>
-<section id="yield-return">
-<h2>yield return 例<a class="headerlink" href="#yield-return" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id2">
+<h2>説明<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p>「yield retrun 文」と「yield break 文」を含むブロックは「反復子ブロック」であり、すぐには実行されず、その代わりに列挙子オブジェクトが生成される</p></li>
+<li><p>反復子ブロックを途中で抜けるには、「yield break 文」を使用する</p></li>
+<li><p>特定の型を返す GetEnumerator という名前の public なメソッドは、それだけで列挙可能とみなされる</p></li>
+<li><p>「yield retrun 文」は、try～catch 構文の中で使用できない。
+ただし、「yield break 文」は使用できるし、「yield retrun 文」もtry～finally 構文の中では使用できる</p></li>
+</ul>
+</section>
+<section id="yield-return-1">
+<h2>yield return 例1<a class="headerlink" href="#yield-return-1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
-<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span>
-<span class="p">{</span>
-    <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="kt">var</span> <span class="n">range</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Range</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">10</span><span class="p">);</span> <span class="c1">// ①</span>
-        <span class="k">foreach</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="k">in</span> <span class="n">range</span><span class="p">)</span>      <span class="c1">// ②</span>
-        <span class="p">{</span>
-            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">class</span> <span class="nc">Range</span>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Range</span>
 <span class="p">{</span>
     <span class="k">private</span> <span class="kt">int</span> <span class="k">from</span><span class="p">,</span> <span class="n">to</span><span class="p">;</span>
-    <span class="k">public</span> <span class="n">IEnumerator</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">GetEnumerator</span><span class="p">()</span>   <span class="c1">// クラス内に1つ書いておくと、列挙されるみたい</span>
+    <span class="k">public</span> <span class="n">IEnumerator</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">GetEnumerator</span><span class="p">()</span>   <span class="c1">// public な GetEnumerator という名のメソッドは、それだけで列挙可能とみなされる</span>
     <span class="p">{</span>
         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="k">from</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;=</span> <span class="n">to</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
         <span class="p">{</span>
-            <span class="k">yield</span> <span class="k">return</span> <span class="n">i</span><span class="p">;</span>   <span class="c1">// ←これが実行されるのは②のタイミング</span>
+            <span class="k">yield</span> <span class="k">return</span> <span class="n">i</span><span class="p">;</span>   <span class="c1">// ←これが実行されるのは[2]のタイミング</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="k">public</span> <span class="nf">Range</span><span class="p">(</span><span class="kt">int</span> <span class="k">from</span><span class="p">,</span> <span class="kt">int</span> <span class="n">to</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="k">from</span> <span class="p">=</span> <span class="k">from</span><span class="p">;</span>
         <span class="k">this</span><span class="p">.</span><span class="n">to</span> <span class="p">=</span> <span class="n">to</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">range</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Range</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">10</span><span class="p">);</span> <span class="c1">// [1]</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="k">in</span> <span class="n">range</span><span class="p">)</span>      <span class="c1">// [2]</span>
+        <span class="p">{</span>
+            <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="yield-return-2">
+<h2>yield return 例2<a class="headerlink" href="#yield-return-2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sample</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">IEnumerator</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">GetEnumerator</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">yield</span> <span class="k">return</span> <span class="m">1</span><span class="p">;</span>   <span class="c1">// [1]</span>
+        <span class="k">yield</span> <span class="k">return</span> <span class="m">2</span><span class="p">;</span>   <span class="c1">// [2]</span>
+        <span class="k">yield</span> <span class="k">return</span> <span class="m">3</span><span class="p">;</span>   <span class="c1">// [3]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="k">in</span> <span class="k">new</span> <span class="n">Sample</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">i</span><span class="p">);</span> <span class="c1">// [4]</span>
+        <span class="p">}</span>
+        <span class="c1">// 出力:123</span>
+        <span class="c1">// [1],[4],[2],[4],[3],[4]の順で実行される</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id3">
+<h2>1クラスに複数の列挙機能を付ける<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sample</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="kt">int</span><span class="p">[]</span> <span class="n">array</span> <span class="p">=</span> <span class="p">{</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span> <span class="p">};</span>
+
+    <span class="k">public</span> <span class="n">IEnumerator</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">GetEnumerator</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">array</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+        <span class="p">{</span>
+            <span class="k">yield</span> <span class="k">return</span> <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">public</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">GetReverseOrder</span><span class="p">()</span>   <span class="c1">// ←IEnumerable型であることに注意</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="n">array</span><span class="p">.</span><span class="n">Length</span> <span class="p">-</span> <span class="m">1</span><span class="p">;</span> <span class="n">i</span> <span class="p">&gt;=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span><span class="p">--)</span>
+        <span class="p">{</span>
+            <span class="k">yield</span> <span class="k">return</span> <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="k">in</span> <span class="k">new</span> <span class="n">Sample</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="c1">// 出力:123</span>
+
+        <span class="k">foreach</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="k">in</span> <span class="k">new</span> <span class="n">Sample</span><span class="p">().</span><span class="n">GetReverseOrder</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="c1">// 出力:321</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id4">
+<h2>クラスではなくメソッド定義で列挙オブジェクトを作成してもよい<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">GetCounter</span><span class="p">(</span><span class="kt">int</span> <span class="k">from</span><span class="p">,</span> <span class="kt">int</span> <span class="n">to</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="k">from</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;=</span> <span class="n">to</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span> <span class="k">yield</span> <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="k">in</span> <span class="n">GetCounter</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="c1">// 出力:123</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
