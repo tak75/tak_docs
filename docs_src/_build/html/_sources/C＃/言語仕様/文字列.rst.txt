@@ -48,3 +48,15 @@ https://dobon.net/vb/dotnet/string/inttostring.html
     (10000).ToString("C") = "\10,000"
     (-100.5).ToString("C") = "-\101"
     (12345.5555).ToString("C2") = "\12,345.56"
+
+文字列補間
+==========
+
+* C# 6.0からの仕様
+* 先頭に「$」記号が付いた文字列
+* その中の波かっこ「{}」で囲まれた部分の式を評価して文字列に当てはめてくれる
+
+  .. code-block:: csharp
+  
+    Text1.Text = $"現在時刻は{DateTimeOffset.Now:HH:mm}";
+    // Text1.Text = 「現在時刻は12:00」などとなる

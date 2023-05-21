@@ -67,6 +67,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="%E5%85%A8%E8%88%AC.html">全般</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E6%96%87%E5%AD%97%E5%88%97.html">文字列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3.html">プロパティ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%EF%BC%8F%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA.html">ファイル／ディレクトリ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LINQ.html">LINQ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html">イベント、デリゲート</a></li>
@@ -76,6 +77,7 @@
 <li class="toctree-l3"><a class="reference internal" href="Dispose.html">Dispose</a></li>
 <li class="toctree-l3"><a class="reference internal" href="yield.html">yield</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Null.html">Null</a></li>
+<li class="toctree-l3"><a class="reference internal" href="switch.html">switch</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../WPF/index.html">WPF</a></li>
@@ -162,44 +164,8 @@ Null許容型とnull結合演算子</p>
 </section>
 <section id="c-6-0">
 <h2>C# 6.0からの仕様<a class="headerlink" href="#c-6-0" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<section id="id2">
-<h3>文字列補間<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<ul>
-<li><p>先頭に「$」記号が付いた文字列</p></li>
-<li><p>その中の波かっこ「{}」で囲まれた部分の式を評価して文字列に当てはめてくれる</p>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>Text1.Text = $&quot;現在時刻は{DateTimeOffset.Now:HH:mm}&quot;;
-// Text1.Text = 「現在時刻は12:00」などとなる
-</pre></div>
-</div>
-</li>
-</ul>
-</section>
-<section id="id3">
-<h3>読み取り専用プロパティ<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>式形式[=&gt;]（ラムダ式ではない）を使用して読み取り専用プロパティを定義できる。
-下記例の[1]～[3]は同義である。</p>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// [1]</span>
-<span class="k">public</span> <span class="kt">string</span> <span class="n">Title</span> <span class="p">=&gt;</span> <span class="s">&quot;タイトル&quot;</span><span class="p">;</span>
-
-<span class="c1">// [2]</span>
-<span class="k">public</span> <span class="kt">string</span> <span class="n">Title</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="s">&quot;タイトル&quot;</span><span class="p">;</span>
-
-<span class="c1">// [3]</span>
-<span class="k">public</span> <span class="kt">string</span> <span class="n">Title</span> <span class="p">{</span> <span class="k">get</span> <span class="p">=&gt;</span> <span class="s">&quot;タイトル&quot;</span><span class="p">;</span> <span class="p">}</span>
-</pre></div>
-</div>
-<p>[3]はC# 7.0からの仕様であり、setについても定義できる。</p>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="kt">string</span> <span class="n">locationName</span><span class="p">;</span>
-<span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span>
-<span class="p">{</span>
-    <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">locationName</span><span class="p">;</span>
-    <span class="k">set</span> <span class="p">=&gt;</span> <span class="n">locationName</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
 <p>静的 using ディレクティブ
 例外フィルタ</p>
-</section>
 </section>
 <section id="c-7-0">
 <h2>C# 7.0からの仕様<a class="headerlink" href="#c-7-0" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -239,54 +205,9 @@ private protected アクセス修飾子
 1       null許容コンテキスト
 2       null免除演算子
 インターフェイスの既定メンバー</p>
-<section id="id4">
-<h3>パターンマッチングの拡張<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<ul class="simple">
-<li><p>switch構文: var y = x switch { ... }</p></li>
-<li><p>以下の1,2は同一</p></li>
-<li><p><a class="reference external" href="https://ufcpp.net/blog/2018/12/cs8switchexpr/">https://ufcpp.net/blog/2018/12/cs8switchexpr/</a></p></li>
-</ul>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>// 1
-public void M(年号 e)
-{
-    int y;
-    switch (e)
-    {
-        case 明治:
-            y = 45;
-            break;
-        case 大正:
-            y = 15;
-            break;
-        case 昭和:
-            y = 64;
-            break;
-        case 平成:
-            y = 31;
-            break;
-        default: throw new InvalidOperationException();
-    }
-}
-</pre></div>
-</div>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>// 2
-public void M(年号 e)
-{
-    var y = e switch
-    {
-        明治 =&gt; 45,
-        大正 =&gt; 15,
-        昭和 =&gt; 64,
-        平成 =&gt; 31,
-        _ =&gt; throw new InvalidOperationException()
-    };
-}
-</pre></div>
-</div>
 <p>非同期ストリーム
 範囲指定
 その他の仕様</p>
-</section>
 </section>
 </section>
 

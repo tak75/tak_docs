@@ -19,7 +19,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
-    <link rel="next" title="ファイル／ディレクトリ" href="%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%EF%BC%8F%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA.html" />
+    <link rel="next" title="プロパティ" href="%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3.html" />
     <link rel="prev" title="全般" href="%E5%85%A8%E8%88%AC.html" /> 
 </head>
 
@@ -40,7 +40,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Git/index.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
@@ -55,8 +55,10 @@
 <li class="toctree-l3"><a class="reference internal" href="%E5%85%A8%E8%88%AC.html">全般</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">文字列</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">フォーマット文字列</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">文字列補間</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3.html">プロパティ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%EF%BC%8F%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA.html">ファイル／ディレクトリ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LINQ.html">LINQ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html">イベント、デリゲート</a></li>
@@ -64,6 +66,9 @@
 <li class="toctree-l3"><a class="reference internal" href="%E4%BE%8B%E5%A4%96.html">例外</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E5%87%A6%E7%90%86%E9%AB%98%E9%80%9F%E6%AF%94%E8%BC%83.html">処理高速比較</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Dispose.html">Dispose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yield.html">yield</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Null.html">Null</a></li>
+<li class="toctree-l3"><a class="reference internal" href="switch.html">switch</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../WPF/index.html">WPF</a></li>
@@ -151,6 +156,19 @@
 </li>
 </ul>
 </section>
+<section id="id3">
+<h2>文字列補間<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p>C# 6.0からの仕様</p></li>
+<li><p>先頭に「$」記号が付いた文字列</p></li>
+<li><p>その中の波かっこ「{}」で囲まれた部分の式を評価して文字列に当てはめてくれる</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>Text1.Text = $&quot;現在時刻は{DateTimeOffset.Now:HH:mm}&quot;;
+// Text1.Text = 「現在時刻は12:00」などとなる
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
 </section>
 
 
@@ -158,7 +176,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="%E5%85%A8%E8%88%AC.html" class="btn btn-neutral float-left" title="全般" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%EF%BC%8F%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA.html" class="btn btn-neutral float-right" title="ファイル／ディレクトリ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3.html" class="btn btn-neutral float-right" title="プロパティ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
