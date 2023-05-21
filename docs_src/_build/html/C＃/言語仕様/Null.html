@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Null &mdash; Tak Documents  ドキュメント</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="next" title="WPF" href="../WPF/index.html" />
+    <link rel="prev" title="yield" href="yield.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Tak Documents
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Git/index.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Matplotlib/index.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Jupyter/index.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Web%E3%82%A2%E3%83%97%E3%83%AA/index.html">Webアプリ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../C/index.html">C</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">C＃</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">言語仕様</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="%E4%BB%95%E6%A7%98.html">仕様</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E5%85%A8%E8%88%AC.html">全般</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E6%96%87%E5%AD%97%E5%88%97.html">文字列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%EF%BC%8F%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA.html">ファイル／ディレクトリ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="LINQ.html">LINQ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html">イベント、デリゲート</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89.html">スレッド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E4%BE%8B%E5%A4%96.html">例外</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E5%87%A6%E7%90%86%E9%AB%98%E9%80%9F%E6%AF%94%E8%BC%83.html">処理高速比較</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Dispose.html">Dispose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yield.html">yield</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Null</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">引用元</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">null合体演算子（??演算子）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#null-null">null条件演算子（?）、null合体演算子（??）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">null許容型使用時の留意点</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../WPF/index.html">WPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../XAML/index.html">XAML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ReactiveExtensions/index.html">ReactiveExtensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../VisualStudio.html">VisualStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E8%87%AA%E5%8B%95%E4%BD%9C%E6%88%90.html">ドキュメント自動作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html">テスト駆動開発</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../UML/index.html">UML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90/index.html">データ分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../%E5%82%99%E5%BF%98%E9%8C%B2/index.html">備忘録</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Tak Documents</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">C＃</a></li>
+          <li class="breadcrumb-item"><a href="index.html">言語仕様</a></li>
+      <li class="breadcrumb-item active">Null</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/C＃/言語仕様/Null.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="null">
+<h1>Null<a class="headerlink" href="#null" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<section id="id1">
+<h2>引用元<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li></li>
+</ul>
+</section>
+<section id="id2">
+<h2>null合体演算子（??演算子）<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>??演算子は、1つ目がnullでない場合はそれを採用し、nullの場合は2つ目を評価して採用する機能を持つ。
+以下の例では、aがnullの場合はDateTime.Nowが採用される。</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">dump</span><span class="p">(</span><span class="n">DateTime</span><span class="p">?</span> <span class="n">a</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">a</span> <span class="p">??</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="null-null">
+<h2>null条件演算子（?）、null合体演算子（??）<a class="headerlink" href="#null-null" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">result3</span> <span class="p">=</span> <span class="n">n</span><span class="p">?.</span><span class="n">ToString</span><span class="p">()</span> <span class="p">??</span> <span class="k">null</span><span class="p">;</span>            <span class="c1">// [1]</span>
+<span class="kt">var</span> <span class="n">result3</span> <span class="p">=</span> <span class="n">n</span><span class="p">.</span><span class="n">HasValue</span> <span class="p">?</span> <span class="n">n</span><span class="p">.</span><span class="n">ToString</span><span class="p">()</span> <span class="p">:</span> <span class="k">null</span><span class="p">;</span> <span class="c1">// [2]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>[1][2]は同意である。
+[2]の三項演算子を使用した場合は、n.HasValueの評価時にはn!=nullでも、
+n.ToString()の処理までにn=nullとなる可能性があり、その場合は例外をスローする。
+[1]のnull条件演算子を使用した場合では、スレッドセーフとなっている</p>
+</section>
+<section id="id3">
+<h2>null許容型使用時の留意点<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>以下のように、nullを含む演算はnullとなる点に留意すること。</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">int?</span> <span class="n">a</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span> <span class="n">b</span> <span class="p">=</span> <span class="m">123</span><span class="p">;</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">((</span><span class="n">a</span> <span class="p">+</span> <span class="n">b</span><span class="p">)</span> <span class="p">==</span> <span class="k">null</span><span class="p">);</span>   <span class="c1">// この結果はTrueとなる</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>null許容型を使用する場合は、以下のようにキャストではなく、Nullable&lt;T&gt;構造体メンバを使用する方がよい。</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">int?</span> <span class="n">a</span> <span class="p">=</span> <span class="m">123</span><span class="p">;</span>
+<span class="k">if</span><span class="p">(</span><span class="n">a</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="n">m</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">a</span><span class="p">);</span>    <span class="c1">// △ : キャストを使った書き方</span>
+<span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">HasValue</span><span class="p">)</span> <span class="n">m</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">Value</span><span class="p">);</span>  <span class="c1">// ◎ : Nullable&lt;T&gt;構造体メンバを使った書き方</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="yield.html" class="btn btn-neutral float-left" title="yield" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../WPF/index.html" class="btn btn-neutral float-right" title="WPF" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, tak.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
