@@ -15,3 +15,4 @@
    例外
    処理高速比較
    Dispose
+   yield

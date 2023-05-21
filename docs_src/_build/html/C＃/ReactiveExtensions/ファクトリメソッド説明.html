@@ -55,7 +55,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../XAML/index.html">XAML</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">ReactiveExtensions</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%83%AA%E3%82%B9%E3%83%88.html">ファクトリメソッドリスト</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">ファクトリメソッド説明</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ファクトリメソッド説明</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#iobservable">IObservableのファクトリメソッドリスト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#timer">Timer系のファクトリメソッドリスト</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../VisualStudio.html">VisualStudio</a></li>
@@ -97,6 +101,8 @@
              
   <section id="id1">
 <h1>ファクトリメソッド説明<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<section id="iobservable">
+<h2>IObservableのファクトリメソッドリスト<a class="headerlink" href="#iobservable" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <dl class="glossary">
 <dt id="term-Return">Return<a class="headerlink" href="#term-Return" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">https://blog.okazuki.jp/entry/20111104/1320409976</a></p></li>
@@ -115,8 +121,8 @@
 <span class="n">subscription</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
 
 <span class="c1">// 上記の実行結果</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
-<span class="n">Completed</span><span class="p">()</span>
+<span class="c1">// OnNext(10)</span>
+<span class="c1">// Completed()</span>
 </pre></div>
 </div>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">NoActionCommand</span> <span class="p">=</span> <span class="n">Observable</span><span class="p">.</span><span class="n">Return</span><span class="p">(</span><span class="k">false</span><span class="p">).</span><span class="n">ToAsyncReactiveCommand</span><span class="p">().</span><span class="n">AddTo</span><span class="p">(</span><span class="n">Disposable</span><span class="p">);</span>
@@ -138,12 +144,12 @@
 <span class="n">subscription</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
 
 <span class="c1">// 上記の実行結果</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
-<span class="n">Completed</span><span class="p">()</span>
+<span class="c1">// OnNext(2)</span>
+<span class="c1">// OnNext(2)</span>
+<span class="c1">// OnNext(2)</span>
+<span class="c1">// OnNext(2)</span>
+<span class="c1">// OnNext(2)</span>
+<span class="c1">// Completed()</span>
 </pre></div>
 </div>
 </dd>
@@ -162,17 +168,17 @@
 <span class="n">subscription</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
 
 <span class="c1">// 上記の実行結果</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">3</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">4</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">5</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">6</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">7</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">8</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">9</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
-<span class="n">Completed</span><span class="p">()</span>
+<span class="c1">// OnNext(1)</span>
+<span class="c1">// OnNext(2)</span>
+<span class="c1">// OnNext(3)</span>
+<span class="c1">// OnNext(4)</span>
+<span class="c1">// OnNext(5)</span>
+<span class="c1">// OnNext(6)</span>
+<span class="c1">// OnNext(7)</span>
+<span class="c1">// OnNext(8)</span>
+<span class="c1">// OnNext(9)</span>
+<span class="c1">// OnNext(10)</span>
+<span class="c1">// Completed()</span>
 </pre></div>
 </div>
 </dd>
@@ -193,104 +199,123 @@
 <span class="n">subscription</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
 
 <span class="c1">// 上記の実行結果</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">4</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">9</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">16</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">25</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">36</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">49</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">64</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">81</span><span class="p">)</span>
-<span class="n">Completed</span><span class="p">()</span>
+<span class="c1">// OnNext(0)</span>
+<span class="c1">// OnNext(1)</span>
+<span class="c1">// OnNext(4)</span>
+<span class="c1">// OnNext(9)</span>
+<span class="c1">// OnNext(16)</span>
+<span class="c1">// OnNext(25)</span>
+<span class="c1">// OnNext(36)</span>
+<span class="c1">// OnNext(49)</span>
+<span class="c1">// OnNext(64)</span>
+<span class="c1">// OnNext(81)</span>
+<span class="c1">// Completed()</span>
 </pre></div>
 </div>
 </dd>
 <dt id="term-Defer">Defer<a class="headerlink" href="#term-Defer" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">https://blog.okazuki.jp/entry/20111104/1320409976</a></p></li>
 <li><p>IObservableを直接返すラムダ式を引数に渡す</p></li>
+<li><p>Subscribeメソッドが呼ばれる度に、Deferメソッドが実行されてIObservableが作成される</p></li>
+<li><p>任意の値を返すIObservableを作成する時に使う？</p></li>
 </ul>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>// 1, 2, 3と順番に値を発行して終了するIObservable&lt;int&gt;を生成する
-var source = Observable.Defer&lt;int&gt;(() =&gt;
-{
-    Console.WriteLine(&quot;# Defar method called.&quot;);
-    // ReplaySubject&lt;T&gt;はSubject&lt;T&gt;の亜種でSubscribeされると
-    // 今まで行われた操作を全てリプレイする。
-    var s = new ReplaySubject&lt;int&gt;();
-    s.OnNext(1);
-    s.OnNext(2);
-    s.OnNext(3);
-    s.OnCompleted();
-    // AsObservableでIObservable&lt;T&gt;へ変換できる。
-    return s.AsObservable();
-});
-// 購読(sourceはReplaySubjectで作っているのでDeferメソッド内でした操作が再生される)
-var subscription1 = source.Subscribe(
-    i =&gt; Console.WriteLine(&quot;OnNext({0})&quot;, i),
-    ex =&gt; Console.WriteLine(&quot;OnError({0})&quot;, ex.Message),
-    () =&gt; Console.WriteLine(&quot;Completed()&quot;));
-var subscription2 = source.Subscribe(
-    i =&gt; Console.WriteLine(&quot;OnNext({0})&quot;, i),
-    ex =&gt; Console.WriteLine(&quot;OnError({0})&quot;, ex.Message),
-    () =&gt; Console.WriteLine(&quot;Completed()&quot;));
-// 購読停止（この場合意味はない）
-subscription1.Dispose();
-subscription2.Dispose();
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 1, 2, 3と順番に値を発行して終了するIObservable&lt;int&gt;を生成する</span>
+<span class="kt">var</span> <span class="n">source</span> <span class="p">=</span> <span class="n">Observable</span><span class="p">.</span><span class="n">Defer</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;(()</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;# Defar method called.&quot;</span><span class="p">);</span>
+    <span class="c1">// ReplaySubject&lt;T&gt;はSubject&lt;T&gt;の亜種でSubscribeされると</span>
+    <span class="c1">// 今まで行われた操作を全てリプレイする。</span>
+    <span class="kt">var</span> <span class="n">s</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ReplaySubject</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;();</span>
+    <span class="n">s</span><span class="p">.</span><span class="n">OnNext</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>
+    <span class="n">s</span><span class="p">.</span><span class="n">OnNext</span><span class="p">(</span><span class="m">2</span><span class="p">);</span>
+    <span class="n">s</span><span class="p">.</span><span class="n">OnNext</span><span class="p">(</span><span class="m">3</span><span class="p">);</span>
+    <span class="n">s</span><span class="p">.</span><span class="n">OnCompleted</span><span class="p">();</span>
+    <span class="c1">// AsObservableでIObservable&lt;T&gt;へ変換できる。</span>
+    <span class="k">return</span> <span class="n">s</span><span class="p">.</span><span class="n">AsObservable</span><span class="p">();</span>
+<span class="p">});</span>
+<span class="c1">// 購読(sourceはReplaySubjectで作っているのでDeferメソッド内でした操作が再生される)</span>
+<span class="kt">var</span> <span class="n">subscription1</span> <span class="p">=</span> <span class="n">source</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span>
+    <span class="n">i</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;OnNext({0})&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span>
+    <span class="n">ex</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;OnError({0})&quot;</span><span class="p">,</span> <span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">),</span>
+    <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Completed()&quot;</span><span class="p">));</span>
+<span class="kt">var</span> <span class="n">subscription2</span> <span class="p">=</span> <span class="n">source</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span>
+    <span class="n">i</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;OnNext({0})&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span>
+    <span class="n">ex</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;OnError({0})&quot;</span><span class="p">,</span> <span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">),</span>
+    <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Completed()&quot;</span><span class="p">));</span>
+<span class="c1">// 購読停止（この場合意味はない）</span>
+<span class="n">subscription1</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+<span class="n">subscription2</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
 
-// 上記の実行結果
-# Defar method called.
-OnNext(1)
-OnNext(2)
-OnNext(3)
-Completed()
-# Defar method called.
-OnNext(1)
-OnNext(2)
-OnNext(3)
-Completed()
+<span class="c1">// 上記の実行結果</span>
+<span class="c1">// # Defar method called.</span>
+<span class="c1">// OnNext(1)</span>
+<span class="c1">// OnNext(2)</span>
+<span class="c1">// OnNext(3)</span>
+<span class="c1">// Completed()</span>
+<span class="c1">// # Defar method called.</span>
+<span class="c1">// OnNext(1)</span>
+<span class="c1">// OnNext(2)</span>
+<span class="c1">// OnNext(3)</span>
+<span class="c1">// Completed()</span>
 </pre></div>
 </div>
 </dd>
 <dt id="term-Create">Create<a class="headerlink" href="#term-Create" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">https://blog.okazuki.jp/entry/20111104/1320409976</a></p></li>
-<li><p>指定した範囲の値を用いて算出される値を返す</p></li>
+<li><p>引数の形が特殊でIObserverを受け取ってActionを返すラムダ式を引数に受け取る</p></li>
 </ul>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 初期値0, 値が10より小さい間, 値は1ずつインクリメントして, 値を二乗したものを発行する</span>
-<span class="c1">// IObservable&lt;int&gt;を作成する。</span>
-<span class="c1">// for (int i = 0; i &lt; 10; i++) { yield return i * i; }のようなイメージ</span>
-<span class="kt">var</span> <span class="n">source</span> <span class="p">=</span> <span class="n">Observable</span><span class="p">.</span><span class="n">Generate</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">i</span> <span class="p">=&gt;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">10</span><span class="p">,</span> <span class="n">i</span> <span class="p">=&gt;</span> <span class="p">++</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="p">=&gt;</span> <span class="n">i</span> <span class="p">*</span> <span class="n">i</span><span class="p">);</span>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 1, 2, 3と順番に値を発行して終了するIObservable&lt;int&gt;を生成する</span>
+<span class="kt">var</span> <span class="n">source</span> <span class="p">=</span> <span class="n">Observable</span><span class="p">.</span><span class="n">Create</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;(</span><span class="n">observer</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;# Create method called.&quot;</span><span class="p">);</span>
+    <span class="c1">// 引数のIObserver&lt;int&gt;に対してOn****メソッドを呼ぶ</span>
+    <span class="n">observer</span><span class="p">.</span><span class="n">OnNext</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>
+    <span class="n">observer</span><span class="p">.</span><span class="n">OnNext</span><span class="p">(</span><span class="m">2</span><span class="p">);</span>
+    <span class="n">observer</span><span class="p">.</span><span class="n">OnNext</span><span class="p">(</span><span class="m">3</span><span class="p">);</span>
+    <span class="n">observer</span><span class="p">.</span><span class="n">OnCompleted</span><span class="p">();</span>
+    <span class="c1">// Disposeが呼ばれた時の処理を返す。</span>
+    <span class="c1">// リソースを確保していた場合は、ここで解放すると良い。</span>
+    <span class="k">return</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Disposable action&quot;</span><span class="p">);</span>
+<span class="p">});</span>
 <span class="c1">// 購読</span>
-<span class="kt">var</span> <span class="n">subscription</span> <span class="p">=</span> <span class="n">source</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span>
+<span class="kt">var</span> <span class="n">subscription1</span> <span class="p">=</span> <span class="n">source</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span>
+    <span class="n">i</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;OnNext({0})&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span>
+    <span class="n">ex</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;OnError({0})&quot;</span><span class="p">,</span> <span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">),</span>
+    <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Completed()&quot;</span><span class="p">));</span>
+<span class="kt">var</span> <span class="n">subscription2</span> <span class="p">=</span> <span class="n">source</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span>
     <span class="n">i</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;OnNext({0})&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span>
     <span class="n">ex</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;OnError({0})&quot;</span><span class="p">,</span> <span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">),</span>
     <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Completed()&quot;</span><span class="p">));</span>
 <span class="c1">// 購読停止（この場合意味はない）</span>
-<span class="n">subscription</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;# Dispose method call.&quot;</span><span class="p">);</span>
+<span class="n">subscription1</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+<span class="n">subscription2</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
 
 <span class="c1">// 上記の実行結果</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">4</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">9</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">16</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">25</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">36</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">49</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">64</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">81</span><span class="p">)</span>
-<span class="n">Completed</span><span class="p">()</span>
+<span class="c1">// ## CreateSample</span>
+<span class="c1">// # Create method called.</span>
+<span class="c1">// OnNext(1)</span>
+<span class="c1">// OnNext(2)</span>
+<span class="c1">// OnNext(3)</span>
+<span class="c1">// Completed()</span>
+<span class="c1">// Disposable action</span>
+<span class="c1">// # Create method called.</span>
+<span class="c1">// OnNext(1)</span>
+<span class="c1">// OnNext(2)</span>
+<span class="c1">// OnNext(3)</span>
+<span class="c1">// Completed()</span>
+<span class="c1">// Disposable action</span>
+<span class="c1">// # Dispose method call.</span>
 </pre></div>
 </div>
 </dd>
 <dt id="term-Throw">Throw<a class="headerlink" href="#term-Throw" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">https://blog.okazuki.jp/entry/20111104/1320409976</a></p></li>
-<li><p>指定した範囲の値を用いて算出される値を返す</p></li>
+<li><p>引数に例外を渡す</p></li>
+<li><p>疑似的にエラーを起こしたいときに使う</p></li>
 </ul>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 初期値0, 値が10より小さい間, 値は1ずつインクリメントして, 値を二乗したものを発行する</span>
-<span class="c1">// IObservable&lt;int&gt;を作成する。</span>
-<span class="c1">// for (int i = 0; i &lt; 10; i++) { yield return i * i; }のようなイメージ</span>
-<span class="kt">var</span> <span class="n">source</span> <span class="p">=</span> <span class="n">Observable</span><span class="p">.</span><span class="n">Generate</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">i</span> <span class="p">=&gt;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">10</span><span class="p">,</span> <span class="n">i</span> <span class="p">=&gt;</span> <span class="p">++</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="p">=&gt;</span> <span class="n">i</span> <span class="p">*</span> <span class="n">i</span><span class="p">);</span>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// エラーを発行するだけのIObservable&lt;int&gt;を生成</span>
+<span class="kt">var</span> <span class="n">source</span> <span class="p">=</span> <span class="n">Observable</span><span class="p">.</span><span class="n">Throw</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;(</span><span class="k">new</span> <span class="n">Exception</span><span class="p">(</span><span class="s">&quot;Error message&quot;</span><span class="p">));</span>
 <span class="c1">// 購読</span>
 <span class="kt">var</span> <span class="n">subscription</span> <span class="p">=</span> <span class="n">source</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span>
     <span class="n">i</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;OnNext({0})&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span>
@@ -300,21 +325,144 @@ Completed()
 <span class="n">subscription</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
 
 <span class="c1">// 上記の実行結果</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">4</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">9</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">16</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">25</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">36</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">49</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">64</span><span class="p">)</span>
-<span class="n">OnNext</span><span class="p">(</span><span class="m">81</span><span class="p">)</span>
-<span class="n">Completed</span><span class="p">()</span>
+<span class="c1">// OnError(Error message)</span>
 </pre></div>
 </div>
 </dd>
 </dl>
+</section>
+<section id="timer">
+<h2>Timer系のファクトリメソッドリスト<a class="headerlink" href="#timer" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<dl class="glossary">
+<dt id="term-Timer">Timer<a class="headerlink" href="#term-Timer" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111106/1320584830">https://blog.okazuki.jp/entry/20111106/1320584830</a></p></li>
+<li><p>一定時間ごとに値を発行する</p></li>
+<li><p>発行する値はTimerが実行された回数</p></li>
+<li><p>いくつかオーバーロードがあるが、第一引数にタイマーを開始するまでの時間、第二引数にタイマーのインターバルをTimeSpan型で指定するオーバーロードが、一番使用頻度が高い</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 3秒後から1秒間隔で値を発行するIObservable&lt;long&gt;を作成する</span>
+<span class="kt">var</span> <span class="n">source</span> <span class="p">=</span> <span class="n">Observable</span><span class="p">.</span><span class="n">Timer</span><span class="p">(</span>
+    <span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">3</span><span class="p">),</span>
+    <span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">1</span><span class="p">));</span>
+<span class="c1">// 購読</span>
+<span class="kt">var</span> <span class="n">subscription</span> <span class="p">=</span> <span class="n">source</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span>
+    <span class="n">i</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;OnNext({0})&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span>
+    <span class="n">ex</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;OnError({0})&quot;</span><span class="p">,</span> <span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">),</span>
+    <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Completed()&quot;</span><span class="p">));</span>
+
+<span class="c1">// 3秒後からOnNext(回数)が表示される</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;please enter key...&quot;</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+<span class="c1">// Observableが発行する値の購読を停止</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;dispose method call.&quot;</span><span class="p">);</span>
+<span class="n">subscription</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+<span class="c1">// Disposeをすると値が発行されなくなる。</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;please enter key...&quot;</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+
+<span class="c1">// 上記の実行結果</span>
+<span class="c1">// please enter key...  // ここから3秒何も表示されない</span>
+<span class="c1">// OnNext(0)            // 3秒たつと1秒間隔でOnNextが呼ばれる</span>
+<span class="c1">// OnNext(1)</span>
+<span class="c1">// OnNext(2)</span>
+<span class="c1">// OnNext(3)</span>
+<span class="c1">// OnNext(4)</span>
+<span class="c1">// OnNext(5)</span>
+<span class="c1">// dispose method call. // Enterを押してDisposeが呼ばれるとOnNextも止まる</span>
+<span class="c1">// please enter key...</span>
+</pre></div>
+</div>
+</dd>
+<dt id="term-Interval">Interval<a class="headerlink" href="#term-Interval" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111106/1320584830">https://blog.okazuki.jp/entry/20111106/1320584830</a></p></li>
+<li><p>一定時間ごとに値を発行する</p></li>
+<li><p>発行する値はTimerが実行された回数</p></li>
+<li><p>TimeSpanを1つ渡すだけ</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 500ms間隔で値を発行する</span>
+<span class="kt">var</span> <span class="n">source</span> <span class="p">=</span> <span class="n">Observable</span><span class="p">.</span><span class="n">Interval</span><span class="p">(</span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromMilliseconds</span><span class="p">(</span><span class="m">500</span><span class="p">));</span>
+<span class="c1">// 購読</span>
+<span class="kt">var</span> <span class="n">subscription</span> <span class="p">=</span> <span class="n">source</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span>
+    <span class="n">i</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;OnNext({0})&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span>
+    <span class="n">ex</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;OnError({0})&quot;</span><span class="p">,</span> <span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">),</span>
+    <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Completed()&quot;</span><span class="p">));</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;please enter key...&quot;</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+<span class="c1">// Observableが発行する値の購読を停止</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;dispose method call.&quot;</span><span class="p">);</span>
+<span class="n">subscription</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+<span class="c1">// Disposeをすると値が発行されても受け取らなくなる。</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;please enter key...&quot;</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+
+<span class="c1">// 上記の実行結果</span>
+<span class="c1">// please enter key...</span>
+<span class="c1">// OnNext(0)</span>
+<span class="c1">// OnNext(1)</span>
+<span class="c1">// OnNext(2)</span>
+<span class="c1">// OnNext(3)</span>
+<span class="c1">// OnNext(4)</span>
+<span class="c1">// OnNext(5)</span>
+<span class="c1">// OnNext(6)</span>
+<span class="c1">// dispose method call.</span>
+<span class="c1">// please enter key...</span>
+</pre></div>
+</div>
+</dd>
+<dt id="term-0">Generate<a class="headerlink" href="#term-0" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111106/1320584830">https://blog.okazuki.jp/entry/20111106/1320584830</a></p></li>
+<li><p>一定時間ごとに値を発行する</p></li>
+<li><p>発行する値はTimerが実行された回数</p></li>
+<li><p>TimeSpanを1つ渡すだけ</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">source</span> <span class="p">=</span> <span class="n">Observable</span><span class="p">.</span><span class="n">Generate</span><span class="p">(</span>
+    <span class="c1">// 0から</span>
+    <span class="m">0</span><span class="p">,</span>
+    <span class="c1">// i &lt; 10以下の間繰り返す</span>
+    <span class="n">i</span> <span class="p">=&gt;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">10</span><span class="p">,</span>
+    <span class="c1">// iは1ずつ増える</span>
+    <span class="n">i</span> <span class="p">=&gt;</span> <span class="p">++</span><span class="n">i</span><span class="p">,</span>
+    <span class="c1">// 発行する値はiの二乗</span>
+    <span class="n">i</span> <span class="p">=&gt;</span> <span class="n">i</span> <span class="p">*</span> <span class="n">i</span><span class="p">,</span>
+    <span class="c1">// 値は(発行する値 * 100)ms間隔で発行する</span>
+    <span class="n">i</span> <span class="p">=&gt;</span> <span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromMilliseconds</span><span class="p">(</span><span class="n">i</span> <span class="p">*</span> <span class="m">100</span><span class="p">));</span>
+
+<span class="c1">// 購読</span>
+<span class="kt">var</span> <span class="n">subscription</span> <span class="p">=</span> <span class="n">source</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span>
+    <span class="n">i</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;OnNext({0})&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span>
+    <span class="n">ex</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;OnError({0})&quot;</span><span class="p">,</span> <span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">),</span>
+    <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Completed()&quot;</span><span class="p">));</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;please enter key...&quot;</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+<span class="c1">// Observableが発行する値の購読を停止</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;dispose method call.&quot;</span><span class="p">);</span>
+<span class="n">subscription</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+<span class="c1">// Disposeをすると値が発行されても受け取らなくなる。</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;please enter key...&quot;</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+
+<span class="c1">// 上記の実行結果</span>
+<span class="c1">// please enter key...</span>
+<span class="c1">// OnNext(0)</span>
+<span class="c1">// OnNext(1)</span>
+<span class="c1">// OnNext(4)</span>
+<span class="c1">// OnNext(9)</span>
+<span class="c1">// OnNext(16)</span>
+<span class="c1">// OnNext(25)</span>
+<span class="c1">// OnNext(36)</span>
+<span class="c1">// OnNext(49)</span>
+<span class="c1">// OnNext(64)</span>
+<span class="c1">// OnNext(81)</span>
+<span class="c1">// Completed()</span>
+<span class="c1">// dispose method call.</span>
+<span class="c1">// please enter key...</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
 </section>
 
 

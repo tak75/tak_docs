@@ -2,6 +2,9 @@
 ファクトリメソッド説明
 ======================
 
+IObservableのファクトリメソッドリスト
+=====================================
+
 .. glossary::
 
     Return
@@ -24,8 +27,8 @@
             subscription.Dispose();
 
             // 上記の実行結果
-            OnNext(10)
-            Completed()
+            // OnNext(10)
+            // Completed()
 
         .. code-block:: csharp
 
@@ -49,12 +52,12 @@
             subscription.Dispose();
 
             // 上記の実行結果
-            OnNext(2)
-            OnNext(2)
-            OnNext(2)
-            OnNext(2)
-            OnNext(2)
-            Completed()
+            // OnNext(2)
+            // OnNext(2)
+            // OnNext(2)
+            // OnNext(2)
+            // OnNext(2)
+            // Completed()
 
     Range
 
@@ -74,17 +77,17 @@
             subscription.Dispose();
             
             // 上記の実行結果
-            OnNext(1)
-            OnNext(2)
-            OnNext(3)
-            OnNext(4)
-            OnNext(5)
-            OnNext(6)
-            OnNext(7)
-            OnNext(8)
-            OnNext(9)
-            OnNext(10)
-            Completed()
+            // OnNext(1)
+            // OnNext(2)
+            // OnNext(3)
+            // OnNext(4)
+            // OnNext(5)
+            // OnNext(6)
+            // OnNext(7)
+            // OnNext(8)
+            // OnNext(9)
+            // OnNext(10)
+            // Completed()
 
     Generate
 
@@ -106,22 +109,24 @@
             subscription.Dispose();
             
             // 上記の実行結果
-            OnNext(0)
-            OnNext(1)
-            OnNext(4)
-            OnNext(9)
-            OnNext(16)
-            OnNext(25)
-            OnNext(36)
-            OnNext(49)
-            OnNext(64)
-            OnNext(81)
-            Completed()
+            // OnNext(0)
+            // OnNext(1)
+            // OnNext(4)
+            // OnNext(9)
+            // OnNext(16)
+            // OnNext(25)
+            // OnNext(36)
+            // OnNext(49)
+            // OnNext(64)
+            // OnNext(81)
+            // Completed()
         
     Defer
 
         * https://blog.okazuki.jp/entry/20111104/1320409976
         * IObservableを直接返すラムダ式を引数に渡す
+        * Subscribeメソッドが呼ばれる度に、Deferメソッドが実行されてIObservableが作成される
+        * 任意の値を返すIObservableを作成する時に使う？
 
         .. code-block:: csharp
 
@@ -153,61 +158,77 @@
             subscription2.Dispose();
             
             // 上記の実行結果
-            # Defar method called.
-            OnNext(1)
-            OnNext(2)
-            OnNext(3)
-            Completed()
-            # Defar method called.
-            OnNext(1)
-            OnNext(2)
-            OnNext(3)
-            Completed()
+            // # Defar method called.
+            // OnNext(1)
+            // OnNext(2)
+            // OnNext(3)
+            // Completed()
+            // # Defar method called.
+            // OnNext(1)
+            // OnNext(2)
+            // OnNext(3)
+            // Completed()
 
     Create
 
         * https://blog.okazuki.jp/entry/20111104/1320409976
-        * 指定した範囲の値を用いて算出される値を返す
+        * 引数の形が特殊でIObserverを受け取ってActionを返すラムダ式を引数に受け取る
 
         .. code-block:: csharp
 
-            // 初期値0, 値が10より小さい間, 値は1ずつインクリメントして, 値を二乗したものを発行する
-            // IObservable<int>を作成する。
-            // for (int i = 0; i < 10; i++) { yield return i * i; }のようなイメージ
-            var source = Observable.Generate(0, i => i < 10, i => ++i, i => i * i);
+            // 1, 2, 3と順番に値を発行して終了するIObservable<int>を生成する
+            var source = Observable.Create<int>(observer =>
+            {
+                Console.WriteLine("# Create method called.");
+                // 引数のIObserver<int>に対してOn****メソッドを呼ぶ
+                observer.OnNext(1);
+                observer.OnNext(2);
+                observer.OnNext(3);
+                observer.OnCompleted();
+                // Disposeが呼ばれた時の処理を返す。
+                // リソースを確保していた場合は、ここで解放すると良い。
+                return () => Console.WriteLine("Disposable action");
+            });
             // 購読
-            var subscription = source.Subscribe(
+            var subscription1 = source.Subscribe(
+                i => Console.WriteLine("OnNext({0})", i),
+                ex => Console.WriteLine("OnError({0})", ex.Message),
+                () => Console.WriteLine("Completed()"));
+            var subscription2 = source.Subscribe(
                 i => Console.WriteLine("OnNext({0})", i),
                 ex => Console.WriteLine("OnError({0})", ex.Message),
                 () => Console.WriteLine("Completed()"));
             // 購読停止（この場合意味はない）
-            subscription.Dispose();
+            Console.WriteLine("# Dispose method call.");
+            subscription1.Dispose();
+            subscription2.Dispose();
             
             // 上記の実行結果
-            OnNext(0)
-            OnNext(1)
-            OnNext(4)
-            OnNext(9)
-            OnNext(16)
-            OnNext(25)
-            OnNext(36)
-            OnNext(49)
-            OnNext(64)
-            OnNext(81)
-            Completed()
-
+            // ## CreateSample
+            // # Create method called.
+            // OnNext(1)
+            // OnNext(2)
+            // OnNext(3)
+            // Completed()
+            // Disposable action
+            // # Create method called.
+            // OnNext(1)
+            // OnNext(2)
+            // OnNext(3)
+            // Completed()
+            // Disposable action
+            // # Dispose method call.
         
     Throw
 
         * https://blog.okazuki.jp/entry/20111104/1320409976
-        * 指定した範囲の値を用いて算出される値を返す
+        * 引数に例外を渡す
+        * 疑似的にエラーを起こしたいときに使う
 
         .. code-block:: csharp
 
-            // 初期値0, 値が10より小さい間, 値は1ずつインクリメントして, 値を二乗したものを発行する
-            // IObservable<int>を作成する。
-            // for (int i = 0; i < 10; i++) { yield return i * i; }のようなイメージ
-            var source = Observable.Generate(0, i => i < 10, i => ++i, i => i * i);
+            // エラーを発行するだけのIObservable<int>を生成
+            var source = Observable.Throw<int>(new Exception("Error message"));
             // 購読
             var subscription = source.Subscribe(
                 i => Console.WriteLine("OnNext({0})", i),
@@ -215,17 +236,145 @@
                 () => Console.WriteLine("Completed()"));
             // 購読停止（この場合意味はない）
             subscription.Dispose();
-            
+
             // 上記の実行結果
-            OnNext(0)
-            OnNext(1)
-            OnNext(4)
-            OnNext(9)
-            OnNext(16)
-            OnNext(25)
-            OnNext(36)
-            OnNext(49)
-            OnNext(64)
-            OnNext(81)
-            Completed()
+            // OnError(Error message)
+
+Timer系のファクトリメソッドリスト
+=================================
+
+.. glossary::
+
+    Timer
+
+        * https://blog.okazuki.jp/entry/20111106/1320584830
+        * 一定時間ごとに値を発行する
+        * 発行する値はTimerが実行された回数
+        * いくつかオーバーロードがあるが、第一引数にタイマーを開始するまでの時間、第二引数にタイマーのインターバルをTimeSpan型で指定するオーバーロードが、一番使用頻度が高い
+
+        .. code-block:: csharp
+
+            // 3秒後から1秒間隔で値を発行するIObservable<long>を作成する
+            var source = Observable.Timer(
+                TimeSpan.FromSeconds(3), 
+                TimeSpan.FromSeconds(1));
+            // 購読
+            var subscription = source.Subscribe(
+                i => Console.WriteLine("OnNext({0})", i),
+                ex => Console.WriteLine("OnError({0})", ex.Message),
+                () => Console.WriteLine("Completed()"));
+
+            // 3秒後からOnNext(回数)が表示される
+            Console.WriteLine("please enter key...");
+            Console.ReadLine();
+            // Observableが発行する値の購読を停止
+            Console.WriteLine("dispose method call.");
+            subscription.Dispose();
+            // Disposeをすると値が発行されなくなる。
+            Console.WriteLine("please enter key...");
+            Console.ReadLine();
+
+            // 上記の実行結果
+            // please enter key...  // ここから3秒何も表示されない
+            // OnNext(0)            // 3秒たつと1秒間隔でOnNextが呼ばれる
+            // OnNext(1)
+            // OnNext(2)
+            // OnNext(3)
+            // OnNext(4)
+            // OnNext(5)
+            // dispose method call. // Enterを押してDisposeが呼ばれるとOnNextも止まる
+            // please enter key...
+
+    Interval
+
+        * https://blog.okazuki.jp/entry/20111106/1320584830
+        * 一定時間ごとに値を発行する
+        * 発行する値はTimerが実行された回数
+        * TimeSpanを1つ渡すだけ
+
+        .. code-block:: csharp
+
+            // 500ms間隔で値を発行する
+            var source = Observable.Interval(TimeSpan.FromMilliseconds(500));
+            // 購読
+            var subscription = source.Subscribe(
+                i => Console.WriteLine("OnNext({0})", i),
+                ex => Console.WriteLine("OnError({0})", ex.Message),
+                () => Console.WriteLine("Completed()"));
+
+            Console.WriteLine("please enter key...");
+            Console.ReadLine();
+            // Observableが発行する値の購読を停止
+            Console.WriteLine("dispose method call.");
+            subscription.Dispose();
+            // Disposeをすると値が発行されても受け取らなくなる。
+            Console.WriteLine("please enter key...");
+            Console.ReadLine();
+
+            // 上記の実行結果
+            // please enter key...
+            // OnNext(0)
+            // OnNext(1)
+            // OnNext(2)
+            // OnNext(3)
+            // OnNext(4)
+            // OnNext(5)
+            // OnNext(6)
+            // dispose method call.
+            // please enter key...
+
+    Generate
+
+        * https://blog.okazuki.jp/entry/20111106/1320584830
+        * 一定時間ごとに値を発行する
+        * 発行する値はTimerが実行された回数
+        * TimeSpanを1つ渡すだけ
+
+        .. code-block:: csharp
+
+            var source = Observable.Generate(
+                // 0から
+                0,
+                // i < 10以下の間繰り返す
+                i => i < 10,
+                // iは1ずつ増える
+                i => ++i,
+                // 発行する値はiの二乗
+                i => i * i,
+                // 値は(発行する値 * 100)ms間隔で発行する
+                i => TimeSpan.FromMilliseconds(i * 100));
+
+            // 購読
+            var subscription = source.Subscribe(
+                i => Console.WriteLine("OnNext({0})", i),
+                ex => Console.WriteLine("OnError({0})", ex.Message),
+                () => Console.WriteLine("Completed()"));
+
+            Console.WriteLine("please enter key...");
+            Console.ReadLine();
+            // Observableが発行する値の購読を停止
+            Console.WriteLine("dispose method call.");
+            subscription.Dispose();
+            // Disposeをすると値が発行されても受け取らなくなる。
+            Console.WriteLine("please enter key...");
+            Console.ReadLine();
+
+            // 上記の実行結果
+            // please enter key...
+            // OnNext(0)
+            // OnNext(1)
+            // OnNext(4)
+            // OnNext(9)
+            // OnNext(16)
+            // OnNext(25)
+            // OnNext(36)
+            // OnNext(49)
+            // OnNext(64)
+            // OnNext(81)
+            // Completed()
+            // dispose method call.
+            // please enter key...
+
+
+
 
