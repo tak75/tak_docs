@@ -1,0 +1,86 @@
+============
+拡張メソッド
+============
+
+拡張メソッドの基本
+==================
+
+* 拡張メソッドは、静的なメソッド（static）である
+* 拡張メソッドは、静的クラス（static）に記述されている
+* 拡張メソッドは、第1パラメータの先頭にthisキーワードが前置きされている
+* 拡張メソッドは、第1パラメータの型がメソッドを追加すべき型である
+
+  .. code-block:: csharp
+
+    // 拡張メソッド自身を含む名前空間をusing文で指定することで拡張メソッドを使えるようになる
+    // 拡張メソッドのインポートと呼ぶ
+    using X;
+
+    namespace X
+    {
+      // 静的クラス（static）
+      static class AExtension
+      {
+        // 拡張メソッド : 静的メソッド（static）
+        public static void MyMethod(this Y.A a, int i)
+        {
+        }
+      }
+    }
+
+    namespace Y
+    {
+      class A
+      {
+      }
+      class Program
+      {
+        static void Main(string[] args)
+        {
+          var a = new A();
+          // 第1引数なし
+          a.MyMethod(1);
+        }
+      }
+    }
+
+列挙体の拡張メソッド（任意文字列を出力するToString()相当のメソッドを作る）
+==========================================================================
+
+* 列挙体の要素名リストを取得したい場合、ToString()を使用すると、要素名そのものの文字列が出力される
+* これを好きな要素名リストとしたい場合、クラスであればToString()をオーバロードできるが、列挙体の場合はできない
+* 代替策としては、以下のように拡張クラスを使用すればよい
+
+  .. code-block:: csharp
+
+    public enum DataType
+    {
+      Data1,
+      Data2,
+      Data3
+    }
+
+    public static class DataTypeExtension
+    {
+      // 列挙体の要素名辞書
+      static Dictionary<DataType, string> DataTypeNames = new Dictionary<DataType, string>
+      {
+        {DataType.Data1, "data 1" },
+        {DataType.Data2, "data 2" },
+        {DataType.Data3, "data 3" }
+      };
+
+      // ToString()の代わりとなる拡張メソッド
+      public static string ToName(this DataType dataType) => DataTypeNames[dataType];
+    }
+
+    class Program
+    {
+      static void Main(string[] args)
+      {
+        foreach(DataType type in Enum.GetValues(typeof(DataType)))
+        {
+            Console.WriteLine(type.ToName());   // 出力 : data 1, data 2, data 3（1行ずつ）
+        }
+      }
+    }

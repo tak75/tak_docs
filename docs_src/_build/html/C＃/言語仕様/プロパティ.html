@@ -53,9 +53,11 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">言語仕様</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="%E4%BB%95%E6%A7%98.html">仕様</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E5%85%A8%E8%88%AC.html">全般</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E5%88%9D%E6%9C%9F%E5%8C%96.html">初期化</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E6%96%87%E5%AD%97%E5%88%97.html">文字列</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">プロパティ</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">読み取り専用プロパティ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">プロパティの参照渡し</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%EF%BC%8F%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA.html">ファイル／ディレクトリ</a></li>
@@ -68,6 +70,8 @@
 <li class="toctree-l3"><a class="reference internal" href="yield.html">yield</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Null.html">Null</a></li>
 <li class="toctree-l3"><a class="reference internal" href="switch.html">switch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E6%8B%A1%E5%BC%B5%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89.html">拡張メソッド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E5%90%8D%E5%89%8D%E7%A9%BA%E9%96%93.html">名前空間</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../WPF/index.html">WPF</a></li>
@@ -135,6 +139,37 @@
 <span class="p">{</span>
     <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">locationName</span><span class="p">;</span>
     <span class="k">set</span> <span class="p">=&gt;</span> <span class="n">locationName</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="id3">
+<h2>プロパティの参照渡し<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p>プロパティは参照渡し（ref 引数での渡し）ができない</p></li>
+<li><p>そこで、その対策としてデリゲートを渡す方法がある</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="k">class</span> <span class="nc">SomeClass</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">A</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">doSomething</span><span class="p">(</span><span class="n">Func</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">getter</span><span class="p">,</span> <span class="n">Action</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">setter</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">setter</span><span class="p">(</span><span class="n">getter</span><span class="p">()</span> <span class="p">+</span> <span class="m">1</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nf">getter</span><span class="p">()</span> <span class="p">==</span> <span class="m">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">doSomething</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">SomeClass</span><span class="p">.</span><span class="n">A</span><span class="p">,</span> <span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span><span class="n">SomeClass</span><span class="p">.</span><span class="n">A</span> <span class="p">=</span> <span class="n">v</span><span class="p">;}))</span>
+        <span class="p">{</span>
+            <span class="c1">//</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>

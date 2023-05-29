@@ -1,0 +1,53 @@
+======
+初期化
+======
+
+配列
+====
+
+  .. code-block:: csharp
+    
+    int[] array = {1,2,3};
+
+    // C#3.0で拡張された「暗黙に型付けされた配列」
+    var array = new [] {1,2,3};
+
+コレクション
+============
+
+  .. code-block:: csharp
+
+    // リスト
+    var list = new List<int>() {1,2,3};
+
+    // 辞書
+    var t = new Dictionary<int, string>()
+    {
+      {20, "Hoge1"},
+      {18, "Hoge2"}
+    }
+ 
+オブジェクト初期化子でコレクションを初期化
+==========================================
+
+* コレクションの初期化は、コレクション自身を書き換えるわけではないので、readonlyでもオブジェクト初期化子で初期化できる
+
+  .. code-block:: csharp
+
+    class A
+    {
+      public List<int> List1 = new List<int>();
+      public readonly List<int> List2 = new List<int>();
+      public List<int> List3 { get; } = new List<int>();
+    }
+
+    class Program
+    {
+      static void Main(string[] args)
+      {
+        var a = new A() { List1 = { 1, 2, 3 }, List2 = { 4, 5, 6 }, List3 = { 7, 8, 9 } };
+        a.List1.ForEach(item => Console.Write("{item},"));  // $要。出力 : 1,2,3,
+        a.List2.ForEach(item => Console.Write("{item},"));  // $要。出力 : 4,5,6,
+        a.List3.ForEach(item => Console.Write("{item},"));  // $要。出力 : 7,8,9,
+      }
+    }

@@ -304,40 +304,6 @@ int -> enum変換
   このため、具象クラスである必然性はない。
 * 抽象クラスであれば、継承先クラスにメソッドの実装を強制できるので、抽象クラスが推奨されている
  
-拡張メソッド
-============
-
---------------------
-列挙体の拡張メソッド
---------------------
-
-* 列挙体の要素名リストを取得したい場合、ToString()を使用すると、要素名そのものの文字列が出力される
-* これを好きな要素名リストとしたい場合、クラスであればToString()をオーバロードできるが、列挙体の場合はできない
-* 代替策としては、以下のように拡張クラスを使用すればよい
-
-.. code-block:: csharp
-
-  public enum DataType
-  {
-    Data1,
-    Data2,
-    Data3
-  }
-
-  public static class DataTypeExtension
-  {
-    // 列挙体の要素名辞書
-    static Dictionary<DataType, string> DataTypeNames = new Dictionary<DataType, string>
-    {
-      {DataType.Data1, "data 1" },
-      {DataType.Data2, "data 2" },
-      {DataType.Data3, "data 3" }
-    };
-
-    // ToString()の代わりとなる拡張メソッド
-    public static string ToName(this DataType dataType) => DataTypeNames[dataType];
-  }
-
 比較方法
 ========
 
@@ -361,3 +327,136 @@ int -> enum変換
     var list2 = other.Info1.SelectMany(p => p.Info2.SelectMany(w => w).Select(x => (x.AValue, x.BValue))).ToList();
 
     return list1.SequenceEqual(list2);
+
+フレンドアセンブリ
+==================
+
+* 単体テストでは、publicなクラスやメソッドだけでなく、internalなクラスやメソッドをテスト対象としたい場合が多い
+* この場合に、テストプロジェクトからinternalなクラスやメソッドを利用することは、通常はできない
+* これを可能にするのがフレンドアセンブリであり、利用を許可するアセンブリ名（名前空間）を予め指定しておくる
+
+  .. code-block:: csharp
+
+    using System.Runtime.CompilerServices;
+
+    // TestClassLibrary1からのアクセスだけは受け入れる
+    [assembly: InternalsVisibleTo("TestClassLibrary1")]
+
+    namespace TestClassLibrary1
+    {
+      internal class InternalClass
+      {
+      }
+    }
+
+    // テストプロジェクト
+    namespace TestClassLibrary1
+    {
+      // テストクラスで上記internalにアクセスできる
+    }
+
+匿名型オブジェクト
+==================
+
+* クラスを少ない文字列で書くための記法
+* オブジェクトの型宣言や変数の型名が不要
+* 変数は、読み出し専用プロパティとして自動実装される
+* つまり、匿名型オブジェクトは、「変更不可能」なデータの集まりである
+  
+  .. code-block:: csharp
+
+    var a = new { Name = "Hoge", Age = 20 };
+    Console.WriteLine("{a.Name}, {a.Age}");   // $要
+
+* 「同じ名前、同じ型、同じ並び順」の匿名型は、同一クラスとして扱うことができる
+* 以下の例ではa,bのオブジェクトは同一クラスのオブジェクトと判断される
+
+  .. code-block:: csharp
+
+    var a = new { Name = "Hoge1", Age = 20 };
+    var b = new { Name = "Hoge2", Age = 18 };
+
+    a = b;  // 代入可能
+
+* プロパティ名を省略することも可能
+* 省略した場合は、参照先のプロパティ名と同一名となる
+* 以下の例の(1),(2)は同等である
+
+  .. code-block:: csharp
+
+    var a = new { Name = "Hoge1", Age = 20 };
+    var b = new { Name = "Hoge2", Age = 18 };
+
+    var c = new { Name = a.Name, Age = b.Age};  // (1)
+    var c = new { a.Name, b.Age};               // (2)
+
+* 主な用途は、LINQのSelect句での使用
+* Select句で列挙した値だけを含むオブジェクトを作る
+
+変換演算子（implicitとexplicit）
+================================
+
+* クラスオブジェクトを（／から）キャストする方法
+* 暗黙的な型変換（implicit）と明示的な型変換（explicit）がある
+
+  .. code-block:: csharp
+
+    // 暗黙的な型変換（implicit）の例
+    public class Test
+    {
+      public int X { get; }
+
+      public Test(int x) => X = x;
+
+      // 暗黙的な型変換   例. int a = test;
+      public static implicit operator int(Test test) => test.X;
+
+      // 暗黙的な型変換   例. Test test = intValue;
+      public static implicit operator Test(int x) => new Test(x);
+    }
+
+    class Program
+    {
+      static void Main(string[] args)
+      {
+        Test test = new Test(7);
+
+        int a = test;
+        Console.WriteLine(a);       // 7
+
+        int intValue = 14;
+        test = intValue;
+        Console.WriteLine(test.X);  // 14
+      }
+    }
+
+  .. code-block:: csharp
+
+    // 明示的な型変換（explicit）の例
+    public class Test
+    {
+      public int X { get; }
+
+      public Test(int x) => X = x;
+
+      // 暗黙的な型変換   例. int a = test;
+      public static explicit operator int(Test test) => test.X;
+
+      // 暗黙的な型変換   例. Test test = intValue;
+      public static explicit operator Test(int x) => new Test(x);
+    }
+
+    class Program
+    {
+      static void Main(string[] args)
+      {
+        Test test = new Test(7);
+
+        int a = (int)test;          // 明示的にキャストが必要
+        Console.WriteLine(a);       // 7
+
+        int intValue = 14;
+        test = (Test)intValue;      // 明示的にキャストが必要
+        Console.WriteLine(test.X);  // 14
+      }
+    }

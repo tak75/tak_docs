@@ -19,7 +19,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
-    <link rel="next" title="文字列" href="%E6%96%87%E5%AD%97%E5%88%97.html" />
+    <link rel="next" title="初期化" href="%E5%88%9D%E6%9C%9F%E5%8C%96.html" />
     <link rel="prev" title="仕様" href="%E4%BB%95%E6%A7%98.html" /> 
 </head>
 
@@ -66,11 +66,15 @@
 <li class="toctree-l4"><a class="reference internal" href="#id13">変数のスレッドセーフ</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#union">共用体（union）</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id14">具象クラスからの継承について</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id15">拡張メソッド</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id17">比較方法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">比較方法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">フレンドアセンブリ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">匿名型オブジェクト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implicitexplicit">変換演算子（implicitとexplicit）</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="%E5%88%9D%E6%9C%9F%E5%8C%96.html">初期化</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E6%96%87%E5%AD%97%E5%88%97.html">文字列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3.html">プロパティ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%EF%BC%8F%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA.html">ファイル／ディレクトリ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LINQ.html">LINQ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html">イベント、デリゲート</a></li>
@@ -80,6 +84,9 @@
 <li class="toctree-l3"><a class="reference internal" href="Dispose.html">Dispose</a></li>
 <li class="toctree-l3"><a class="reference internal" href="yield.html">yield</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Null.html">Null</a></li>
+<li class="toctree-l3"><a class="reference internal" href="switch.html">switch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E6%8B%A1%E5%BC%B5%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89.html">拡張メソッド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E5%90%8D%E5%89%8D%E7%A9%BA%E9%96%93.html">名前空間</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../WPF/index.html">WPF</a></li>
@@ -474,53 +481,20 @@ if(b != null)
 </ul>
 </section>
 <section id="id15">
-<h2>拡張メソッド<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<section id="id16">
-<h3>列挙体の拡張メソッド<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<ul class="simple">
-<li><p>列挙体の要素名リストを取得したい場合、ToString()を使用すると、要素名そのものの文字列が出力される</p></li>
-<li><p>これを好きな要素名リストとしたい場合、クラスであればToString()をオーバロードできるが、列挙体の場合はできない</p></li>
-<li><p>代替策としては、以下のように拡張クラスを使用すればよい</p></li>
-</ul>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">enum</span> <span class="n">DataType</span>
-<span class="p">{</span>
-  <span class="n">Data1</span><span class="p">,</span>
-  <span class="n">Data2</span><span class="p">,</span>
-  <span class="n">Data3</span>
-<span class="p">}</span>
-
-<span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">DataTypeExtension</span>
-<span class="p">{</span>
-  <span class="c1">// 列挙体の要素名辞書</span>
-  <span class="k">static</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">DataType</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="n">DataTypeNames</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">DataType</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span>
-  <span class="p">{</span>
-    <span class="p">{</span><span class="n">DataType</span><span class="p">.</span><span class="n">Data1</span><span class="p">,</span> <span class="s">&quot;data 1&quot;</span> <span class="p">},</span>
-    <span class="p">{</span><span class="n">DataType</span><span class="p">.</span><span class="n">Data2</span><span class="p">,</span> <span class="s">&quot;data 2&quot;</span> <span class="p">},</span>
-    <span class="p">{</span><span class="n">DataType</span><span class="p">.</span><span class="n">Data3</span><span class="p">,</span> <span class="s">&quot;data 3&quot;</span> <span class="p">}</span>
-  <span class="p">};</span>
-
-  <span class="c1">// ToString()の代わりとなる拡張メソッド</span>
-  <span class="k">public</span> <span class="k">static</span> <span class="kt">string</span> <span class="nf">ToName</span><span class="p">(</span><span class="k">this</span> <span class="n">DataType</span> <span class="n">dataType</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">DataTypeNames</span><span class="p">[</span><span class="n">dataType</span><span class="p">];</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="id17">
-<h2>比較方法<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>比較方法<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
 <li><p>SerializeJson() した上で、SequenceEqual() で比較する</p></li>
 </ul>
-<section id="id18">
-<h3>オブジェクトの比較<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<section id="id16">
+<h3>オブジェクトの比較<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="n">SerializeJson</span><span class="p">().</span><span class="n">SequenceEqual</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">SerializeJson</span><span class="p">());</span>
 </pre></div>
 </div>
 </div></blockquote>
 </section>
-<section id="id19">
-<h3>リストの比較<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<section id="id17">
+<h3>リストの比較<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">list1</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">Info1</span><span class="p">.</span><span class="n">SelectMany</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Info2</span><span class="p">.</span><span class="n">SelectMany</span><span class="p">(</span><span class="n">w</span> <span class="p">=&gt;</span> <span class="n">w</span><span class="p">).</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">AValue</span><span class="p">,</span> <span class="n">x</span><span class="p">.</span><span class="n">BValue</span><span class="p">))).</span><span class="n">ToList</span><span class="p">();</span>
 <span class="kt">var</span> <span class="n">list2</span> <span class="p">=</span> <span class="n">other</span><span class="p">.</span><span class="n">Info1</span><span class="p">.</span><span class="n">SelectMany</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Info2</span><span class="p">.</span><span class="n">SelectMany</span><span class="p">(</span><span class="n">w</span> <span class="p">=&gt;</span> <span class="n">w</span><span class="p">).</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">AValue</span><span class="p">,</span> <span class="n">x</span><span class="p">.</span><span class="n">BValue</span><span class="p">))).</span><span class="n">ToList</span><span class="p">();</span>
@@ -531,6 +505,138 @@ if(b != null)
 </div></blockquote>
 </section>
 </section>
+<section id="id18">
+<h2>フレンドアセンブリ<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p>単体テストでは、publicなクラスやメソッドだけでなく、internalなクラスやメソッドをテスト対象としたい場合が多い</p></li>
+<li><p>この場合に、テストプロジェクトからinternalなクラスやメソッドを利用することは、通常はできない</p></li>
+<li><p>これを可能にするのがフレンドアセンブリであり、利用を許可するアセンブリ名（名前空間）を予め指定しておくる</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System.Runtime.CompilerServices</span><span class="p">;</span>
+
+<span class="c1">// TestClassLibrary1からのアクセスだけは受け入れる</span>
+<span class="na">[assembly: InternalsVisibleTo(&quot;TestClassLibrary1&quot;)]</span>
+
+<span class="k">namespace</span> <span class="nn">TestClassLibrary1</span>
+<span class="p">{</span>
+  <span class="k">internal</span> <span class="k">class</span> <span class="nc">InternalClass</span>
+  <span class="p">{</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// テストプロジェクト</span>
+<span class="k">namespace</span> <span class="nn">TestClassLibrary1</span>
+<span class="p">{</span>
+  <span class="c1">// テストクラスで上記internalにアクセスできる</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="id19">
+<h2>匿名型オブジェクト<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p>クラスを少ない文字列で書くための記法</p></li>
+<li><p>オブジェクトの型宣言や変数の型名が不要</p></li>
+<li><p>変数は、読み出し専用プロパティとして自動実装される</p></li>
+<li><p>つまり、匿名型オブジェクトは、「変更不可能」なデータの集まりである</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">a</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;Hoge&quot;</span><span class="p">,</span> <span class="n">Age</span> <span class="p">=</span> <span class="m">20</span> <span class="p">};</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;{a.Name}, {a.Age}&quot;</span><span class="p">);</span>   <span class="c1">// $要</span>
+</pre></div>
+</div>
+</li>
+<li><p>「同じ名前、同じ型、同じ並び順」の匿名型は、同一クラスとして扱うことができる</p></li>
+<li><p>以下の例ではa,bのオブジェクトは同一クラスのオブジェクトと判断される</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">a</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;Hoge1&quot;</span><span class="p">,</span> <span class="n">Age</span> <span class="p">=</span> <span class="m">20</span> <span class="p">};</span>
+<span class="kt">var</span> <span class="n">b</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;Hoge2&quot;</span><span class="p">,</span> <span class="n">Age</span> <span class="p">=</span> <span class="m">18</span> <span class="p">};</span>
+
+<span class="n">a</span> <span class="p">=</span> <span class="n">b</span><span class="p">;</span>  <span class="c1">// 代入可能</span>
+</pre></div>
+</div>
+</li>
+<li><p>プロパティ名を省略することも可能</p></li>
+<li><p>省略した場合は、参照先のプロパティ名と同一名となる</p></li>
+<li><p>以下の例の(1),(2)は同等である</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">a</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;Hoge1&quot;</span><span class="p">,</span> <span class="n">Age</span> <span class="p">=</span> <span class="m">20</span> <span class="p">};</span>
+<span class="kt">var</span> <span class="n">b</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;Hoge2&quot;</span><span class="p">,</span> <span class="n">Age</span> <span class="p">=</span> <span class="m">18</span> <span class="p">};</span>
+
+<span class="kt">var</span> <span class="n">c</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="n">a</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">Age</span> <span class="p">=</span> <span class="n">b</span><span class="p">.</span><span class="n">Age</span><span class="p">};</span>  <span class="c1">// (1)</span>
+<span class="kt">var</span> <span class="n">c</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> <span class="n">a</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">Age</span><span class="p">};</span>               <span class="c1">// (2)</span>
+</pre></div>
+</div>
+</li>
+<li><p>主な用途は、LINQのSelect句での使用</p></li>
+<li><p>Select句で列挙した値だけを含むオブジェクトを作る</p></li>
+</ul>
+</section>
+<section id="implicitexplicit">
+<h2>変換演算子（implicitとexplicit）<a class="headerlink" href="#implicitexplicit" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p>クラスオブジェクトを（／から）キャストする方法</p></li>
+<li><p>暗黙的な型変換（implicit）と明示的な型変換（explicit）がある</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 暗黙的な型変換（implicit）の例</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">Test</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="kt">int</span> <span class="n">X</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+  <span class="k">public</span> <span class="nf">Test</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">X</span> <span class="p">=</span> <span class="n">x</span><span class="p">;</span>
+
+  <span class="c1">// 暗黙的な型変換   例. int a = test;</span>
+  <span class="k">public</span> <span class="k">static</span> <span class="k">implicit</span> <span class="k">operator</span> <span class="nf">int</span><span class="p">(</span><span class="n">Test</span> <span class="n">test</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">test</span><span class="p">.</span><span class="n">X</span><span class="p">;</span>
+
+  <span class="c1">// 暗黙的な型変換   例. Test test = intValue;</span>
+  <span class="k">public</span> <span class="k">static</span> <span class="k">implicit</span> <span class="k">operator</span> <span class="nf">Test</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="n">Test</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+  <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">Test</span> <span class="n">test</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Test</span><span class="p">(</span><span class="m">7</span><span class="p">);</span>
+
+    <span class="kt">int</span> <span class="n">a</span> <span class="p">=</span> <span class="n">test</span><span class="p">;</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>       <span class="c1">// 7</span>
+
+    <span class="kt">int</span> <span class="n">intValue</span> <span class="p">=</span> <span class="m">14</span><span class="p">;</span>
+    <span class="n">test</span> <span class="p">=</span> <span class="n">intValue</span><span class="p">;</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">test</span><span class="p">.</span><span class="n">X</span><span class="p">);</span>  <span class="c1">// 14</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 明示的な型変換（explicit）の例</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">Test</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="kt">int</span> <span class="n">X</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+  <span class="k">public</span> <span class="nf">Test</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">X</span> <span class="p">=</span> <span class="n">x</span><span class="p">;</span>
+
+  <span class="c1">// 暗黙的な型変換   例. int a = test;</span>
+  <span class="k">public</span> <span class="k">static</span> <span class="k">explicit</span> <span class="k">operator</span> <span class="nf">int</span><span class="p">(</span><span class="n">Test</span> <span class="n">test</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">test</span><span class="p">.</span><span class="n">X</span><span class="p">;</span>
+
+  <span class="c1">// 暗黙的な型変換   例. Test test = intValue;</span>
+  <span class="k">public</span> <span class="k">static</span> <span class="k">explicit</span> <span class="k">operator</span> <span class="nf">Test</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="n">Test</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+  <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">Test</span> <span class="n">test</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Test</span><span class="p">(</span><span class="m">7</span><span class="p">);</span>
+
+    <span class="kt">int</span> <span class="n">a</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">test</span><span class="p">;</span>          <span class="c1">// 明示的にキャストが必要</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>       <span class="c1">// 7</span>
+
+    <span class="kt">int</span> <span class="n">intValue</span> <span class="p">=</span> <span class="m">14</span><span class="p">;</span>
+    <span class="n">test</span> <span class="p">=</span> <span class="p">(</span><span class="n">Test</span><span class="p">)</span><span class="n">intValue</span><span class="p">;</span>      <span class="c1">// 明示的にキャストが必要</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">test</span><span class="p">.</span><span class="n">X</span><span class="p">);</span>  <span class="c1">// 14</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
 </section>
 
 
@@ -538,7 +644,7 @@ if(b != null)
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="%E4%BB%95%E6%A7%98.html" class="btn btn-neutral float-left" title="仕様" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="%E6%96%87%E5%AD%97%E5%88%97.html" class="btn btn-neutral float-right" title="文字列" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="%E5%88%9D%E6%9C%9F%E5%8C%96.html" class="btn btn-neutral float-right" title="初期化" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

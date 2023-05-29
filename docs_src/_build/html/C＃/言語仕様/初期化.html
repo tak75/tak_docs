@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>処理高速比較 &mdash; Tak Documents  ドキュメント</title>
+  <title>初期化 &mdash; Tak Documents  ドキュメント</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/my_theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
-    <link rel="next" title="Dispose" href="Dispose.html" />
-    <link rel="prev" title="例外" href="%E4%BE%8B%E5%A4%96.html" /> 
+    <link rel="next" title="文字列" href="%E6%96%87%E5%AD%97%E5%88%97.html" />
+    <link rel="prev" title="全般" href="%E5%85%A8%E8%88%AC.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -53,6 +53,12 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">言語仕様</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="%E4%BB%95%E6%A7%98.html">仕様</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E5%85%A8%E8%88%AC.html">全般</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">初期化</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">配列</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">コレクション</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">オブジェクト初期化子でコレクションを初期化</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="%E6%96%87%E5%AD%97%E5%88%97.html">文字列</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3.html">プロパティ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%EF%BC%8F%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA.html">ファイル／ディレクトリ</a></li>
@@ -60,11 +66,7 @@
 <li class="toctree-l3"><a class="reference internal" href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html">イベント、デリゲート</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89.html">スレッド</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E4%BE%8B%E5%A4%96.html">例外</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">処理高速比較</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#listfor-foreach">配列/List、for/foreach 比較</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#foreach-foreach">foreach/ForEach 比較</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="%E5%87%A6%E7%90%86%E9%AB%98%E9%80%9F%E6%AF%94%E8%BC%83.html">処理高速比較</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Dispose.html">Dispose</a></li>
 <li class="toctree-l3"><a class="reference internal" href="yield.html">yield</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Null.html">Null</a></li>
@@ -103,9 +105,9 @@
       <li><a href="../../index.html" class="icon icon-home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">C＃</a></li>
           <li class="breadcrumb-item"><a href="index.html">言語仕様</a></li>
-      <li class="breadcrumb-item active">処理高速比較</li>
+      <li class="breadcrumb-item active">初期化</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/C＃/言語仕様/処理高速比較.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/C＃/言語仕様/初期化.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -114,55 +116,55 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>処理高速比較<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<section id="listfor-foreach">
-<h2>配列/List、for/foreach 比較<a class="headerlink" href="#listfor-foreach" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<ul class="simple">
-<li><p>全く同じ処理を for と foreach で行った場合、Listではfor、配列では foreach の方が早い</p></li>
-<li><p>早い順に、配列のforeach -&gt; 配列のfor -&gt; Listのfor -&gt; Listのforeach</p></li>
-<li><p>Listとは、～.ToList()で得られるコレクション</p></li>
-<li><p>配列とは、～.ToArray()で得られるコレクション</p></li>
-<li><p><a class="reference external" href="https://takap-tech.com/entry/2020/10/20/234610">https://takap-tech.com/entry/2020/10/20/234610</a></p></li>
-</ul>
-</section>
-<section id="foreach-foreach">
-<h2>foreach/ForEach 比較<a class="headerlink" href="#foreach-foreach" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<ul>
-<li><p>foreach文よりも、コレクションのメソッドが持つForEachメソッドの方が高速である。</p>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 例1</span>
-<span class="kt">int</span><span class="p">[]</span> <span class="n">a</span> <span class="p">=</span> <span class="p">{</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">};</span>
-<span class="n">Array</span><span class="p">.</span><span class="n">ForEach</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">=&gt;</span>
-<span class="p">{</span>
-  <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
-<span class="p">});</span>
+<h1>初期化<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<section id="id2">
+<h2>配列<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">[]</span> <span class="n">array</span> <span class="p">=</span> <span class="p">{</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">};</span>
 
-<span class="c1">// 例2</span>
-<span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">items</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;()</span> <span class="p">{</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">6</span> <span class="p">};</span>
-<span class="n">items</span><span class="p">.</span><span class="n">ForEach</span><span class="p">(</span><span class="n">item</span> <span class="p">=&gt;</span>
-<span class="p">{</span>
-    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
-<span class="p">});</span>
+<span class="c1">// C#3.0で拡張された「暗黙に型付けされた配列」</span>
+<span class="kt">var</span> <span class="n">array</span> <span class="p">=</span> <span class="k">new</span> <span class="p">[]</span> <span class="p">{</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">};</span>
 </pre></div>
 </div>
-</li>
-<li><p>ただし、条件判断でbreak分により繰り返し処理を打ち切ることはできない</p></li>
-<li><p>処理を打ち切りたい場合は、Findを使用すればよい</p></li>
-<li><p>（本来Findはデータを探すためのメソッドであり、繰り返し制御に使う発想の転換が必要）</p>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 例1</span>
-<span class="n">Array</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">=&gt;</span>
-<span class="p">{</span>
-  <span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="p">==</span><span class="m">0</span><span class="p">)</span> <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
-  <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
-  <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
-<span class="p">});</span>
+</div></blockquote>
+</section>
+<section id="id3">
+<h2>コレクション<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// リスト</span>
+<span class="kt">var</span> <span class="n">list</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;()</span> <span class="p">{</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">};</span>
 
-<span class="c1">// 例2</span>
-<span class="n">items</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">item</span> <span class="p">=&gt;</span>
+<span class="c1">// 辞書</span>
+<span class="kt">var</span> <span class="n">t</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;()</span>
 <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">item</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span> <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
-    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
-    <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
-<span class="p">});</span>
+  <span class="p">{</span><span class="m">20</span><span class="p">,</span> <span class="s">&quot;Hoge1&quot;</span><span class="p">},</span>
+  <span class="p">{</span><span class="m">18</span><span class="p">,</span> <span class="s">&quot;Hoge2&quot;</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id4">
+<h2>オブジェクト初期化子でコレクションを初期化<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p>コレクションの初期化は、コレクション自身を書き換えるわけではないので、readonlyでもオブジェクト初期化子で初期化できる</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">A</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">List1</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;();</span>
+  <span class="k">public</span> <span class="k">readonly</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">List2</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;();</span>
+  <span class="k">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">List3</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;();</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+  <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="kt">var</span> <span class="n">a</span> <span class="p">=</span> <span class="k">new</span> <span class="n">A</span><span class="p">()</span> <span class="p">{</span> <span class="n">List1</span> <span class="p">=</span> <span class="p">{</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span> <span class="p">},</span> <span class="n">List2</span> <span class="p">=</span> <span class="p">{</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">6</span> <span class="p">},</span> <span class="n">List3</span> <span class="p">=</span> <span class="p">{</span> <span class="m">7</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">9</span> <span class="p">}</span> <span class="p">};</span>
+    <span class="n">a</span><span class="p">.</span><span class="n">List1</span><span class="p">.</span><span class="n">ForEach</span><span class="p">(</span><span class="n">item</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">&quot;{item},&quot;</span><span class="p">));</span>  <span class="c1">// $要。出力 : 1,2,3,</span>
+    <span class="n">a</span><span class="p">.</span><span class="n">List2</span><span class="p">.</span><span class="n">ForEach</span><span class="p">(</span><span class="n">item</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">&quot;{item},&quot;</span><span class="p">));</span>  <span class="c1">// $要。出力 : 4,5,6,</span>
+    <span class="n">a</span><span class="p">.</span><span class="n">List3</span><span class="p">.</span><span class="n">ForEach</span><span class="p">(</span><span class="n">item</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">&quot;{item},&quot;</span><span class="p">));</span>  <span class="c1">// $要。出力 : 7,8,9,</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </li>
@@ -174,8 +176,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="%E4%BE%8B%E5%A4%96.html" class="btn btn-neutral float-left" title="例外" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Dispose.html" class="btn btn-neutral float-right" title="Dispose" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="%E5%85%A8%E8%88%AC.html" class="btn btn-neutral float-left" title="全般" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="%E6%96%87%E5%AD%97%E5%88%97.html" class="btn btn-neutral float-right" title="文字列" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

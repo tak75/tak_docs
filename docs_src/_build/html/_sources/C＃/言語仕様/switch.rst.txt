@@ -6,9 +6,9 @@ switch
 ========================
 
 * C# 8からの仕様
+* https://ufcpp.net/blog/2018/12/cs8switchexpr/
 * switch構文: var y = x switch { ... } 
 * 以下の1,2は同一
-* https://ufcpp.net/blog/2018/12/cs8switchexpr/
 
   .. code-block:: csharp
     

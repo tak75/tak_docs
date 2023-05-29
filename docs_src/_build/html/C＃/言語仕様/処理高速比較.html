@@ -40,7 +40,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Git/index.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
@@ -54,6 +54,7 @@
 <li class="toctree-l3"><a class="reference internal" href="%E4%BB%95%E6%A7%98.html">仕様</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E5%85%A8%E8%88%AC.html">全般</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E6%96%87%E5%AD%97%E5%88%97.html">文字列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3.html">プロパティ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%EF%BC%8F%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA.html">ファイル／ディレクトリ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="LINQ.html">LINQ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html">イベント、デリゲート</a></li>
@@ -65,6 +66,11 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Dispose.html">Dispose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yield.html">yield</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Null.html">Null</a></li>
+<li class="toctree-l3"><a class="reference internal" href="switch.html">switch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E6%8B%A1%E5%BC%B5%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89.html">拡張メソッド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E5%90%8D%E5%89%8D%E7%A9%BA%E9%96%93.html">名前空間</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../WPF/index.html">WPF</a></li>
@@ -121,29 +127,46 @@
 </section>
 <section id="foreach-foreach">
 <h2>foreach/ForEach 比較<a class="headerlink" href="#foreach-foreach" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>foreach文よりも、コレクションのメソッドが持つForEachメソッドの方が高速である。</p>
-<blockquote>
-<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">[]</span> <span class="n">a</span> <span class="p">=</span> <span class="p">{</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">};</span>
+<ul>
+<li><p>foreach文よりも、コレクションのメソッドが持つForEachメソッドの方が高速である。</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 例1</span>
+<span class="kt">int</span><span class="p">[]</span> <span class="n">a</span> <span class="p">=</span> <span class="p">{</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">};</span>
 <span class="n">Array</span><span class="p">.</span><span class="n">ForEach</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">=&gt;</span>
 <span class="p">{</span>
   <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
 <span class="p">});</span>
+
+<span class="c1">// 例2</span>
+<span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">items</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;()</span> <span class="p">{</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">6</span> <span class="p">};</span>
+<span class="n">items</span><span class="p">.</span><span class="n">ForEach</span><span class="p">(</span><span class="n">item</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="p">});</span>
 </pre></div>
 </div>
-</div></blockquote>
-<p>ただし、条件判断でbreak分により繰り返し処理を打ち切ることはできない。
-処理を打ち切りたい場合は、Findを使用すればよい。
-（本来Findはデータを探すためのメソッドであり、繰り返し制御に使う発想の転換が必要）</p>
-<blockquote>
-<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">Array</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">=&gt;</span>
+</li>
+<li><p>ただし、条件判断でbreak分により繰り返し処理を打ち切ることはできない</p></li>
+<li><p>処理を打ち切りたい場合は、Findを使用すればよい</p></li>
+<li><p>（本来Findはデータを探すためのメソッドであり、繰り返し制御に使う発想の転換が必要）</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 例1</span>
+<span class="n">Array</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">=&gt;</span>
 <span class="p">{</span>
   <span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="p">==</span><span class="m">0</span><span class="p">)</span> <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
   <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
   <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
 <span class="p">});</span>
+
+<span class="c1">// 例2</span>
+<span class="n">items</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">item</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">item</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span> <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+    <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+<span class="p">});</span>
 </pre></div>
 </div>
-</div></blockquote>
+</li>
+</ul>
 </section>
 </section>
 

@@ -14,25 +14,43 @@
 foreach/ForEach 比較
 ====================
 
-foreach文よりも、コレクションのメソッドが持つForEachメソッドの方が高速である。
+* foreach文よりも、コレクションのメソッドが持つForEachメソッドの方が高速である。
 
   .. code-block:: csharp
 
+    // 例1
     int[] a = {2,3,0,5,6};
     Array.ForEach(a, (n) =>
     {
       Console.WriteLine(n);
     });
 
-ただし、条件判断でbreak分により繰り返し処理を打ち切ることはできない。
-処理を打ち切りたい場合は、Findを使用すればよい。
-（本来Findはデータを探すためのメソッドであり、繰り返し制御に使う発想の転換が必要）
+    // 例2
+    List<int> items = new List<int>() { 2, 3, 0, 5, 6 };
+    items.ForEach(item =>
+    {
+        Console.WriteLine(item);
+    });
+
+* ただし、条件判断でbreak分により繰り返し処理を打ち切ることはできない
+* 処理を打ち切りたい場合は、Findを使用すればよい
+* （本来Findはデータを探すためのメソッドであり、繰り返し制御に使う発想の転換が必要）
 
   .. code-block:: csharp
 
+    // 例1
     Array.Find(a, (n) => 
     {
       if(n==0) return true;
       Console.WriteLine(n);
       return false;
     });
+
+    // 例2
+    items.Find(item =>
+    {
+        if (item == 0) return true;
+        Console.WriteLine(item);
+        return false;
+    });
+

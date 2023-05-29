@@ -30,3 +30,33 @@
         get => locationName;
         set => locationName = value;
     }
+
+プロパティの参照渡し
+====================
+
+* プロパティは参照渡し（ref 引数での渡し）ができない
+* そこで、その対策としてデリゲートを渡す方法がある
+
+  .. code-block:: csharp
+
+    static class SomeClass
+    {
+        public static int A { get; set; }
+    }
+
+    class Program
+    {
+        private static bool doSomething(Func<int> getter, Action<int> setter)
+        {
+            setter(getter() + 1);
+            return getter() == 1;
+        }
+
+        static void Main(string[] args)
+        {
+            if (doSomething(() => SomeClass.A, (v) => {SomeClass.A = v;}))
+            {
+                //
+            }
+        } 
+    }
