@@ -57,7 +57,7 @@
 <li class="toctree-l3"><a class="reference internal" href="%E6%96%87%E5%AD%97%E5%88%97.html">文字列</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3.html">プロパティ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%EF%BC%8F%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA.html">ファイル／ディレクトリ</a></li>
-<li class="toctree-l3"><a class="reference internal" href="LINQ.html">LINQ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="LINQ/index.html">LINQ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html">イベント、デリゲート</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89.html">スレッド</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E4%BE%8B%E5%A4%96.html">例外</a></li>
@@ -67,7 +67,8 @@
 <li class="toctree-l3"><a class="reference internal" href="Null.html">Null</a></li>
 <li class="toctree-l3"><a class="reference internal" href="switch.html">switch</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">拡張メソッド</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">拡張メソッドの基本</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">特徴</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">宣言方法</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#tostring">列挙体の拡張メソッド（任意文字列を出力するToString()相当のメソッドを作る）</a></li>
 </ul>
 </li>
@@ -117,7 +118,15 @@
   <section id="id1">
 <h1>拡張メソッド<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <section id="id2">
-<h2>拡張メソッドの基本<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>特徴<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p>拡張メソッドは、既存のメソッドを置き換える機能は持っていない</p></li>
+<li><p>常に、本来の自前のメソッドの方が優先される</p></li>
+<li><p>後から付け加えられた拡張メソッドは、常に競合しない場合のみ有効である</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>宣言方法<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
 <li><p>拡張メソッドは、静的なメソッド（static）である</p></li>
 <li><p>拡張メソッドは、静的クラス（static）に記述されている</p></li>

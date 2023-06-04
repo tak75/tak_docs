@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>メソッド説明 &mdash; Tak Documents  ドキュメント</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/translations.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="検索" href="../../../search.html" />
+    <link rel="next" title="その他" href="%E3%81%9D%E3%81%AE%E4%BB%96.html" />
+    <link rel="prev" title="メソッドリスト" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%83%AA%E3%82%B9%E3%83%88.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Tak Documents
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Git/index.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../VirtualBox/index.html">VirtualBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Matplotlib/index.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Jupyter/index.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Web%E3%82%A2%E3%83%97%E3%83%AA/index.html">Webアプリ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../C/index.html">C</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">C＃</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">言語仕様</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../%E4%BB%95%E6%A7%98.html">仕様</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../%E5%85%A8%E8%88%AC.html">全般</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../%E5%88%9D%E6%9C%9F%E5%8C%96.html">初期化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../%E6%96%87%E5%AD%97%E5%88%97.html">文字列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3.html">プロパティ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%EF%BC%8F%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA.html">ファイル／ディレクトリ</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">LINQ</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%83%AA%E3%82%B9%E3%83%88.html">メソッドリスト</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">メソッド説明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="%E3%81%9D%E3%81%AE%E4%BB%96.html">その他</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html">イベント、デリゲート</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89.html">スレッド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../%E4%BE%8B%E5%A4%96.html">例外</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../%E5%87%A6%E7%90%86%E9%AB%98%E9%80%9F%E6%AF%94%E8%BC%83.html">処理高速比較</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Dispose.html">Dispose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../yield.html">yield</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Null.html">Null</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../switch.html">switch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../%E6%8B%A1%E5%BC%B5%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89.html">拡張メソッド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../%E5%90%8D%E5%89%8D%E7%A9%BA%E9%96%93.html">名前空間</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../WPF/index.html">WPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../XAML/index.html">XAML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReactiveExtensions/index.html">ReactiveExtensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../VisualStudio.html">VisualStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E8%87%AA%E5%8B%95%E4%BD%9C%E6%88%90.html">ドキュメント自動作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA.html">テスト駆動開発</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../UML/index.html">UML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90/index.html">データ分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../%E5%82%99%E5%BF%98%E9%8C%B2/index.html">備忘録</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Tak Documents</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">C＃</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">言語仕様</a></li>
+          <li class="breadcrumb-item"><a href="index.html">LINQ</a></li>
+      <li class="breadcrumb-item active">メソッド説明</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/C＃/言語仕様/LINQ/メソッド説明.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>メソッド説明<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<section id="linq">
+<h2>LINQのメソッドリスト<a class="headerlink" href="#linq" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<dl class="glossary">
+<dt id="term-Aggregate">Aggregate<a class="headerlink" href="#term-Aggregate" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-All">All<a class="headerlink" href="#term-All" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-Any">Any<a class="headerlink" href="#term-Any" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-AsEnumerable">AsEnumerable<a class="headerlink" href="#term-AsEnumerable" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-AsOrdered">AsOrdered<a class="headerlink" href="#term-AsOrdered" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-AsParallel">AsParallel<a class="headerlink" href="#term-AsParallel" title="Permalink to this term">¶</a></dt><dd><ul>
+<li><p>クエリの並列化を有効にする</p></li>
+<li><p>クエリのソースにこのメソッドを追加するだけで並列処理される</p></li>
+<li><p>順番に依存する処理での使用は要注意</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="p">[]</span> <span class="n">a</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="m">100000000</span><span class="p">];</span>
+<span class="n">a</span><span class="p">[</span><span class="n">a</span><span class="p">.</span><span class="n">Length</span><span class="p">-</span><span class="m">1</span><span class="p">]</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+
+<span class="c1">// シリアル処理</span>
+<span class="kt">var</span> <span class="n">bySerial</span> <span class="p">=</span> <span class="n">a</span><span class="p">.</span><span class="n">Count</span><span class="p">(</span><span class="n">c</span> <span class="p">=&gt;</span> <span class="n">c</span> <span class="p">==</span> <span class="m">1</span><span class="p">);</span>
+
+<span class="c1">// 並列処理</span>
+<span class="kt">var</span> <span class="n">byParallel</span> <span class="p">=</span> <span class="n">a</span><span class="p">.</span><span class="n">AsParallel</span><span class="p">().</span><span class="n">Count</span><span class="p">(</span><span class="n">c</span> <span class="p">=&gt;</span> <span class="n">c</span> <span class="p">==</span> <span class="m">1</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+<dt id="term-AsSequential">AsSequential<a class="headerlink" href="#term-AsSequential" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-AsUnordered">AsUnordered<a class="headerlink" href="#term-AsUnordered" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-Average">Average<a class="headerlink" href="#term-Average" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-Cast">Cast<a class="headerlink" href="#term-Cast" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-Concat">Concat<a class="headerlink" href="#term-Concat" title="Permalink to this term">¶</a></dt><dd><ul>
+<li><p>2つのシーケンスを連結する（Enumerable.Concatの場合）</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">a</span> <span class="p">=</span> <span class="n">Enumerable</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">5</span><span class="p">).</span><span class="n">Concat</span><span class="p">(</span><span class="n">Enumerable</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">4</span><span class="p">).</span><span class="n">Reverse</span><span class="p">()).</span><span class="n">Toarray</span><span class="p">();</span>
+<span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">a</span><span class="p">)</span> <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+
+<span class="c1">// 出力 : 123454321</span>
+</pre></div>
+</div>
+</li>
+<li><p>2つの並列シーケンスを連結する（ParallelEnumerable.Concatの場合）</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="k">static</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">GetList1</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">Enumerable</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">100</span><span class="p">))</span> <span class="k">yield</span> <span class="k">return</span> <span class="n">item</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">private</span> <span class="k">static</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">GetList2</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">Enumerable</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="m">100</span><span class="p">,</span><span class="m">100</span><span class="p">))</span> <span class="k">yield</span> <span class="k">return</span> <span class="n">item</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// どちらも同意</span>
+    <span class="c1">// foreach (var item in GetList1().AsParallel().Concat(GetList2().AsParallel()))</span>
+    <span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">ParallelEnumerable</span><span class="p">.</span><span class="n">Concat</span><span class="p">(</span><span class="n">GetList1</span><span class="p">().</span><span class="n">AsParallel</span><span class="p">(),</span><span class="n">GetList2</span><span class="p">().</span><span class="n">AsParallel</span><span class="p">()))</span>
+    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">&quot;{0} &quot;</span><span class="p">,</span> <span class="n">item</span><span class="p">);</span>
+
+        <span class="c1">// 出力（結果は実行の都度異なる）</span>
+        <span class="c1">// 3 1 4 5 10 11 9 7 13 12 6 8 14 15 16 2 108 102 103 109 60 110</span>
+        <span class="c1">// 107 17 173 111 105 106 104 199 65 112 18 178 135 66 113 19 179</span>
+        <span class="c1">// 165 67 114 20 180 166 68 115 21 181 167 69 116 22 182 168 70 117</span>
+        <span class="c1">// 23 183 71 118 24 184 72 119 25 185 89 120 26 186 90 121 27 187 91</span>
+        <span class="c1">// 122 28 188 92 123 29 189 93 124 30 190 94 125 31 191 95 126 32</span>
+        <span class="c1">// 192 96 127 33 193 97 128 34 194 98 129 35 195 99 130 36 196 100</span>
+        <span class="c1">// 131 37 197 100 132 38 198 140 133 39 141 134 40 142 136 41 147</span>
+        <span class="c1">// 137 42 148 138 43 149 139 44 150 143 45 151 144 46 152 145 47 153</span>
+        <span class="c1">// 146 48 154 169 49 155 170 50 156 171 51 157 172 52 158 174 53 159</span>
+        <span class="c1">// 175 54 160 176 55 161 177 56 162 57 163 58 164 59 61 62 63 64 73</span>
+        <span class="c1">// 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 101</span>
+
+        <span class="c1">// &quot;ParallelEnumerable&quot; を &quot;Enumerable&quot; に変えると以下の出力となる</span>
+        <span class="c1">// その場合は、&quot;.AsParallel()&quot;は不要</span>
+        <span class="c1">// 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25</span>
+        <span class="c1">// 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47</span>
+        <span class="c1">// 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69</span>
+        <span class="c1">// 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91</span>
+        <span class="c1">// 92 93 94 95 96 97 98 99 100 100 101 102 103 104 105 106 107 108 109</span>
+        <span class="c1">// 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126</span>
+        <span class="c1">// 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143</span>
+        <span class="c1">// 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160</span>
+        <span class="c1">// 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177</span>
+        <span class="c1">// 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194</span>
+        <span class="c1">// 195 196 197 198 199</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>aa</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+<dt id="term-Contains">Contains<a class="headerlink" href="#term-Contains" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-Count">Count<a class="headerlink" href="#term-Count" title="Permalink to this term">¶</a></dt><dd><ul>
+<li><p>シーケンスの要素数を返す</p></li>
+<li><p>条件を付加した場合は、その条件を満たす要素数を返す</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;lの数は{0}個&quot;</span><span class="p">,</span> <span class="s">&quot;Hello&quot;</span><span class="p">.</span><span class="n">Count</span><span class="p">(</span><span class="n">c</span> <span class="p">=&gt;</span> <span class="n">c</span> <span class="p">==</span><span class="sc">&#39;l&#39;</span><span class="p">));</span>
+
+<span class="c1">// 出力 : lの数は2個</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+<dt id="term-DefaultIfEmpty">DefaultIfEmpty<a class="headerlink" href="#term-DefaultIfEmpty" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-Distinct">Distinct<a class="headerlink" href="#term-Distinct" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-ElementAt">ElementAt<a class="headerlink" href="#term-ElementAt" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-ElementAtOrDefault">ElementAtOrDefault<a class="headerlink" href="#term-ElementAtOrDefault" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-Empty">Empty<a class="headerlink" href="#term-Empty" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-Except">Except<a class="headerlink" href="#term-Except" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-First">First<a class="headerlink" href="#term-First" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-FirstOrDefault">FirstOrDefault<a class="headerlink" href="#term-FirstOrDefault" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-ForAll">ForAll<a class="headerlink" href="#term-ForAll" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-GroupBy">GroupBy<a class="headerlink" href="#term-GroupBy" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-GroupJoin">GroupJoin<a class="headerlink" href="#term-GroupJoin" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-Intersect">Intersect<a class="headerlink" href="#term-Intersect" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-Join">Join<a class="headerlink" href="#term-Join" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-Last">Last<a class="headerlink" href="#term-Last" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-LastOrDefault">LastOrDefault<a class="headerlink" href="#term-LastOrDefault" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-LongCount">LongCount<a class="headerlink" href="#term-LongCount" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-Max">Max<a class="headerlink" href="#term-Max" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-Min">Min<a class="headerlink" href="#term-Min" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-OfType">OfType<a class="headerlink" href="#term-OfType" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-OrderBy">OrderBy<a class="headerlink" href="#term-OrderBy" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-OrderByDescending">OrderByDescending<a class="headerlink" href="#term-OrderByDescending" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-Range">Range<a class="headerlink" href="#term-Range" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-Repeat">Repeat<a class="headerlink" href="#term-Repeat" title="Permalink to this term">¶</a></dt><dd><ul>
+<li><p>同じ値が指定回数繰り返されるシーケンスを生成する</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">a</span> <span class="p">=</span> <span class="n">ParallelEnumerable</span><span class="p">.</span><span class="n">Repeat</span><span class="p">(</span><span class="sc">&#39;2&#39;</span><span class="p">,</span> <span class="m">20</span><span class="p">);</span>
+
+<span class="c1">// 出力 : 22222222222222222222</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+<dt id="term-Reverse">Reverse<a class="headerlink" href="#term-Reverse" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>シーケンスの順番を逆転させる</p></li>
+</ul>
+</dd>
+<dt id="term-Select">Select<a class="headerlink" href="#term-Select" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>シーケンスを射影する</p></li>
+</ul>
+</dd>
+<dt id="term-SelectMany">SelectMany<a class="headerlink" href="#term-SelectMany" title="Permalink to this term">¶</a></dt><dd><ul>
+<li><p><a class="reference external" href="https://yaspage.com/cs-linq-selectmany/">https://yaspage.com/cs-linq-selectmany/</a></p></li>
+<li><p>リストの中にあるリストを１つにまとめることができる（平坦化という）</p></li>
+<li><p>以下は上記URLの4例のうちの1例である</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 基本的な使い方</span>
+<span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// SampleDataクラスのリストの宣言と初期化</span>
+        <span class="n">List</span><span class="p">&lt;</span><span class="n">SampleData</span><span class="p">&gt;</span> <span class="n">list</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">SampleData</span><span class="p">&gt;</span> <span class="p">{</span>
+            <span class="k">new</span> <span class="n">SampleData</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="n">DataList</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="p">{</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span> <span class="p">}</span> <span class="p">},</span>
+            <span class="k">new</span> <span class="n">SampleData</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="n">DataList</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="p">{</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">6</span> <span class="p">}</span> <span class="p">},</span>
+            <span class="k">new</span> <span class="n">SampleData</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;c&quot;</span><span class="p">,</span> <span class="n">DataList</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="p">{</span> <span class="m">7</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">9</span> <span class="p">}</span> <span class="p">},</span>
+        <span class="p">};</span>
+
+        <span class="c1">// SelectManyでリストの中のリストを１つにまとめたものを他の項目と組み合わせる</span>
+        <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">list</span><span class="p">.</span><span class="n">SelectMany</span><span class="p">(</span>
+                              <span class="n">data</span> <span class="p">=&gt;</span> <span class="n">data</span><span class="p">.</span><span class="n">DataList</span><span class="p">,</span>                                    <span class="c1">// (1)</span>
+            <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">DataList_value</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">Value</span> <span class="p">=</span> <span class="n">DataList_value</span> <span class="p">}</span>  <span class="c1">// (2)</span>
+        <span class="p">);</span>
+        <span class="c1">// 結果を表示</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">d</span> <span class="k">in</span> <span class="n">result</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Name={d.Name}, Value={d.Value}&quot;</span><span class="p">);</span>  <span class="c1">// 要$</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">SampleData</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">DataList</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 出力</span>
+<span class="c1">// Name=a, Value=1</span>
+<span class="c1">// Name=a, Value=2</span>
+<span class="c1">// Name=a, Value=3</span>
+<span class="c1">// Name=b, Value=4</span>
+<span class="c1">// Name=b, Value=5</span>
+<span class="c1">// Name=b, Value=6</span>
+<span class="c1">// Name=c, Value=7</span>
+<span class="c1">// Name=c, Value=8</span>
+<span class="c1">// Name=c, Value=9</span>
+</pre></div>
+</div>
+</li>
+<li><p>2つのシーケンスを入力に持つクエリを実現するために使用される</p></li>
+<li><p>全ての組み合わせが生成される</p></li>
+<li><p>以下は掛け算の九九表の例</p></li>
+<li><p>上記の例と同じ引数2つの使い方であるが、(1)において、
+上記はlist内のDataListを平坦化したコレクションを使用しているのに対して、
+下記は別のコレクションを使用している点がおもしろい</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 補足</span>
+<span class="kt">var</span> <span class="n">list1</span> <span class="p">=</span> <span class="n">Enumerable</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">9</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">list2</span> <span class="p">=</span> <span class="n">Enumerable</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">9</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">a</span> <span class="p">=</span> <span class="n">list1</span>
+        <span class="p">.</span><span class="n">SelectMany</span><span class="p">(</span>
+              <span class="n">x</span> <span class="p">=&gt;</span> <span class="n">list2</span><span class="p">,</span>                         <span class="c1">// (1) x:list1の要素</span>
+          <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">x</span> <span class="p">+</span> <span class="s">&quot;X&quot;</span> <span class="p">+</span> <span class="n">y</span> <span class="p">+</span> <span class="s">&quot;=&quot;</span> <span class="p">+</span> <span class="p">(</span><span class="n">x</span> <span class="p">*</span> <span class="n">y</span><span class="p">));</span>  <span class="c1">// (2) y:list2の要素</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+<dt id="term-SequenceEqual">SequenceEqual<a class="headerlink" href="#term-SequenceEqual" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-Single">Single<a class="headerlink" href="#term-Single" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>該当データが1つのみであることが保証される場合に使用する</p></li>
+<li><p>0個や2個以上の場合は例外が発生する</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">.</span><span class="n">Single</span><span class="p">(</span><span class="n">c</span> <span class="p">=&gt;</span> <span class="n">c</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+<dt id="term-SingleOrDefault">SingleOrDefault<a class="headerlink" href="#term-SingleOrDefault" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>該当データない場合に既定値を返す</p></li>
+<li><p>2個以上の場合は例外が発生する</p></li>
+<li><p>他は <a class="reference internal" href="#term-Single"><span class="xref std std-term">Single</span></a> と同じ</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">.</span><span class="n">SingleOrDefault</span><span class="p">(</span><span class="n">c</span> <span class="p">=&gt;</span> <span class="n">c</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+<dt id="term-Skip">Skip<a class="headerlink" href="#term-Skip" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-SkipWhile">SkipWhile<a class="headerlink" href="#term-SkipWhile" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-Sum">Sum<a class="headerlink" href="#term-Sum" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-Take">Take<a class="headerlink" href="#term-Take" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-TakeWhile">TakeWhile<a class="headerlink" href="#term-TakeWhile" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-ThenBy">ThenBy<a class="headerlink" href="#term-ThenBy" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-ThenByDescending">ThenByDescending<a class="headerlink" href="#term-ThenByDescending" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-ToArray">ToArray<a class="headerlink" href="#term-ToArray" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>シーケンスから配列を作成する</p></li>
+<li><p>新規に配列を作成する（配列の複製）</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">a</span><span class="p">[]</span> <span class="p">=</span> <span class="p">{</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">};</span>
+<span class="kt">int</span> <span class="n">b</span><span class="p">[]</span> <span class="p">=</span> <span class="n">a</span><span class="p">.</span><span class="n">ToArray</span><span class="p">();</span>
+
+<span class="c1">// この場合、a,bは別オブジェクトとなる</span>
+<span class="c1">// つまり、bはaを複製した配列である</span>
+</pre></div>
+</div>
+</dd>
+<dt id="term-ToDictionary">ToDictionary<a class="headerlink" href="#term-ToDictionary" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-ToList">ToList<a class="headerlink" href="#term-ToList" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-ToLookup">ToLookup<a class="headerlink" href="#term-ToLookup" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-Union">Union<a class="headerlink" href="#term-Union" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-Where">Where<a class="headerlink" href="#term-Where" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-WithCancellation">WithCancellation<a class="headerlink" href="#term-WithCancellation" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-WithDegreeOfParallelism">WithDegreeOfParallelism<a class="headerlink" href="#term-WithDegreeOfParallelism" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-WithExecutionMode">WithExecutionMode<a class="headerlink" href="#term-WithExecutionMode" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-WithMergeOptions">WithMergeOptions<a class="headerlink" href="#term-WithMergeOptions" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+<dt id="term-Zip">Zip<a class="headerlink" href="#term-Zip" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>aa</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%83%AA%E3%82%B9%E3%83%88.html" class="btn btn-neutral float-left" title="メソッドリスト" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="%E3%81%9D%E3%81%AE%E4%BB%96.html" class="btn btn-neutral float-right" title="その他" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, tak.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

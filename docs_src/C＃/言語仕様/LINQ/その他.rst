@@ -1,6 +1,6 @@
-=====
-LINQ
-=====
+======
+その他
+======
 
 引用元
 ======
@@ -26,12 +26,10 @@ LINQ
 
     .NET Framework のオブジェクトに対して問合せを行う技術。
 
-IEnumerable -> List 変換
-========================
+  シーケンス
 
-  .. code-block:: csharp
-
-    var list = enumerableCollection.ToList();
+    IEnumerable<T>のこと。
+    配列やコレクションは宣言時にメモリを確保するが、LINQを使用したIEnumerableは宣言時にはメモリを確保せず、実行時に必要な分だけ（繰り返しの数だけ）メモリを確保する？
 
 遅延実行、即時実行
 ==================
@@ -49,6 +47,20 @@ IEnumerable -> List 変換
     var res = values.Where(x => x.Contains("A").ToList());
     values.Add("AAA");
     Console.WriteLine(string.Join(",", res1));  // ABC
+
+IEnumerable -> 配列 変換
+========================
+
+  .. code-block:: csharp
+
+    var array = enumerableCollection.ToArray();
+
+IEnumerable -> List 変換
+========================
+
+  .. code-block:: csharp
+
+    var list = enumerableCollection.ToList();
 
 2次元 -> 1次元 変更
 ===================
@@ -91,6 +103,41 @@ IEnumerable -> List 変換
       .Where(x => x.Value == true)
       .Select(x => x.Index);
 
+複数条件でのソート
+==================
+
+* OrderBy().ThenBy().ThenBy()...で条件をつなげていく
+
+  .. code-block:: csharp
+
+    int[] array = {-2, -1, 0, 1, 2};
+    var query = array
+                .OrderByDescending(x => Math.Abs(x))  // 条件1
+                .ThenByDescending(x => x)             // 条件2
+                .Select(x => x);
+
+* 上記と同じ処理内容を、比較オブジェクトを使用して書くことも可能
+* 比較の条件が込み入ったときは、その方がスマートになることもある
+
+  .. code-block:: csharp
+
+    class Comparer : ICompare<int>
+    {
+      public int Compare(int x, int y)
+      {
+        int result = Math.Abs(x) - Math.Abs(y);
+        if(result == 0) return x - y;
+        return result;
+      }
+    }
+
+    static void Main(string[] args)
+    {
+      int[] array = {-2, -1, 0, 1, 2};
+      var query = array.OrderByDescending(x => x, new Compare());
+    }
+
+
 その他参考例
 ============
 
@@ -109,26 +156,10 @@ IEnumerable -> List 変換
         comList.FirstOrDefault(com => com.comNo == task.Result.comNo)
       ));
 
-比較方法
-========
 
-* SerializeJson() した上で、SequenceEqual() で比較する
-
-------------------
-オブジェクトの比較
-------------------
+* "123454321"を出力
 
   .. code-block:: csharp
 
-    return this.SerializeJson().SequenceEqual(other.SerializeJson());
-
-------------
-リストの比較
-------------
-
-  .. code-block:: csharp
-
-    var list1 = this.Info1.SelectMany(p => p.Info2.SelectMany(w => w).Select(x => (x.AValue, x.BValue))).ToList();
-    var list2 = other.Info1.SelectMany(p => p.Info2.SelectMany(w => w).Select(x => (x.AValue, x.BValue))).ToList();
-
-    return list1.SequenceEqual(list2);
+    var a = Enumerable.Range(1,5).Concat(Enumerable.Range(1,4).Reverse()).Toarray();
+    foreach(var item in a) Console.Write(item);

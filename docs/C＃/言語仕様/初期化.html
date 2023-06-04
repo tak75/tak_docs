@@ -57,12 +57,13 @@
 <li class="toctree-l4"><a class="reference internal" href="#id2">配列</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">コレクション</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">オブジェクト初期化子でコレクションを初期化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">配列を既定値で初期化</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="%E6%96%87%E5%AD%97%E5%88%97.html">文字列</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3.html">プロパティ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%EF%BC%8F%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA.html">ファイル／ディレクトリ</a></li>
-<li class="toctree-l3"><a class="reference internal" href="LINQ.html">LINQ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="LINQ/index.html">LINQ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%80%81%E3%83%87%E3%83%AA%E3%82%B2%E3%83%BC%E3%83%88.html">イベント、デリゲート</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89.html">スレッド</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E4%BE%8B%E5%A4%96.html">例外</a></li>
@@ -169,6 +170,20 @@
 </div>
 </li>
 </ul>
+</section>
+<section id="id5">
+<h2>配列を既定値で初期化<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 従来の方法</span>
+<span class="kt">var</span> <span class="n">a</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DataType</span><span class="p">[</span><span class="m">10000</span><span class="p">];</span>
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">=</span><span class="m">0</span><span class="p">;</span> <span class="n">i</span><span class="p">&lt;</span><span class="n">a</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">=</span> <span class="n">DataType</span><span class="p">.</span><span class="n">NO_DATA</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// LINQを使用した方法</span>
+<span class="kt">var</span> <span class="n">a</span> <span class="p">=</span> <span class="n">Enumerable</span><span class="p">.</span><span class="n">Repeat</span><span class="p">(</span><span class="n">DataType</span><span class="p">.</span><span class="n">No_DATA</span><span class="p">,</span> <span class="m">10000</span><span class="p">).</span><span class="n">ToArray</span><span class="p">();</span>
+</pre></div>
+</div>
+</div></blockquote>
 </section>
 </section>
 
