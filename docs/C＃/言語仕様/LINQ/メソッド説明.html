@@ -277,12 +277,25 @@
 <li><p>aa</p></li>
 </ul>
 </dd>
-<dt id="term-First">First<a class="headerlink" href="#term-First" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<dt id="term-First">First<a class="headerlink" href="#term-First" title="Permalink to this term">¶</a></dt><dd><ul>
+<li><p>シーケンスの最初の要素、または条件を満たす最初の1つを返す</p></li>
+<li><p>該当データがない場合は例外となる</p></li>
+<li><p>シーケンスに目的のデータが確実にあるとわかっている場合は、FirstOrDefaultメソッドよりもこのメソッドの方がよい。
+バグによりシーケンスにデータがない場合に、例外ですぐにわかるため</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">string</span><span class="p">[]</span> <span class="n">a</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;ab&quot;</span><span class="p">,</span> <span class="s">&quot;abc&quot;</span><span class="p">,</span> <span class="s">&quot;de&quot;</span><span class="p">};</span>
+
+<span class="c1">// 引数に条件を入れる</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">First</span><span class="p">(</span><span class="n">c</span> <span class="p">=&gt;</span> <span class="n">c</span><span class="p">.</span><span class="n">Length</span> <span class="p">==</span> <span class="m">2</span><span class="p">));</span>
+
+<span class="c1">// 出力 : ab</span>
+</pre></div>
+</div>
+</li>
 </ul>
 </dd>
 <dt id="term-FirstOrDefault">FirstOrDefault<a class="headerlink" href="#term-FirstOrDefault" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p>シーケンスの最初の要素、または条件を満たす最初の1つを返す</p></li>
+<li><p>該当データがない場合は型の既定値を返す</p></li>
 </ul>
 </dd>
 <dt id="term-ForAll">ForAll<a class="headerlink" href="#term-ForAll" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
@@ -329,12 +342,26 @@
 <li><p>aa</p></li>
 </ul>
 </dd>
-<dt id="term-OrderBy">OrderBy<a class="headerlink" href="#term-OrderBy" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<dt id="term-OrderBy">OrderBy<a class="headerlink" href="#term-OrderBy" title="Permalink to this term">¶</a></dt><dd><ul>
+<li><p>シーケンスを昇順に並び替える</p></li>
+<li><p>実行しても、元の配列の順は変わらない</p></li>
+<li><p>一方、Array.Sort()は元の配列の順を変える</p></li>
+<li><p>複数の条件でソートする場合は <a class="reference internal" href="#term-ThenBy"><span class="xref std std-term">ThenBy</span></a> を使用する</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">[]</span> <span class="n">a</span> <span class="p">=</span> <span class="p">{</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">};</span>
+
+<span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">a</span><span class="p">.</span><span class="n">OrderBy</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">))</span> <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="c1">// 出力 : 123</span>
+
+<span class="n">Array</span><span class="p">.</span><span class="n">Sort</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+<span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">a</span><span class="p">)</span> <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="c1">// 出力 : 123</span>
+</pre></div>
+</div>
+</li>
 </ul>
 </dd>
 <dt id="term-OrderByDescending">OrderByDescending<a class="headerlink" href="#term-OrderByDescending" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p>シーケンスを降順に並び替える</p></li>
 </ul>
 </dd>
 <dt id="term-Range">Range<a class="headerlink" href="#term-Range" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
@@ -467,11 +494,43 @@
 </ul>
 </dd>
 <dt id="term-ThenBy">ThenBy<a class="headerlink" href="#term-ThenBy" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p><a class="reference internal" href="#term-OrderBy"><span class="xref std std-term">OrderBy</span></a> メソッドでソートした結果に、さらに条件を追加してソートする</p></li>
+<li><p>OrderBy().ThenBy().ThenBy()...で条件をつなげていく</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">[]</span> <span class="n">array</span> <span class="p">=</span> <span class="p">{-</span><span class="m">2</span><span class="p">,</span> <span class="p">-</span><span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">};</span>
+<span class="kt">var</span> <span class="n">query</span> <span class="p">=</span> <span class="n">array</span>
+            <span class="p">.</span><span class="n">OrderByDescending</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">Math</span><span class="p">.</span><span class="n">Abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1">// 条件1</span>
+            <span class="p">.</span><span class="n">ThenByDescending</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">)</span>             <span class="c1">// 条件2</span>
+            <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul>
+<li><p>上記と同じ処理内容を、比較オブジェクトを使用して書くことも可能</p></li>
+<li><p>比較の条件が込み入ったときは、その方がスマートになることもある</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Comparer</span> <span class="p">:</span> <span class="n">ICompare</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="kt">int</span> <span class="nf">Compare</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">result</span> <span class="p">=</span> <span class="n">Math</span><span class="p">.</span><span class="n">Abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">-</span> <span class="n">Math</span><span class="p">.</span><span class="n">Abs</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">result</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span> <span class="k">return</span> <span class="n">x</span> <span class="p">-</span> <span class="n">y</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">int</span><span class="p">[]</span> <span class="n">array</span> <span class="p">=</span> <span class="p">{-</span><span class="m">2</span><span class="p">,</span> <span class="p">-</span><span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">};</span>
+  <span class="kt">var</span> <span class="n">query</span> <span class="p">=</span> <span class="n">array</span><span class="p">.</span><span class="n">OrderByDescending</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">,</span> <span class="k">new</span> <span class="n">Compare</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
 </ul>
 </dd>
 <dt id="term-ThenByDescending">ThenByDescending<a class="headerlink" href="#term-ThenByDescending" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p>結果が降順となる以外、 <a class="reference internal" href="#term-ThenBy"><span class="xref std std-term">ThenBy</span></a> メソッドと同じである</p></li>
 </ul>
 </dd>
 <dt id="term-ToArray">ToArray<a class="headerlink" href="#term-ToArray" title="Permalink to this term">¶</a></dt><dd><ul class="simple">

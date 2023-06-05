@@ -220,41 +220,7 @@ C#4.0では、Parallel LINQ が導入され、マルチコアでの並列分散�
 </div></blockquote>
 </section>
 <section id="id8">
-<h2>複数条件でのソート<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<ul>
-<li><p>OrderBy().ThenBy().ThenBy()...で条件をつなげていく</p>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">[]</span> <span class="n">array</span> <span class="p">=</span> <span class="p">{-</span><span class="m">2</span><span class="p">,</span> <span class="p">-</span><span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">};</span>
-<span class="kt">var</span> <span class="n">query</span> <span class="p">=</span> <span class="n">array</span>
-            <span class="p">.</span><span class="n">OrderByDescending</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">Math</span><span class="p">.</span><span class="n">Abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1">// 条件1</span>
-            <span class="p">.</span><span class="n">ThenByDescending</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">)</span>             <span class="c1">// 条件2</span>
-            <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">);</span>
-</pre></div>
-</div>
-</li>
-<li><p>上記と同じ処理内容を、比較オブジェクトを使用して書くことも可能</p></li>
-<li><p>比較の条件が込み入ったときは、その方がスマートになることもある</p>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Comparer</span> <span class="p">:</span> <span class="n">ICompare</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span>
-<span class="p">{</span>
-  <span class="k">public</span> <span class="kt">int</span> <span class="nf">Compare</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span>
-  <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">result</span> <span class="p">=</span> <span class="n">Math</span><span class="p">.</span><span class="n">Abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">-</span> <span class="n">Math</span><span class="p">.</span><span class="n">Abs</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">result</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span> <span class="k">return</span> <span class="n">x</span> <span class="p">-</span> <span class="n">y</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="kt">int</span><span class="p">[]</span> <span class="n">array</span> <span class="p">=</span> <span class="p">{-</span><span class="m">2</span><span class="p">,</span> <span class="p">-</span><span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">};</span>
-  <span class="kt">var</span> <span class="n">query</span> <span class="p">=</span> <span class="n">array</span><span class="p">.</span><span class="n">OrderByDescending</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">,</span> <span class="k">new</span> <span class="n">Compare</span><span class="p">());</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</li>
-</ul>
-</section>
-<section id="id9">
-<h2>その他参考例<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>その他参考例<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// COMリストの数だけ、接続確認等の処理に使用するデバイスリストを作成する</span>
 <span class="c1">// tempDeviceは、タプル内要素に付けた名前</span>

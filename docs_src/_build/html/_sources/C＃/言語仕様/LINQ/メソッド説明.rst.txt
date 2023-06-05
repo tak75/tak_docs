@@ -166,11 +166,24 @@ LINQのメソッドリスト
 
   First
 
-    * aa
+    * シーケンスの最初の要素、または条件を満たす最初の1つを返す
+    * 該当データがない場合は例外となる
+    * シーケンスに目的のデータが確実にあるとわかっている場合は、FirstOrDefaultメソッドよりもこのメソッドの方がよい。
+      バグによりシーケンスにデータがない場合に、例外ですぐにわかるため
+
+      .. code-block:: csharp
+
+        string[] a = {"a", "ab", "abc", "de"};
+
+        // 引数に条件を入れる
+        Console.WriteLine(a.First(c => c.Length == 2));
+
+        // 出力 : ab
 
   FirstOrDefault
 
-    * aa
+    * シーケンスの最初の要素、または条件を満たす最初の1つを返す
+    * 該当データがない場合は型の既定値を返す
 
   ForAll
 
@@ -218,11 +231,26 @@ LINQのメソッドリスト
 
   OrderBy
 
-    * aa
+    * シーケンスを昇順に並び替える
+    * 実行しても、元の配列の順は変わらない
+    * 一方、Array.Sort()は元の配列の順を変える
+    * 複数の条件でソートする場合は :term:`ThenBy` を使用する
+
+      .. code-block:: csharp
+
+        int[] a = {2,1,3};
+        
+        foreach(var item in a.OrderBy(t => t)) Console.Write(item);
+        // 出力 : 123
+
+        Array.Sort(a);
+        foreach(var item in a) Console.Write(item);
+        // 出力 : 123
+
 
   OrderByDescending
 
-    * aa
+    * シーケンスを降順に並び替える
 
   Range
 
@@ -358,11 +386,41 @@ LINQのメソッドリスト
 
   ThenBy
 
-    * aa
+    *  :term:`OrderBy` メソッドでソートした結果に、さらに条件を追加してソートする
+    *  OrderBy().ThenBy().ThenBy()...で条件をつなげていく
+
+      .. code-block:: csharp
+
+        int[] array = {-2, -1, 0, 1, 2};
+        var query = array
+                    .OrderByDescending(x => Math.Abs(x))  // 条件1
+                    .ThenByDescending(x => x)             // 条件2
+                    .Select(x => x);
+
+    * 上記と同じ処理内容を、比較オブジェクトを使用して書くことも可能
+    * 比較の条件が込み入ったときは、その方がスマートになることもある
+
+      .. code-block:: csharp
+
+        class Comparer : ICompare<int>
+        {
+          public int Compare(int x, int y)
+          {
+            int result = Math.Abs(x) - Math.Abs(y);
+            if(result == 0) return x - y;
+            return result;
+          }
+        }
+
+        static void Main(string[] args)
+        {
+          int[] array = {-2, -1, 0, 1, 2};
+          var query = array.OrderByDescending(x => x, new Compare());
+        }
 
   ThenByDescending
 
-    * aa
+    * 結果が降順となる以外、 :term:`ThenBy` メソッドと同じである
 
   ToArray
 

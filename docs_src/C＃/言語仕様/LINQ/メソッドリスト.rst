@@ -26,8 +26,8 @@
    :term:`ElementAtOrDefault`,
    :term:`Empty`,
    :term:`Except`,
-   :term:`First`,
-   :term:`FirstOrDefault`,
+   :term:`First`,シーケンスの最初の要素、または条件を満たす最初の1つを返す。該当データがない場合は例外となる
+   :term:`FirstOrDefault`,シーケンスの最初の要素、または条件を満たす最初の1つを返す。該当データがない場合は型の既定値を返す
    :term:`ForAll`,
    :term:`GroupBy`,
    :term:`GroupJoin`,
@@ -39,8 +39,8 @@
    :term:`Max`,
    :term:`Min`,
    :term:`OfType`,
-   :term:`OrderBy`,
-   :term:`OrderByDescending`,
+   :term:`OrderBy`,シーケンスを昇順に並び替える
+   :term:`OrderByDescending`,シーケンスを降順に並び替える
    :term:`Range`,
    :term:`Repeat`,同じ値が指定回数繰り返されるシーケンスを生成する
    :term:`Reverse`,シーケンスの順番を逆転させる
@@ -54,9 +54,9 @@
    :term:`Sum`,
    :term:`Take`,
    :term:`TakeWhile`,
-   :term:`ThenBy`,
-   :term:`ThenByDescending`,
-   :term:`ToArray`,
+   :term:`ThenBy`, :term:`OrderBy` メソッドでソートした結果に、さらに条件を追加してソートする
+   :term:`ThenByDescending`,結果が降順となる以外、 :term:`ThenBy` メソッドと同じである
+   :term:`ToArray`,シーケンスから配列を作成する
    :term:`ToDictionary`,
    :term:`ToList`,
    :term:`ToLookup`,

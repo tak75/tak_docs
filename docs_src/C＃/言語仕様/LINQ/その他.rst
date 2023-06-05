@@ -103,41 +103,6 @@ IEnumerable -> List 変換
       .Where(x => x.Value == true)
       .Select(x => x.Index);
 
-複数条件でのソート
-==================
-
-* OrderBy().ThenBy().ThenBy()...で条件をつなげていく
-
-  .. code-block:: csharp
-
-    int[] array = {-2, -1, 0, 1, 2};
-    var query = array
-                .OrderByDescending(x => Math.Abs(x))  // 条件1
-                .ThenByDescending(x => x)             // 条件2
-                .Select(x => x);
-
-* 上記と同じ処理内容を、比較オブジェクトを使用して書くことも可能
-* 比較の条件が込み入ったときは、その方がスマートになることもある
-
-  .. code-block:: csharp
-
-    class Comparer : ICompare<int>
-    {
-      public int Compare(int x, int y)
-      {
-        int result = Math.Abs(x) - Math.Abs(y);
-        if(result == 0) return x - y;
-        return result;
-      }
-    }
-
-    static void Main(string[] args)
-    {
-      int[] array = {-2, -1, 0, 1, 2};
-      var query = array.OrderByDescending(x => x, new Compare());
-    }
-
-
 その他参考例
 ============
 
