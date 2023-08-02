@@ -273,6 +273,7 @@ Viewsフォルダにて、追加→新しい項目→Prism→WPF→Prism UserCon
     this.UpdateFWCommand = this.MeasurementUnitSelected
         .ObserveProperty(x => x.Value.UpdatingFW.Value)			// ←これ重要
                                                                 // （x => x.Value.UpdatingFW　だとダメ）
+        // .ToReactiveProperty().AddTo(this._disposables)       // ←これ必要？
         .Select(x => !x)
         .ToReactiveCommand()
         .WithSubscribe(async () => {})
@@ -345,8 +346,10 @@ AsyncReactiveCommandを使用し、戻り値がTaskのメソッドをWithSubscri
     
     this.ButtonStartCommand = this.Assay
         .CombineLatest(this.ProjectName, (x,y) => (x != null) && !string.IsNullOrEmpty(y))
+        .ObserveOnUIDispatcher()                    // ←場合によっては必須？
         .ToAsyncReactiveCommand()
         .WithSubscribe(() => ButtonStartActionAsync())
+        // .WithSubscribe(async () => await ButtonStartActionAsync()) // ←？？
         .AddTo(this._disposables);
 
     private async Task ButtonStartActionAsync(){}	// ←Taskである必要あり

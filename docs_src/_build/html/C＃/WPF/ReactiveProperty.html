@@ -40,7 +40,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../GitHub/index.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Git/index.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Linux/index.html">Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
@@ -53,8 +53,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../%E8%A8%80%E8%AA%9E%E4%BB%95%E6%A7%98/index.html">言語仕様</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">WPF</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href=".NET%20Core%20and%20WPF.html">.NET Core and WPF</a></li>
-<li class="toctree-l3"><a class="reference internal" href="WPF.html">WPF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E5%85%A8%E8%88%AC.html">全般</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%82%B3%E3%83%BC%E3%83%89%E3%83%93%E3%83%8F%E3%82%A4%E3%83%B3%E3%83%89.html">コードビハインド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3.html">プロパティ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88.html">イベント</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Prism.html">Prism</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">ReactiveProperty</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id1">参考資料</a></li>
@@ -382,6 +384,7 @@ Subscribe 等で値の変更を監視しているような場合は Dispose し�
 <span class="k">this</span><span class="p">.</span><span class="n">UpdateFWCommand</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">MeasurementUnitSelected</span>
     <span class="p">.</span><span class="n">ObserveProperty</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Value</span><span class="p">.</span><span class="n">UpdatingFW</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span>                 <span class="c1">// ←これ重要</span>
                                                             <span class="c1">// （x =&gt; x.Value.UpdatingFW　だとダメ）</span>
+    <span class="c1">// .ToReactiveProperty().AddTo(this._disposables)       // ←これ必要？</span>
     <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="p">!</span><span class="n">x</span><span class="p">)</span>
     <span class="p">.</span><span class="n">ToReactiveCommand</span><span class="p">()</span>
     <span class="p">.</span><span class="n">WithSubscribe</span><span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{})</span>
@@ -457,8 +460,10 @@ Subscribe 等で値の変更を監視しているような場合は Dispose し�
 
 <span class="k">this</span><span class="p">.</span><span class="n">ButtonStartCommand</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">Assay</span>
     <span class="p">.</span><span class="n">CombineLatest</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">ProjectName</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">x</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">&amp;&amp;</span> <span class="p">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+    <span class="p">.</span><span class="n">ObserveOnUIDispatcher</span><span class="p">()</span>                    <span class="c1">// ←場合によっては必須？</span>
     <span class="p">.</span><span class="n">ToAsyncReactiveCommand</span><span class="p">()</span>
     <span class="p">.</span><span class="n">WithSubscribe</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">ButtonStartActionAsync</span><span class="p">())</span>
+    <span class="c1">// .WithSubscribe(async () =&gt; await ButtonStartActionAsync()) // ←？？</span>
     <span class="p">.</span><span class="n">AddTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_disposables</span><span class="p">);</span>
 
 <span class="k">private</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">ButtonStartActionAsync</span><span class="p">(){}</span>       <span class="c1">// ←Taskである必要あり</span>
