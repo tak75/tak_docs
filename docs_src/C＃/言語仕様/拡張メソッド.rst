@@ -67,6 +67,7 @@
       Data3
     }
 
+    // パターン1
     public static class DataTypeExtension
     {
       // 列挙体の要素名辞書
@@ -79,6 +80,19 @@
 
       // ToString()の代わりとなる拡張メソッド
       public static string ToName(this DataType dataType) => DataTypeNames[dataType];
+    }
+
+    // パターン2（こちらの方がスッキリしてるか）
+    public static class DataTypeExtension
+    {
+      // ToString()の代わりとなる拡張メソッド
+      public static string ToName(this DataType dataType) => dataType switch
+      {
+        DataType.Data1 => "data 1",
+        DataType.Data2 => "data 2",
+        DataType.Data3 => "data 3",
+        _ => throw new InvalidOperationException();
+      };
     }
 
     class Program

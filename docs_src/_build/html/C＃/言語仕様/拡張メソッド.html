@@ -181,6 +181,7 @@
   <span class="n">Data3</span>
 <span class="p">}</span>
 
+<span class="c1">// パターン1</span>
 <span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">DataTypeExtension</span>
 <span class="p">{</span>
   <span class="c1">// 列挙体の要素名辞書</span>
@@ -193,6 +194,19 @@
 
   <span class="c1">// ToString()の代わりとなる拡張メソッド</span>
   <span class="k">public</span> <span class="k">static</span> <span class="kt">string</span> <span class="nf">ToName</span><span class="p">(</span><span class="k">this</span> <span class="n">DataType</span> <span class="n">dataType</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">DataTypeNames</span><span class="p">[</span><span class="n">dataType</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">// パターン2（こちらの方がスッキリしてるか）</span>
+<span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">DataTypeExtension</span>
+<span class="p">{</span>
+  <span class="c1">// ToString()の代わりとなる拡張メソッド</span>
+  <span class="k">public</span> <span class="k">static</span> <span class="kt">string</span> <span class="nf">ToName</span><span class="p">(</span><span class="k">this</span> <span class="n">DataType</span> <span class="n">dataType</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">dataType</span> <span class="k">switch</span>
+  <span class="p">{</span>
+    <span class="n">DataType</span><span class="p">.</span><span class="n">Data1</span> <span class="p">=&gt;</span> <span class="s">&quot;data 1&quot;</span><span class="p">,</span>
+    <span class="n">DataType</span><span class="p">.</span><span class="n">Data2</span> <span class="p">=&gt;</span> <span class="s">&quot;data 2&quot;</span><span class="p">,</span>
+    <span class="n">DataType</span><span class="p">.</span><span class="n">Data3</span> <span class="p">=&gt;</span> <span class="s">&quot;data 3&quot;</span><span class="p">,</span>
+    <span class="n">_</span> <span class="p">=&gt;</span> <span class="k">throw</span> <span class="k">new</span> <span class="n">InvalidOperationException</span><span class="p">();</span>
+  <span class="p">};</span>
 <span class="p">}</span>
 
 <span class="k">class</span> <span class="nc">Program</span>

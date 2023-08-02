@@ -33,8 +33,8 @@
    :term:`GroupJoin`,
    :term:`Intersect`,
    :term:`Join`,
-   :term:`Last`,
-   :term:`LastOrDefault`,
+   :term:`Last`,シーケンスの最後の要素、または条件を満たす最後の1つを返す。該当データがない場合は例外となる
+   :term:`LastOrDefault`,シーケンスの最後の要素、または条件を満たす最後の1つを返す。該当データがない場合は型の既定値を返す
    :term:`LongCount`,
    :term:`Max`,
    :term:`Min`,
