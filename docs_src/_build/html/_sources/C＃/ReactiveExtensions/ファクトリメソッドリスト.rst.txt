@@ -29,7 +29,7 @@
    :widths: 2, 5, 2
 
    メソッド,説明,例
-   :term:`FromEvent`,,""
+   :term:`FromEvent`,「C#標準のイベント」をIObservable<T>に変換する,""
    :term:`Start`,,""
    :term:`ToAsync`,,""
    :term:`FromAsyncPattern`,,""

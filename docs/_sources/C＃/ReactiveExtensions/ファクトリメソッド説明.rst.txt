@@ -326,9 +326,7 @@ Timer系のファクトリメソッドリスト
     Generate
 
         * https://blog.okazuki.jp/entry/20111106/1320584830
-        * 一定時間ごとに値を発行する
-        * 発行する値はTimerが実行された回数
-        * TimeSpanを1つ渡すだけ
+        * 指定した時間間隔で値を発行するIObservableを作成
 
         .. code-block:: csharp
 
@@ -376,5 +374,24 @@ Timer系のファクトリメソッドリスト
             // please enter key...
 
 
+HotなIObservableを作成するファクトリメソッドリスト
+==================================================
 
+.. glossary::
+
+    FromEvent
+
+        * https://qiita.com/yutorisan/items/2475eaf5d8c3a6454e3f
+        * 「C#標準のイベント」をIObservable<T>に変換する
+        * 第一引数は「eventから発行された値をどのようにIObservable<T>シーケンスに伝達するか」
+        * 第二引数は「Subscribeされたときの処理」
+        * 第三引数は「Disposeされたときの処理」
+
+        .. code-block:: csharp
+
+            IObservable<Unit> clickEvent = 
+                Observable.FromEvent<EventHandler, Unit>(
+                    h => (sender, eventargs) => h(Unit.Default),
+                    h => button1.Click += h,
+                    h => button1.Click -= h); 
 

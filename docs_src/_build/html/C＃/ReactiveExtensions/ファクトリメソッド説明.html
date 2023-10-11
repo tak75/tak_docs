@@ -58,6 +58,7 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">ファクトリメソッド説明</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#iobservable">IObservableのファクトリメソッドリスト</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#timer">Timer系のファクトリメソッドリスト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hotiobservable">HotなIObservableを作成するファクトリメソッドリスト</a></li>
 </ul>
 </li>
 </ul>
@@ -412,9 +413,7 @@
 </dd>
 <dt id="term-0">Generate<a class="headerlink" href="#term-0" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111106/1320584830">https://blog.okazuki.jp/entry/20111106/1320584830</a></p></li>
-<li><p>一定時間ごとに値を発行する</p></li>
-<li><p>発行する値はTimerが実行された回数</p></li>
-<li><p>TimeSpanを1つ渡すだけ</p></li>
+<li><p>指定した時間間隔で値を発行するIObservableを作成</p></li>
 </ul>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">source</span> <span class="p">=</span> <span class="n">Observable</span><span class="p">.</span><span class="n">Generate</span><span class="p">(</span>
     <span class="c1">// 0から</span>
@@ -458,6 +457,26 @@
 <span class="c1">// Completed()</span>
 <span class="c1">// dispose method call.</span>
 <span class="c1">// please enter key...</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
+<section id="hotiobservable">
+<h2>HotなIObservableを作成するファクトリメソッドリスト<a class="headerlink" href="#hotiobservable" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<dl class="glossary">
+<dt id="term-FromEvent">FromEvent<a class="headerlink" href="#term-FromEvent" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://qiita.com/yutorisan/items/2475eaf5d8c3a6454e3f">https://qiita.com/yutorisan/items/2475eaf5d8c3a6454e3f</a></p></li>
+<li><p>「C#標準のイベント」をIObservable&lt;T&gt;に変換する</p></li>
+<li><p>第一引数は「eventから発行された値をどのようにIObservable&lt;T&gt;シーケンスに伝達するか」</p></li>
+<li><p>第二引数は「Subscribeされたときの処理」</p></li>
+<li><p>第三引数は「Disposeされたときの処理」</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">IObservable</span><span class="p">&lt;</span><span class="n">Unit</span><span class="p">&gt;</span> <span class="n">clickEvent</span> <span class="p">=</span>
+    <span class="n">Observable</span><span class="p">.</span><span class="n">FromEvent</span><span class="p">&lt;</span><span class="n">EventHandler</span><span class="p">,</span> <span class="n">Unit</span><span class="p">&gt;(</span>
+        <span class="n">h</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">eventargs</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">h</span><span class="p">(</span><span class="n">Unit</span><span class="p">.</span><span class="n">Default</span><span class="p">),</span>
+        <span class="n">h</span> <span class="p">=&gt;</span> <span class="n">button1</span><span class="p">.</span><span class="n">Click</span> <span class="p">+=</span> <span class="n">h</span><span class="p">,</span>
+        <span class="n">h</span> <span class="p">=&gt;</span> <span class="n">button1</span><span class="p">.</span><span class="n">Click</span> <span class="p">-=</span> <span class="n">h</span><span class="p">);</span>
 </pre></div>
 </div>
 </dd>
