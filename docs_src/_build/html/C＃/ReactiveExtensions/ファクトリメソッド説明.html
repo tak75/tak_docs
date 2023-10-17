@@ -59,6 +59,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#iobservable">IObservableのファクトリメソッドリスト</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#timer">Timer系のファクトリメソッドリスト</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#hotiobservable">HotなIObservableを作成するファクトリメソッドリスト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#timestamptimeinterval">時間に関する情報を付与するTimestampとTimeIntervalメソッド</a></li>
 </ul>
 </li>
 </ul>
@@ -459,6 +460,76 @@
 <span class="c1">// please enter key...</span>
 </pre></div>
 </div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://qiita.com/yutorisan/items/3249e4d5aac5b7bd4189">https://qiita.com/yutorisan/items/3249e4d5aac5b7bd4189</a></p></li>
+<li><p>任意の時間間隔で値を発行する</p></li>
+<li><p>発行する順番を定義したTimeSpanのListを用意して、timeSelectorで値を順番に読んでいくように指定することで、Listに定義した間隔で値が発行されます</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>// 定義
+public static IObservable&lt;TResult&gt; Generate&lt;TState, TResult&gt; (
+    TState initialState,                    //TStateの初期値を指定
+    Func&lt;TState, bool&gt; condition,           //継続条件を指定
+    Func&lt;TState, TState&gt; iterate,           //TStateの変化量を指定
+    Func&lt;TState, TResult&gt; resultSelector,   //発光する値を指定
+    Func&lt;TState, TimeSpan&gt; timeSelector)    //時間間隔を指定;
+
+// 使用例
+public static void Main(string[] args)
+{
+    //発行間隔を定義
+    List&lt;TimeSpan&gt; intervals = new List&lt;TimeSpan&gt;()
+    {
+        TimeSpan.FromSeconds(1),
+        TimeSpan.FromSeconds(2),
+        TimeSpan.FromSeconds(3),
+        TimeSpan.FromSeconds(4),
+        TimeSpan.FromSeconds(5)
+    };
+
+    Console.WriteLine($&quot;{DateTime.Now} 値の発行を開始します&quot;);
+    Observable.Generate(initialState: 0,
+                        condition: n =&gt; n &lt; intervals.Count,
+                        iterate: n =&gt; ++n,
+                        resultSelector: n =&gt; n,
+                        timeSelector: n =&gt; intervals[n])
+              .Timestamp()
+              .Subscribe(val =&gt; Console.WriteLine($&quot;{val.Timestamp.ToLocalTime().DateTime} 発行された値：{val.Value}&quot;),
+                          () =&gt; Console.WriteLine(&quot;値の発行が完了しました&quot;));
+
+    Console.Read();
+}
+
+// 実行結果
+2020/04/26 23:51:09 値の発行を開始します
+2020/04/26 23:51:10 発行された値:1
+2020/04/26 23:51:12 発行された値:2
+2020/04/26 23:51:15 発行された値:3
+2020/04/26 23:51:19 発行された値:4
+2020/04/26 23:51:24 発行された値:5
+値の発行が完了しました
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>任意の時間間隔で値を発行するファクトリメソッド（自作）</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>public static IObservable&lt;int&gt; AnyInterval(IReadOnlyList&lt;TimeSpan&gt; intervals) =&gt;
+    Observable.Generate(initialState: 0,
+                        condition: n =&gt; n &lt; intervals.Count,
+                        iterate: n =&gt; ++n,
+                        resultSelector: n =&gt; n,
+                        timeSelector: n =&gt; intervals[n]);
+
+// 使用例
+ObservableEx.AnyInterval(new List&lt;TimeSpan&gt;{TimeSpan.FromSeconds(1),
+                                            TimeSpan.FromSeconds(2),
+                                            TimeSpan.FromSeconds(3),
+                                            TimeSpan.FromSeconds(4),
+                                            TimeSpan.FromSeconds(5) })
+            .Timestamp()
+            .Subscribe(val =&gt; Console.WriteLine($&quot;{val.Timestamp.ToLocalTime().DateTime} 発行された値：{val.Value}&quot;),
+                        () =&gt; Console.WriteLine(&quot;値の発行が完了しました&quot;));
+</pre></div>
+</div>
 </dd>
 </dl>
 </section>
@@ -477,6 +548,148 @@
         <span class="n">h</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">eventargs</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">h</span><span class="p">(</span><span class="n">Unit</span><span class="p">.</span><span class="n">Default</span><span class="p">),</span>
         <span class="n">h</span> <span class="p">=&gt;</span> <span class="n">button1</span><span class="p">.</span><span class="n">Click</span> <span class="p">+=</span> <span class="n">h</span><span class="p">,</span>
         <span class="n">h</span> <span class="p">=&gt;</span> <span class="n">button1</span><span class="p">.</span><span class="n">Click</span> <span class="p">-=</span> <span class="n">h</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://tocsworld.wordpress.com/2014/03/21/reactiveextensions%E3%81%AE%E5%85%A5%E9%96%80%E3%81%AE%E5%85%A5%E9%96%80%E3%81%8B%E3%82%89%E3%80%81%E5%BF%85%E6%AE%BA%E6%8A%80%E3%82%92%E7%B9%B0%E3%82%8A%E5%87%BA%E3%81%99%E3%81%BE%E3%81%A7/">https://tocsworld.wordpress.com/2014/03/21/reactiveextensions%E3%81%AE%E5%85%A5%E9%96%80%E3%81%AE%E5%85%A5%E9%96%80%E3%81%8B%E3%82%89%E3%80%81%E5%BF%85%E6%AE%BA%E6%8A%80%E3%82%92%E7%B9%B0%E3%82%8A%E5%87%BA%E3%81%99%E3%81%BE%E3%81%A7/</a></p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">RxEventHelper</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="n">IObservable</span><span class="p">&lt;</span><span class="n">MouseButtonEventArgs</span><span class="p">&gt;</span> <span class="n">MouseDownAsObservable</span><span class="p">(</span><span class="k">this</span> <span class="n">UIElement</span> <span class="n">window</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Observable</span><span class="p">.</span><span class="n">FromEvent</span><span class="p">&lt;</span><span class="n">MouseButtonEventHandler</span><span class="p">,</span> <span class="n">MouseButtonEventArgs</span><span class="p">&gt;</span>
+            <span class="p">(</span>
+                <span class="n">mouseAction</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                    <span class="n">MouseButtonEventHandler</span> <span class="n">handler</span> <span class="p">=</span> <span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="p">=&gt;</span>
+                    <span class="p">{</span>
+                        <span class="n">mouseAction</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+                    <span class="p">};</span>
+                    <span class="k">return</span> <span class="n">handler</span><span class="p">;</span>
+                <span class="p">},</span>
+                <span class="n">handler</span> <span class="p">=&gt;</span> <span class="n">window</span><span class="p">.</span><span class="n">MouseDown</span> <span class="p">+=</span> <span class="n">handler</span><span class="p">,</span>
+                <span class="n">handler</span> <span class="p">=&gt;</span> <span class="n">window</span><span class="p">.</span><span class="n">MouseDown</span> <span class="p">-=</span> <span class="n">handler</span>
+            <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="n">IObservable</span><span class="p">&lt;</span><span class="n">MouseEventArgs</span><span class="p">&gt;</span> <span class="n">MouseMoveAsObservable</span><span class="p">(</span><span class="k">this</span> <span class="n">UIElement</span> <span class="n">window</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Observable</span><span class="p">.</span><span class="n">FromEvent</span><span class="p">&lt;</span><span class="n">MouseEventHandler</span><span class="p">,</span> <span class="n">MouseEventArgs</span><span class="p">&gt;</span>
+            <span class="p">(</span>
+                <span class="n">mouseAction</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">mouseAction</span><span class="p">(</span><span class="n">e</span><span class="p">),</span>
+                <span class="n">handler</span> <span class="p">=&gt;</span> <span class="n">window</span><span class="p">.</span><span class="n">MouseMove</span> <span class="p">+=</span> <span class="n">handler</span><span class="p">,</span>
+                <span class="n">handler</span> <span class="p">=&gt;</span> <span class="n">window</span><span class="p">.</span><span class="n">MouseMove</span> <span class="p">-=</span> <span class="n">handler</span>
+            <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="n">IObservable</span><span class="p">&lt;</span><span class="n">MouseButtonEventArgs</span><span class="p">&gt;</span> <span class="n">MouseUpAsObservable</span><span class="p">(</span><span class="k">this</span> <span class="n">UIElement</span> <span class="n">window</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Observable</span><span class="p">.</span><span class="n">FromEvent</span><span class="p">&lt;</span><span class="n">MouseButtonEventHandler</span><span class="p">,</span> <span class="n">MouseButtonEventArgs</span><span class="p">&gt;</span>
+            <span class="p">(</span>
+                <span class="n">mouseAction</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">mouseAction</span><span class="p">(</span><span class="n">e</span><span class="p">),</span>
+                <span class="n">handler</span> <span class="p">=&gt;</span> <span class="n">window</span><span class="p">.</span><span class="n">MouseUp</span> <span class="p">+=</span> <span class="n">handler</span><span class="p">,</span>
+                <span class="n">handler</span> <span class="p">=&gt;</span> <span class="n">window</span><span class="p">.</span><span class="n">MouseUp</span> <span class="p">-=</span> <span class="n">handler</span>
+            <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// コードビハインド</span>
+<span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">MainWindow</span> <span class="p">:</span> <span class="n">Window</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="n">Point</span> <span class="n">prev</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Point</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+    <span class="k">private</span> <span class="n">IObservable</span><span class="p">&lt;</span><span class="n">Point</span><span class="p">&gt;</span> <span class="n">dragOperation</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nf">MainWindow</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">InitializeComponent</span><span class="p">();</span>
+        <span class="n">RegisterXXXCommand</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">RegisterXXXCommand</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">dragOperation</span> <span class="p">=</span> <span class="k">this</span>
+            <span class="p">.</span><span class="n">MouseMoveAsObservable</span><span class="p">()</span>
+            <span class="p">.</span><span class="n">SkipUntil</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">MouseDownAsObservable</span><span class="p">().</span><span class="n">Do</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="n">CaptureMouse</span><span class="p">()))</span>
+            <span class="p">.</span><span class="n">TakeUntil</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">MouseUpAsObservable</span><span class="p">().</span><span class="n">Do</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="n">ReleaseMouseCapture</span><span class="p">()))</span>
+            <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">e</span> <span class="p">=&gt;</span> <span class="n">e</span><span class="p">.</span><span class="n">GetPosition</span><span class="p">(</span><span class="k">null</span><span class="p">));</span>
+        <span class="c1">//.Where(p =&gt; { prev = p; return (prev.X &lt; p.X &amp;&amp; prev.Y &gt; p.Y); });</span>
+
+        <span class="n">Subscrbe</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">void</span> <span class="nf">Subscrbe</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">dragOperation</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="n">Debug</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;{p.X},{p.Y}&quot;</span><span class="p">);</span> <span class="p">},</span> <span class="p">()</span> <span class="p">=&gt;</span>
+        <span class="p">{</span>
+            <span class="n">Subscrbe</span><span class="p">();</span>     <span class="c1">// Completedで再登録</span>
+            <span class="n">aaa</span><span class="p">();</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">void</span> <span class="nf">aaa</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Debug</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">&quot;aaa&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://neue.cc/2011/10/07_346.html">https://neue.cc/2011/10/07_346.html</a></p></li>
+<li><p>FromEventだとコードビハインドに書かざるを得ない？</p></li>
+<li><p>以下のようにイベントをXAML側で指定して、ReactivePropetyにバインドするのがお手軽か</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="n">Grid</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="n">i</span><span class="p">:</span><span class="n">Interaction</span><span class="p">.</span><span class="n">Triggers</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="n">i</span><span class="p">:</span><span class="n">EventTrigger</span> <span class="n">EventName</span><span class="p">=</span><span class="s">&quot;MouseMove&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="n">r</span><span class="p">:</span><span class="n">EventToReactive</span> <span class="n">ReactiveProperty</span><span class="p">=</span><span class="s">&quot;{Binding MouseMove}&quot;</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="n">i</span><span class="p">:</span><span class="n">EventTrigger</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="n">i</span><span class="p">:</span><span class="n">Interaction</span><span class="p">.</span><span class="n">Triggers</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="n">TextBlock</span> <span class="n">Text</span><span class="p">=</span><span class="s">&quot;{Binding CurrentPoint.Value}&quot;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="n">Grid</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">EventToReactiveViewModel</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">ReactiveProperty</span><span class="p">&lt;</span><span class="n">MouseEventArgs</span><span class="p">&gt;</span> <span class="n">MouseMove</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">ReactiveProperty</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">CurrentPoint</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nf">EventToReactiveViewModel</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// UIからのイベントストリームを受信</span>
+        <span class="n">MouseMove</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ReactiveProperty</span><span class="p">&lt;</span><span class="n">MouseEventArgs</span><span class="p">&gt;();</span>
+
+        <span class="c1">// とりあえず座標を表示する、というもの</span>
+        <span class="n">CurrentPoint</span> <span class="p">=</span> <span class="n">MouseMove</span>
+            <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">m</span> <span class="p">=&gt;</span> <span class="n">m</span><span class="p">.</span><span class="n">GetPosition</span><span class="p">(</span><span class="k">null</span><span class="p">))</span>
+            <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;X:{0} Y:{1}&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">X</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">Y</span><span class="p">))</span>
+            <span class="p">.</span><span class="n">ToReactiveProperty</span><span class="p">(</span><span class="s">&quot;MouseDown and drag move&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
+<section id="timestamptimeinterval">
+<h2>時間に関する情報を付与するTimestampとTimeIntervalメソッド<a class="headerlink" href="#timestamptimeinterval" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<dl class="glossary">
+<dt id="term-Timestamp">Timestamp<a class="headerlink" href="#term-Timestamp" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://qiita.com/yutorisan/items/2475eaf5d8c3a6454e3f#fn6">https://qiita.com/yutorisan/items/2475eaf5d8c3a6454e3f#fn6</a></p></li>
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20120205/1328450809">https://blog.okazuki.jp/entry/20120205/1328450809</a></p></li>
+<li><p>タイムスタンプを追加する</p></li>
+<li><p>Timestamp()を通過すると、流れてきた値はTimestamped&lt;T&gt;という構造体にラップされます</p></li>
+<li><p>この構造体はT型のValueプロパティとDateTimeOffset型のTimestampプロパティを持ち、それぞれラップされた値とタイムスタンプを取得できるようになっています</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">Observable</span><span class="p">.</span><span class="n">Interval</span><span class="p">(</span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">1</span><span class="p">))</span> <span class="c1">//1秒間隔で値を発行</span>
+          <span class="p">.</span><span class="n">Take</span><span class="p">(</span><span class="m">5</span><span class="p">)</span>                           <span class="c1">//値を5回受け取る</span>
+          <span class="p">.</span><span class="n">Timestamp</span><span class="p">()</span>                       <span class="c1">//タイムスタンプを付加</span>
+          <span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Value:{t.Value} Time:{t.Timestamp}&quot;</span><span class="p">),</span>
+                     <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;OnCompleted&quot;</span><span class="p">));</span>
+
+<span class="c1">// 実行結果</span>
+<span class="c1">// Value:0 Time:2020/09/28 13:27:06 +00:00</span>
+<span class="c1">// Value:1 Time:2020/09/28 13:27:07 +00:00</span>
+<span class="c1">// Value:2 Time:2020/09/28 13:27:08 +00:00</span>
+<span class="c1">// Value:3 Time:2020/09/28 13:27:09 +00:00</span>
+<span class="c1">// Value:4 Time:2020/09/28 13:27:10 +00:00</span>
+<span class="c1">// OnCompleted</span>
 </pre></div>
 </div>
 </dd>

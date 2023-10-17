@@ -373,6 +373,75 @@ Timer系のファクトリメソッドリスト
             // dispose method call.
             // please enter key...
 
+        * https://qiita.com/yutorisan/items/3249e4d5aac5b7bd4189
+        * 任意の時間間隔で値を発行する
+        * 発行する順番を定義したTimeSpanのListを用意して、timeSelectorで値を順番に読んでいくように指定することで、Listに定義した間隔で値が発行されます
+
+        .. code-block:: csharp
+
+            // 定義
+            public static IObservable<TResult> Generate<TState, TResult> (
+                TState initialState,                    //TStateの初期値を指定
+                Func<TState, bool> condition,           //継続条件を指定
+                Func<TState, TState> iterate,           //TStateの変化量を指定
+                Func<TState, TResult> resultSelector,   //発光する値を指定
+                Func<TState, TimeSpan> timeSelector)    //時間間隔を指定;
+
+            // 使用例
+            public static void Main(string[] args)
+            {
+                //発行間隔を定義
+                List<TimeSpan> intervals = new List<TimeSpan>()
+                {
+                    TimeSpan.FromSeconds(1),
+                    TimeSpan.FromSeconds(2),
+                    TimeSpan.FromSeconds(3),
+                    TimeSpan.FromSeconds(4),
+                    TimeSpan.FromSeconds(5)
+                };
+
+                Console.WriteLine($"{DateTime.Now} 値の発行を開始します");
+                Observable.Generate(initialState: 0,
+                                    condition: n => n < intervals.Count,
+                                    iterate: n => ++n,
+                                    resultSelector: n => n,
+                                    timeSelector: n => intervals[n])
+                          .Timestamp()
+                          .Subscribe(val => Console.WriteLine($"{val.Timestamp.ToLocalTime().DateTime} 発行された値：{val.Value}"),
+                                      () => Console.WriteLine("値の発行が完了しました"));
+
+                Console.Read();
+            }
+
+            // 実行結果
+            2020/04/26 23:51:09 値の発行を開始します
+            2020/04/26 23:51:10 発行された値:1
+            2020/04/26 23:51:12 発行された値:2
+            2020/04/26 23:51:15 発行された値:3
+            2020/04/26 23:51:19 発行された値:4
+            2020/04/26 23:51:24 発行された値:5
+            値の発行が完了しました 
+
+        * 任意の時間間隔で値を発行するファクトリメソッド（自作）
+
+        .. code-block:: csharp
+
+            public static IObservable<int> AnyInterval(IReadOnlyList<TimeSpan> intervals) =>
+                Observable.Generate(initialState: 0,
+                                    condition: n => n < intervals.Count,
+                                    iterate: n => ++n,
+                                    resultSelector: n => n,
+                                    timeSelector: n => intervals[n]);
+
+            // 使用例
+            ObservableEx.AnyInterval(new List<TimeSpan>{TimeSpan.FromSeconds(1),
+                                                        TimeSpan.FromSeconds(2),
+                                                        TimeSpan.FromSeconds(3),
+                                                        TimeSpan.FromSeconds(4),
+                                                        TimeSpan.FromSeconds(5) })
+                        .Timestamp()
+                        .Subscribe(val => Console.WriteLine($"{val.Timestamp.ToLocalTime().DateTime} 発行された値：{val.Value}"),
+                                    () => Console.WriteLine("値の発行が完了しました"));
 
 HotなIObservableを作成するファクトリメソッドリスト
 ==================================================
@@ -395,3 +464,146 @@ HotなIObservableを作成するファクトリメソッドリスト
                     h => button1.Click += h,
                     h => button1.Click -= h); 
 
+        * https://tocsworld.wordpress.com/2014/03/21/reactiveextensions%E3%81%AE%E5%85%A5%E9%96%80%E3%81%AE%E5%85%A5%E9%96%80%E3%81%8B%E3%82%89%E3%80%81%E5%BF%85%E6%AE%BA%E6%8A%80%E3%82%92%E7%B9%B0%E3%82%8A%E5%87%BA%E3%81%99%E3%81%BE%E3%81%A7/
+
+        .. code-block:: csharp
+
+            public static class RxEventHelper
+            {
+                public static IObservable<MouseButtonEventArgs> MouseDownAsObservable(this UIElement window)
+                {
+                    return Observable.FromEvent<MouseButtonEventHandler, MouseButtonEventArgs>
+                        (
+                            mouseAction => {
+                                MouseButtonEventHandler handler = (sender, e) =>
+                                {
+                                    mouseAction(e);
+                                };
+                                return handler;
+                            },
+                            handler => window.MouseDown += handler,
+                            handler => window.MouseDown -= handler
+                        );
+                }
+
+                public static IObservable<MouseEventArgs> MouseMoveAsObservable(this UIElement window)
+                {
+                    return Observable.FromEvent<MouseEventHandler, MouseEventArgs>
+                        (
+                            mouseAction => (s, e) => mouseAction(e),
+                            handler => window.MouseMove += handler,
+                            handler => window.MouseMove -= handler
+                        );
+                }
+
+                public static IObservable<MouseButtonEventArgs> MouseUpAsObservable(this UIElement window)
+                {
+                    return Observable.FromEvent<MouseButtonEventHandler, MouseButtonEventArgs>
+                        (
+                            mouseAction => (s, e) => mouseAction(e),
+                            handler => window.MouseUp += handler,
+                            handler => window.MouseUp -= handler
+                        );
+                }
+            }
+
+            // コードビハインド
+            public partial class MainWindow : Window
+            {
+                private Point prev = new Point(0, 0);
+                private IObservable<Point> dragOperation;
+                public MainWindow()
+                {
+                    InitializeComponent();
+                    RegisterXXXCommand();
+                }
+                public void RegisterXXXCommand()
+                {
+                    dragOperation = this
+                        .MouseMoveAsObservable()
+                        .SkipUntil(this.MouseDownAsObservable().Do(_ => this.CaptureMouse()))
+                        .TakeUntil(this.MouseUpAsObservable().Do(_ => this.ReleaseMouseCapture()))
+                        .Select(e => e.GetPosition(null));
+                    //.Where(p => { prev = p; return (prev.X < p.X && prev.Y > p.Y); });
+
+                    Subscrbe();
+                }
+
+                private void Subscrbe()
+                {
+                    dragOperation.Subscribe(p => { Debug.WriteLine("{p.X},{p.Y}"); }, () =>
+                    {
+                        Subscrbe();     // Completedで再登録
+                        aaa();
+                    });
+                }
+
+                private void aaa()
+                {
+                    Debug.Write("aaa");
+                }
+            }
+
+        * https://neue.cc/2011/10/07_346.html
+        * FromEventだとコードビハインドに書かざるを得ない？
+        * 以下のようにイベントをXAML側で指定して、ReactivePropetyにバインドするのがお手軽か
+        
+        .. code-block:: csharp
+
+            <Grid>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseMove">
+                        <r:EventToReactive ReactiveProperty="{Binding MouseMove}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <TextBlock Text="{Binding CurrentPoint.Value}" />
+            </Grid>
+
+        .. code-block:: csharp
+
+            public class EventToReactiveViewModel
+            {
+                public ReactiveProperty<MouseEventArgs> MouseMove { get; private set; }
+                public ReactiveProperty<string> CurrentPoint { get; private set; }
+
+                public EventToReactiveViewModel()
+                {
+                    // UIからのイベントストリームを受信
+                    MouseMove = new ReactiveProperty<MouseEventArgs>();
+
+                    // とりあえず座標を表示する、というもの
+                    CurrentPoint = MouseMove
+                        .Select(m => m.GetPosition(null))
+                        .Select(p => string.Format("X:{0} Y:{1}", p.X, p.Y))
+                        .ToReactiveProperty("MouseDown and drag move");
+                }
+            }
+
+時間に関する情報を付与するTimestampとTimeIntervalメソッド
+=========================================================
+
+.. glossary::
+
+    Timestamp
+
+        * https://qiita.com/yutorisan/items/2475eaf5d8c3a6454e3f#fn6
+        * https://blog.okazuki.jp/entry/20120205/1328450809
+        * タイムスタンプを追加する
+        * Timestamp()を通過すると、流れてきた値はTimestamped<T>という構造体にラップされます
+        * この構造体はT型のValueプロパティとDateTimeOffset型のTimestampプロパティを持ち、それぞれラップされた値とタイムスタンプを取得できるようになっています 
+
+        .. code-block:: csharp
+
+            Observable.Interval(TimeSpan.FromSeconds(1)) //1秒間隔で値を発行
+                      .Take(5)                           //値を5回受け取る
+                      .Timestamp()                       //タイムスタンプを付加
+                      .Subscribe(t => Console.WriteLine("Value:{t.Value} Time:{t.Timestamp}"),
+                                 () => Console.WriteLine("OnCompleted"));
+
+            // 実行結果
+            // Value:0 Time:2020/09/28 13:27:06 +00:00
+            // Value:1 Time:2020/09/28 13:27:07 +00:00
+            // Value:2 Time:2020/09/28 13:27:08 +00:00
+            // Value:3 Time:2020/09/28 13:27:09 +00:00
+            // Value:4 Time:2020/09/28 13:27:10 +00:00
+            // OnCompleted

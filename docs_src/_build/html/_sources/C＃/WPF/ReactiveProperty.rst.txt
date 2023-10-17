@@ -354,4 +354,108 @@ AsyncReactiveCommandを使用し、戻り値がTaskのメソッドをWithSubscri
 
     private async Task ButtonStartActionAsync(){}	// ←Taskである必要あり
 
+マウスイベントをReactiveCommandにバインドする方法
+=================================================
 
+* ドラッグ中のマウス座標の最新5件を表示するコード例
+* (1)(2)のコードは同じ動作であり、どちらでもOK
+* インストールパッケージ
+  
+  * Prism.Unity
+  * ReactiveProperty
+  * ReactiveProperty.WPF
+
+  .. code-block:: csharp
+
+    // ■ xaml
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:r="clr-namespace:Reactive.Bindings.Interactivity;assembly=ReactiveProperty.WPF"
+
+    // Windowの直下に記述
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseDown">
+            <r:EventToReactiveCommand Command="{Binding MouseDown}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="MouseMove">
+            <r:EventToReactiveCommand Command="{Binding MouseMove}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="MouseUp">
+            <r:EventToReactiveCommand Command="{Binding MouseUp}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>    
+
+  .. code-block:: csharp
+
+    // ■ ViewModel
+    public ReactiveCommand<MouseEventArgs> MouseDown { get; }
+    public ReactiveCommand<MouseEventArgs> MouseMove { get; }
+    public ReactiveCommand<MouseEventArgs> MouseUp { get; }
+    public ReactiveCollection<string> MouseXY { get; }
+
+    this.MouseDown = new ReactiveCommand<MouseEventArgs>().AddTo(this._disposables);
+    this.MouseUp = new ReactiveCommand<MouseEventArgs>().AddTo(this._disposables);
+    this.MouseMove = new ReactiveCommand<MouseEventArgs>().AddTo(this._disposables);
+    // (1)
+    MouseXY =
+        MouseDown.Merge(MouseMove.SkipUntil(MouseDown).TakeUntil(MouseUp).Repeat())
+        .Select(e => e.GetPosition(null))
+        .Select(p => p.X + "," + p.Y)
+        .ToReactiveCollection()
+        .AddTo(this._disposables);
+    // (2)
+    MouseXY = MouseDown.Merge(
+        MouseDown.SelectMany(MouseMove.TakeUntil(MouseUp)))
+        .Select(e => e.GetPosition(null))
+        .Select(p => p.X + "," + p.Y)
+        .ToReactiveCollection()
+        .AddTo(this._disposables);
+
+    // 最新5件のみを保持
+    MouseXY
+        .ObserveAddChanged()
+        .Subscribe(_ => 
+        {
+            if (MouseXY.Count > 5) MouseXY.RemoveAtOnScheduler(0); 
+        });
+
+ボタンを2秒以上押したら発火するイベント
+=======================================
+
+* 以下で動作することを確認したが、最適なコードであるかは不明
+* インストールパッケージ
+  
+  * Prism.Unity
+  * ReactiveProperty
+  * ReactiveProperty.WPF
+
+  .. code-block:: csharp
+
+    // ■ xaml
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:r="clr-namespace:Reactive.Bindings.Interactivity;assembly=ReactiveProperty.WPF"
+
+    <Button Content="Button">
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="PreviewMouseDown">
+                <r:EventToReactiveCommand Command="{Binding MouseDown}"/>
+            </i:EventTrigger>
+            <i:EventTrigger EventName="PreviewMouseUp">
+                <r:EventToReactiveCommand Command="{Binding MouseUp}"/>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+    </Button>
+
+  .. code-block:: csharp
+
+    // ■ ViewModel
+    public ReactiveCommand<MouseButtonEventArgs> MouseDown { get; }
+    public ReactiveCommand<MouseButtonEventArgs> MouseUp { get; }
+
+    this.MouseDown = new ReactiveCommand<MouseButtonEventArgs>().AddTo(this._disposables);
+    this.MouseUp = new ReactiveCommand<MouseButtonEventArgs>().AddTo(this._disposables);
+
+    this.MouseDown.Select
+    (_ => Observable.Timer(TimeSpan.FromSeconds(2))
+                    .TakeUntil(this.MouseUp)
+                    .Subscribe(_ => Debug.WriteLine("Clicked"))
+    ).Subscribe(_ => { });  // これがないとClickedは表示されない。なぜ？

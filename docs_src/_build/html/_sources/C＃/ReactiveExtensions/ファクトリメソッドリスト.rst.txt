@@ -2,6 +2,8 @@
 ファクトリメソッドリスト
 ========================
 
+* 参考：`UniRx オペレータ逆引き <https://qiita.com/toRisouP/items/3cf1c9be3c37e7609a2f>`__
+
 .. csv-table:: IObservableのファクトリメソッドリスト
    :header-rows: 1
    :widths: 2, 5, 2
@@ -22,7 +24,7 @@
    メソッド,説明,例
    :term:`Timer`,一定時間ごとに値（実行回数）を発行。Delayの設定が可能,""
    :term:`Interval`,一定時間ごとに値（実行回数）を発行,""
-   :term:`Generate`,一定時間ごとに、指定した範囲の値を用いて算出される値を返す,":math:`1^2,2^2,3^2`"
+   :term:`Generate`,任意の時間間隔で、指定した範囲の値を用いて算出される値を返す,":math:`1^2,2^2,3^2`"
 
 .. csv-table:: HotなIObservableを作成するファクトリメソッドリスト
    :header-rows: 1
@@ -33,3 +35,10 @@
    :term:`Start`,,""
    :term:`ToAsync`,,""
    :term:`FromAsyncPattern`,,""
+
+.. csv-table:: 時間に関する情報を付与するTimestampとTimeIntervalメソッド
+   :header-rows: 1
+   :widths: 2, 5, 2
+
+   メソッド,説明,例
+   :term:`Timestamp`,タイムスタンプを追加する,""

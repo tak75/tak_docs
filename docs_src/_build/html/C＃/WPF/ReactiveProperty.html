@@ -70,6 +70,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#id10">イベント定義</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#reactivecollection-ui">ReactiveCollectionの追加/削除処理をUIスレッド上で行う方法</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id11">ボタンの連打を抑制</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reactivecommand">マウスイベントをReactiveCommandにバインドする方法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">ボタンを2秒以上押したら発火するイベント</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%83%93%E3%83%98%E3%82%A4%E3%83%93%E3%82%A2.html">ビヘイビア</a></li>
@@ -470,6 +472,114 @@ Subscribe 等で値の変更を監視しているような場合は Dispose し�
 </pre></div>
 </div>
 </div></blockquote>
+</section>
+<section id="reactivecommand">
+<h2>マウスイベントをReactiveCommandにバインドする方法<a class="headerlink" href="#reactivecommand" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p>ドラッグ中のマウス座標の最新5件を表示するコード例</p></li>
+<li><p>(1)(2)のコードは同じ動作であり、どちらでもOK</p></li>
+<li><p>インストールパッケージ</p>
+<ul class="simple">
+<li><p>Prism.Unity</p></li>
+<li><p>ReactiveProperty</p></li>
+<li><p>ReactiveProperty.WPF</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// ■ xaml</span>
+<span class="n">xmlns</span><span class="p">:</span><span class="n">i</span><span class="p">=</span><span class="s">&quot;http://schemas.microsoft.com/xaml/behaviors&quot;</span>
+<span class="n">xmlns</span><span class="p">:</span><span class="n">r</span><span class="p">=</span><span class="s">&quot;clr-namespace:Reactive.Bindings.Interactivity;assembly=ReactiveProperty.WPF&quot;</span>
+
+<span class="c1">// Windowの直下に記述</span>
+<span class="p">&lt;</span><span class="n">i</span><span class="p">:</span><span class="n">Interaction</span><span class="p">.</span><span class="n">Triggers</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="n">i</span><span class="p">:</span><span class="n">EventTrigger</span> <span class="n">EventName</span><span class="p">=</span><span class="s">&quot;MouseDown&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="n">r</span><span class="p">:</span><span class="n">EventToReactiveCommand</span> <span class="n">Command</span><span class="p">=</span><span class="s">&quot;{Binding MouseDown}&quot;</span><span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="n">i</span><span class="p">:</span><span class="n">EventTrigger</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="n">i</span><span class="p">:</span><span class="n">EventTrigger</span> <span class="n">EventName</span><span class="p">=</span><span class="s">&quot;MouseMove&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="n">r</span><span class="p">:</span><span class="n">EventToReactiveCommand</span> <span class="n">Command</span><span class="p">=</span><span class="s">&quot;{Binding MouseMove}&quot;</span><span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="n">i</span><span class="p">:</span><span class="n">EventTrigger</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="n">i</span><span class="p">:</span><span class="n">EventTrigger</span> <span class="n">EventName</span><span class="p">=</span><span class="s">&quot;MouseUp&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="n">r</span><span class="p">:</span><span class="n">EventToReactiveCommand</span> <span class="n">Command</span><span class="p">=</span><span class="s">&quot;{Binding MouseUp}&quot;</span><span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="n">i</span><span class="p">:</span><span class="n">EventTrigger</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="n">i</span><span class="p">:</span><span class="n">Interaction</span><span class="p">.</span><span class="n">Triggers</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// ■ ViewModel</span>
+<span class="k">public</span> <span class="n">ReactiveCommand</span><span class="p">&lt;</span><span class="n">MouseEventArgs</span><span class="p">&gt;</span> <span class="n">MouseDown</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+<span class="k">public</span> <span class="n">ReactiveCommand</span><span class="p">&lt;</span><span class="n">MouseEventArgs</span><span class="p">&gt;</span> <span class="n">MouseMove</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+<span class="k">public</span> <span class="n">ReactiveCommand</span><span class="p">&lt;</span><span class="n">MouseEventArgs</span><span class="p">&gt;</span> <span class="n">MouseUp</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+<span class="k">public</span> <span class="n">ReactiveCollection</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">MouseXY</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="k">this</span><span class="p">.</span><span class="n">MouseDown</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ReactiveCommand</span><span class="p">&lt;</span><span class="n">MouseEventArgs</span><span class="p">&gt;().</span><span class="n">AddTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_disposables</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="n">MouseUp</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ReactiveCommand</span><span class="p">&lt;</span><span class="n">MouseEventArgs</span><span class="p">&gt;().</span><span class="n">AddTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_disposables</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="n">MouseMove</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ReactiveCommand</span><span class="p">&lt;</span><span class="n">MouseEventArgs</span><span class="p">&gt;().</span><span class="n">AddTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_disposables</span><span class="p">);</span>
+<span class="c1">// (1)</span>
+<span class="n">MouseXY</span> <span class="p">=</span>
+    <span class="n">MouseDown</span><span class="p">.</span><span class="n">Merge</span><span class="p">(</span><span class="n">MouseMove</span><span class="p">.</span><span class="n">SkipUntil</span><span class="p">(</span><span class="n">MouseDown</span><span class="p">).</span><span class="n">TakeUntil</span><span class="p">(</span><span class="n">MouseUp</span><span class="p">).</span><span class="n">Repeat</span><span class="p">())</span>
+    <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">e</span> <span class="p">=&gt;</span> <span class="n">e</span><span class="p">.</span><span class="n">GetPosition</span><span class="p">(</span><span class="k">null</span><span class="p">))</span>
+    <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">X</span> <span class="p">+</span> <span class="s">&quot;,&quot;</span> <span class="p">+</span> <span class="n">p</span><span class="p">.</span><span class="n">Y</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">ToReactiveCollection</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">AddTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_disposables</span><span class="p">);</span>
+<span class="c1">// (2)</span>
+<span class="n">MouseXY</span> <span class="p">=</span> <span class="n">MouseDown</span><span class="p">.</span><span class="n">Merge</span><span class="p">(</span>
+    <span class="n">MouseDown</span><span class="p">.</span><span class="n">SelectMany</span><span class="p">(</span><span class="n">MouseMove</span><span class="p">.</span><span class="n">TakeUntil</span><span class="p">(</span><span class="n">MouseUp</span><span class="p">)))</span>
+    <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">e</span> <span class="p">=&gt;</span> <span class="n">e</span><span class="p">.</span><span class="n">GetPosition</span><span class="p">(</span><span class="k">null</span><span class="p">))</span>
+    <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">X</span> <span class="p">+</span> <span class="s">&quot;,&quot;</span> <span class="p">+</span> <span class="n">p</span><span class="p">.</span><span class="n">Y</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">ToReactiveCollection</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">AddTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_disposables</span><span class="p">);</span>
+
+<span class="c1">// 最新5件のみを保持</span>
+<span class="n">MouseXY</span>
+    <span class="p">.</span><span class="n">ObserveAddChanged</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">MouseXY</span><span class="p">.</span><span class="n">Count</span> <span class="p">&gt;</span> <span class="m">5</span><span class="p">)</span> <span class="n">MouseXY</span><span class="p">.</span><span class="n">RemoveAtOnScheduler</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+    <span class="p">});</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="id12">
+<h2>ボタンを2秒以上押したら発火するイベント<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p>以下で動作することを確認したが、最適なコードであるかは不明</p></li>
+<li><p>インストールパッケージ</p>
+<ul class="simple">
+<li><p>Prism.Unity</p></li>
+<li><p>ReactiveProperty</p></li>
+<li><p>ReactiveProperty.WPF</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// ■ xaml</span>
+<span class="n">xmlns</span><span class="p">:</span><span class="n">i</span><span class="p">=</span><span class="s">&quot;http://schemas.microsoft.com/xaml/behaviors&quot;</span>
+<span class="n">xmlns</span><span class="p">:</span><span class="n">r</span><span class="p">=</span><span class="s">&quot;clr-namespace:Reactive.Bindings.Interactivity;assembly=ReactiveProperty.WPF&quot;</span>
+
+<span class="p">&lt;</span><span class="n">Button</span> <span class="n">Content</span><span class="p">=</span><span class="s">&quot;Button&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="n">i</span><span class="p">:</span><span class="n">Interaction</span><span class="p">.</span><span class="n">Triggers</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="n">i</span><span class="p">:</span><span class="n">EventTrigger</span> <span class="n">EventName</span><span class="p">=</span><span class="s">&quot;PreviewMouseDown&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="n">r</span><span class="p">:</span><span class="n">EventToReactiveCommand</span> <span class="n">Command</span><span class="p">=</span><span class="s">&quot;{Binding MouseDown}&quot;</span><span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="n">i</span><span class="p">:</span><span class="n">EventTrigger</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="n">i</span><span class="p">:</span><span class="n">EventTrigger</span> <span class="n">EventName</span><span class="p">=</span><span class="s">&quot;PreviewMouseUp&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="n">r</span><span class="p">:</span><span class="n">EventToReactiveCommand</span> <span class="n">Command</span><span class="p">=</span><span class="s">&quot;{Binding MouseUp}&quot;</span><span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="n">i</span><span class="p">:</span><span class="n">EventTrigger</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="n">i</span><span class="p">:</span><span class="n">Interaction</span><span class="p">.</span><span class="n">Triggers</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="n">Button</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// ■ ViewModel</span>
+<span class="k">public</span> <span class="n">ReactiveCommand</span><span class="p">&lt;</span><span class="n">MouseButtonEventArgs</span><span class="p">&gt;</span> <span class="n">MouseDown</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+<span class="k">public</span> <span class="n">ReactiveCommand</span><span class="p">&lt;</span><span class="n">MouseButtonEventArgs</span><span class="p">&gt;</span> <span class="n">MouseUp</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="k">this</span><span class="p">.</span><span class="n">MouseDown</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ReactiveCommand</span><span class="p">&lt;</span><span class="n">MouseButtonEventArgs</span><span class="p">&gt;().</span><span class="n">AddTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_disposables</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="n">MouseUp</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ReactiveCommand</span><span class="p">&lt;</span><span class="n">MouseButtonEventArgs</span><span class="p">&gt;().</span><span class="n">AddTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_disposables</span><span class="p">);</span>
+
+<span class="k">this</span><span class="p">.</span><span class="n">MouseDown</span><span class="p">.</span><span class="n">Select</span>
+<span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="n">Observable</span><span class="p">.</span><span class="n">Timer</span><span class="p">(</span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">2</span><span class="p">))</span>
+                <span class="p">.</span><span class="n">TakeUntil</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">MouseUp</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="n">Debug</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Clicked&quot;</span><span class="p">))</span>
+<span class="p">).</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="p">});</span>  <span class="c1">// これがないとClickedは表示されない。なぜ？</span>
+</pre></div>
+</div>
+</li>
+</ul>
 </section>
 </section>
 

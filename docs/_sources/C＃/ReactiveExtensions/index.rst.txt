@@ -7,3 +7,4 @@ ReactiveExtensions
 
    ファクトリメソッドリスト
    ファクトリメソッド説明
+   参考URL
