@@ -461,15 +461,22 @@ AsyncReactiveCommandを使用し、戻り値がTaskのメソッドをWithSubscri
     ).Subscribe(_ => { });  // これがないとClickedは表示されない。なぜ？
 
 * 以下のようにするとプログレスバーを表示できる
-* ただし、2sにすることはできなさそう
+* ただし、2sに制御することはできなさそう（HWスペックに合わせて調整するしかない）
 
   .. code-block:: csharp
 
     this.MouseDown = new ReactiveCommand<MouseButtonEventArgs>().AddTo(this._disposables);
-    this.MouseUp = new ReactiveCommand<MouseButtonEventArgs>().WithSubscribe(_ => { this.Progress.Value = 0; Text3.Value = string.Empty; }).AddTo(this._disposables);
+    this.MouseUp = new ReactiveCommand<MouseButtonEventArgs>()
+        .WithSubscribe(_ => 
+        {
+            this.Progress.Value = 0; 
+            Text3.Value = string.Empty; 
+        }).AddTo(this._disposables);
     this.MouseMove = new ReactiveCommand<MouseEventArgs>().AddTo(this._disposables);
 
-    this.MouseDown.Select(_ => Observable.Generate(0d, i => i <= 100, i => i += 1, i => i, i => TimeSpan.FromMilliseconds(1)).TakeUntil(this.MouseUp)
+    this.MouseDown.Select(_ => Observable
+        .Generate(0d, i => i <= 100, i => i += 1, i => i, i => TimeSpan.FromMilliseconds(1))
+        .TakeUntil(this.MouseUp)
         .Subscribe(x => 
         {
             this.Progress.Value = x;
