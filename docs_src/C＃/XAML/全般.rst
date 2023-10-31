@@ -50,6 +50,16 @@ xamlに以下の4 行を追加すると、土台となる UserControl が指定�
         public string Content { get; set; }
     }
 
+----------------------------
+StyleとTemplateとUserControl
+----------------------------
+
+* syle : 対象が元から持っているプロパティを変更するだけ
+* Template : 1つのコントロールをカスタム
+* UserContorl : 複数のコントロールを組み合わせたものを作る。1つのコントロールでも、既存では存在しないプロパティや設定を作る
+* style、Templateともに、一般的に、xamlのResourcesセクションにリソースとして宣言される
+
+
 バインド
 ========
 

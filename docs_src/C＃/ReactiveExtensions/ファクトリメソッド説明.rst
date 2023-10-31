@@ -26,9 +26,11 @@ IObservableのファクトリメソッドリスト
             // 購読の停止（この場合意味はない）
             subscription.Dispose();
 
+        .. code-block:: csharp
+
             // 上記の実行結果
-            // OnNext(10)
-            // Completed()
+            OnNext(10)
+            Completed()
 
         .. code-block:: csharp
 
@@ -51,13 +53,15 @@ IObservableのファクトリメソッドリスト
             // 購読停止（この場合意味はない）
             subscription.Dispose();
 
+        .. code-block:: csharp
+
             // 上記の実行結果
-            // OnNext(2)
-            // OnNext(2)
-            // OnNext(2)
-            // OnNext(2)
-            // OnNext(2)
-            // Completed()
+            OnNext(2)
+            OnNext(2)
+            OnNext(2)
+            OnNext(2)
+            OnNext(2)
+            Completed()
 
     Range
 
@@ -76,18 +80,20 @@ IObservableのファクトリメソッドリスト
             // 購読停止（この場合意味はない）
             subscription.Dispose();
             
+        .. code-block:: csharp
+
             // 上記の実行結果
-            // OnNext(1)
-            // OnNext(2)
-            // OnNext(3)
-            // OnNext(4)
-            // OnNext(5)
-            // OnNext(6)
-            // OnNext(7)
-            // OnNext(8)
-            // OnNext(9)
-            // OnNext(10)
-            // Completed()
+            OnNext(1)
+            OnNext(2)
+            OnNext(3)
+            OnNext(4)
+            OnNext(5)
+            OnNext(6)
+            OnNext(7)
+            OnNext(8)
+            OnNext(9)
+            OnNext(10)
+            Completed()
 
     Generate
 
@@ -108,18 +114,20 @@ IObservableのファクトリメソッドリスト
             // 購読停止（この場合意味はない）
             subscription.Dispose();
             
+        .. code-block:: csharp
+
             // 上記の実行結果
-            // OnNext(0)
-            // OnNext(1)
-            // OnNext(4)
-            // OnNext(9)
-            // OnNext(16)
-            // OnNext(25)
-            // OnNext(36)
-            // OnNext(49)
-            // OnNext(64)
-            // OnNext(81)
-            // Completed()
+            OnNext(0)
+            OnNext(1)
+            OnNext(4)
+            OnNext(9)
+            OnNext(16)
+            OnNext(25)
+            OnNext(36)
+            OnNext(49)
+            OnNext(64)
+            OnNext(81)
+            Completed()
         
     Defer
 
@@ -157,17 +165,19 @@ IObservableのファクトリメソッドリスト
             subscription1.Dispose();
             subscription2.Dispose();
             
+        .. code-block:: csharp
+
             // 上記の実行結果
-            // # Defar method called.
-            // OnNext(1)
-            // OnNext(2)
-            // OnNext(3)
-            // Completed()
-            // # Defar method called.
-            // OnNext(1)
-            // OnNext(2)
-            // OnNext(3)
-            // Completed()
+            # Defar method called.
+            OnNext(1)
+            OnNext(2)
+            OnNext(3)
+            Completed()
+            # Defar method called.
+            OnNext(1)
+            OnNext(2)
+            OnNext(3)
+            Completed()
 
     Create
 
@@ -203,21 +213,23 @@ IObservableのファクトリメソッドリスト
             subscription1.Dispose();
             subscription2.Dispose();
             
+        .. code-block:: csharp
+
             // 上記の実行結果
-            // ## CreateSample
-            // # Create method called.
-            // OnNext(1)
-            // OnNext(2)
-            // OnNext(3)
-            // Completed()
-            // Disposable action
-            // # Create method called.
-            // OnNext(1)
-            // OnNext(2)
-            // OnNext(3)
-            // Completed()
-            // Disposable action
-            // # Dispose method call.
+            ## CreateSample
+            # Create method called.
+            OnNext(1)
+            OnNext(2)
+            OnNext(3)
+            Completed()
+            Disposable action
+            # Create method called.
+            OnNext(1)
+            OnNext(2)
+            OnNext(3)
+            Completed()
+            Disposable action
+            # Dispose method call.
         
     Throw
 
@@ -250,14 +262,14 @@ Timer系のファクトリメソッドリスト
         * https://blog.okazuki.jp/entry/20111106/1320584830
         * 一定時間ごとに値を発行する
         * 発行する値はTimerが実行された回数
-        * いくつかオーバーロードがあるが、第一引数にタイマーを開始するまでの時間、第二引数にタイマーのインターバルをTimeSpan型で指定するオーバーロードが、一番使用頻度が高い
+        * いくつかオーバーロードがある
 
         .. code-block:: csharp
 
             // 3秒後から1秒間隔で値を発行するIObservable<long>を作成する
             var source = Observable.Timer(
-                TimeSpan.FromSeconds(3), 
-                TimeSpan.FromSeconds(1));
+                TimeSpan.FromSeconds(3),    // タイマーを開始するまでの時間
+                TimeSpan.FromSeconds(1));   // タイマーのインターバルをTimeSpan型で指定
             // 購読
             var subscription = source.Subscribe(
                 i => Console.WriteLine("OnNext({0})", i),
@@ -274,16 +286,18 @@ Timer系のファクトリメソッドリスト
             Console.WriteLine("please enter key...");
             Console.ReadLine();
 
+        .. code-block:: csharp
+
             // 上記の実行結果
-            // please enter key...  // ここから3秒何も表示されない
-            // OnNext(0)            // 3秒たつと1秒間隔でOnNextが呼ばれる
-            // OnNext(1)
-            // OnNext(2)
-            // OnNext(3)
-            // OnNext(4)
-            // OnNext(5)
-            // dispose method call. // Enterを押してDisposeが呼ばれるとOnNextも止まる
-            // please enter key...
+            please enter key...  // ここから3秒何も表示されない
+            OnNext(0)            // 3秒たつと1秒間隔でOnNextが呼ばれる
+            OnNext(1)
+            OnNext(2)
+            OnNext(3)
+            OnNext(4)
+            OnNext(5)
+            dispose method call. // Enterを押してDisposeが呼ばれるとOnNextも止まる
+            please enter key...
 
     Interval
 
@@ -311,17 +325,19 @@ Timer系のファクトリメソッドリスト
             Console.WriteLine("please enter key...");
             Console.ReadLine();
 
+        .. code-block:: csharp
+
             // 上記の実行結果
-            // please enter key...
-            // OnNext(0)
-            // OnNext(1)
-            // OnNext(2)
-            // OnNext(3)
-            // OnNext(4)
-            // OnNext(5)
-            // OnNext(6)
-            // dispose method call.
-            // please enter key...
+            please enter key...
+            OnNext(0)
+            OnNext(1)
+            OnNext(2)
+            OnNext(3)
+            OnNext(4)
+            OnNext(5)
+            OnNext(6)
+            dispose method call.
+            please enter key...
 
     Generate
 
@@ -357,21 +373,23 @@ Timer系のファクトリメソッドリスト
             Console.WriteLine("please enter key...");
             Console.ReadLine();
 
+        .. code-block:: csharp
+
             // 上記の実行結果
-            // please enter key...
-            // OnNext(0)
-            // OnNext(1)
-            // OnNext(4)
-            // OnNext(9)
-            // OnNext(16)
-            // OnNext(25)
-            // OnNext(36)
-            // OnNext(49)
-            // OnNext(64)
-            // OnNext(81)
-            // Completed()
-            // dispose method call.
-            // please enter key...
+            please enter key...
+            OnNext(0)
+            OnNext(1)
+            OnNext(4)
+            OnNext(9)
+            OnNext(16)
+            OnNext(25)
+            OnNext(36)
+            OnNext(49)
+            OnNext(64)
+            OnNext(81)
+            Completed()
+            dispose method call.
+            please enter key...
 
         * https://qiita.com/yutorisan/items/3249e4d5aac5b7bd4189
         * 任意の時間間隔で値を発行する
@@ -400,18 +418,20 @@ Timer系のファクトリメソッドリスト
                     TimeSpan.FromSeconds(5)
                 };
 
-                Console.WriteLine($"{DateTime.Now} 値の発行を開始します");
+                Console.WriteLine("{DateTime.Now} 値の発行を開始します");
                 Observable.Generate(initialState: 0,
                                     condition: n => n < intervals.Count,
                                     iterate: n => ++n,
                                     resultSelector: n => n,
                                     timeSelector: n => intervals[n])
                           .Timestamp()
-                          .Subscribe(val => Console.WriteLine($"{val.Timestamp.ToLocalTime().DateTime} 発行された値：{val.Value}"),
+                          .Subscribe(val => Console.WriteLine("{val.Timestamp.ToLocalTime().DateTime} 発行された値：{val.Value}"),
                                       () => Console.WriteLine("値の発行が完了しました"));
 
                 Console.Read();
             }
+
+        .. code-block:: csharp
 
             // 実行結果
             2020/04/26 23:51:09 値の発行を開始します
@@ -440,7 +460,7 @@ Timer系のファクトリメソッドリスト
                                                         TimeSpan.FromSeconds(4),
                                                         TimeSpan.FromSeconds(5) })
                         .Timestamp()
-                        .Subscribe(val => Console.WriteLine($"{val.Timestamp.ToLocalTime().DateTime} 発行された値：{val.Value}"),
+                        .Subscribe(val => Console.WriteLine("{val.Timestamp.ToLocalTime().DateTime} 発行された値：{val.Value}"),
                                     () => Console.WriteLine("値の発行が完了しました"));
 
 HotなIObservableを作成するファクトリメソッドリスト
@@ -579,6 +599,151 @@ HotなIObservableを作成するファクトリメソッドリスト
                 }
             }
 
+    Start
+
+        * https://blog.okazuki.jp/entry/20111109/1320849106
+        * バックグラウンドで処理を実行し結果を返す
+        * Startメソッドを呼び出した直後から処理が開始される
+
+        .. code-block:: csharp
+
+            // バックグラウンドで処理1を開始
+            var source = Observable.Start(() =>
+            {
+                Console.WriteLine("background task start.");
+                Thread.Sleep(2000);
+                Console.WriteLine("background task end.");
+                return 1.2;     // 処理1の結果。購読時に受け取る値
+            });
+
+            // 上の記述でバックグラウンドの処理1がすでに始まっている
+            Thread.Sleep(5000);
+
+            // 上記で5s待機したのでこの時点で処理1は完了済み
+            // 完了後に購読1する
+            // 処理1の結果である「1.2」を受け取る
+            Debug.WriteLine("subscribe1");
+            var subscription1 = source.Subscribe(
+                i => Console.WriteLine("1##OnNext({0})", i),    // 上記の1.2を受け取る
+                ex => Console.WriteLine("1##OnError({0})", ex.Message),
+                () => Console.WriteLine("1##Completed()"));
+
+            // Observableが発行する値の購読を停止
+            Console.WriteLine("dispose method call.");
+            subscription1.Dispose();
+
+            // 購読2
+            // 再び購読しても同じで、処理1の結果である「1.2」を受け取る
+            Console.WriteLine("subscribe2");
+            var subscription2 = source.Subscribe(
+                i => Console.WriteLine("2##OnNext({0})", i),    // 上記の1.2を受け取る
+                ex => Console.WriteLine("2##OnError({0})", ex.Message),
+                () => Console.WriteLine("2##Completed()"));
+            subscription2.Dispose();
+
+        .. code-block:: csharp
+
+            // 実行結果
+            background task start.
+            background task end.
+            subscribe1          // これ以降は連続してDebug出力される
+            1##OnNext(1.2)
+            1##Completed()
+            dispose method call.
+            subscribe2
+            2##OnNext(1.2)
+            2##Completed()
+
+    ToAsync
+
+        * https://blog.okazuki.jp/entry/20111109/1320849106
+        * バックグラウンドの任意のタイミングで処理を実行し結果を返す
+        * Startメソッドは呼び出し時に処理が開始されるが、ToAsyncメソッドは処理の開始タイミングを柔軟に制御できる
+
+        .. code-block:: csharp
+
+            // 戻り値はFunc<IObservable<T>>
+            var source = Observable.ToAsync(() =>
+            {
+                Console.WriteLine("background task start.");
+                Thread.Sleep(2000);
+                Console.WriteLine("background task end.");
+                return 1;     // 処理の結果。購読時に受け取る値
+            });
+
+            // ToAsyncはデリゲートを返すのでInvoke() or ()をしないと処理が開始されない
+            Console.WriteLine("source() call.");
+            var invokedSource = source.Invoke();
+            var subscription1 = invokedSource.Subscribe(
+                i => Console.WriteLine("1##OnNext({0})", i),
+                ex => Console.WriteLine("1##OnError({0})", ex.Message),
+                () => Console.WriteLine("1##Completed()"));
+            // 処理が確実に終わるように5秒待つ
+            Console.WriteLine("sleep 5sec.");
+            Thread.Sleep(5000);
+
+            // Observableが発行する値の購読を停止
+            Console.WriteLine("dispose method call.");
+            subscription1.Dispose();
+
+            // 購読
+            // バックグラウンドでの処理自体は既に完了しているので結果をもらうのみ
+            Console.WriteLine("subscribe2");
+            var subscription2 = invokedSource.Subscribe(
+                i => Console.WriteLine("2##OnNext({0})", i),
+                ex => Console.WriteLine("2##OnError({0})", ex.Message),
+                () => Console.WriteLine("2##Completed()"));
+            subscription2.Dispose();
+
+        .. code-block:: csharp
+
+            // 実行結果
+            source() call.
+            background task start.
+            sleep 5sec.
+            background task end.
+            1##OnNext(1)
+            1##Completed()
+            dispose method call.
+            subscribe2
+            2##OnNext(1)
+            2##Completed()
+
+メソッドリスト
+==============
+
+.. glossary::
+
+    Do
+
+        * https://blog.okazuki.jp/entry/20111128/1322491648
+        * IObservableのシーケンスを処理する途中に任意のアクションを実行する
+        * 外部に対して副作用を起こすため、Doメソッドの利用は必要最低限にとどめること
+
+        .. code-block:: csharp
+
+            var subject = new Subject<int>();
+            subject
+                // 途中に処理を挟む
+                .Do(i => Console.WriteLine("Do : {0}", i))
+                // 購読(購読しないとOnNextをしても値が流れないね)
+                .Subscribe(i => Console.WriteLine("OnNext : {0}", i));
+
+            // 値の発行
+            subject.OnNext(1);
+            subject.OnNext(2);
+            subject.OnNext(3);
+
+        .. code-block:: csharp
+
+            // 実行結果
+            Do : 1
+            OnNext : 1
+            Do : 2
+            OnNext : 2
+            Do : 3
+            OnNext : 3
+
 時間に関する情報を付与するTimestampとTimeIntervalメソッド
 =========================================================
 
@@ -600,10 +765,12 @@ HotなIObservableを作成するファクトリメソッドリスト
                       .Subscribe(t => Console.WriteLine("Value:{t.Value} Time:{t.Timestamp}"),
                                  () => Console.WriteLine("OnCompleted"));
 
+        .. code-block:: csharp
+
             // 実行結果
-            // Value:0 Time:2020/09/28 13:27:06 +00:00
-            // Value:1 Time:2020/09/28 13:27:07 +00:00
-            // Value:2 Time:2020/09/28 13:27:08 +00:00
-            // Value:3 Time:2020/09/28 13:27:09 +00:00
-            // Value:4 Time:2020/09/28 13:27:10 +00:00
-            // OnCompleted
+            Value:0 Time:2020/09/28 13:27:06 +00:00
+            Value:1 Time:2020/09/28 13:27:07 +00:00
+            Value:2 Time:2020/09/28 13:27:08 +00:00
+            Value:3 Time:2020/09/28 13:27:09 +00:00
+            Value:4 Time:2020/09/28 13:27:10 +00:00
+            OnCompleted

@@ -19,7 +19,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
-    <link rel="next" title="VisualStudio" href="../VisualStudio.html" />
+    <link rel="next" title="参考URL" href="%E5%8F%82%E8%80%83URL.html" />
     <link rel="prev" title="ファクトリメソッドリスト" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%83%AA%E3%82%B9%E3%83%88.html" /> 
 </head>
 
@@ -59,9 +59,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#iobservable">IObservableのファクトリメソッドリスト</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#timer">Timer系のファクトリメソッドリスト</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#hotiobservable">HotなIObservableを作成するファクトリメソッドリスト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">メソッドリスト</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#timestamptimeinterval">時間に関する情報を付与するTimestampとTimeIntervalメソッド</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="%E5%8F%82%E8%80%83URL.html">参考URL</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../VisualStudio.html">VisualStudio</a></li>
@@ -121,10 +123,11 @@
     <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Completed()&quot;</span><span class="p">));</span>
 <span class="c1">// 購読の停止（この場合意味はない）</span>
 <span class="n">subscription</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
-
-<span class="c1">// 上記の実行結果</span>
-<span class="c1">// OnNext(10)</span>
-<span class="c1">// Completed()</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 上記の実行結果</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
+<span class="n">Completed</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">NoActionCommand</span> <span class="p">=</span> <span class="n">Observable</span><span class="p">.</span><span class="n">Return</span><span class="p">(</span><span class="k">false</span><span class="p">).</span><span class="n">ToAsyncReactiveCommand</span><span class="p">().</span><span class="n">AddTo</span><span class="p">(</span><span class="n">Disposable</span><span class="p">);</span>
@@ -144,14 +147,15 @@
     <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Completed()&quot;</span><span class="p">));</span>
 <span class="c1">// 購読停止（この場合意味はない）</span>
 <span class="n">subscription</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
-
-<span class="c1">// 上記の実行結果</span>
-<span class="c1">// OnNext(2)</span>
-<span class="c1">// OnNext(2)</span>
-<span class="c1">// OnNext(2)</span>
-<span class="c1">// OnNext(2)</span>
-<span class="c1">// OnNext(2)</span>
-<span class="c1">// Completed()</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 上記の実行結果</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+<span class="n">Completed</span><span class="p">()</span>
 </pre></div>
 </div>
 </dd>
@@ -168,19 +172,20 @@
     <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Completed()&quot;</span><span class="p">));</span>
 <span class="c1">// 購読停止（この場合意味はない）</span>
 <span class="n">subscription</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
-
-<span class="c1">// 上記の実行結果</span>
-<span class="c1">// OnNext(1)</span>
-<span class="c1">// OnNext(2)</span>
-<span class="c1">// OnNext(3)</span>
-<span class="c1">// OnNext(4)</span>
-<span class="c1">// OnNext(5)</span>
-<span class="c1">// OnNext(6)</span>
-<span class="c1">// OnNext(7)</span>
-<span class="c1">// OnNext(8)</span>
-<span class="c1">// OnNext(9)</span>
-<span class="c1">// OnNext(10)</span>
-<span class="c1">// Completed()</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 上記の実行結果</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">3</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">4</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">5</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">6</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">7</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">8</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">9</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
+<span class="n">Completed</span><span class="p">()</span>
 </pre></div>
 </div>
 </dd>
@@ -199,19 +204,20 @@
     <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Completed()&quot;</span><span class="p">));</span>
 <span class="c1">// 購読停止（この場合意味はない）</span>
 <span class="n">subscription</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
-
-<span class="c1">// 上記の実行結果</span>
-<span class="c1">// OnNext(0)</span>
-<span class="c1">// OnNext(1)</span>
-<span class="c1">// OnNext(4)</span>
-<span class="c1">// OnNext(9)</span>
-<span class="c1">// OnNext(16)</span>
-<span class="c1">// OnNext(25)</span>
-<span class="c1">// OnNext(36)</span>
-<span class="c1">// OnNext(49)</span>
-<span class="c1">// OnNext(64)</span>
-<span class="c1">// OnNext(81)</span>
-<span class="c1">// Completed()</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 上記の実行結果</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">4</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">9</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">16</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">25</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">36</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">49</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">64</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">81</span><span class="p">)</span>
+<span class="n">Completed</span><span class="p">()</span>
 </pre></div>
 </div>
 </dd>
@@ -247,18 +253,19 @@
 <span class="c1">// 購読停止（この場合意味はない）</span>
 <span class="n">subscription1</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
 <span class="n">subscription2</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
-
-<span class="c1">// 上記の実行結果</span>
-<span class="c1">// # Defar method called.</span>
-<span class="c1">// OnNext(1)</span>
-<span class="c1">// OnNext(2)</span>
-<span class="c1">// OnNext(3)</span>
-<span class="c1">// Completed()</span>
-<span class="c1">// # Defar method called.</span>
-<span class="c1">// OnNext(1)</span>
-<span class="c1">// OnNext(2)</span>
-<span class="c1">// OnNext(3)</span>
-<span class="c1">// Completed()</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>// 上記の実行結果
+# Defar method called.
+OnNext(1)
+OnNext(2)
+OnNext(3)
+Completed()
+# Defar method called.
+OnNext(1)
+OnNext(2)
+OnNext(3)
+Completed()
 </pre></div>
 </div>
 </dd>
@@ -292,22 +299,23 @@
 <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;# Dispose method call.&quot;</span><span class="p">);</span>
 <span class="n">subscription1</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
 <span class="n">subscription2</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
-
-<span class="c1">// 上記の実行結果</span>
-<span class="c1">// ## CreateSample</span>
-<span class="c1">// # Create method called.</span>
-<span class="c1">// OnNext(1)</span>
-<span class="c1">// OnNext(2)</span>
-<span class="c1">// OnNext(3)</span>
-<span class="c1">// Completed()</span>
-<span class="c1">// Disposable action</span>
-<span class="c1">// # Create method called.</span>
-<span class="c1">// OnNext(1)</span>
-<span class="c1">// OnNext(2)</span>
-<span class="c1">// OnNext(3)</span>
-<span class="c1">// Completed()</span>
-<span class="c1">// Disposable action</span>
-<span class="c1">// # Dispose method call.</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>// 上記の実行結果
+## CreateSample
+# Create method called.
+OnNext(1)
+OnNext(2)
+OnNext(3)
+Completed()
+Disposable action
+# Create method called.
+OnNext(1)
+OnNext(2)
+OnNext(3)
+Completed()
+Disposable action
+# Dispose method call.
 </pre></div>
 </div>
 </dd>
@@ -340,12 +348,12 @@
 <li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111106/1320584830">https://blog.okazuki.jp/entry/20111106/1320584830</a></p></li>
 <li><p>一定時間ごとに値を発行する</p></li>
 <li><p>発行する値はTimerが実行された回数</p></li>
-<li><p>いくつかオーバーロードがあるが、第一引数にタイマーを開始するまでの時間、第二引数にタイマーのインターバルをTimeSpan型で指定するオーバーロードが、一番使用頻度が高い</p></li>
+<li><p>いくつかオーバーロードがある</p></li>
 </ul>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 3秒後から1秒間隔で値を発行するIObservable&lt;long&gt;を作成する</span>
 <span class="kt">var</span> <span class="n">source</span> <span class="p">=</span> <span class="n">Observable</span><span class="p">.</span><span class="n">Timer</span><span class="p">(</span>
-    <span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">3</span><span class="p">),</span>
-    <span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">1</span><span class="p">));</span>
+    <span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">3</span><span class="p">),</span>    <span class="c1">// タイマーを開始するまでの時間</span>
+    <span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">1</span><span class="p">));</span>   <span class="c1">// タイマーのインターバルをTimeSpan型で指定</span>
 <span class="c1">// 購読</span>
 <span class="kt">var</span> <span class="n">subscription</span> <span class="p">=</span> <span class="n">source</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span>
     <span class="n">i</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;OnNext({0})&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span>
@@ -361,17 +369,18 @@
 <span class="c1">// Disposeをすると値が発行されなくなる。</span>
 <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;please enter key...&quot;</span><span class="p">);</span>
 <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
-
-<span class="c1">// 上記の実行結果</span>
-<span class="c1">// please enter key...  // ここから3秒何も表示されない</span>
-<span class="c1">// OnNext(0)            // 3秒たつと1秒間隔でOnNextが呼ばれる</span>
-<span class="c1">// OnNext(1)</span>
-<span class="c1">// OnNext(2)</span>
-<span class="c1">// OnNext(3)</span>
-<span class="c1">// OnNext(4)</span>
-<span class="c1">// OnNext(5)</span>
-<span class="c1">// dispose method call. // Enterを押してDisposeが呼ばれるとOnNextも止まる</span>
-<span class="c1">// please enter key...</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 上記の実行結果</span>
+<span class="n">please</span> <span class="n">enter</span> <span class="n">key</span><span class="p">...</span>  <span class="c1">// ここから3秒何も表示されない</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>            <span class="c1">// 3秒たつと1秒間隔でOnNextが呼ばれる</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">3</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">4</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">5</span><span class="p">)</span>
+<span class="n">dispose</span> <span class="n">method</span> <span class="n">call</span><span class="p">.</span> <span class="c1">// Enterを押してDisposeが呼ばれるとOnNextも止まる</span>
+<span class="n">please</span> <span class="n">enter</span> <span class="n">key</span><span class="p">...</span>
 </pre></div>
 </div>
 </dd>
@@ -397,18 +406,19 @@
 <span class="c1">// Disposeをすると値が発行されても受け取らなくなる。</span>
 <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;please enter key...&quot;</span><span class="p">);</span>
 <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
-
-<span class="c1">// 上記の実行結果</span>
-<span class="c1">// please enter key...</span>
-<span class="c1">// OnNext(0)</span>
-<span class="c1">// OnNext(1)</span>
-<span class="c1">// OnNext(2)</span>
-<span class="c1">// OnNext(3)</span>
-<span class="c1">// OnNext(4)</span>
-<span class="c1">// OnNext(5)</span>
-<span class="c1">// OnNext(6)</span>
-<span class="c1">// dispose method call.</span>
-<span class="c1">// please enter key...</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 上記の実行結果</span>
+<span class="n">please</span> <span class="n">enter</span> <span class="n">key</span><span class="p">...</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">3</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">4</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">5</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">6</span><span class="p">)</span>
+<span class="n">dispose</span> <span class="n">method</span> <span class="n">call</span><span class="p">.</span>
+<span class="n">please</span> <span class="n">enter</span> <span class="n">key</span><span class="p">...</span>
 </pre></div>
 </div>
 </dd>
@@ -442,22 +452,23 @@
 <span class="c1">// Disposeをすると値が発行されても受け取らなくなる。</span>
 <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;please enter key...&quot;</span><span class="p">);</span>
 <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
-
-<span class="c1">// 上記の実行結果</span>
-<span class="c1">// please enter key...</span>
-<span class="c1">// OnNext(0)</span>
-<span class="c1">// OnNext(1)</span>
-<span class="c1">// OnNext(4)</span>
-<span class="c1">// OnNext(9)</span>
-<span class="c1">// OnNext(16)</span>
-<span class="c1">// OnNext(25)</span>
-<span class="c1">// OnNext(36)</span>
-<span class="c1">// OnNext(49)</span>
-<span class="c1">// OnNext(64)</span>
-<span class="c1">// OnNext(81)</span>
-<span class="c1">// Completed()</span>
-<span class="c1">// dispose method call.</span>
-<span class="c1">// please enter key...</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 上記の実行結果</span>
+<span class="n">please</span> <span class="n">enter</span> <span class="n">key</span><span class="p">...</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">4</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">9</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">16</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">25</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">36</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">49</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">64</span><span class="p">)</span>
+<span class="n">OnNext</span><span class="p">(</span><span class="m">81</span><span class="p">)</span>
+<span class="n">Completed</span><span class="p">()</span>
+<span class="n">dispose</span> <span class="n">method</span> <span class="n">call</span><span class="p">.</span>
+<span class="n">please</span> <span class="n">enter</span> <span class="n">key</span><span class="p">...</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -465,41 +476,42 @@
 <li><p>任意の時間間隔で値を発行する</p></li>
 <li><p>発行する順番を定義したTimeSpanのListを用意して、timeSelectorで値を順番に読んでいくように指定することで、Listに定義した間隔で値が発行されます</p></li>
 </ul>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>// 定義
-public static IObservable&lt;TResult&gt; Generate&lt;TState, TResult&gt; (
-    TState initialState,                    //TStateの初期値を指定
-    Func&lt;TState, bool&gt; condition,           //継続条件を指定
-    Func&lt;TState, TState&gt; iterate,           //TStateの変化量を指定
-    Func&lt;TState, TResult&gt; resultSelector,   //発光する値を指定
-    Func&lt;TState, TimeSpan&gt; timeSelector)    //時間間隔を指定;
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 定義</span>
+<span class="k">public</span> <span class="k">static</span> <span class="n">IObservable</span><span class="p">&lt;</span><span class="n">TResult</span><span class="p">&gt;</span> <span class="n">Generate</span><span class="p">&lt;</span><span class="n">TState</span><span class="p">,</span> <span class="n">TResult</span><span class="p">&gt;</span> <span class="p">(</span>
+    <span class="n">TState</span> <span class="n">initialState</span><span class="p">,</span>                    <span class="c1">//TStateの初期値を指定</span>
+    <span class="n">Func</span><span class="p">&lt;</span><span class="n">TState</span><span class="p">,</span> <span class="kt">bool</span><span class="p">&gt;</span> <span class="n">condition</span><span class="p">,</span>           <span class="c1">//継続条件を指定</span>
+    <span class="n">Func</span><span class="p">&lt;</span><span class="n">TState</span><span class="p">,</span> <span class="n">TState</span><span class="p">&gt;</span> <span class="n">iterate</span><span class="p">,</span>           <span class="c1">//TStateの変化量を指定</span>
+    <span class="n">Func</span><span class="p">&lt;</span><span class="n">TState</span><span class="p">,</span> <span class="n">TResult</span><span class="p">&gt;</span> <span class="n">resultSelector</span><span class="p">,</span>   <span class="c1">//発光する値を指定</span>
+    <span class="n">Func</span><span class="p">&lt;</span><span class="n">TState</span><span class="p">,</span> <span class="n">TimeSpan</span><span class="p">&gt;</span> <span class="n">timeSelector</span><span class="p">)</span>    <span class="c1">//時間間隔を指定;</span>
 
-// 使用例
-public static void Main(string[] args)
-{
-    //発行間隔を定義
-    List&lt;TimeSpan&gt; intervals = new List&lt;TimeSpan&gt;()
-    {
-        TimeSpan.FromSeconds(1),
-        TimeSpan.FromSeconds(2),
-        TimeSpan.FromSeconds(3),
-        TimeSpan.FromSeconds(4),
-        TimeSpan.FromSeconds(5)
-    };
+<span class="c1">// 使用例</span>
+<span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">//発行間隔を定義</span>
+    <span class="n">List</span><span class="p">&lt;</span><span class="n">TimeSpan</span><span class="p">&gt;</span> <span class="n">intervals</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">TimeSpan</span><span class="p">&gt;()</span>
+    <span class="p">{</span>
+        <span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">1</span><span class="p">),</span>
+        <span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">2</span><span class="p">),</span>
+        <span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">3</span><span class="p">),</span>
+        <span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">4</span><span class="p">),</span>
+        <span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">5</span><span class="p">)</span>
+    <span class="p">};</span>
 
-    Console.WriteLine($&quot;{DateTime.Now} 値の発行を開始します&quot;);
-    Observable.Generate(initialState: 0,
-                        condition: n =&gt; n &lt; intervals.Count,
-                        iterate: n =&gt; ++n,
-                        resultSelector: n =&gt; n,
-                        timeSelector: n =&gt; intervals[n])
-              .Timestamp()
-              .Subscribe(val =&gt; Console.WriteLine($&quot;{val.Timestamp.ToLocalTime().DateTime} 発行された値：{val.Value}&quot;),
-                          () =&gt; Console.WriteLine(&quot;値の発行が完了しました&quot;));
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;{DateTime.Now} 値の発行を開始します&quot;</span><span class="p">);</span>
+    <span class="n">Observable</span><span class="p">.</span><span class="n">Generate</span><span class="p">(</span><span class="n">initialState</span><span class="p">:</span> <span class="m">0</span><span class="p">,</span>
+                        <span class="n">condition</span><span class="p">:</span> <span class="n">n</span> <span class="p">=&gt;</span> <span class="n">n</span> <span class="p">&lt;</span> <span class="n">intervals</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span>
+                        <span class="n">iterate</span><span class="p">:</span> <span class="n">n</span> <span class="p">=&gt;</span> <span class="p">++</span><span class="n">n</span><span class="p">,</span>
+                        <span class="n">resultSelector</span><span class="p">:</span> <span class="n">n</span> <span class="p">=&gt;</span> <span class="n">n</span><span class="p">,</span>
+                        <span class="n">timeSelector</span><span class="p">:</span> <span class="n">n</span> <span class="p">=&gt;</span> <span class="n">intervals</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+              <span class="p">.</span><span class="n">Timestamp</span><span class="p">()</span>
+              <span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">val</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;{val.Timestamp.ToLocalTime().DateTime} 発行された値：{val.Value}&quot;</span><span class="p">),</span>
+                          <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;値の発行が完了しました&quot;</span><span class="p">));</span>
 
-    Console.Read();
-}
-
-// 実行結果
+    <span class="n">Console</span><span class="p">.</span><span class="n">Read</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>// 実行結果
 2020/04/26 23:51:09 値の発行を開始します
 2020/04/26 23:51:10 発行された値:1
 2020/04/26 23:51:12 発行された値:2
@@ -512,22 +524,22 @@ public static void Main(string[] args)
 <ul class="simple">
 <li><p>任意の時間間隔で値を発行するファクトリメソッド（自作）</p></li>
 </ul>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>public static IObservable&lt;int&gt; AnyInterval(IReadOnlyList&lt;TimeSpan&gt; intervals) =&gt;
-    Observable.Generate(initialState: 0,
-                        condition: n =&gt; n &lt; intervals.Count,
-                        iterate: n =&gt; ++n,
-                        resultSelector: n =&gt; n,
-                        timeSelector: n =&gt; intervals[n]);
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">static</span> <span class="n">IObservable</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">AnyInterval</span><span class="p">(</span><span class="n">IReadOnlyList</span><span class="p">&lt;</span><span class="n">TimeSpan</span><span class="p">&gt;</span> <span class="n">intervals</span><span class="p">)</span> <span class="p">=&gt;</span>
+    <span class="n">Observable</span><span class="p">.</span><span class="n">Generate</span><span class="p">(</span><span class="n">initialState</span><span class="p">:</span> <span class="m">0</span><span class="p">,</span>
+                        <span class="n">condition</span><span class="p">:</span> <span class="n">n</span> <span class="p">=&gt;</span> <span class="n">n</span> <span class="p">&lt;</span> <span class="n">intervals</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span>
+                        <span class="n">iterate</span><span class="p">:</span> <span class="n">n</span> <span class="p">=&gt;</span> <span class="p">++</span><span class="n">n</span><span class="p">,</span>
+                        <span class="n">resultSelector</span><span class="p">:</span> <span class="n">n</span> <span class="p">=&gt;</span> <span class="n">n</span><span class="p">,</span>
+                        <span class="n">timeSelector</span><span class="p">:</span> <span class="n">n</span> <span class="p">=&gt;</span> <span class="n">intervals</span><span class="p">[</span><span class="n">n</span><span class="p">]);</span>
 
-// 使用例
-ObservableEx.AnyInterval(new List&lt;TimeSpan&gt;{TimeSpan.FromSeconds(1),
-                                            TimeSpan.FromSeconds(2),
-                                            TimeSpan.FromSeconds(3),
-                                            TimeSpan.FromSeconds(4),
-                                            TimeSpan.FromSeconds(5) })
-            .Timestamp()
-            .Subscribe(val =&gt; Console.WriteLine($&quot;{val.Timestamp.ToLocalTime().DateTime} 発行された値：{val.Value}&quot;),
-                        () =&gt; Console.WriteLine(&quot;値の発行が完了しました&quot;));
+<span class="c1">// 使用例</span>
+<span class="n">ObservableEx</span><span class="p">.</span><span class="n">AnyInterval</span><span class="p">(</span><span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">TimeSpan</span><span class="p">&gt;{</span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">1</span><span class="p">),</span>
+                                            <span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">2</span><span class="p">),</span>
+                                            <span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">3</span><span class="p">),</span>
+                                            <span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">4</span><span class="p">),</span>
+                                            <span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">5</span><span class="p">)</span> <span class="p">})</span>
+            <span class="p">.</span><span class="n">Timestamp</span><span class="p">()</span>
+            <span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">val</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;{val.Timestamp.ToLocalTime().DateTime} 発行された値：{val.Value}&quot;</span><span class="p">),</span>
+                        <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;値の発行が完了しました&quot;</span><span class="p">));</span>
 </pre></div>
 </div>
 </dd>
@@ -665,6 +677,145 @@ ObservableEx.AnyInterval(new List&lt;TimeSpan&gt;{TimeSpan.FromSeconds(1),
 </pre></div>
 </div>
 </dd>
+<dt id="term-Start">Start<a class="headerlink" href="#term-Start" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111109/1320849106">https://blog.okazuki.jp/entry/20111109/1320849106</a></p></li>
+<li><p>バックグラウンドで処理を実行し結果を返す</p></li>
+<li><p>Startメソッドを呼び出した直後から処理が開始される</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// バックグラウンドで処理1を開始</span>
+<span class="kt">var</span> <span class="n">source</span> <span class="p">=</span> <span class="n">Observable</span><span class="p">.</span><span class="n">Start</span><span class="p">(()</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;background task start.&quot;</span><span class="p">);</span>
+    <span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">2000</span><span class="p">);</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;background task end.&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="m">1.2</span><span class="p">;</span>     <span class="c1">// 処理1の結果。購読時に受け取る値</span>
+<span class="p">});</span>
+
+<span class="c1">// 上の記述でバックグラウンドの処理1がすでに始まっている</span>
+<span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">5000</span><span class="p">);</span>
+
+<span class="c1">// 上記で5s待機したのでこの時点で処理1は完了済み</span>
+<span class="c1">// 完了後に購読1する</span>
+<span class="c1">// 処理1の結果である「1.2」を受け取る</span>
+<span class="n">Debug</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;subscribe1&quot;</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">subscription1</span> <span class="p">=</span> <span class="n">source</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span>
+    <span class="n">i</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;1##OnNext({0})&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span>    <span class="c1">// 上記の1.2を受け取る</span>
+    <span class="n">ex</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;1##OnError({0})&quot;</span><span class="p">,</span> <span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">),</span>
+    <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;1##Completed()&quot;</span><span class="p">));</span>
+
+<span class="c1">// Observableが発行する値の購読を停止</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;dispose method call.&quot;</span><span class="p">);</span>
+<span class="n">subscription1</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+
+<span class="c1">// 購読2</span>
+<span class="c1">// 再び購読しても同じで、処理1の結果である「1.2」を受け取る</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;subscribe2&quot;</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">subscription2</span> <span class="p">=</span> <span class="n">source</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span>
+    <span class="n">i</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;2##OnNext({0})&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span>    <span class="c1">// 上記の1.2を受け取る</span>
+    <span class="n">ex</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;2##OnError({0})&quot;</span><span class="p">,</span> <span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">),</span>
+    <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;2##Completed()&quot;</span><span class="p">));</span>
+<span class="n">subscription2</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>// 実行結果
+background task start.
+background task end.
+subscribe1          // これ以降は連続してDebug出力される
+1##OnNext(1.2)
+1##Completed()
+dispose method call.
+subscribe2
+2##OnNext(1.2)
+2##Completed()
+</pre></div>
+</div>
+</dd>
+<dt id="term-ToAsync">ToAsync<a class="headerlink" href="#term-ToAsync" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111109/1320849106">https://blog.okazuki.jp/entry/20111109/1320849106</a></p></li>
+<li><p>バックグラウンドの任意のタイミングで処理を実行し結果を返す</p></li>
+<li><p>Startメソッドは呼び出し時に処理が開始されるが、ToAsyncメソッドは処理の開始タイミングを柔軟に制御できる</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 戻り値はFunc&lt;IObservable&lt;T&gt;&gt;</span>
+<span class="kt">var</span> <span class="n">source</span> <span class="p">=</span> <span class="n">Observable</span><span class="p">.</span><span class="n">ToAsync</span><span class="p">(()</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;background task start.&quot;</span><span class="p">);</span>
+    <span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">2000</span><span class="p">);</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;background task end.&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="m">1</span><span class="p">;</span>     <span class="c1">// 処理の結果。購読時に受け取る値</span>
+<span class="p">});</span>
+
+<span class="c1">// ToAsyncはデリゲートを返すのでInvoke() or ()をしないと処理が開始されない</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;source() call.&quot;</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">invokedSource</span> <span class="p">=</span> <span class="n">source</span><span class="p">.</span><span class="n">Invoke</span><span class="p">();</span>
+<span class="kt">var</span> <span class="n">subscription1</span> <span class="p">=</span> <span class="n">invokedSource</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span>
+    <span class="n">i</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;1##OnNext({0})&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span>
+    <span class="n">ex</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;1##OnError({0})&quot;</span><span class="p">,</span> <span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">),</span>
+    <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;1##Completed()&quot;</span><span class="p">));</span>
+<span class="c1">// 処理が確実に終わるように5秒待つ</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;sleep 5sec.&quot;</span><span class="p">);</span>
+<span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">5000</span><span class="p">);</span>
+
+<span class="c1">// Observableが発行する値の購読を停止</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;dispose method call.&quot;</span><span class="p">);</span>
+<span class="n">subscription1</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+
+<span class="c1">// 購読</span>
+<span class="c1">// バックグラウンドでの処理自体は既に完了しているので結果をもらうのみ</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;subscribe2&quot;</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">subscription2</span> <span class="p">=</span> <span class="n">invokedSource</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span>
+    <span class="n">i</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;2##OnNext({0})&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span>
+    <span class="n">ex</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;2##OnError({0})&quot;</span><span class="p">,</span> <span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">),</span>
+    <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;2##Completed()&quot;</span><span class="p">));</span>
+<span class="n">subscription2</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span>// 実行結果
+source() call.
+background task start.
+sleep 5sec.
+background task end.
+1##OnNext(1)
+1##Completed()
+dispose method call.
+subscribe2
+2##OnNext(1)
+2##Completed()
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h2>メソッドリスト<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<dl class="glossary">
+<dt id="term-Do">Do<a class="headerlink" href="#term-Do" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111128/1322491648">https://blog.okazuki.jp/entry/20111128/1322491648</a></p></li>
+<li><p>IObservableのシーケンスを処理する途中に任意のアクションを実行する</p></li>
+<li><p>外部に対して副作用を起こすため、Doメソッドの利用は必要最低限にとどめること</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">subject</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Subject</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;();</span>
+<span class="n">subject</span>
+    <span class="c1">// 途中に処理を挟む</span>
+    <span class="p">.</span><span class="n">Do</span><span class="p">(</span><span class="n">i</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Do : {0}&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+    <span class="c1">// 購読(購読しないとOnNextをしても値が流れないね)</span>
+    <span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">i</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;OnNext : {0}&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">));</span>
+
+<span class="c1">// 値の発行</span>
+<span class="n">subject</span><span class="p">.</span><span class="n">OnNext</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>
+<span class="n">subject</span><span class="p">.</span><span class="n">OnNext</span><span class="p">(</span><span class="m">2</span><span class="p">);</span>
+<span class="n">subject</span><span class="p">.</span><span class="n">OnNext</span><span class="p">(</span><span class="m">3</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 実行結果</span>
+<span class="n">Do</span> <span class="p">:</span> <span class="m">1</span>
+<span class="n">OnNext</span> <span class="p">:</span> <span class="m">1</span>
+<span class="n">Do</span> <span class="p">:</span> <span class="m">2</span>
+<span class="n">OnNext</span> <span class="p">:</span> <span class="m">2</span>
+<span class="n">Do</span> <span class="p">:</span> <span class="m">3</span>
+<span class="n">OnNext</span> <span class="p">:</span> <span class="m">3</span>
+</pre></div>
+</div>
+</dd>
 </dl>
 </section>
 <section id="timestamptimeinterval">
@@ -682,14 +833,15 @@ ObservableEx.AnyInterval(new List&lt;TimeSpan&gt;{TimeSpan.FromSeconds(1),
           <span class="p">.</span><span class="n">Timestamp</span><span class="p">()</span>                       <span class="c1">//タイムスタンプを付加</span>
           <span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Value:{t.Value} Time:{t.Timestamp}&quot;</span><span class="p">),</span>
                      <span class="p">()</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;OnCompleted&quot;</span><span class="p">));</span>
-
-<span class="c1">// 実行結果</span>
-<span class="c1">// Value:0 Time:2020/09/28 13:27:06 +00:00</span>
-<span class="c1">// Value:1 Time:2020/09/28 13:27:07 +00:00</span>
-<span class="c1">// Value:2 Time:2020/09/28 13:27:08 +00:00</span>
-<span class="c1">// Value:3 Time:2020/09/28 13:27:09 +00:00</span>
-<span class="c1">// Value:4 Time:2020/09/28 13:27:10 +00:00</span>
-<span class="c1">// OnCompleted</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 実行結果</span>
+<span class="n">Value</span><span class="p">:</span><span class="m">0</span> <span class="n">Time</span><span class="p">:</span><span class="m">2020</span><span class="p">/</span><span class="m">09</span><span class="p">/</span><span class="m">28</span> <span class="m">13</span><span class="p">:</span><span class="m">27</span><span class="p">:</span><span class="m">06</span> <span class="p">+</span><span class="m">00</span><span class="p">:</span><span class="m">00</span>
+<span class="n">Value</span><span class="p">:</span><span class="m">1</span> <span class="n">Time</span><span class="p">:</span><span class="m">2020</span><span class="p">/</span><span class="m">09</span><span class="p">/</span><span class="m">28</span> <span class="m">13</span><span class="p">:</span><span class="m">27</span><span class="p">:</span><span class="m">07</span> <span class="p">+</span><span class="m">00</span><span class="p">:</span><span class="m">00</span>
+<span class="n">Value</span><span class="p">:</span><span class="m">2</span> <span class="n">Time</span><span class="p">:</span><span class="m">2020</span><span class="p">/</span><span class="m">09</span><span class="p">/</span><span class="m">28</span> <span class="m">13</span><span class="p">:</span><span class="m">27</span><span class="p">:</span><span class="m">08</span> <span class="p">+</span><span class="m">00</span><span class="p">:</span><span class="m">00</span>
+<span class="n">Value</span><span class="p">:</span><span class="m">3</span> <span class="n">Time</span><span class="p">:</span><span class="m">2020</span><span class="p">/</span><span class="m">09</span><span class="p">/</span><span class="m">28</span> <span class="m">13</span><span class="p">:</span><span class="m">27</span><span class="p">:</span><span class="m">09</span> <span class="p">+</span><span class="m">00</span><span class="p">:</span><span class="m">00</span>
+<span class="n">Value</span><span class="p">:</span><span class="m">4</span> <span class="n">Time</span><span class="p">:</span><span class="m">2020</span><span class="p">/</span><span class="m">09</span><span class="p">/</span><span class="m">28</span> <span class="m">13</span><span class="p">:</span><span class="m">27</span><span class="p">:</span><span class="m">10</span> <span class="p">+</span><span class="m">00</span><span class="p">:</span><span class="m">00</span>
+<span class="n">OnCompleted</span>
 </pre></div>
 </div>
 </dd>
@@ -702,7 +854,7 @@ ObservableEx.AnyInterval(new List&lt;TimeSpan&gt;{TimeSpan.FromSeconds(1),
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%83%AA%E3%82%B9%E3%83%88.html" class="btn btn-neutral float-left" title="ファクトリメソッドリスト" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../VisualStudio.html" class="btn btn-neutral float-right" title="VisualStudio" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="%E5%8F%82%E8%80%83URL.html" class="btn btn-neutral float-right" title="参考URL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

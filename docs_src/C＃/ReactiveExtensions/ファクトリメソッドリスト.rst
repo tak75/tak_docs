@@ -32,9 +32,16 @@
 
    メソッド,説明,例
    :term:`FromEvent`,「C#標準のイベント」をIObservable<T>に変換する,""
-   :term:`Start`,,""
-   :term:`ToAsync`,,""
+   :term:`Start`,バックグラウンドで処理を実行し結果を返す,""
+   :term:`ToAsync`,バックグラウンドで任意のタイミングで処理を実行し結果を返す,""
    :term:`FromAsyncPattern`,,""
+
+.. csv-table:: メソッドリスト
+   :header-rows: 1
+   :widths: 2, 5, 2
+
+   メソッド,説明,例
+   :term:`Do`,IObservableのシーケンスを処理する途中に任意のアクションを実行,""
 
 .. csv-table:: 時間に関する情報を付与するTimestampとTimeIntervalメソッド
    :header-rows: 1
