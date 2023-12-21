@@ -70,18 +70,19 @@
 
 .. csv-table:: Observable自体の合成メソッド
    :header-rows: 1
-   :widths: 1, 4, 10, 4
+   :widths: 1, 4, 5,10, 4
 
-   回,メソッド,説明,例
-   ,:term:`Amb`,複数のObservableのうち一番早くメッセージが来たObservableを採用,""
-   ,:term:`Zip_`,複数のObservableにそれぞれ1つずつメッセージが来たらそれらを合成して流す,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
-   ,:term:`ZipLatest`,複数のObservableにそれぞれ1つ以上メッセージが来たらそれらを合成して流す(それぞれのObservableの最新のメッセージのみを保持),""
-   ,:term:`CombineLatest`,複数のObservableのどれかに値が来たら他のObservableの過去の値と合成して流す,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
+   回,メソッド,図,説明,例
+   ,:term:`Amb`,,複数のObservableのうち一番早くメッセージが来たObservableを採用,""
+   ,:term:`Zip_`,.. figure:: images/Zip.gif,複数のObservableにそれぞれ1つずつメッセージが来たらそれらを合成して流す,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
+   ,:term:`ZipLatest`,,複数のObservableにそれぞれ1つ以上メッセージが来たらそれらを合成して流す(それぞれのObservableの最新のメッセージのみを保持),""
+   ,:term:`CombineLatest`,.. figure:: images/CombineLatest.gif,複数のObservableのどれかに値が来たら他のObservableの過去の値と合成して流す,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
    ,:term:`WithLatestFrom`,2つのObservableのうち片方を主軸にし、片方のObservableの最新値を合成,""
-   ,:term:`Merge`,複数のObservableを1本にまとめる,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
-   ,:term:`Concat_`,ObservableのOnCompleted時に別のObservableを繋ぐ,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
-   ,:term:`SelectMany_`,Observableの値を使って別のObservableを作り、それぞれの値を合成,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
-   ,:term:`Catch`,複数のObservableを成功するまで順番に実行,""
+   ,:term:`Merge`,.. figure:: images/Merge.gif,複数のObservableを1本にまとめる,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
+   ,:term:`Concat_`,.. figure:: images/Concat.gif,ObservableのOnCompleted時に別のObservableを繋ぐ,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
+   ,:term:`SelectMany_`,.. figure:: images/SelectMany.gif,Observableの値を使って別のObservableを作り、それぞれの値を合成,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
+   ,:term:`Catch`,,複数のObservableを成功するまで順番に実行,
+   ,:term:`Scan`,.. figure:: images/Scan.gif,,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
 
 .. csv-table:: Observable自体の変換メソッド
    :header-rows: 1
@@ -96,7 +97,6 @@
    :widths: 1, 4, 10, 4
 
    回,メソッド,説明,例
-   ,:term:`Scan`,,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
    `10 <https://blog.okazuki.jp/entry/20111128/1322491648>`__,:term:`Do`,IObservableのシーケンスを処理する途中に任意のアクションを実行,""
 
 .. csv-table:: 集計を行うメソッドリスト(Cold)

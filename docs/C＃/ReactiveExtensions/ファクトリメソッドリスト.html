@@ -377,14 +377,16 @@
 <table class="colwidths-given docutils align-default" id="id6">
 <caption><span class="caption-number">表 24 </span><span class="caption-text">Observable自体の合成メソッド</span><a class="headerlink" href="#id6" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
-<col style="width: 5%" />
+<col style="width: 4%" />
+<col style="width: 17%" />
 <col style="width: 21%" />
-<col style="width: 53%" />
-<col style="width: 21%" />
+<col style="width: 42%" />
+<col style="width: 17%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>回</p></th>
 <th class="head"><p>メソッド</p></th>
+<th class="head"><p>図</p></th>
 <th class="head"><p>説明</p></th>
 <th class="head"><p>例</p></th>
 </tr>
@@ -392,21 +394,31 @@
 <tbody>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">Amb</span></p></td>
+<td></td>
 <td><p>複数のObservableのうち一番早くメッセージが来たObservableを採用</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">Zip_</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Zip.gif" src="../../_images/Zip.gif" />
+</figure>
+</td>
 <td><p>複数のObservableにそれぞれ1つずつメッセージが来たらそれらを合成して流す</p></td>
 <td><p><a class="reference external" href="https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html">link</a></p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">ZipLatest</span></p></td>
+<td></td>
 <td><p>複数のObservableにそれぞれ1つ以上メッセージが来たらそれらを合成して流す(それぞれのObservableの最新のメッセージのみを保持)</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">CombineLatest</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/CombineLatest.gif" src="../../_images/CombineLatest.gif" />
+</figure>
+</td>
 <td><p>複数のObservableのどれかに値が来たら他のObservableの過去の値と合成して流す</p></td>
 <td><p><a class="reference external" href="https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html">link</a></p></td>
 </tr>
@@ -414,26 +426,49 @@
 <td><p><span class="xref std std-term">WithLatestFrom</span></p></td>
 <td><p>2つのObservableのうち片方を主軸にし、片方のObservableの最新値を合成</p></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">Merge</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Merge.gif" src="../../_images/Merge.gif" />
+</figure>
+</td>
 <td><p>複数のObservableを1本にまとめる</p></td>
 <td><p><a class="reference external" href="https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html">link</a></p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">Concat_</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Concat.gif" src="../../_images/Concat.gif" />
+</figure>
+</td>
 <td><p>ObservableのOnCompleted時に別のObservableを繋ぐ</p></td>
 <td><p><a class="reference external" href="https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html">link</a></p></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">SelectMany_</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/SelectMany.gif" src="../../_images/SelectMany.gif" />
+</figure>
+</td>
 <td><p>Observableの値を使って別のObservableを作り、それぞれの値を合成</p></td>
 <td><p><a class="reference external" href="https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html">link</a></p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">Catch</span></p></td>
+<td></td>
 <td><p>複数のObservableを成功するまで順番に実行</p></td>
 <td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><span class="xref std std-term">Scan</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Scan.gif" src="../../_images/Scan.gif" />
+</figure>
+</td>
+<td></td>
+<td><p><a class="reference external" href="https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html">link</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -481,12 +516,7 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td></td>
-<td><p><span class="xref std std-term">Scan</span></p></td>
-<td></td>
-<td><p><a class="reference external" href="https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html">link</a></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111128/1322491648">10</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111128/1322491648">10</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Do"><span class="xref std std-term">Do</span></a></p></td>
 <td><p>IObservableのシーケンスを処理する途中に任意のアクションを実行</p></td>
 <td></td>
