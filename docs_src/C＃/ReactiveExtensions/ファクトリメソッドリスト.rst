@@ -4,43 +4,99 @@
 
 * 参考：`UniRx オペレータ逆引き <https://qiita.com/toRisouP/items/3cf1c9be3c37e7609a2f>`__
 
-.. csv-table:: IObservableのファクトリメソッドリスト
+.. csv-table:: IObservableのファクトリメソッド
    :header-rows: 1
    :widths: 1, 4, 10, 4
 
    回,メソッド,説明,例
-   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Return`,指定した値を通知する,"2"
-   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Repeat`,同じ値を指定した回数発行する,"2,2,2,2,2"
-   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Range`,指定した値から1ずつカウントアップした値を指定した個数だけ返す,"1,2,3"
+   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Return`,値を1つだけ発行,"2"
+   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Repeat`,同じ値を指定した回数発行,"2,2,2,2,2"
+   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Range`,指定した値から1ずつカウントアップした値を指定した数だけ発行,"1,2,3"
    `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Generate`,指定した範囲の値を用いて算出される値を返す,":math:`1^2,2^2,3^2`"
-   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Defer`,任意の値を返す,"1,2,3"
-   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Create`,任意の値を返す,"1,2,3"
-   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Throw`,疑似的にエラーを起こす,
+   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Defer`,任意の値を返す。Observableの定義をSubscribe時まで遅延させる,"1,2,3"
+   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Create`,任意の値を返す。値を発行するObservableを自分で好きなように作る,"1,2,3"
+   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Throw`,疑似的にエラーを起こす。OnErrorを直ちに発行,
+   ,:term:`Empty_`,OnCompleted直ちに発行,
+   ,:term:`Never`,何も起きないObservableを定義,
 
-.. csv-table:: Timer系のファクトリメソッドリスト
+.. csv-table:: Timer系のファクトリメソッド
    :header-rows: 1
    :widths: 1, 4, 10, 4
 
    回,メソッド,説明,例
-   `4 <https://blog.okazuki.jp/entry/20111106/1320584830>`__,:term:`Timer`,一定時間ごとに値（実行回数）を発行。Delayの設定が可能,""
-   `4 <https://blog.okazuki.jp/entry/20111106/1320584830>`__,:term:`Interval`,一定時間ごとに値（実行回数）を発行,""
+   `4 <https://blog.okazuki.jp/entry/20111106/1320584830>`__,:term:`Timer`,一定間隔で値（実行回数）を発行。Delayの設定が可能。一定時間後に値を発行,""
+   `4 <https://blog.okazuki.jp/entry/20111106/1320584830>`__,:term:`Interval`,一定間隔で値（実行回数）を発行,""
    `4 <https://blog.okazuki.jp/entry/20111106/1320584830>`__,:term:`Generate`,任意の時間間隔で、指定した範囲の値を用いて算出される値を返す,":math:`1^2,2^2,3^2`"
+   ,:term:`TimerFrame`,一定フレーム間隔で値を発行。指定フレーム後に値を発行,
+   ,:term:`IntervalFrame`,一定フレーム間隔で値を発行,
 
-.. csv-table:: HotなIObservableを作成するファクトリメソッドリスト
+.. csv-table:: HotなIObservableを作成するファクトリメソッド
    :header-rows: 1
    :widths: 1, 4, 10, 4
 
    回,メソッド,説明,例
-   `6 <https://blog.okazuki.jp/entry/20111109/1320849106>`__,:term:`FromEvent`,「C#標準のイベント」をIObservable<T>に変換する,""
+   `6 <https://blog.okazuki.jp/entry/20111109/1320849106>`__,:term:`FromEvent`,「C#標準のイベント」をIObservable<T>に変換,""
+   ,:term:`FromEventPattern`,「C#標準のイベント」をIObservable<T>に変換,""
    `6 <https://blog.okazuki.jp/entry/20111109/1320849106>`__,:term:`Start`,バックグラウンドで処理を実行し結果を返す,""
    `6 <https://blog.okazuki.jp/entry/20111109/1320849106>`__,:term:`ToAsync`,バックグラウンドで任意のタイミングで処理を実行し結果を返す,""
    `6 <https://blog.okazuki.jp/entry/20111109/1320849106>`__,:term:`FromAsyncPattern`,,""
+
+.. csv-table:: フィルタリングメソッド
+   :header-rows: 1
+   :widths: 1, 4, 10, 4
+
+   回,メソッド,説明,例
+   ,:term:`Where_`,条件式を満たすものだけ通す,""
+   ,:term:`Distinct_`,重複したものを除く,""
+   ,:term:`DistinctUntilChanged`,値が変化した時のみ通す,""
+   ,:term:`Throttle`,まとめて流れてきたOnNextの最後だけ通す,""
+   ,:term:`ThrtottleFrame`,まとめて流れてきたOnNextの最後だけ通す,""
+   ,:term:`ThrottleFirst`,まとめて流れてきたOnNextの最初だけ通す,""
+   ,:term:`ThrottleFirstFrame`,まとめて流れてきたOnNextの最初だけ通す,""
+   ,:term:`First_`,一番最初に到達したOnNextのみを流してObservableを完了,""
+   ,:term:`FirstOrDefault_`,一番最初に到達したOnNextのみを流してObservableを完了,""
+   ,:term:`Single_`,OnNextが2つ以上発行されたらエラー,""
+   ,:term:`SingleOrDefault_`,OnNextが2つ以上発行されたらエラー,""
+   ,:term:`Last_`,Observableの最後の値だけを通す,""
+   ,:term:`LastOrDefault_`,Observableの最後の値だけを通す,""
+   ,:term:`Take_`,先頭から指定した個数だけ通す,""
+   ,:term:`TakeWhile_`,先頭から条件が成り立たなくなるまで通す,""
+   ,:term:`TakeUntil`,先頭から指定したObservableにOnNextが来るまで通す,""
+   ,:term:`Skip_`,先頭から指定した個数無視,""
+   ,:term:`SkipWhile_`,先頭から条件が成り立つ間は無視,""
+   ,:term:`SkipUntil`,先頭から指定したObservableにOnNextが来るまで無視,""
+   ,:term:`OfType<T>`,型が一致するもののみ通す(型変換も同時に行う),""
+   ,:term:`IgnoreElements`,OnErrorまたはOnCompletedのみを通す,""
+
+.. csv-table:: Observable自体の合成メソッド
+   :header-rows: 1
+   :widths: 1, 4, 10, 4
+
+   回,メソッド,説明,例
+   ,:term:`Amb`,複数のObservableのうち一番早くメッセージが来たObservableを採用,""
+   ,:term:`Zip_`,複数のObservableにそれぞれ1つずつメッセージが来たらそれらを合成して流す,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
+   ,:term:`ZipLatest`,複数のObservableにそれぞれ1つ以上メッセージが来たらそれらを合成して流す(それぞれのObservableの最新のメッセージのみを保持),""
+   ,:term:`CombineLatest`,複数のObservableのどれかに値が来たら他のObservableの過去の値と合成して流す,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
+   ,:term:`WithLatestFrom`,2つのObservableのうち片方を主軸にし、片方のObservableの最新値を合成,""
+   ,:term:`Merge`,複数のObservableを1本にまとめる,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
+   ,:term:`Concat_`,ObservableのOnCompleted時に別のObservableを繋ぐ,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
+   ,:term:`SelectMany_`,Observableの値を使って別のObservableを作り、それぞれの値を合成,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
+   ,:term:`Catch`,複数のObservableを成功するまで順番に実行,""
+
+.. csv-table:: Observable自体の変換メソッド
+   :header-rows: 1
+   :widths: 1, 4, 10, 4
+
+   回,メソッド,説明,例
+   ,:term:``,,""
+   ,:term:``,,""
 
 .. csv-table:: メソッドリスト
    :header-rows: 1
    :widths: 1, 4, 10, 4
 
    回,メソッド,説明,例
+   ,:term:`Scan`,,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
    `10 <https://blog.okazuki.jp/entry/20111128/1322491648>`__,:term:`Do`,IObservableのシーケンスを処理する途中に任意のアクションを実行,""
 
 .. csv-table:: 集計を行うメソッドリスト(Cold)
