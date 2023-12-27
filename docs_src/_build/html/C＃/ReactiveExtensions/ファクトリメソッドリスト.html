@@ -103,106 +103,166 @@
 <li><p>参考：<a class="reference external" href="https://qiita.com/toRisouP/items/3cf1c9be3c37e7609a2f">UniRx オペレータ逆引き</a></p></li>
 </ul>
 <table class="colwidths-given docutils align-default" id="id2">
-<caption><span class="caption-number">表 20 </span><span class="caption-text">IObservableのファクトリメソッド</span><a class="headerlink" href="#id2" title="このテーブルへのパーマリンク">¶</a></caption>
+<caption><span class="caption-number">表 20 </span><span class="caption-text">IObservableのファクトリメソッド（Observable.XXX）</span><a class="headerlink" href="#id2" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
-<col style="width: 5%" />
-<col style="width: 21%" />
-<col style="width: 53%" />
-<col style="width: 21%" />
+<col style="width: 4%" />
+<col style="width: 12%" />
+<col style="width: 20%" />
+<col style="width: 32%" />
+<col style="width: 32%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>回</p></th>
+<tr class="row-odd"><th class="head"><p>link</p></th>
 <th class="head"><p>メソッド</p></th>
+<th class="head"><p>図</p></th>
 <th class="head"><p>説明</p></th>
-<th class="head"><p>例</p></th>
+<th class="head"><p>備考</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">3</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Return"><span class="xref std std-term">Return</span></a></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/Return.png" src="C＃/ReactiveExtensions/images/Return.png" />
+</figure>
+</td>
 <td><p>値を1つだけ発行</p></td>
 <td><p>2</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">3</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Repeat"><span class="xref std std-term">Repeat</span></a></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Repeat.png" src="../../_images/Repeat.png" />
+</figure>
+</td>
 <td><p>同じ値を指定した回数発行</p></td>
 <td><p>2,2,2,2,2</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">3</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Range"><span class="xref std std-term">Range</span></a></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Range.png" src="../../_images/Range.png" />
+</figure>
+</td>
 <td><p>指定した値から1ずつカウントアップした値を指定した数だけ発行</p></td>
 <td><p>1,2,3</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">3</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-0"><span class="xref std std-term">Generate</span></a></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/Generate.png" src="C＃/ReactiveExtensions/images/Generate.png" />
+</figure>
+</td>
 <td><p>指定した範囲の値を用いて算出される値を返す</p></td>
 <td><p><span class="math notranslate nohighlight">\(1^2,2^2,3^2\)</span></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">3</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Defer"><span class="xref std std-term">Defer</span></a></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Defer.png" src="../../_images/Defer.png" />
+</figure>
+</td>
 <td><p>任意の値を返す。Observableの定義をSubscribe時まで遅延させる</p></td>
 <td><p>1,2,3</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">3</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Create"><span class="xref std std-term">Create</span></a></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Create.png" src="../../_images/Create.png" />
+</figure>
+</td>
 <td><p>任意の値を返す。値を発行するObservableを自分で好きなように作る</p></td>
 <td><p>1,2,3</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">3</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Throw"><span class="xref std std-term">Throw</span></a></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Throw.png" src="../../_images/Throw.png" />
+</figure>
+</td>
 <td><p>疑似的にエラーを起こす。OnErrorを直ちに発行</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">Empty_</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Empty.png" src="../../_images/Empty.png" />
+</figure>
+</td>
 <td><p>OnCompleted直ちに発行</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">Never</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Never.png" src="../../_images/Never.png" />
+</figure>
+</td>
 <td><p>何も起きないObservableを定義</p></td>
 <td></td>
 </tr>
 </tbody>
 </table>
 <table class="colwidths-given docutils align-default" id="id3">
-<caption><span class="caption-number">表 21 </span><span class="caption-text">Timer系のファクトリメソッド</span><a class="headerlink" href="#id3" title="このテーブルへのパーマリンク">¶</a></caption>
+<caption><span class="caption-number">表 21 </span><span class="caption-text">Timer系のファクトリメソッド（Observable.XXX）</span><a class="headerlink" href="#id3" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
-<col style="width: 5%" />
+<col style="width: 4%" />
+<col style="width: 17%" />
 <col style="width: 21%" />
-<col style="width: 53%" />
-<col style="width: 21%" />
+<col style="width: 42%" />
+<col style="width: 17%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>回</p></th>
+<tr class="row-odd"><th class="head"><p>link</p></th>
 <th class="head"><p>メソッド</p></th>
+<th class="head"><p>図</p></th>
 <th class="head"><p>説明</p></th>
-<th class="head"><p>例</p></th>
+<th class="head"><p>備考</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111106/1320584830">4</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Timer"><span class="xref std std-term">Timer</span></a></p></td>
-<td><p>一定間隔で値（実行回数）を発行。Delayの設定が可能。一定時間後に値を発行</p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Timer.png" src="../../_images/Timer.png" />
+</figure>
+</td>
+<td><p>一定間隔で値（実行回数）を発行。一定時間後に値を発行（Delay）</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111106/1320584830">4</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Interval"><span class="xref std std-term">Interval</span></a></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Interval.png" src="../../_images/Interval.png" />
+</figure>
+</td>
 <td><p>一定間隔で値（実行回数）を発行</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111106/1320584830">4</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-0"><span class="xref std std-term">Generate</span></a></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/Generate.png" src="C＃/ReactiveExtensions/images/Generate.png" />
+</figure>
+</td>
 <td><p>任意の時間間隔で、指定した範囲の値を用いて算出される値を返す</p></td>
 <td><p><span class="math notranslate nohighlight">\(1^2,2^2,3^2\)</span></p></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">TimerFrame</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/TimerFrame.png" src="C＃/ReactiveExtensions/images/TimerFrame.png" />
+</figure>
+</td>
 <td><p>一定フレーム間隔で値を発行。指定フレーム後に値を発行</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">IntervalFrame</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/IntervalFrame.png" src="C＃/ReactiveExtensions/images/IntervalFrame.png" />
+</figure>
+</td>
 <td><p>一定フレーム間隔で値を発行</p></td>
 <td></td>
 </tr>
@@ -211,21 +271,27 @@
 <table class="colwidths-given docutils align-default" id="id4">
 <caption><span class="caption-number">表 22 </span><span class="caption-text">HotなIObservableを作成するファクトリメソッド</span><a class="headerlink" href="#id4" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
-<col style="width: 5%" />
+<col style="width: 4%" />
+<col style="width: 17%" />
 <col style="width: 21%" />
-<col style="width: 53%" />
-<col style="width: 21%" />
+<col style="width: 42%" />
+<col style="width: 17%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>回</p></th>
+<tr class="row-odd"><th class="head"><p>link</p></th>
 <th class="head"><p>メソッド</p></th>
+<th class="head"><p>図</p></th>
 <th class="head"><p>説明</p></th>
-<th class="head"><p>例</p></th>
+<th class="head"><p>備考</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111109/1320849106">6</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-FromEvent"><span class="xref std std-term">FromEvent</span></a></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/FromEvent.png" src="C＃/ReactiveExtensions/images/FromEvent.png" />
+</figure>
+</td>
 <td><p>「C#標準のイベント」をIObservable&lt;T&gt;に変換</p></td>
 <td></td>
 </tr>
@@ -233,19 +299,32 @@
 <td><p><span class="xref std std-term">FromEventPattern</span></p></td>
 <td><p>「C#標準のイベント」をIObservable&lt;T&gt;に変換</p></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111109/1320849106">6</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Start"><span class="xref std std-term">Start</span></a></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Start.png" src="../../_images/Start.png" />
+</figure>
+</td>
 <td><p>バックグラウンドで処理を実行し結果を返す</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111109/1320849106">6</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-ToAsync"><span class="xref std std-term">ToAsync</span></a></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/ToAsync.png" src="C＃/ReactiveExtensions/images/ToAsync.png" />
+</figure>
+</td>
 <td><p>バックグラウンドで任意のタイミングで処理を実行し結果を返す</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111109/1320849106">6</a></p></td>
 <td><p><span class="xref std std-term">FromAsyncPattern</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/FromAsyncPattern.png" src="C＃/ReactiveExtensions/images/FromAsyncPattern.png" />
+</figure>
+</td>
 <td></td>
 <td></td>
 </tr>
@@ -254,121 +333,207 @@
 <table class="colwidths-given docutils align-default" id="id5">
 <caption><span class="caption-number">表 23 </span><span class="caption-text">フィルタリングメソッド</span><a class="headerlink" href="#id5" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
-<col style="width: 5%" />
+<col style="width: 4%" />
+<col style="width: 17%" />
 <col style="width: 21%" />
-<col style="width: 53%" />
-<col style="width: 21%" />
+<col style="width: 42%" />
+<col style="width: 17%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>回</p></th>
+<tr class="row-odd"><th class="head"><p>link</p></th>
 <th class="head"><p>メソッド</p></th>
+<th class="head"><p>図</p></th>
 <th class="head"><p>説明</p></th>
-<th class="head"><p>例</p></th>
+<th class="head"><p>備考</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">Where_</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/Where.png" src="C＃/ReactiveExtensions/images/Where.png" />
+</figure>
+</td>
 <td><p>条件式を満たすものだけ通す</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">Distinct_</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Distinct.png" src="../../_images/Distinct.png" />
+</figure>
+</td>
 <td><p>重複したものを除く</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">DistinctUntilChanged</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/DistinctUntilChanged.png" src="C＃/ReactiveExtensions/images/DistinctUntilChanged.png" />
+</figure>
+</td>
 <td><p>値が変化した時のみ通す</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">Throttle</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Throttle.png" src="../../_images/Throttle.png" />
+</figure>
+</td>
 <td><p>まとめて流れてきたOnNextの最後だけ通す</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">ThrtottleFrame</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/ThrtottleFrame.png" src="C＃/ReactiveExtensions/images/ThrtottleFrame.png" />
+</figure>
+</td>
 <td><p>まとめて流れてきたOnNextの最後だけ通す</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">ThrottleFirst</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/ThrottleFirst.png" src="C＃/ReactiveExtensions/images/ThrottleFirst.png" />
+</figure>
+</td>
 <td><p>まとめて流れてきたOnNextの最初だけ通す</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">ThrottleFirstFrame</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/ThrottleFirstFrame.png" src="C＃/ReactiveExtensions/images/ThrottleFirstFrame.png" />
+</figure>
+</td>
 <td><p>まとめて流れてきたOnNextの最初だけ通す</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">First_</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/First.png" src="../../_images/First.png" />
+</figure>
+</td>
 <td><p>一番最初に到達したOnNextのみを流してObservableを完了</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">FirstOrDefault_</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/FirstOrDefault.png" src="C＃/ReactiveExtensions/images/FirstOrDefault.png" />
+</figure>
+</td>
 <td><p>一番最初に到達したOnNextのみを流してObservableを完了</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">Single_</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/Single.png" src="C＃/ReactiveExtensions/images/Single.png" />
+</figure>
+</td>
 <td><p>OnNextが2つ以上発行されたらエラー</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">SingleOrDefault_</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/SingleOrDefault.png" src="C＃/ReactiveExtensions/images/SingleOrDefault.png" />
+</figure>
+</td>
 <td><p>OnNextが2つ以上発行されたらエラー</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">Last_</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Last.png" src="../../_images/Last.png" />
+</figure>
+</td>
 <td><p>Observableの最後の値だけを通す</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">LastOrDefault_</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/LastOrDefault.png" src="C＃/ReactiveExtensions/images/LastOrDefault.png" />
+</figure>
+</td>
 <td><p>Observableの最後の値だけを通す</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">Take_</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Take.png" src="../../_images/Take.png" />
+</figure>
+</td>
 <td><p>先頭から指定した個数だけ通す</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">TakeWhile_</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/TakeWhile.png" src="../../_images/TakeWhile.png" />
+</figure>
+</td>
 <td><p>先頭から条件が成り立たなくなるまで通す</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">TakeUntil</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/TakeUntil.png" src="../../_images/TakeUntil.png" />
+</figure>
+</td>
 <td><p>先頭から指定したObservableにOnNextが来るまで通す</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">Skip_</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Skip.png" src="../../_images/Skip.png" />
+</figure>
+</td>
 <td><p>先頭から指定した個数無視</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">SkipWhile_</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/SkipWhile.png" src="../../_images/SkipWhile.png" />
+</figure>
+</td>
 <td><p>先頭から条件が成り立つ間は無視</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">SkipUntil</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/SkipUntil.png" src="../../_images/SkipUntil.png" />
+</figure>
+</td>
 <td><p>先頭から指定したObservableにOnNextが来るまで無視</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">OfType</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/OfType.png" src="C＃/ReactiveExtensions/images/OfType.png" />
+</figure>
+</td>
 <td><p>型が一致するもののみ通す(型変換も同時に行う)</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">IgnoreElements</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/IgnoreElements.png" src="../../_images/IgnoreElements.png" />
+</figure>
+</td>
 <td><p>OnErrorまたはOnCompletedのみを通す</p></td>
 <td></td>
 </tr>
@@ -384,107 +549,399 @@
 <col style="width: 17%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>回</p></th>
+<tr class="row-odd"><th class="head"><p>link</p></th>
 <th class="head"><p>メソッド</p></th>
 <th class="head"><p>図</p></th>
 <th class="head"><p>説明</p></th>
-<th class="head"><p>例</p></th>
+<th class="head"><p>備考</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">Amb</span></p></td>
-<td></td>
+<td><figure class="align-default">
+<img alt="../../_images/Amb.png" src="../../_images/Amb.png" />
+</figure>
+</td>
 <td><p>複数のObservableのうち一番早くメッセージが来たObservableを採用</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html">link</a></p></td>
 <td><p><span class="xref std std-term">Zip_</span></p></td>
 <td><figure class="align-default">
-<img alt="../../_images/Zip.gif" src="../../_images/Zip.gif" />
+<img alt="../../_images/Zip.png" src="../../_images/Zip.png" />
 </figure>
 </td>
 <td><p>複数のObservableにそれぞれ1つずつメッセージが来たらそれらを合成して流す</p></td>
-<td><p><a class="reference external" href="https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html">link</a></p></td>
+<td></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">ZipLatest</span></p></td>
-<td></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/ZipLatest.png" src="C＃/ReactiveExtensions/images/ZipLatest.png" />
+</figure>
+</td>
 <td><p>複数のObservableにそれぞれ1つ以上メッセージが来たらそれらを合成して流す(それぞれのObservableの最新のメッセージのみを保持)</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html">link</a></p></td>
 <td><p><span class="xref std std-term">CombineLatest</span></p></td>
 <td><figure class="align-default">
-<img alt="../../_images/CombineLatest.gif" src="../../_images/CombineLatest.gif" />
+<img alt="../../_images/CombineLatest.png" src="../../_images/CombineLatest.png" />
 </figure>
 </td>
 <td><p>複数のObservableのどれかに値が来たら他のObservableの過去の値と合成して流す</p></td>
-<td><p><a class="reference external" href="https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html">link</a></p></td>
+<td></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">WithLatestFrom</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/WithLatestFrom.png" src="C＃/ReactiveExtensions/images/WithLatestFrom.png" />
+</figure>
+</td>
 <td><p>2つのObservableのうち片方を主軸にし、片方のObservableの最新値を合成</p></td>
 <td></td>
-<td></td>
 </tr>
-<tr class="row-odd"><td></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html">link</a></p></td>
 <td><p><span class="xref std std-term">Merge</span></p></td>
 <td><figure class="align-default">
-<img alt="../../_images/Merge.gif" src="../../_images/Merge.gif" />
+<img alt="../../_images/Merge.png" src="../../_images/Merge.png" />
 </figure>
 </td>
 <td><p>複数のObservableを1本にまとめる</p></td>
-<td><p><a class="reference external" href="https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html">link</a></p></td>
+<td></td>
 </tr>
-<tr class="row-even"><td></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html">link</a></p></td>
 <td><p><span class="xref std std-term">Concat_</span></p></td>
 <td><figure class="align-default">
-<img alt="../../_images/Concat.gif" src="../../_images/Concat.gif" />
+<img alt="../../_images/Concat.png" src="../../_images/Concat.png" />
 </figure>
 </td>
 <td><p>ObservableのOnCompleted時に別のObservableを繋ぐ</p></td>
-<td><p><a class="reference external" href="https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html">link</a></p></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html">link</a></p></td>
 <td><p><span class="xref std std-term">SelectMany_</span></p></td>
 <td><figure class="align-default">
 <img alt="../../_images/SelectMany.gif" src="../../_images/SelectMany.gif" />
 </figure>
 </td>
 <td><p>Observableの値を使って別のObservableを作り、それぞれの値を合成</p></td>
-<td><p><a class="reference external" href="https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html">link</a></p></td>
+<td></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">Catch</span></p></td>
-<td></td>
+<td><figure class="align-default">
+<img alt="../../_images/Catch.png" src="../../_images/Catch.png" />
+</figure>
+</td>
 <td><p>複数のObservableを成功するまで順番に実行</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html">link</a></p></td>
 <td><p><span class="xref std std-term">Scan</span></p></td>
 <td><figure class="align-default">
-<img alt="../../_images/Scan.gif" src="../../_images/Scan.gif" />
+<img alt="../../_images/Scan.png" src="../../_images/Scan.png" />
 </figure>
 </td>
 <td></td>
-<td><p><a class="reference external" href="https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html">link</a></p></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 <table class="colwidths-given docutils align-default" id="id7">
 <caption><span class="caption-number">表 25 </span><span class="caption-text">Observable自体の変換メソッド</span><a class="headerlink" href="#id7" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
-<col style="width: 5%" />
+<col style="width: 4%" />
+<col style="width: 17%" />
 <col style="width: 21%" />
-<col style="width: 53%" />
-<col style="width: 21%" />
+<col style="width: 42%" />
+<col style="width: 17%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>回</p></th>
+<tr class="row-odd"><th class="head"><p>link</p></th>
 <th class="head"><p>メソッド</p></th>
+<th class="head"><p>図</p></th>
 <th class="head"><p>説明</p></th>
-<th class="head"><p>例</p></th>
+<th class="head"><p>備考</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td><p><span class="xref std std-term">ToReactiveProperty</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/ToReactiveProperty.png" src="C＃/ReactiveExtensions/images/ToReactiveProperty.png" />
+</figure>
+</td>
+<td><p>ObservableをReactivePropertyに変換</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><span class="xref std std-term">ToReadOnlyReactiveProperty</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/ToReadOnlyReactiveProperty.png" src="C＃/ReactiveExtensions/images/ToReadOnlyReactiveProperty.png" />
+</figure>
+</td>
+<td><p>ObservableをReadOnlyReactivePropertyに変換</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><span class="xref std std-term">ToYieldInstruction</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/ToYieldInstruction.png" src="C＃/ReactiveExtensions/images/ToYieldInstruction.png" />
+</figure>
+</td>
+<td><p>コルーチンでObservableを待つ</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id8">
+<caption><span class="caption-number">表 26 </span><span class="caption-text">Observableの分岐メソッド</span><a class="headerlink" href="#id8" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 17%" />
+<col style="width: 21%" />
+<col style="width: 42%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>link</p></th>
+<th class="head"><p>メソッド</p></th>
+<th class="head"><p>図</p></th>
+<th class="head"><p>説明</p></th>
+<th class="head"><p>備考</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td><p><span class="xref std std-term">Publish</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/Publish.png" src="C＃/ReactiveExtensions/images/Publish.png" />
+</figure>
+</td>
+<td><p>Observableを枝分かれさせる</p></td>
+<td><p>Publishの返り値はIConnectabaleObservable。Multicast(Subject)と同義</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><span class="xref std std-term">ToReactivePropety</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/ToReactivePropety.png" src="C＃/ReactiveExtensions/images/ToReactivePropety.png" />
+</figure>
+</td>
+<td><p>Observableを枝分かれさせる</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><span class="xref std std-term">Publish</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/Publish.png" src="C＃/ReactiveExtensions/images/Publish.png" />
+</figure>
+</td>
+<td><p>Observableを枝分かれさせつつ、初期値を指定</p></td>
+<td><p>引数を与えるとMulticast(BehaviorSubject)と同義</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><span class="xref std std-term">PublishLast</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/PublishLast.png" src="C＃/ReactiveExtensions/images/PublishLast.png" />
+</figure>
+</td>
+<td><p>Observableを枝分かれさせ、その際にObservableの最後の値のみをキャッシュ</p></td>
+<td><p>Multicast(AsyncSubject)と同義</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><span class="xref std std-term">Replay</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Replay.png" src="../../_images/Replay.png" />
+</figure>
+</td>
+<td><p>Observableを枝分かれさせ、その際に今までに発行された全てのOnNextをキャッシュ</p></td>
+<td><p>Multicast(ReplaySubject)と同義</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><span class="xref std std-term">Multicast</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/Multicast.png" src="C＃/ReactiveExtensions/images/Multicast.png" />
+</figure>
+</td>
+<td><p>Observableを枝分かれさせる時にSubjectを指定</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><span class="xref std std-term">RefCount</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/RefCount.png" src="../../_images/RefCount.png" />
+</figure>
+</td>
+<td><p>Observerが1つでもいたらConnectし、いなくなったらDispose</p></td>
+<td><p>Publish().RefCount()はほぼ定型文</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><span class="xref std std-term">Share</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/Share.png" src="C＃/ReactiveExtensions/images/Share.png" />
+</figure>
+</td>
+<td><p>Publish().RefCount()を省略</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id9">
+<caption><span class="caption-number">表 27 </span><span class="caption-text">メッセージ同士の合成・演算</span><a class="headerlink" href="#id9" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 17%" />
+<col style="width: 21%" />
+<col style="width: 42%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>link</p></th>
+<th class="head"><p>メソッド</p></th>
+<th class="head"><p>図</p></th>
+<th class="head"><p>説明</p></th>
+<th class="head"><p>備考</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td><p><span class="xref std std-term">Scan</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Scan.png" src="../../_images/Scan.png" />
+</figure>
+</td>
+<td><p>メッセージの値と前回の結果との両方を使い関数を適用</p></td>
+<td><p>LINQでいうAggregate</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><span class="xref std std-term">Buffer</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Buffer.png" src="../../_images/Buffer.png" />
+</figure>
+</td>
+<td><p>メッセージを一定個数ごとにまとめる</p></td>
+<td><p>第二引数を指定することで挙動が変わる</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><span class="xref std std-term">Buffer_</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Buffer.png" src="../../_images/Buffer.png" />
+</figure>
+</td>
+<td><p>あるObservableにメッセージが来るまで値を塞き止めてまとめる</p></td>
+<td><p>引数にObservableを渡す</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><span class="xref std std-term">PairWise</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/PairWise.png" src="C＃/ReactiveExtensions/images/PairWise.png" />
+</figure>
+</td>
+<td><p>直前のメッセージとセットにする</p></td>
+<td><p>Bufer(2,1)と挙動は似ている</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id10">
+<caption><span class="caption-number">表 28 </span><span class="caption-text">メッセージの変換</span><a class="headerlink" href="#id10" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 17%" />
+<col style="width: 21%" />
+<col style="width: 42%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>link</p></th>
+<th class="head"><p>メソッド</p></th>
+<th class="head"><p>図</p></th>
+<th class="head"><p>説明</p></th>
+<th class="head"><p>備考</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td><p><a class="reference internal" href="../%E8%A8%80%E8%AA%9E%E4%BB%95%E6%A7%98/LINQ/%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Select"><span class="xref std std-term">Select</span></a></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/Select.png" src="C＃/ReactiveExtensions/images/Select.png" />
+</figure>
+</td>
+<td><p>値を変換/値に関数を適用する</p></td>
+<td><p>他の言語だとmap</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><span class="xref std std-term">Cast</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/Cast.png" src="C＃/ReactiveExtensions/images/Cast.png" />
+</figure>
+</td>
+<td><p>型変換をする</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference internal" href="../%E8%A8%80%E8%AA%9E%E4%BB%95%E6%A7%98/LINQ/%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-SelectMany"><span class="xref std std-term">SelectMany</span></a></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/SelectMany.png" src="C＃/ReactiveExtensions/images/SelectMany.png" />
+</figure>
+</td>
+<td><p>メッセージの値を元に別のObservableを呼び出してそちらの結果を利用</p></td>
+<td><p>Observableを合成</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><span class="xref std std-term">Materialize</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/Materialize.png" src="C＃/ReactiveExtensions/images/Materialize.png" />
+</figure>
+</td>
+<td><p>メッセージにイベントのメタ情報を付与</p></td>
+<td><p>OnNext/OnError/OnCompletedのどれであるかを示す情報を付与</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><span class="xref std std-term">TimeInterval</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/TimeInterval.png" src="C＃/ReactiveExtensions/images/TimeInterval.png" />
+</figure>
+</td>
+<td><p>前回のメッセージからの経過時間を付与</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Timestamp"><span class="xref std std-term">TimeStamp</span></a></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/TimeStamp.png" src="../../_images/TimeStamp.png" />
+</figure>
+</td>
+<td><p>メッセージにタイムスタンプを付与</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><span class="xref std std-term">AsUnitObservable</span></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/AsUnitObservable.png" src="C＃/ReactiveExtensions/images/AsUnitObservable.png" />
+</figure>
+</td>
+<td><p>メッセージをUnit型に変換</p></td>
+<td><p>Select(_=&gt;Unit.Default)と同義</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id11">
+<caption><span class="caption-number">表 29 </span><span class="caption-text">時間に絡んだ処理</span><a class="headerlink" href="#id11" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 17%" />
+<col style="width: 21%" />
+<col style="width: 42%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>link</p></th>
+<th class="head"><p>メソッド</p></th>
+<th class="head"><p>図</p></th>
+<th class="head"><p>説明</p></th>
+<th class="head"><p>備考</p></th>
 </tr>
 </thead>
 <tbody>
@@ -492,16 +949,104 @@
 <td><p>:term:``</p></td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p>:term:``</p></td>
 <td></td>
 <td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>:term:``</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>:term:``</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>:term:``</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>:term:``</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>:term:``</p></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id8">
-<caption><span class="caption-number">表 26 </span><span class="caption-text">メソッドリスト</span><a class="headerlink" href="#id8" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id12">
+<caption><span class="caption-number">表 30 </span><span class="caption-text">Observableの分岐メソッド</span><a class="headerlink" href="#id12" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 17%" />
+<col style="width: 21%" />
+<col style="width: 42%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>link</p></th>
+<th class="head"><p>メソッド</p></th>
+<th class="head"><p>図</p></th>
+<th class="head"><p>説明</p></th>
+<th class="head"><p>備考</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td><p>:term:``</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>:term:``</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>:term:``</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>:term:``</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>:term:``</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>:term:``</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id13">
+<caption><span class="caption-number">表 31 </span><span class="caption-text">メソッドリスト</span><a class="headerlink" href="#id13" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 5%" />
 <col style="width: 21%" />
@@ -509,10 +1054,10 @@
 <col style="width: 21%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>回</p></th>
+<tr class="row-odd"><th class="head"><p>link</p></th>
 <th class="head"><p>メソッド</p></th>
 <th class="head"><p>説明</p></th>
-<th class="head"><p>例</p></th>
+<th class="head"><p>備考</p></th>
 </tr>
 </thead>
 <tbody>
@@ -523,8 +1068,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id9">
-<caption><span class="caption-number">表 27 </span><span class="caption-text">集計を行うメソッドリスト(Cold)</span><a class="headerlink" href="#id9" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id14">
+<caption><span class="caption-number">表 32 </span><span class="caption-text">集計を行うメソッドリスト(Cold)</span><a class="headerlink" href="#id14" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 5%" />
 <col style="width: 21%" />
@@ -532,10 +1077,10 @@
 <col style="width: 21%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>回</p></th>
+<tr class="row-odd"><th class="head"><p>link</p></th>
 <th class="head"><p>メソッド</p></th>
 <th class="head"><p>説明</p></th>
-<th class="head"><p>例</p></th>
+<th class="head"><p>備考</p></th>
 </tr>
 </thead>
 <tbody>
@@ -551,8 +1096,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id10">
-<caption><span class="caption-number">表 28 </span><span class="caption-text">時間に関する情報を付与するTimestampとTimeIntervalメソッド</span><a class="headerlink" href="#id10" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id15">
+<caption><span class="caption-number">表 33 </span><span class="caption-text">時間に関する情報を付与するTimestampとTimeIntervalメソッド</span><a class="headerlink" href="#id15" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 5%" />
 <col style="width: 21%" />
@@ -560,10 +1105,10 @@
 <col style="width: 21%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>回</p></th>
+<tr class="row-odd"><th class="head"><p>link</p></th>
 <th class="head"><p>メソッド</p></th>
 <th class="head"><p>説明</p></th>
-<th class="head"><p>例</p></th>
+<th class="head"><p>備考</p></th>
 </tr>
 </thead>
 <tbody>
@@ -574,8 +1119,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id11">
-<caption><span class="caption-number">表 29 </span><span class="caption-text">その他メソッドリスト</span><a class="headerlink" href="#id11" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id16">
+<caption><span class="caption-number">表 34 </span><span class="caption-text">その他メソッドリスト</span><a class="headerlink" href="#id16" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 5%" />
 <col style="width: 21%" />
@@ -583,10 +1128,10 @@
 <col style="width: 21%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>回</p></th>
+<tr class="row-odd"><th class="head"><p>link</p></th>
 <th class="head"><p>メソッド</p></th>
 <th class="head"><p>説明</p></th>
-<th class="head"><p>例</p></th>
+<th class="head"><p>備考</p></th>
 </tr>
 </thead>
 <tbody>
@@ -597,8 +1142,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id12">
-<caption><span class="caption-number">表 30 </span><span class="caption-text">その他情報</span><a class="headerlink" href="#id12" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id17">
+<caption><span class="caption-number">表 35 </span><span class="caption-text">その他情報</span><a class="headerlink" href="#id17" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 71%" />
 <col style="width: 29%" />

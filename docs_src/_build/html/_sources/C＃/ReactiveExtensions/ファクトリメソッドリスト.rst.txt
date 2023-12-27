@@ -4,106 +4,169 @@
 
 * 参考：`UniRx オペレータ逆引き <https://qiita.com/toRisouP/items/3cf1c9be3c37e7609a2f>`__
 
-.. csv-table:: IObservableのファクトリメソッド
+.. csv-table:: IObservableのファクトリメソッド（Observable.XXX）
    :header-rows: 1
-   :widths: 1, 4, 10, 4
+   :widths: 1, 3, 5, 8, 8
 
-   回,メソッド,説明,例
-   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Return`,値を1つだけ発行,"2"
-   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Repeat`,同じ値を指定した回数発行,"2,2,2,2,2"
-   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Range`,指定した値から1ずつカウントアップした値を指定した数だけ発行,"1,2,3"
-   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Generate`,指定した範囲の値を用いて算出される値を返す,":math:`1^2,2^2,3^2`"
-   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Defer`,任意の値を返す。Observableの定義をSubscribe時まで遅延させる,"1,2,3"
-   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Create`,任意の値を返す。値を発行するObservableを自分で好きなように作る,"1,2,3"
-   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Throw`,疑似的にエラーを起こす。OnErrorを直ちに発行,
-   ,:term:`Empty_`,OnCompleted直ちに発行,
-   ,:term:`Never`,何も起きないObservableを定義,
+   link,メソッド,図,説明,備考
+   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__ ,:term:`Return`,.. figure:: images/Return.png,値を1つだけ発行,"2"
+   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Repeat`,.. figure:: images/Repeat.png,同じ値を指定した回数発行,"2,2,2,2,2"
+   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Range`,.. figure:: images/Range.png,指定した値から1ずつカウントアップした値を指定した数だけ発行,"1,2,3"
+   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Generate`,.. figure:: images/Generate.png,指定した範囲の値を用いて算出される値を返す,":math:`1^2,2^2,3^2`"
+   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Defer`,.. figure:: images/Defer.png,任意の値を返す。Observableの定義をSubscribe時まで遅延させる,"1,2,3"
+   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Create`,.. figure:: images/Create.png,任意の値を返す。値を発行するObservableを自分で好きなように作る,"1,2,3"
+   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Throw`,.. figure:: images/Throw.png,疑似的にエラーを起こす。OnErrorを直ちに発行,
+   ,:term:`Empty_`,.. figure:: images/Empty.png,OnCompleted直ちに発行,
+   ,:term:`Never`,.. figure:: images/Never.png,何も起きないObservableを定義,
 
-.. csv-table:: Timer系のファクトリメソッド
+.. csv-table:: Timer系のファクトリメソッド（Observable.XXX）
    :header-rows: 1
-   :widths: 1, 4, 10, 4
+   :widths: 1, 4, 5, 10, 4
 
-   回,メソッド,説明,例
-   `4 <https://blog.okazuki.jp/entry/20111106/1320584830>`__,:term:`Timer`,一定間隔で値（実行回数）を発行。Delayの設定が可能。一定時間後に値を発行,""
-   `4 <https://blog.okazuki.jp/entry/20111106/1320584830>`__,:term:`Interval`,一定間隔で値（実行回数）を発行,""
-   `4 <https://blog.okazuki.jp/entry/20111106/1320584830>`__,:term:`Generate`,任意の時間間隔で、指定した範囲の値を用いて算出される値を返す,":math:`1^2,2^2,3^2`"
-   ,:term:`TimerFrame`,一定フレーム間隔で値を発行。指定フレーム後に値を発行,
-   ,:term:`IntervalFrame`,一定フレーム間隔で値を発行,
+   link,メソッド,図,説明,備考
+   `4 <https://blog.okazuki.jp/entry/20111106/1320584830>`__,:term:`Timer`,.. figure:: images/Timer.png,一定間隔で値（実行回数）を発行。一定時間後に値を発行（Delay）,""
+   `4 <https://blog.okazuki.jp/entry/20111106/1320584830>`__,:term:`Interval`,.. figure:: images/Interval.png,一定間隔で値（実行回数）を発行,""
+   `4 <https://blog.okazuki.jp/entry/20111106/1320584830>`__,:term:`Generate`,.. figure:: images/Generate.png,任意の時間間隔で、指定した範囲の値を用いて算出される値を返す,":math:`1^2,2^2,3^2`"
+   ,:term:`TimerFrame`,.. figure:: images/TimerFrame.png,一定フレーム間隔で値を発行。指定フレーム後に値を発行,
+   ,:term:`IntervalFrame`,.. figure:: images/IntervalFrame.png,一定フレーム間隔で値を発行,
 
 .. csv-table:: HotなIObservableを作成するファクトリメソッド
    :header-rows: 1
-   :widths: 1, 4, 10, 4
+   :widths: 1, 4, 5, 10, 4
 
-   回,メソッド,説明,例
-   `6 <https://blog.okazuki.jp/entry/20111109/1320849106>`__,:term:`FromEvent`,「C#標準のイベント」をIObservable<T>に変換,""
+   link,メソッド,図,説明,備考
+   `6 <https://blog.okazuki.jp/entry/20111109/1320849106>`__,:term:`FromEvent`,.. figure:: images/FromEvent.png,「C#標準のイベント」をIObservable<T>に変換,""
    ,:term:`FromEventPattern`,「C#標準のイベント」をIObservable<T>に変換,""
-   `6 <https://blog.okazuki.jp/entry/20111109/1320849106>`__,:term:`Start`,バックグラウンドで処理を実行し結果を返す,""
-   `6 <https://blog.okazuki.jp/entry/20111109/1320849106>`__,:term:`ToAsync`,バックグラウンドで任意のタイミングで処理を実行し結果を返す,""
-   `6 <https://blog.okazuki.jp/entry/20111109/1320849106>`__,:term:`FromAsyncPattern`,,""
+   `6 <https://blog.okazuki.jp/entry/20111109/1320849106>`__,:term:`Start`,.. figure:: images/Start.png,バックグラウンドで処理を実行し結果を返す,""
+   `6 <https://blog.okazuki.jp/entry/20111109/1320849106>`__,:term:`ToAsync`,.. figure:: images/ToAsync.png,バックグラウンドで任意のタイミングで処理を実行し結果を返す,""
+   `6 <https://blog.okazuki.jp/entry/20111109/1320849106>`__,:term:`FromAsyncPattern`,.. figure:: images/FromAsyncPattern.png,,""
 
 .. csv-table:: フィルタリングメソッド
    :header-rows: 1
-   :widths: 1, 4, 10, 4
+   :widths: 1, 4, 5, 10, 4
 
-   回,メソッド,説明,例
-   ,:term:`Where_`,条件式を満たすものだけ通す,""
-   ,:term:`Distinct_`,重複したものを除く,""
-   ,:term:`DistinctUntilChanged`,値が変化した時のみ通す,""
-   ,:term:`Throttle`,まとめて流れてきたOnNextの最後だけ通す,""
-   ,:term:`ThrtottleFrame`,まとめて流れてきたOnNextの最後だけ通す,""
-   ,:term:`ThrottleFirst`,まとめて流れてきたOnNextの最初だけ通す,""
-   ,:term:`ThrottleFirstFrame`,まとめて流れてきたOnNextの最初だけ通す,""
-   ,:term:`First_`,一番最初に到達したOnNextのみを流してObservableを完了,""
-   ,:term:`FirstOrDefault_`,一番最初に到達したOnNextのみを流してObservableを完了,""
-   ,:term:`Single_`,OnNextが2つ以上発行されたらエラー,""
-   ,:term:`SingleOrDefault_`,OnNextが2つ以上発行されたらエラー,""
-   ,:term:`Last_`,Observableの最後の値だけを通す,""
-   ,:term:`LastOrDefault_`,Observableの最後の値だけを通す,""
-   ,:term:`Take_`,先頭から指定した個数だけ通す,""
-   ,:term:`TakeWhile_`,先頭から条件が成り立たなくなるまで通す,""
-   ,:term:`TakeUntil`,先頭から指定したObservableにOnNextが来るまで通す,""
-   ,:term:`Skip_`,先頭から指定した個数無視,""
-   ,:term:`SkipWhile_`,先頭から条件が成り立つ間は無視,""
-   ,:term:`SkipUntil`,先頭から指定したObservableにOnNextが来るまで無視,""
-   ,:term:`OfType<T>`,型が一致するもののみ通す(型変換も同時に行う),""
-   ,:term:`IgnoreElements`,OnErrorまたはOnCompletedのみを通す,""
+   link,メソッド,図,説明,備考
+   ,:term:`Where_`,.. figure:: images/Where.png,条件式を満たすものだけ通す,""
+   ,:term:`Distinct_`,.. figure:: images/Distinct.png,重複したものを除く,""
+   ,:term:`DistinctUntilChanged`,.. figure:: images/DistinctUntilChanged.png,値が変化した時のみ通す,""
+   ,:term:`Throttle`,.. figure:: images/Throttle.png,まとめて流れてきたOnNextの最後だけ通す,""
+   ,:term:`ThrtottleFrame`,.. figure:: images/ThrtottleFrame.png,まとめて流れてきたOnNextの最後だけ通す,""
+   ,:term:`ThrottleFirst`,.. figure:: images/ThrottleFirst.png,まとめて流れてきたOnNextの最初だけ通す,""
+   ,:term:`ThrottleFirstFrame`,.. figure:: images/ThrottleFirstFrame.png,まとめて流れてきたOnNextの最初だけ通す,""
+   ,:term:`First_`,.. figure:: images/First.png,一番最初に到達したOnNextのみを流してObservableを完了,""
+   ,:term:`FirstOrDefault_`,.. figure:: images/FirstOrDefault.png,一番最初に到達したOnNextのみを流してObservableを完了,""
+   ,:term:`Single_`,.. figure:: images/Single.png,OnNextが2つ以上発行されたらエラー,""
+   ,:term:`SingleOrDefault_`,.. figure:: images/SingleOrDefault.png,OnNextが2つ以上発行されたらエラー,""
+   ,:term:`Last_`,.. figure:: images/Last.png,Observableの最後の値だけを通す,""
+   ,:term:`LastOrDefault_`,.. figure:: images/LastOrDefault.png,Observableの最後の値だけを通す,""
+   ,:term:`Take_`,.. figure:: images/Take.png,先頭から指定した個数だけ通す,""
+   ,:term:`TakeWhile_`,.. figure:: images/TakeWhile.png,先頭から条件が成り立たなくなるまで通す,""
+   ,:term:`TakeUntil`,.. figure:: images/TakeUntil.png,先頭から指定したObservableにOnNextが来るまで通す,""
+   ,:term:`Skip_`,.. figure:: images/Skip.png,先頭から指定した個数無視,""
+   ,:term:`SkipWhile_`,.. figure:: images/SkipWhile.png,先頭から条件が成り立つ間は無視,""
+   ,:term:`SkipUntil`,.. figure:: images/SkipUntil.png,先頭から指定したObservableにOnNextが来るまで無視,""
+   ,:term:`OfType<T>`,.. figure:: images/OfType.png,型が一致するもののみ通す(型変換も同時に行う),""
+   ,:term:`IgnoreElements`,.. figure:: images/IgnoreElements.png,OnErrorまたはOnCompletedのみを通す,""
 
 .. csv-table:: Observable自体の合成メソッド
    :header-rows: 1
-   :widths: 1, 4, 5,10, 4
+   :widths: 1, 4, 5, 10, 4
 
-   回,メソッド,図,説明,例
-   ,:term:`Amb`,,複数のObservableのうち一番早くメッセージが来たObservableを採用,""
-   ,:term:`Zip_`,.. figure:: images/Zip.gif,複数のObservableにそれぞれ1つずつメッセージが来たらそれらを合成して流す,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
-   ,:term:`ZipLatest`,,複数のObservableにそれぞれ1つ以上メッセージが来たらそれらを合成して流す(それぞれのObservableの最新のメッセージのみを保持),""
-   ,:term:`CombineLatest`,.. figure:: images/CombineLatest.gif,複数のObservableのどれかに値が来たら他のObservableの過去の値と合成して流す,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
-   ,:term:`WithLatestFrom`,2つのObservableのうち片方を主軸にし、片方のObservableの最新値を合成,""
-   ,:term:`Merge`,.. figure:: images/Merge.gif,複数のObservableを1本にまとめる,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
-   ,:term:`Concat_`,.. figure:: images/Concat.gif,ObservableのOnCompleted時に別のObservableを繋ぐ,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
-   ,:term:`SelectMany_`,.. figure:: images/SelectMany.gif,Observableの値を使って別のObservableを作り、それぞれの値を合成,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
-   ,:term:`Catch`,,複数のObservableを成功するまで順番に実行,
-   ,:term:`Scan`,.. figure:: images/Scan.gif,,`link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
+   link,メソッド,図,説明,備考
+   ,:term:`Amb`,.. figure:: images/Amb.png,複数のObservableのうち一番早くメッセージが来たObservableを採用,""
+   `link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__,:term:`Zip_`,.. figure:: images/Zip.png,複数のObservableにそれぞれ1つずつメッセージが来たらそれらを合成して流す,
+   ,:term:`ZipLatest`,.. figure:: images/ZipLatest.png,複数のObservableにそれぞれ1つ以上メッセージが来たらそれらを合成して流す(それぞれのObservableの最新のメッセージのみを保持),""
+   `link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__,:term:`CombineLatest`,.. figure:: images/CombineLatest.png,複数のObservableのどれかに値が来たら他のObservableの過去の値と合成して流す,
+   ,:term:`WithLatestFrom`,.. figure:: images/WithLatestFrom.png,2つのObservableのうち片方を主軸にし、片方のObservableの最新値を合成,""
+   `link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__,:term:`Merge`,.. figure:: images/Merge.png,複数のObservableを1本にまとめる,
+   `link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__,:term:`Concat_`,.. figure:: images/Concat.png,ObservableのOnCompleted時に別のObservableを繋ぐ,
+   `link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__,:term:`SelectMany_`,.. figure:: images/SelectMany.gif,Observableの値を使って別のObservableを作り、それぞれの値を合成,
+   ,:term:`Catch`,.. figure:: images/Catch.png,複数のObservableを成功するまで順番に実行,
+   `link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__,:term:`Scan`,.. figure:: images/Scan.png,,
 
 .. csv-table:: Observable自体の変換メソッド
    :header-rows: 1
-   :widths: 1, 4, 10, 4
+   :widths: 1, 4, 5, 10, 4
 
-   回,メソッド,説明,例
-   ,:term:``,,""
-   ,:term:``,,""
+   link,メソッド,図,説明,備考
+   ,:term:`ToReactiveProperty`,.. figure:: images/ToReactiveProperty.png,ObservableをReactivePropertyに変換,""
+   ,:term:`ToReadOnlyReactiveProperty`,.. figure:: images/ToReadOnlyReactiveProperty.png,ObservableをReadOnlyReactivePropertyに変換,""
+   ,:term:`ToYieldInstruction`,.. figure:: images/ToYieldInstruction.png,コルーチンでObservableを待つ,""
+
+.. csv-table:: Observableの分岐メソッド
+   :header-rows: 1
+   :widths: 1, 4, 5, 10, 4
+
+   link,メソッド,図,説明,備考
+   ,:term:`Publish`,.. figure:: images/Publish.png,Observableを枝分かれさせる,Publishの返り値はIConnectabaleObservable。Multicast(Subject)と同義
+   ,:term:`ToReactivePropety`,.. figure:: images/ToReactivePropety.png,Observableを枝分かれさせる,
+   ,:term:`Publish`,.. figure:: images/Publish.png,Observableを枝分かれさせつつ、初期値を指定,引数を与えるとMulticast(BehaviorSubject)と同義
+   ,:term:`PublishLast`,.. figure:: images/PublishLast.png,Observableを枝分かれさせ、その際にObservableの最後の値のみをキャッシュ,Multicast(AsyncSubject)と同義
+   ,:term:`Replay`,.. figure:: images/Replay.png,Observableを枝分かれさせ、その際に今までに発行された全てのOnNextをキャッシュ,Multicast(ReplaySubject)と同義
+   ,:term:`Multicast`,.. figure:: images/Multicast.png,Observableを枝分かれさせる時にSubjectを指定,
+   ,:term:`RefCount`,.. figure:: images/RefCount.png,Observerが1つでもいたらConnectし、いなくなったらDispose,Publish().RefCount()はほぼ定型文
+   ,:term:`Share`,.. figure:: images/Share.png,Publish().RefCount()を省略,
+
+.. csv-table:: メッセージ同士の合成・演算
+   :header-rows: 1
+   :widths: 1, 4, 5, 10, 4
+
+   link,メソッド,図,説明,備考
+   ,:term:`Scan`,.. figure:: images/Scan.png,メッセージの値と前回の結果との両方を使い関数を適用,LINQでいうAggregate
+   ,:term:`Buffer`,.. figure:: images/Buffer.png,メッセージを一定個数ごとにまとめる,第二引数を指定することで挙動が変わる
+   ,:term:`Buffer_`,.. figure:: images/Buffer.png,あるObservableにメッセージが来るまで値を塞き止めてまとめる,引数にObservableを渡す
+   ,:term:`PairWise`,.. figure:: images/PairWise.png,直前のメッセージとセットにする,"Bufer(2,1)と挙動は似ている"
+
+.. csv-table:: メッセージの変換
+   :header-rows: 1
+   :widths: 1, 4, 5, 10, 4
+
+   link,メソッド,図,説明,備考
+   ,:term:`Select`,.. figure:: images/Select.png,値を変換/値に関数を適用する,他の言語だとmap
+   ,:term:`Cast<T>`,.. figure:: images/Cast.png,型変換をする,
+   ,:term:`SelectMany`,.. figure:: images/SelectMany.png,メッセージの値を元に別のObservableを呼び出してそちらの結果を利用,Observableを合成
+   ,:term:`Materialize`,.. figure:: images/Materialize.png,メッセージにイベントのメタ情報を付与,OnNext/OnError/OnCompletedのどれであるかを示す情報を付与
+   ,:term:`TimeInterval`,.. figure:: images/TimeInterval.png,前回のメッセージからの経過時間を付与,
+   ,:term:`TimeStamp`,.. figure:: images/TimeStamp.png,メッセージにタイムスタンプを付与,
+   ,:term:`AsUnitObservable`,.. figure:: images/AsUnitObservable.png,メッセージをUnit型に変換,Select(_=>Unit.Default)と同義
+
+.. csv-table:: 時間に絡んだ処理
+   :header-rows: 1
+   :widths: 1, 4, 5, 10, 4
+
+   link,メソッド,図,説明,備考
+   ,:term:``,,,
+   ,:term:``,,,
+   ,:term:``,,,
+   ,:term:``,,,
+   ,:term:``,,,
+   ,:term:``,,,
+   ,:term:``,,,
+
+.. csv-table:: Observableの分岐メソッド
+   :header-rows: 1
+   :widths: 1, 4, 5, 10, 4
+
+   link,メソッド,図,説明,備考
+   ,:term:``,,,
+   ,:term:``,,,
+   ,:term:``,,,
+   ,:term:``,,,
+   ,:term:``,,,
+   ,:term:``,,,
 
 .. csv-table:: メソッドリスト
    :header-rows: 1
    :widths: 1, 4, 10, 4
 
-   回,メソッド,説明,例
+   link,メソッド,説明,備考
    `10 <https://blog.okazuki.jp/entry/20111128/1322491648>`__,:term:`Do`,IObservableのシーケンスを処理する途中に任意のアクションを実行,""
 
 .. csv-table:: 集計を行うメソッドリスト(Cold)
    :header-rows: 1
    :widths: 1, 4, 10, 4
 
-   回,メソッド,説明,例
+   link,メソッド,説明,備考
    `17 <https://blog.okazuki.jp/entry/20111212/1323698319>`__,:term:`Aggregate`,収集・集計し、OnCompleted()で結果のみを後続に流す,
    `17 <https://blog.okazuki.jp/entry/20111212/1323698319>`__,:term:`Scan`,収集・集計し、OnNext()の都度、集計経過を後続に流す,
 
@@ -111,14 +174,14 @@
    :header-rows: 1
    :widths: 1, 4, 10, 4
 
-   回,メソッド,説明,例
+   link,メソッド,説明,備考
    `31 <https://blog.okazuki.jp/entry/20120205/1328450809>`__,:term:`Timestamp`,タイムスタンプを追加する,""
 
 .. csv-table:: その他メソッドリスト
    :header-rows: 1
    :widths: 1, 4, 10, 4
 
-   回,メソッド,説明,例
+   link,メソッド,説明,備考
    ,Publish,Cold->Hot変換,`link <https://qiita.com/toRisouP/items/f6088963037bfda658d3>`__
 
 .. csv-table:: その他情報
@@ -127,3 +190,4 @@
 
    説明,URL
    Hot/Coldの挙動について,`link <https://qiita.com/toRisouP/items/f6088963037bfda658d3>`__
+
