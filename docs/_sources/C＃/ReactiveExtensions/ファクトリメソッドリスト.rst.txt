@@ -157,25 +157,25 @@
 
 .. csv-table:: メソッドリスト
    :header-rows: 1
-   :widths: 1, 4, 10, 4
+   :widths: 1, 4, 5, 10, 4
 
-   link,メソッド,説明,備考
-   `10 <https://blog.okazuki.jp/entry/20111128/1322491648>`__,:term:`Do`,IObservableのシーケンスを処理する途中に任意のアクションを実行,""
+   link,メソッド,図,説明,備考
+   `10 <https://blog.okazuki.jp/entry/20111128/1322491648>`__,:term:`Do`,.. figure:: images/Do.png,IObservableのシーケンスを処理する途中に任意のアクションを実行,""
 
 .. csv-table:: 集計を行うメソッドリスト(Cold)
    :header-rows: 1
-   :widths: 1, 4, 10, 4
+   :widths: 1, 4, 5, 10, 4
 
-   link,メソッド,説明,備考
-   `17 <https://blog.okazuki.jp/entry/20111212/1323698319>`__,:term:`Aggregate`,収集・集計し、OnCompleted()で結果のみを後続に流す,
-   `17 <https://blog.okazuki.jp/entry/20111212/1323698319>`__,:term:`Scan`,収集・集計し、OnNext()の都度、集計経過を後続に流す,
+   link,メソッド,図,説明,備考
+   `17 <https://blog.okazuki.jp/entry/20111212/1323698319>`__,:term:`Aggregate`,.. figure:: images/Aggregate.png,収集・集計し、OnCompleted()で結果のみを後続に流す,
+   `17 <https://blog.okazuki.jp/entry/20111212/1323698319>`__,:term:`Scan`,.. figure:: images/Scan.png,収集・集計し、OnNext()の都度、集計経過を後続に流す,
 
 .. csv-table:: 時間に関する情報を付与するTimestampとTimeIntervalメソッド
    :header-rows: 1
-   :widths: 1, 4, 10, 4
+   :widths: 1, 4, 5, 10, 4
 
-   link,メソッド,説明,備考
-   `31 <https://blog.okazuki.jp/entry/20120205/1328450809>`__,:term:`Timestamp`,タイムスタンプを追加する,""
+   link,メソッド,図,説明,備考
+   `31 <https://blog.okazuki.jp/entry/20120205/1328450809>`__,:term:`Timestamp`,.. figure:: images/Timestamp.png,タイムスタンプを追加する,""
 
 .. csv-table:: その他メソッドリスト
    :header-rows: 1
