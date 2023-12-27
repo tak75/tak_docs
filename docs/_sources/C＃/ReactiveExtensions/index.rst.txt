@@ -5,6 +5,6 @@ ReactiveExtensions
 .. toctree::
    :maxdepth: 2
 
-   ファクトリメソッドリスト
+   ReactiveExtensionsメソッドリスト
    ファクトリメソッド説明
    参考URL
