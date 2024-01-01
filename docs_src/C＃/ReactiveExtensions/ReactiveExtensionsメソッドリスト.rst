@@ -141,25 +141,35 @@ ReactiveExtensionsメソッドリスト
    :widths: 1, 4, 5, 10, 4
 
    link,メソッド,図,説明,備考
-   ,:term:``,,,
-   ,:term:``,,,
-   ,:term:``,,,
-   ,:term:``,,,
-   ,:term:``,,,
-   ,:term:``,,,
-   ,:term:``,,,
+   ,:term:`Delay`,.. figure:: images/Delay.png,メッセージを時間遅延させる,
+   ,:term:`DelayFrame`,.. figure:: images/DelayFrame.png,メッセージを時間遅延させる,
+   ,:term:`Timeout`,.. figure:: images/Timeout.png,最後にOnNextが発行されてから一定時間以内に次のOnNextが来なかったらOnErrorを発行,
+   ,:term:`Timeout`,.. figure:: images/Timeout.png,Subscribeしてから一定時刻までにOnCompletedが来なかったらOnErrorを発行,
+   ,:term:`Sample`,.. figure:: images/Sample.png,一定間隔で値を取り出す,
+   ,:term:`NextFrame`,.. figure:: images/NextFrame.png,次のフレームで処理,
 
-.. csv-table:: Observableの分岐メソッド
+.. csv-table:: 非同期処理
    :header-rows: 1
    :widths: 1, 4, 5, 10, 4
 
    link,メソッド,図,説明,備考
-   ,:term:``,,,
-   ,:term:``,,,
-   ,:term:``,,,
-   ,:term:``,,,
-   ,:term:``,,,
-   ,:term:``,,,
+   ,:term:``,.. figure:: images/.png,,
+   ,:term:``,.. figure:: images/.png,,
+   ,:term:``,.. figure:: images/.png,,
+   ,:term:``,.. figure:: images/.png,,
+   ,:term:``,.. figure:: images/.png,,
+   ,:term:``,.. figure:: images/.png,,
+   ,:term:``,.. figure:: images/.png,,
+   ,:term:``,.. figure:: images/.png,,
+   ,:term:``,.. figure:: images/.png,,
+   ,:term:``,.. figure:: images/.png,,
+   ,:term:``,.. figure:: images/.png,,
+   ,:term:``,.. figure:: images/.png,,
+   ,:term:``,.. figure:: images/.png,,
+   ,:term:``,.. figure:: images/.png,,
+   ,:term:``,.. figure:: images/.png,,
+   ,:term:``,.. figure:: images/.png,,
+   ,:term:``,.. figure:: images/.png,,
 
 .. csv-table:: メソッドリスト
    :header-rows: 1
