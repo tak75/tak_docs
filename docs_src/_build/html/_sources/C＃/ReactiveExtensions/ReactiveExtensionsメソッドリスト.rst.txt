@@ -9,33 +9,33 @@ ReactiveExtensionsメソッドリスト
 
 .. csv-table:: IObservableのファクトリメソッド（Observable.XXX）
    :header-rows: 1
-   :widths: 1, 3, 5, 8, 8
+   :widths: 1, 3, 5, 6, 6
 
    link,メソッド,図,説明,備考
-   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__ ,:term:`Return`,.. figure:: images/Return.png,値を1つだけ発行,"2"
-   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Repeat`,.. figure:: images/Repeat.png,同じ値を指定した回数発行,"2,2,2,2,2"
-   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Range`,.. figure:: images/Range.png,指定した値から1ずつカウントアップした値を指定した数だけ発行,"1,2,3"
-   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Generate`,.. figure:: images/Generate.png,指定した範囲の値を用いて算出される値を返す,":math:`1^2,2^2,3^2`"
-   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Defer`,.. figure:: images/Defer.png,任意の値を返す。Observableの定義をSubscribe時まで遅延させる,"1,2,3"
-   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Create`,.. figure:: images/Create.png,任意の値を返す。値を発行するObservableを自分で好きなように作る,"1,2,3"
+   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Return`,,値を1つだけ発行,
+   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Repeat`,.. figure:: images/Repeat.png,同じ値を指定した回数発行,
+   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Range`,.. figure:: images/Range.png,指定した値から1ずつカウントアップした値を指定した数だけ発行,
+   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Generate`,.. figure:: images/Generate.png,指定した範囲の値を用いて算出される値を返す(:math:`1^2、2^2、3^2`)。インターバル指定できる,
+   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Defer`,.. figure:: images/Defer.png,任意の値を返す。Observableの定義をSubscribe時まで遅延させる,
+   `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Create`,.. figure:: images/Create.png,任意の値を返す。値を発行するObservableを自分で好きなように作る,
    `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Throw`,.. figure:: images/Throw.png,疑似的にエラーを起こす。OnErrorを直ちに発行,
    ,:term:`Empty_`,.. figure:: images/Empty.png,OnCompleted直ちに発行,
    ,:term:`Never`,.. figure:: images/Never.png,何も起きないObservableを定義,
 
 .. csv-table:: Timer系のファクトリメソッド（Observable.XXX）
    :header-rows: 1
-   :widths: 1, 4, 5, 10, 4
+   :widths: 1, 3, 5, 6, 6
 
    link,メソッド,図,説明,備考
    `4 <https://blog.okazuki.jp/entry/20111106/1320584830>`__,:term:`Timer`,.. figure:: images/Timer.png,一定間隔で値（実行回数）を発行。一定時間後に値を発行（Delay）,""
    `4 <https://blog.okazuki.jp/entry/20111106/1320584830>`__,:term:`Interval`,.. figure:: images/Interval.png,一定間隔で値（実行回数）を発行,""
-   `4 <https://blog.okazuki.jp/entry/20111106/1320584830>`__,:term:`Generate`,.. figure:: images/Generate.png,任意の時間間隔で、指定した範囲の値を用いて算出される値を返す,":math:`1^2,2^2,3^2`"
+   `4 <https://blog.okazuki.jp/entry/20111106/1320584830>`__,:term:`Generate`,.. figure:: images/Generate.png,任意の時間間隔で、指定した範囲の値を用いて算出される値を返す,""
    ,:term:`TimerFrame`,.. figure:: images/TimerFrame.png,一定フレーム間隔で値を発行。指定フレーム後に値を発行,
    ,:term:`IntervalFrame`,.. figure:: images/IntervalFrame.png,一定フレーム間隔で値を発行,
 
 .. csv-table:: HotなIObservableを作成するファクトリメソッド
    :header-rows: 1
-   :widths: 1, 4, 5, 10, 4
+   :widths: 1, 3, 5, 6, 6
 
    link,メソッド,図,説明,備考
    `6 <https://blog.okazuki.jp/entry/20111109/1320849106>`__,:term:`FromEvent`,.. figure:: images/FromEvent.png,「C#標準のイベント」をIObservable<T>に変換,""
@@ -49,22 +49,22 @@ ReactiveExtensionsメソッドリスト
 
 .. csv-table:: フィルタリングメソッド
    :header-rows: 1
-   :widths: 1, 4, 5, 10, 4
+   :widths: 1, 3, 5, 6, 6
 
    link,メソッド,図,説明,備考
-   ,:term:`Where_`,.. figure:: images/Where.png,条件式を満たすものだけ通す,""
+   ,:term:`Where_`,,条件式を満たすものだけ通す,""
    ,:term:`Distinct_`,.. figure:: images/Distinct.png,重複したものを除く,""
    ,:term:`DistinctUntilChanged`,.. figure:: images/DistinctUntilChanged.png,値が変化した時のみ通す,""
-   ,:term:`Throttle`,.. figure:: images/Throttle.png,まとめて流れてきたOnNextの最後だけ通す,""
-   ,:term:`ThrtottleFrame`,.. figure:: images/ThrtottleFrame.png,まとめて流れてきたOnNextの最後だけ通す,""
+   `28 <https://blog.okazuki.jp/entry/20120202/1328107196>`__,:term:`Throttle`,.. figure:: images/Throttle.png,指定した間、新たな値が発行されなかったら最後に発行された値を後続に流す,TextBoxの入力が終わって1秒後に自動で検索処理を実行などで使う
+   ,:term:`ThrtottleFrame`,,まとめて流れてきたOnNextの最後だけ通す,""
    ,:term:`ThrottleFirst`,.. figure:: images/ThrottleFirst.png,まとめて流れてきたOnNextの最初だけ通す,""
-   ,:term:`ThrottleFirstFrame`,.. figure:: images/ThrottleFirstFrame.png,まとめて流れてきたOnNextの最初だけ通す,""
+   ,:term:`ThrottleFirstFrame`,,まとめて流れてきたOnNextの最初だけ通す,""
    ,:term:`First_`,.. figure:: images/First.png,一番最初に到達したOnNextのみを流してObservableを完了,""
-   ,:term:`FirstOrDefault_`,.. figure:: images/FirstOrDefault.png,一番最初に到達したOnNextのみを流してObservableを完了,""
+   ,:term:`FirstOrDefault_`,,一番最初に到達したOnNextのみを流してObservableを完了,""
    ,:term:`Single_`,.. figure:: images/Single.png,OnNextが2つ以上発行されたらエラー,""
-   ,:term:`SingleOrDefault_`,.. figure:: images/SingleOrDefault.png,OnNextが2つ以上発行されたらエラー,""
+   ,:term:`SingleOrDefault_`,,OnNextが2つ以上発行されたらエラー,""
    ,:term:`Last_`,.. figure:: images/Last.png,Observableの最後の値だけを通す,""
-   ,:term:`LastOrDefault_`,.. figure:: images/LastOrDefault.png,Observableの最後の値だけを通す,""
+   ,:term:`LastOrDefault_`,,Observableの最後の値だけを通す,""
    ,:term:`Take_`,.. figure:: images/Take.png,先頭から指定した個数だけ通す,""
    ,:term:`TakeWhile_`,.. figure:: images/TakeWhile.png,先頭から条件が成り立たなくなるまで通す,""
    ,:term:`TakeUntil`,.. figure:: images/TakeUntil.png,先頭から指定したObservableにOnNextが来るまで通す,""
@@ -76,7 +76,7 @@ ReactiveExtensionsメソッドリスト
 
 .. csv-table:: Observable自体の合成メソッド
    :header-rows: 1
-   :widths: 1, 4, 5, 10, 4
+   :widths: 1, 3, 5, 6, 6
 
    link,メソッド,図,説明,備考
    ,:term:`Amb`,.. figure:: images/Amb.png,複数のObservableのうち一番早くメッセージが来たObservableを採用,""
@@ -92,7 +92,7 @@ ReactiveExtensionsメソッドリスト
 
 .. csv-table:: Observable自体の変換メソッド
    :header-rows: 1
-   :widths: 1, 4, 5, 10, 4
+   :widths: 1, 3, 5, 6, 6
 
    link,メソッド,図,説明,備考
    ,:term:`ToReactiveProperty`,.. figure:: images/ToReactiveProperty.png,ObservableをReactivePropertyに変換,""
@@ -101,7 +101,7 @@ ReactiveExtensionsメソッドリスト
 
 .. csv-table:: Observableの分岐メソッド
    :header-rows: 1
-   :widths: 1, 4, 5, 10, 4
+   :widths: 1, 3, 5, 6, 6
 
    link,メソッド,図,説明,備考
    ,:term:`Publish`,.. figure:: images/Publish.png,Observableを枝分かれさせる,Publishの返り値はIConnectabaleObservable。Multicast(Subject)と同義
@@ -115,7 +115,7 @@ ReactiveExtensionsメソッドリスト
 
 .. csv-table:: メッセージ同士の合成・演算
    :header-rows: 1
-   :widths: 1, 4, 5, 10, 4
+   :widths: 1, 3, 5, 6, 6
 
    link,メソッド,図,説明,備考
    ,:term:`Scan`,.. figure:: images/Scan.png,メッセージの値と前回の結果との両方を使い関数を適用,LINQでいうAggregate
@@ -125,7 +125,7 @@ ReactiveExtensionsメソッドリスト
 
 .. csv-table:: メッセージの変換
    :header-rows: 1
-   :widths: 1, 4, 5, 10, 4
+   :widths: 1, 3, 5, 6, 6
 
    link,メソッド,図,説明,備考
    ,:term:`Select`,.. figure:: images/Select.png,値を変換/値に関数を適用する,他の言語だとmap
@@ -138,19 +138,19 @@ ReactiveExtensionsメソッドリスト
 
 .. csv-table:: 時間に絡んだ処理
    :header-rows: 1
-   :widths: 1, 4, 5, 10, 4
+   :widths: 1, 3, 5, 6, 6
 
    link,メソッド,図,説明,備考
-   ,:term:`Delay`,.. figure:: images/Delay.png,メッセージを時間遅延させる,
-   ,:term:`DelayFrame`,.. figure:: images/DelayFrame.png,メッセージを時間遅延させる,
+   `29 <https://blog.okazuki.jp/entry/20120203/1328274110>`__,:term:`Delay`,.. figure:: images/Delay.png,メッセージを時間遅延させる。特定の時点までの遅延も可能
+   ,:term:`DelayFrame`,,メッセージを時間遅延させる,
    ,:term:`Timeout`,.. figure:: images/Timeout.png,最後にOnNextが発行されてから一定時間以内に次のOnNextが来なかったらOnErrorを発行,
    ,:term:`Timeout`,.. figure:: images/Timeout.png,Subscribeしてから一定時刻までにOnCompletedが来なかったらOnErrorを発行,
-   ,:term:`Sample`,.. figure:: images/Sample.png,一定間隔で値を取り出す,
+   `27 <https://blog.okazuki.jp/entry/20120201/1328107196>`__,:term:`Sample`,.. figure:: images/Sample.png,指定した間隔（時間や任意のタイミング）で最後に発行された値を後続に流す,非同期処理が終わったタイミングや、ボタンのクリックイベントなどをトリガーにして、一番最後に発行された値を後続に流せる
    ,:term:`NextFrame`,.. figure:: images/NextFrame.png,次のフレームで処理,
 
 .. csv-table:: 非同期処理
    :header-rows: 1
-   :widths: 1, 4, 5, 10, 4
+   :widths: 1, 3, 5, 6, 6
 
    link,メソッド,図,説明,備考
    ,:term:``,.. figure:: images/.png,,
@@ -173,14 +173,14 @@ ReactiveExtensionsメソッドリスト
 
 .. csv-table:: メソッドリスト
    :header-rows: 1
-   :widths: 1, 4, 5, 10, 4
+   :widths: 1, 3, 5, 6, 6
 
    link,メソッド,図,説明,備考
    `10 <https://blog.okazuki.jp/entry/20111128/1322491648>`__,:term:`Do`,.. figure:: images/Do.png,IObservableのシーケンスを処理する途中に任意のアクションを実行,""
 
 .. csv-table:: 集計を行うメソッドリスト(Cold)
    :header-rows: 1
-   :widths: 1, 4, 5, 10, 4
+   :widths: 1, 3, 5, 6, 6
 
    link,メソッド,図,説明,備考
    `17 <https://blog.okazuki.jp/entry/20111212/1323698319>`__,:term:`Aggregate`,.. figure:: images/Aggregate.png,収集・集計し、OnCompleted()で結果のみを後続に流す,
@@ -188,7 +188,7 @@ ReactiveExtensionsメソッドリスト
 
 .. csv-table:: 時間に関する情報を付与するTimestampとTimeIntervalメソッド
    :header-rows: 1
-   :widths: 1, 4, 5, 10, 4
+   :widths: 1, 3, 5, 6, 6
 
    link,メソッド,図,説明,備考
    `31 <https://blog.okazuki.jp/entry/20120205/1328450809>`__,:term:`Timestamp`,.. figure:: images/Timestamp.png,タイムスタンプを追加する,""

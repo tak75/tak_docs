@@ -40,6 +40,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Recently/index.html">Recently</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../sphinx/index.html">Sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Git/index.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../VirtualBox/index.html">VirtualBox</a></li>
@@ -111,11 +112,11 @@
 <table class="colwidths-given docutils align-default" id="id3">
 <caption><span class="caption-number">表 20 </span><span class="caption-text">IObservableのファクトリメソッド（Observable.XXX）</span><a class="headerlink" href="#id3" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
-<col style="width: 4%" />
-<col style="width: 12%" />
-<col style="width: 20%" />
-<col style="width: 32%" />
-<col style="width: 32%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 24%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>link</p></th>
@@ -128,12 +129,9 @@
 <tbody>
 <tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">3</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Return"><span class="xref std std-term">Return</span></a></p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/Return.png" src="C＃/ReactiveExtensions/images/Return.png" />
-</figure>
-</td>
+<td></td>
 <td><p>値を1つだけ発行</p></td>
-<td><p>2</p></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">3</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Repeat"><span class="xref std std-term">Repeat</span></a></p></td>
@@ -142,7 +140,7 @@
 </figure>
 </td>
 <td><p>同じ値を指定した回数発行</p></td>
-<td><p>2,2,2,2,2</p></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">3</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Range"><span class="xref std std-term">Range</span></a></p></td>
@@ -151,7 +149,7 @@
 </figure>
 </td>
 <td><p>指定した値から1ずつカウントアップした値を指定した数だけ発行</p></td>
-<td><p>1,2,3</p></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">3</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-0"><span class="xref std std-term">Generate</span></a></p></td>
@@ -159,8 +157,8 @@
 <img alt="../../_images/Generate.png" src="../../_images/Generate.png" />
 </figure>
 </td>
-<td><p>指定した範囲の値を用いて算出される値を返す</p></td>
-<td><p><span class="math notranslate nohighlight">\(1^2,2^2,3^2\)</span></p></td>
+<td><p>指定した範囲の値を用いて算出される値を返す(<span class="math notranslate nohighlight">\(1^2、2^2、3^2\)</span>)。インターバル指定できる</p></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">3</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Defer"><span class="xref std std-term">Defer</span></a></p></td>
@@ -169,7 +167,7 @@
 </figure>
 </td>
 <td><p>任意の値を返す。Observableの定義をSubscribe時まで遅延させる</p></td>
-<td><p>1,2,3</p></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">3</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Create"><span class="xref std std-term">Create</span></a></p></td>
@@ -178,7 +176,7 @@
 </figure>
 </td>
 <td><p>任意の値を返す。値を発行するObservableを自分で好きなように作る</p></td>
-<td><p>1,2,3</p></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">3</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Throw"><span class="xref std std-term">Throw</span></a></p></td>
@@ -212,11 +210,11 @@
 <table class="colwidths-given docutils align-default" id="id4">
 <caption><span class="caption-number">表 21 </span><span class="caption-text">Timer系のファクトリメソッド（Observable.XXX）</span><a class="headerlink" href="#id4" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
-<col style="width: 4%" />
-<col style="width: 17%" />
-<col style="width: 21%" />
-<col style="width: 42%" />
-<col style="width: 17%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 24%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>link</p></th>
@@ -252,7 +250,7 @@
 </figure>
 </td>
 <td><p>任意の時間間隔で、指定した範囲の値を用いて算出される値を返す</p></td>
-<td><p><span class="math notranslate nohighlight">\(1^2,2^2,3^2\)</span></p></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">TimerFrame</span></p></td>
@@ -277,11 +275,11 @@
 <table class="colwidths-given docutils align-default" id="id5">
 <caption><span class="caption-number">表 22 </span><span class="caption-text">HotなIObservableを作成するファクトリメソッド</span><a class="headerlink" href="#id5" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
-<col style="width: 4%" />
-<col style="width: 17%" />
-<col style="width: 21%" />
-<col style="width: 42%" />
-<col style="width: 17%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 24%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>link</p></th>
@@ -342,11 +340,11 @@
 <table class="colwidths-given docutils align-default" id="id6">
 <caption><span class="caption-number">表 23 </span><span class="caption-text">フィルタリングメソッド</span><a class="headerlink" href="#id6" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
-<col style="width: 4%" />
-<col style="width: 17%" />
-<col style="width: 21%" />
-<col style="width: 42%" />
-<col style="width: 17%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 24%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>link</p></th>
@@ -359,10 +357,7 @@
 <tbody>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">Where_</span></p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/Where.png" src="C＃/ReactiveExtensions/images/Where.png" />
-</figure>
-</td>
+<td></td>
 <td><p>条件式を満たすものだけ通す</p></td>
 <td></td>
 </tr>
@@ -384,21 +379,18 @@
 <td><p>値が変化した時のみ通す</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20120202/1328107196">28</a></p></td>
 <td><p><span class="xref std std-term">Throttle</span></p></td>
 <td><figure class="align-default">
 <img alt="../../_images/Throttle.png" src="../../_images/Throttle.png" />
 </figure>
 </td>
-<td><p>まとめて流れてきたOnNextの最後だけ通す</p></td>
-<td></td>
+<td><p>指定した間、新たな値が発行されなかったら最後に発行された値を後続に流す</p></td>
+<td><p>TextBoxの入力が終わって1秒後に自動で検索処理を実行などで使う</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">ThrtottleFrame</span></p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/ThrtottleFrame.png" src="C＃/ReactiveExtensions/images/ThrtottleFrame.png" />
-</figure>
-</td>
+<td></td>
 <td><p>まとめて流れてきたOnNextの最後だけ通す</p></td>
 <td></td>
 </tr>
@@ -413,10 +405,7 @@
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">ThrottleFirstFrame</span></p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/ThrottleFirstFrame.png" src="C＃/ReactiveExtensions/images/ThrottleFirstFrame.png" />
-</figure>
-</td>
+<td></td>
 <td><p>まとめて流れてきたOnNextの最初だけ通す</p></td>
 <td></td>
 </tr>
@@ -431,10 +420,7 @@
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">FirstOrDefault_</span></p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/FirstOrDefault.png" src="C＃/ReactiveExtensions/images/FirstOrDefault.png" />
-</figure>
-</td>
+<td></td>
 <td><p>一番最初に到達したOnNextのみを流してObservableを完了</p></td>
 <td></td>
 </tr>
@@ -449,10 +435,7 @@
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">SingleOrDefault_</span></p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/SingleOrDefault.png" src="C＃/ReactiveExtensions/images/SingleOrDefault.png" />
-</figure>
-</td>
+<td></td>
 <td><p>OnNextが2つ以上発行されたらエラー</p></td>
 <td></td>
 </tr>
@@ -467,10 +450,7 @@
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">LastOrDefault_</span></p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/LastOrDefault.png" src="C＃/ReactiveExtensions/images/LastOrDefault.png" />
-</figure>
-</td>
+<td></td>
 <td><p>Observableの最後の値だけを通す</p></td>
 <td></td>
 </tr>
@@ -551,11 +531,11 @@
 <table class="colwidths-given docutils align-default" id="id7">
 <caption><span class="caption-number">表 24 </span><span class="caption-text">Observable自体の合成メソッド</span><a class="headerlink" href="#id7" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
-<col style="width: 4%" />
-<col style="width: 17%" />
-<col style="width: 21%" />
-<col style="width: 42%" />
-<col style="width: 17%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 24%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>link</p></th>
@@ -661,11 +641,11 @@
 <table class="colwidths-given docutils align-default" id="id8">
 <caption><span class="caption-number">表 25 </span><span class="caption-text">Observable自体の変換メソッド</span><a class="headerlink" href="#id8" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
-<col style="width: 4%" />
-<col style="width: 17%" />
-<col style="width: 21%" />
-<col style="width: 42%" />
-<col style="width: 17%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 24%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>link</p></th>
@@ -708,11 +688,11 @@
 <table class="colwidths-given docutils align-default" id="id9">
 <caption><span class="caption-number">表 26 </span><span class="caption-text">Observableの分岐メソッド</span><a class="headerlink" href="#id9" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
-<col style="width: 4%" />
-<col style="width: 17%" />
-<col style="width: 21%" />
-<col style="width: 42%" />
-<col style="width: 17%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 24%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>link</p></th>
@@ -800,11 +780,11 @@
 <table class="colwidths-given docutils align-default" id="id10">
 <caption><span class="caption-number">表 27 </span><span class="caption-text">メッセージ同士の合成・演算</span><a class="headerlink" href="#id10" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
-<col style="width: 4%" />
-<col style="width: 17%" />
-<col style="width: 21%" />
-<col style="width: 42%" />
-<col style="width: 17%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 24%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>link</p></th>
@@ -856,11 +836,11 @@
 <table class="colwidths-given docutils align-default" id="id11">
 <caption><span class="caption-number">表 28 </span><span class="caption-text">メッセージの変換</span><a class="headerlink" href="#id11" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
-<col style="width: 4%" />
-<col style="width: 17%" />
-<col style="width: 21%" />
-<col style="width: 42%" />
-<col style="width: 17%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 24%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>link</p></th>
@@ -939,11 +919,11 @@
 <table class="colwidths-given docutils align-default" id="id12">
 <caption><span class="caption-number">表 29 </span><span class="caption-text">時間に絡んだ処理</span><a class="headerlink" href="#id12" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
-<col style="width: 4%" />
-<col style="width: 17%" />
-<col style="width: 21%" />
-<col style="width: 42%" />
-<col style="width: 17%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 24%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>link</p></th>
@@ -954,21 +934,18 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20120203/1328274110">29</a></p></td>
 <td><p><span class="xref std std-term">Delay</span></p></td>
 <td><figure class="align-default">
 <img alt="../../_images/Delay.png" src="../../_images/Delay.png" />
 </figure>
 </td>
-<td><p>メッセージを時間遅延させる</p></td>
+<td><p>メッセージを時間遅延させる。特定の時点までの遅延も可能</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">DelayFrame</span></p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/DelayFrame.png" src="C＃/ReactiveExtensions/images/DelayFrame.png" />
-</figure>
-</td>
+<td></td>
 <td><p>メッセージを時間遅延させる</p></td>
 <td></td>
 </tr>
@@ -990,14 +967,14 @@
 <td><p>Subscribeしてから一定時刻までにOnCompletedが来なかったらOnErrorを発行</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20120201/1328107196">27</a></p></td>
 <td><p><span class="xref std std-term">Sample</span></p></td>
 <td><figure class="align-default">
 <img alt="../../_images/Sample.png" src="../../_images/Sample.png" />
 </figure>
 </td>
-<td><p>一定間隔で値を取り出す</p></td>
-<td></td>
+<td><p>指定した間隔（時間や任意のタイミング）で最後に発行された値を後続に流す</p></td>
+<td><p>非同期処理が終わったタイミングや、ボタンのクリックイベントなどをトリガーにして、一番最後に発行された値を後続に流せる</p></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">NextFrame</span></p></td>
@@ -1013,11 +990,11 @@
 <table class="colwidths-given docutils align-default" id="id13">
 <caption><span class="caption-number">表 30 </span><span class="caption-text">非同期処理</span><a class="headerlink" href="#id13" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
-<col style="width: 4%" />
-<col style="width: 17%" />
-<col style="width: 21%" />
-<col style="width: 42%" />
-<col style="width: 17%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 24%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>link</p></th>
@@ -1186,11 +1163,11 @@
 <table class="colwidths-given docutils align-default" id="id14">
 <caption><span class="caption-number">表 31 </span><span class="caption-text">メソッドリスト</span><a class="headerlink" href="#id14" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
-<col style="width: 4%" />
-<col style="width: 17%" />
-<col style="width: 21%" />
-<col style="width: 42%" />
-<col style="width: 17%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 24%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>link</p></th>
@@ -1215,11 +1192,11 @@
 <table class="colwidths-given docutils align-default" id="id15">
 <caption><span class="caption-number">表 32 </span><span class="caption-text">集計を行うメソッドリスト(Cold)</span><a class="headerlink" href="#id15" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
-<col style="width: 4%" />
-<col style="width: 17%" />
-<col style="width: 21%" />
-<col style="width: 42%" />
-<col style="width: 17%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 24%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>link</p></th>
@@ -1253,11 +1230,11 @@
 <table class="colwidths-given docutils align-default" id="id16">
 <caption><span class="caption-number">表 33 </span><span class="caption-text">時間に関する情報を付与するTimestampとTimeIntervalメソッド</span><a class="headerlink" href="#id16" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
-<col style="width: 4%" />
-<col style="width: 17%" />
-<col style="width: 21%" />
-<col style="width: 42%" />
-<col style="width: 17%" />
+<col style="width: 5%" />
+<col style="width: 14%" />
+<col style="width: 24%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>link</p></th>

@@ -5,6 +5,7 @@ tak documents
 .. toctree::
    :maxdepth: 2
 
+   Recently/index
    sphinx/index
    Git/index
    VirtualBox/index
