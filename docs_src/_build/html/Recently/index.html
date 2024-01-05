@@ -40,7 +40,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Recently</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#c">C#</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reactiveextensions">ReactiveExtensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reactiveproperty">ReactiveProperty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wpf">WPF</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sphinx/index.html">Sphinx</a></li>
@@ -86,8 +88,45 @@
              
   <section id="recently">
 <h1>Recently<a class="headerlink" href="#recently" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<section id="c">
-<h2>C#<a class="headerlink" href="#c" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="reactiveextensions">
+<h2>ReactiveExtensions<a class="headerlink" href="#reactiveextensions" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p><a class="reference external" href="https://qiita.com/toRisouP/items/f6088963037bfda658d3">Hot/Coldの挙動について</a></p></li>
+<li><p>イベントとしての使用例</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="n">Subject</span><span class="p">&lt;</span><span class="n">System</span><span class="p">.</span><span class="n">Reactive</span><span class="p">.</span><span class="n">Unit</span><span class="p">&gt;</span> <span class="n">_OnEventA</span><span class="p">;</span>
+<span class="k">private</span> <span class="n">Subject</span><span class="p">&lt;</span><span class="n">System</span><span class="p">.</span><span class="n">Reactive</span><span class="p">.</span><span class="n">Unit</span><span class="p">&gt;</span> <span class="n">_OnEventB</span><span class="p">;</span>
+<span class="k">private</span> <span class="n">Subject</span><span class="p">&lt;</span><span class="n">System</span><span class="p">.</span><span class="n">Reactive</span><span class="p">.</span><span class="n">Unit</span><span class="p">&gt;</span> <span class="n">_OnEventC</span><span class="p">;</span>
+
+<span class="n">_OnEventA</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Subject</span><span class="p">&lt;</span><span class="n">System</span><span class="p">.</span><span class="n">Reactive</span><span class="p">.</span><span class="n">Unit</span><span class="p">&gt;().</span><span class="n">AddTo</span><span class="p">(</span><span class="n">_disposables</span><span class="p">);</span>
+<span class="n">_OnEventA</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="n">EventHandlerA1</span><span class="p">()).</span><span class="n">AddTo</span><span class="p">(</span><span class="n">_disposables</span><span class="p">);</span>
+<span class="n">_OnEventA</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="n">EventHandlerA2</span><span class="p">()).</span><span class="n">AddTo</span><span class="p">(</span><span class="n">_disposables</span><span class="p">);</span>
+<span class="n">_OnEventC</span> <span class="p">=</span> <span class="n">_OnEventA</span><span class="p">.</span><span class="n">Merge</span><span class="p">(</span><span class="n">_OnEventB</span><span class="p">);</span>
+<span class="n">_OnEventA</span><span class="p">.</span><span class="n">OnNext</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">Reactive</span><span class="p">.</span><span class="n">Unit</span><span class="p">.</span><span class="n">Default</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="reactiveproperty">
+<h2>ReactiveProperty<a class="headerlink" href="#reactiveproperty" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p>AsyncReactiveCommand</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="n">AsyncReactiveCommand</span> <span class="n">ButtonStartCommand</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="n">ButtonStartCommand</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">RP1</span>
+    <span class="p">.</span><span class="n">ObserveProperty</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Value</span><span class="p">.</span><span class="n">RP1_1</span><span class="p">.</span><span class="n">Value</span><span class="p">).</span><span class="n">ToReactiveProperty</span><span class="p">().</span><span class="n">AddTo</span><span class="p">(</span><span class="n">_disposables</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">CombineLatest</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">RP2</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="n">RP1</span><span class="p">.</span><span class="n">ObserveProperty</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Value</span><span class="p">.</span><span class="n">RP1_2</span><span class="p">.</span><span class="n">Value</span><span class="p">).</span><span class="n">ToReactiveProperty</span><span class="p">().</span><span class="n">AddTo</span><span class="p">(</span><span class="n">_disposables</span><span class="p">)</span>
+                    <span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(!</span><span class="n">x</span><span class="p">)</span> <span class="p">&amp;&amp;</span> <span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="p">&amp;&amp;</span> <span class="p">(</span><span class="n">z</span><span class="p">!=</span> <span class="k">null</span><span class="p">))</span>
+    <span class="p">.</span><span class="n">ObserveOnUIDispatcher</span><span class="p">().</span><span class="n">ToAsyncReactiveCommand</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">WithSubscribe</span><span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="k">await</span> <span class="n">ButtonStartActionAsync</span><span class="p">())</span>
+    <span class="p">.</span><span class="n">AddTo</span><span class="p">(</span><span class="n">_disposables</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="wpf">
+<h2>WPF<a class="headerlink" href="#wpf" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.pine4.net/Memo/Article/Archives/429">Xaml Runの使い方</a></p></li>
 <li><p><a class="reference external" href="https://qiita.com/takapi_cs/items/7e8438123f3f0bf3aae8">ReactivePropertyを使ってバリデーションエラーを表示する #C# - Qiita</a></p></li>
