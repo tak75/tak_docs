@@ -11,7 +11,7 @@ ReactiveExtensionsメソッドリスト
    :header-rows: 1
    :widths: 1, 3, 6, 6, 6
 
-   link,メソッド,図,説明,備考
+   link,メソッド,動作説明の図,説明,備考
    `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Return`,,値を1つだけ発行,
    `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Repeat`,.. figure:: images/Repeat.png,同じ値を指定した回数発行,
    `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Range`,.. figure:: images/Range.png,指定した値から1ずつカウントアップした値を指定した数だけ発行,
@@ -26,7 +26,7 @@ ReactiveExtensionsメソッドリスト
    :header-rows: 1
    :widths: 1, 3, 6, 6, 6
 
-   link,メソッド,図,説明,備考
+   link,メソッド,動作説明の図,説明,備考
    `4 <https://blog.okazuki.jp/entry/20111106/1320584830>`__,:term:`Timer`,.. figure:: images/Timer.png,一定間隔で値（実行回数）を発行。一定時間後に値を発行（Delay）,""
    `4 <https://blog.okazuki.jp/entry/20111106/1320584830>`__,:term:`Interval`,.. figure:: images/Interval.png,一定間隔で値（実行回数）を発行,""
    `4 <https://blog.okazuki.jp/entry/20111106/1320584830>`__,:term:`Generate`,.. figure:: images/Generate.png,任意の時間間隔で、指定した範囲の値を用いて算出される値を返す,""
@@ -37,7 +37,7 @@ ReactiveExtensionsメソッドリスト
    :header-rows: 1
    :widths: 1, 3, 6, 6, 6
 
-   link,メソッド,図,説明,備考
+   link,メソッド,動作説明の図,説明,備考
    `6 <https://blog.okazuki.jp/entry/20111109/1320849106>`__,:term:`FromEvent`,.. figure:: images/FromEvent.png,「C#標準のイベント」をIObservable<T>に変換,""
    ,:term:`FromEventPattern`,,「C#標準のイベント」をIObservable<T>に変換,""
    `6 <https://blog.okazuki.jp/entry/20111109/1320849106>`__,:term:`Start`,.. figure:: images/Start.png,バックグラウンドで処理を実行し結果を返す,""
@@ -51,7 +51,7 @@ ReactiveExtensionsメソッドリスト
    :header-rows: 1
    :widths: 1, 3, 6, 6, 6
 
-   link,メソッド,図,説明,備考
+   link,メソッド,動作説明の図,説明,備考
    ,:term:`Where_`,,条件式を満たすものだけ通す,""
    ,:term:`Distinct_`,.. figure:: images/Distinct.png,重複したものを除く,""
    ,:term:`DistinctUntilChanged`,.. figure:: images/DistinctUntilChanged.png,値が変化した時のみ通す,""
