@@ -9,7 +9,7 @@ ReactiveExtensionsメソッドリスト
 
 .. csv-table:: IObservableのファクトリメソッド（Observable.XXX）
    :header-rows: 1
-   :widths: 1, 3, 6, 6, 6
+   :widths: 1, 3, 10, 6, 6
 
    link,メソッド,図,説明,備考
    `3 <https://blog.okazuki.jp/entry/20111104/1320409976>`__,:term:`Return`,,値を1つだけ発行,
@@ -24,7 +24,7 @@ ReactiveExtensionsメソッドリスト
 
 .. csv-table:: Timer系のファクトリメソッド（Observable.XXX）
    :header-rows: 1
-   :widths: 1, 3, 6, 6, 6
+   :widths: 1, 3, 10, 6, 6
 
    link,メソッド,図,説明,備考
    `4 <https://blog.okazuki.jp/entry/20111106/1320584830>`__,:term:`Timer`,.. figure:: images/Timer.png,一定間隔で値（実行回数）を発行。一定時間後に値を発行（Delay）,""
@@ -35,7 +35,7 @@ ReactiveExtensionsメソッドリスト
 
 .. csv-table:: HotなIObservableを作成するファクトリメソッド
    :header-rows: 1
-   :widths: 1, 3, 6, 6, 6
+   :widths: 1, 3, 10, 6, 6
 
    link,メソッド,図,説明,備考
    `6 <https://blog.okazuki.jp/entry/20111109/1320849106>`__,:term:`FromEvent`,.. figure:: images/FromEvent.png,「C#標準のイベント」をIObservable<T>に変換,""
@@ -49,7 +49,7 @@ ReactiveExtensionsメソッドリスト
 
 .. csv-table:: フィルタリングメソッド
    :header-rows: 1
-   :widths: 1, 3, 6, 6, 6
+   :widths: 1, 3, 10, 6, 6
 
    link,メソッド,図,説明,備考
    ,:term:`Where_`,,条件式を満たすものだけ通す,""
@@ -76,7 +76,7 @@ ReactiveExtensionsメソッドリスト
 
 .. csv-table:: Observable自体の合成メソッド
    :header-rows: 1
-   :widths: 1, 3, 6, 6, 6
+   :widths: 1, 3, 10, 6, 6
 
    link,メソッド,図,説明,備考
    ,:term:`Amb`,.. figure:: images/Amb.png,複数のObservableのうち一番早くメッセージが来たObservableを採用,""
@@ -92,7 +92,7 @@ ReactiveExtensionsメソッドリスト
 
 .. csv-table:: Observable自体の変換メソッド
    :header-rows: 1
-   :widths: 1, 3, 6, 6, 6
+   :widths: 1, 3, 10, 6, 6
 
    link,メソッド,図,説明,備考
    ,:term:`ToReactiveProperty`,,ObservableをReactivePropertyに変換,""
@@ -101,7 +101,7 @@ ReactiveExtensionsメソッドリスト
 
 .. csv-table:: Observableの分岐メソッド
    :header-rows: 1
-   :widths: 1, 3, 6, 6, 6
+   :widths: 1, 3, 10, 6, 6
 
    link,メソッド,図,説明,備考
    ,:term:`Publish`,,Observableを枝分かれさせる,Publishの返り値はIConnectabaleObservable。Multicast(Subject)と同義
@@ -115,7 +115,7 @@ ReactiveExtensionsメソッドリスト
 
 .. csv-table:: メッセージ同士の合成・演算
    :header-rows: 1
-   :widths: 1, 3, 6, 6, 6
+   :widths: 1, 3, 10, 6, 6
 
    link,メソッド,図,説明,備考
    ,:term:`Scan`,.. figure:: images/Scan.png,メッセージの値と前回の結果との両方を使い関数を適用,LINQでいうAggregate
@@ -125,7 +125,7 @@ ReactiveExtensionsメソッドリスト
 
 .. csv-table:: メッセージの変換
    :header-rows: 1
-   :widths: 1, 3, 6, 6, 6
+   :widths: 1, 3, 10, 6, 6
 
    link,メソッド,図,説明,備考
    ,:term:`Select`,,値を変換/値に関数を適用する,他の言語だとmap
@@ -138,7 +138,7 @@ ReactiveExtensionsメソッドリスト
 
 .. csv-table:: 時間に絡んだ処理
    :header-rows: 1
-   :widths: 1, 3, 6, 6, 6
+   :widths: 1, 3, 10, 6, 6
 
    link,メソッド,図,説明,備考
    `29 <https://blog.okazuki.jp/entry/20120203/1328274110>`__,:term:`Delay`,.. figure:: images/Delay.png,メッセージを時間遅延させる。特定の時点までの遅延も可能
@@ -150,7 +150,7 @@ ReactiveExtensionsメソッドリスト
 
 .. csv-table:: 非同期処理
    :header-rows: 1
-   :widths: 1, 3, 6, 6, 6
+   :widths: 1, 3, 10, 6, 6
 
    link,メソッド,図,説明,備考
    ,:term:``,.. figure:: images/.png,,
@@ -173,14 +173,14 @@ ReactiveExtensionsメソッドリスト
 
 .. csv-table:: メソッドリスト
    :header-rows: 1
-   :widths: 1, 3, 6, 6, 6
+   :widths: 1, 3, 10, 6, 6
 
    link,メソッド,図,説明,備考
    `10 <https://blog.okazuki.jp/entry/20111128/1322491648>`__,:term:`Do`,.. figure:: images/Do.png,IObservableのシーケンスを処理する途中に任意のアクションを実行,""
 
 .. csv-table:: 集計を行うメソッドリスト(Cold)
    :header-rows: 1
-   :widths: 1, 3, 6, 6, 6
+   :widths: 1, 3, 10, 6, 6
 
    link,メソッド,図,説明,備考
    `17 <https://blog.okazuki.jp/entry/20111212/1323698319>`__,:term:`Aggregate`,.. figure:: images/Aggregate.png,収集・集計し、OnCompleted()で結果のみを後続に流す,
@@ -188,7 +188,7 @@ ReactiveExtensionsメソッドリスト
 
 .. csv-table:: 時間に関する情報を付与するTimestampとTimeIntervalメソッド
    :header-rows: 1
-   :widths: 1, 3, 6, 6, 6
+   :widths: 1, 3, 10, 6, 6
 
    link,メソッド,図,説明,備考
    `31 <https://blog.okazuki.jp/entry/20120205/1328450809>`__,:term:`Timestamp`,.. figure:: images/Timestamp.png,タイムスタンプを追加する,""
