@@ -198,5 +198,5 @@ ReactiveExtensionsメソッドリスト
    :widths: 1, 4, 10, 4
 
    link,メソッド,説明,備考
-   ,Publish,Cold->Hot変換,`link <https://qiita.com/toRisouP/items/f6088963037bfda658d3>`__
+   `link <https://qiita.com/toRisouP/items/f6088963037bfda658d3>`__,Publish,Cold->Hot変換,
 
