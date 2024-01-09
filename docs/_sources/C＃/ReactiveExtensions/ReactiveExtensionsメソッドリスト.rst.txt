@@ -145,8 +145,30 @@ ReactiveExtensionsメソッドリスト
    ,:term:`DelayFrame`,,メッセージを時間遅延させる,
    ,:term:`Timeout`,.. figure:: images/Timeout.png,最後にOnNextが発行されてから一定時間以内に次のOnNextが来なかったらOnErrorを発行,
    ,:term:`Timeout`,.. figure:: images/Timeout.png,Subscribeしてから一定時刻までにOnCompletedが来なかったらOnErrorを発行,
-   `27 <https://blog.okazuki.jp/entry/20120201/1328107196>`__,:term:`Sample`,.. figure:: images/Sample.png,指定した間隔（時間や任意のタイミング）で最後に発行された値を後続に流す,非同期処理が終わったタイミングや、ボタンのクリックイベントなどをトリガーにして、一番最後に発行された値を後続に流せる
+   `27 <https://blog.okazuki.jp/entry/20120201/1328107196>`__,:term:`Sample`,.. figure:: images/Sample.png,指定した間隔（時間や任意のタイミング）で最後に発行された値を後続に流す。サンプリングする,非同期処理が終わったタイミングや、ボタンのクリックイベントなどをトリガーにして、一番最後に発行された値を後続に流せる
    ,:term:`NextFrame`,,次のフレームで処理,
+
+.. list-table:: 時間に絡んだ処理
+   :header-rows: 1
+   :widths: 1, 3, 10, 6, 6
+
+   * - link
+     - メソッド
+     - 図
+     - 説明
+     - 備考
+   * - `29 <https://blog.okazuki.jp/entry/20120203/1328274110>`__
+     - :term:`Delay`
+     - .. figure:: images/Delay.png
+     - メッセージを時間遅延させる。特定の時点までの遅延も可能
+     - 
+   * - `27 <https://blog.okazuki.jp/entry/20120201/1328107196>`__
+     - :term:`Sample`
+     - .. figure:: images/Sample.png
+     - * 指定した間隔（時間や任意のタイミング）で最後に発行された値を後続に流す。
+       * サンプリングする
+     - 非同期処理が終わったタイミングや、ボタンのクリックイベントなどをトリガーにして、一番最後に発行された値を後続に流せる
+
 
 .. csv-table:: 非同期処理
    :header-rows: 1
