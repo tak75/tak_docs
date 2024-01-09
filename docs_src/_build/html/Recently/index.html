@@ -43,6 +43,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#reactiveextensions">ReactiveExtensions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reactiveproperty">ReactiveProperty</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#wpf">WPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c">C#</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sphinx/index.html">Sphinx</a></li>
@@ -130,6 +131,25 @@
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.pine4.net/Memo/Article/Archives/429">Xaml Runの使い方</a></p></li>
 <li><p><a class="reference external" href="https://qiita.com/takapi_cs/items/7e8438123f3f0bf3aae8">ReactivePropertyを使ってバリデーションエラーを表示する #C# - Qiita</a></p></li>
+</ul>
+</section>
+<section id="c">
+<h2>C#<a class="headerlink" href="#c" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul>
+<li><p>usingステートメント</p>
+<ul>
+<li><p><a class="reference external" href="https://qiita.com/4_mio_11/items/145c658078a7fe5f36a7">https://qiita.com/4_mio_11/items/145c658078a7fe5f36a7</a></p></li>
+<li><p>C#8.0からは以下のように、変数宣言時にusingをつけ簡略化すること可能</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">using</span> <span class="nn">var</span> <span class="n">fs</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FileStream</span><span class="p">(</span><span class="s">&quot;hoge.txt&quot;</span><span class="p">,</span> <span class="n">FileMode</span><span class="p">.</span><span class="n">Open</span><span class="p">,</span> <span class="n">FileAccess</span><span class="p">.</span><span class="n">Read</span><span class="p">,</span> <span class="n">FileShare</span><span class="p">.</span><span class="n">None</span><span class="p">);</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">fs</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
 </ul>
 </section>
 </section>

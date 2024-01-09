@@ -45,3 +45,19 @@ WPF
 * `Xaml Runの使い方 <https://www.pine4.net/Memo/Article/Archives/429>`__
 * `ReactivePropertyを使ってバリデーションエラーを表示する #C# - Qiita <https://qiita.com/takapi_cs/items/7e8438123f3f0bf3aae8>`__
 
+===
+C#
+===
+
+* usingステートメント
+
+  * https://qiita.com/4_mio_11/items/145c658078a7fe5f36a7
+  * C#8.0からは以下のように、変数宣言時にusingをつけ簡略化すること可能
+ 
+    .. code-block:: csharp
+
+      static void Main(string[] args)
+      {
+          using var fs = new FileStream("hoge.txt", FileMode.Open, FileAccess.Read, FileShare.None);
+          Console.WriteLine(fs.Length);   
+      }    
