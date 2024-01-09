@@ -157,7 +157,11 @@
 <img alt="../../_images/Generate.png" src="../../_images/Generate.png" />
 </figure>
 </td>
-<td><p>指定した範囲の値を用いて算出される値を返す(<span class="math notranslate nohighlight">\(1^2、2^2、3^2\)</span>)。インターバル指定できる</p></td>
+<td><ul class="simple">
+<li><p>指定した範囲の値を用いて算出される値を返す(<span class="math notranslate nohighlight">\(1^2、2^2、3^2\)</span>)</p></li>
+<li><p>インターバル指定できる</p></li>
+</ul>
+</td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">3</a></p></td>
@@ -166,7 +170,11 @@
 <img alt="../../_images/Defer.png" src="../../_images/Defer.png" />
 </figure>
 </td>
-<td><p>任意の値を返す。Observableの定義をSubscribe時まで遅延させる</p></td>
+<td><ul class="simple">
+<li><p>任意の値を返す</p></li>
+<li><p>Observableの定義をSubscribe時まで遅延させる</p></li>
+</ul>
+</td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">3</a></p></td>
@@ -175,7 +183,11 @@
 <img alt="../../_images/Create.png" src="../../_images/Create.png" />
 </figure>
 </td>
-<td><p>任意の値を返す。値を発行するObservableを自分で好きなように作る</p></td>
+<td><ul class="simple">
+<li><p>任意の値を返す</p></li>
+<li><p>値を発行するObservableを自分で好きなように作る</p></li>
+</ul>
+</td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111104/1320409976">3</a></p></td>
@@ -184,7 +196,11 @@
 <img alt="../../_images/Throw.png" src="../../_images/Throw.png" />
 </figure>
 </td>
-<td><p>疑似的にエラーを起こす。OnErrorを直ちに発行</p></td>
+<td><ul class="simple">
+<li><p>疑似的にエラーを起こす</p></li>
+<li><p>OnErrorを直ちに発行</p></li>
+</ul>
+</td>
 <td></td>
 </tr>
 <tr class="row-odd"><td></td>
@@ -231,7 +247,11 @@
 <img alt="../../_images/Timer.png" src="../../_images/Timer.png" />
 </figure>
 </td>
-<td><p>一定間隔で値（実行回数）を発行。一定時間後に値を発行（Delay）</p></td>
+<td><ul class="simple">
+<li><p>一定間隔で値（実行回数）を発行</p></li>
+<li><p>一定時間後に値を発行（Delay）</p></li>
+</ul>
+</td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111106/1320584830">4</a></p></td>
@@ -255,7 +275,11 @@
 <tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">TimerFrame</span></p></td>
 <td></td>
-<td><p>一定フレーム間隔で値を発行。指定フレーム後に値を発行</p></td>
+<td><ul class="simple">
+<li><p>一定フレーム間隔で値を発行</p></li>
+<li><p>指定フレーム後に値を発行</p></li>
+</ul>
+</td>
 <td></td>
 </tr>
 <tr class="row-even"><td></td>
@@ -759,8 +783,8 @@
 <img alt="../../_images/Scan.png" src="../../_images/Scan.png" />
 </figure>
 </td>
-<td><p>メッセージの値と前回の結果との両方を使い関数を適用</p></td>
-<td><p>LINQでいうAggregate</p></td>
+<td><p>メッセージの値と前回の結果との両方を使い関数を適用,LINQでいうAggregate</p></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">Buffer</span></p></td>
@@ -919,52 +943,8 @@
 <img alt="../../_images/Sample.png" src="../../_images/Sample.png" />
 </figure>
 </td>
-<td><p>指定した間隔（時間や任意のタイミング）で最後に発行された値を後続に流す。サンプリングする</p></td>
-<td><p>非同期処理が終わったタイミングや、ボタンのクリックイベントなどをトリガーにして、一番最後に発行された値を後続に流せる</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p><span class="xref std std-term">NextFrame</span></p></td>
-<td></td>
-<td><p>次のフレームで処理</p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<table class="colwidths-given docutils align-default" id="id13">
-<caption><span class="caption-number">表 30 </span><span class="caption-text">時間に絡んだ処理</span><a class="headerlink" href="#id13" title="このテーブルへのパーマリンク">¶</a></caption>
-<colgroup>
-<col style="width: 4%" />
-<col style="width: 12%" />
-<col style="width: 38%" />
-<col style="width: 23%" />
-<col style="width: 23%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>link</p></th>
-<th class="head"><p>メソッド</p></th>
-<th class="head"><p>図</p></th>
-<th class="head"><p>説明</p></th>
-<th class="head"><p>備考</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20120203/1328274110">29</a></p></td>
-<td><p><span class="xref std std-term">Delay</span></p></td>
-<td><figure class="align-default">
-<img alt="../../_images/Delay.png" src="../../_images/Delay.png" />
-</figure>
-</td>
-<td><p>メッセージを時間遅延させる。特定の時点までの遅延も可能</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20120201/1328107196">27</a></p></td>
-<td><p><span class="xref std std-term">Sample</span></p></td>
-<td><figure class="align-default">
-<img alt="../../_images/Sample.png" src="../../_images/Sample.png" />
-</figure>
-</td>
 <td><ul class="simple">
-<li><p>指定した間隔（時間や任意のタイミング）で最後に発行された値を後続に流す。</p></li>
+<li><p>指定した間隔（時間や任意のタイミング）で最後に発行された値を後続に流す</p></li>
 <li><p>サンプリングする</p></li>
 </ul>
 </td>
@@ -972,181 +952,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id14">
-<caption><span class="caption-number">表 31 </span><span class="caption-text">非同期処理</span><a class="headerlink" href="#id14" title="このテーブルへのパーマリンク">¶</a></caption>
-<colgroup>
-<col style="width: 4%" />
-<col style="width: 12%" />
-<col style="width: 38%" />
-<col style="width: 23%" />
-<col style="width: 23%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>link</p></th>
-<th class="head"><p>メソッド</p></th>
-<th class="head"><p>図</p></th>
-<th class="head"><p>説明</p></th>
-<th class="head"><p>備考</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td></td>
-<td><p>:term:``</p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/.png" src="C＃/ReactiveExtensions/images/.png" />
-</figure>
-</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p>:term:``</p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/.png" src="C＃/ReactiveExtensions/images/.png" />
-</figure>
-</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p>:term:``</p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/.png" src="C＃/ReactiveExtensions/images/.png" />
-</figure>
-</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p>:term:``</p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/.png" src="C＃/ReactiveExtensions/images/.png" />
-</figure>
-</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p>:term:``</p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/.png" src="C＃/ReactiveExtensions/images/.png" />
-</figure>
-</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p>:term:``</p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/.png" src="C＃/ReactiveExtensions/images/.png" />
-</figure>
-</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p>:term:``</p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/.png" src="C＃/ReactiveExtensions/images/.png" />
-</figure>
-</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p>:term:``</p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/.png" src="C＃/ReactiveExtensions/images/.png" />
-</figure>
-</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p>:term:``</p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/.png" src="C＃/ReactiveExtensions/images/.png" />
-</figure>
-</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p>:term:``</p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/.png" src="C＃/ReactiveExtensions/images/.png" />
-</figure>
-</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p>:term:``</p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/.png" src="C＃/ReactiveExtensions/images/.png" />
-</figure>
-</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p>:term:``</p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/.png" src="C＃/ReactiveExtensions/images/.png" />
-</figure>
-</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p>:term:``</p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/.png" src="C＃/ReactiveExtensions/images/.png" />
-</figure>
-</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p>:term:``</p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/.png" src="C＃/ReactiveExtensions/images/.png" />
-</figure>
-</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p>:term:``</p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/.png" src="C＃/ReactiveExtensions/images/.png" />
-</figure>
-</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p>:term:``</p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/.png" src="C＃/ReactiveExtensions/images/.png" />
-</figure>
-</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p>:term:``</p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/.png" src="C＃/ReactiveExtensions/images/.png" />
-</figure>
-</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<table class="colwidths-given docutils align-default" id="id15">
-<caption><span class="caption-number">表 32 </span><span class="caption-text">メソッドリスト</span><a class="headerlink" href="#id15" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id13">
+<caption><span class="caption-number">表 30 </span><span class="caption-text">メソッドリスト</span><a class="headerlink" href="#id13" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -1174,8 +981,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id16">
-<caption><span class="caption-number">表 33 </span><span class="caption-text">集計を行うメソッドリスト(Cold)</span><a class="headerlink" href="#id16" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id14">
+<caption><span class="caption-number">表 31 </span><span class="caption-text">集計を行うメソッドリスト(Cold)</span><a class="headerlink" href="#id14" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -1212,8 +1019,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id17">
-<caption><span class="caption-number">表 34 </span><span class="caption-text">時間に関する情報を付与するTimestampとTimeIntervalメソッド</span><a class="headerlink" href="#id17" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id15">
+<caption><span class="caption-number">表 32 </span><span class="caption-text">時間に関する情報を付与するTimestampとTimeIntervalメソッド</span><a class="headerlink" href="#id15" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -1237,29 +1044,6 @@
 </figure>
 </td>
 <td><p>タイムスタンプを追加する</p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<table class="colwidths-given docutils align-default" id="id18">
-<caption><span class="caption-number">表 35 </span><span class="caption-text">その他メソッドリスト</span><a class="headerlink" href="#id18" title="このテーブルへのパーマリンク">¶</a></caption>
-<colgroup>
-<col style="width: 5%" />
-<col style="width: 21%" />
-<col style="width: 53%" />
-<col style="width: 21%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>link</p></th>
-<th class="head"><p>メソッド</p></th>
-<th class="head"><p>説明</p></th>
-<th class="head"><p>備考</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><a class="reference external" href="https://qiita.com/toRisouP/items/f6088963037bfda658d3">link</a></p></td>
-<td><p>Publish</p></td>
-<td><p>Cold-&gt;Hot変換</p></td>
 <td></td>
 </tr>
 </tbody>
