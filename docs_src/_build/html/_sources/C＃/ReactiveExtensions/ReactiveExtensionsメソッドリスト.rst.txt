@@ -302,7 +302,7 @@ ReactiveExtensionsメソッドリスト
      - 
    * - `link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
      - :term:`SelectMany_`
-     - .. figure:: images/SelectMany.gif
+     - .. figure:: images/SelectMany.png
      - Observableの値を使って別のObservableを作り、それぞれの値を合成
      - 
    * - 
@@ -442,7 +442,7 @@ ReactiveExtensionsメソッドリスト
      - 
    * -
      - :term:`SelectMany`
-     - .. figure:: images/SelectMany.gif
+     - .. figure:: images/SelectMany.png
      - メッセージの値を元に別のObservableを呼び出してそちらの結果を利用
      - Observableを合成
    * -
@@ -566,19 +566,11 @@ ReactiveExtensionsメソッドリスト
    :header-rows: 1
    :widths: 1, 4, 10, 4
 
-   link,メソッド,説明,備考
-   `link <https://qiita.com/toRisouP/items/f6088963037bfda658d3>`__,Publish,Cold->Hot変換,
-
-
-
-
    * - link
      - メソッド
-     - 図
      - 説明
      - 備考
-   * - `10 <https://blog.okazuki.jp/entry/20111128/1322491648>`__
-     - :term:`Do`
-     - .. figure:: images/Do.png
-     - 
+   * - `link <https://qiita.com/toRisouP/items/f6088963037bfda658d3>`__
+     - Publish
+     - Cold->Hot変換
      - 
