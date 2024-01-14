@@ -309,7 +309,11 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111109/1320849106">6</a></p></td>
-<td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-FromEvent"><span class="xref std std-term">FromEvent</span></a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-FromEvent"><span class="xref std std-term">FromEvent</span></a></div>
+<div class="line"><span class="xref std std-term">FromEventPattern</span></div>
+</div>
+</td>
 <td><figure class="align-default">
 <img alt="../../_images/FromEvent.png" src="../../_images/FromEvent.png" />
 </figure>
@@ -317,13 +321,7 @@
 <td><p>「C#標準のイベント」をIObservable&lt;T&gt;に変換</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td></td>
-<td><p><span class="xref std std-term">FromEventPattern</span></p></td>
-<td></td>
-<td><p>「C#標準のイベント」をIObservable&lt;T&gt;に変換</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111109/1320849106">6</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111109/1320849106">6</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Start"><span class="xref std std-term">Start</span></a></p></td>
 <td><figure class="align-default">
 <img alt="../../_images/Start.png" src="../../_images/Start.png" />
@@ -332,13 +330,13 @@
 <td><p>バックグラウンドで処理を実行し結果を返す</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111109/1320849106">6</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111109/1320849106">6</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-ToAsync"><span class="xref std std-term">ToAsync</span></a></p></td>
 <td></td>
 <td><p>バックグラウンドで任意のタイミングで処理を実行し結果を返す</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111109/1320849106">6</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111109/1320849106">6</a></p></td>
 <td><p><span class="xref std std-term">FromAsyncPattern</span></p></td>
 <td></td>
 <td></td>
@@ -367,7 +365,7 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111110/1320849106">7</a></p></td>
 <td><p><span class="xref std std-term">Where_</span></p></td>
 <td></td>
 <td><p>条件式を満たすものだけ通す</p></td>
@@ -392,22 +390,28 @@
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20120202/1328107196">28</a></p></td>
-<td><p><span class="xref std std-term">Throttle</span></p></td>
+<td><div class="line-block">
+<div class="line"><span class="xref std std-term">Throttle</span></div>
+<div class="line"><span class="xref std std-term">ThrottleFrame</span></div>
+</div>
+</td>
 <td><figure class="align-default">
 <img alt="../../_images/Throttle.png" src="../../_images/Throttle.png" />
 </figure>
 </td>
-<td><p>指定した間、新たな値が発行されなかったら最後に発行された値を後続に流す</p></td>
+<td><ul class="simple">
+<li><p>まとめて流れてきたOnNextの最後だけ通す</p></li>
+<li><p>指定した間、新たな値が発行されなかったら最後に発行された値を後続に流す</p></li>
+</ul>
+</td>
 <td><p>TextBoxの入力が終わって1秒後に自動で検索処理を実行などで使う</p></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p><span class="xref std std-term">ThrtottleFrame</span></p></td>
-<td></td>
-<td><p>まとめて流れてきたOnNextの最後だけ通す</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p><span class="xref std std-term">ThrottleFirst</span></p></td>
+<td><div class="line-block">
+<div class="line"><span class="xref std std-term">ThrottleFirst</span></div>
+<div class="line"><span class="xref std std-term">ThrottleFirstFrame</span></div>
+</div>
+</td>
 <td><figure class="align-default">
 <img alt="../../_images/ThrottleFirst.png" src="../../_images/ThrottleFirst.png" />
 </figure>
@@ -415,14 +419,12 @@
 <td><p>まとめて流れてきたOnNextの最初だけ通す</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td></td>
-<td><p><span class="xref std std-term">ThrottleFirstFrame</span></p></td>
-<td></td>
-<td><p>まとめて流れてきたOnNextの最初だけ通す</p></td>
-<td></td>
-</tr>
 <tr class="row-odd"><td></td>
-<td><p><span class="xref std std-term">First_</span></p></td>
+<td><div class="line-block">
+<div class="line"><span class="xref std std-term">First_</span></div>
+<div class="line"><span class="xref std std-term">FirstOrDefault_</span></div>
+</div>
+</td>
 <td><figure class="align-default">
 <img alt="../../_images/First.png" src="../../_images/First.png" />
 </figure>
@@ -431,25 +433,21 @@
 <td></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p><span class="xref std std-term">FirstOrDefault_</span></p></td>
-<td></td>
-<td><p>一番最初に到達したOnNextのみを流してObservableを完了</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p><span class="xref std std-term">Single_</span></p></td>
-<td></td>
-<td><p>OnNextが2つ以上発行されたらエラー</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p><span class="xref std std-term">SingleOrDefault_</span></p></td>
+<td><div class="line-block">
+<div class="line"><span class="xref std std-term">Single_</span></div>
+<div class="line"><span class="xref std std-term">SingleOrDefault_</span></div>
+</div>
+</td>
 <td></td>
 <td><p>OnNextが2つ以上発行されたらエラー</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td></td>
-<td><p><span class="xref std std-term">Last_</span></p></td>
+<td><div class="line-block">
+<div class="line"><span class="xref std std-term">Last_</span></div>
+<div class="line"><span class="xref std std-term">LastOrDefault_</span></div>
+</div>
+</td>
 <td><figure class="align-default">
 <img alt="../../_images/Last.png" src="../../_images/Last.png" />
 </figure>
@@ -457,31 +455,29 @@
 <td><p>Observableの最後の値だけを通す</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td></td>
-<td><p><span class="xref std std-term">LastOrDefault_</span></p></td>
-<td></td>
-<td><p>Observableの最後の値だけを通す</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111113/1321191314">8</a></p></td>
 <td><p><span class="xref std std-term">Take_</span></p></td>
 <td><figure class="align-default">
 <img alt="../../_images/Take.png" src="../../_images/Take.png" />
 </figure>
 </td>
 <td><p>先頭から指定した個数だけ通す</p></td>
-<td></td>
+<td><p>指定した個数を通したらすぐにOnCompleted()</p></td>
 </tr>
-<tr class="row-even"><td></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111113/1321191314">8</a></p></td>
 <td><p><span class="xref std std-term">TakeWhile_</span></p></td>
 <td><figure class="align-default">
 <img alt="../../_images/TakeWhile.png" src="../../_images/TakeWhile.png" />
 </figure>
 </td>
-<td><p>先頭から条件が成り立たなくなるまで通す</p></td>
-<td></td>
+<td><ul class="simple">
+<li><p>先頭から条件が成り立たなくなるまで通す</p></li>
+<li><p>条件が成立したらすぐにOnCompleted()</p></li>
+</ul>
+</td>
+<td><p>TakeWhile(i =&gt; i &lt; 10)</p></td>
 </tr>
-<tr class="row-odd"><td></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111113/1321191314">8</a></p></td>
 <td><p><span class="xref std std-term">TakeUntil</span></p></td>
 <td><figure class="align-default">
 <img alt="../../_images/TakeUntil.png" src="../../_images/TakeUntil.png" />
@@ -490,7 +486,7 @@
 <td><p>先頭から指定したObservableにOnNextが来るまで通す</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111113/1321191314">8</a></p></td>
 <td><p><span class="xref std std-term">Skip_</span></p></td>
 <td><figure class="align-default">
 <img alt="../../_images/Skip.png" src="../../_images/Skip.png" />
@@ -499,16 +495,20 @@
 <td><p>先頭から指定した個数無視</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111113/1321191314">8</a></p></td>
 <td><p><span class="xref std std-term">SkipWhile_</span></p></td>
 <td><figure class="align-default">
 <img alt="../../_images/SkipWhile.png" src="../../_images/SkipWhile.png" />
 </figure>
 </td>
-<td><p>先頭から条件が成り立つ間は無視</p></td>
-<td></td>
+<td><ul class="simple">
+<li><p>先頭から条件が成り立つ間は無視</p></li>
+<li><p>条件が成立したらすぐにOnCompleted()（その後条件が成立しなくなっても通す）</p></li>
+</ul>
+</td>
+<td><p>SkipWhile(i =&gt; i &lt; 5)</p></td>
 </tr>
-<tr class="row-even"><td></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111113/1321191314">8</a></p></td>
 <td><p><span class="xref std std-term">SkipUntil</span></p></td>
 <td><figure class="align-default">
 <img alt="../../_images/SkipUntil.png" src="../../_images/SkipUntil.png" />
@@ -517,13 +517,13 @@
 <td><p>先頭から指定したObservableにOnNextが来るまで無視</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td></td>
+<tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">OfType</span></p></td>
 <td></td>
 <td><p>型が一致するもののみ通す(型変換も同時に行う)</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td></td>
+<tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">IgnoreElements</span></p></td>
 <td><figure class="align-default">
 <img alt="../../_images/IgnoreElements.png" src="../../_images/IgnoreElements.png" />
@@ -621,7 +621,11 @@
 <img alt="../../_images/SelectMany.png" src="../../_images/SelectMany.png" />
 </figure>
 </td>
-<td><p>Observableの値を使って別のObservableを作り、それぞれの値を合成</p></td>
+<td><ul class="simple">
+<li><p>Observableの値を使って別のObservableを作り、それぞれの値を合成</p></li>
+<li><p>メッセージの値を元に別のObservableを呼び出してそちらの結果を利用</p></li>
+</ul>
+</td>
 <td></td>
 </tr>
 <tr class="row-even"><td></td>
@@ -783,8 +787,8 @@
 <img alt="../../_images/Scan.png" src="../../_images/Scan.png" />
 </figure>
 </td>
-<td><p>メッセージの値と前回の結果との両方を使い関数を適用,LINQでいうAggregate</p></td>
-<td></td>
+<td><p>メッセージの値と前回の結果との両方を使い関数を適用</p></td>
+<td><p>LINQでいうAggregate</p></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">Buffer</span></p></td>
@@ -792,19 +796,18 @@
 <img alt="../../_images/Buffer.png" src="../../_images/Buffer.png" />
 </figure>
 </td>
-<td><p>メッセージを一定個数ごとにまとめる</p></td>
-<td><p>第二引数を指定することで挙動が変わる</p></td>
+<td><ul class="simple">
+<li><p>メッセージを一定個数ごとにまとめる</p></li>
+<li><p>あるObservableにメッセージが来るまで値を塞き止めてまとめる</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>第二引数を指定することで挙動が変わる</p></li>
+<li><p>引数にObservableを渡す</p></li>
+</ul>
+</td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p><span class="xref std std-term">Buffer_</span></p></td>
-<td><figure class="align-default">
-<img alt="../../_images/Buffer.png" src="../../_images/Buffer.png" />
-</figure>
-</td>
-<td><p>あるObservableにメッセージが来るまで値を塞き止めてまとめる</p></td>
-<td><p>引数にObservableを渡す</p></td>
-</tr>
-<tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">PairWise</span></p></td>
 <td></td>
 <td><p>直前のメッセージとセットにする</p></td>
@@ -830,7 +833,7 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111110/1320849106">7</a></p></td>
 <td><p><a class="reference internal" href="../%E8%A8%80%E8%AA%9E%E4%BB%95%E6%A7%98/LINQ/%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Select"><span class="xref std std-term">Select</span></a></p></td>
 <td></td>
 <td><p>値を変換/値に関数を適用する</p></td>
@@ -843,15 +846,6 @@
 <td></td>
 </tr>
 <tr class="row-even"><td></td>
-<td><p><a class="reference internal" href="../%E8%A8%80%E8%AA%9E%E4%BB%95%E6%A7%98/LINQ/%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-SelectMany"><span class="xref std std-term">SelectMany</span></a></p></td>
-<td><figure class="align-default">
-<img alt="../../_images/SelectMany.png" src="../../_images/SelectMany.png" />
-</figure>
-</td>
-<td><p>メッセージの値を元に別のObservableを呼び出してそちらの結果を利用</p></td>
-<td><p>Observableを合成</p></td>
-</tr>
-<tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">Materialize</span></p></td>
 <td><figure class="align-default">
 <img alt="../../_images/Materialize.png" src="../../_images/Materialize.png" />
@@ -860,7 +854,7 @@
 <td><p>メッセージにイベントのメタ情報を付与</p></td>
 <td><p>OnNext/OnError/OnCompletedのどれであるかを示す情報を付与</p></td>
 </tr>
-<tr class="row-even"><td></td>
+<tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">TimeInterval</span></p></td>
 <td><figure class="align-default">
 <img alt="../../_images/TimeInterval.png" src="../../_images/TimeInterval.png" />
@@ -869,7 +863,7 @@
 <td><p>前回のメッセージからの経過時間を付与</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td></td>
+<tr class="row-even"><td></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Timestamp"><span class="xref std std-term">TimeStamp</span></a></p></td>
 <td><figure class="align-default">
 <img alt="../../_images/TimeStamp.png" src="../../_images/TimeStamp.png" />
@@ -878,7 +872,7 @@
 <td><p>メッセージにタイムスタンプを付与</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td></td>
+<tr class="row-odd"><td></td>
 <td><p><span class="xref std std-term">AsUnitObservable</span></p></td>
 <td></td>
 <td><p>メッセージをUnit型に変換</p></td>
@@ -925,19 +919,14 @@
 <img alt="../../_images/Timeout.png" src="../../_images/Timeout.png" />
 </figure>
 </td>
-<td><p>最後にOnNextが発行されてから一定時間以内に次のOnNextが来なかったらOnErrorを発行</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p><span class="xref std std-term">Timeout</span></p></td>
-<td><figure class="align-default">
-<img alt="../../_images/Timeout.png" src="../../_images/Timeout.png" />
-</figure>
+<td><ul class="simple">
+<li><p>最後にOnNextが発行されてから一定時間以内に次のOnNextが来なかったらOnErrorを発行</p></li>
+<li><p>Subscribeしてから一定時刻までにOnCompletedが来なかったらOnErrorを発行</p></li>
+</ul>
 </td>
-<td><p>Subscribeしてから一定時刻までにOnCompletedが来なかったらOnErrorを発行</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20120201/1328107196">27</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20120201/1328107196">27</a></p></td>
 <td><p><span class="xref std std-term">Sample</span></p></td>
 <td><figure class="align-default">
 <img alt="../../_images/Sample.png" src="../../_images/Sample.png" />

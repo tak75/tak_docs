@@ -113,13 +113,9 @@ ReactiveExtensionsメソッドリスト
      - 説明
      - 備考
    * - `6 <https://blog.okazuki.jp/entry/20111109/1320849106>`__
-     - :term:`FromEvent`
+     - | :term:`FromEvent`
+       | :term:`FromEventPattern`
      - .. figure:: images/FromEvent.png
-     - 「C#標準のイベント」をIObservable<T>に変換
-     - 
-   * -
-     - :term:`FromEventPattern`
-     - 
      - 「C#標準のイベント」をIObservable<T>に変換
      - 
    * - `6 <https://blog.okazuki.jp/entry/20111109/1320849106>`__
@@ -150,7 +146,7 @@ ReactiveExtensionsメソッドリスト
      - 図
      - 説明
      - 備考
-   * - 
+   * - `7 <https://blog.okazuki.jp/entry/20111110/1320849106>`__
      - :term:`Where_`
      - 
      - 条件式を満たすものだけ通す
@@ -166,81 +162,64 @@ ReactiveExtensionsメソッドリスト
      - 値が変化した時のみ通す
      - 
    * - `28 <https://blog.okazuki.jp/entry/20120202/1328107196>`__
-     - :term:`Throttle`
+     - | :term:`Throttle`
+       | :term:`ThrottleFrame`
      - .. figure:: images/Throttle.png
-     - 指定した間、新たな値が発行されなかったら最後に発行された値を後続に流す
+     - * まとめて流れてきたOnNextの最後だけ通す
+       * 指定した間、新たな値が発行されなかったら最後に発行された値を後続に流す
      - TextBoxの入力が終わって1秒後に自動で検索処理を実行などで使う
    * - 
-     - :term:`ThrtottleFrame`
-     - 
-     - まとめて流れてきたOnNextの最後だけ通す
-     - 
-   * - 
-     - :term:`ThrottleFirst`
+     - | :term:`ThrottleFirst`
+       | :term:`ThrottleFirstFrame`
      - .. figure:: images/ThrottleFirst.png
      - まとめて流れてきたOnNextの最初だけ通す
      - 
    * - 
-     - :term:`ThrottleFirstFrame`
-     - 
-     - まとめて流れてきたOnNextの最初だけ通す
-     - 
-   * - 
-     - :term:`First_`
+     - | :term:`First_`
+       | :term:`FirstOrDefault_`
      - .. figure:: images/First.png
      - 一番最初に到達したOnNextのみを流してObservableを完了
      - 
    * - 
-     - :term:`FirstOrDefault_`
-     - 
-     - 一番最初に到達したOnNextのみを流してObservableを完了
-     - 
-   * - 
-     - :term:`Single_`
+     - | :term:`Single_`
+       | :term:`SingleOrDefault_`
      - 
      - OnNextが2つ以上発行されたらエラー
      - 
    * - 
-     - :term:`SingleOrDefault_`
-     - 
-     - OnNextが2つ以上発行されたらエラー
-     - 
-   * - 
-     - :term:`Last_`
+     - | :term:`Last_`
+       | :term:`LastOrDefault_`
      - .. figure:: images/Last.png
      - Observableの最後の値だけを通す
      - 
-   * - 
-     - :term:`LastOrDefault_`
-     - 
-     - Observableの最後の値だけを通す
-     - 
-   * - 
+   * - `8 <https://blog.okazuki.jp/entry/20111113/1321191314>`__
      - :term:`Take_`
      - .. figure:: images/Take.png
      - 先頭から指定した個数だけ通す
-     - 
-   * - 
+     - 指定した個数を通したらすぐにOnCompleted()
+   * - `8 <https://blog.okazuki.jp/entry/20111113/1321191314>`__
      - :term:`TakeWhile_`
      - .. figure:: images/TakeWhile.png
-     - 先頭から条件が成り立たなくなるまで通す
-     - 
-   * - 
+     - * 先頭から条件が成り立たなくなるまで通す
+       * 条件が成立したらすぐにOnCompleted()
+     - TakeWhile(i => i < 10)
+   * - `8 <https://blog.okazuki.jp/entry/20111113/1321191314>`__
      - :term:`TakeUntil`
      - .. figure:: images/TakeUntil.png
      - 先頭から指定したObservableにOnNextが来るまで通す
      - 
-   * - 
+   * - `8 <https://blog.okazuki.jp/entry/20111113/1321191314>`__
      - :term:`Skip_`
      - .. figure:: images/Skip.png
      - 先頭から指定した個数無視
      - 
-   * - 
+   * - `8 <https://blog.okazuki.jp/entry/20111113/1321191314>`__
      - :term:`SkipWhile_`
      - .. figure:: images/SkipWhile.png
-     - 先頭から条件が成り立つ間は無視
-     - 
-   * - 
+     - * 先頭から条件が成り立つ間は無視
+       * 条件が成立したらすぐにOnCompleted()（その後条件が成立しなくなっても通す）
+     - SkipWhile(i => i < 5)
+   * - `8 <https://blog.okazuki.jp/entry/20111113/1321191314>`__
      - :term:`SkipUntil`
      - .. figure:: images/SkipUntil.png
      - 先頭から指定したObservableにOnNextが来るまで無視
@@ -303,7 +282,8 @@ ReactiveExtensionsメソッドリスト
    * - `link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
      - :term:`SelectMany_`
      - .. figure:: images/SelectMany.png
-     - Observableの値を使って別のObservableを作り、それぞれの値を合成
+     - * Observableの値を使って別のObservableを作り、それぞれの値を合成
+       * メッセージの値を元に別のObservableを呼び出してそちらの結果を利用
      - 
    * - 
      - :term:`Catch`
@@ -403,18 +383,15 @@ ReactiveExtensionsメソッドリスト
    * - 
      - :term:`Scan`
      - .. figure:: images/Scan.png
-     - メッセージの値と前回の結果との両方を使い関数を適用,LINQでいうAggregate
-     - 
+     - メッセージの値と前回の結果との両方を使い関数を適用
+     - LINQでいうAggregate
    * - 
      - :term:`Buffer`
      - .. figure:: images/Buffer.png
-     - メッセージを一定個数ごとにまとめる
-     - 第二引数を指定することで挙動が変わる
-   * - 
-     - :term:`Buffer_`
-     - .. figure:: images/Buffer.png
-     - あるObservableにメッセージが来るまで値を塞き止めてまとめる
-     - 引数にObservableを渡す
+     - * メッセージを一定個数ごとにまとめる
+       * あるObservableにメッセージが来るまで値を塞き止めてまとめる
+     - * 第二引数を指定することで挙動が変わる
+       * 引数にObservableを渡す
    * - 
      - :term:`PairWise`
      - 
@@ -430,7 +407,7 @@ ReactiveExtensionsメソッドリスト
      - 図
      - 説明
      - 備考
-   * -
+   * - `7 <https://blog.okazuki.jp/entry/20111110/1320849106>`__
      - :term:`Select`
      - 
      - 値を変換/値に関数を適用する
@@ -440,11 +417,6 @@ ReactiveExtensionsメソッドリスト
      - 
      - 型変換をする
      - 
-   * -
-     - :term:`SelectMany`
-     - .. figure:: images/SelectMany.png
-     - メッセージの値を元に別のObservableを呼び出してそちらの結果を利用
-     - Observableを合成
    * -
      - :term:`Materialize`
      - .. figure:: images/Materialize.png
@@ -488,12 +460,8 @@ ReactiveExtensionsメソッドリスト
    * - 
      - :term:`Timeout`
      - .. figure:: images/Timeout.png
-     - 最後にOnNextが発行されてから一定時間以内に次のOnNextが来なかったらOnErrorを発行
-     - 
-   * - 
-     - :term:`Timeout`
-     - .. figure:: images/Timeout.png
-     - Subscribeしてから一定時刻までにOnCompletedが来なかったらOnErrorを発行
+     - * 最後にOnNextが発行されてから一定時間以内に次のOnNextが来なかったらOnErrorを発行
+       * Subscribeしてから一定時刻までにOnCompletedが来なかったらOnErrorを発行
      - 
    * - `27 <https://blog.okazuki.jp/entry/20120201/1328107196>`__
      - :term:`Sample`
