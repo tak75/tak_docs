@@ -308,7 +308,11 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111109/1320849106">6</a></p></td>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><a class="reference external" href="https://blog.okazuki.jp/entry/20111109/1320849106">6</a></div>
+<div class="line"><a class="reference external" href="https://blog.okazuki.jp/entry/20111124/1322145011">9</a></div>
+</div>
+</td>
 <td><div class="line-block">
 <div class="line"><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-FromEvent"><span class="xref std std-term">FromEvent</span></a></div>
 <div class="line"><span class="xref std std-term">FromEventPattern</span></div>
@@ -477,14 +481,22 @@
 </td>
 <td><p>TakeWhile(i =&gt; i &lt; 10)</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111113/1321191314">8</a></p></td>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><a class="reference external" href="https://blog.okazuki.jp/entry/20111113/1321191314">8</a></div>
+<div class="line"><a class="reference external" href="https://blog.okazuki.jp/entry/20111124/1322145011">9</a></div>
+</div>
+</td>
 <td><p><span class="xref std std-term">TakeUntil</span></p></td>
 <td><figure class="align-default">
 <img alt="../../_images/TakeUntil.png" src="../../_images/TakeUntil.png" />
 </figure>
 </td>
-<td><p>先頭から指定したObservableにOnNextが来るまで通す</p></td>
-<td></td>
+<td><ul class="simple">
+<li><p>先頭から指定したObservableにOnNextが来るまで通す</p></li>
+<li><p>引数がIObservable</p></li>
+</ul>
+</td>
+<td><p>TakeUntil(IObservable&lt;TOther&gt; other)</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111113/1321191314">8</a></p></td>
 <td><p><span class="xref std std-term">Skip_</span></p></td>
@@ -503,19 +515,27 @@
 </td>
 <td><ul class="simple">
 <li><p>先頭から条件が成り立つ間は無視</p></li>
-<li><p>条件が成立したらすぐにOnCompleted()（その後条件が成立しなくなっても通す）</p></li>
+<li><p>条件が成立したらすぐにOnCompleted()（その後条件が成立しなくなっても後続に流す）</p></li>
 </ul>
 </td>
 <td><p>SkipWhile(i =&gt; i &lt; 5)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111113/1321191314">8</a></p></td>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><a class="reference external" href="https://blog.okazuki.jp/entry/20111113/1321191314">8</a></div>
+<div class="line"><a class="reference external" href="https://blog.okazuki.jp/entry/20111124/1322145011">9</a></div>
+</div>
+</td>
 <td><p><span class="xref std std-term">SkipUntil</span></p></td>
 <td><figure class="align-default">
 <img alt="../../_images/SkipUntil.png" src="../../_images/SkipUntil.png" />
 </figure>
 </td>
-<td><p>先頭から指定したObservableにOnNextが来るまで無視</p></td>
-<td></td>
+<td><ul class="simple">
+<li><p>先頭から指定したObservableにOnNextが来るまで無視</p></li>
+<li><p>引数がIObservable</p></li>
+</ul>
+</td>
+<td><p>SkipUntil(IObservable&lt;TOther&gt; other)</p></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p><span class="xref std std-term">OfType</span></p></td>
@@ -991,8 +1011,8 @@
 <img alt="../../_images/Do.png" src="../../_images/Do.png" />
 </figure>
 </td>
-<td><p>IObservableのシーケンスを処理する途中に任意のアクションを実行</p></td>
-<td></td>
+<td><p>IObservableのシーケンスを処理する <code class="docutils literal notranslate"><span class="pre">途中に</span></code> 任意のアクションを実行（途中ではなく最後にアクションを実行する場合はSubscribeを使用する）</p></td>
+<td><p>本来は外部に対して副作用を起こさないReactive Extensionsの処理の中で副作用を起こすためのメソッドとなるため、Doメソッドの利用は必要最低限にとどめることが推奨</p></td>
 </tr>
 </tbody>
 </table>
@@ -1066,10 +1086,10 @@
 <table class="colwidths-given docutils align-default" id="id17">
 <caption><span class="caption-number">表 34 </span><span class="caption-text">その他メソッドリスト</span><a class="headerlink" href="#id17" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
-<col style="width: 5%" />
-<col style="width: 21%" />
-<col style="width: 53%" />
-<col style="width: 21%" />
+<col style="width: 6%" />
+<col style="width: 19%" />
+<col style="width: 38%" />
+<col style="width: 38%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>link</p></th>
@@ -1083,6 +1103,16 @@
 <td><p>Publish</p></td>
 <td><p>Cold-&gt;Hot変換</p></td>
 <td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111124/1322145011">9</a></p></td>
+<td><p>Finally</p></td>
+<td><ul class="simple">
+<li><p>IObservableのシーケンスが終了したタイミングで処理を実施</p></li>
+<li><p>OnCompletedだけでなく、OnError時（例外発生時）にも実行される</p></li>
+<li><p>SubscribeのOnCompletedとOnErrorに同じ処理を記載するのと同等？</p></li>
+</ul>
+</td>
+<td><p>Finally(() =&gt; 処理)</p></td>
 </tr>
 </tbody>
 </table>

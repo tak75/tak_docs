@@ -112,7 +112,8 @@ ReactiveExtensionsメソッドリスト
      - 図
      - 説明
      - 備考
-   * - `6 <https://blog.okazuki.jp/entry/20111109/1320849106>`__
+   * - | `6 <https://blog.okazuki.jp/entry/20111109/1320849106>`__
+       | `9 <https://blog.okazuki.jp/entry/20111124/1322145011>`__
      - | :term:`FromEvent`
        | :term:`FromEventPattern`
      - .. figure:: images/FromEvent.png
@@ -203,11 +204,13 @@ ReactiveExtensionsメソッドリスト
      - * 先頭から条件が成り立たなくなるまで通す
        * 条件が成立したらすぐにOnCompleted()
      - TakeWhile(i => i < 10)
-   * - `8 <https://blog.okazuki.jp/entry/20111113/1321191314>`__
+   * - | `8 <https://blog.okazuki.jp/entry/20111113/1321191314>`__
+       | `9 <https://blog.okazuki.jp/entry/20111124/1322145011>`__
      - :term:`TakeUntil`
      - .. figure:: images/TakeUntil.png
-     - 先頭から指定したObservableにOnNextが来るまで通す
-     - 
+     - * 先頭から指定したObservableにOnNextが来るまで通す
+       * 引数がIObservable
+     - TakeUntil(IObservable<TOther> other)
    * - `8 <https://blog.okazuki.jp/entry/20111113/1321191314>`__
      - :term:`Skip_`
      - .. figure:: images/Skip.png
@@ -217,13 +220,15 @@ ReactiveExtensionsメソッドリスト
      - :term:`SkipWhile_`
      - .. figure:: images/SkipWhile.png
      - * 先頭から条件が成り立つ間は無視
-       * 条件が成立したらすぐにOnCompleted()（その後条件が成立しなくなっても通す）
+       * 条件が成立したらすぐにOnCompleted()（その後条件が成立しなくなっても後続に流す）
      - SkipWhile(i => i < 5)
-   * - `8 <https://blog.okazuki.jp/entry/20111113/1321191314>`__
+   * - | `8 <https://blog.okazuki.jp/entry/20111113/1321191314>`__
+       | `9 <https://blog.okazuki.jp/entry/20111124/1322145011>`__
      - :term:`SkipUntil`
      - .. figure:: images/SkipUntil.png
-     - 先頭から指定したObservableにOnNextが来るまで無視
-     - 
+     - * 先頭から指定したObservableにOnNextが来るまで無視
+       * 引数がIObservable
+     - SkipUntil(IObservable<TOther> other)
    * - 
      - :term:`OfType<T>`
      - 
@@ -497,8 +502,8 @@ ReactiveExtensionsメソッドリスト
    * - `10 <https://blog.okazuki.jp/entry/20111128/1322491648>`__
      - :term:`Do`
      - .. figure:: images/Do.png
-     - IObservableのシーケンスを処理する途中に任意のアクションを実行
-     - 
+     - IObservableのシーケンスを処理する ``途中に`` 任意のアクションを実行（途中ではなく最後にアクションを実行する場合はSubscribeを使用する）
+     - 本来は外部に対して副作用を起こさないReactive Extensionsの処理の中で副作用を起こすためのメソッドとなるため、Doメソッドの利用は必要最低限にとどめることが推奨
 
 .. list-table:: 集計を行うメソッドリスト(Cold)
    :header-rows: 1
@@ -537,7 +542,7 @@ ReactiveExtensionsメソッドリスト
 
 .. list-table:: その他メソッドリスト
    :header-rows: 1
-   :widths: 1, 4, 10, 4
+   :widths: 1, 3, 6, 6
 
    * - link
      - メソッド
@@ -547,3 +552,9 @@ ReactiveExtensionsメソッドリスト
      - Publish
      - Cold->Hot変換
      - 
+   * - `9 <https://blog.okazuki.jp/entry/20111124/1322145011>`__
+     - Finally
+     - * IObservableのシーケンスが終了したタイミングで処理を実施
+       * OnCompletedだけでなく、OnError時（例外発生時）にも実行される
+       * SubscribeのOnCompletedとOnErrorに同じ処理を記載するのと同等？
+     - Finally(() => 処理)
