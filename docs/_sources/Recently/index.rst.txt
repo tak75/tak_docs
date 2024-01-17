@@ -71,3 +71,8 @@ C#
           using var fs = new FileStream("hoge.txt", FileMode.Open, FileAccess.Read, FileShare.None);
           Console.WriteLine(fs.Length);   
       }    
+
+* `record型 <https://qiita.com/shimamura_io/items/80982b11ce41eca03e10>`__
+
+  * C#9.0からの機能
+  * 値ベースでインスタンス比較ができる

@@ -123,7 +123,7 @@ ReactiveExtensionsメソッドリスト
      - :term:`Start`
      - .. figure:: images/Start.png
      - バックグラウンドで処理を実行し結果を返す
-     - 
+     - Observable.Start(() => 処理);
    * - `6 <https://blog.okazuki.jp/entry/20111109/1320849106>`__
      - :term:`ToAsync`
      - 
@@ -240,6 +240,45 @@ ReactiveExtensionsメソッドリスト
      - OnErrorまたはOnCompletedのみを通す
      - 
 
+例外処理
+========
+
+.. list-table:: 
+   :header-rows: 1
+   :widths: 1, 3, 10, 6, 6
+
+   * - link
+     - メソッド
+     - 図
+     - 説明
+     - 備考
+   * - `11 <https://blog.okazuki.jp/entry/20111129/1322491648>`__
+     - :term:`Catch`
+     - .. figure:: images/Catch.png
+     - * 途中で例外が発生した場合にCatchし、任意の値を後続に流す（その後すぐにOnComplete（正常終了）する。Subscribe()でのOnErrorの処理はされない）
+       * 通常の例外処理のcatch句のように型指定で例外時の処理を振り分けることも可能
+     - * .Catch(Observable.Return("Error"))
+       * | .Catch((ArgumentException ex) => Observable.Return("復帰")) 
+         | .Catch((NullReferenceException ex) => Observable.Empty<string>())
+   * - | `9 <https://blog.okazuki.jp/entry/20111124/1322145011>`__
+       | `12 <https://blog.okazuki.jp/entry/20111129/1322575568>`__
+     - :term:`Finally`
+     - 
+     - * 例外処理のfinally句と同じ動き
+       * IObservableのシーケンスが終了したタイミングで処理を実施
+       * OnCompleted（もしくはOnError）の後に実行される
+       * Catch()メソッドがない状態で未処理の例外が発生した場合は、Finaly()メソッドは実行されないがSubscribeをDispose()すると実行される
+     - .Catch(Observable.Return("Error")).Finally(() => 処理).Subscribe()
+   * - `12 <https://blog.okazuki.jp/entry/20111129/1322575568>`__
+     - :term:`Using`
+     - 
+     - * リソースの解放を行う処理がある場合に利用
+       * Usingメソッドを使用できる場合はFinallyよりもbetter
+     - .Observable.Using(() => new SampleResource(),sr => sr.GetData())
+
+合成メソッド
+============
+
 .. list-table:: Observable自体の合成メソッド
    :header-rows: 1
    :widths: 1, 3, 10, 6, 6
@@ -289,11 +328,6 @@ ReactiveExtensionsメソッドリスト
      - .. figure:: images/SelectMany.png
      - * Observableの値を使って別のObservableを作り、それぞれの値を合成
        * メッセージの値を元に別のObservableを呼び出してそちらの結果を利用
-     - 
-   * - 
-     - :term:`Catch`
-     - .. figure:: images/Catch.png
-     - 複数のObservableを成功するまで順番に実行
      - 
    * - `link <https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html>`__
      - :term:`Scan`
@@ -503,27 +537,8 @@ ReactiveExtensionsメソッドリスト
      - :term:`Do`
      - .. figure:: images/Do.png
      - IObservableのシーケンスを処理する ``途中に`` 任意のアクションを実行（途中ではなく最後にアクションを実行する場合はSubscribeを使用する）
-     - 本来は外部に対して副作用を起こさないReactive Extensionsの処理の中で副作用を起こすためのメソッドとなるため、Doメソッドの利用は必要最低限にとどめることが推奨
-
-.. list-table:: 集計を行うメソッドリスト(Cold)
-   :header-rows: 1
-   :widths: 1, 3, 10, 6, 6
-
-   * - link
-     - メソッド
-     - 図
-     - 説明
-     - 備考
-   * - `17 <https://blog.okazuki.jp/entry/20111212/1323698319>`__
-     - :term:`Aggregate`
-     - .. figure:: images/Aggregate.png
-     - 収集・集計し、OnCompleted()で結果のみを後続に流す
-     - 
-   * - `17 <https://blog.okazuki.jp/entry/20111212/1323698319>`__
-     - :term:`Scan`
-     - .. figure:: images/Scan.png
-     - 収集・集計し、OnNext()の都度、集計経過を後続に流す
-     - 
+     - * .Where().Select().Do().Select().Subscribe()など
+       * 本来は外部に対して副作用を起こさないReactive Extensionsの処理の中で副作用を起こすためのメソッドとなるため、Doメソッドの利用は必要最低限にとどめること
 
 .. list-table:: 時間に関する情報を付与するTimestampとTimeIntervalメソッド
    :header-rows: 1
@@ -552,9 +567,146 @@ ReactiveExtensionsメソッドリスト
      - Publish
      - Cold->Hot変換
      - 
-   * - `9 <https://blog.okazuki.jp/entry/20111124/1322145011>`__
-     - Finally
-     - * IObservableのシーケンスが終了したタイミングで処理を実施
-       * OnCompletedだけでなく、OnError時（例外発生時）にも実行される
-       * SubscribeのOnCompletedとOnErrorに同じ処理を記載するのと同等？
-     - Finally(() => 処理)
+
+.. list-table:: IObservableからIEnumerableへ変換
+   :header-rows: 1
+   :widths: 1, 3, 6, 6
+
+   * - link
+     - メソッド
+     - 説明
+     - 備考
+   * - `13 <https://blog.okazuki.jp/entry/20111205/1323056284>`__
+     - Latest
+     - * IObservableからIEnumerableへ変換を行う
+       * 最後に発行された値を返す
+       * 値が無い場合は値が発行されるまで待つ
+     - 
+   * - `13 <https://blog.okazuki.jp/entry/20111205/1323056284>`__
+     - MostRecent
+     - * IObservableからIEnumerableへ変換を行う
+       * 最後に発行された値をキャッシュしておいて、キャッシュを返す
+       * IEnumerableから値を取得する際にブロックされることはない
+     - 
+   * - `14 <https://blog.okazuki.jp/entry/20111205/1323099346>`__
+     - Next
+     - * IObservableからIEnumerableへ変換を行う
+       * Latestと挙動はほぼ同じ（Latestでは最後の値がキャッシュされている点が異なる）
+     - 
+
+.. list-table:: Subject系クラス
+   :header-rows: 1
+   :widths: 1, 3, 6, 6
+
+   * - link
+     - クラス
+     - 説明
+     - 備考
+   * - `14 <https://blog.okazuki.jp/entry/20111205/1323099346>`__
+     - BehaviorSubjectクラス
+     - * 初期値を持つSubjectクラス
+       * Subscribeしたタイミングで最新の値が発行される
+       * 初期値のみが設定された状態では初期値が発行される
+     - var subject = new BehaviorSubject<int>(0);
+
+.. list-table:: To*****系メソッド
+   :header-rows: 1
+   :widths: 1, 3, 6, 6
+
+   * - link
+     - メソッド
+     - 説明
+     - 備考
+   * - `15 <https://blog.okazuki.jp/entry/20111208/1323357358>`__
+     - ToArray
+     - * OnNext〜OnCompletedまでの値を収集して配列にする
+       * つまり、OnCompletedしない限りSubscribeしていても発火しない
+     - s.ToArray().Subscribe(array => {});
+   * - `15 <https://blog.okazuki.jp/entry/20111208/1323357358>`__
+     - ToDictionary
+     - * ToArrayのDictionary版
+       * ToDictionaryのメソッド引数にKeyを選択するラムダ式を渡す
+     - | var s = new Subject<Tuple<string, int>>();
+       | s.ToDictionary(t => t.Item1).Subscribe(dict => {});
+   * - `15 <https://blog.okazuki.jp/entry/20111208/1323357358>`__
+     - ToEnumerable
+     - * IObservableからIEnumerableへ変換する
+       * ToEnumerableでIEnumerableに変換した後に発行された値がIEnumerableに流れて、OnCompletedでIEnumerableのシーケンスも終了
+     - | var e = s.ToEnumerable();
+       | foreach (var i in e){}
+   * - `15 <https://blog.okazuki.jp/entry/20111208/1323357358>`__
+     - ToEvent
+     - * IObservableからIEventSourceへ変換する
+       * s.OnNext() でOnNextイベントを発火させる
+       * s.Subscribe との違いが不明？？
+     - | var s = new Subject<int>();
+       | var evt = s.ToEvent();
+       | evt.OnNext += i => {};
+   * - `15 <https://blog.okazuki.jp/entry/20111208/1323357358>`__
+     - ToList
+     - ToArrayとほぼ同様
+     - s.ToList().Subscribe(list => {});
+   * - `15 <https://blog.okazuki.jp/entry/20111208/1323357358>`__
+     - ToLookup
+     - * ToDictionaryメソッドと同様にキーを選択するラムダ式を渡すことで、キー値でグルーピングされたIObservable>が返される
+     - | var s = new Subject<Tuple<string, string>>();
+       | s.ToLookup(t => t.Item1).Subscribe(l => {});
+
+.. list-table:: 最大、最小、平均を求めるメソッド
+   :header-rows: 1
+   :widths: 1, 3, 6, 6
+
+   * - link
+     - メソッド
+     - 説明
+     - 備考
+   * - `16 <https://blog.okazuki.jp/entry/20111210/1323540094>`__
+     - Max
+     - * 最大の値を返すメソッド
+       * 戻り値がIObservable
+     - s.Max().Subscribe(max => {});
+   * - `16 <https://blog.okazuki.jp/entry/20111210/1323540094>`__
+     - Min
+     - * 最小の値を返すメソッド
+       * 戻り値がIObservable
+     - s.Min().Subscribe(min => {});
+   * - `16 <https://blog.okazuki.jp/entry/20111210/1323540094>`__
+     - Average
+     - * 平均の値を返すメソッド
+       * 戻り値がIObservable
+     - s.Average().Subscribe(avg => {});
+   * - `16 <https://blog.okazuki.jp/entry/20111210/1323540094>`__
+     - MaxBy
+     - * タプルでの最大値を返すメソッド
+       * 最大を求めるためのキーを指定する（例ではItem1が最大となるタプルを求める）
+     - | var s = new Subject<Tuple<int, int>>();
+       | s.MaxBy(t => t.Item1).Subscribe(max => {});
+   * - `16 <https://blog.okazuki.jp/entry/20111210/1323540094>`__
+     - MinBy
+     - * タプルでの最小値を返すメソッド
+       * 最小を求めるためのキーを指定する（例ではItem1が最小となるタプルを求める）
+     - | var s = new Subject<Tuple<int, int>>();
+       | s.MinBy(t => t.Item1).Subscribe(min => {});
+
+.. list-table:: 集計するメソッド
+   :header-rows: 1
+   :widths: 1, 3, 10, 6, 6
+
+   * - link
+     - メソッド
+     - 図
+     - 説明
+     - 備考
+   * - `17 <https://blog.okazuki.jp/entry/20111212/1323698319>`__
+     - :term:`Aggregate`
+     - .. figure:: images/Aggregate.png
+     - * 収集・集計し、OnCompleted()で結果のみを後続に流す
+       * 第一引数が直前までの集計値で、第二引数が新たにIObservableシーケンスから発行された値
+     - | var s = new Subject<int>();
+       | s.Aggregate((x, y) => x > y ? x : y).Subscribe(i => {});
+   * - `17 <https://blog.okazuki.jp/entry/20111212/1323698319>`__
+     - :term:`Scan`
+     - .. figure:: images/Scan.png
+     - * 収集・集計し、OnNext()の都度、集計経過を後続に流す
+       * センサ測定値のLPF処理などで使えそう
+     - 

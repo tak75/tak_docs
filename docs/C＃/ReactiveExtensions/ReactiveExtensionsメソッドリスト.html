@@ -59,6 +59,8 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">ReactiveExtensionsメソッドリスト</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id1">ファクトリメソッド</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id2">フィルタリングメソッド</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">例外処理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">合成メソッド</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html">ファクトリメソッド説明</a></li>
@@ -109,8 +111,8 @@
 </ul>
 <section id="id1">
 <h2>ファクトリメソッド<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<table class="colwidths-given docutils align-default" id="id3">
-<caption><span class="caption-number">表 20 </span><span class="caption-text">IObservableのファクトリメソッド（Observable.XXX）</span><a class="headerlink" href="#id3" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id5">
+<caption><span class="caption-number">表 20 </span><span class="caption-text">IObservableのファクトリメソッド（Observable.XXX）</span><a class="headerlink" href="#id5" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -223,8 +225,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id4">
-<caption><span class="caption-number">表 21 </span><span class="caption-text">Timer系のファクトリメソッド（Observable.XXX）</span><a class="headerlink" href="#id4" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id6">
+<caption><span class="caption-number">表 21 </span><span class="caption-text">Timer系のファクトリメソッド（Observable.XXX）</span><a class="headerlink" href="#id6" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -290,8 +292,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id5">
-<caption><span class="caption-number">表 22 </span><span class="caption-text">HotなIObservableを作成するファクトリメソッド</span><a class="headerlink" href="#id5" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id7">
+<caption><span class="caption-number">表 22 </span><span class="caption-text">HotなIObservableを作成するファクトリメソッド</span><a class="headerlink" href="#id7" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -332,7 +334,7 @@
 </figure>
 </td>
 <td><p>バックグラウンドで処理を実行し結果を返す</p></td>
-<td></td>
+<td><p>Observable.Start(() =&gt; 処理);</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111109/1320849106">6</a></p></td>
 <td><p><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-ToAsync"><span class="xref std std-term">ToAsync</span></a></p></td>
@@ -351,8 +353,8 @@
 </section>
 <section id="id2">
 <h2>フィルタリングメソッド<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<table class="colwidths-given docutils align-default" id="id6">
-<caption><span class="caption-number">表 23 </span><span class="caption-text">フィルタリングメソッド</span><a class="headerlink" href="#id6" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id8">
+<caption><span class="caption-number">表 23 </span><span class="caption-text">フィルタリングメソッド</span><a class="headerlink" href="#id8" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -554,8 +556,80 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id7">
-<caption><span class="caption-number">表 24 </span><span class="caption-text">Observable自体の合成メソッド</span><a class="headerlink" href="#id7" title="このテーブルへのパーマリンク">¶</a></caption>
+</section>
+<section id="id3">
+<h2>例外処理<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 12%" />
+<col style="width: 38%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>link</p></th>
+<th class="head"><p>メソッド</p></th>
+<th class="head"><p>図</p></th>
+<th class="head"><p>説明</p></th>
+<th class="head"><p>備考</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111129/1322491648">11</a></p></td>
+<td><p><span class="xref std std-term">Catch</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Catch.png" src="../../_images/Catch.png" />
+</figure>
+</td>
+<td><ul class="simple">
+<li><p>途中で例外が発生した場合にCatchし、任意の値を後続に流す（その後すぐにOnComplete（正常終了）する。Subscribe()でのOnErrorの処理はされない）</p></li>
+<li><p>通常の例外処理のcatch句のように型指定で例外時の処理を振り分けることも可能</p></li>
+</ul>
+</td>
+<td><ul>
+<li><p>.Catch(Observable.Return(&quot;Error&quot;))</p></li>
+<li><div class="line-block">
+<div class="line">.Catch((ArgumentException ex) =&gt; Observable.Return(&quot;復帰&quot;))</div>
+<div class="line">.Catch((NullReferenceException ex) =&gt; Observable.Empty&lt;string&gt;())</div>
+</div>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><a class="reference external" href="https://blog.okazuki.jp/entry/20111124/1322145011">9</a></div>
+<div class="line"><a class="reference external" href="https://blog.okazuki.jp/entry/20111129/1322575568">12</a></div>
+</div>
+</td>
+<td><p><span class="xref std std-term">Finally</span></p></td>
+<td></td>
+<td><ul class="simple">
+<li><p>例外処理のfinally句と同じ動き</p></li>
+<li><p>IObservableのシーケンスが終了したタイミングで処理を実施</p></li>
+<li><p>OnCompleted（もしくはOnError）の後に実行される</p></li>
+<li><p>Catch()メソッドがない状態で未処理の例外が発生した場合は、Finaly()メソッドは実行されないがSubscribeをDispose()すると実行される</p></li>
+</ul>
+</td>
+<td><p>.Catch(Observable.Return(&quot;Error&quot;)).Finally(() =&gt; 処理).Subscribe()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111129/1322575568">12</a></p></td>
+<td><p><span class="xref std std-term">Using</span></p></td>
+<td></td>
+<td><ul class="simple">
+<li><p>リソースの解放を行う処理がある場合に利用</p></li>
+<li><p>Usingメソッドを使用できる場合はFinallyよりもbetter</p></li>
+</ul>
+</td>
+<td><p>.Observable.Using(() =&gt; new SampleResource(),sr =&gt; sr.GetData())</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id4">
+<h2>合成メソッド<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<table class="colwidths-given docutils align-default" id="id9">
+<caption><span class="caption-number">表 24 </span><span class="caption-text">Observable自体の合成メソッド</span><a class="headerlink" href="#id9" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -648,16 +722,7 @@
 </td>
 <td></td>
 </tr>
-<tr class="row-even"><td></td>
-<td><p><span class="xref std std-term">Catch</span></p></td>
-<td><figure class="align-default">
-<img alt="../../_images/Catch.png" src="../../_images/Catch.png" />
-</figure>
-</td>
-<td><p>複数のObservableを成功するまで順番に実行</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html">link</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://atmarkit.itmedia.co.jp/fdotnet/introrx/introrx_02/introrx_02_03.html">link</a></p></td>
 <td><p><span class="xref std std-term">Scan</span></p></td>
 <td><figure class="align-default">
 <img alt="../../_images/Scan.png" src="../../_images/Scan.png" />
@@ -668,8 +733,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id8">
-<caption><span class="caption-number">表 25 </span><span class="caption-text">Observable自体の変換メソッド</span><a class="headerlink" href="#id8" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id10">
+<caption><span class="caption-number">表 25 </span><span class="caption-text">Observable自体の変換メソッド</span><a class="headerlink" href="#id10" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -706,8 +771,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id9">
-<caption><span class="caption-number">表 26 </span><span class="caption-text">Observableの分岐メソッド</span><a class="headerlink" href="#id9" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id11">
+<caption><span class="caption-number">表 26 </span><span class="caption-text">Observableの分岐メソッド</span><a class="headerlink" href="#id11" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -783,8 +848,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id10">
-<caption><span class="caption-number">表 27 </span><span class="caption-text">メッセージ同士の合成・演算</span><a class="headerlink" href="#id10" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id12">
+<caption><span class="caption-number">表 27 </span><span class="caption-text">メッセージ同士の合成・演算</span><a class="headerlink" href="#id12" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -835,8 +900,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id11">
-<caption><span class="caption-number">表 28 </span><span class="caption-text">メッセージの変換</span><a class="headerlink" href="#id11" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id13">
+<caption><span class="caption-number">表 28 </span><span class="caption-text">メッセージの変換</span><a class="headerlink" href="#id13" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -900,8 +965,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id12">
-<caption><span class="caption-number">表 29 </span><span class="caption-text">時間に絡んだ処理</span><a class="headerlink" href="#id12" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id14">
+<caption><span class="caption-number">表 29 </span><span class="caption-text">時間に絡んだ処理</span><a class="headerlink" href="#id14" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -961,8 +1026,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id13">
-<caption><span class="caption-number">表 30 </span><span class="caption-text">非同期処理</span><a class="headerlink" href="#id13" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id15">
+<caption><span class="caption-number">表 30 </span><span class="caption-text">非同期処理</span><a class="headerlink" href="#id15" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -987,8 +1052,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id14">
-<caption><span class="caption-number">表 31 </span><span class="caption-text">メソッドリスト</span><a class="headerlink" href="#id14" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id16">
+<caption><span class="caption-number">表 31 </span><span class="caption-text">メソッドリスト</span><a class="headerlink" href="#id16" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -1012,50 +1077,16 @@
 </figure>
 </td>
 <td><p>IObservableのシーケンスを処理する <code class="docutils literal notranslate"><span class="pre">途中に</span></code> 任意のアクションを実行（途中ではなく最後にアクションを実行する場合はSubscribeを使用する）</p></td>
-<td><p>本来は外部に対して副作用を起こさないReactive Extensionsの処理の中で副作用を起こすためのメソッドとなるため、Doメソッドの利用は必要最低限にとどめることが推奨</p></td>
+<td><ul class="simple">
+<li><p>.Where().Select().Do().Select().Subscribe()など</p></li>
+<li><p>本来は外部に対して副作用を起こさないReactive Extensionsの処理の中で副作用を起こすためのメソッドとなるため、Doメソッドの利用は必要最低限にとどめること</p></li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id15">
-<caption><span class="caption-number">表 32 </span><span class="caption-text">集計を行うメソッドリスト(Cold)</span><a class="headerlink" href="#id15" title="このテーブルへのパーマリンク">¶</a></caption>
-<colgroup>
-<col style="width: 4%" />
-<col style="width: 12%" />
-<col style="width: 38%" />
-<col style="width: 23%" />
-<col style="width: 23%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>link</p></th>
-<th class="head"><p>メソッド</p></th>
-<th class="head"><p>図</p></th>
-<th class="head"><p>説明</p></th>
-<th class="head"><p>備考</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111212/1323698319">17</a></p></td>
-<td><p><a class="reference internal" href="../%E8%A8%80%E8%AA%9E%E4%BB%95%E6%A7%98/LINQ/%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Aggregate"><span class="xref std std-term">Aggregate</span></a></p></td>
-<td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/Aggregate.png" src="C＃/ReactiveExtensions/images/Aggregate.png" />
-</figure>
-</td>
-<td><p>収集・集計し、OnCompleted()で結果のみを後続に流す</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111212/1323698319">17</a></p></td>
-<td><p><span class="xref std std-term">Scan</span></p></td>
-<td><figure class="align-default">
-<img alt="../../_images/Scan.png" src="../../_images/Scan.png" />
-</figure>
-</td>
-<td><p>収集・集計し、OnNext()の都度、集計経過を後続に流す</p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<table class="colwidths-given docutils align-default" id="id16">
-<caption><span class="caption-number">表 33 </span><span class="caption-text">時間に関する情報を付与するTimestampとTimeIntervalメソッド</span><a class="headerlink" href="#id16" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id17">
+<caption><span class="caption-number">表 32 </span><span class="caption-text">時間に関する情報を付与するTimestampとTimeIntervalメソッド</span><a class="headerlink" href="#id17" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -1083,8 +1114,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id17">
-<caption><span class="caption-number">表 34 </span><span class="caption-text">その他メソッドリスト</span><a class="headerlink" href="#id17" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id18">
+<caption><span class="caption-number">表 33 </span><span class="caption-text">その他メソッドリスト</span><a class="headerlink" href="#id18" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 6%" />
 <col style="width: 19%" />
@@ -1104,15 +1135,286 @@
 <td><p>Cold-&gt;Hot変換</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111124/1322145011">9</a></p></td>
-<td><p>Finally</p></td>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id19">
+<caption><span class="caption-number">表 34 </span><span class="caption-text">IObservableからIEnumerableへ変換</span><a class="headerlink" href="#id19" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 19%" />
+<col style="width: 38%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>link</p></th>
+<th class="head"><p>メソッド</p></th>
+<th class="head"><p>説明</p></th>
+<th class="head"><p>備考</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111205/1323056284">13</a></p></td>
+<td><p>Latest</p></td>
 <td><ul class="simple">
-<li><p>IObservableのシーケンスが終了したタイミングで処理を実施</p></li>
-<li><p>OnCompletedだけでなく、OnError時（例外発生時）にも実行される</p></li>
-<li><p>SubscribeのOnCompletedとOnErrorに同じ処理を記載するのと同等？</p></li>
+<li><p>IObservableからIEnumerableへ変換を行う</p></li>
+<li><p>最後に発行された値を返す</p></li>
+<li><p>値が無い場合は値が発行されるまで待つ</p></li>
 </ul>
 </td>
-<td><p>Finally(() =&gt; 処理)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111205/1323056284">13</a></p></td>
+<td><p>MostRecent</p></td>
+<td><ul class="simple">
+<li><p>IObservableからIEnumerableへ変換を行う</p></li>
+<li><p>最後に発行された値をキャッシュしておいて、キャッシュを返す</p></li>
+<li><p>IEnumerableから値を取得する際にブロックされることはない</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111205/1323099346">14</a></p></td>
+<td><p>Next</p></td>
+<td><ul class="simple">
+<li><p>IObservableからIEnumerableへ変換を行う</p></li>
+<li><p>Latestと挙動はほぼ同じ（Latestでは最後の値がキャッシュされている点が異なる）</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id20">
+<caption><span class="caption-number">表 35 </span><span class="caption-text">Subject系クラス</span><a class="headerlink" href="#id20" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 19%" />
+<col style="width: 38%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>link</p></th>
+<th class="head"><p>クラス</p></th>
+<th class="head"><p>説明</p></th>
+<th class="head"><p>備考</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111205/1323099346">14</a></p></td>
+<td><p>BehaviorSubjectクラス</p></td>
+<td><ul class="simple">
+<li><p>初期値を持つSubjectクラス</p></li>
+<li><p>Subscribeしたタイミングで最新の値が発行される</p></li>
+<li><p>初期値のみが設定された状態では初期値が発行される</p></li>
+</ul>
+</td>
+<td><p>var subject = new BehaviorSubject&lt;int&gt;(0);</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id21">
+<caption><span class="caption-number">表 36 </span><span class="caption-text">To*****系メソッド</span><a class="headerlink" href="#id21" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 19%" />
+<col style="width: 38%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>link</p></th>
+<th class="head"><p>メソッド</p></th>
+<th class="head"><p>説明</p></th>
+<th class="head"><p>備考</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111208/1323357358">15</a></p></td>
+<td><p>ToArray</p></td>
+<td><ul class="simple">
+<li><p>OnNext〜OnCompletedまでの値を収集して配列にする</p></li>
+<li><p>つまり、OnCompletedしない限りSubscribeしていても発火しない</p></li>
+</ul>
+</td>
+<td><p>s.ToArray().Subscribe(array =&gt; {});</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111208/1323357358">15</a></p></td>
+<td><p>ToDictionary</p></td>
+<td><ul class="simple">
+<li><p>ToArrayのDictionary版</p></li>
+<li><p>ToDictionaryのメソッド引数にKeyを選択するラムダ式を渡す</p></li>
+</ul>
+</td>
+<td><div class="line-block">
+<div class="line">var s = new Subject&lt;Tuple&lt;string, int&gt;&gt;();</div>
+<div class="line">s.ToDictionary(t =&gt; t.Item1).Subscribe(dict =&gt; {});</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111208/1323357358">15</a></p></td>
+<td><p>ToEnumerable</p></td>
+<td><ul class="simple">
+<li><p>IObservableからIEnumerableへ変換する</p></li>
+<li><p>ToEnumerableでIEnumerableに変換した後に発行された値がIEnumerableに流れて、OnCompletedでIEnumerableのシーケンスも終了</p></li>
+</ul>
+</td>
+<td><div class="line-block">
+<div class="line">var e = s.ToEnumerable();</div>
+<div class="line">foreach (var i in e){}</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111208/1323357358">15</a></p></td>
+<td><p>ToEvent</p></td>
+<td><ul class="simple">
+<li><p>IObservableからIEventSourceへ変換する</p></li>
+<li><p>s.OnNext() でOnNextイベントを発火させる</p></li>
+<li><p>s.Subscribe との違いが不明？？</p></li>
+</ul>
+</td>
+<td><div class="line-block">
+<div class="line">var s = new Subject&lt;int&gt;();</div>
+<div class="line">var evt = s.ToEvent();</div>
+<div class="line">evt.OnNext += i =&gt; {};</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111208/1323357358">15</a></p></td>
+<td><p>ToList</p></td>
+<td><p>ToArrayとほぼ同様</p></td>
+<td><p>s.ToList().Subscribe(list =&gt; {});</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111208/1323357358">15</a></p></td>
+<td><p>ToLookup</p></td>
+<td><ul class="simple">
+<li><p>ToDictionaryメソッドと同様にキーを選択するラムダ式を渡すことで、キー値でグルーピングされたIObservable&gt;が返される</p></li>
+</ul>
+</td>
+<td><div class="line-block">
+<div class="line">var s = new Subject&lt;Tuple&lt;string, string&gt;&gt;();</div>
+<div class="line">s.ToLookup(t =&gt; t.Item1).Subscribe(l =&gt; {});</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id22">
+<caption><span class="caption-number">表 37 </span><span class="caption-text">最大、最小、平均を求めるメソッド</span><a class="headerlink" href="#id22" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 19%" />
+<col style="width: 38%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>link</p></th>
+<th class="head"><p>メソッド</p></th>
+<th class="head"><p>説明</p></th>
+<th class="head"><p>備考</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111210/1323540094">16</a></p></td>
+<td><p>Max</p></td>
+<td><ul class="simple">
+<li><p>最大の値を返すメソッド</p></li>
+<li><p>戻り値がIObservable</p></li>
+</ul>
+</td>
+<td><p>s.Max().Subscribe(max =&gt; {});</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111210/1323540094">16</a></p></td>
+<td><p>Min</p></td>
+<td><ul class="simple">
+<li><p>最小の値を返すメソッド</p></li>
+<li><p>戻り値がIObservable</p></li>
+</ul>
+</td>
+<td><p>s.Min().Subscribe(min =&gt; {});</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111210/1323540094">16</a></p></td>
+<td><p>Average</p></td>
+<td><ul class="simple">
+<li><p>平均の値を返すメソッド</p></li>
+<li><p>戻り値がIObservable</p></li>
+</ul>
+</td>
+<td><p>s.Average().Subscribe(avg =&gt; {});</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111210/1323540094">16</a></p></td>
+<td><p>MaxBy</p></td>
+<td><ul class="simple">
+<li><p>タプルでの最大値を返すメソッド</p></li>
+<li><p>最大を求めるためのキーを指定する（例ではItem1が最大となるタプルを求める）</p></li>
+</ul>
+</td>
+<td><div class="line-block">
+<div class="line">var s = new Subject&lt;Tuple&lt;int, int&gt;&gt;();</div>
+<div class="line">s.MaxBy(t =&gt; t.Item1).Subscribe(max =&gt; {});</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111210/1323540094">16</a></p></td>
+<td><p>MinBy</p></td>
+<td><ul class="simple">
+<li><p>タプルでの最小値を返すメソッド</p></li>
+<li><p>最小を求めるためのキーを指定する（例ではItem1が最小となるタプルを求める）</p></li>
+</ul>
+</td>
+<td><div class="line-block">
+<div class="line">var s = new Subject&lt;Tuple&lt;int, int&gt;&gt;();</div>
+<div class="line">s.MinBy(t =&gt; t.Item1).Subscribe(min =&gt; {});</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id23">
+<caption><span class="caption-number">表 38 </span><span class="caption-text">集計するメソッド</span><a class="headerlink" href="#id23" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 12%" />
+<col style="width: 38%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>link</p></th>
+<th class="head"><p>メソッド</p></th>
+<th class="head"><p>図</p></th>
+<th class="head"><p>説明</p></th>
+<th class="head"><p>備考</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111212/1323698319">17</a></p></td>
+<td><p><a class="reference internal" href="../%E8%A8%80%E8%AA%9E%E4%BB%95%E6%A7%98/LINQ/%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Aggregate"><span class="xref std std-term">Aggregate</span></a></p></td>
+<td><figure class="align-default">
+<img alt="C＃/ReactiveExtensions/images/Aggregate.png" src="C＃/ReactiveExtensions/images/Aggregate.png" />
+</figure>
+</td>
+<td><ul class="simple">
+<li><p>収集・集計し、OnCompleted()で結果のみを後続に流す</p></li>
+<li><p>第一引数が直前までの集計値で、第二引数が新たにIObservableシーケンスから発行された値</p></li>
+</ul>
+</td>
+<td><div class="line-block">
+<div class="line">var s = new Subject&lt;int&gt;();</div>
+<div class="line">s.Aggregate((x, y) =&gt; x &gt; y ? x : y).Subscribe(i =&gt; {});</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111212/1323698319">17</a></p></td>
+<td><p><span class="xref std std-term">Scan</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Scan.png" src="../../_images/Scan.png" />
+</figure>
+</td>
+<td><ul class="simple">
+<li><p>収集・集計し、OnNext()の都度、集計経過を後続に流す</p></li>
+<li><p>センサ測定値のLPF処理などで使えそう</p></li>
+</ul>
+</td>
+<td></td>
 </tr>
 </tbody>
 </table>
