@@ -737,13 +737,17 @@ To*****系メソッド
    * - `19 <https://blog.okazuki.jp/entry/20111215/1323959456>`__
      - :term:`Any_`
      - .. figure:: images/Any.png
-     - 
-     - 
+     - * 引数で渡したデリゲートがtrueを返す要素が1つでもあればtrueを後続に流し完了する
+       * IObservableのシーケンスが完了した時点で、どれもtrueにならなかった場合はfalseを返す
+     - | var s = new Subject<int>();
+       | s.Any(i => i <= 0).Subscribe(i => {});
    * - `19 <https://blog.okazuki.jp/entry/20111215/1323959456>`__
      - :term:`All_`
      - .. figure:: images/All.png
-     - 
-     - 
+     - * 引数で渡したデリゲートがfalseを返す要素が1つでもあればfalseを後続に流し完了する
+       * IObservableのシーケンスが完了した時点で、全てtrueである場合はtrueを返す
+     - | var s = new Subject<int>();
+       | s.All(i => i <= 0).Subscribe(i => {});
 
 値の数を数えるメソッド
 ======================
@@ -771,3 +775,21 @@ To*****系メソッド
        * Countメソッドのlong型
      - | var s = new Subject<long>();
        | s.Count().Subscribe(i => {});
+
+？？メソッド
+======================
+
+.. list-table:: 
+   :header-rows: 1
+   :widths: 1, 3, 10, 6, 6
+
+   * - link
+     - メソッド
+     - 図
+     - 説明
+     - 備考
+   * - `20 <https://blog.okazuki.jp/entry/20111228/1325043357>`__
+     - :term:`GroupBy_`
+     - .. figure:: images/GroupBy.png
+     - 
+     - 
