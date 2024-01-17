@@ -61,6 +61,12 @@
 <li class="toctree-l4"><a class="reference internal" href="#id2">フィルタリングメソッド</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">例外処理</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">合成メソッド</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#iobservableienumerable">IObservableからIEnumerableへ変換</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subject">Subject系クラス</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#to">To*****系メソッド</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">最大、最小、平均を求めるメソッド</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">集計するメソッド</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">値の数を数えるメソッド</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html">ファクトリメソッド説明</a></li>
@@ -111,8 +117,8 @@
 </ul>
 <section id="id1">
 <h2>ファクトリメソッド<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<table class="colwidths-given docutils align-default" id="id5">
-<caption><span class="caption-number">表 20 </span><span class="caption-text">IObservableのファクトリメソッド（Observable.XXX）</span><a class="headerlink" href="#id5" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id8">
+<caption><span class="caption-number">表 20 </span><span class="caption-text">IObservableのファクトリメソッド（Observable.XXX）</span><a class="headerlink" href="#id8" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -225,8 +231,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id6">
-<caption><span class="caption-number">表 21 </span><span class="caption-text">Timer系のファクトリメソッド（Observable.XXX）</span><a class="headerlink" href="#id6" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id9">
+<caption><span class="caption-number">表 21 </span><span class="caption-text">Timer系のファクトリメソッド（Observable.XXX）</span><a class="headerlink" href="#id9" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -292,8 +298,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id7">
-<caption><span class="caption-number">表 22 </span><span class="caption-text">HotなIObservableを作成するファクトリメソッド</span><a class="headerlink" href="#id7" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id10">
+<caption><span class="caption-number">表 22 </span><span class="caption-text">HotなIObservableを作成するファクトリメソッド</span><a class="headerlink" href="#id10" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -353,8 +359,8 @@
 </section>
 <section id="id2">
 <h2>フィルタリングメソッド<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<table class="colwidths-given docutils align-default" id="id8">
-<caption><span class="caption-number">表 23 </span><span class="caption-text">フィルタリングメソッド</span><a class="headerlink" href="#id8" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id11">
+<caption><span class="caption-number">表 23 </span><span class="caption-text">フィルタリングメソッド</span><a class="headerlink" href="#id11" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -628,8 +634,8 @@
 </section>
 <section id="id4">
 <h2>合成メソッド<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<table class="colwidths-given docutils align-default" id="id9">
-<caption><span class="caption-number">表 24 </span><span class="caption-text">Observable自体の合成メソッド</span><a class="headerlink" href="#id9" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id12">
+<caption><span class="caption-number">表 24 </span><span class="caption-text">Observable自体の合成メソッド</span><a class="headerlink" href="#id12" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -733,8 +739,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id10">
-<caption><span class="caption-number">表 25 </span><span class="caption-text">Observable自体の変換メソッド</span><a class="headerlink" href="#id10" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id13">
+<caption><span class="caption-number">表 25 </span><span class="caption-text">Observable自体の変換メソッド</span><a class="headerlink" href="#id13" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -771,8 +777,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id11">
-<caption><span class="caption-number">表 26 </span><span class="caption-text">Observableの分岐メソッド</span><a class="headerlink" href="#id11" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id14">
+<caption><span class="caption-number">表 26 </span><span class="caption-text">Observableの分岐メソッド</span><a class="headerlink" href="#id14" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -848,8 +854,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id12">
-<caption><span class="caption-number">表 27 </span><span class="caption-text">メッセージ同士の合成・演算</span><a class="headerlink" href="#id12" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id15">
+<caption><span class="caption-number">表 27 </span><span class="caption-text">メッセージ同士の合成・演算</span><a class="headerlink" href="#id15" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -900,8 +906,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id13">
-<caption><span class="caption-number">表 28 </span><span class="caption-text">メッセージの変換</span><a class="headerlink" href="#id13" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id16">
+<caption><span class="caption-number">表 28 </span><span class="caption-text">メッセージの変換</span><a class="headerlink" href="#id16" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -965,8 +971,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id14">
-<caption><span class="caption-number">表 29 </span><span class="caption-text">時間に絡んだ処理</span><a class="headerlink" href="#id14" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id17">
+<caption><span class="caption-number">表 29 </span><span class="caption-text">時間に絡んだ処理</span><a class="headerlink" href="#id17" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -1026,8 +1032,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id15">
-<caption><span class="caption-number">表 30 </span><span class="caption-text">非同期処理</span><a class="headerlink" href="#id15" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id18">
+<caption><span class="caption-number">表 30 </span><span class="caption-text">非同期処理</span><a class="headerlink" href="#id18" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -1052,8 +1058,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id16">
-<caption><span class="caption-number">表 31 </span><span class="caption-text">メソッドリスト</span><a class="headerlink" href="#id16" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id19">
+<caption><span class="caption-number">表 31 </span><span class="caption-text">メソッドリスト</span><a class="headerlink" href="#id19" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -1085,8 +1091,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id17">
-<caption><span class="caption-number">表 32 </span><span class="caption-text">時間に関する情報を付与するTimestampとTimeIntervalメソッド</span><a class="headerlink" href="#id17" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id20">
+<caption><span class="caption-number">表 32 </span><span class="caption-text">時間に関する情報を付与するTimestampとTimeIntervalメソッド</span><a class="headerlink" href="#id20" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -1114,8 +1120,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id18">
-<caption><span class="caption-number">表 33 </span><span class="caption-text">その他メソッドリスト</span><a class="headerlink" href="#id18" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id21">
+<caption><span class="caption-number">表 33 </span><span class="caption-text">その他メソッドリスト</span><a class="headerlink" href="#id21" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 6%" />
 <col style="width: 19%" />
@@ -1137,8 +1143,10 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id19">
-<caption><span class="caption-number">表 34 </span><span class="caption-text">IObservableからIEnumerableへ変換</span><a class="headerlink" href="#id19" title="このテーブルへのパーマリンク">¶</a></caption>
+</section>
+<section id="iobservableienumerable">
+<h2>IObservableからIEnumerableへ変換<a class="headerlink" href="#iobservableienumerable" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 6%" />
 <col style="width: 19%" />
@@ -1184,8 +1192,10 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id20">
-<caption><span class="caption-number">表 35 </span><span class="caption-text">Subject系クラス</span><a class="headerlink" href="#id20" title="このテーブルへのパーマリンク">¶</a></caption>
+</section>
+<section id="subject">
+<h2>Subject系クラス<a class="headerlink" href="#subject" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 6%" />
 <col style="width: 19%" />
@@ -1212,8 +1222,10 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id21">
-<caption><span class="caption-number">表 36 </span><span class="caption-text">To*****系メソッド</span><a class="headerlink" href="#id21" title="このテーブルへのパーマリンク">¶</a></caption>
+</section>
+<section id="to">
+<h2>To*****系メソッド<a class="headerlink" href="#to" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 6%" />
 <col style="width: 19%" />
@@ -1297,17 +1309,21 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id22">
-<caption><span class="caption-number">表 37 </span><span class="caption-text">最大、最小、平均を求めるメソッド</span><a class="headerlink" href="#id22" title="このテーブルへのパーマリンク">¶</a></caption>
+</section>
+<section id="id5">
+<h2>最大、最小、平均を求めるメソッド<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<table class="colwidths-given docutils align-default">
 <colgroup>
-<col style="width: 6%" />
-<col style="width: 19%" />
+<col style="width: 4%" />
+<col style="width: 12%" />
 <col style="width: 38%" />
-<col style="width: 38%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>link</p></th>
 <th class="head"><p>メソッド</p></th>
+<th class="head"><p>図</p></th>
 <th class="head"><p>説明</p></th>
 <th class="head"><p>備考</p></th>
 </tr>
@@ -1315,6 +1331,10 @@
 <tbody>
 <tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111210/1323540094">16</a></p></td>
 <td><p>Max</p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Max.png" src="../../_images/Max.png" />
+</figure>
+</td>
 <td><ul class="simple">
 <li><p>最大の値を返すメソッド</p></li>
 <li><p>戻り値がIObservable</p></li>
@@ -1324,6 +1344,10 @@
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111210/1323540094">16</a></p></td>
 <td><p>Min</p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Min.png" src="../../_images/Min.png" />
+</figure>
+</td>
 <td><ul class="simple">
 <li><p>最小の値を返すメソッド</p></li>
 <li><p>戻り値がIObservable</p></li>
@@ -1333,6 +1357,10 @@
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111210/1323540094">16</a></p></td>
 <td><p>Average</p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Average.png" src="../../_images/Average.png" />
+</figure>
+</td>
 <td><ul class="simple">
 <li><p>平均の値を返すメソッド</p></li>
 <li><p>戻り値がIObservable</p></li>
@@ -1342,6 +1370,7 @@
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111210/1323540094">16</a></p></td>
 <td><p>MaxBy</p></td>
+<td></td>
 <td><ul class="simple">
 <li><p>タプルでの最大値を返すメソッド</p></li>
 <li><p>最大を求めるためのキーを指定する（例ではItem1が最大となるタプルを求める）</p></li>
@@ -1355,6 +1384,7 @@
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111210/1323540094">16</a></p></td>
 <td><p>MinBy</p></td>
+<td></td>
 <td><ul class="simple">
 <li><p>タプルでの最小値を返すメソッド</p></li>
 <li><p>最小を求めるためのキーを指定する（例ではItem1が最小となるタプルを求める）</p></li>
@@ -1368,8 +1398,10 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id23">
-<caption><span class="caption-number">表 38 </span><span class="caption-text">集計するメソッド</span><a class="headerlink" href="#id23" title="このテーブルへのパーマリンク">¶</a></caption>
+</section>
+<section id="id6">
+<h2>集計するメソッド<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 12%" />
@@ -1387,14 +1419,15 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111212/1323698319">17</a></p></td>
-<td><p><a class="reference internal" href="../%E8%A8%80%E8%AA%9E%E4%BB%95%E6%A7%98/LINQ/%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Aggregate"><span class="xref std std-term">Aggregate</span></a></p></td>
+<td><p><span class="xref std std-term">Aggregate_</span></p></td>
 <td><figure class="align-default">
-<img alt="C＃/ReactiveExtensions/images/Aggregate.png" src="C＃/ReactiveExtensions/images/Aggregate.png" />
+<img alt="../../_images/Aggregate.png" src="../../_images/Aggregate.png" />
 </figure>
 </td>
 <td><ul class="simple">
 <li><p>収集・集計し、OnCompleted()で結果のみを後続に流す</p></li>
 <li><p>第一引数が直前までの集計値で、第二引数が新たにIObservableシーケンスから発行された値</p></li>
+<li><p>初期値設定も可能</p></li>
 </ul>
 </td>
 <td><div class="line-block">
@@ -1410,11 +1443,87 @@
 </figure>
 </td>
 <td><ul class="simple">
+<li><p>Aggregateメソッドと同じシグネチャを持つ</p></li>
 <li><p>収集・集計し、OnNext()の都度、集計経過を後続に流す</p></li>
-<li><p>センサ測定値のLPF処理などで使えそう</p></li>
+<li><p>センサ測定値のリアルタイムLPF処理などで使えそう</p></li>
 </ul>
 </td>
+<td><div class="line-block">
+<div class="line">var s = new Subject&lt;int&gt;();</div>
+<div class="line">s.Scan((x, y) =&gt; {}).Subscribe(i =&gt; {});</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111215/1323959456">19</a></p></td>
+<td><p><span class="xref std std-term">Any_</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Any.png" src="../../_images/Any.png" />
+</figure>
+</td>
 <td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111215/1323959456">19</a></p></td>
+<td><p><span class="xref std std-term">All_</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/All.png" src="../../_images/All.png" />
+</figure>
+</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id7">
+<h2>値の数を数えるメソッド<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 12%" />
+<col style="width: 38%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>link</p></th>
+<th class="head"><p>メソッド</p></th>
+<th class="head"><p>図</p></th>
+<th class="head"><p>説明</p></th>
+<th class="head"><p>備考</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111212/1323699405">18</a></p></td>
+<td><p><span class="xref std std-term">Count_</span></p></td>
+<td><figure class="align-default">
+<img alt="../../_images/Count.png" src="../../_images/Count.png" />
+</figure>
+</td>
+<td><ul class="simple">
+<li><p>IObservableのシーケンスが完了するまでに発行された値の数を数える</p></li>
+<li><p>OnCompleted()で後続に流す</p></li>
+</ul>
+</td>
+<td><div class="line-block">
+<div class="line">var s = new Subject&lt;int&gt;();</div>
+<div class="line">s.Count().Subscribe(i =&gt; {});</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111212/1323699405">18</a></p></td>
+<td><p><span class="xref std std-term">LongCount_</span></p></td>
+<td></td>
+<td><ul class="simple">
+<li><p>IObservableのシーケンスが完了するまでに発行された値の数を数える</p></li>
+<li><p>Countメソッドのlong型</p></li>
+</ul>
+</td>
+<td><div class="line-block">
+<div class="line">var s = new Subject&lt;long&gt;();</div>
+<div class="line">s.Count().Subscribe(i =&gt; {});</div>
+</div>
+</td>
 </tr>
 </tbody>
 </table>
