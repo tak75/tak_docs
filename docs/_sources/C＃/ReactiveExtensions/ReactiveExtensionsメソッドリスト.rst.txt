@@ -791,5 +791,11 @@ To*****系メソッド
    * - `20 <https://blog.okazuki.jp/entry/20111228/1325043357>`__
      - :term:`GroupBy_`
      - .. figure:: images/GroupBy.png
+     - SQL文のGROUP BYのように特定の値でグルーピングしてくれる
+     - | var s = new Subject<int>();
+       | s.GroupBy(i => i % 10).Subscribe(g => {});
+   * - `21 <https://blog.okazuki.jp/entry/20111229/1325172773>`__
+     - :term:`GroupByUntil`
+     - 
      - 
      - 

@@ -76,3 +76,33 @@ C#
 
   * C#9.0からの機能
   * 値ベースでインスタンス比較ができる
+
+* 読み取り専用コレクション
+
+    .. code-block:: csharp
+
+      ReactiveCollection<DataItem> _dataList;
+      object _dataListLock = new();
+      public IEnumerable<DataItem> DataList
+      {
+          get
+          {
+              lock (_dataListLock)
+              {
+                  return _dataList.ToList();
+              }
+          }
+      }
+      // 下記でもよいが、IReadOnlyList は IEnumerable から派生したインタフェースであるので、
+      // より上位であるIEnumerableで使用上問題ないのであれば、IEnumerableを使用した方がよい。
+      // ただし、[index]によるアクセスが必要である場合は下記が必要
+      public IReadOnlyList<DataItem> DataList
+      {
+          get
+          {
+              lock (_dataListLock)
+              {
+                  return _dataList.ToList().AsReadOnly();
+              }
+          }
+      }

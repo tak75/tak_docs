@@ -165,6 +165,37 @@
 <li><p>値ベースでインスタンス比較ができる</p></li>
 </ul>
 </li>
+<li><p>読み取り専用コレクション</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">ReactiveCollection</span><span class="p">&lt;</span><span class="n">DataItem</span><span class="p">&gt;</span> <span class="n">_dataList</span><span class="p">;</span>
+<span class="kt">object</span> <span class="n">_dataListLock</span> <span class="p">=</span> <span class="k">new</span><span class="p">();</span>
+<span class="k">public</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">DataItem</span><span class="p">&gt;</span> <span class="n">DataList</span>
+<span class="p">{</span>
+    <span class="k">get</span>
+    <span class="p">{</span>
+        <span class="k">lock</span> <span class="p">(</span><span class="n">_dataListLock</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">_dataList</span><span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 下記でもよいが、IReadOnlyList は IEnumerable から派生したインタフェースであるので、</span>
+<span class="c1">// より上位であるIEnumerableで使用上問題ないのであれば、IEnumerableを使用した方がよい。</span>
+<span class="c1">// ただし、[index]によるアクセスが必要である場合は下記が必要</span>
+<span class="k">public</span> <span class="n">IReadOnlyList</span><span class="p">&lt;</span><span class="n">DataItem</span><span class="p">&gt;</span> <span class="n">DataList</span>
+<span class="p">{</span>
+    <span class="k">get</span>
+    <span class="p">{</span>
+        <span class="k">lock</span> <span class="p">(</span><span class="n">_dataListLock</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">_dataList</span><span class="p">.</span><span class="n">ToList</span><span class="p">().</span><span class="n">AsReadOnly</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
 </ul>
 </section>
 </section>
