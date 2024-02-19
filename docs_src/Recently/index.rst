@@ -106,3 +106,32 @@ C#
               }
           }
       }
+
+* async/await
+
+  * async メソッドは、最初の await に達すると制御を返す
+
+    .. code-block:: csharp
+
+      var task = AsyncMethod();
+      Console.WriteLine("Started");
+      task.Wait();
+      Console.WriteLine("Completed");
+      
+      static async Task AsyncMethod()
+      {
+          await Task.Delay(1000);
+          Console.WriteLine("AsyncMethod");
+          await Task.Delay(1000);
+      }
+
+      // 出力結果
+      // Started
+      // AsyncMethod
+      // Completed
+
+====
+全般
+====
+
+*  ヘルパークラスとは、スタティックメソッドだけを持っていて、状態を内包しない「構造体」

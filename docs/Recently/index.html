@@ -44,6 +44,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#reactiveproperty">ReactiveProperty</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#xaml">Xaml</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#c">C#</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">全般</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sphinx/index.html">Sphinx</a></li>
@@ -196,6 +197,36 @@
 </div>
 </div></blockquote>
 </li>
+<li><p>async/await</p>
+<ul>
+<li><p>async メソッドは、最初の await に達すると制御を返す</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">task</span> <span class="p">=</span> <span class="n">AsyncMethod</span><span class="p">();</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Started&quot;</span><span class="p">);</span>
+<span class="n">task</span><span class="p">.</span><span class="n">Wait</span><span class="p">();</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Completed&quot;</span><span class="p">);</span>
+
+<span class="k">static</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">AsyncMethod</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">Delay</span><span class="p">(</span><span class="m">1000</span><span class="p">);</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;AsyncMethod&quot;</span><span class="p">);</span>
+    <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">Delay</span><span class="p">(</span><span class="m">1000</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 出力結果</span>
+<span class="c1">// Started</span>
+<span class="c1">// AsyncMethod</span>
+<span class="c1">// Completed</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id1">
+<h2>全般<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p>ヘルパークラスとは、スタティックメソッドだけを持っていて、状態を内包しない「構造体」</p></li>
 </ul>
 </section>
 </section>
