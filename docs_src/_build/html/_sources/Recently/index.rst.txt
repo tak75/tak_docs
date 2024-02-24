@@ -76,6 +76,26 @@ C#
 
   * C#9.0からの機能
   * 値ベースでインスタンス比較ができる
+  * C#10.0からレコード構造体が追加（それまで参照型）
+  * レコード構造体は record struct と書く
+  * 参照型のレコードは record もしくは、record class と書く
+ 
+* with 式
+
+  * レコード／構造体／匿名型で使用可能
+  * 一部の値が異なるコピーを生成することができる
+  
+    .. code-block:: csharp
+
+      record PersonRecord
+      {
+          public string Name { get; init; }
+          public int Age { get; init; }
+      }
+
+      var p1 = new PersonRecord { Name = "Tanaka", Age = 20 };
+      var p2 = p1 with {Name = "Suzuki"};
+      var p3 = p1 with {};    // p1のコピーが作成される（p1とは別のオブジェクト）
 
 * 読み取り専用コレクション
 
@@ -129,6 +149,33 @@ C#
       // Started
       // AsyncMethod
       // Completed
+
+* Task.Yield
+
+  * Yield メソッドは、何の機能も持たず、ただ、待っている他の処理に実行チャンスを与える
+
+    .. code-block:: csharp
+
+      var task = subB();
+      for (int i = 0; i < 10; i++)
+      {
+          Console.Write(i.ToString()+", ");
+      }
+      await task;
+            
+      async Task subB()
+      {
+          int x = 0;
+          for (int i = 0; i < int.MaxValue; i++)
+          {
+              x += Random.Shared.Next();
+              if (x % 100 == 0) await Task.Yield();
+          }
+      }
+
+      // 出力結果
+      // 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+
 
 ====
 全般
