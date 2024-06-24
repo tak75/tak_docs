@@ -7,63 +7,114 @@
    :widths: 2, 6
 
    メソッド,説明
-   :term:`Aggregate`,
-   :term:`All`,
-   :term:`Any`,
+   :term:`All`,引数に条件を書ける
+   :term:`Any`,引数に条件を書ける
    :term:`AsEnumerable`,
    :term:`AsOrdered`,
    :term:`AsParallel`,クエリの並列化を有効にする
    :term:`AsSequential`,
    :term:`AsUnordered`,
-   :term:`Average`,
    :term:`Cast`,
-   :term:`Concat`,2つの並列シーケンスを連結する
-   :term:`Contains`,
-   :term:`Count`,シーケンスの要素数を返す
+   :term:`Contains`,要素に指定した値が存在するかを調べる
+   :term:`Count`,シーケンスの要素数を返す。引数に条件を書ける
    :term:`DefaultIfEmpty`,
-   :term:`Distinct`,
    :term:`ElementAt`,
    :term:`ElementAtOrDefault`,
    :term:`Empty`,
-   :term:`Except`,
-   :term:`First`,シーケンスの最初の要素、または条件を満たす最初の1つを返す。該当データがない場合は例外となる
-   :term:`FirstOrDefault`,シーケンスの最初の要素、または条件を満たす最初の1つを返す。該当データがない場合は型の既定値を返す
    :term:`ForAll`,
-   :term:`GroupBy`,
    :term:`GroupJoin`,
-   :term:`Intersect`,
    :term:`Join`,
-   :term:`Last`,シーケンスの最後の要素、または条件を満たす最後の1つを返す。該当データがない場合は例外となる
-   :term:`LastOrDefault`,シーケンスの最後の要素、または条件を満たす最後の1つを返す。該当データがない場合は型の既定値を返す
    :term:`LongCount`,
-   :term:`Max`,
-   :term:`Min`,
    :term:`OfType`,
-   :term:`OrderBy`,シーケンスを昇順に並び替える
-   :term:`OrderByDescending`,シーケンスを降順に並び替える
-   :term:`Range`,
-   :term:`Repeat`,同じ値が指定回数繰り返されるシーケンスを生成する
-   :term:`Reverse`,シーケンスの順番を逆転させる
    :term:`Select`,シーケンスを射影する
    :term:`SelectMany`,シーケンスの各要素をIEnumerable<T>に射影し、結果のシーケンスを1つのシーケンスに平坦化する
-   :term:`SequenceEqual`,
+   :term:`SequenceEqual`,2つのシーケンスの各要素が等しいことをチェックする
    :term:`Single`,たった1つのが該当データを取り出す。存在ない場合、2つ以上存在する場合は例外
    :term:`SingleOrDefault`,たった1つのが該当データを取り出す。存在しない場合は既定値。2つ以上存在する場合は例外
-   :term:`Skip`,
-   :term:`SkipWhile`,
-   :term:`Sum`,
-   :term:`Take`,
-   :term:`TakeWhile`,
-   :term:`ThenBy`, :term:`OrderBy` メソッドでソートした結果に、さらに条件を追加してソートする
-   :term:`ThenByDescending`,結果が降順となる以外、 :term:`ThenBy` メソッドと同じである
    :term:`ToArray`,シーケンスから配列を作成する
    :term:`ToDictionary`,
    :term:`ToList`,
-   :term:`ToLookup`,
-   :term:`Union`,
-   :term:`Where`,
    :term:`WithCancellation`,
    :term:`WithDegreeOfParallelism`,
    :term:`WithExecutionMode`,
    :term:`WithMergeOptions`,
-   :term:`Zip`,
+
+.. csv-table:: ファクトリ
+   :header-rows: 1
+   :widths: 2, 6
+
+   メソッド,説明
+   :term:`Repeat`,同じ値が指定回数繰り返されるシーケンスを生成する
+   :term:`Range`,要素の値が連番の配列やリストを作成する
+
+.. csv-table:: フィルタリング
+   :header-rows: 1
+   :widths: 2, 6
+
+   メソッド,説明
+   :term:`Where`,
+   :term:`Distinct`,
+   :term:`First`,シーケンスの最初の要素、または条件を満たす最初の1つを返す。該当データがない場合は例外となる
+   :term:`FirstOrDefault`,シーケンスの最初の要素、または条件を満たす最初の1つを返す。該当データがない場合は型の既定値を返す
+   :term:`Last`,シーケンスの最後の要素、または条件を満たす最後の1つを返す。該当データがない場合は例外となる
+   :term:`LastOrDefault`,シーケンスの最後の要素、または条件を満たす最後の1つを返す。該当データがない場合は型の既定値を返す
+   :term:`Skip`,
+   :term:`SkipWhile`,
+   :term:`Take`,
+   :term:`TakeWhile`,
+
+.. csv-table:: 1シーケンスの加工
+   :header-rows: 1
+   :widths: 2, 6
+
+   メソッド,説明
+   :term:`OrderBy`,シーケンスを昇順に並び替える
+   :term:`OrderByDescending`,シーケンスを降順に並び替える
+   :term:`Reverse`,シーケンスの順番を逆転させる
+
+.. csv-table:: シーケンスの合成
+   :header-rows: 1
+   :widths: 2, 6
+
+   メソッド,説明
+   :term:`Concat`,2つのシーケンス（(A1 A2 A3) (B1 B2 B3 B4 B5)）を単純に連結する。A1 A2 A3 B1 B2 B3 B4 B5
+   :term:`Zip`,2つのシーケンス（(A1 A2 A3) (B1 B2 B3 B4 B5)）を同一番号の要素を1つの組として連結する。(A1 B1) (A2 B2) (A3 B3)
+
+.. csv-table:: シーケンスの合成（集合）
+   :header-rows: 1
+   :widths: 2, 2, 6
+
+   メソッド,図,説明
+   :term:`Union`, .. figure:: images/Union.png,論理和(OR)。2つのシーケンスを連結する。その際、重複する要素は削除する
+   :term:`Intersect`, .. figure:: images/Intersect.png,論理積(AND)。2つのシーケンスに共通して含まれる要素のシーケンスを作成する
+   :term:`Except`, .. figure:: images/Except.png,2つのシーケンスにおいて、片方のシーケンスのみに存在する要素のシーケンスを作成する
+
+.. csv-table:: 要素同士の演算
+   :header-rows: 1
+   :widths: 2, 6
+
+   メソッド,説明
+   :term:`Aggregate`,String.Join()と同じ挙動。要素同士を指定フォーマットで結合。要素が数値の場合は指定フォーマットで集計できる
+   :term:`Average`,
+   :term:`Sum`,
+   :term:`Max`,
+   :term:`Min`,
+
+.. csv-table:: 要素の追加
+   :header-rows: 1
+   :widths: 2, 6
+
+   メソッド,説明
+   :term:`Append`,配列やリストの最後に指定した要素を追加し、新たな別の配列やリストを作成する
+   :term:`Prepend`,配列やリストの先頭に指定した要素を追加し、新たな別の配列やリストを作成する
+
+.. csv-table:: グループ化
+   :header-rows: 1
+   :widths: 2, 6
+
+   メソッド,説明
+   :term:`GroupBy`,指定した要素でグループ化する
+   :term:`GroupByDescending`,結果が降順となる以外、 :term:`GroupBy` メソッドと同じである
+   :term:`ThenBy`, :term:`OrderBy` メソッドでソートした結果に、さらに条件を追加してソートする
+   :term:`ThenByDescending`,結果が降順となる以外、 :term:`ThenBy` メソッドと同じである
+   :term:`ToLookup`, :term:`GroupBy` メソッドと同機能＋キーを指定して対象項目の要素のみを取り出せる。hogeArr["青"]など

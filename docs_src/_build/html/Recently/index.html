@@ -172,7 +172,8 @@
 <li><p>with 式</p>
 <ul>
 <li><p>レコード／構造体／匿名型で使用可能</p></li>
-<li><p>一部の値が異なるコピーを生成することができる</p>
+<li><p>一部の値が異なるコピー（新しいオブジェクト）を生成することができる</p></li>
+<li><p>ただし、浅いコピーなので、参照型メンバは参照アドレスのコピーとなるので要注意</p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">record</span> <span class="n">PersonRecord</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="n">init</span><span class="p">;</span> <span class="p">}</span>
