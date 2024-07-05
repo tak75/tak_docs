@@ -175,29 +175,45 @@ ReactiveExtensionsメソッドリスト
      - .. figure:: images/ThrottleFirst.png
      - まとめて流れてきたOnNextの最初だけ通す
      - 
-   * - 
-     - | :term:`First_`
-       | :term:`FirstOrDefault_`
+   * - `22 <https://blog.okazuki.jp/entry/20120103/1325587713>`__
+     - :term:`First_`
      - .. figure:: images/First.png
      - 一番最初に到達したOnNextのみを流してObservableを完了
+     - * 最初の値がIObservableのシーケンスから発行されるまで、実行しているスレッドをブロックするのでフリーズに注意
+       * そのため非同期処理などの結果を待つのに使用することも可能
+       * 要素が存在しない場合は例外を発生させる
+   * - `22 <https://blog.okazuki.jp/entry/20120103/1325587713>`__
+     - :term:`FirstOrDefault_`
      - 
+     - Firstと同じ
+     - 要素が存在しない場合は型のデフォルト値を返す（stringであればnull）
    * - 
      - | :term:`Single_`
        | :term:`SingleOrDefault_`
      - 
      - OnNextが2つ以上発行されたらエラー
      - 
-   * - 
-     - | :term:`Last_`
-       | :term:`LastOrDefault_`
+   * - `22 <https://blog.okazuki.jp/entry/20120103/1325587713>`__
+     - :term:`Last_`
      - .. figure:: images/Last.png
      - Observableの最後の値だけを通す
+     - * OnCompletedが呼ばれない限り値を返さないのでフリーズに注意
+       * 要素が存在しない場合は例外を発生させる
+   * - `22 <https://blog.okazuki.jp/entry/20120103/1325587713>`__
+     - :term:`LastOrDefault_`
      - 
+     - Lastと同じ
+     - 要素が存在しない場合は型のデフォルト値を返す（stringであればnull）
    * - `8 <https://blog.okazuki.jp/entry/20111113/1321191314>`__
      - :term:`Take_`
      - .. figure:: images/Take.png
      - 先頭から指定した個数だけ通す
      - 指定した個数を通したらすぐにOnCompleted()
+   * - `33 <https://blog.okazuki.jp/entry/20120209/1328799859>`__
+     - :term:`TakeLast`
+     - 
+     - 末尾から指定した個数だけ通す
+     - 
    * - `8 <https://blog.okazuki.jp/entry/20111113/1321191314>`__
      - :term:`TakeWhile_`
      - .. figure:: images/TakeWhile.png
@@ -214,7 +230,12 @@ ReactiveExtensionsメソッドリスト
    * - `8 <https://blog.okazuki.jp/entry/20111113/1321191314>`__
      - :term:`Skip_`
      - .. figure:: images/Skip.png
-     - 先頭から指定した個数無視
+     - 先頭から指定した個数を無視して残りを全て通す
+     - 
+   * - `33 <https://blog.okazuki.jp/entry/20120209/1328799859>`__
+     - :term:`SkipLast`
+     - 
+     - 末尾から指定した個数を無視して残りを全て通す
      - 
    * - `8 <https://blog.okazuki.jp/entry/20111113/1321191314>`__
      - :term:`SkipWhile_`
@@ -229,11 +250,16 @@ ReactiveExtensionsメソッドリスト
      - * 先頭から指定したObservableにOnNextが来るまで無視
        * 引数がIObservable
      - SkipUntil(IObservable<TOther> other)
-   * - 
+   * - `22 <https://blog.okazuki.jp/entry/20120103/1325587713>`__
+     - :term:`ElementAt_`
+     - 
+     - 
+     - 
+   * - `32 <https://blog.okazuki.jp/entry/20120205/1328452448>`__
      - :term:`OfType<T>`
      - 
-     - 型が一致するもののみ通す(型変換も同時に行う)
-     - 
+     - 型が一致するもののみを通す(型変換も同時に行う)
+     - source.OfType<int>().Subscribe(); // intのみを通す
    * - 
      - :term:`IgnoreElements`
      - .. figure:: images/IgnoreElements.png
@@ -437,6 +463,9 @@ ReactiveExtensionsメソッドリスト
      - 直前のメッセージとセットにする
      - Bufer(2,1)と挙動は似ている
 
+メッセージの変換
+================
+
 .. list-table:: メッセージの変換
    :header-rows: 1
    :widths: 1, 3, 10, 6, 6
@@ -451,31 +480,35 @@ ReactiveExtensionsメソッドリスト
      - 
      - 値を変換/値に関数を適用する
      - 他の言語だとmap
-   * -
+   * - `32 <https://blog.okazuki.jp/entry/20120205/1328452448>`__
      - :term:`Cast<T>`
      - 
-     - 型変換をする
-     - 
+     - 型変換をする（単純なキャストを行うためのメソッド）
+     - * source.Cast<int>().Subscribe();
+       * 型変換を行いつつ型が一致するもののみ通したい場合はOfTypeメソッドを用いる
    * -
      - :term:`Materialize`
      - .. figure:: images/Materialize.png
      - メッセージにイベントのメタ情報を付与
      - OnNext/OnError/OnCompletedのどれであるかを示す情報を付与
-   * -
+   * - `31 <https://blog.okazuki.jp/entry/20120205/1328450809>`__
      - :term:`TimeInterval`
      - .. figure:: images/TimeInterval.png
      - 前回のメッセージからの経過時間を付与
      - 
-   * -
+   * - `31 <https://blog.okazuki.jp/entry/20120205/1328450809>`__
      - :term:`TimeStamp`
      - .. figure:: images/TimeStamp.png
      - メッセージにタイムスタンプを付与
      - 
    * -
      - :term:`AsUnitObservable`
-     - 
      - メッセージをUnit型に変換
      - Select(_=>Unit.Default)と同義
+     - 
+
+時間に絡んだ処理
+================
 
 .. list-table:: 時間に絡んだ処理
    :header-rows: 1
@@ -496,11 +529,12 @@ ReactiveExtensionsメソッドリスト
      - 
      - メッセージを時間遅延させる
      - 
-   * - 
+   * - `30 <https://blog.okazuki.jp/entry/20120205/1328274110>`__
      - :term:`Timeout`
      - .. figure:: images/Timeout.png
      - * 最後にOnNextが発行されてから一定時間以内に次のOnNextが来なかったらOnErrorを発行
        * Subscribeしてから一定時刻までにOnCompletedが来なかったらOnErrorを発行
+       * タイムアウト後に発行する値をCreate()メソッドを使って作り出すことが可能
      - 
    * - `27 <https://blog.okazuki.jp/entry/20120201/1328107196>`__
      - :term:`Sample`
@@ -539,21 +573,6 @@ ReactiveExtensionsメソッドリスト
      - IObservableのシーケンスを処理する ``途中に`` 任意のアクションを実行（途中ではなく最後にアクションを実行する場合はSubscribeを使用する）
      - * .Where().Select().Do().Select().Subscribe()など
        * 本来は外部に対して副作用を起こさないReactive Extensionsの処理の中で副作用を起こすためのメソッドとなるため、Doメソッドの利用は必要最低限にとどめること
-
-.. list-table:: 時間に関する情報を付与するTimestampとTimeIntervalメソッド
-   :header-rows: 1
-   :widths: 1, 3, 10, 6, 6
-
-   * - link
-     - メソッド
-     - 図
-     - 説明
-     - 備考
-   * - `31 <https://blog.okazuki.jp/entry/20120205/1328450809>`__
-     - :term:`Timestamp`
-     - .. figure:: images/Timestamp.png
-     - タイムスタンプを追加する
-     - 
 
 .. list-table:: その他メソッドリスト
    :header-rows: 1
@@ -726,6 +745,7 @@ To*****系メソッド
        * 初期値設定も可能
      - | var s = new Subject<int>();
        | s.Aggregate((x, y) => x > y ? x : y).Subscribe(i => {});
+       
    * - `17 <https://blog.okazuki.jp/entry/20111212/1323698319>`__
      - :term:`Scan`
      - .. figure:: images/Scan.png
@@ -798,4 +818,6 @@ To*****系メソッド
      - :term:`GroupByUntil`
      - 
      - 
+
+
      - 
