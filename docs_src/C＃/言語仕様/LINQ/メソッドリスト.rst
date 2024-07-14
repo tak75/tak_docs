@@ -9,23 +9,22 @@
    メソッド,説明
    :term:`All`,引数に条件を書ける
    :term:`Any`,引数に条件を書ける
-   :term:`AsEnumerable`,
+   :term:`AsEnumerable`,対象となったオブジェクトをIEnumerable<T>型に変換する
    :term:`AsOrdered`,
-   :term:`AsParallel`,クエリの並列化を有効にする
+   :term:`AsParallel`,クエリの並列化を有効にする。通常のクエリを並列クエリに変換する
    :term:`AsSequential`,
    :term:`AsUnordered`,
-   :term:`Cast`,
+   :term:`Cast`,シーケンスの個々の要素の型変換を行う。変換できない場合は例外発生（⇔ OfType）
+   :term:`Chunk`,シーケンスを指定個数で分割する
    :term:`Contains`,要素に指定した値が存在するかを調べる
    :term:`Count`,シーケンスの要素数を返す。引数に条件を書ける
-   :term:`DefaultIfEmpty`,
-   :term:`ElementAt`,
-   :term:`ElementAtOrDefault`,
-   :term:`Empty`,
+   :term:`DefaultIfEmpty`,シーケンスが空の場合はデフォルト値のみを含むシーケンスを返す。空ではない場合はシーケンスをそのまま返す
+   :term:`ElementAt`,シーケンスの指定インデックスの要素を取得する
+   :term:`ElementAtOrDefault`,シーケンスの指定インデックスの要素を取得する。存在しない要素を指定した場合に例外ではなく型のデフォルト値を返す
+   :term:`Empty`,空のシーケンスを取得する
    :term:`ForAll`,
-   :term:`GroupJoin`,
-   :term:`Join`,
    :term:`LongCount`,
-   :term:`OfType`,
+   :term:`OfType`,シーケンスの個々の要素の型変換を行う。変換できない場合は無視（⇔ Cast）
    :term:`Select`,シーケンスを射影する
    :term:`SelectMany`,シーケンスの各要素をIEnumerable<T>に射影し、結果のシーケンスを1つのシーケンスに平坦化する
    :term:`SequenceEqual`,2つのシーケンスの各要素が等しいことをチェックする
@@ -53,7 +52,8 @@
 
    メソッド,説明
    :term:`Where`,
-   :term:`Distinct`,
+   :term:`Distinct`,シーケンスから重複する要素を取り除き、どの値も1つしか含まれないようにする
+   :term:`DistinctBy`,Distinctメソッドと似ているが、等価を判定する値を選ぶキーセレクターを指定する点で異なっている
    :term:`First`,シーケンスの最初の要素、または条件を満たす最初の1つを返す。該当データがない場合は例外となる
    :term:`FirstOrDefault`,シーケンスの最初の要素、または条件を満たす最初の1つを返す。該当データがない場合は型の既定値を返す
    :term:`Last`,シーケンスの最後の要素、または条件を満たす最後の1つを返す。該当データがない場合は例外となる
@@ -72,6 +72,14 @@
    :term:`OrderByDescending`,シーケンスを降順に並び替える
    :term:`Reverse`,シーケンスの順番を逆転させる
 
+.. csv-table:: 要素の追加
+   :header-rows: 1
+   :widths: 2, 6
+
+   メソッド,説明
+   :term:`Append`,配列やリストの最後に指定した要素を追加し、新たな別の配列やリストを作成する
+   :term:`Prepend`,配列やリストの先頭に指定した要素を追加し、新たな別の配列やリストを作成する
+
 .. csv-table:: シーケンスの合成
    :header-rows: 1
    :widths: 2, 6
@@ -88,25 +96,26 @@
    :term:`Union`, .. figure:: images/Union.png,論理和(OR)。2つのシーケンスを連結する。その際、重複する要素は削除する
    :term:`Intersect`, .. figure:: images/Intersect.png,論理積(AND)。2つのシーケンスに共通して含まれる要素のシーケンスを作成する
    :term:`Except`, .. figure:: images/Except.png,2つのシーケンスにおいて、片方のシーケンスのみに存在する要素のシーケンスを作成する
+   :term:`ExceptBy`, ,キーセレクター関数を使用するだけでExceptと同じ機能
+
+.. csv-table:: シーケンスの合成（内部結合、外部結合）
+   :header-rows: 1
+   :widths: 2, 2, 6
+
+   メソッド,図,説明
+   :term:`Join`, .. figure:: images/Join.png,内部結合
+   :term:`GroupJoin`, .. figure:: images/GroupJoin.png,外部結合。2つのシーケンスのキーが等しいかどうか判定し、要素を関連づけて結果をグループ化する
 
 .. csv-table:: 要素同士の演算
    :header-rows: 1
    :widths: 2, 6
 
    メソッド,説明
-   :term:`Aggregate`,String.Join()と同じ挙動。要素同士を指定フォーマットで結合。要素が数値の場合は指定フォーマットで集計できる
+   :term:`Aggregate`,String.Join()と似た挙動。要素同士を指定フォーマットで結合。要素が数値の場合は指定フォーマットで集計できる
    :term:`Average`,
    :term:`Sum`,
    :term:`Max`,
    :term:`Min`,
-
-.. csv-table:: 要素の追加
-   :header-rows: 1
-   :widths: 2, 6
-
-   メソッド,説明
-   :term:`Append`,配列やリストの最後に指定した要素を追加し、新たな別の配列やリストを作成する
-   :term:`Prepend`,配列やリストの先頭に指定した要素を追加し、新たな別の配列やリストを作成する
 
 .. csv-table:: グループ化
    :header-rows: 1

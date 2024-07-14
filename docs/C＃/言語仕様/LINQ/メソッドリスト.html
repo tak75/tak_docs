@@ -138,13 +138,13 @@
 <td><p>引数に条件を書ける</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-AsEnumerable"><span class="xref std std-term">AsEnumerable</span></a></p></td>
-<td></td>
+<td><p>対象となったオブジェクトをIEnumerable&lt;T&gt;型に変換する</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-AsOrdered"><span class="xref std std-term">AsOrdered</span></a></p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-AsParallel"><span class="xref std std-term">AsParallel</span></a></p></td>
-<td><p>クエリの並列化を有効にする</p></td>
+<td><p>クエリの並列化を有効にする。通常のクエリを並列クエリに変換する</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-AsSequential"><span class="xref std std-term">AsSequential</span></a></p></td>
 <td></td>
@@ -153,75 +153,72 @@
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Cast"><span class="xref std std-term">Cast</span></a></p></td>
-<td></td>
+<td><p>シーケンスの個々の要素の型変換を行う。変換できない場合は例外発生（⇔ OfType）</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Contains"><span class="xref std std-term">Contains</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Chunk"><span class="xref std std-term">Chunk</span></a></p></td>
+<td><p>シーケンスを指定個数で分割する</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Contains"><span class="xref std std-term">Contains</span></a></p></td>
 <td><p>要素に指定した値が存在するかを調べる</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Count"><span class="xref std std-term">Count</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Count"><span class="xref std std-term">Count</span></a></p></td>
 <td><p>シーケンスの要素数を返す。引数に条件を書ける</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-DefaultIfEmpty"><span class="xref std std-term">DefaultIfEmpty</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-DefaultIfEmpty"><span class="xref std std-term">DefaultIfEmpty</span></a></p></td>
+<td><p>シーケンスが空の場合はデフォルト値のみを含むシーケンスを返す。空ではない場合はシーケンスをそのまま返す</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-ElementAt"><span class="xref std std-term">ElementAt</span></a></p></td>
+<td><p>シーケンスの指定インデックスの要素を取得する</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-ElementAtOrDefault"><span class="xref std std-term">ElementAtOrDefault</span></a></p></td>
+<td><p>シーケンスの指定インデックスの要素を取得する。存在しない要素を指定した場合に例外ではなく型のデフォルト値を返す</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Empty"><span class="xref std std-term">Empty</span></a></p></td>
+<td><p>空のシーケンスを取得する</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-ForAll"><span class="xref std std-term">ForAll</span></a></p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-ElementAt"><span class="xref std std-term">ElementAt</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-LongCount"><span class="xref std std-term">LongCount</span></a></p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-ElementAtOrDefault"><span class="xref std std-term">ElementAtOrDefault</span></a></p></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-OfType"><span class="xref std std-term">OfType</span></a></p></td>
+<td><p>シーケンスの個々の要素の型変換を行う。変換できない場合は無視（⇔ Cast）</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Empty"><span class="xref std std-term">Empty</span></a></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-ForAll"><span class="xref std std-term">ForAll</span></a></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-GroupJoin"><span class="xref std std-term">GroupJoin</span></a></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Join"><span class="xref std std-term">Join</span></a></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-LongCount"><span class="xref std std-term">LongCount</span></a></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-OfType"><span class="xref std std-term">OfType</span></a></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Select"><span class="xref std std-term">Select</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Select"><span class="xref std std-term">Select</span></a></p></td>
 <td><p>シーケンスを射影する</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-SelectMany"><span class="xref std std-term">SelectMany</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-SelectMany"><span class="xref std std-term">SelectMany</span></a></p></td>
 <td><p>シーケンスの各要素をIEnumerable&lt;T&gt;に射影し、結果のシーケンスを1つのシーケンスに平坦化する</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-SequenceEqual"><span class="xref std std-term">SequenceEqual</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-SequenceEqual"><span class="xref std std-term">SequenceEqual</span></a></p></td>
 <td><p>2つのシーケンスの各要素が等しいことをチェックする</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Single"><span class="xref std std-term">Single</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Single"><span class="xref std std-term">Single</span></a></p></td>
 <td><p>たった1つのが該当データを取り出す。存在ない場合、2つ以上存在する場合は例外</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-SingleOrDefault"><span class="xref std std-term">SingleOrDefault</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-SingleOrDefault"><span class="xref std std-term">SingleOrDefault</span></a></p></td>
 <td><p>たった1つのが該当データを取り出す。存在しない場合は既定値。2つ以上存在する場合は例外</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-ToArray"><span class="xref std std-term">ToArray</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-ToArray"><span class="xref std std-term">ToArray</span></a></p></td>
 <td><p>シーケンスから配列を作成する</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-ToDictionary"><span class="xref std std-term">ToDictionary</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-ToDictionary"><span class="xref std std-term">ToDictionary</span></a></p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-ToList"><span class="xref std std-term">ToList</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-ToList"><span class="xref std std-term">ToList</span></a></p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-WithCancellation"><span class="xref std std-term">WithCancellation</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-WithCancellation"><span class="xref std std-term">WithCancellation</span></a></p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-WithDegreeOfParallelism"><span class="xref std std-term">WithDegreeOfParallelism</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-WithDegreeOfParallelism"><span class="xref std std-term">WithDegreeOfParallelism</span></a></p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-WithExecutionMode"><span class="xref std std-term">WithExecutionMode</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-WithExecutionMode"><span class="xref std std-term">WithExecutionMode</span></a></p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-WithMergeOptions"><span class="xref std std-term">WithMergeOptions</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-WithMergeOptions"><span class="xref std std-term">WithMergeOptions</span></a></p></td>
 <td></td>
 </tr>
 </tbody>
@@ -262,30 +259,33 @@
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Distinct"><span class="xref std std-term">Distinct</span></a></p></td>
-<td></td>
+<td><p>シーケンスから重複する要素を取り除き、どの値も1つしか含まれないようにする</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-First"><span class="xref std std-term">First</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-DistinctBy"><span class="xref std std-term">DistinctBy</span></a></p></td>
+<td><p>Distinctメソッドと似ているが、等価を判定する値を選ぶキーセレクターを指定する点で異なっている</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-First"><span class="xref std std-term">First</span></a></p></td>
 <td><p>シーケンスの最初の要素、または条件を満たす最初の1つを返す。該当データがない場合は例外となる</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-FirstOrDefault"><span class="xref std std-term">FirstOrDefault</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-FirstOrDefault"><span class="xref std std-term">FirstOrDefault</span></a></p></td>
 <td><p>シーケンスの最初の要素、または条件を満たす最初の1つを返す。該当データがない場合は型の既定値を返す</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Last"><span class="xref std std-term">Last</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Last"><span class="xref std std-term">Last</span></a></p></td>
 <td><p>シーケンスの最後の要素、または条件を満たす最後の1つを返す。該当データがない場合は例外となる</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-LastOrDefault"><span class="xref std std-term">LastOrDefault</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-LastOrDefault"><span class="xref std std-term">LastOrDefault</span></a></p></td>
 <td><p>シーケンスの最後の要素、または条件を満たす最後の1つを返す。該当データがない場合は型の既定値を返す</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Skip"><span class="xref std std-term">Skip</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Skip"><span class="xref std std-term">Skip</span></a></p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-SkipWhile"><span class="xref std std-term">SkipWhile</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-SkipWhile"><span class="xref std std-term">SkipWhile</span></a></p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Take"><span class="xref std std-term">Take</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Take"><span class="xref std std-term">Take</span></a></p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-TakeWhile"><span class="xref std std-term">TakeWhile</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-TakeWhile"><span class="xref std std-term">TakeWhile</span></a></p></td>
 <td></td>
 </tr>
 </tbody>
@@ -314,7 +314,27 @@
 </tbody>
 </table>
 <table class="colwidths-given docutils align-default" id="id6">
-<caption><span class="caption-number">表 22 </span><span class="caption-text">シーケンスの合成</span><a class="headerlink" href="#id6" title="このテーブルへのパーマリンク">¶</a></caption>
+<caption><span class="caption-number">表 22 </span><span class="caption-text">要素の追加</span><a class="headerlink" href="#id6" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>メソッド</p></th>
+<th class="head"><p>説明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="xref std std-term">Append</span></p></td>
+<td><p>配列やリストの最後に指定した要素を追加し、新たな別の配列やリストを作成する</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="xref std std-term">Prepend</span></p></td>
+<td><p>配列やリストの先頭に指定した要素を追加し、新たな別の配列やリストを作成する</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id7">
+<caption><span class="caption-number">表 23 </span><span class="caption-text">シーケンスの合成</span><a class="headerlink" href="#id7" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 75%" />
@@ -333,8 +353,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id7">
-<caption><span class="caption-number">表 23 </span><span class="caption-text">シーケンスの合成（集合）</span><a class="headerlink" href="#id7" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id8">
+<caption><span class="caption-number">表 24 </span><span class="caption-text">シーケンスの合成（集合）</span><a class="headerlink" href="#id8" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 20%" />
@@ -368,10 +388,44 @@
 </td>
 <td><p>2つのシーケンスにおいて、片方のシーケンスのみに存在する要素のシーケンスを作成する</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-ExceptBy"><span class="xref std std-term">ExceptBy</span></a></p></td>
+<td></td>
+<td><p>キーセレクター関数を使用するだけでExceptと同じ機能</p></td>
+</tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id8">
-<caption><span class="caption-number">表 24 </span><span class="caption-text">要素同士の演算</span><a class="headerlink" href="#id8" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id9">
+<caption><span class="caption-number">表 25 </span><span class="caption-text">シーケンスの合成（内部結合、外部結合）</span><a class="headerlink" href="#id9" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>メソッド</p></th>
+<th class="head"><p>図</p></th>
+<th class="head"><p>説明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Join"><span class="xref std std-term">Join</span></a></p></td>
+<td><figure class="align-default">
+<img alt="../../../_images/Join.png" src="../../../_images/Join.png" />
+</figure>
+</td>
+<td><p>内部結合</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-GroupJoin"><span class="xref std std-term">GroupJoin</span></a></p></td>
+<td><figure class="align-default">
+<img alt="../../../_images/GroupJoin.png" src="../../../_images/GroupJoin.png" />
+</figure>
+</td>
+<td><p>外部結合。2つのシーケンスのキーが等しいかどうか判定し、要素を関連づけて結果をグループ化する</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id10">
+<caption><span class="caption-number">表 26 </span><span class="caption-text">要素同士の演算</span><a class="headerlink" href="#id10" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 75%" />
@@ -383,7 +437,7 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Aggregate"><span class="xref std std-term">Aggregate</span></a></p></td>
-<td><p>String.Join()と同じ挙動。要素同士を指定フォーマットで結合。要素が数値の場合は指定フォーマットで集計できる</p></td>
+<td><p>String.Join()と似た挙動。要素同士を指定フォーマットで結合。要素が数値の場合は指定フォーマットで集計できる</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E8%AA%AC%E6%98%8E.html#term-Average"><span class="xref std std-term">Average</span></a></p></td>
 <td></td>
@@ -399,28 +453,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id9">
-<caption><span class="caption-number">表 25 </span><span class="caption-text">要素の追加</span><a class="headerlink" href="#id9" title="このテーブルへのパーマリンク">¶</a></caption>
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 75%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>メソッド</p></th>
-<th class="head"><p>説明</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><span class="xref std std-term">Append</span></p></td>
-<td><p>配列やリストの最後に指定した要素を追加し、新たな別の配列やリストを作成する</p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="xref std std-term">Prepend</span></p></td>
-<td><p>配列やリストの先頭に指定した要素を追加し、新たな別の配列やリストを作成する</p></td>
-</tr>
-</tbody>
-</table>
-<table class="colwidths-given docutils align-default" id="id10">
-<caption><span class="caption-number">表 26 </span><span class="caption-text">グループ化</span><a class="headerlink" href="#id10" title="このテーブルへのパーマリンク">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id11">
+<caption><span class="caption-number">表 27 </span><span class="caption-text">グループ化</span><a class="headerlink" href="#id11" title="このテーブルへのパーマリンク">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 75%" />

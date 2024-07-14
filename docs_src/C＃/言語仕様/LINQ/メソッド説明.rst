@@ -58,11 +58,73 @@ LINQのメソッドリスト
 
   Cast
 
-    * aa
+    * シーケンスの個々のオブジェクトの型変換を行う
+    * ボックス化/ボックス化解除も実行できる
+    * ただし、変換できないオブジェクトがあるとそこで例外が発生して動作は停止する
+    * 全てのシーケンスの要素が変換可能である必要がある
+    * 変換できないオブジェクトを無視したいときはOfTypeメソッドを使う
+    * 実はこのメソッドはCastという名前であるにも関わらずキャストを実行するわけではない
+    * このメソッドで実行されるのは、参照変換とボックス化と解除変換だけである
+    * 他の変換は実行できないので、サンプルソース中で示されている通り、intからlongへの変換は実行できない
+
+      .. code-block:: csharp
+
+        A[] a = { new B() };  
+        foreach (var item in a.Cast<B>()) item.Hello();  
+        
+        object[] x = { 1, 2 };  
+        foreach (var item in x.Cast<int>()) Console.Write("{item} ");  
+        Console.WriteLine();  
+        
+        int[] b = { 1, 2, 3 }; 
+        //var r = b.Cast<long>();   // ←できない  
+        var r = b.Select(c => (long)c);   // ←できる  
+        foreach (var item in r) Console.Write("{item} ");  
+        Console.WriteLine();  
+        
+        class A { }  
+        class B : A  
+        {   
+          public void Hello() => Console.WriteLine("Hello!");  
+        }
+        
+        // 実行結果  
+        // Hello!  
+        // 1 2  
+        // 1 2 3
+
+  Chunk
+
+    * Chunkメソッドを使用すると引数の値を個数として複数の配列に分割する
+    * たとえば、10個の要素があるシーケンスにChunk(5)を実行すると、5個の要素を持つ配列2つに分割する
+    * 配列の列挙オブジェクトを生成する
+    * 最後の配列のみ、数が足りない場合は指定した数よりも小さくなるかもしれない
+    * このメソッドは、分割結果を必ず配列の列挙オブジェクトとして返すので、分割する単位が大きいと効率が良くない
+    * Span<T>構造体とそのSplitメソッドを使って分割する方が良いだろう
+
+      .. code-block:: csharp
+
+        IEnumerable<int> a = Enumerable.Range(0, 10);  
+        IEnumerable<int[]> x = a.Chunk(4);  
+        foreach (var item in x)  
+        {  
+          foreach (var item2 in item) Console.Write("{item2} ");  
+          Console.WriteLine(); 
+        }  
+        
+        // 実行結果  
+        // 0 1 2 3  
+        // 4 5 6 7
+        // 8 9
 
   Concat
 
     * 2つのシーケンスを連結する（Enumerable.Concatの場合）
+    * A.Concat(B).Concat(C).Concat(D).Concat(E)のように繰り返し連結しても良い
+    * 追加するのがシーケンスではなく一つの要素ならAppendメソッドの方が良い
+    * 要素100個の配列と要素200個の配列をConcatメソッドで連結しても、要素300個の配列が産まれるわけではない
+    * あくまで、Concatメソッドは二つのシーケンスが連結されるという情報を追加するだけである
+    * 要素300個の配列が欲しければToArrayメソッドを更に使う
 
       .. code-block:: csharp
 
@@ -120,19 +182,50 @@ LINQのメソッドリスト
             }
         }
 
-    * aa
+  Contains
+
+    * 比較を行うカスタム機能を指定することも可能なので、特定のフィールドの値が特定の値の場合のみ含まれていると見なすような使い方もできる
+    * その場合はIEqualityComparer<T>インターフェースを実装したオブジェクトを用意する
 
       .. code-block:: csharp
 
-
-  Contains
-
-    * aa
+        using System.Diagnostics.CodeAnalysis;  
+        
+        Person[] persons = {   
+          new Person("Jun",18),   
+          new Person("Jinpei",20), 
+          new Person("Ken",18),  
+        };  
+        
+        Person Joe = new Person("Joe", 20);  
+        
+        var r = persons.Contains(Joe, new MyComparer()) ? "いる" : "いない";  
+        Console.WriteLine("{Joe.Name}と同じ年齢の人は{r}");  
+        
+        record Person(string Name, int Age);  
+        
+        class MyComparer : IEqualityComparer<Person>  
+        {   
+          public bool Equals(Person? x, Person? y)   
+          {   
+            return x?.Age == y?.Age;   
+          }   
+          
+          public int GetHashCode([DisallowNull] Person obj)   
+          {   
+            return obj.Age.GetHashCode();   
+          }  
+        }  
+        
+        // 実行結果  
+        // Joeと同じ年齢の人はいる
 
   Count
 
     * シーケンスの要素数を返す
     * 条件を付加した場合は、その条件を満たす要素数を返す
+    * null許容型の平均値の場合、null値は単純に無視される
+    * シーケンスの値が全てnullの時、Averageメソッドはnullを返す
 
       .. code-block:: csharp
 
@@ -142,27 +235,71 @@ LINQのメソッドリスト
 
   DefaultIfEmpty
 
-    * aa
+    * シーケンスが空の場合はデフォルト値のみを含むシーケンスを返す
+    * 空ではない場合はシーケンスをそのまま返す
+    * Max()メソッドのように空のシーケンスで使うと例外を起こしてしまう場合に、直前に挟むことで例外を回避することができる（ただしMaxの結果が0となることを許容できる場合）
 
   Distinct
 
-    * aa
+    * シーケンスから重複する要素を取り除き、どの値も1つしか含まれないようにする
+    * 引数にIEqualityComparer<T>インターフェースを実装した比較オブジェクトを渡すと比較をカスタマイズできる
+    * たとえば、商品名が違っていてもID番号が同じなら【同じ】と見なして除去することもできる
+
+  DistinctBy
+
+    * Distinctメソッドと似ているが、等価を判定する値を選ぶキーセレクターを指定する点で異なっている
+
+      .. code-block:: csharp
+
+        Person[] p = {  
+          new Person("Taro",new DateTime(2023,1,1)),  
+          new Person("Taro",new DateTime(2023,1,2)),  
+          new Person("Jiro",new DateTime(2023,1,3)),  
+          new Person("Taro",new DateTime(2023,1,4)),  
+          new Person("Saburo",new DateTime(2023,1,5)),  
+        };   
+        
+        Console.WriteLine(string.Join(',',p.DistinctBy(c=>c.Name).Select(c=>c.Name)));  
+        
+        record Person(string Name, DateTime Time);  
+        
+        // 実行結果  
+        // Taro,Jiro,Saburo
 
   ElementAt
 
-    * aa
+    * シーケンスの指定インデックスの要素を取得する
+    * 値の取得のみができる
+    * シーケンスの列挙を前提とするので、速度は遅い
+    * あまり使われない
 
   ElementAtOrDefault
 
-    * aa
+    * ElementAt参照
+    * 存在しない要素を指定した場合に例外ではなく型のデフォルト値を返すようにすることができる
 
   Empty
 
-    * aa
+    * 空のシーケンスを取得する
+    * 空のシーケンスはダミーの引数に便利である他、例のようにAppendメソッドやConcatメソッドで要素を追加するタネとして使うこともできる
+    * 空の配列も使えるが、Emptyメソッドの方が空のシーケンスを作るという意図を明確に示すことができる
+
+      .. code-block:: csharp
+
+        var a = Enumerable.Empty<int>();  
+        for (int i = 1; i <= 256; i *= 2) a = a.Append(i);  
+        Console.WriteLine($"{string.Join(',',a)}");  
+        
+        // 実行結果  
+        // 1,2,4,8,16,32,64,128,256
 
   Except
 
-    * aa
+    * 2 つのシーケンスの差集合を生成する
+
+  ExceptBy
+
+    * キー セレクター関数を使用するだけでExceptと同じ機能
 
   First
 
@@ -183,7 +320,7 @@ LINQのメソッドリスト
   FirstOrDefault
 
     * シーケンスの最初の要素、または条件を満たす最初の1つを返す
-    * 該当データがない場合は型の既定値を返す
+    * 該当データがない場合は型の既定値を返す、もしくは指定した値を返す
 
   ForAll
 
@@ -191,11 +328,58 @@ LINQのメソッドリスト
 
   GroupBy
 
-    * aa
+    * 引数で指定したキーセレクターで取得された値に従って要素の値をグループ分けする
+    * キー値の一致判定はコードを指定することもできるので、柔軟に動作をカスタマイズできる
+    * 結果は二重の列挙となる
+    * キーの列挙と、個々のキーに属する要素の列挙である
+
+      .. code-block:: csharp
+
+        Person[] p =  
+        {   
+          new Person(1,"一之瀬"),   
+          new Person(2,"二階堂"),   
+          new Person(1,"一橋"),  
+        };
+        foreach (var item in p.GroupBy(c => c.Grade))  
+        {
+          Console.WriteLine("{0}年生グループ", item.Key);   
+          foreach (var item2 in item) Console.WriteLine(item2.Name);  
+        }  
+        
+        record Person(int Grade,string Name);  
+        
+        // 実行結果: 
+        // 1年生グループ
+        // 一之瀬  
+        // 一橋  
+        // 2年生グループ  
+        // 二階堂
+
 
   GroupJoin
 
-    * aa
+    *  シーケンスを2つ入力して新しいシーケンスを作り出す
+    *  作成されたシーケンスは二重の列挙となる
+    *  このメソッドの特徴はキーのセレクターが2つあること
+    *  つまり、二つのシーケンスから別々の条件でキーを取得することもできる
+
+      .. code-block:: csharp
+
+        // 頭文字が同じ名前の組み合わせを姓リストと名リストから全て生成する
+        // c => c[0]とd =>d[0]はどちらもキーのセレクターである
+        string[] a = { "Anderson", "Brian", "Hanazono" };  
+        string[] b = { "Alice", "Antonio", "Hanako" };  
+        var q = a.GroupJoin(b, c => c[0], d => d[0], (x, e) => new { x, e });  
+        
+        foreach (var n in q)   
+          foreach (var m in n.e)   C
+            onsole.WriteLine("{m} {n.x}");  
+            
+        // 実行結果  
+        // Alice Anderson  
+        // Antonio Anderson  
+        // Hanako Hanazono
 
   Intersect
 
