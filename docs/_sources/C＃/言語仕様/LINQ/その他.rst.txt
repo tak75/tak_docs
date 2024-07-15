@@ -48,20 +48,6 @@
     values.Add("AAA");
     Console.WriteLine(string.Join(",", res1));  // ABC
 
-IEnumerable -> 配列 変換
-========================
-
-  .. code-block:: csharp
-
-    var array = enumerableCollection.ToArray();
-
-IEnumerable -> List 変換
-========================
-
-  .. code-block:: csharp
-
-    var list = enumerableCollection.ToList();
-
 2次元 -> 1次元 変更
 ===================
 

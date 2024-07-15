@@ -2,30 +2,39 @@
 メソッド説明
 ============
 
-LINQのメソッドリスト
-====================
-
 .. glossary::
 
   Aggregate
 
-    * aa
+    * Aggregateメソッドはアキュムレータ関数を使用してシーケンスに任意の処理を行うメソッド
+    * アキュムレータ関数とは、それまでの計算結果を参照する関数である
+    * つまり、【前回までのあらすじ】を参照できる
+    * ただし、参照できるのは一つ手前の値だけである
+    * Aggregateメソッドのバリエーションによっては初期値を指定できる
 
   All
 
-    * aa
+    * 全ての要素が条件を満たすかを判定する
+    * 引数に条件を書ける
 
   Any
 
-    * aa
+    * 条件を満たす要素が1つでもあるかを判定する
+    * 引数に条件を書ける
+
+  Append
+
+    * 配列やリストの最後に指定した要素を追加し、新たな別の配列やリストを作成する
 
   AsEnumerable
 
-    * aa
+    * 並列クエリから直列クエリに変換する
+    *  :term:`AsSequential` と同じ？
 
   AsOrdered
 
-    * aa
+    * 並列クエリにおいて、順番を守る
+    *  :term:`AsParallel` 参照
 
   AsParallel
 
@@ -44,17 +53,65 @@ LINQのメソッドリスト
         // 並列処理
         var byParallel = a.AsParallel().Count(c => c == 1);
 
+    * 以下サンプルコードの結果より言えること
+     
+      * 通常のクエリではなく、パラレルクエリを使った方が確実に速い
+      * 順番を強制するOrderedのクエリでも、パラレルクエリの方が速い
+
+      .. code-block:: csharp
+
+        int[] a =  new int[2000000000]; 
+        a[a.Length - 1] = 1; 
+
+        var  start1 = DateTime.Now; 
+        var  bySerial = a.Count(c => c == 1); 
+        Console.WriteLine("Normal {0}", DateTime.Now - start1); 
+
+        var  start2 = DateTime.Now; 
+        var  byParallel = a.AsParallel().Count(c => c == 1); 
+        Console.WriteLine("Parallel {0}", DateTime.Now - start2); 
+
+        var  start3 = DateTime.Now; 
+        var  byParallel2 = a.AsParallel().AsOrdered().Count(c => c == 1); 
+        Console.WriteLine("Ordered {0}", DateTime.Now - start3); 
+
+        var  start4 = DateTime.Now; 
+        var  byParallel3 = a.AsParallel().AsUnordered().Count(c => c == 1); 
+        Console.WriteLine("Unordered {0}", DateTime.Now - start4); 
+
+        // 実行結果
+        // Normal 00:00:13.7736821 
+        // Parallel 00:00:04.2208770 
+        // Ordered 00:00:03.3979774 
+        // Unordered 00:00:02.5850392
+
   AsSequential
 
-    * aa
+    * 並列クエリから直列クエリに変換する
+    *  :term:`AsEnumerable` と同じ？
 
   AsUnordered
 
-    * aa
+    * 並列クエリにおいて、順番をバラバラにしてもよい
+    *  :term:`AsParallel` 参照
 
   Average
 
-    * aa
+    * 平均値を計算する。
+    * nullが含まれる場合はその要素を無視した平均値が計算される
+    * null許容型→null許容型になる
+
+      .. code-block:: csharp
+
+        int?[] a = { 1, null, 2 };  
+        Console.WriteLine(a.Average());  
+        
+        double?[] b = { null, null, null };  
+        Console.WriteLine(b.Average()==null);
+
+        // 実行結果  
+        // 1.5
+        // True
 
   Cast
 
@@ -62,7 +119,7 @@ LINQのメソッドリスト
     * ボックス化/ボックス化解除も実行できる
     * ただし、変換できないオブジェクトがあるとそこで例外が発生して動作は停止する
     * 全てのシーケンスの要素が変換可能である必要がある
-    * 変換できないオブジェクトを無視したいときはOfTypeメソッドを使う
+    * 変換できないオブジェクトを無視したいときは :term:`OfType` メソッドを使う
     * 実はこのメソッドはCastという名前であるにも関わらずキャストを実行するわけではない
     * このメソッドで実行されるのは、参照変換とボックス化と解除変換だけである
     * 他の変換は実行できないので、サンプルソース中で示されている通り、intからlongへの変換は実行できない
@@ -121,7 +178,7 @@ LINQのメソッドリスト
 
     * 2つのシーケンスを連結する（Enumerable.Concatの場合）
     * A.Concat(B).Concat(C).Concat(D).Concat(E)のように繰り返し連結しても良い
-    * 追加するのがシーケンスではなく一つの要素ならAppendメソッドの方が良い
+    * 追加するのがシーケンスではなく一つの要素なら :term:`Append` メソッドの方が良い
     * 要素100個の配列と要素200個の配列をConcatメソッドで連結しても、要素300個の配列が産まれるわけではない
     * あくまで、Concatメソッドは二つのシーケンスが連結されるという情報を追加するだけである
     * 要素300個の配列が欲しければToArrayメソッドを更に使う
@@ -225,7 +282,7 @@ LINQのメソッドリスト
     * シーケンスの要素数を返す
     * 条件を付加した場合は、その条件を満たす要素数を返す
     * null許容型の平均値の場合、null値は単純に無視される
-    * シーケンスの値が全てnullの時、Averageメソッドはnullを返す
+    * シーケンスの値が全てnullの時、 :term:`Average` メソッドはnullを返す
 
       .. code-block:: csharp
 
@@ -237,7 +294,7 @@ LINQのメソッドリスト
 
     * シーケンスが空の場合はデフォルト値のみを含むシーケンスを返す
     * 空ではない場合はシーケンスをそのまま返す
-    * Max()メソッドのように空のシーケンスで使うと例外を起こしてしまう場合に、直前に挟むことで例外を回避することができる（ただしMaxの結果が0となることを許容できる場合）
+    *  :term:`Max` メソッドのように空のシーケンスで使うと例外を起こしてしまう場合に、直前に挟むことで例外を回避することができる（ただしMaxの結果が0となることを許容できる場合）
 
   Distinct
 
@@ -247,7 +304,7 @@ LINQのメソッドリスト
 
   DistinctBy
 
-    * Distinctメソッドと似ているが、等価を判定する値を選ぶキーセレクターを指定する点で異なっている
+    *  :term:`Distinct` メソッドと似ているが、等価を判定する値を選ぶキーセレクターを指定する点で異なっている
 
       .. code-block:: csharp
 
@@ -299,7 +356,7 @@ LINQのメソッドリスト
 
   ExceptBy
 
-    * キー セレクター関数を使用するだけでExceptと同じ機能
+    * キー セレクター関数を使用するだけで :term:`Except` と同じ機能
 
   First
 
@@ -359,7 +416,8 @@ LINQのメソッドリスト
 
   GroupJoin
 
-    *  シーケンスを2つ入力して新しいシーケンスを作り出す
+    *  2つのシーケンスのキーが等しいかどうか判定し、要素を関連づけて結果をグループ化する
+    *  シーケンスを2つ入力して新しいシーケンスを作り出すS
     *  作成されたシーケンスは二重の列挙となる
     *  このメソッドの特徴はキーのセレクターが2つあること
     *  つまり、二つのシーケンスから別々の条件でキーを取得することもできる
@@ -381,46 +439,148 @@ LINQのメソッドリスト
         // Antonio Anderson  
         // Hanako Hanazono
 
+      .. code-block:: csharp
+
+        var query = PersonTable
+            .GroupJoin(
+                TeamTable,
+                t => t.PersonID,
+                p => p.PersonID,
+                (person, team) => new
+                {
+                    PersonID = person.PersonID,
+                    Name = person.Name,
+                    // (person, team)の時に、結合する側（team）がIEnumerable型になっている
+                    // そのため重複しない結合の場合、1つに絞る処理が必要
+                    TeamName = team.Any() > 0 ? team.FirstOrDefault().TeamName : "該当なし"
+                }
+            );
+
   Intersect
 
-    * aa
+    * 積集合(AND)
+    * 2つのシーケンスに共通して含まれる要素のシーケンスを作成する
+
+      .. code-block:: csharp
+
+        string[] danceClub = { "Hanako", "Misa", "Eriko" };  
+        string[] ikebanaClub = { "Eriko", "Misuzu", "Misa", "Michie" };  
+        
+        Console.WriteLine("ダンスクラブと生け花クラブの両方に所属しているのは
+        {
+          string.Join(',',danceClub.Intersect(ikebanaClub))
+        }");  
+        
+        // 実行結果  
+        // ダンスクラブと生け花クラブの両方に所属しているのはMisa,Eriko
+
+  IntersectBy
+
+    * キーセレクター関数を使用するだけで :term:`Intersect` と同じ機能
 
   Join
 
-    * aa
+    * 内部結合
+    * 2つのシーケンスを特定のキーを用いて合成して新しいシーケンスを作り出す
+
+      .. code-block:: csharp
+
+        var query =
+             PersonTable
+             .Join(
+                   TeamTable,
+                   t => t.PersonID,
+                   p => p.PersonID,
+                   (person, team) => new
+                   {
+                     PersonID = person.PersonID,
+                     Name = person.Name,
+                     TeamName = team.TeamName
+                   }
+             )
+             .Select(jointable=> new
+             {
+               PersonID = jointable.PersonID,
+               Name = jointable.Name,
+               TeamName = jointable.TeamName
+             };
 
   Last
 
     * シーケンスの最後の要素、または条件を満たす最後の1つを返す。該当データがない場合は例外となる
     * :term:`First` とほぼ同じ
+    * 最後の要素へのアクセスは、"^" を使用することも可能
+    * 該当する要素が1つしかシーケンスに存在しないことが予め分かっている時、Single/SingleOrDefaultメソッドの代用として使うことはお勧めしない
+    * このメソッドはシーケンスの末尾を必ず確認するので、性能面でFirst/FirstOrDefaultメソッドよりも不利である
+
+      .. code-block:: csharp
+
+        var s = "The String";  
+        
+        // 昔ながらのスタイル  
+        Console.WriteLine("{s}の最後の1文字は{s.Last()}");  
+        
+        // 比較的新しいスタイル  
+        Console.WriteLine("{s}の最後の1文字は{s[^1]}");
 
   LastOrDefault
 
     * シーケンスの最後の要素、または条件を満たす最後の1つを返す。該当データがない場合は型の既定値を返す
-    * :term:`FirstOrDefault` とほぼ同じ
+    *  :term:`FirstOrDefault` とほぼ同じ
 
   LongCount
 
-    * aa
+    * シーケンス内の要素の数をlong型で返す
+    *  :term:`Count` メソッドでは扱えないほど大きなシーケンスを扱う場合に使う
 
   Max
 
-    * aa
+    * シーケンスの最大値を得る
+    * 最大値を提供したオブジェクトではなく最大値を返す
+
+  MaxBy
+
+    * キーセレクターを指定でき、キー値の最大を調べる
+    * MaxByメソッドはキーセレクターが返した値から最大値を捜すが、メソッド自身が返すのは最大値ではなく、最大値を提供したオブジェクトそのもの
 
   Min
 
-    * aa
+    * シーケンスの小値を得る
+    * 最小値を提供したオブジェクトではなく最小値を返す
 
+  MinBy
+
+    * キーセレクターを指定でき、キー値の最小を調べる
+    * MinByメソッドはキーセレクターが返した値から最小値を捜すが、メソッド自身が返すのは最小値ではなく、最小値を提供したオブジェクトそのもの
+  
   OfType
 
-    * aa
+    * シーケンスから指定された型に一致する要素のみを取り出す
+    * また、取り出された結果はその型になる
+    * 型によるフィルタリングと、その型に型を付け直す機能を持った便利な高機能メソッド
+
+      .. code-block:: csharp
+
+        object[] a = { 1, 2, 3, 4, "Hello", 5, 6, "Excellent!", "EOF" };  
+        Console.WriteLine("配列aの整数のみの合計は{a.OfType<int>().Sum()}");
+        
+        // 実行結果  
+        // 配列aの整数のみの合計は21
+
+  Order
+
+    * シーケンスを昇順に並び替える
+    * キーセレクターなし
 
   OrderBy
 
     * シーケンスを昇順に並び替える
+    * キーセレクターあり
     * 実行しても、元の配列の順は変わらない
-    * 一方、Array.Sort()は元の配列の順を変える
+    * 一方、Array.SortメソッドやList.Sortメソッドは元の配列の順を変える
     * 複数の条件でソートする場合は :term:`ThenBy` を使用する
+    * Order/OrderDescending/OrderBy/OrderByDescendingメソッドははっきり言って速くはない
+    * だから、Array.SortメソッドやList.Sortメソッドが使用できる時は、それらを使う方が良いこともある
 
       .. code-block:: csharp
 
@@ -433,14 +593,31 @@ LINQのメソッドリスト
         foreach(var item in a) Console.Write(item);
         // 出力 : 123
 
+  OrderDescending
+
+    * シーケンスを降順に並び替える
+    * キーセレクターなし
 
   OrderByDescending
 
     * シーケンスを降順に並び替える
+    * キーセレクターあり
+
+  Prepend
+
+    * 配列やリストの先頭に指定した要素を追加し、新たな別の配列やリストを作成する
 
   Range
 
-    * aa
+    * 開始値と個数を指定した昇順のシーケンスを生成する
+    * 増分は常に1であるが、その後でSelect文をつないで計算式を書いて加工すれば、様々な数列を生成でき、応用範囲は割と広い
+
+      .. code-block:: csharp
+
+        Console.WriteLine("{string.Join(',', Enumerable.Range(0, 10))}"); 
+
+        // 実行結果 
+        // 0,1,2,3,4,5,6,7,8,9
 
   Repeat
 
@@ -458,7 +635,7 @@ LINQのメソッドリスト
 
   Select
 
-    * シーケンスを射影する
+    * シーケンスを加工して新しいシーケンスを作成する
 
   SelectMany
 
@@ -480,7 +657,7 @@ LINQのメソッドリスト
                     new SampleData { Name = "c", DataList = new List<int> { 7, 8, 9 } },
                 };
 
-                // SelectManyでリストの中のリストを１つにまとめたものを他の項目と組み合わせる
+                // SelectManyでリストの中のリストを1つにまとめたものを他の項目と組み合わせる
                 var result = list.SelectMany(
                                       data => data.DataList,                                    // (1)
                     (data, DataList_value) => new { Name = data.Name, Value = DataList_value }  // (2)
@@ -512,6 +689,7 @@ LINQのメソッドリスト
 
     * 2つのシーケンスを入力に持つクエリを実現するために使用される
     * 全ての組み合わせが生成される
+    * つまり、シーケンス1の要素が2個で、シーケンス2の要素が3個なら2×3=6個の要素のシーケンスが生成される
     * 以下は掛け算の九九表の例
     * 上記の例と同じ引数2つの使い方であるが、(1)において、
       上記はlist内のDataListを平坦化したコレクションを使用しているのに対して、
@@ -527,9 +705,105 @@ LINQのメソッドリスト
                       x => list2,                         // (1) x:list1の要素
                   (x,y) => x + "X" + y + "=" + (x * y));  // (2) y:list2の要素     
 
+      .. code-block:: csharp
+
+        // 3つのシーケンスの例
+        // 中学では算数が数学に変わり、英語が追加されている処理を記述した例
+        // 小学の判定は【小】の文字が含まれているかどうかで行っている  
+        string[] grades = { "小学1年", "小学2年", "中学1年" };
+        string[] types1 = { "国語", "算数" };  
+        string[] types2 = { "国語", "数学", "英語" };  
+        
+        var q = grades.SelectMany(   
+          t => t.Contains("小") ? types1 : types2,   
+          (g, t) => g + "の" + t   
+          );  
+        foreach (var item in q) Console.WriteLine(item);  
+        
+        // 実行結果  
+        // 小学1年の国語  
+        // 小学1年の算数  
+        // 小学2年の国語  
+        // 小学2年の算数  
+        // 中学1年の国語  
+        // 中学1年の数学  
+        // 中学1年の英語        
+
   SequenceEqual
 
-    * aa
+    * シーケンスの要素は全て一致しているか否かを調べる
+    * Dictionaryクラスのオブジェクトの比較もできる
+
+    .. code-block:: csharp
+
+      // IEnumerable<T>を実装しているオブジェクトであれば、実体が何であるかは一切問わない
+      // つまり、int[]とList<int>は比較可能であるが、int[]とlong[]は比較できない
+      int[] a = { 1, 2, 3 };  
+      List<int> b = new List<int> { 1, 2, 3 };  
+      int[] c = { 1, 2, 3 };  
+      
+      Console.WriteLine("aとbの比較結果: {a.SequenceEqual​(b)}");  
+      Console.WriteLine("aとeの比較結果: {a.SequenceEqual(c)}");  
+      
+      //実行結果  
+      // aとbの比較結果: True  
+      // aとcの比較結果: True
+  
+    * 一致判定はカスタマイズできる
+    * 判定をカスタマイズする方法は2つある
+    * 一つは、IEqualityComparer<T>インターフェースを実装してEqualsメソッドの動作を変更する方法
+    * もう一つは、IEqualityComparer<T>を実装したオブジェクトを比較用に渡す方法
+  
+    .. code-block:: csharp
+
+      // IEqualityComparer<T>インターフェースを実装してEqualsメソッドの動作を変更する方法
+      A[] a1 = { new A("ALICE"), new A("BETTY") };  
+      A[] a2 = { new A("alice"), new A("betty") };  
+      
+      Console.WriteLine(a1.SequenceEqual(a2));  
+      
+      class A : IEquatable<A>  
+      {   
+        public string Message { get; set; }   
+        // EqualsとGetHashCodeをoverrideして   
+        // 一致動作を一致させることが望ましい   
+        
+        public bool Equals(A? other) =>   
+          // 大文字小文字を同一視した判定   
+          Message.ToLower() == other?.Message.ToLower();   
+          
+        public A(string s) => Message = s;  
+      }
+        
+      // 実行結果  
+      // True
+  
+    .. code-block:: csharp
+
+      // IEqualityComparer<T>を実装したオブジェクトを比較用に渡す方法
+      using System.Diagnostics.CodeAnalysis;  
+      
+      A[] a1 = { new A("ALICE"), new A("BETTY") };  
+      A[] a2 = { new A("alice"), new A("betty") };  
+      
+      Console.WriteLine(a1.SequenceEqual(a2,new Eq()));  
+      Console.WriteLine(a1.SequenceEqual(a2));  
+      
+      class A  
+      {   
+        public string Message { get; set; }   
+        public A(string s) => Message = s;  
+      }  
+      
+      class Eq : IEqualityComparer<A>  
+      {   
+        public bool Equals(A? x, A? y) => x?.Message.ToLower() == y?.Message.ToLower();   
+        public int GetHashCode([DisallowNull] A obj) => obj.GetHashCode();
+      }  
+      
+      // 実行結果  
+      // True  
+      // False
 
   Single
 
@@ -552,23 +826,54 @@ LINQのメソッドリスト
 
   Skip
 
-    * aa
+    * シーケンスの先頭のn個の要素を読み飛ばし、新たなシーケンスを得る
+    * シーケンス内の要素数以上の数の要素をSkipした場合は空のシーケンスが返される
+
+  SkipLast
+
+    * シーケンスの末尾のn個の要素を読み飛ばし、新たなシーケンスを得る
 
   SkipWhile
 
-    * aa
+    * シーケンスにおいて、特定の条件を満たす要素が続く限り読み飛ばし、新たなシーケンスを得る
+ 
+    .. code-block:: csharp
+
+      int[] a = { 1, 2, 3, 4, 5, 4, 3, 2, 1 }; 
+      Console.WriteLine("SkipWhile(c=>c<5): { string.Join(',', a.SkipWhile(c => c < 5))}"); 
+      
+      // 実行結果
+      // SkipWhile(c=>c<5): 5,4,3,2,1
 
   Sum
 
-    * aa
+    * 入力シーケンスの合計を計算する
+    * 引数で積算するプロパティなどを指定できる
 
   Take
 
-    * aa
+    * シーケンスの先頭のn個の要素を取得し、新たなシーケンスを得る
+    * シーケンス内の要素数以上の数の要素をTakeした場合は存在する要素のみのシーケンスが返される
+    * 読み飛ばさずに取得することを除けばSkip/SkipLast/SkipWhileとほぼ同じだが、一つだけ大きく違うのはTakeメソッドにはレンジオブジェクトを指定するバリエーションが存在すること
+    * だから、シーケンスの特定の箇所をいきなり指定して、そこから読み込むことができる
+
+      .. code-block:: csharp
+
+        int[] a = { 1, 2, 3, 4, 5, 4, 3, 2, 1 }; 
+        Console.WriteLine("Take(5..7): { string.Join(',', a.Take(5..7))}"); 
+        Console.WriteLine("TakeWhile(c=>c<5): { string.Join(',', a.TakeWhile(c => c < 5))}"); 
+        
+        // 実行結果 
+        // Take(5..7): 4,3
+        // TakeWhile(c=>c<5): 1,2,3,4
+
+  TakeLast
+
+    * シーケンスの末尾のn個の要素を取得し、新たなシーケンスを得る
 
   TakeWhile
 
-    * aa
+    * シーケンスにおいて、特定の条件を満たす要素が続く限り取得し、新たなシーケンスを得る
 
   ThenBy
 
@@ -623,23 +928,86 @@ LINQのメソッドリスト
 
   ToDictionary
 
-    * aa
+    * シーケンスからDictionaryを作成する
+
+  ToHashSet
+
+    * シーケンスからHashSet(重複したオブジェクトを追加できないリストクラス)を作成する
 
   ToList
 
-    * aa
+    * シーケンスからListを作成する
 
   ToLookup
 
-    * aa
+    *  :term:`GroupBy` メソッドと同機能＋キーを指定して対象項目の要素のみを取り出せる
+    *  hogeArr["青"]など
+
+  TryGetNonEnumeratedCount
+
+    * 列挙を行わずにシーケンスの要素の数を調べられるかやってみる
+    * シーケンスの要素数はCountメソッドで調べられるが基本的にシーケンスの全ての要素を取りだしてみないと総数が分からない
+    * しかし、配列などは総数の情報を別途持っていて、要素を取り出さなくてもサイズが分かるようになっている
+    * こういう場合は、要素を取り出さずに要素数を返すことができる
+    * このメソッドはそのような特例的な状況をできるだけチェックして要素数を取得する
+    * しかし、全てのケースで取得できるわけではないので、取得できなかった場合を示すためにbool値を返す
+    * falseなら取得はできなかったことになる
+
+    .. code-block:: csharp
+
+      var  a = Enumerable.Range(1, 5); 
+      sub(a, nameof(a)); 
+      
+      var  a2 = Enumerable.Range(1, 5).Skip(1); 
+      sub(a2, nameof(a2)); 
+      
+      var  a3 = Enumerable.Range(1, 5).SkipWhile(c=>c>0); 
+      sub(a3, nameof(a3)); 
+      
+      int[] b = { 1, 2, 3, 4, 5 }; 
+      sub(b, nameof(b));
+
+      var  c = b.ToList(); 
+      sub(c, nameof(c)); 
+      
+      sub(myEnum(), nameof(myEnum)); 
+      
+      IEnumerable< int > myEnum() 
+      {   
+        for  ( int  i = 0; i < 5; i++)  yield   return  i; 
+      } 
+      
+      void  sub(IEnumerable< int > enu,  string  label) 
+      {   
+        var  r = enu.TryGetNonEnumeratedCount( out   int  count);   
+        if  (r) Console.WriteLine("{label} の要素数は{count}");   
+        else  Console.WriteLine("{label} の要素数は計測不能"); 
+      } 
+      
+      // 実行結果 
+      // aの要素数は5 
+      // a2の要素数は4 
+      // a3の要素数は計測不能 (SkipWhileメソッドは判定不能)
+      // bの要素数は5 
+      // cの要素数は5 
+      // myEnumの要素数は計測不能 (自作の列挙は判定不能)
 
   Union
 
-    * aa
+    * 和集合(OR)
+    * 2つのシーケンスを連結する
+    * その際、重複する要素は削除する
+    * 一致判定の条件はユーザー側で指定することもできる
+
+  UnionBy
+
+    * キー セレクター関数を使用するだけでUnionと同じ機能
 
   Where
 
-    * aa
+    * 条件に適合する要素としない要素を識別し、条件に適合する要素だけからなるシーケンスを生成する
+
+
 
   WithCancellation
 
@@ -659,4 +1027,35 @@ LINQのメソッドリスト
 
   Zip
 
-    * aa
+    * 2つまたは3つのシーケンスから一つのシーケンスを産み出す
+    * 性格の異なる3つのバリエーションが存在する
+
+      * 2つのシーケンスから指定コードで1つのシーケンスを産み出す (何が生まれるかはコード次第) 
+      * 2つのシーケンスから2つの要素の値を含むValueTuple型のシーケンスを産み出す
+      * 3つのシーケンスから3つの要素の値を含むValueTuple型のシーケンスを産み出す
+
+    * 入力シーケンスの要素数は全て同じでなければならない(はみ出た分は採用されない)
+
+    .. code-block:: csharp
+
+      string[] s1 = { "杉並", "世田谷", "三鷹" }; 
+      string[] s2 = { "区", "区", "市" }; 
+      string[] s3 = { "荻窪", "世田谷", "野崎" };
+
+      foreach  (var item  in  s1.Zip(s2, (a, b) => a + b)) Console.WriteLine(item); 
+      foreach  (var item  in  s1.Zip(s2)) Console.WriteLine("{item.First}{item.Second}"); 
+      foreach  (var item  in  s1.Zip(s2,s3)) Console.WriteLine("{item.First}{item.Second}{item.Third}"); 
+      
+      // 実行結果 
+      // 杉並区 
+      // 世田谷区 
+      // 三鷹市 
+
+      // 杉並区 
+      // 世田谷区 
+      // 三鷹市 
+
+      // 杉並区荻窪 
+      // 世田谷区世田谷 
+      // 三鷹市野崎
+

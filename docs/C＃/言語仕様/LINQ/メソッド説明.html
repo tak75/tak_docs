@@ -119,27 +119,37 @@
              
   <section id="id1">
 <h1>メソッド説明<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<section id="linq">
-<h2>LINQのメソッドリスト<a class="headerlink" href="#linq" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <dl class="glossary">
 <dt id="term-Aggregate">Aggregate<a class="headerlink" href="#term-Aggregate" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p>Aggregateメソッドはアキュムレータ関数を使用してシーケンスに任意の処理を行うメソッド</p></li>
+<li><p>アキュムレータ関数とは、それまでの計算結果を参照する関数である</p></li>
+<li><p>つまり、【前回までのあらすじ】を参照できる</p></li>
+<li><p>ただし、参照できるのは一つ手前の値だけである</p></li>
+<li><p>Aggregateメソッドのバリエーションによっては初期値を指定できる</p></li>
 </ul>
 </dd>
 <dt id="term-All">All<a class="headerlink" href="#term-All" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p>全ての要素が条件を満たすかを判定する</p></li>
+<li><p>引数に条件を書ける</p></li>
 </ul>
 </dd>
 <dt id="term-Any">Any<a class="headerlink" href="#term-Any" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p>条件を満たす要素が1つでもあるかを判定する</p></li>
+<li><p>引数に条件を書ける</p></li>
+</ul>
+</dd>
+<dt id="term-Append">Append<a class="headerlink" href="#term-Append" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>配列やリストの最後に指定した要素を追加し、新たな別の配列やリストを作成する</p></li>
 </ul>
 </dd>
 <dt id="term-AsEnumerable">AsEnumerable<a class="headerlink" href="#term-AsEnumerable" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p>並列クエリから直列クエリに変換する</p></li>
+<li><p><a class="reference internal" href="#term-AsSequential"><span class="xref std std-term">AsSequential</span></a> と同じ？</p></li>
 </ul>
 </dd>
 <dt id="term-AsOrdered">AsOrdered<a class="headerlink" href="#term-AsOrdered" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p>並列クエリにおいて、順番を守る</p></li>
+<li><p><a class="reference internal" href="#term-AsParallel"><span class="xref std std-term">AsParallel</span></a> 参照</p></li>
 </ul>
 </dd>
 <dt id="term-AsParallel">AsParallel<a class="headerlink" href="#term-AsParallel" title="Permalink to this term">¶</a></dt><dd><ul>
@@ -157,18 +167,66 @@
 </pre></div>
 </div>
 </li>
+<li><p>以下サンプルコードの結果より言えること</p>
+<ul class="simple">
+<li><p>通常のクエリではなく、パラレルクエリを使った方が確実に速い</p></li>
+<li><p>順番を強制するOrderedのクエリでも、パラレルクエリの方が速い</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">[]</span> <span class="n">a</span> <span class="p">=</span>  <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="m">2000000000</span><span class="p">];</span>
+<span class="n">a</span><span class="p">[</span><span class="n">a</span><span class="p">.</span><span class="n">Length</span> <span class="p">-</span> <span class="m">1</span><span class="p">]</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+
+<span class="kt">var</span>  <span class="n">start1</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
+<span class="kt">var</span>  <span class="n">bySerial</span> <span class="p">=</span> <span class="n">a</span><span class="p">.</span><span class="n">Count</span><span class="p">(</span><span class="n">c</span> <span class="p">=&gt;</span> <span class="n">c</span> <span class="p">==</span> <span class="m">1</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Normal {0}&quot;</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span> <span class="p">-</span> <span class="n">start1</span><span class="p">);</span>
+
+<span class="kt">var</span>  <span class="n">start2</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
+<span class="kt">var</span>  <span class="n">byParallel</span> <span class="p">=</span> <span class="n">a</span><span class="p">.</span><span class="n">AsParallel</span><span class="p">().</span><span class="n">Count</span><span class="p">(</span><span class="n">c</span> <span class="p">=&gt;</span> <span class="n">c</span> <span class="p">==</span> <span class="m">1</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Parallel {0}&quot;</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span> <span class="p">-</span> <span class="n">start2</span><span class="p">);</span>
+
+<span class="kt">var</span>  <span class="n">start3</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
+<span class="kt">var</span>  <span class="n">byParallel2</span> <span class="p">=</span> <span class="n">a</span><span class="p">.</span><span class="n">AsParallel</span><span class="p">().</span><span class="n">AsOrdered</span><span class="p">().</span><span class="n">Count</span><span class="p">(</span><span class="n">c</span> <span class="p">=&gt;</span> <span class="n">c</span> <span class="p">==</span> <span class="m">1</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Ordered {0}&quot;</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span> <span class="p">-</span> <span class="n">start3</span><span class="p">);</span>
+
+<span class="kt">var</span>  <span class="n">start4</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
+<span class="kt">var</span>  <span class="n">byParallel3</span> <span class="p">=</span> <span class="n">a</span><span class="p">.</span><span class="n">AsParallel</span><span class="p">().</span><span class="n">AsUnordered</span><span class="p">().</span><span class="n">Count</span><span class="p">(</span><span class="n">c</span> <span class="p">=&gt;</span> <span class="n">c</span> <span class="p">==</span> <span class="m">1</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Unordered {0}&quot;</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span> <span class="p">-</span> <span class="n">start4</span><span class="p">);</span>
+
+<span class="c1">// 実行結果</span>
+<span class="c1">// Normal 00:00:13.7736821</span>
+<span class="c1">// Parallel 00:00:04.2208770</span>
+<span class="c1">// Ordered 00:00:03.3979774</span>
+<span class="c1">// Unordered 00:00:02.5850392</span>
+</pre></div>
+</div>
+</li>
 </ul>
 </dd>
 <dt id="term-AsSequential">AsSequential<a class="headerlink" href="#term-AsSequential" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p>並列クエリから直列クエリに変換する</p></li>
+<li><p><a class="reference internal" href="#term-AsEnumerable"><span class="xref std std-term">AsEnumerable</span></a> と同じ？</p></li>
 </ul>
 </dd>
 <dt id="term-AsUnordered">AsUnordered<a class="headerlink" href="#term-AsUnordered" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p>並列クエリにおいて、順番をバラバラにしてもよい</p></li>
+<li><p><a class="reference internal" href="#term-AsParallel"><span class="xref std std-term">AsParallel</span></a> 参照</p></li>
 </ul>
 </dd>
-<dt id="term-Average">Average<a class="headerlink" href="#term-Average" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<dt id="term-Average">Average<a class="headerlink" href="#term-Average" title="Permalink to this term">¶</a></dt><dd><ul>
+<li><p>平均値を計算する。</p></li>
+<li><p>nullが含まれる場合はその要素を無視した平均値が計算される</p></li>
+<li><p>null許容型→null許容型になる</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">int?</span><span class="p">[]</span> <span class="n">a</span> <span class="p">=</span> <span class="p">{</span> <span class="m">1</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="m">2</span> <span class="p">};</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">Average</span><span class="p">());</span>
+
+<span class="kt">double?</span><span class="p">[]</span> <span class="n">b</span> <span class="p">=</span> <span class="p">{</span> <span class="k">null</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="k">null</span> <span class="p">};</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">Average</span><span class="p">()==</span><span class="k">null</span><span class="p">);</span>
+
+<span class="c1">// 実行結果</span>
+<span class="c1">// 1.5</span>
+<span class="c1">// True</span>
+</pre></div>
+</div>
+</li>
 </ul>
 </dd>
 <dt id="term-Cast">Cast<a class="headerlink" href="#term-Cast" title="Permalink to this term">¶</a></dt><dd><ul>
@@ -176,7 +234,7 @@
 <li><p>ボックス化/ボックス化解除も実行できる</p></li>
 <li><p>ただし、変換できないオブジェクトがあるとそこで例外が発生して動作は停止する</p></li>
 <li><p>全てのシーケンスの要素が変換可能である必要がある</p></li>
-<li><p>変換できないオブジェクトを無視したいときはOfTypeメソッドを使う</p></li>
+<li><p>変換できないオブジェクトを無視したいときは <a class="reference internal" href="#term-OfType"><span class="xref std std-term">OfType</span></a> メソッドを使う</p></li>
 <li><p>実はこのメソッドはCastという名前であるにも関わらずキャストを実行するわけではない</p></li>
 <li><p>このメソッドで実行されるのは、参照変換とボックス化と解除変換だけである</p></li>
 <li><p>他の変換は実行できないので、サンプルソース中で示されている通り、intからlongへの変換は実行できない</p>
@@ -235,7 +293,7 @@
 <dt id="term-Concat">Concat<a class="headerlink" href="#term-Concat" title="Permalink to this term">¶</a></dt><dd><ul>
 <li><p>2つのシーケンスを連結する（Enumerable.Concatの場合）</p></li>
 <li><p>A.Concat(B).Concat(C).Concat(D).Concat(E)のように繰り返し連結しても良い</p></li>
-<li><p>追加するのがシーケンスではなく一つの要素ならAppendメソッドの方が良い</p></li>
+<li><p>追加するのがシーケンスではなく一つの要素なら <a class="reference internal" href="#term-Append"><span class="xref std std-term">Append</span></a> メソッドの方が良い</p></li>
 <li><p>要素100個の配列と要素200個の配列をConcatメソッドで連結しても、要素300個の配列が産まれるわけではない</p></li>
 <li><p>あくまで、Concatメソッドは二つのシーケンスが連結されるという情報を追加するだけである</p></li>
 <li><p>要素300個の配列が欲しければToArrayメソッドを更に使う</p>
@@ -338,7 +396,7 @@
 <li><p>シーケンスの要素数を返す</p></li>
 <li><p>条件を付加した場合は、その条件を満たす要素数を返す</p></li>
 <li><p>null許容型の平均値の場合、null値は単純に無視される</p></li>
-<li><p>シーケンスの値が全てnullの時、Averageメソッドはnullを返す</p>
+<li><p>シーケンスの値が全てnullの時、 <a class="reference internal" href="#term-Average"><span class="xref std std-term">Average</span></a> メソッドはnullを返す</p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;lの数は{0}個&quot;</span><span class="p">,</span> <span class="s">&quot;Hello&quot;</span><span class="p">.</span><span class="n">Count</span><span class="p">(</span><span class="n">c</span> <span class="p">=&gt;</span> <span class="n">c</span> <span class="p">==</span><span class="sc">&#39;l&#39;</span><span class="p">));</span>
 
 <span class="c1">// 出力 : lの数は2個</span>
@@ -350,7 +408,7 @@
 <dt id="term-DefaultIfEmpty">DefaultIfEmpty<a class="headerlink" href="#term-DefaultIfEmpty" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>シーケンスが空の場合はデフォルト値のみを含むシーケンスを返す</p></li>
 <li><p>空ではない場合はシーケンスをそのまま返す</p></li>
-<li><p>Max()メソッドのように空のシーケンスで使うと例外を起こしてしまう場合に、直前に挟むことで例外を回避することができる（ただしMaxの結果が0となることを許容できる場合）</p></li>
+<li><p><a class="reference internal" href="#term-Max"><span class="xref std std-term">Max</span></a> メソッドのように空のシーケンスで使うと例外を起こしてしまう場合に、直前に挟むことで例外を回避することができる（ただしMaxの結果が0となることを許容できる場合）</p></li>
 </ul>
 </dd>
 <dt id="term-Distinct">Distinct<a class="headerlink" href="#term-Distinct" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
@@ -359,9 +417,11 @@
 <li><p>たとえば、商品名が違っていてもID番号が同じなら【同じ】と見なして除去することもできる</p></li>
 </ul>
 </dd>
-<dt id="term-DistinctBy">DistinctBy<a class="headerlink" href="#term-DistinctBy" title="Permalink to this term">¶</a></dt><dd><ul>
-<li><p>Distinctメソッドと似ているが、等価を判定する値を選ぶキーセレクターを指定する点で異なっている</p>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">Person</span><span class="p">[]</span> <span class="n">p</span> <span class="p">=</span> <span class="p">{</span>
+<dt id="term-DistinctBy">DistinctBy<a class="headerlink" href="#term-DistinctBy" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p><a class="reference internal" href="#term-Distinct"><span class="xref std std-term">Distinct</span></a> メソッドと似ているが、等価を判定する値を選ぶキーセレクターを指定する点で異なっている</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">Person</span><span class="p">[]</span> <span class="n">p</span> <span class="p">=</span> <span class="p">{</span>
   <span class="k">new</span> <span class="nf">Person</span><span class="p">(</span><span class="s">&quot;Taro&quot;</span><span class="p">,</span><span class="k">new</span> <span class="n">DateTime</span><span class="p">(</span><span class="m">2023</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">)),</span>
   <span class="k">new</span> <span class="nf">Person</span><span class="p">(</span><span class="s">&quot;Taro&quot;</span><span class="p">,</span><span class="k">new</span> <span class="n">DateTime</span><span class="p">(</span><span class="m">2023</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">)),</span>
   <span class="k">new</span> <span class="nf">Person</span><span class="p">(</span><span class="s">&quot;Jiro&quot;</span><span class="p">,</span><span class="k">new</span> <span class="n">DateTime</span><span class="p">(</span><span class="m">2023</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">)),</span>
@@ -377,8 +437,7 @@
 <span class="c1">// Taro,Jiro,Saburo</span>
 </pre></div>
 </div>
-</li>
-</ul>
+</div></blockquote>
 </dd>
 <dt id="term-ElementAt">ElementAt<a class="headerlink" href="#term-ElementAt" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>シーケンスの指定インデックスの要素を取得する</p></li>
@@ -412,7 +471,7 @@ Console.WriteLine($&quot;{string.Join(&#39;,&#39;,a)}&quot;);
 </ul>
 </dd>
 <dt id="term-ExceptBy">ExceptBy<a class="headerlink" href="#term-ExceptBy" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>キー セレクター関数を使用するだけでExceptと同じ機能</p></li>
+<li><p>キー セレクター関数を使用するだけで <a class="reference internal" href="#term-Except"><span class="xref std std-term">Except</span></a> と同じ機能</p></li>
 </ul>
 </dd>
 <dt id="term-First">First<a class="headerlink" href="#term-First" title="Permalink to this term">¶</a></dt><dd><ul>
@@ -471,7 +530,8 @@ Console.WriteLine($&quot;{string.Join(&#39;,&#39;,a)}&quot;);
 </ul>
 </dd>
 <dt id="term-GroupJoin">GroupJoin<a class="headerlink" href="#term-GroupJoin" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>シーケンスを2つ入力して新しいシーケンスを作り出す</p></li>
+<li><p>2つのシーケンスのキーが等しいかどうか判定し、要素を関連づけて結果をグループ化する</p></li>
+<li><p>シーケンスを2つ入力して新しいシーケンスを作り出すS</p></li>
 <li><p>作成されたシーケンスは二重の列挙となる</p></li>
 <li><p>このメソッドの特徴はキーのセレクターが2つあること</p></li>
 <li><p>つまり、二つのシーケンスから別々の条件でキーを取得することもできる</p></li>
@@ -493,19 +553,89 @@ Console.WriteLine($&quot;{string.Join(&#39;,&#39;,a)}&quot;);
 <span class="c1">// Hanako Hanazono</span>
 </pre></div>
 </div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">query</span> <span class="p">=</span> <span class="n">PersonTable</span>
+    <span class="p">.</span><span class="n">GroupJoin</span><span class="p">(</span>
+        <span class="n">TeamTable</span><span class="p">,</span>
+        <span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">PersonID</span><span class="p">,</span>
+        <span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">PersonID</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">person</span><span class="p">,</span> <span class="n">team</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">new</span>
+        <span class="p">{</span>
+            <span class="n">PersonID</span> <span class="p">=</span> <span class="n">person</span><span class="p">.</span><span class="n">PersonID</span><span class="p">,</span>
+            <span class="n">Name</span> <span class="p">=</span> <span class="n">person</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span>
+            <span class="c1">// (person, team)の時に、結合する側（team）がIEnumerable型になっている</span>
+            <span class="c1">// そのため重複しない結合の場合、1つに絞る処理が必要</span>
+            <span class="n">TeamName</span> <span class="p">=</span> <span class="n">team</span><span class="p">.</span><span class="n">Any</span><span class="p">()</span> <span class="p">&gt;</span> <span class="m">0</span> <span class="p">?</span> <span class="n">team</span><span class="p">.</span><span class="n">FirstOrDefault</span><span class="p">().</span><span class="n">TeamName</span> <span class="p">:</span> <span class="s">&quot;該当なし&quot;</span>
+        <span class="p">}</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
 </div></blockquote>
 </dd>
-<dt id="term-Intersect">Intersect<a class="headerlink" href="#term-Intersect" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<dt id="term-Intersect">Intersect<a class="headerlink" href="#term-Intersect" title="Permalink to this term">¶</a></dt><dd><ul>
+<li><p>積集合(AND)</p></li>
+<li><p>2つのシーケンスに共通して含まれる要素のシーケンスを作成する</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">string</span><span class="p">[]</span> <span class="n">danceClub</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;Hanako&quot;</span><span class="p">,</span> <span class="s">&quot;Misa&quot;</span><span class="p">,</span> <span class="s">&quot;Eriko&quot;</span> <span class="p">};</span>
+<span class="kt">string</span><span class="p">[]</span> <span class="n">ikebanaClub</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;Eriko&quot;</span><span class="p">,</span> <span class="s">&quot;Misuzu&quot;</span><span class="p">,</span> <span class="s">&quot;Misa&quot;</span><span class="p">,</span> <span class="s">&quot;Michie&quot;</span> <span class="p">};</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;ダンスクラブと生け花クラブの両方に所属しているのは</span>
+<span class="p">{</span>
+  <span class="kt">string</span><span class="p">.</span><span class="n">Join</span><span class="p">(</span><span class="sc">&#39;,&#39;</span><span class="p">,</span><span class="n">danceClub</span><span class="p">.</span><span class="n">Intersect</span><span class="p">(</span><span class="n">ikebanaClub</span><span class="p">))</span>
+<span class="p">}</span><span class="s">&quot;);</span>
+
+<span class="c1">// 実行結果</span>
+<span class="c1">// ダンスクラブと生け花クラブの両方に所属しているのはMisa,Eriko</span>
+</pre></div>
+</div>
+</li>
 </ul>
 </dd>
-<dt id="term-Join">Join<a class="headerlink" href="#term-Join" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<dt id="term-IntersectBy">IntersectBy<a class="headerlink" href="#term-IntersectBy" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>キーセレクター関数を使用するだけで <a class="reference internal" href="#term-Intersect"><span class="xref std std-term">Intersect</span></a> と同じ機能</p></li>
 </ul>
 </dd>
-<dt id="term-Last">Last<a class="headerlink" href="#term-Last" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<dt id="term-Join">Join<a class="headerlink" href="#term-Join" title="Permalink to this term">¶</a></dt><dd><ul>
+<li><p>内部結合</p></li>
+<li><p>2つのシーケンスを特定のキーを用いて合成して新しいシーケンスを作り出す</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">query</span> <span class="p">=</span>
+     <span class="n">PersonTable</span>
+     <span class="p">.</span><span class="n">Join</span><span class="p">(</span>
+           <span class="n">TeamTable</span><span class="p">,</span>
+           <span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">PersonID</span><span class="p">,</span>
+           <span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">PersonID</span><span class="p">,</span>
+           <span class="p">(</span><span class="n">person</span><span class="p">,</span> <span class="n">team</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">new</span>
+           <span class="p">{</span>
+             <span class="n">PersonID</span> <span class="p">=</span> <span class="n">person</span><span class="p">.</span><span class="n">PersonID</span><span class="p">,</span>
+             <span class="n">Name</span> <span class="p">=</span> <span class="n">person</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span>
+             <span class="n">TeamName</span> <span class="p">=</span> <span class="n">team</span><span class="p">.</span><span class="n">TeamName</span>
+           <span class="p">}</span>
+     <span class="p">)</span>
+     <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">jointable</span><span class="p">=&gt;</span> <span class="k">new</span>
+     <span class="p">{</span>
+       <span class="n">PersonID</span> <span class="p">=</span> <span class="n">jointable</span><span class="p">.</span><span class="n">PersonID</span><span class="p">,</span>
+       <span class="n">Name</span> <span class="p">=</span> <span class="n">jointable</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span>
+       <span class="n">TeamName</span> <span class="p">=</span> <span class="n">jointable</span><span class="p">.</span><span class="n">TeamName</span>
+     <span class="p">};</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+<dt id="term-Last">Last<a class="headerlink" href="#term-Last" title="Permalink to this term">¶</a></dt><dd><ul>
 <li><p>シーケンスの最後の要素、または条件を満たす最後の1つを返す。該当データがない場合は例外となる</p></li>
 <li><p><a class="reference internal" href="#term-First"><span class="xref std std-term">First</span></a> とほぼ同じ</p></li>
+<li><p>最後の要素へのアクセスは、&quot;^&quot; を使用することも可能</p></li>
+<li><p>該当する要素が1つしかシーケンスに存在しないことが予め分かっている時、Single/SingleOrDefaultメソッドの代用として使うことはお勧めしない</p></li>
+<li><p>このメソッドはシーケンスの末尾を必ず確認するので、性能面でFirst/FirstOrDefaultメソッドよりも不利である</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">s</span> <span class="p">=</span> <span class="s">&quot;The String&quot;</span><span class="p">;</span>
+
+<span class="c1">// 昔ながらのスタイル</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;{s}の最後の1文字は{s.Last()}&quot;</span><span class="p">);</span>
+
+<span class="c1">// 比較的新しいスタイル</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;{s}の最後の1文字は{s[^1]}&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
 </ul>
 </dd>
 <dt id="term-LastOrDefault">LastOrDefault<a class="headerlink" href="#term-LastOrDefault" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
@@ -514,26 +644,57 @@ Console.WriteLine($&quot;{string.Join(&#39;,&#39;,a)}&quot;);
 </ul>
 </dd>
 <dt id="term-LongCount">LongCount<a class="headerlink" href="#term-LongCount" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p>シーケンス内の要素の数をlong型で返す</p></li>
+<li><p><a class="reference internal" href="#term-Count"><span class="xref std std-term">Count</span></a> メソッドでは扱えないほど大きなシーケンスを扱う場合に使う</p></li>
 </ul>
 </dd>
 <dt id="term-Max">Max<a class="headerlink" href="#term-Max" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p>シーケンスの最大値を得る</p></li>
+<li><p>最大値を提供したオブジェクトではなく最大値を返す</p></li>
+</ul>
+</dd>
+<dt id="term-MaxBy">MaxBy<a class="headerlink" href="#term-MaxBy" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>キーセレクターを指定でき、キー値の最大を調べる</p></li>
+<li><p>MaxByメソッドはキーセレクターが返した値から最大値を捜すが、メソッド自身が返すのは最大値ではなく、最大値を提供したオブジェクトそのもの</p></li>
 </ul>
 </dd>
 <dt id="term-Min">Min<a class="headerlink" href="#term-Min" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p>シーケンスの小値を得る</p></li>
+<li><p>最小値を提供したオブジェクトではなく最小値を返す</p></li>
 </ul>
 </dd>
-<dt id="term-OfType">OfType<a class="headerlink" href="#term-OfType" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<dt id="term-MinBy">MinBy<a class="headerlink" href="#term-MinBy" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>キーセレクターを指定でき、キー値の最小を調べる</p></li>
+<li><p>MinByメソッドはキーセレクターが返した値から最小値を捜すが、メソッド自身が返すのは最小値ではなく、最小値を提供したオブジェクトそのもの</p></li>
+</ul>
+</dd>
+<dt id="term-OfType">OfType<a class="headerlink" href="#term-OfType" title="Permalink to this term">¶</a></dt><dd><ul>
+<li><p>シーケンスから指定された型に一致する要素のみを取り出す</p></li>
+<li><p>また、取り出された結果はその型になる</p></li>
+<li><p>型によるフィルタリングと、その型に型を付け直す機能を持った便利な高機能メソッド</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">object</span><span class="p">[]</span> <span class="n">a</span> <span class="p">=</span> <span class="p">{</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="s">&quot;Hello&quot;</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="s">&quot;Excellent!&quot;</span><span class="p">,</span> <span class="s">&quot;EOF&quot;</span> <span class="p">};</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;配列aの整数のみの合計は{a.OfType&lt;int&gt;().Sum()}&quot;</span><span class="p">);</span>
+
+<span class="c1">// 実行結果</span>
+<span class="c1">// 配列aの整数のみの合計は21</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+<dt id="term-Order">Order<a class="headerlink" href="#term-Order" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>シーケンスを昇順に並び替える</p></li>
+<li><p>キーセレクターなし</p></li>
 </ul>
 </dd>
 <dt id="term-OrderBy">OrderBy<a class="headerlink" href="#term-OrderBy" title="Permalink to this term">¶</a></dt><dd><ul>
 <li><p>シーケンスを昇順に並び替える</p></li>
+<li><p>キーセレクターあり</p></li>
 <li><p>実行しても、元の配列の順は変わらない</p></li>
-<li><p>一方、Array.Sort()は元の配列の順を変える</p></li>
-<li><p>複数の条件でソートする場合は <a class="reference internal" href="#term-ThenBy"><span class="xref std std-term">ThenBy</span></a> を使用する</p>
+<li><p>一方、Array.SortメソッドやList.Sortメソッドは元の配列の順を変える</p></li>
+<li><p>複数の条件でソートする場合は <a class="reference internal" href="#term-ThenBy"><span class="xref std std-term">ThenBy</span></a> を使用する</p></li>
+<li><p>Order/OrderDescending/OrderBy/OrderByDescendingメソッドははっきり言って速くはない</p></li>
+<li><p>だから、Array.SortメソッドやList.Sortメソッドが使用できる時は、それらを使う方が良いこともある</p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">[]</span> <span class="n">a</span> <span class="p">=</span> <span class="p">{</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">};</span>
 
 <span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">a</span><span class="p">.</span><span class="n">OrderBy</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">))</span> <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
@@ -547,12 +708,30 @@ Console.WriteLine($&quot;{string.Join(&#39;,&#39;,a)}&quot;);
 </li>
 </ul>
 </dd>
-<dt id="term-OrderByDescending">OrderByDescending<a class="headerlink" href="#term-OrderByDescending" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<dt id="term-OrderDescending">OrderDescending<a class="headerlink" href="#term-OrderDescending" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>シーケンスを降順に並び替える</p></li>
+<li><p>キーセレクターなし</p></li>
 </ul>
 </dd>
-<dt id="term-Range">Range<a class="headerlink" href="#term-Range" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<dt id="term-OrderByDescending">OrderByDescending<a class="headerlink" href="#term-OrderByDescending" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>シーケンスを降順に並び替える</p></li>
+<li><p>キーセレクターあり</p></li>
+</ul>
+</dd>
+<dt id="term-Prepend">Prepend<a class="headerlink" href="#term-Prepend" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>配列やリストの先頭に指定した要素を追加し、新たな別の配列やリストを作成する</p></li>
+</ul>
+</dd>
+<dt id="term-Range">Range<a class="headerlink" href="#term-Range" title="Permalink to this term">¶</a></dt><dd><ul>
+<li><p>開始値と個数を指定した昇順のシーケンスを生成する</p></li>
+<li><p>増分は常に1であるが、その後でSelect文をつないで計算式を書いて加工すれば、様々な数列を生成でき、応用範囲は割と広い</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;{string.Join(&#39;,&#39;, Enumerable.Range(0, 10))}&quot;</span><span class="p">);</span>
+
+<span class="c1">// 実行結果</span>
+<span class="c1">// 0,1,2,3,4,5,6,7,8,9</span>
+</pre></div>
+</div>
+</li>
 </ul>
 </dd>
 <dt id="term-Repeat">Repeat<a class="headerlink" href="#term-Repeat" title="Permalink to this term">¶</a></dt><dd><ul>
@@ -570,7 +749,7 @@ Console.WriteLine($&quot;{string.Join(&#39;,&#39;,a)}&quot;);
 </ul>
 </dd>
 <dt id="term-Select">Select<a class="headerlink" href="#term-Select" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>シーケンスを射影する</p></li>
+<li><p>シーケンスを加工して新しいシーケンスを作成する</p></li>
 </ul>
 </dd>
 <dt id="term-SelectMany">SelectMany<a class="headerlink" href="#term-SelectMany" title="Permalink to this term">¶</a></dt><dd><ul>
@@ -589,7 +768,7 @@ Console.WriteLine($&quot;{string.Join(&#39;,&#39;,a)}&quot;);
             <span class="k">new</span> <span class="n">SampleData</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;c&quot;</span><span class="p">,</span> <span class="n">DataList</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="p">{</span> <span class="m">7</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">9</span> <span class="p">}</span> <span class="p">},</span>
         <span class="p">};</span>
 
-        <span class="c1">// SelectManyでリストの中のリストを１つにまとめたものを他の項目と組み合わせる</span>
+        <span class="c1">// SelectManyでリストの中のリストを1つにまとめたものを他の項目と組み合わせる</span>
         <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">list</span><span class="p">.</span><span class="n">SelectMany</span><span class="p">(</span>
                               <span class="n">data</span> <span class="p">=&gt;</span> <span class="n">data</span><span class="p">.</span><span class="n">DataList</span><span class="p">,</span>                                    <span class="c1">// (1)</span>
             <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">DataList_value</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="n">data</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">Value</span> <span class="p">=</span> <span class="n">DataList_value</span> <span class="p">}</span>  <span class="c1">// (2)</span>
@@ -623,6 +802,7 @@ Console.WriteLine($&quot;{string.Join(&#39;,&#39;,a)}&quot;);
 </li>
 <li><p>2つのシーケンスを入力に持つクエリを実現するために使用される</p></li>
 <li><p>全ての組み合わせが生成される</p></li>
+<li><p>つまり、シーケンス1の要素が2個で、シーケンス2の要素が3個なら2×3=6個の要素のシーケンスが生成される</p></li>
 <li><p>以下は掛け算の九九表の例</p></li>
 <li><p>上記の例と同じ引数2つの使い方であるが、(1)において、
 上記はlist内のDataListを平坦化したコレクションを使用しているのに対して、
@@ -636,12 +816,105 @@ Console.WriteLine($&quot;{string.Join(&#39;,&#39;,a)}&quot;);
           <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">x</span> <span class="p">+</span> <span class="s">&quot;X&quot;</span> <span class="p">+</span> <span class="n">y</span> <span class="p">+</span> <span class="s">&quot;=&quot;</span> <span class="p">+</span> <span class="p">(</span><span class="n">x</span> <span class="p">*</span> <span class="n">y</span><span class="p">));</span>  <span class="c1">// (2) y:list2の要素</span>
 </pre></div>
 </div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 3つのシーケンスの例</span>
+<span class="c1">// 中学では算数が数学に変わり、英語が追加されている処理を記述した例</span>
+<span class="c1">// 小学の判定は【小】の文字が含まれているかどうかで行っている</span>
+<span class="kt">string</span><span class="p">[]</span> <span class="n">grades</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;小学1年&quot;</span><span class="p">,</span> <span class="s">&quot;小学2年&quot;</span><span class="p">,</span> <span class="s">&quot;中学1年&quot;</span> <span class="p">};</span>
+<span class="kt">string</span><span class="p">[]</span> <span class="n">types1</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;国語&quot;</span><span class="p">,</span> <span class="s">&quot;算数&quot;</span> <span class="p">};</span>
+<span class="kt">string</span><span class="p">[]</span> <span class="n">types2</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;国語&quot;</span><span class="p">,</span> <span class="s">&quot;数学&quot;</span><span class="p">,</span> <span class="s">&quot;英語&quot;</span> <span class="p">};</span>
+
+<span class="kt">var</span> <span class="n">q</span> <span class="p">=</span> <span class="n">grades</span><span class="p">.</span><span class="n">SelectMany</span><span class="p">(</span>
+  <span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&quot;小&quot;</span><span class="p">)</span> <span class="p">?</span> <span class="n">types1</span> <span class="p">:</span> <span class="n">types2</span><span class="p">,</span>
+  <span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">g</span> <span class="p">+</span> <span class="s">&quot;の&quot;</span> <span class="p">+</span> <span class="n">t</span>
+  <span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">q</span><span class="p">)</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+
+<span class="c1">// 実行結果</span>
+<span class="c1">// 小学1年の国語</span>
+<span class="c1">// 小学1年の算数</span>
+<span class="c1">// 小学2年の国語</span>
+<span class="c1">// 小学2年の算数</span>
+<span class="c1">// 中学1年の国語</span>
+<span class="c1">// 中学1年の数学</span>
+<span class="c1">// 中学1年の英語</span>
+</pre></div>
+</div>
 </li>
 </ul>
 </dd>
 <dt id="term-SequenceEqual">SequenceEqual<a class="headerlink" href="#term-SequenceEqual" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p>シーケンスの要素は全て一致しているか否かを調べる</p></li>
+<li><p>Dictionaryクラスのオブジェクトの比較もできる</p></li>
 </ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// IEnumerable&lt;T&gt;を実装しているオブジェクトであれば、実体が何であるかは一切問わない</span>
+<span class="c1">// つまり、int[]とList&lt;int&gt;は比較可能であるが、int[]とlong[]は比較できない</span>
+<span class="kt">int</span><span class="p">[]</span> <span class="n">a</span> <span class="p">=</span> <span class="p">{</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span> <span class="p">};</span>
+<span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">b</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="p">{</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span> <span class="p">};</span>
+<span class="kt">int</span><span class="p">[]</span> <span class="n">c</span> <span class="p">=</span> <span class="p">{</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span> <span class="p">};</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;aとbの比較結果: {a.SequenceEqual​(b)}&quot;</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;aとeの比較結果: {a.SequenceEqual(c)}&quot;</span><span class="p">);</span>
+
+<span class="c1">//実行結果</span>
+<span class="c1">// aとbの比較結果: True</span>
+<span class="c1">// aとcの比較結果: True</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>一致判定はカスタマイズできる</p></li>
+<li><p>判定をカスタマイズする方法は2つある</p></li>
+<li><p>一つは、IEqualityComparer&lt;T&gt;インターフェースを実装してEqualsメソッドの動作を変更する方法</p></li>
+<li><p>もう一つは、IEqualityComparer&lt;T&gt;を実装したオブジェクトを比較用に渡す方法</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// IEqualityComparer&lt;T&gt;インターフェースを実装してEqualsメソッドの動作を変更する方法</span>
+<span class="n">A</span><span class="p">[]</span> <span class="n">a1</span> <span class="p">=</span> <span class="p">{</span> <span class="k">new</span> <span class="n">A</span><span class="p">(</span><span class="s">&quot;ALICE&quot;</span><span class="p">),</span> <span class="k">new</span> <span class="n">A</span><span class="p">(</span><span class="s">&quot;BETTY&quot;</span><span class="p">)</span> <span class="p">};</span>
+<span class="n">A</span><span class="p">[]</span> <span class="n">a2</span> <span class="p">=</span> <span class="p">{</span> <span class="k">new</span> <span class="n">A</span><span class="p">(</span><span class="s">&quot;alice&quot;</span><span class="p">),</span> <span class="k">new</span> <span class="n">A</span><span class="p">(</span><span class="s">&quot;betty&quot;</span><span class="p">)</span> <span class="p">};</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">a1</span><span class="p">.</span><span class="n">SequenceEqual</span><span class="p">(</span><span class="n">a2</span><span class="p">));</span>
+
+<span class="k">class</span> <span class="nc">A</span> <span class="p">:</span> <span class="n">IEquatable</span><span class="p">&lt;</span><span class="n">A</span><span class="p">&gt;</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="kt">string</span> <span class="n">Message</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+  <span class="c1">// EqualsとGetHashCodeをoverrideして</span>
+  <span class="c1">// 一致動作を一致させることが望ましい</span>
+
+  <span class="k">public</span> <span class="kt">bool</span> <span class="nf">Equals</span><span class="p">(</span><span class="n">A</span><span class="p">?</span> <span class="n">other</span><span class="p">)</span> <span class="p">=&gt;</span>
+    <span class="c1">// 大文字小文字を同一視した判定</span>
+    <span class="n">Message</span><span class="p">.</span><span class="n">ToLower</span><span class="p">()</span> <span class="p">==</span> <span class="n">other</span><span class="p">?.</span><span class="n">Message</span><span class="p">.</span><span class="n">ToLower</span><span class="p">();</span>
+
+  <span class="k">public</span> <span class="nf">A</span><span class="p">(</span><span class="kt">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">Message</span> <span class="p">=</span> <span class="n">s</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 実行結果</span>
+<span class="c1">// True</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// IEqualityComparer&lt;T&gt;を実装したオブジェクトを比較用に渡す方法</span>
+<span class="k">using</span> <span class="nn">System.Diagnostics.CodeAnalysis</span><span class="p">;</span>
+
+<span class="n">A</span><span class="p">[]</span> <span class="n">a1</span> <span class="p">=</span> <span class="p">{</span> <span class="k">new</span> <span class="n">A</span><span class="p">(</span><span class="s">&quot;ALICE&quot;</span><span class="p">),</span> <span class="k">new</span> <span class="n">A</span><span class="p">(</span><span class="s">&quot;BETTY&quot;</span><span class="p">)</span> <span class="p">};</span>
+<span class="n">A</span><span class="p">[]</span> <span class="n">a2</span> <span class="p">=</span> <span class="p">{</span> <span class="k">new</span> <span class="n">A</span><span class="p">(</span><span class="s">&quot;alice&quot;</span><span class="p">),</span> <span class="k">new</span> <span class="n">A</span><span class="p">(</span><span class="s">&quot;betty&quot;</span><span class="p">)</span> <span class="p">};</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">a1</span><span class="p">.</span><span class="n">SequenceEqual</span><span class="p">(</span><span class="n">a2</span><span class="p">,</span><span class="k">new</span> <span class="n">Eq</span><span class="p">()));</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">a1</span><span class="p">.</span><span class="n">SequenceEqual</span><span class="p">(</span><span class="n">a2</span><span class="p">));</span>
+
+<span class="k">class</span> <span class="nc">A</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="kt">string</span> <span class="n">Message</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+  <span class="k">public</span> <span class="nf">A</span><span class="p">(</span><span class="kt">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">Message</span> <span class="p">=</span> <span class="n">s</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Eq</span> <span class="p">:</span> <span class="n">IEqualityComparer</span><span class="p">&lt;</span><span class="n">A</span><span class="p">&gt;</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="kt">bool</span> <span class="nf">Equals</span><span class="p">(</span><span class="n">A</span><span class="p">?</span> <span class="n">x</span><span class="p">,</span> <span class="n">A</span><span class="p">?</span> <span class="n">y</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">?.</span><span class="n">Message</span><span class="p">.</span><span class="n">ToLower</span><span class="p">()</span> <span class="p">==</span> <span class="n">y</span><span class="p">?.</span><span class="n">Message</span><span class="p">.</span><span class="n">ToLower</span><span class="p">();</span>
+  <span class="k">public</span> <span class="kt">int</span> <span class="nf">GetHashCode</span><span class="p">([</span><span class="n">DisallowNull</span><span class="p">]</span> <span class="n">A</span> <span class="n">obj</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">obj</span><span class="p">.</span><span class="n">GetHashCode</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// 実行結果</span>
+<span class="c1">// True</span>
+<span class="c1">// False</span>
+</pre></div>
+</div>
 </dd>
 <dt id="term-Single">Single<a class="headerlink" href="#term-Single" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
 <li><p>該当データが1つのみであることが保証される場合に使用する</p></li>
@@ -661,23 +934,53 @@ Console.WriteLine($&quot;{string.Join(&#39;,&#39;,a)}&quot;);
 </div>
 </dd>
 <dt id="term-Skip">Skip<a class="headerlink" href="#term-Skip" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p>シーケンスの先頭のn個の要素を読み飛ばし、新たなシーケンスを得る</p></li>
+<li><p>シーケンス内の要素数以上の数の要素をSkipした場合は空のシーケンスが返される</p></li>
+</ul>
+</dd>
+<dt id="term-SkipLast">SkipLast<a class="headerlink" href="#term-SkipLast" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>シーケンスの末尾のn個の要素を読み飛ばし、新たなシーケンスを得る</p></li>
 </ul>
 </dd>
 <dt id="term-SkipWhile">SkipWhile<a class="headerlink" href="#term-SkipWhile" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p>シーケンスにおいて、特定の条件を満たす要素が続く限り読み飛ばし、新たなシーケンスを得る</p></li>
 </ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">[]</span> <span class="n">a</span> <span class="p">=</span> <span class="p">{</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">1</span> <span class="p">};</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;SkipWhile(c=&gt;c&lt;5): { string.Join(&#39;,&#39;, a.SkipWhile(c =&gt; c &lt; 5))}&quot;</span><span class="p">);</span>
+
+<span class="c1">// 実行結果</span>
+<span class="c1">// SkipWhile(c=&gt;c&lt;5): 5,4,3,2,1</span>
+</pre></div>
+</div>
 </dd>
 <dt id="term-Sum">Sum<a class="headerlink" href="#term-Sum" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p>入力シーケンスの合計を計算する</p></li>
+<li><p>引数で積算するプロパティなどを指定できる</p></li>
 </ul>
 </dd>
-<dt id="term-Take">Take<a class="headerlink" href="#term-Take" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<dt id="term-Take">Take<a class="headerlink" href="#term-Take" title="Permalink to this term">¶</a></dt><dd><ul>
+<li><p>シーケンスの先頭のn個の要素を取得し、新たなシーケンスを得る</p></li>
+<li><p>シーケンス内の要素数以上の数の要素をTakeした場合は存在する要素のみのシーケンスが返される</p></li>
+<li><p>読み飛ばさずに取得することを除けばSkip/SkipLast/SkipWhileとほぼ同じだが、一つだけ大きく違うのはTakeメソッドにはレンジオブジェクトを指定するバリエーションが存在すること</p></li>
+<li><p>だから、シーケンスの特定の箇所をいきなり指定して、そこから読み込むことができる</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="p">[]</span> <span class="n">a</span> <span class="p">=</span> <span class="p">{</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">1</span> <span class="p">};</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Take(5..7): { string.Join(&#39;,&#39;, a.Take(5..7))}&quot;</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;TakeWhile(c=&gt;c&lt;5): { string.Join(&#39;,&#39;, a.TakeWhile(c =&gt; c &lt; 5))}&quot;</span><span class="p">);</span>
+
+<span class="c1">// 実行結果</span>
+<span class="c1">// Take(5..7): 4,3</span>
+<span class="c1">// TakeWhile(c=&gt;c&lt;5): 1,2,3,4</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+<dt id="term-TakeLast">TakeLast<a class="headerlink" href="#term-TakeLast" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>シーケンスの末尾のn個の要素を取得し、新たなシーケンスを得る</p></li>
 </ul>
 </dd>
 <dt id="term-TakeWhile">TakeWhile<a class="headerlink" href="#term-TakeWhile" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p>シーケンスにおいて、特定の条件を満たす要素が続く限り取得し、新たなシーケンスを得る</p></li>
 </ul>
 </dd>
 <dt id="term-ThenBy">ThenBy<a class="headerlink" href="#term-ThenBy" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
@@ -733,23 +1036,83 @@ Console.WriteLine($&quot;{string.Join(&#39;,&#39;,a)}&quot;);
 </div>
 </dd>
 <dt id="term-ToDictionary">ToDictionary<a class="headerlink" href="#term-ToDictionary" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p>シーケンスからDictionaryを作成する</p></li>
+</ul>
+</dd>
+<dt id="term-ToHashSet">ToHashSet<a class="headerlink" href="#term-ToHashSet" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>シーケンスからHashSet(重複したオブジェクトを追加できないリストクラス)を作成する</p></li>
 </ul>
 </dd>
 <dt id="term-ToList">ToList<a class="headerlink" href="#term-ToList" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p>シーケンスからListを作成する</p></li>
 </ul>
 </dd>
 <dt id="term-ToLookup">ToLookup<a class="headerlink" href="#term-ToLookup" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p><a class="reference internal" href="#term-GroupBy"><span class="xref std std-term">GroupBy</span></a> メソッドと同機能＋キーを指定して対象項目の要素のみを取り出せる</p></li>
+<li><p>hogeArr[&quot;青&quot;]など</p></li>
 </ul>
 </dd>
+<dt id="term-TryGetNonEnumeratedCount">TryGetNonEnumeratedCount<a class="headerlink" href="#term-TryGetNonEnumeratedCount" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>列挙を行わずにシーケンスの要素の数を調べられるかやってみる</p></li>
+<li><p>シーケンスの要素数はCountメソッドで調べられるが基本的にシーケンスの全ての要素を取りだしてみないと総数が分からない</p></li>
+<li><p>しかし、配列などは総数の情報を別途持っていて、要素を取り出さなくてもサイズが分かるようになっている</p></li>
+<li><p>こういう場合は、要素を取り出さずに要素数を返すことができる</p></li>
+<li><p>このメソッドはそのような特例的な状況をできるだけチェックして要素数を取得する</p></li>
+<li><p>しかし、全てのケースで取得できるわけではないので、取得できなかった場合を示すためにbool値を返す</p></li>
+<li><p>falseなら取得はできなかったことになる</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span>  <span class="n">a</span> <span class="p">=</span> <span class="n">Enumerable</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">5</span><span class="p">);</span>
+<span class="n">sub</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">nameof</span><span class="p">(</span><span class="n">a</span><span class="p">));</span>
+
+<span class="kt">var</span>  <span class="n">a2</span> <span class="p">=</span> <span class="n">Enumerable</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">5</span><span class="p">).</span><span class="n">Skip</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>
+<span class="n">sub</span><span class="p">(</span><span class="n">a2</span><span class="p">,</span> <span class="n">nameof</span><span class="p">(</span><span class="n">a2</span><span class="p">));</span>
+
+<span class="kt">var</span>  <span class="n">a3</span> <span class="p">=</span> <span class="n">Enumerable</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">5</span><span class="p">).</span><span class="n">SkipWhile</span><span class="p">(</span><span class="n">c</span><span class="p">=&gt;</span><span class="n">c</span><span class="p">&gt;</span><span class="m">0</span><span class="p">);</span>
+<span class="n">sub</span><span class="p">(</span><span class="n">a3</span><span class="p">,</span> <span class="n">nameof</span><span class="p">(</span><span class="n">a3</span><span class="p">));</span>
+
+<span class="kt">int</span><span class="p">[]</span> <span class="n">b</span> <span class="p">=</span> <span class="p">{</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span> <span class="p">};</span>
+<span class="n">sub</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">nameof</span><span class="p">(</span><span class="n">b</span><span class="p">));</span>
+
+<span class="kt">var</span>  <span class="n">c</span> <span class="p">=</span> <span class="n">b</span><span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
+<span class="n">sub</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">nameof</span><span class="p">(</span><span class="n">c</span><span class="p">));</span>
+
+<span class="n">sub</span><span class="p">(</span><span class="n">myEnum</span><span class="p">(),</span> <span class="n">nameof</span><span class="p">(</span><span class="n">myEnum</span><span class="p">));</span>
+
+<span class="n">IEnumerable</span><span class="p">&lt;</span> <span class="kt">int</span> <span class="p">&gt;</span> <span class="n">myEnum</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">for</span>  <span class="p">(</span> <span class="kt">int</span>  <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">5</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>  <span class="k">yield</span>   <span class="k">return</span>  <span class="n">i</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">void</span>  <span class="nf">sub</span><span class="p">(</span><span class="n">IEnumerable</span><span class="p">&lt;</span> <span class="kt">int</span> <span class="p">&gt;</span> <span class="n">enu</span><span class="p">,</span>  <span class="kt">string</span>  <span class="n">label</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">var</span>  <span class="n">r</span> <span class="p">=</span> <span class="n">enu</span><span class="p">.</span><span class="n">TryGetNonEnumeratedCount</span><span class="p">(</span> <span class="k">out</span>   <span class="kt">int</span>  <span class="n">count</span><span class="p">);</span>
+  <span class="k">if</span>  <span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;{label} の要素数は{count}&quot;</span><span class="p">);</span>
+  <span class="k">else</span>  <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;{label} の要素数は計測不能&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 実行結果</span>
+<span class="c1">// aの要素数は5</span>
+<span class="c1">// a2の要素数は4</span>
+<span class="c1">// a3の要素数は計測不能 (SkipWhileメソッドは判定不能)</span>
+<span class="c1">// bの要素数は5</span>
+<span class="c1">// cの要素数は5</span>
+<span class="c1">// myEnumの要素数は計測不能 (自作の列挙は判定不能)</span>
+</pre></div>
+</div>
+</dd>
 <dt id="term-Union">Union<a class="headerlink" href="#term-Union" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p>和集合(OR)</p></li>
+<li><p>2つのシーケンスを連結する</p></li>
+<li><p>その際、重複する要素は削除する</p></li>
+<li><p>一致判定の条件はユーザー側で指定することもできる</p></li>
+</ul>
+</dd>
+<dt id="term-UnionBy">UnionBy<a class="headerlink" href="#term-UnionBy" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
+<li><p>キー セレクター関数を使用するだけでUnionと同じ機能</p></li>
 </ul>
 </dd>
 <dt id="term-Where">Where<a class="headerlink" href="#term-Where" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p>条件に適合する要素としない要素を識別し、条件に適合する要素だけからなるシーケンスを生成する</p></li>
 </ul>
 </dd>
 <dt id="term-WithCancellation">WithCancellation<a class="headerlink" href="#term-WithCancellation" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
@@ -769,11 +1132,40 @@ Console.WriteLine($&quot;{string.Join(&#39;,&#39;,a)}&quot;);
 </ul>
 </dd>
 <dt id="term-Zip">Zip<a class="headerlink" href="#term-Zip" title="Permalink to this term">¶</a></dt><dd><ul class="simple">
-<li><p>aa</p></li>
+<li><p>2つまたは3つのシーケンスから一つのシーケンスを産み出す</p></li>
+<li><p>性格の異なる3つのバリエーションが存在する</p>
+<ul>
+<li><p>2つのシーケンスから指定コードで1つのシーケンスを産み出す (何が生まれるかはコード次第)</p></li>
+<li><p>2つのシーケンスから2つの要素の値を含むValueTuple型のシーケンスを産み出す</p></li>
+<li><p>3つのシーケンスから3つの要素の値を含むValueTuple型のシーケンスを産み出す</p></li>
 </ul>
+</li>
+<li><p>入力シーケンスの要素数は全て同じでなければならない(はみ出た分は採用されない)</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">string</span><span class="p">[]</span> <span class="n">s1</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;杉並&quot;</span><span class="p">,</span> <span class="s">&quot;世田谷&quot;</span><span class="p">,</span> <span class="s">&quot;三鷹&quot;</span> <span class="p">};</span>
+<span class="kt">string</span><span class="p">[]</span> <span class="n">s2</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;区&quot;</span><span class="p">,</span> <span class="s">&quot;区&quot;</span><span class="p">,</span> <span class="s">&quot;市&quot;</span> <span class="p">};</span>
+<span class="kt">string</span><span class="p">[]</span> <span class="n">s3</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;荻窪&quot;</span><span class="p">,</span> <span class="s">&quot;世田谷&quot;</span><span class="p">,</span> <span class="s">&quot;野崎&quot;</span> <span class="p">};</span>
+
+<span class="k">foreach</span>  <span class="p">(</span><span class="kt">var</span> <span class="n">item</span>  <span class="k">in</span>  <span class="n">s1</span><span class="p">.</span><span class="n">Zip</span><span class="p">(</span><span class="n">s2</span><span class="p">,</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">a</span> <span class="p">+</span> <span class="n">b</span><span class="p">))</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="k">foreach</span>  <span class="p">(</span><span class="kt">var</span> <span class="n">item</span>  <span class="k">in</span>  <span class="n">s1</span><span class="p">.</span><span class="n">Zip</span><span class="p">(</span><span class="n">s2</span><span class="p">))</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;{item.First}{item.Second}&quot;</span><span class="p">);</span>
+<span class="k">foreach</span>  <span class="p">(</span><span class="kt">var</span> <span class="n">item</span>  <span class="k">in</span>  <span class="n">s1</span><span class="p">.</span><span class="n">Zip</span><span class="p">(</span><span class="n">s2</span><span class="p">,</span><span class="n">s3</span><span class="p">))</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;{item.First}{item.Second}{item.Third}&quot;</span><span class="p">);</span>
+
+<span class="c1">// 実行結果</span>
+<span class="c1">// 杉並区</span>
+<span class="c1">// 世田谷区</span>
+<span class="c1">// 三鷹市</span>
+
+<span class="c1">// 杉並区</span>
+<span class="c1">// 世田谷区</span>
+<span class="c1">// 三鷹市</span>
+
+<span class="c1">// 杉並区荻窪</span>
+<span class="c1">// 世田谷区世田谷</span>
+<span class="c1">// 三鷹市野崎</span>
+</pre></div>
+</div>
 </dd>
 </dl>
-</section>
 </section>
 
 
