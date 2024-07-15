@@ -1,0 +1,187 @@
+==============
+メソッドリスト
+==============
+
+メソッド（シーケンスは作成しない）
+==================================
+
+.. csv-table:: 
+   :header-rows: 1
+   :widths: 2, 6
+
+   メソッド,説明
+   :term:`All`,全ての要素が条件を満たすかを判定する。引数に条件を書ける
+   :term:`Any`,条件を満たす要素が1つでもあるかを判定する。引数に条件を書ける
+   :term:`Contains`,要素に指定した値が存在するかを調べる
+   :term:`Count`,シーケンスの要素数を返す。引数に条件を書ける
+   :term:`LongCount`,シーケンス内の要素の数をlong型で返す。 :term:`Count` メソッドでは扱えないほど大きなシーケンスを扱う場合に使う
+   :term:`TryGetNonEnumeratedCount`,列挙を行わずにシーケンスの要素の数を調べられるかやってみる。.NET6以降
+   :term:`ElementAt`,シーケンスの指定インデックスの要素を取得する
+   :term:`ElementAtOrDefault`,シーケンスの指定インデックスの要素を取得する。存在しない要素を指定した場合に例外ではなく型のデフォルト値を返す
+   :term:`ForAll`,
+   :term:`Single`,たった1つのが該当データを取り出す。存在ない場合、2つ以上存在する場合は例外
+   :term:`SingleOrDefault`,たった1つのが該当データを取り出す。存在しない場合は既定値。2つ以上存在する場合は例外
+   :term:`SequenceEqual`,2つのシーケンスの各要素が等しいことをチェックする
+   :term:`WithCancellation`,
+   :term:`WithDegreeOfParallelism`,
+   :term:`WithExecutionMode`,
+   :term:`WithMergeOptions`,
+
+ファクトリメソッド
+==================
+
+.. csv-table:: 
+   :header-rows: 1
+   :widths: 2, 6
+
+   メソッド,説明
+   :term:`Empty`,空のシーケンスを作成する
+   :term:`Repeat`,同じ値が指定回数繰り返されるシーケンスを生成する
+   :term:`Range`,要素の値が連番の配列やリストを作成する
+
+IEnumerable<T>からコレクションへの変換
+======================================
+
+.. csv-table:: 
+   :header-rows: 1
+   :widths: 2, 6
+
+   メソッド,説明
+   :term:`ToArray`,シーケンスから配列を作成する
+   :term:`ToDictionary`,シーケンスからDictionaryを作成する
+   :term:`ToHashSet`,シーケンスからHashSet(重複したオブジェクトを追加できないリストクラス)を作成する
+   :term:`ToList`,シーケンスからListを作成する
+   :term:`ToLookup`, :term:`GroupBy` メソッドと同機能＋キーを指定して対象項目の要素のみを取り出せる。hogeArr["青"]など
+
+型変換
+======
+
+.. csv-table:: 
+   :header-rows: 1
+   :widths: 2, 6
+
+   メソッド,説明
+   :term:`Cast`,シーケンスの個々の要素の型変換を行う。変換できない場合は例外発生（⇔ OfType）
+   :term:`OfType`,シーケンスの個々の要素の型変換を行う。変換できない場合は無視（⇔ Cast）
+
+フィルタリング
+==============
+
+.. csv-table:: 
+   :header-rows: 1
+   :widths: 2, 6
+
+   メソッド,説明
+   :term:`Where`,条件に適合する要素としない要素を識別し、条件に適合する要素だけからなるシーケンスを生成する
+   :term:`Distinct`,シーケンスから重複する要素を取り除き、どの値も1つしか含まれないようにする
+   :term:`DistinctBy`,Distinctメソッドと似ているが、等価を判定する値を選ぶキーセレクターを指定する点で異なっている
+   :term:`First`,シーケンスの最初の要素、または条件を満たす最初の1つを返す。該当データがない場合は例外となる
+   :term:`FirstOrDefault`,シーケンスの最初の要素、または条件を満たす最初の1つを返す。該当データがない場合は型の既定値を返す
+   :term:`Last`,シーケンスの最後の要素、または条件を満たす最後の1つを返す。該当データがない場合は例外となる
+   :term:`LastOrDefault`,シーケンスの最後の要素、または条件を満たす最後の1つを返す。該当データがない場合は型の既定値を返す
+   :term:`Skip`,シーケンスの先頭のn個の要素を読み飛ばし、新たなシーケンスを得る
+   :term:`SkipLast`,シーケンスの末尾のn個の要素を読み飛ばし、新たなシーケンスを得る
+   :term:`SkipWhile`,シーケンスにおいて、特定の条件を満たす要素が続く限り読み飛ばし、新たなシーケンスを得る
+   :term:`Take`,シーケンスの先頭のn個の要素を取得し、新たなシーケンスを得る
+   :term:`TakeLast`,シーケンスの末尾のn個の要素を取得し、新たなシーケンスを得る
+   :term:`TakeWhile`,シーケンスにおいて、特定の条件を満たす要素が続く限り取得し、新たなシーケンスを得る
+
+単一シーケンスの加工
+====================
+
+.. csv-table:: 
+   :header-rows: 1
+   :widths: 2, 6
+
+   メソッド,説明
+   :term:`Select`,シーケンスを加工して新しいシーケンスを作成する
+   :term:`SelectMany`,シーケンスの各要素をIEnumerable<T>に射影し、結果のシーケンスを1つのシーケンスに平坦化する
+   :term:`Append`,配列やリストの最後に指定した要素を追加し、新たな別の配列やリストを作成する
+   :term:`Prepend`,配列やリストの先頭に指定した要素を追加し、新たな別の配列やリストを作成する
+   :term:`Chunk`,シーケンスを指定個数で分割する
+   :term:`Order`,シーケンスを昇順に並び替える。キーセレクターなし。.NET7以降
+   :term:`OrderBy`,シーケンスを昇順に並び替える。キーセレクターあり
+   :term:`OrderDescending`,シーケンスを降順に並び替える。キーセレクターなし。.NET7以降
+   :term:`OrderByDescending`,シーケンスを降順に並び替える。キーセレクターあり
+   :term:`ThenBy`, :term:`OrderBy` メソッドでソートした結果に、さらに条件を追加してソートする
+   :term:`ThenByDescending`,結果が降順となる以外、 :term:`ThenBy` メソッドと同じ
+   :term:`Reverse`,シーケンスの順番を逆転させる
+   :term:`DefaultIfEmpty`,シーケンスが空の場合はデフォルト値のみを含むシーケンスを返す。空ではない場合はシーケンスをそのまま返す
+
+シーケンスの合成
+================
+
+.. csv-table:: 
+   :header-rows: 1
+   :widths: 2, 6
+
+   メソッド,説明
+   :term:`Concat`,2つのシーケンス（(A1 A2 A3) (B1 B2 B3 B4 B5)）を単純に連結する。A1 A2 A3 B1 B2 B3 B4 B5
+   :term:`Zip`,2つのシーケンス（(A1 A2 A3) (B1 B2 B3 B4 B5)）を同一番号の要素を1つの組として連結する。(A1 B1) (A2 B2) (A3 B3)
+
+シーケンスの合成（集合）
+========================
+
+.. csv-table:: 
+   :header-rows: 1
+   :widths: 2, 2, 6
+
+   メソッド,図,説明
+   :term:`Union`, .. figure:: images/Union.png,和集合(OR)。2つのシーケンスを連結する。その際、重複する要素は削除する
+   :term:`UnionBy`,,キー セレクター関数を使用するだけでUnionと同じ機能
+   :term:`Intersect`, .. figure:: images/Intersect.png,積集合(AND)。2つのシーケンスに共通して含まれる要素のシーケンスを作成する
+   :term:`IntersectBy`,,キー セレクター関数を使用するだけでIntersectと同じ機能
+   :term:`Except`, .. figure:: images/Except.png,2つのシーケンスにおいて、片方のシーケンスのみに存在する要素のシーケンスを作成する
+   :term:`ExceptBy`, ,キーセレクター関数を使用するだけでExceptと同じ機能
+
+シーケンスの合成（内部結合、外部結合）
+======================================
+
+.. csv-table:: 
+   :header-rows: 1
+   :widths: 2, 2, 6
+
+   メソッド,図,説明
+   :term:`Join`, .. figure:: images/Join.png,内部結合。2つのシーケンスの要素を、指定キーによって1つにまとめる
+   :term:`GroupJoin`, .. figure:: images/GroupJoin.png,外部結合。2つのシーケンスのキーが等しいかどうか判定し、要素を関連づけて結果をグループ化する
+
+算術演算
+========
+
+.. csv-table:: 
+   :header-rows: 1
+   :widths: 2, 6
+
+   メソッド,説明
+   :term:`Aggregate`,String.Join()と似た挙動。要素同士を指定フォーマットで結合。要素が数値の場合は指定フォーマットで集計できる
+   :term:`Average`,平均値を計算する。nullが含まれる場合はその要素を無視した平均値が計算される
+   :term:`Sum`,入力シーケンスの合計を計算する
+   :term:`Max`,シーケンスの最大値を得る。最大値を提供したオブジェクトではなく最大値を返す
+   :term:`MaxBy`,キーセレクターを指定でき、キー値の最大を調べる。最大値を提供したオブジェクトそのものを返す
+   :term:`Min`,シーケンスの最小値を得る。最小値を提供したオブジェクトではなく最小値を返す
+   :term:`MinBy`,キーセレクターを指定でき、キー値の最小を調べる。最小値を提供したオブジェクトそのものを返す
+
+グループ化
+==========
+
+.. csv-table:: 
+   :header-rows: 1
+   :widths: 2, 6
+
+   メソッド,説明
+   :term:`GroupBy`,指定した要素でグループ化する
+   :term:`GroupByDescending`,結果が降順となる以外、 :term:`GroupBy` メソッドと同じである
+
+並列クエリ
+==========
+
+.. csv-table:: 
+   :header-rows: 1
+   :widths: 2, 6
+
+   メソッド,説明
+   :term:`AsParallel`,クエリの並列化を有効にする。通常のクエリを並列クエリに変換する
+   :term:`AsEnumerable`,並列クエリから直列クエリに変換する。 :term:`AsSequential` と同じ？
+   :term:`AsSequential`,並列クエリから直列クエリに変換する。 :term:`AsEnumerable` と同じ？
+   :term:`AsOrdered`,並列クエリにおいて、順番を守る
+   :term:`AsUnordered`,並列クエリにおいて、順番をバラバラにしてもよい
