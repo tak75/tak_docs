@@ -2,8 +2,8 @@
 メソッドリスト
 ==============
 
-単一シーケンスに対するメソッド
-==============================
+メソッド（シーケンスは作成しない）
+==================================
 
 .. csv-table:: 
    :header-rows: 1
@@ -14,44 +14,18 @@
    :term:`Any`,条件を満たす要素が1つでもあるかを判定する。引数に条件を書ける
    :term:`Contains`,要素に指定した値が存在するかを調べる
    :term:`Count`,シーケンスの要素数を返す。引数に条件を書ける
-   :term:`DefaultIfEmpty`,シーケンスが空の場合はデフォルト値のみを含むシーケンスを返す。空ではない場合はシーケンスをそのまま返す
+   :term:`LongCount`,シーケンス内の要素の数をlong型で返す。 :term:`Count` メソッドでは扱えないほど大きなシーケンスを扱う場合に使う
+   :term:`TryGetNonEnumeratedCount`,列挙を行わずにシーケンスの要素の数を調べられるかやってみる。.NET6以降
    :term:`ElementAt`,シーケンスの指定インデックスの要素を取得する
    :term:`ElementAtOrDefault`,シーケンスの指定インデックスの要素を取得する。存在しない要素を指定した場合に例外ではなく型のデフォルト値を返す
    :term:`ForAll`,
-   :term:`LongCount`,シーケンス内の要素の数をlong型で返す。 :term:`Count` メソッドでは扱えないほど大きなシーケンスを扱う場合に使う
-   :term:`Select`,シーケンスを加工して新しいシーケンスを作成する
-   :term:`SelectMany`,シーケンスの各要素をIEnumerable<T>に射影し、結果のシーケンスを1つのシーケンスに平坦化する
    :term:`Single`,たった1つのが該当データを取り出す。存在ない場合、2つ以上存在する場合は例外
    :term:`SingleOrDefault`,たった1つのが該当データを取り出す。存在しない場合は既定値。2つ以上存在する場合は例外
-   :term:`TryGetNonEnumeratedCount`,列挙を行わずにシーケンスの要素の数を調べられるかやってみる。.NET6以降
+   :term:`SequenceEqual`,2つのシーケンスの各要素が等しいことをチェックする
    :term:`WithCancellation`,
    :term:`WithDegreeOfParallelism`,
    :term:`WithExecutionMode`,
    :term:`WithMergeOptions`,
-
-並列クエリ
-==========
-
-.. csv-table:: 
-   :header-rows: 1
-   :widths: 2, 6
-
-   メソッド,説明
-   :term:`AsParallel`,クエリの並列化を有効にする。通常のクエリを並列クエリに変換する
-   :term:`AsEnumerable`,並列クエリから直列クエリに変換する。 :term:`AsSequential` と同じ？
-   :term:`AsSequential`,並列クエリから直列クエリに変換する。 :term:`AsEnumerable` と同じ？
-   :term:`AsOrdered`,並列クエリにおいて、順番を守る
-   :term:`AsUnordered`,並列クエリにおいて、順番をバラバラにしてもよい
-
-2つのシーケンスに対するメソッド
-===============================
-
-.. csv-table:: 
-   :header-rows: 1
-   :widths: 2, 6
-
-   メソッド,説明
-   :term:`SequenceEqual`,2つのシーケンスの各要素が等しいことをチェックする
 
 ファクトリメソッド
 ==================
@@ -98,6 +72,7 @@ IEnumerable<T>からコレクションへの変換
    :widths: 2, 6
 
    メソッド,説明
+   :term:`Where`,条件に適合する要素としない要素を識別し、条件に適合する要素だけからなるシーケンスを生成する
    :term:`Distinct`,シーケンスから重複する要素を取り除き、どの値も1つしか含まれないようにする
    :term:`DistinctBy`,Distinctメソッドと似ているが、等価を判定する値を選ぶキーセレクターを指定する点で異なっている
    :term:`First`,シーケンスの最初の要素、または条件を満たす最初の1つを返す。該当データがない場合は例外となる
@@ -110,7 +85,6 @@ IEnumerable<T>からコレクションへの変換
    :term:`Take`,シーケンスの先頭のn個の要素を取得し、新たなシーケンスを得る
    :term:`TakeLast`,シーケンスの末尾のn個の要素を取得し、新たなシーケンスを得る
    :term:`TakeWhile`,シーケンスにおいて、特定の条件を満たす要素が続く限り取得し、新たなシーケンスを得る
-   :term:`Where`,条件に適合する要素としない要素を識別し、条件に適合する要素だけからなるシーケンスを生成する
 
 単一シーケンスの加工
 ====================
@@ -120,6 +94,10 @@ IEnumerable<T>からコレクションへの変換
    :widths: 2, 6
 
    メソッド,説明
+   :term:`Select`,シーケンスを加工して新しいシーケンスを作成する
+   :term:`SelectMany`,シーケンスの各要素をIEnumerable<T>に射影し、結果のシーケンスを1つのシーケンスに平坦化する
+   :term:`Append`,配列やリストの最後に指定した要素を追加し、新たな別の配列やリストを作成する
+   :term:`Prepend`,配列やリストの先頭に指定した要素を追加し、新たな別の配列やリストを作成する
    :term:`Chunk`,シーケンスを指定個数で分割する
    :term:`Order`,シーケンスを昇順に並び替える。キーセレクターなし。.NET7以降
    :term:`OrderBy`,シーケンスを昇順に並び替える。キーセレクターあり
@@ -128,17 +106,7 @@ IEnumerable<T>からコレクションへの変換
    :term:`ThenBy`, :term:`OrderBy` メソッドでソートした結果に、さらに条件を追加してソートする
    :term:`ThenByDescending`,結果が降順となる以外、 :term:`ThenBy` メソッドと同じ
    :term:`Reverse`,シーケンスの順番を逆転させる
-
-要素の追加
-===========
-
-.. csv-table:: 
-   :header-rows: 1
-   :widths: 2, 6
-
-   メソッド,説明
-   :term:`Append`,配列やリストの最後に指定した要素を追加し、新たな別の配列やリストを作成する
-   :term:`Prepend`,配列やリストの先頭に指定した要素を追加し、新たな別の配列やリストを作成する
+   :term:`DefaultIfEmpty`,シーケンスが空の場合はデフォルト値のみを含むシーケンスを返す。空ではない場合はシーケンスをそのまま返す
 
 シーケンスの合成
 ================
@@ -177,8 +145,8 @@ IEnumerable<T>からコレクションへの変換
    :term:`Join`, .. figure:: images/Join.png,内部結合。2つのシーケンスの要素を、指定キーによって1つにまとめる
    :term:`GroupJoin`, .. figure:: images/GroupJoin.png,外部結合。2つのシーケンスのキーが等しいかどうか判定し、要素を関連づけて結果をグループ化する
 
-要素同士の演算
-==============
+算術演算
+========
 
 .. csv-table:: 
    :header-rows: 1
@@ -203,3 +171,17 @@ IEnumerable<T>からコレクションへの変換
    メソッド,説明
    :term:`GroupBy`,指定した要素でグループ化する
    :term:`GroupByDescending`,結果が降順となる以外、 :term:`GroupBy` メソッドと同じである
+
+並列クエリ
+==========
+
+.. csv-table:: 
+   :header-rows: 1
+   :widths: 2, 6
+
+   メソッド,説明
+   :term:`AsParallel`,クエリの並列化を有効にする。通常のクエリを並列クエリに変換する
+   :term:`AsEnumerable`,並列クエリから直列クエリに変換する。 :term:`AsSequential` と同じ？
+   :term:`AsSequential`,並列クエリから直列クエリに変換する。 :term:`AsEnumerable` と同じ？
+   :term:`AsOrdered`,並列クエリにおいて、順番を守る
+   :term:`AsUnordered`,並列クエリにおいて、順番をバラバラにしてもよい
