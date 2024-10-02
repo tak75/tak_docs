@@ -177,6 +177,42 @@ C#
       // 出力結果
       // 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
 
+* ObserveOn
+
+  * イベント元に関わらず、専用スレッドでSubscribe処理が実行される（非同期処理）
+  * イベント発行後の最後？に処理される
+  
+    .. code-block:: csharp
+
+      // 内部のイベント処理用のスケジューラを専用に持たせる
+      // ThreadPoolは利用しないことを明確にする
+      var scheduler = new EventLoopScheduler(a => new Thread(a) { Name = "{_aaa}", IsBackground = true });
+
+      _ = _device.OnHogeEventFired
+          .ObserveOn(scheduler)
+          .Subscribe(arg =>
+          {
+          }
+
+* イベントの書き方の王道
+
+    .. code-block:: csharp
+
+      public abstract class HogeBase : IDisposable
+      {
+          protected Subject<HogeEvent> _onHogeEventFired { get; } = new();
+          public IObservable<HogeEvent> OnHogeEventFired => _onHogeEventFired;
+          public virtual void Dispose() => _onHogeEventFired.Dispose();
+      }
+
+      // イベント引数を持たせるよりも、イベントとして分けた方が拡張性が高い
+      // ・各イベントに引数を持たすことができる
+      // ・イベントでフィルタリングできる
+      public abstract class HogeEvent();
+      public class Hoge1Event() : HogeEvent;
+      public class Hoge2Event() : HogeEvent;
+
+
 ====
 LINQ
 ====
