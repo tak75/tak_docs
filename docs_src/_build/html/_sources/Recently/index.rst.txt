@@ -200,9 +200,9 @@ C#
 
       public abstract class HogeBase : IDisposable
       {
-          protected Subject<HogeEvent> _onHogeEventFired { get; } = new();
-          public IObservable<HogeEvent> OnHogeEventFired => _onHogeEventFired;
-          public virtual void Dispose() => _onHogeEventFired.Dispose();
+        protected Subject<HogeEvent> _onHogeEventFired { get; } = new();
+        public IObservable<HogeEvent> OnHogeEventFired => _onHogeEventFired;
+        public virtual void Dispose() => _onHogeEventFired.Dispose();
       }
 
       // イベント引数を持たせるよりも、イベントとして分けた方が拡張性が高い
@@ -211,6 +211,21 @@ C#
       public abstract class HogeEvent();
       public class Hoge1Event() : HogeEvent;
       public class Hoge2Event() : HogeEvent;
+
+* イベントが発行されるまで待機する方法
+
+    .. code-block:: csharp
+
+      public async Task WeighZero()
+      {
+        using var cts = new CancellationTokenSource();
+        using var _ = _device.WeighZero().Subscribe(_ => cts.Cancel());
+        try
+        {
+            await Task.Delay(Timeout.InfiniteTimeSpan, cts.Token);
+        }
+        catch (TaskCanceledException) { }
+      }
 
 
 ====

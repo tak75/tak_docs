@@ -293,9 +293,9 @@
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">abstract</span> <span class="k">class</span> <span class="nc">HogeBase</span> <span class="p">:</span> <span class="n">IDisposable</span>
 <span class="p">{</span>
-    <span class="k">protected</span> <span class="n">Subject</span><span class="p">&lt;</span><span class="n">HogeEvent</span><span class="p">&gt;</span> <span class="n">_onHogeEventFired</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="k">new</span><span class="p">();</span>
-    <span class="k">public</span> <span class="n">IObservable</span><span class="p">&lt;</span><span class="n">HogeEvent</span><span class="p">&gt;</span> <span class="n">OnHogeEventFired</span> <span class="p">=&gt;</span> <span class="n">_onHogeEventFired</span><span class="p">;</span>
-    <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="nf">Dispose</span><span class="p">()</span> <span class="p">=&gt;</span> <span class="n">_onHogeEventFired</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+  <span class="k">protected</span> <span class="n">Subject</span><span class="p">&lt;</span><span class="n">HogeEvent</span><span class="p">&gt;</span> <span class="n">_onHogeEventFired</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="k">new</span><span class="p">();</span>
+  <span class="k">public</span> <span class="n">IObservable</span><span class="p">&lt;</span><span class="n">HogeEvent</span><span class="p">&gt;</span> <span class="n">OnHogeEventFired</span> <span class="p">=&gt;</span> <span class="n">_onHogeEventFired</span><span class="p">;</span>
+  <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="nf">Dispose</span><span class="p">()</span> <span class="p">=&gt;</span> <span class="n">_onHogeEventFired</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
 <span class="p">}</span>
 
 <span class="c1">// イベント引数を持たせるよりも、イベントとして分けた方が拡張性が高い</span>
@@ -304,6 +304,22 @@
 <span class="k">public</span> <span class="k">abstract</span> <span class="k">class</span> <span class="nf">HogeEvent</span><span class="p">();</span>
 <span class="k">public</span> <span class="k">class</span> <span class="nf">Hoge1Event</span><span class="p">()</span> <span class="p">:</span> <span class="n">HogeEvent</span><span class="p">;</span>
 <span class="k">public</span> <span class="k">class</span> <span class="nf">Hoge2Event</span><span class="p">()</span> <span class="p">:</span> <span class="n">HogeEvent</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>イベントが発行されるまで待機する方法</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">WeighZero</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">using</span> <span class="nn">var</span> <span class="n">cts</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CancellationTokenSource</span><span class="p">();</span>
+  <span class="k">using</span> <span class="nn">var</span> <span class="n">_</span> <span class="p">=</span> <span class="n">_device</span><span class="p">.</span><span class="n">WeighZero</span><span class="p">().</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="n">cts</span><span class="p">.</span><span class="n">Cancel</span><span class="p">());</span>
+  <span class="k">try</span>
+  <span class="p">{</span>
+      <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">Delay</span><span class="p">(</span><span class="n">Timeout</span><span class="p">.</span><span class="n">InfiniteTimeSpan</span><span class="p">,</span> <span class="n">cts</span><span class="p">.</span><span class="n">Token</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">catch</span> <span class="p">(</span><span class="n">TaskCanceledException</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div></blockquote>
