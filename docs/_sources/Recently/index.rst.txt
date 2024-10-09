@@ -6,6 +6,20 @@ ReactiveExtensions
 ==================
 
 * `Hot/Coldの挙動について <https://qiita.com/toRisouP/items/f6088963037bfda658d3>`__
+
+  * Cold Observable
+
+    * 自発的に何もしない受動的なObservable
+    * Observerが登録されて（Subscribeされて）初めて仕事を始める
+    * ストリームの前後をただつなぐだけ。ストリームを枝分かれさせる機能は無い
+ 
+  * Hot  Observable
+
+    * 自分から値を発行する能動的なObservable
+    * 後続のObserverの存在に関係なしにメッセージを発行する
+    * 自分より上流のCold Observableを起動し、値の発行を要求する機能を持つ
+    * 下流のObserverを全て束ね、まとめて同じ値を発行する（ストリームを枝分かれさせる）
+
 * イベントとしての使用例
   
   .. code-block:: csharp
@@ -21,6 +35,43 @@ ReactiveExtensions
     _OnEventA.OnNext(System.Reactive.Unit.Default); 
 
 * `マウスダウン、マウスアップ、マウスムーブ <https://blog.okazuki.jp/entry/20111124/1322145011>`__
+
+* Subject
+
+  * Subject
+
+   * OnNext()で値を通知
+   * 現在値は保持されないし直接取得もできない
+   * 値が通知された時のみSubscribe()で取得可能
+
+  * ReplaySubject
+
+   * OnNext()で値を通知
+   * 全ての値が保持される
+   * Subscrive()登録時にこれまで保持されてきた値を全て通知
+
+  * BehaviorSubject
+
+   * OnNext()で値を通知
+   * 現在値は保持されているが、直接取得することはできない？
+   * Subscribe()登録時に現在値を通知
+
+  * ReactiveProperty
+    
+   * 現在値を直接取得できる
+
+* IConnectableObservable
+
+  * Pulish()にて、ColdなIObservableをHotに変換する
+  * Connect()で活性化
+
+  .. code-block:: csharp
+
+    IConnectableObservable observer = Observable.Timer(TimeSpan.FromSeconds(5)).ToUnit().Publish();
+    var _1 = observer.subscribe(_ => );
+    var _2 = observer.subscribe(_ => );
+    var _3 = observer.subscribe(_ => );
+    observer.Connect();   // これでobserverが活性化し1~3のsubscribeに通知される
 
 ================
 ReactiveProperty
@@ -41,6 +92,27 @@ ReactiveProperty
         .AddTo(_disposables);
 
 * `ReactivePropertyを使ってバリデーションエラーを表示する #C# - Qiita <https://qiita.com/takapi_cs/items/7e8438123f3f0bf3aae8>`__
+
+* ReactivePropertyMode
+
+  .. code-block:: csharp
+
+    // Defaultは、RaiseLatestValueOnSubscribe | DistinctUntilChanged
+    // Subscribe時イベント発行 : ○
+    // 同値上書き時イベント発行 : x
+    private ReactivePropertySlim<int> _count1 = new();
+
+    // Subscribe時イベント発行 : x
+    // 同値上書き時イベント発行 : ○
+    private ReactivePropertySlim<int> _count2 = new(mode:ReactivePropertyMode.None);
+
+    // Subscribe時イベント発行 : ○
+    // 同値上書き時イベント発行 : ○
+    private ReactivePropertySlim<int> _count3 = new(mode: ReactivePropertyMode.RaiseLatestValueOnSubscribe);
+
+    // Subscribe時イベント発行 : x
+    // 同値上書き時イベント発行 : x
+    private ReactivePropertySlim<int> _count4 = new(mode: ReactivePropertyMode.DistinctUntilChanged);
 
 ====
 Xaml

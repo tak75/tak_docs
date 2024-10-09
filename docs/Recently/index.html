@@ -94,7 +94,25 @@
 <section id="reactiveextensions">
 <h2>ReactiveExtensions<a class="headerlink" href="#reactiveextensions" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul>
-<li><p><a class="reference external" href="https://qiita.com/toRisouP/items/f6088963037bfda658d3">Hot/Coldの挙動について</a></p></li>
+<li><p><a class="reference external" href="https://qiita.com/toRisouP/items/f6088963037bfda658d3">Hot/Coldの挙動について</a></p>
+<ul class="simple">
+<li><p>Cold Observable</p>
+<ul>
+<li><p>自発的に何もしない受動的なObservable</p></li>
+<li><p>Observerが登録されて（Subscribeされて）初めて仕事を始める</p></li>
+<li><p>ストリームの前後をただつなぐだけ。ストリームを枝分かれさせる機能は無い</p></li>
+</ul>
+</li>
+<li><p>Hot  Observable</p>
+<ul>
+<li><p>自分から値を発行する能動的なObservable</p></li>
+<li><p>後続のObserverの存在に関係なしにメッセージを発行する</p></li>
+<li><p>自分より上流のCold Observableを起動し、値の発行を要求する機能を持つ</p></li>
+<li><p>下流のObserverを全て束ね、まとめて同じ値を発行する（ストリームを枝分かれさせる）</p></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><p>イベントとしての使用例</p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="n">Subject</span><span class="p">&lt;</span><span class="n">System</span><span class="p">.</span><span class="n">Reactive</span><span class="p">.</span><span class="n">Unit</span><span class="p">&gt;</span> <span class="n">_OnEventA</span><span class="p">;</span>
 <span class="k">private</span> <span class="n">Subject</span><span class="p">&lt;</span><span class="n">System</span><span class="p">.</span><span class="n">Reactive</span><span class="p">.</span><span class="n">Unit</span><span class="p">&gt;</span> <span class="n">_OnEventB</span><span class="p">;</span>
@@ -109,6 +127,59 @@
 </div>
 </li>
 <li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111124/1322145011">マウスダウン、マウスアップ、マウスムーブ</a></p></li>
+<li><p>Subject</p>
+<ul class="simple">
+<li><p>Subject</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>OnNext()で値を通知</p></li>
+<li><p>現在値は保持されないし直接取得もできない</p></li>
+<li><p>値が通知された時のみSubscribe()で取得可能</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>ReplaySubject</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>OnNext()で値を通知</p></li>
+<li><p>全ての値が保持される</p></li>
+<li><p>Subscrive()登録時にこれまで保持されてきた値を全て通知</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>BehaviorSubject</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>OnNext()で値を通知</p></li>
+<li><p>現在値は保持されているが、直接取得することはできない？</p></li>
+<li><p>Subscribe()登録時に現在値を通知</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>ReactiveProperty</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>現在値を直接取得できる</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>IConnectableObservable</p>
+<ul class="simple">
+<li><p>Pulish()にて、ColdなIObservableをHotに変換する</p></li>
+<li><p>Connect()で活性化</p></li>
+</ul>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">IConnectableObservable</span> <span class="n">observer</span> <span class="p">=</span> <span class="n">Observable</span><span class="p">.</span><span class="n">Timer</span><span class="p">(</span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">5</span><span class="p">)).</span><span class="n">ToUnit</span><span class="p">().</span><span class="n">Publish</span><span class="p">();</span>
+<span class="kt">var</span> <span class="n">_1</span> <span class="p">=</span> <span class="n">observer</span><span class="p">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="p">);</span>
+<span class="kt">var</span> <span class="n">_2</span> <span class="p">=</span> <span class="n">observer</span><span class="p">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="p">);</span>
+<span class="kt">var</span> <span class="n">_3</span> <span class="p">=</span> <span class="n">observer</span><span class="p">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="p">);</span>
+<span class="n">observer</span><span class="p">.</span><span class="n">Connect</span><span class="p">();</span>   <span class="c1">// これでobserverが活性化し1~3のsubscribeに通知される</span>
+</pre></div>
+</div>
+</li>
 </ul>
 </section>
 <section id="reactiveproperty">
@@ -128,6 +199,26 @@
 </div>
 </li>
 <li><p><a class="reference external" href="https://qiita.com/takapi_cs/items/7e8438123f3f0bf3aae8">ReactivePropertyを使ってバリデーションエラーを表示する #C# - Qiita</a></p></li>
+<li><p>ReactivePropertyMode</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Defaultは、RaiseLatestValueOnSubscribe | DistinctUntilChanged</span>
+<span class="c1">// Subscribe時イベント発行 : ○</span>
+<span class="c1">// 同値上書き時イベント発行 : x</span>
+<span class="k">private</span> <span class="n">ReactivePropertySlim</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">_count1</span> <span class="p">=</span> <span class="k">new</span><span class="p">();</span>
+
+<span class="c1">// Subscribe時イベント発行 : x</span>
+<span class="c1">// 同値上書き時イベント発行 : ○</span>
+<span class="k">private</span> <span class="n">ReactivePropertySlim</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">_count2</span> <span class="p">=</span> <span class="k">new</span><span class="p">(</span><span class="n">mode</span><span class="p">:</span><span class="n">ReactivePropertyMode</span><span class="p">.</span><span class="n">None</span><span class="p">);</span>
+
+<span class="c1">// Subscribe時イベント発行 : ○</span>
+<span class="c1">// 同値上書き時イベント発行 : ○</span>
+<span class="k">private</span> <span class="n">ReactivePropertySlim</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">_count3</span> <span class="p">=</span> <span class="k">new</span><span class="p">(</span><span class="n">mode</span><span class="p">:</span> <span class="n">ReactivePropertyMode</span><span class="p">.</span><span class="n">RaiseLatestValueOnSubscribe</span><span class="p">);</span>
+
+<span class="c1">// Subscribe時イベント発行 : x</span>
+<span class="c1">// 同値上書き時イベント発行 : x</span>
+<span class="k">private</span> <span class="n">ReactivePropertySlim</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">_count4</span> <span class="p">=</span> <span class="k">new</span><span class="p">(</span><span class="n">mode</span><span class="p">:</span> <span class="n">ReactivePropertyMode</span><span class="p">.</span><span class="n">DistinctUntilChanged</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
 </ul>
 </section>
 <section id="xaml">
