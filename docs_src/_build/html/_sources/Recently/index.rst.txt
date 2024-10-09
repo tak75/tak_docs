@@ -36,7 +36,7 @@ ReactiveExtensions
 
 * `マウスダウン、マウスアップ、マウスムーブ <https://blog.okazuki.jp/entry/20111124/1322145011>`__
 
-* Subject
+* Subjectの種類
 
   * Subject
 
@@ -56,22 +56,58 @@ ReactiveExtensions
    * 現在値は保持されているが、直接取得することはできない？
    * Subscribe()登録時に現在値を通知
 
+* SubjectとReactivePropertyの違い
+
+  * Subject
+    
+   * 現在値は保持されないし直接取得もできない
+   * 値が通知された時のみSubscribe()で取得可能
+
   * ReactiveProperty
     
    * 現在値を直接取得できる
+   * デフォルトmodeでは、
+ 
+     * Subscribe()登録時に現在値を通知（BehaviorSubjectと同じ）
+     * 直前と同じ値の場合は通知しない
 
 * IConnectableObservable
 
   * Pulish()にて、ColdなIObservableをHotに変換する
-  * Connect()で活性化
+  * Connect()でストリーム稼働開始
 
   .. code-block:: csharp
 
-    IConnectableObservable observer = Observable.Timer(TimeSpan.FromSeconds(5)).ToUnit().Publish();
-    var _1 = observer.subscribe(_ => );
-    var _2 = observer.subscribe(_ => );
-    var _3 = observer.subscribe(_ => );
-    observer.Connect();   // これでobserverが活性化し1~3のsubscribeに通知される
+    var subject = new Subject<string>();
+
+    //subjectから生成されたObservableは【Hot】
+    var sourceObservable = subject.AsObservable();
+
+    //ストリームに流れてきた文字列を連結するストリーム
+    //Scan()は【Cold】
+    var stringObservable = sourceObservable
+        .Scan((p, c) => p + c)
+        .Publish(); //Hot変換オペレータ
+
+    stringObservable.Connect(); //ストリーム稼働開始
+
+    //ストリームに値を流す
+    subject.OnNext("A");
+    subject.OnNext("B");
+
+    //ストリームに値を流した後にSubscribe
+    StringObservable.Subscribe(Console.WriteLine);
+
+    //Subscribe後にストリームに値を流す
+    subject.OnNext("C");
+
+    //完了
+    subject.OnCompleted();
+
+  .. code-block:: csharp
+
+    // 実行結果
+    // ABC
 
 ================
 ReactiveProperty
@@ -311,3 +347,8 @@ LINQ
 ====
 
 *  ヘルパークラスとは、スタティックメソッドだけを持っていて、状態を内包しない「構造体」
+
+* `モック・スタブ・ドライバ の違い <https://www.qbook.jp/column/1864.html>`__
+
+  * スタブ ＞ モック（モックはスタブの一種）
+  * ドライバは「呼び出す側（上位モジュール）」、スタブは「呼び出される側（下位モジュール）」を代替

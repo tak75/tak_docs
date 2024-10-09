@@ -127,7 +127,7 @@
 </div>
 </li>
 <li><p><a class="reference external" href="https://blog.okazuki.jp/entry/20111124/1322145011">マウスダウン、マウスアップ、マウスムーブ</a></p></li>
-<li><p>Subject</p>
+<li><p>Subjectの種類</p>
 <ul class="simple">
 <li><p>Subject</p></li>
 </ul>
@@ -158,25 +158,66 @@
 <li><p>Subscribe()登録時に現在値を通知</p></li>
 </ul>
 </div></blockquote>
+</li>
+<li><p>SubjectとReactivePropertyの違い</p>
+<ul class="simple">
+<li><p>Subject</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>現在値は保持されないし直接取得もできない</p></li>
+<li><p>値が通知された時のみSubscribe()で取得可能</p></li>
+</ul>
+</div></blockquote>
 <ul class="simple">
 <li><p>ReactiveProperty</p></li>
 </ul>
 <blockquote>
 <div><ul class="simple">
 <li><p>現在値を直接取得できる</p></li>
+<li><p>デフォルトmodeでは、</p>
+<ul>
+<li><p>Subscribe()登録時に現在値を通知（BehaviorSubjectと同じ）</p></li>
+<li><p>直前と同じ値の場合は通知しない</p></li>
+</ul>
+</li>
 </ul>
 </div></blockquote>
 </li>
 <li><p>IConnectableObservable</p>
 <ul class="simple">
 <li><p>Pulish()にて、ColdなIObservableをHotに変換する</p></li>
-<li><p>Connect()で活性化</p></li>
+<li><p>Connect()でストリーム稼働開始</p></li>
 </ul>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">IConnectableObservable</span> <span class="n">observer</span> <span class="p">=</span> <span class="n">Observable</span><span class="p">.</span><span class="n">Timer</span><span class="p">(</span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">5</span><span class="p">)).</span><span class="n">ToUnit</span><span class="p">().</span><span class="n">Publish</span><span class="p">();</span>
-<span class="kt">var</span> <span class="n">_1</span> <span class="p">=</span> <span class="n">observer</span><span class="p">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="p">);</span>
-<span class="kt">var</span> <span class="n">_2</span> <span class="p">=</span> <span class="n">observer</span><span class="p">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="p">);</span>
-<span class="kt">var</span> <span class="n">_3</span> <span class="p">=</span> <span class="n">observer</span><span class="p">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="p">);</span>
-<span class="n">observer</span><span class="p">.</span><span class="n">Connect</span><span class="p">();</span>   <span class="c1">// これでobserverが活性化し1~3のsubscribeに通知される</span>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">subject</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Subject</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;();</span>
+
+<span class="c1">//subjectから生成されたObservableは【Hot】</span>
+<span class="kt">var</span> <span class="n">sourceObservable</span> <span class="p">=</span> <span class="n">subject</span><span class="p">.</span><span class="n">AsObservable</span><span class="p">();</span>
+
+<span class="c1">//ストリームに流れてきた文字列を連結するストリーム</span>
+<span class="c1">//Scan()は【Cold】</span>
+<span class="kt">var</span> <span class="n">stringObservable</span> <span class="p">=</span> <span class="n">sourceObservable</span>
+    <span class="p">.</span><span class="n">Scan</span><span class="p">((</span><span class="n">p</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">p</span> <span class="p">+</span> <span class="n">c</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">Publish</span><span class="p">();</span> <span class="c1">//Hot変換オペレータ</span>
+
+<span class="n">stringObservable</span><span class="p">.</span><span class="n">Connect</span><span class="p">();</span> <span class="c1">//ストリーム稼働開始</span>
+
+<span class="c1">//ストリームに値を流す</span>
+<span class="n">subject</span><span class="p">.</span><span class="n">OnNext</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">);</span>
+<span class="n">subject</span><span class="p">.</span><span class="n">OnNext</span><span class="p">(</span><span class="s">&quot;B&quot;</span><span class="p">);</span>
+
+<span class="c1">//ストリームに値を流した後にSubscribe</span>
+<span class="n">StringObservable</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">);</span>
+
+<span class="c1">//Subscribe後にストリームに値を流す</span>
+<span class="n">subject</span><span class="p">.</span><span class="n">OnNext</span><span class="p">(</span><span class="s">&quot;C&quot;</span><span class="p">);</span>
+
+<span class="c1">//完了</span>
+<span class="n">subject</span><span class="p">.</span><span class="n">OnCompleted</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 実行結果</span>
+<span class="c1">// ABC</span>
 </pre></div>
 </div>
 </li>
@@ -427,6 +468,12 @@
 <h2>全般<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
 <li><p>ヘルパークラスとは、スタティックメソッドだけを持っていて、状態を内包しない「構造体」</p></li>
+<li><p><a class="reference external" href="https://www.qbook.jp/column/1864.html">モック・スタブ・ドライバ の違い</a></p>
+<ul>
+<li><p>スタブ ＞ モック（モックはスタブの一種）</p></li>
+<li><p>ドライバは「呼び出す側（上位モジュール）」、スタブは「呼び出される側（下位モジュール）」を代替</p></li>
+</ul>
+</li>
 </ul>
 </section>
 </section>
