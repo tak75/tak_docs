@@ -456,6 +456,33 @@
 </div>
 </div></blockquote>
 </li>
+<li><p>lock ステートメントはあくまで「スレッド間」を排他するものであり、同じスレッドの再帰的な動きには効果がない</p></li>
+<li><p>ifの条件部分で変数定義する</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">inventory</span><span class="p">.</span><span class="n">GetItem</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="k">is</span> <span class="kt">var</span> <span class="n">item</span> <span class="p">&amp;&amp;</span> <span class="n">item</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">DoFuga</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>プロパティのパターンマッチング</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="k">is</span> <span class="p">{</span> <span class="n">X</span><span class="p">:</span> <span class="m">10</span><span class="p">,</span> <span class="n">Y</span><span class="p">:</span> <span class="m">10</span> <span class="p">})</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="k">is</span> <span class="p">{</span> <span class="n">X</span><span class="p">:</span> <span class="m">10</span><span class="p">,</span> <span class="n">Y</span><span class="p">:</span> <span class="p">&gt;</span> <span class="m">0</span> <span class="p">})</span>
+
+<span class="c1">// 下記2つは同じ意味</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="k">is</span> <span class="p">{</span> <span class="n">X</span><span class="p">:</span> <span class="m">10</span><span class="p">,</span> <span class="n">Y</span><span class="p">:</span> <span class="n">_</span> <span class="p">})</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="k">is</span> <span class="p">{</span> <span class="n">X</span><span class="p">:</span> <span class="m">10</span> <span class="p">})</span>
+
+<span class="c1">// 下記2つは同じ意味</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="k">is</span> <span class="p">{</span> <span class="p">})</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="k">is</span> <span class="n">not</span> <span class="k">null</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
 </ul>
 </section>
 <section id="linq">
@@ -472,6 +499,12 @@
 <ul>
 <li><p>スタブ ＞ モック（モックはスタブの一種）</p></li>
 <li><p>ドライバは「呼び出す側（上位モジュール）」、スタブは「呼び出される側（下位モジュール）」を代替</p></li>
+</ul>
+</li>
+<li><p>完全コンストラクタパターン</p>
+<ul>
+<li><p>クラスが保持するプロパティを全てコンストラクタで設定する</p></li>
+<li><p>プロパティはgetのみで書き換え不可であり、クラスインスタンス生成後書き換えられていないことが保証される</p></li>
 </ul>
 </li>
 </ul>
