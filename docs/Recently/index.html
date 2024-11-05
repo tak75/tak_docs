@@ -457,7 +457,7 @@
 </div></blockquote>
 </li>
 <li><p>lock ステートメントはあくまで「スレッド間」を排他するものであり、同じスレッドの再帰的な動きには効果がない</p></li>
-<li><p>ifの条件部分で変数定義する</p>
+<li><p><a class="reference external" href="https://zenn.dev/trs_game/articles/5c4a52d87f69c2">ifの条件部分で変数定義する</a></p>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">inventory</span><span class="p">.</span><span class="n">GetItem</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="k">is</span> <span class="kt">var</span> <span class="n">item</span> <span class="p">&amp;&amp;</span> <span class="n">item</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
 <span class="p">{</span>
@@ -467,7 +467,7 @@
 </div>
 </div></blockquote>
 </li>
-<li><p>プロパティのパターンマッチング</p>
+<li><p><a class="reference external" href="https://qiita.com/emoacht/items/dc1c40769dc6cdc1ef44">プロパティのパターンマッチング</a></p>
 <blockquote>
 <div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="k">is</span> <span class="p">{</span> <span class="n">X</span><span class="p">:</span> <span class="m">10</span><span class="p">,</span> <span class="n">Y</span><span class="p">:</span> <span class="m">10</span> <span class="p">})</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="k">is</span> <span class="p">{</span> <span class="n">X</span><span class="p">:</span> <span class="m">10</span><span class="p">,</span> <span class="n">Y</span><span class="p">:</span> <span class="p">&gt;</span> <span class="m">0</span> <span class="p">})</span>
@@ -479,6 +479,18 @@
 <span class="c1">// 下記2つは同じ意味</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="k">is</span> <span class="p">{</span> <span class="p">})</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="k">is</span> <span class="n">not</span> <span class="k">null</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p><a class="reference external" href="https://ufcpp.net/study/csharp/datatype/collection-expression/">スプレッド(spread)演算子</a></p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// コレクション式中では、.. を使うことで「別のコレクションの中身の展開」ができる</span>
+<span class="kt">int</span><span class="p">[]</span> <span class="n">array1</span> <span class="p">=</span> <span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">];</span>
+<span class="kt">int</span><span class="p">[]</span> <span class="n">array2</span> <span class="p">=</span> <span class="p">[</span><span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">6</span><span class="p">];</span>
+
+<span class="c1">// 0, 1, 2, 3, 4, 5, 6, 7</span>
+<span class="kt">int</span><span class="p">[]</span> <span class="n">combined</span> <span class="p">=</span> <span class="p">[</span><span class="m">0</span><span class="p">,</span> <span class="p">..</span><span class="n">array1</span><span class="p">,</span> <span class="p">..</span><span class="n">array2</span><span class="p">,</span> <span class="m">7</span><span class="p">];</span>
 </pre></div>
 </div>
 </div></blockquote>

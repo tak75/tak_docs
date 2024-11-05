@@ -337,7 +337,7 @@ C#
 
 * lock ステートメントはあくまで「スレッド間」を排他するものであり、同じスレッドの再帰的な動きには効果がない
 
-* ifの条件部分で変数定義する
+* `ifの条件部分で変数定義する <https://zenn.dev/trs_game/articles/5c4a52d87f69c2>`__
  
     .. code-block:: csharp
 
@@ -346,7 +346,7 @@ C#
           DoFuga(item);
       }
 
-* プロパティのパターンマッチング
+* `プロパティのパターンマッチング <https://qiita.com/emoacht/items/dc1c40769dc6cdc1ef44>`__
  
     .. code-block:: csharp
 
@@ -361,6 +361,16 @@ C#
       if (p is { })
       if (p is not null)
 
+* `スプレッド(spread)演算子 <https://ufcpp.net/study/csharp/datatype/collection-expression/>`__
+
+    .. code-block:: csharp
+
+      // コレクション式中では、.. を使うことで「別のコレクションの中身の展開」ができる
+      int[] array1 = [1, 2, 3];
+      int[] array2 = [4, 5, 6];
+
+      // 0, 1, 2, 3, 4, 5, 6, 7
+      int[] combined = [0, ..array1, ..array2, 7];
 
 ====
 LINQ
