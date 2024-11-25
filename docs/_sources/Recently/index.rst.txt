@@ -372,6 +372,8 @@ C#
       // 0, 1, 2, 3, 4, 5, 6, 7
       int[] combined = [0, ..array1, ..array2, 7];
 
+* `async/awaitのキャンセル処理まとめ <https://qiita.com/toRisouP/items/60673e4a39319e69fbc0>`__
+
 ====
 LINQ
 ====
