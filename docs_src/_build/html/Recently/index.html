@@ -496,6 +496,87 @@
 </div></blockquote>
 </li>
 <li><p><a class="reference external" href="https://qiita.com/toRisouP/items/60673e4a39319e69fbc0">async/awaitのキャンセル処理まとめ</a></p></li>
+<li><p>Moq</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">XXXTest</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">var</span> <span class="n">productMock</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Mock</span><span class="p">&lt;</span><span class="n">IProduct</span><span class="p">&gt;();</span>
+  <span class="n">productMock</span><span class="p">.</span><span class="n">Setup</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">GetData</span><span class="p">()).</span><span class="n">Returns</span><span class="p">(</span><span class="s">&quot;AAA&quot;</span><span class="p">);</span>
+  <span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="s">&quot;AAA&quot;</span><span class="p">,</span> <span class="n">ModuleB</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">productMock</span><span class="p">.</span><span class="n">Object</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Unity（DIコンテナ）→非推奨になっている</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">vm</span> <span class="p">=</span> <span class="n">DI</span><span class="p">.</span><span class="n">Resolve</span><span class="p">&lt;</span><span class="n">Form1ViewModel</span><span class="p">&gt;();</span>
+
+<span class="k">internal</span> <span class="k">class</span> <span class="nf">Form1ViewModel</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">private</span> <span class="n">IProduct</span> <span class="n">_product</span><span class="p">;</span>
+  <span class="k">internal</span> <span class="nf">Form1ViewModel</span><span class="p">(</span><span class="n">IProduct</span> <span class="n">product</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">_product</span> <span class="p">=</span> <span class="n">product</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">internal</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">DI</span>
+<span class="p">{</span>
+  <span class="k">private</span> <span class="k">static</span> <span class="n">IUnityContainer</span> <span class="n">_container</span> <span class="p">=</span> <span class="k">new</span> <span class="n">UnityContainer</span><span class="p">();</span>
+
+  <span class="k">static</span> <span class="nf">DI</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="c1">// 型の登録</span>
+    <span class="n">_container</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">IProduct</span><span class="p">,</span> <span class="n">Product</span><span class="p">&gt;();</span>
+  <span class="p">}</span>
+
+  <span class="k">internal</span> <span class="k">static</span> <span class="n">T</span> <span class="n">Resolve</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;()</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_container</span><span class="p">.</span><span class="n">Resolve</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Microsoft.Extensions.DependencyInjection（DIコンテナ）→推奨</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">vm</span> <span class="p">=</span> <span class="n">DI</span><span class="p">.</span><span class="n">Resolve</span><span class="p">&lt;</span><span class="n">Form1ViewModel</span><span class="p">&gt;();</span>
+
+<span class="k">internal</span> <span class="k">class</span> <span class="nf">Form1ViewModel</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">private</span> <span class="n">IProduct</span> <span class="n">_product</span><span class="p">;</span>
+  <span class="k">internal</span> <span class="nf">Form1ViewModel</span><span class="p">(</span><span class="n">IProduct</span> <span class="n">product</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">_product</span> <span class="p">=</span> <span class="n">product</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">internal</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">DI</span>
+<span class="p">{</span>
+  <span class="k">private</span> <span class="k">static</span> <span class="n">ServiceCollection</span> <span class="n">_container</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ServiceCollection</span><span class="p">();</span>
+  <span class="k">private</span> <span class="k">static</span> <span class="n">ServiceProvider</span> <span class="n">_serviceProvider</span><span class="p">;</span>
+
+  <span class="k">static</span> <span class="nf">DI</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="c1">// 型の登録</span>
+    <span class="n">_container</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">IProduct</span><span class="p">,</span> <span class="n">Product</span><span class="p">&gt;();</span>
+
+    <span class="n">_serviceProvider</span> <span class="p">=</span> <span class="n">_container</span><span class="p">.</span><span class="n">BuildServiceProvider</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="k">internal</span> <span class="k">static</span> <span class="n">T</span> <span class="n">Resolve</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;()</span>
+  <span class="p">{</span>
+    <span class="c1">// GetRrequiredServiceは例外</span>
+    <span class="c1">// GetServicesはNullが返る</span>
+    <span class="k">return</span> <span class="n">_serviceProvider</span><span class="p">.</span><span class="n">GetRequiredService</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
 </ul>
 </section>
 <section id="linq">

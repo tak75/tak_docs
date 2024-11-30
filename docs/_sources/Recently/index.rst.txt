@@ -374,6 +374,85 @@ C#
 
 * `async/awaitのキャンセル処理まとめ <https://qiita.com/toRisouP/items/60673e4a39319e69fbc0>`__
 
+* Moq
+
+    .. code-block:: csharp
+
+      public void XXXTest()
+      {
+        var productMock = new Mock<IProduct>();
+        productMock.Setup(x => x.GetData()).Returns("AAA");
+        Assert.AreEqual("AAA", ModuleB.GetValue(productMock.Object));
+      }
+
+
+* Unity（DIコンテナ）→非推奨になっている
+
+    .. code-block:: csharp
+
+      var vm = DI.Resolve<Form1ViewModel>();
+
+      internal class Form1ViewModel()
+      {
+        private IProduct _product;
+        internal Form1ViewModel(IProduct product)
+        {
+          _product = product;
+        }
+      }
+
+      internal static class DI
+      {
+        private static IUnityContainer _container = new UnityContainer();
+
+        static DI()
+        {
+          // 型の登録
+          _container.RegisterType<IProduct, Product>();
+        }
+
+        internal static T Resolve<T>()
+        {
+          return _container.Resolve<T>();
+        }
+      }
+
+* Microsoft.Extensions.DependencyInjection（DIコンテナ）→推奨
+
+    .. code-block:: csharp
+
+      var vm = DI.Resolve<Form1ViewModel>();
+
+      internal class Form1ViewModel()
+      {
+        private IProduct _product;
+        internal Form1ViewModel(IProduct product)
+        {
+          _product = product;
+        }
+      }
+
+      internal static class DI
+      {
+        private static ServiceCollection _container = new ServiceCollection();
+        private static ServiceProvider _serviceProvider;
+
+        static DI()
+        {
+          // 型の登録
+          _container.AddTransient<IProduct, Product>();
+
+          _serviceProvider = _container.BuildServiceProvider();
+        }
+
+        internal static T Resolve<T>()
+        {
+          // GetRrequiredServiceは例外
+          // GetServicesはNullが返る
+          return _serviceProvider.GetRequiredService<T>();
+        }
+      }
+
 ====
 LINQ
 ====
