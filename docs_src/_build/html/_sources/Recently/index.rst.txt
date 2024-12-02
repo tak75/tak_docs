@@ -421,7 +421,7 @@ C#
 
     .. code-block:: csharp
 
-      var vm = DI.Resolve<Form1ViewModel>();
+      var vm = DI.GetService<Form1ViewModel>();
 
       internal class Form1ViewModel()
       {
@@ -439,13 +439,15 @@ C#
 
         static DI()
         {
+          _container.AddSingleton<Form1ViewModel>();
+        
           // 型の登録
           _container.AddTransient<IProduct, Product>();
 
           _serviceProvider = _container.BuildServiceProvider();
         }
 
-        internal static T Resolve<T>()
+        internal static T GetService<T>()
         {
           // GetRrequiredServiceは例外
           // GetServicesはNullが返る

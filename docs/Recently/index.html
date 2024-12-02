@@ -542,7 +542,7 @@
 </li>
 <li><p>Microsoft.Extensions.DependencyInjection（DIコンテナ）→推奨</p>
 <blockquote>
-<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">vm</span> <span class="p">=</span> <span class="n">DI</span><span class="p">.</span><span class="n">Resolve</span><span class="p">&lt;</span><span class="n">Form1ViewModel</span><span class="p">&gt;();</span>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">vm</span> <span class="p">=</span> <span class="n">DI</span><span class="p">.</span><span class="n">GetService</span><span class="p">&lt;</span><span class="n">Form1ViewModel</span><span class="p">&gt;();</span>
 
 <span class="k">internal</span> <span class="k">class</span> <span class="nf">Form1ViewModel</span><span class="p">()</span>
 <span class="p">{</span>
@@ -560,13 +560,15 @@
 
   <span class="k">static</span> <span class="nf">DI</span><span class="p">()</span>
   <span class="p">{</span>
+    <span class="n">_container</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">Form1ViewModel</span><span class="p">&gt;();</span>
+
     <span class="c1">// 型の登録</span>
     <span class="n">_container</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">IProduct</span><span class="p">,</span> <span class="n">Product</span><span class="p">&gt;();</span>
 
     <span class="n">_serviceProvider</span> <span class="p">=</span> <span class="n">_container</span><span class="p">.</span><span class="n">BuildServiceProvider</span><span class="p">();</span>
   <span class="p">}</span>
 
-  <span class="k">internal</span> <span class="k">static</span> <span class="n">T</span> <span class="n">Resolve</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;()</span>
+  <span class="k">internal</span> <span class="k">static</span> <span class="n">T</span> <span class="n">GetService</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;()</span>
   <span class="p">{</span>
     <span class="c1">// GetRrequiredServiceは例外</span>
     <span class="c1">// GetServicesはNullが返る</span>
