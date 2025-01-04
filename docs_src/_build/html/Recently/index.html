@@ -221,6 +221,7 @@
 </pre></div>
 </div>
 </li>
+<li><p>Subscribe内で例外発生するとSubscribeはDisposeされその後呼ばれなくなる</p></li>
 </ul>
 </section>
 <section id="reactiveproperty">
@@ -578,6 +579,81 @@
 </pre></div>
 </div>
 </div></blockquote>
+</li>
+<li><p>Observerパターン</p>
+<ul class="simple">
+<li><p>以下のように呼ばれることもある</p>
+<ul>
+<li><p>Subject/Observer パターン</p></li>
+<li><p>Pulish/Subscribe パターン</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>eventキーワードの意味</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">WarningTimer</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="k">static</span> <span class="n">Action</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="n">WarningAction1</span><span class="p">;</span>
+
+  <span class="c1">// eventを付けることでカプセル化され直接代入できなくなる</span>
+  <span class="c1">// +=/-=でしか設定できなくなる</span>
+  <span class="k">public</span> <span class="k">static</span> <span class="k">event</span> <span class="n">Action</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="n">WarningAction2</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">Form</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="nf">Form</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="n">WarningTimer</span><span class="p">.</span><span class="n">WarningAction1</span> <span class="p">=</span> <span class="n">Func</span><span class="p">;</span>   <span class="c1">// ← OK</span>
+    <span class="n">WarningTimer</span><span class="p">.</span><span class="n">WarningAction2</span> <span class="p">=</span> <span class="n">Func</span><span class="p">;</span>   <span class="c1">// ← コンパイルエラー</span>
+    <span class="n">WarningTimer</span><span class="p">.</span><span class="n">WarningAction2</span> <span class="p">+=</span> <span class="n">Func</span><span class="p">;</span>  <span class="c1">// ← OK</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>event追加時のチェック方法</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="k">static</span> <span class="n">Action</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="n">_warningAction</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Add</span><span class="p">(</span><span class="n">Action</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="n">action</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">_warningAction</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 既に登録されている場合は何もしない</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">_warningAction</span><span class="p">.</span><span class="n">GetInvocationList</span><span class="p">().</span><span class="n">Contains</span><span class="p">(</span><span class="n">action</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">_warningAction</span> <span class="p">+=</span> <span class="n">action</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>AutoResetEventについて</p>
+<ul class="simple">
+<li><p>Set()するとシグナル状態となる</p></li>
+<li><p>シグナル状態ではWaitOne()を実行してもスルーされ、スレッドは止まらない（次のWaitOne()で止まる）</p></li>
+<li><p>なので、ある判定の結果WaitOne()されることとなったが、WaitOne()のコードを実行される前にSet()が実行された場合でも、スレッドは停止されない</p></li>
+</ul>
+</li>
+<li><p>PadLeft</p>
+<ul>
+<li><p>string型数字文字列において、指定した文字数になるように左側から特定の文字で埋めることができる</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">originalString</span> <span class="p">=</span> <span class="s">&quot;123&quot;</span><span class="p">;</span>
+<span class="kt">var</span> <span class="n">paddedString</span> <span class="p">=</span> <span class="n">originalString</span><span class="p">.</span><span class="n">PadLeft</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="sc">&#39;0&#39;</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">paddedString</span><span class="p">);</span> <span class="c1">// 出力: &quot;00123&quot;</span>
+</pre></div>
+</div>
+</li>
+</ul>
 </li>
 </ul>
 </section>

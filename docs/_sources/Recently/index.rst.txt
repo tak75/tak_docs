@@ -109,6 +109,8 @@ ReactiveExtensions
     // 実行結果
     // ABC
 
+* Subscribe内で例外発生するとSubscribeはDisposeされその後呼ばれなくなる
+
 ================
 ReactiveProperty
 ================
@@ -454,6 +456,74 @@ C#
           return _serviceProvider.GetRequiredService<T>();
         }
       }
+
+* Observerパターン
+
+  * 以下のように呼ばれることもある
+
+    * Subject/Observer パターン
+    * Pulish/Subscribe パターン
+
+* eventキーワードの意味
+
+    .. code-block:: csharp
+
+      public static class WarningTimer
+      {
+        public static Action<bool> WarningAction1;
+
+        // eventを付けることでカプセル化され直接代入できなくなる
+        // +=/-=でしか設定できなくなる
+        public static event Action<bool> WarningAction2;
+      }
+
+
+      public static class Form
+      {
+        public Form()
+        {
+          WarningTimer.WarningAction1 = Func;   // ← OK
+          WarningTimer.WarningAction2 = Func;   // ← コンパイルエラー
+          WarningTimer.WarningAction2 += Func;  // ← OK
+        }
+      }
+
+* event追加時のチェック方法
+
+    .. code-block:: csharp
+
+      private static Action<bool> _warningAction;
+
+      public static void Add(Action<bool> action)
+      {
+        if(_warningAction == null)
+        {
+          return;
+        }
+
+        // 既に登録されている場合は何もしない
+        if(_warningAction.GetInvocationList().Contains(action))
+        {
+          return;
+        }
+        _warningAction += action;
+      }
+
+* AutoResetEventについて
+
+  * Set()するとシグナル状態となる
+  * シグナル状態ではWaitOne()を実行してもスルーされ、スレッドは止まらない（次のWaitOne()で止まる）
+  * なので、ある判定の結果WaitOne()されることとなったが、WaitOne()のコードを実行される前にSet()が実行された場合でも、スレッドは停止されない
+
+* PadLeft
+  
+  * string型数字文字列において、指定した文字数になるように左側から特定の文字で埋めることができる
+
+    .. code-block:: csharp
+
+  		var originalString = "123";
+  		var paddedString = originalString.PadLeft(5, '0');
+  		Console.WriteLine(paddedString); // 出力: "00123"
 
 ====
 LINQ
