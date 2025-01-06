@@ -468,6 +468,24 @@
 </li>
 </ul>
 </li>
+<li><p>Taskが異常終了、またはキャンセルされた場合のエラーハンドリング方法</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">try</span>
+<span class="p">{</span>
+  <span class="k">await</span> <span class="nf">RunTaskAsync</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="k">catch</span> <span class="p">(</span><span class="n">TaskCanceledException</span> <span class="n">ex</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// キャンセルされた場合の例外処理</span>
+<span class="p">}</span>
+<span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// 異常終了した場合の例外処理</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
 </ul>
 </section>
 

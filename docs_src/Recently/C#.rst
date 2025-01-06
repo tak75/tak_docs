@@ -357,3 +357,20 @@ C#
   		var originalString = "123";
   		var paddedString = originalString.PadLeft(5, '0');
   		Console.WriteLine(paddedString); // 出力: "00123"
+
+* Taskが異常終了、またはキャンセルされた場合のエラーハンドリング方法
+
+    .. code-block:: csharp
+
+      try
+      {
+        await RunTaskAsync();
+      }
+      catch (TaskCanceledException ex)
+      {
+        // キャンセルされた場合の例外処理
+      }
+      catch (Exception ex)
+      {
+        // 異常終了した場合の例外処理
+      }
