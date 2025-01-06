@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C# &mdash; Tak Documents  ドキュメント</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/my_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="LINQ" href="LINQ.html" />
+    <link rel="prev" title="Xaml" href="Xaml.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Tak Documents
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Recently</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ReactiveExtensions.html">ReactiveExtensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ReactiveProperty.html">ReactiveProperty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Xaml.html">Xaml</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">C#</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LINQ.html">LINQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LINQ.html#id1">全般</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E5%85%A8%E8%88%AC.html">LINQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E5%85%A8%E8%88%AC.html#id1">全般</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Git/index.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VirtualBox/index.html">VirtualBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linux/index.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Matplotlib/index.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Jupyter/index.html">Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raspberry_pi/index.html">Raspberry Pi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Web%E3%82%A2%E3%83%97%E3%83%AA/index.html">Webアプリ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../C/index.html">C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../C%EF%BC%83/index.html">C＃</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../UML/index.html">UML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.html">デザインパターン</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E3%83%87%E3%83%BC%E3%82%BF%E5%88%86%E6%9E%90/index.html">データ分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E5%82%99%E5%BF%98%E9%8C%B2/index.html">備忘録</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Tak Documents</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Recently</a></li>
+      <li class="breadcrumb-item active">C#</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Recently/C" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="c">
+<h1>C#<a class="headerlink" href="#c" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<ul>
+<li><p>usingステートメント</p>
+<ul>
+<li><p><a class="reference external" href="https://qiita.com/4_mio_11/items/145c658078a7fe5f36a7">https://qiita.com/4_mio_11/items/145c658078a7fe5f36a7</a></p></li>
+<li><p>C#8.0からは以下のように、変数宣言時にusingをつけ簡略化すること可能</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">using</span> <span class="nn">var</span> <span class="n">fs</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FileStream</span><span class="p">(</span><span class="s">&quot;hoge.txt&quot;</span><span class="p">,</span> <span class="n">FileMode</span><span class="p">.</span><span class="n">Open</span><span class="p">,</span> <span class="n">FileAccess</span><span class="p">.</span><span class="n">Read</span><span class="p">,</span> <span class="n">FileShare</span><span class="p">.</span><span class="n">None</span><span class="p">);</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">fs</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://qiita.com/shimamura_io/items/80982b11ce41eca03e10">record型</a></p>
+<ul class="simple">
+<li><p>C#9.0からの機能</p></li>
+<li><p>値ベースでインスタンス比較ができる</p></li>
+<li><p>C#10.0からレコード構造体が追加（それまで参照型）</p></li>
+<li><p>レコード構造体は record struct と書く</p></li>
+<li><p>参照型のレコードは record もしくは、record class と書く</p></li>
+</ul>
+</li>
+<li><p>with 式</p>
+<ul>
+<li><p>レコード／構造体／匿名型で使用可能</p></li>
+<li><p>一部の値が異なるコピー（新しいオブジェクト）を生成することができる</p></li>
+<li><p>ただし、浅いコピーなので、参照型メンバは参照アドレスのコピーとなるので要注意</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">record</span> <span class="n">PersonRecord</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="n">init</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Age</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="n">init</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">var</span> <span class="n">p1</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PersonRecord</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;Tanaka&quot;</span><span class="p">,</span> <span class="n">Age</span> <span class="p">=</span> <span class="m">20</span> <span class="p">};</span>
+<span class="kt">var</span> <span class="n">p2</span> <span class="p">=</span> <span class="n">p1</span> <span class="n">with</span> <span class="p">{</span><span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;Suzuki&quot;</span><span class="p">};</span>
+<span class="kt">var</span> <span class="n">p3</span> <span class="p">=</span> <span class="n">p1</span> <span class="n">with</span> <span class="p">{};</span>    <span class="c1">// p1のコピーが作成される（p1とは別のオブジェクト）</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>読み取り専用コレクション</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">ReactiveCollection</span><span class="p">&lt;</span><span class="n">DataItem</span><span class="p">&gt;</span> <span class="n">_dataList</span><span class="p">;</span>
+<span class="kt">object</span> <span class="n">_dataListLock</span> <span class="p">=</span> <span class="k">new</span><span class="p">();</span>
+<span class="k">public</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">DataItem</span><span class="p">&gt;</span> <span class="n">DataList</span>
+<span class="p">{</span>
+    <span class="k">get</span>
+    <span class="p">{</span>
+        <span class="k">lock</span> <span class="p">(</span><span class="n">_dataListLock</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">_dataList</span><span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 下記でもよいが、IReadOnlyList は IEnumerable から派生したインタフェースであるので、</span>
+<span class="c1">// より上位であるIEnumerableで使用上問題ないのであれば、IEnumerableを使用した方がよい。</span>
+<span class="c1">// ただし、[index]によるアクセスが必要である場合は下記が必要</span>
+<span class="k">public</span> <span class="n">IReadOnlyList</span><span class="p">&lt;</span><span class="n">DataItem</span><span class="p">&gt;</span> <span class="n">DataList</span>
+<span class="p">{</span>
+    <span class="k">get</span>
+    <span class="p">{</span>
+        <span class="k">lock</span> <span class="p">(</span><span class="n">_dataListLock</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">_dataList</span><span class="p">.</span><span class="n">ToList</span><span class="p">().</span><span class="n">AsReadOnly</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>async/await</p>
+<ul>
+<li><p>async メソッドは、最初の await に達すると制御を返す</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">task</span> <span class="p">=</span> <span class="n">AsyncMethod</span><span class="p">();</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Started&quot;</span><span class="p">);</span>
+<span class="n">task</span><span class="p">.</span><span class="n">Wait</span><span class="p">();</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Completed&quot;</span><span class="p">);</span>
+
+<span class="k">static</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">AsyncMethod</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">Delay</span><span class="p">(</span><span class="m">1000</span><span class="p">);</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;AsyncMethod&quot;</span><span class="p">);</span>
+    <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">Delay</span><span class="p">(</span><span class="m">1000</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 出力結果</span>
+<span class="c1">// Started</span>
+<span class="c1">// AsyncMethod</span>
+<span class="c1">// Completed</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>Task.Yield</p>
+<ul>
+<li><p>Yield メソッドは、何の機能も持たず、ただ、待っている他の処理に実行チャンスを与える</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">task</span> <span class="p">=</span> <span class="n">subB</span><span class="p">();</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">10</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">ToString</span><span class="p">()+</span><span class="s">&quot;, &quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">await</span> <span class="n">task</span><span class="p">;</span>
+
+<span class="k">async</span> <span class="n">Task</span> <span class="nf">subB</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">x</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="kt">int</span><span class="p">.</span><span class="n">MaxValue</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+    <span class="p">{</span>
+        <span class="n">x</span> <span class="p">+=</span> <span class="n">Random</span><span class="p">.</span><span class="n">Shared</span><span class="p">.</span><span class="n">Next</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="p">%</span> <span class="m">100</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span> <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">Yield</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 出力結果</span>
+<span class="c1">// 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>ObserveOn</p>
+<ul>
+<li><p>イベント元に関わらず、専用スレッドでSubscribe処理が実行される（非同期処理）</p></li>
+<li><p>イベント発行後の最後？に処理される</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 内部のイベント処理用のスケジューラを専用に持たせる</span>
+<span class="c1">// ThreadPoolは利用しないことを明確にする</span>
+<span class="kt">var</span> <span class="n">scheduler</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EventLoopScheduler</span><span class="p">(</span><span class="n">a</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="n">Thread</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;{_aaa}&quot;</span><span class="p">,</span> <span class="n">IsBackground</span> <span class="p">=</span> <span class="k">true</span> <span class="p">});</span>
+
+<span class="n">_</span> <span class="p">=</span> <span class="n">_device</span><span class="p">.</span><span class="n">OnHogeEventFired</span>
+    <span class="p">.</span><span class="n">ObserveOn</span><span class="p">(</span><span class="n">scheduler</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">arg</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>イベントの書き方の王道</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">abstract</span> <span class="k">class</span> <span class="nc">HogeBase</span> <span class="p">:</span> <span class="n">IDisposable</span>
+<span class="p">{</span>
+  <span class="k">protected</span> <span class="n">Subject</span><span class="p">&lt;</span><span class="n">HogeEvent</span><span class="p">&gt;</span> <span class="n">_onHogeEventFired</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="k">new</span><span class="p">();</span>
+  <span class="k">public</span> <span class="n">IObservable</span><span class="p">&lt;</span><span class="n">HogeEvent</span><span class="p">&gt;</span> <span class="n">OnHogeEventFired</span> <span class="p">=&gt;</span> <span class="n">_onHogeEventFired</span><span class="p">;</span>
+  <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="nf">Dispose</span><span class="p">()</span> <span class="p">=&gt;</span> <span class="n">_onHogeEventFired</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// イベント引数を持たせるよりも、イベントとして分けた方が拡張性が高い</span>
+<span class="c1">// ・各イベントに引数を持たすことができる</span>
+<span class="c1">// ・イベントでフィルタリングできる</span>
+<span class="k">public</span> <span class="k">abstract</span> <span class="k">class</span> <span class="nf">HogeEvent</span><span class="p">();</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nf">Hoge1Event</span><span class="p">()</span> <span class="p">:</span> <span class="n">HogeEvent</span><span class="p">;</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nf">Hoge2Event</span><span class="p">()</span> <span class="p">:</span> <span class="n">HogeEvent</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>イベントが発行されるまで待機する方法</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">WeighZero</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">using</span> <span class="nn">var</span> <span class="n">cts</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CancellationTokenSource</span><span class="p">();</span>
+  <span class="k">using</span> <span class="nn">var</span> <span class="n">_</span> <span class="p">=</span> <span class="n">_device</span><span class="p">.</span><span class="n">WeighZero</span><span class="p">().</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="n">cts</span><span class="p">.</span><span class="n">Cancel</span><span class="p">());</span>
+  <span class="k">try</span>
+  <span class="p">{</span>
+      <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">Delay</span><span class="p">(</span><span class="n">Timeout</span><span class="p">.</span><span class="n">InfiniteTimeSpan</span><span class="p">,</span> <span class="n">cts</span><span class="p">.</span><span class="n">Token</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">catch</span> <span class="p">(</span><span class="n">TaskCanceledException</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>lock ステートメントはあくまで「スレッド間」を排他するものであり、同じスレッドの再帰的な動きには効果がない</p></li>
+<li><p><a class="reference external" href="https://zenn.dev/trs_game/articles/5c4a52d87f69c2">ifの条件部分で変数定義する</a></p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">inventory</span><span class="p">.</span><span class="n">GetItem</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="k">is</span> <span class="kt">var</span> <span class="n">item</span> <span class="p">&amp;&amp;</span> <span class="n">item</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">DoFuga</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p><a class="reference external" href="https://qiita.com/emoacht/items/dc1c40769dc6cdc1ef44">プロパティのパターンマッチング</a></p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="k">is</span> <span class="p">{</span> <span class="n">X</span><span class="p">:</span> <span class="m">10</span><span class="p">,</span> <span class="n">Y</span><span class="p">:</span> <span class="m">10</span> <span class="p">})</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="k">is</span> <span class="p">{</span> <span class="n">X</span><span class="p">:</span> <span class="m">10</span><span class="p">,</span> <span class="n">Y</span><span class="p">:</span> <span class="p">&gt;</span> <span class="m">0</span> <span class="p">})</span>
+
+<span class="c1">// 下記2つは同じ意味</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="k">is</span> <span class="p">{</span> <span class="n">X</span><span class="p">:</span> <span class="m">10</span><span class="p">,</span> <span class="n">Y</span><span class="p">:</span> <span class="n">_</span> <span class="p">})</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="k">is</span> <span class="p">{</span> <span class="n">X</span><span class="p">:</span> <span class="m">10</span> <span class="p">})</span>
+
+<span class="c1">// 下記2つは同じ意味</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="k">is</span> <span class="p">{</span> <span class="p">})</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="k">is</span> <span class="n">not</span> <span class="k">null</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p><a class="reference external" href="https://ufcpp.net/study/csharp/datatype/collection-expression/">スプレッド(spread)演算子</a></p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// コレクション式中では、.. を使うことで「別のコレクションの中身の展開」ができる</span>
+<span class="kt">int</span><span class="p">[]</span> <span class="n">array1</span> <span class="p">=</span> <span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">];</span>
+<span class="kt">int</span><span class="p">[]</span> <span class="n">array2</span> <span class="p">=</span> <span class="p">[</span><span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">6</span><span class="p">];</span>
+
+<span class="c1">// 0, 1, 2, 3, 4, 5, 6, 7</span>
+<span class="kt">int</span><span class="p">[]</span> <span class="n">combined</span> <span class="p">=</span> <span class="p">[</span><span class="m">0</span><span class="p">,</span> <span class="p">..</span><span class="n">array1</span><span class="p">,</span> <span class="p">..</span><span class="n">array2</span><span class="p">,</span> <span class="m">7</span><span class="p">];</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p><a class="reference external" href="https://qiita.com/toRisouP/items/60673e4a39319e69fbc0">async/awaitのキャンセル処理まとめ</a></p></li>
+<li><p>Moq</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">XXXTest</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">var</span> <span class="n">productMock</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Mock</span><span class="p">&lt;</span><span class="n">IProduct</span><span class="p">&gt;();</span>
+  <span class="n">productMock</span><span class="p">.</span><span class="n">Setup</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">GetData</span><span class="p">()).</span><span class="n">Returns</span><span class="p">(</span><span class="s">&quot;AAA&quot;</span><span class="p">);</span>
+  <span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="s">&quot;AAA&quot;</span><span class="p">,</span> <span class="n">ModuleB</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">productMock</span><span class="p">.</span><span class="n">Object</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Unity（DIコンテナ）→非推奨になっている</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">vm</span> <span class="p">=</span> <span class="n">DI</span><span class="p">.</span><span class="n">Resolve</span><span class="p">&lt;</span><span class="n">Form1ViewModel</span><span class="p">&gt;();</span>
+
+<span class="k">internal</span> <span class="k">class</span> <span class="nf">Form1ViewModel</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">private</span> <span class="n">IProduct</span> <span class="n">_product</span><span class="p">;</span>
+  <span class="k">internal</span> <span class="nf">Form1ViewModel</span><span class="p">(</span><span class="n">IProduct</span> <span class="n">product</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">_product</span> <span class="p">=</span> <span class="n">product</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">internal</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">DI</span>
+<span class="p">{</span>
+  <span class="k">private</span> <span class="k">static</span> <span class="n">IUnityContainer</span> <span class="n">_container</span> <span class="p">=</span> <span class="k">new</span> <span class="n">UnityContainer</span><span class="p">();</span>
+
+  <span class="k">static</span> <span class="nf">DI</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="c1">// 型の登録</span>
+    <span class="n">_container</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">IProduct</span><span class="p">,</span> <span class="n">Product</span><span class="p">&gt;();</span>
+  <span class="p">}</span>
+
+  <span class="k">internal</span> <span class="k">static</span> <span class="n">T</span> <span class="n">Resolve</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;()</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_container</span><span class="p">.</span><span class="n">Resolve</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Microsoft.Extensions.DependencyInjection（DIコンテナ）→推奨</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">vm</span> <span class="p">=</span> <span class="n">DI</span><span class="p">.</span><span class="n">GetService</span><span class="p">&lt;</span><span class="n">Form1ViewModel</span><span class="p">&gt;();</span>
+
+<span class="k">internal</span> <span class="k">class</span> <span class="nf">Form1ViewModel</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">private</span> <span class="n">IProduct</span> <span class="n">_product</span><span class="p">;</span>
+  <span class="k">internal</span> <span class="nf">Form1ViewModel</span><span class="p">(</span><span class="n">IProduct</span> <span class="n">product</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">_product</span> <span class="p">=</span> <span class="n">product</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">internal</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">DI</span>
+<span class="p">{</span>
+  <span class="k">private</span> <span class="k">static</span> <span class="n">ServiceCollection</span> <span class="n">_container</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ServiceCollection</span><span class="p">();</span>
+  <span class="k">private</span> <span class="k">static</span> <span class="n">ServiceProvider</span> <span class="n">_serviceProvider</span><span class="p">;</span>
+
+  <span class="k">static</span> <span class="nf">DI</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="n">_container</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">Form1ViewModel</span><span class="p">&gt;();</span>
+
+    <span class="c1">// 型の登録</span>
+    <span class="n">_container</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">IProduct</span><span class="p">,</span> <span class="n">Product</span><span class="p">&gt;();</span>
+
+    <span class="n">_serviceProvider</span> <span class="p">=</span> <span class="n">_container</span><span class="p">.</span><span class="n">BuildServiceProvider</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="k">internal</span> <span class="k">static</span> <span class="n">T</span> <span class="n">GetService</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;()</span>
+  <span class="p">{</span>
+    <span class="c1">// GetRrequiredServiceは例外</span>
+    <span class="c1">// GetServicesはNullが返る</span>
+    <span class="k">return</span> <span class="n">_serviceProvider</span><span class="p">.</span><span class="n">GetRequiredService</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Observerパターン</p>
+<ul class="simple">
+<li><p>以下のように呼ばれることもある</p>
+<ul>
+<li><p>Subject/Observer パターン</p></li>
+<li><p>Pulish/Subscribe パターン</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>eventキーワードの意味</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">WarningTimer</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="k">static</span> <span class="n">Action</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="n">WarningAction1</span><span class="p">;</span>
+
+  <span class="c1">// eventを付けることでカプセル化され直接代入できなくなる</span>
+  <span class="c1">// +=/-=でしか設定できなくなる</span>
+  <span class="k">public</span> <span class="k">static</span> <span class="k">event</span> <span class="n">Action</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="n">WarningAction2</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">Form</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="nf">Form</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="n">WarningTimer</span><span class="p">.</span><span class="n">WarningAction1</span> <span class="p">=</span> <span class="n">Func</span><span class="p">;</span>   <span class="c1">// ← OK</span>
+    <span class="n">WarningTimer</span><span class="p">.</span><span class="n">WarningAction2</span> <span class="p">=</span> <span class="n">Func</span><span class="p">;</span>   <span class="c1">// ← コンパイルエラー</span>
+    <span class="n">WarningTimer</span><span class="p">.</span><span class="n">WarningAction2</span> <span class="p">+=</span> <span class="n">Func</span><span class="p">;</span>  <span class="c1">// ← OK</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>event追加時のチェック方法</p>
+<blockquote>
+<div><div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="k">static</span> <span class="n">Action</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="n">_warningAction</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Add</span><span class="p">(</span><span class="n">Action</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="n">action</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">_warningAction</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 既に登録されている場合は何もしない</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">_warningAction</span><span class="p">.</span><span class="n">GetInvocationList</span><span class="p">().</span><span class="n">Contains</span><span class="p">(</span><span class="n">action</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">_warningAction</span> <span class="p">+=</span> <span class="n">action</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>AutoResetEventについて</p>
+<ul class="simple">
+<li><p>Set()するとシグナル状態となる</p></li>
+<li><p>シグナル状態ではWaitOne()を実行してもスルーされ、スレッドは止まらない（次のWaitOne()で止まる）</p></li>
+<li><p>なので、ある判定の結果WaitOne()されることとなったが、WaitOne()のコードを実行される前にSet()が実行された場合でも、スレッドは停止されない</p></li>
+</ul>
+</li>
+<li><p>PadLeft</p>
+<ul>
+<li><p>string型数字文字列において、指定した文字数になるように左側から特定の文字で埋めることができる</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">originalString</span> <span class="p">=</span> <span class="s">&quot;123&quot;</span><span class="p">;</span>
+<span class="kt">var</span> <span class="n">paddedString</span> <span class="p">=</span> <span class="n">originalString</span><span class="p">.</span><span class="n">PadLeft</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="sc">&#39;0&#39;</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">paddedString</span><span class="p">);</span> <span class="c1">// 出力: &quot;00123&quot;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Xaml.html" class="btn btn-neutral float-left" title="Xaml" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="LINQ.html" class="btn btn-neutral float-right" title="LINQ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, tak.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
