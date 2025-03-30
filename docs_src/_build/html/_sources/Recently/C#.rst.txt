@@ -374,3 +374,24 @@ C#
       {
         // 異常終了した場合の例外処理
       }
+
+* Moq
+
+  * メソッド引数に任意の数値の入力を許可する場合のSetupの書き方
+
+    .. code-block:: csharp
+
+      serviceMock.Setup(x.FactoryMethod(It.IsAny<int>()))
+                  .Returns(productMock.Object);
+
+      // 引数を指定する場合は以下
+      serviceMock.Setup(x.FactoryMethod(0))
+                  .Returns(productMock.Object);
+
+  * protectedメソッドに対するSetupの書き方
+
+    .. code-block:: csharp
+
+      serviceMock.Protected()
+                  .Setup<IProduct>("FactoryMethod", ItExpr.IsAny<int>())
+                  .Returns(productMock.Object);
