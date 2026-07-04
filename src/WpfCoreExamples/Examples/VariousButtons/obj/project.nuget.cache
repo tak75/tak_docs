@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5wGMhfsf0qYKpSXt4K4qFquP8Ma935+wXAe3L9zNJZnu5fqDX2HsFY838fvYLGEl1Euea7tGXHl0fBvJrzyW9Q==",
+  "dgSpecHash": "Tt9zoa7cL8M=",
   "success": true,
-  "projectFilePath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\VariousButtons\\VariousButtonsDemo.csproj",
+  "projectFilePath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\VariousButtons\\VariousButtonsDemo.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -1,31 +1,39 @@
 {
   "format": 1,
   "restore": {
-    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj": {}
+    "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj": {}
   },
   "projects": {
-    "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj": {
+    "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj",
+        "projectUniqueName": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj",
         "projectName": "CustomerSettingSamp",
-        "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj",
+        "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj",
         "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
-        "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\obj\\",
+        "outputPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
           "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "framework": "netcoreapp3.1",
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
@@ -34,10 +42,17 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "framework": "netcoreapp3.1",
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "sqlite-net-pcl": {
@@ -51,7 +66,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -63,7 +79,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

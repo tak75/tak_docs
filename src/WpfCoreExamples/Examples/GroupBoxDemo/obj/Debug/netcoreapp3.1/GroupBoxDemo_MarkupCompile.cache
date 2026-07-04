@@ -1,20 +1,20 @@
 ﻿GroupBoxDemo
-
+1.0.0.0
 
 winexe
 C#
 .cs
-G:\work\tak_docs\src\WpfCoreExamples\Examples\GroupBoxDemo\obj\Debug\netcoreapp3.1\
+D:\work\github_tak_docs\src\WpfCoreExamples\Examples\GroupBoxDemo\obj\Debug\netcoreapp3.1\
 GroupBoxDemo
 none
 false
-TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-G:\work\tak_docs\src\WpfCoreExamples\Examples\GroupBoxDemo\App.xaml
-11151548125
+TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER
+D:\work\github_tak_docs\src\WpfCoreExamples\Examples\GroupBoxDemo\App.xaml
+11407045341
 
-3-917710711
-1921654412462
+51282833685
+192-1533232326
 MainWindow.xaml;
 
-False
+True
 

@@ -1,7 +1,7 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {
+    "netcoreapp3.1": {
       "Microsoft.NETCore.Platforms/1.1.0": {
         "type": "package",
         "compile": {
@@ -28,7 +28,9 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
+          "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {
+            "related": ".xml"
+          }
         }
       },
       "NETStandard.Library/1.6.1": {
@@ -258,10 +260,14 @@
           "SQLitePCLRaw.bundle_green": "1.1.13"
         },
         "compile": {
-          "lib/netstandard1.1/SQLite-net.dll": {}
+          "lib/netstandard1.1/SQLite-net.dll": {
+            "related": ".deps.json;.xml"
+          }
         },
         "runtime": {
-          "lib/netstandard1.1/SQLite-net.dll": {}
+          "lib/netstandard1.1/SQLite-net.dll": {
+            "related": ".deps.json;.xml"
+          }
         }
       },
       "SQLitePCLRaw.bundle_green/1.1.13": {
@@ -390,7 +396,9 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.6/System.AppContext.dll": {}
+          "ref/netstandard1.6/System.AppContext.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
           "lib/netstandard1.6/System.AppContext.dll": {}
@@ -420,7 +428,9 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Collections.dll": {}
+          "ref/netstandard1.3/System.Collections.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Collections.Concurrent/4.3.0": {
@@ -438,7 +448,9 @@
           "System.Threading.Tasks": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Collections.Concurrent.dll": {}
+          "ref/netstandard1.3/System.Collections.Concurrent.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.Concurrent.dll": {}
@@ -454,7 +466,9 @@
           "System.Text.Encoding": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Console.dll": {}
+          "ref/netstandard1.3/System.Console.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Diagnostics.Debug/4.3.0": {
@@ -465,7 +479,9 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Diagnostics.Debug.dll": {}
+          "ref/netstandard1.3/System.Diagnostics.Debug.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Diagnostics.DiagnosticSource/4.3.0": {
@@ -478,10 +494,14 @@
           "System.Threading": "4.3.0"
         },
         "compile": {
-          "lib/netstandard1.3/_._": {}
+          "lib/netstandard1.3/_._": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
+          "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Diagnostics.Tools/4.3.0": {
@@ -492,7 +512,9 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/System.Diagnostics.Tools.dll": {}
+          "ref/netstandard1.0/System.Diagnostics.Tools.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Diagnostics.Tracing/4.3.0": {
@@ -503,7 +525,9 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.5/System.Diagnostics.Tracing.dll": {}
+          "ref/netstandard1.5/System.Diagnostics.Tracing.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Globalization/4.3.0": {
@@ -514,7 +538,9 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Globalization.dll": {}
+          "ref/netstandard1.3/System.Globalization.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Globalization.Calendars/4.3.0": {
@@ -526,7 +552,9 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Globalization.Calendars.dll": {}
+          "ref/netstandard1.3/System.Globalization.Calendars.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Globalization.Extensions/4.3.0": {
@@ -540,7 +568,9 @@
           "System.Runtime.InteropServices": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/_._": {
+            "related": ".xml"
+          }
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.3/System.Globalization.Extensions.dll": {
@@ -563,7 +593,9 @@
           "System.Threading.Tasks": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.5/System.IO.dll": {}
+          "ref/netstandard1.5/System.IO.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.IO.Compression/4.3.0": {
@@ -586,7 +618,9 @@
           "runtime.native.System.IO.Compression": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.IO.Compression.dll": {}
+          "ref/netstandard1.3/System.IO.Compression.dll": {
+            "related": ".xml"
+          }
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.3/System.IO.Compression.dll": {
@@ -613,7 +647,9 @@
           "System.Text.Encoding": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.IO.Compression.ZipFile.dll": {}
+          "ref/netstandard1.3/System.IO.Compression.ZipFile.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
           "lib/netstandard1.3/System.IO.Compression.ZipFile.dll": {}
@@ -632,7 +668,9 @@
           "System.Threading.Tasks": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.IO.FileSystem.dll": {}
+          "ref/netstandard1.3/System.IO.FileSystem.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.IO.FileSystem.Primitives/4.3.0": {
@@ -641,7 +679,9 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.IO.FileSystem.Primitives.dll": {}
+          "ref/netstandard1.3/System.IO.FileSystem.Primitives.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
           "lib/netstandard1.3/System.IO.FileSystem.Primitives.dll": {}
@@ -657,7 +697,9 @@
           "System.Runtime.Extensions": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.6/System.Linq.dll": {}
+          "ref/netstandard1.6/System.Linq.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
           "lib/netstandard1.6/System.Linq.dll": {}
@@ -685,7 +727,9 @@
           "System.Threading": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.6/System.Linq.Expressions.dll": {}
+          "ref/netstandard1.6/System.Linq.Expressions.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
           "lib/netstandard1.6/System.Linq.Expressions.dll": {}
@@ -722,7 +766,9 @@
           "runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Net.Http.dll": {}
+          "ref/netstandard1.3/System.Net.Http.dll": {
+            "related": ".xml"
+          }
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.6/System.Net.Http.dll": {
@@ -744,7 +790,9 @@
           "System.Runtime.Handles": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Net.Primitives.dll": {}
+          "ref/netstandard1.3/System.Net.Primitives.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Net.Sockets/4.3.0": {
@@ -758,7 +806,9 @@
           "System.Threading.Tasks": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Net.Sockets.dll": {}
+          "ref/netstandard1.3/System.Net.Sockets.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.ObjectModel/4.3.0": {
@@ -771,7 +821,9 @@
           "System.Threading": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.ObjectModel.dll": {}
+          "ref/netstandard1.3/System.ObjectModel.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
           "lib/netstandard1.3/System.ObjectModel.dll": {}
@@ -787,7 +839,9 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.5/System.Reflection.dll": {}
+          "ref/netstandard1.5/System.Reflection.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Reflection.Emit/4.3.0": {
@@ -800,7 +854,9 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.1/_._": {}
+          "ref/netstandard1.1/_._": {
+            "related": ".xml"
+          }
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.dll": {}
@@ -814,7 +870,9 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/_._": {}
+          "ref/netstandard1.0/_._": {
+            "related": ".xml"
+          }
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.ILGeneration.dll": {}
@@ -829,7 +887,9 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/_._": {}
+          "ref/netstandard1.0/_._": {
+            "related": ".xml"
+          }
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.Lightweight.dll": {}
@@ -844,7 +904,9 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/System.Reflection.Extensions.dll": {}
+          "ref/netstandard1.0/System.Reflection.Extensions.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Reflection.Primitives/4.3.0": {
@@ -855,7 +917,9 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/System.Reflection.Primitives.dll": {}
+          "ref/netstandard1.0/System.Reflection.Primitives.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Reflection.TypeExtensions/4.3.0": {
@@ -865,7 +929,9 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.5/_._": {}
+          "ref/netstandard1.5/_._": {
+            "related": ".xml"
+          }
         },
         "runtime": {
           "lib/netstandard1.5/System.Reflection.TypeExtensions.dll": {}
@@ -881,7 +947,9 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/System.Resources.ResourceManager.dll": {}
+          "ref/netstandard1.0/System.Resources.ResourceManager.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Runtime/4.3.0": {
@@ -891,7 +959,9 @@
           "Microsoft.NETCore.Targets": "1.1.0"
         },
         "compile": {
-          "ref/netstandard1.5/System.Runtime.dll": {}
+          "ref/netstandard1.5/System.Runtime.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Runtime.Extensions/4.3.0": {
@@ -902,7 +972,9 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.5/System.Runtime.Extensions.dll": {}
+          "ref/netstandard1.5/System.Runtime.Extensions.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Runtime.Handles/4.3.0": {
@@ -913,7 +985,9 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Runtime.Handles.dll": {}
+          "ref/netstandard1.3/System.Runtime.Handles.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Runtime.InteropServices/4.3.0": {
@@ -967,7 +1041,9 @@
           "System.Runtime.Extensions": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.1/System.Runtime.Numerics.dll": {}
+          "ref/netstandard1.1/System.Runtime.Numerics.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
           "lib/netstandard1.3/System.Runtime.Numerics.dll": {}
@@ -1086,7 +1162,9 @@
           "runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Security.Cryptography.Encoding.dll": {}
+          "ref/netstandard1.3/System.Security.Cryptography.Encoding.dll": {
+            "related": ".xml"
+          }
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.3/System.Security.Cryptography.Encoding.dll": {
@@ -1177,7 +1255,9 @@
           "runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.4/System.Security.Cryptography.X509Certificates.dll": {}
+          "ref/netstandard1.4/System.Security.Cryptography.X509Certificates.dll": {
+            "related": ".xml"
+          }
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.6/System.Security.Cryptography.X509Certificates.dll": {
@@ -1198,7 +1278,9 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Text.Encoding.dll": {}
+          "ref/netstandard1.3/System.Text.Encoding.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Text.Encoding.Extensions/4.3.0": {
@@ -1210,7 +1292,9 @@
           "System.Text.Encoding": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Text.Encoding.Extensions.dll": {}
+          "ref/netstandard1.3/System.Text.Encoding.Extensions.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Text.RegularExpressions/4.3.0": {
@@ -1232,7 +1316,9 @@
           "System.Threading.Tasks": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Threading.dll": {}
+          "ref/netstandard1.3/System.Threading.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
           "lib/netstandard1.3/System.Threading.dll": {}
@@ -1246,7 +1332,9 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Threading.Tasks.dll": {}
+          "ref/netstandard1.3/System.Threading.Tasks.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Threading.Tasks.Extensions/4.3.0": {
@@ -1257,10 +1345,14 @@
           "System.Threading.Tasks": "4.3.0"
         },
         "compile": {
-          "lib/netstandard1.0/_._": {}
+          "lib/netstandard1.0/_._": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netstandard1.0/System.Threading.Tasks.Extensions.dll": {}
+          "lib/netstandard1.0/System.Threading.Tasks.Extensions.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Threading.Timer/4.3.0": {
@@ -1271,7 +1363,9 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.2/System.Threading.Timer.dll": {}
+          "ref/netstandard1.2/System.Threading.Timer.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Xml.ReaderWriter/4.3.0": {
@@ -1294,7 +1388,9 @@
           "System.Threading.Tasks.Extensions": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Xml.ReaderWriter.dll": {}
+          "ref/netstandard1.3/System.Xml.ReaderWriter.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.ReaderWriter.dll": {}
@@ -1317,7 +1413,9 @@
           "System.Xml.ReaderWriter": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Xml.XDocument.dll": {}
+          "ref/netstandard1.3/System.Xml.XDocument.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
@@ -5284,7 +5382,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": [
+    "netcoreapp3.1": [
       "AnimatedButton >= 1.0.0",
       "ButtonDemo >= 1.0.0",
       "CanvasDemo >= 1.0.0",
@@ -5317,118 +5415,128 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tak_i\\.nuget\\packages\\": {}
+    "C:\\Users\\tak_i\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\ExampleBrowser\\ExampleBrowser.csproj",
+      "projectUniqueName": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\ExampleBrowser\\ExampleBrowser.csproj",
       "projectName": "ExampleBrowser",
-      "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\ExampleBrowser\\ExampleBrowser.csproj",
+      "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\ExampleBrowser\\ExampleBrowser.csproj",
       "packagesPath": "C:\\Users\\tak_i\\.nuget\\packages\\",
-      "outputPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\ExampleBrowser\\obj\\",
+      "outputPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\ExampleBrowser\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
         "C:\\Users\\tak_i\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "framework": "netcoreapp3.1",
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\ButtonDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\ButtonDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\ButtonDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\ButtonDemo\\ButtonDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CanvasDemo\\CanvasDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CanvasDemo\\CanvasDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\CanvasDemo\\CanvasDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\CanvasDemo\\CanvasDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CheckBoxDemo\\CheckBoxDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CheckBoxDemo\\CheckBoxDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\CheckBoxDemo\\CheckBoxDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\CheckBoxDemo\\CheckBoxDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ComboBoxDemo\\ComboBoxDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ComboBoxDemo\\ComboBoxDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\ComboBoxDemo\\ComboBoxDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\ComboBoxDemo\\ComboBoxDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ControlTemplateDemo\\ControlTemplateDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ControlTemplateDemo\\ControlTemplateDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\ControlTemplateDemo\\ControlTemplateDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\ControlTemplateDemo\\ControlTemplateDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CustomButtonDemo\\CustomButtonDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CustomButtonDemo\\CustomButtonDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\CustomButtonDemo\\CustomButtonDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\CustomButtonDemo\\CustomButtonDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\DataTemplateDemo\\DataTemplateDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\DataTemplateDemo\\DataTemplateDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\DataTemplateDemo\\DataTemplateDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\DataTemplateDemo\\DataTemplateDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\DockPanelDemo\\DockPanelDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\DockPanelDemo\\DockPanelDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\DockPanelDemo\\DockPanelDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\DockPanelDemo\\DockPanelDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ExpanderDemo\\ExpanderDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ExpanderDemo\\ExpanderDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\ExpanderDemo\\ExpanderDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\ExpanderDemo\\ExpanderDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\GridDemo\\GridDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\GridDemo\\GridDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\GridDemo\\GridDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\GridDemo\\GridDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\GroupBoxDemo\\GroupBoxDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\GroupBoxDemo\\GroupBoxDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\GroupBoxDemo\\GroupBoxDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\GroupBoxDemo\\GroupBoxDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\HelloWorld\\HelloWorld.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\HelloWorld\\HelloWorld.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\HelloWorld\\HelloWorld.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\HelloWorld\\HelloWorld.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ListBoxDemo\\ListBoxDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ListBoxDemo\\ListBoxDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\ListBoxDemo\\ListBoxDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\ListBoxDemo\\ListBoxDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ListViewDemo\\ListViewDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ListViewDemo\\ListViewDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\ListViewDemo\\ListViewDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\ListViewDemo\\ListViewDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\MenuDemo\\MenuDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\MenuDemo\\MenuDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\MenuDemo\\MenuDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\MenuDemo\\MenuDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ProgressBarDemo\\ProgressBarDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ProgressBarDemo\\ProgressBarDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\ProgressBarDemo\\ProgressBarDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\ProgressBarDemo\\ProgressBarDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\RadioButtonDemo\\RadioButtonDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\RadioButtonDemo\\RadioButtonDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\RadioButtonDemo\\RadioButtonDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\RadioButtonDemo\\RadioButtonDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\SliderDemo\\SliderDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\SliderDemo\\SliderDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\SliderDemo\\SliderDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\SliderDemo\\SliderDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\SQLiteDemo\\SQLiteDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\SQLiteDemo\\SQLiteDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\SQLiteDemo\\SQLiteDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\SQLiteDemo\\SQLiteDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\StatusBarDemo\\StatusBarDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\StatusBarDemo\\StatusBarDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\StatusBarDemo\\StatusBarDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\StatusBarDemo\\StatusBarDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TabControlDemo\\TabControlDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TabControlDemo\\TabControlDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\TabControlDemo\\TabControlDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\TabControlDemo\\TabControlDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TextBlock_TextBoxDemo\\TextBlock_TextBoxDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TextBlock_TextBoxDemo\\TextBlock_TextBoxDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\TextBlock_TextBoxDemo\\TextBlock_TextBoxDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\TextBlock_TextBoxDemo\\TextBlock_TextBoxDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ToolBarDemo\\ToolBarDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ToolBarDemo\\ToolBarDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\ToolBarDemo\\ToolBarDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\ToolBarDemo\\ToolBarDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TreeViewDemo\\TreeViewDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TreeViewDemo\\TreeViewDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\TreeViewDemo\\TreeViewDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\TreeViewDemo\\TreeViewDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TriggerDemo\\TriggerDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\TriggerDemo\\TriggerDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\TriggerDemo\\TriggerDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\TriggerDemo\\TriggerDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\VariousButtons\\VariousButtonsDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\VariousButtons\\VariousButtonsDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\VariousButtons\\VariousButtonsDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\VariousButtons\\VariousButtonsDemo.csproj"
             },
-            "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\WrapPanelDemo\\WrapPanelDemo.csproj": {
-              "projectPath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\WrapPanelDemo\\WrapPanelDemo.csproj"
+            "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\WrapPanelDemo\\WrapPanelDemo.csproj": {
+              "projectPath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\WrapPanelDemo\\WrapPanelDemo.csproj"
             }
           }
         }
@@ -5437,10 +5545,17 @@
         "warnAsError": [
           "NU1605"
         ]
-      }
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "framework": "netcoreapp3.1",
         "targetAlias": "netcoreapp3.1",
         "imports": [
           "net461",
@@ -5448,7 +5563,8 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -5460,7 +5576,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

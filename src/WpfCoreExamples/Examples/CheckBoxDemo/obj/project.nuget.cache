@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SUkGCPuKPbePfrOjb5QrWgz1W3TVZf5rtTTnzGU8ftFSstes6GyW5aNmArZS0ILIGwyOG3rVoJ2LtIs0DpkAyA==",
+  "dgSpecHash": "T8jLgrmSO0w=",
   "success": true,
-  "projectFilePath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CheckBoxDemo\\CheckBoxDemo.csproj",
+  "projectFilePath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\CheckBoxDemo\\CheckBoxDemo.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TLbawJg4V9LLkqI5uUSOYkfbKjpFlhpPMDJmhfO+7mljP2QzfgoJXFleRPKsOhKYKiA7L3YjdETlQlj+ZEdMPQ==",
+  "dgSpecHash": "M5T/yup1IH4=",
   "success": true,
-  "projectFilePath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\GroupBoxDemo\\GroupBoxDemo.csproj",
+  "projectFilePath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\GroupBoxDemo\\GroupBoxDemo.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cZ0vQ7IYLTDzz0LTxozZgtLHhdRrO05o0VvzeOvhg9TX+8C4a00AHQjo4RprTGYh8fKB82kC6g8/03miVYeysw==",
+  "dgSpecHash": "Vy1ANUyTCC0=",
   "success": true,
-  "projectFilePath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\RadioButtonDemo\\RadioButtonDemo.csproj",
+  "projectFilePath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\RadioButtonDemo\\RadioButtonDemo.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

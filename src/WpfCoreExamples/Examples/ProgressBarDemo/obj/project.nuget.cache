@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "n+tthZn2dRM9FcBsrag3T8ovg8JeDzSvOh0eMNioxz7NlgX4b4vSdzkFwE0GyQC2urAtPJ4VWlt7U0txf0xQew==",
+  "dgSpecHash": "DQDxUVgs5us=",
   "success": true,
-  "projectFilePath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ProgressBarDemo\\ProgressBarDemo.csproj",
+  "projectFilePath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\ProgressBarDemo\\ProgressBarDemo.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

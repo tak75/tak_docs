@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EvU7+X2+MrdWs7AiYEQugBhgy6T15FKfLNrEeU4mDYYNpCwsbcXASxn4nPXcJIqFV1O/BlPtBHyascTtYY8Prg==",
+  "dgSpecHash": "kYYHpg2ppcQ=",
   "success": true,
-  "projectFilePath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\ExampleBrowser\\ExampleBrowser.csproj",
+  "projectFilePath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\ExampleBrowser\\ExampleBrowser.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tak_i\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\tak_i\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",

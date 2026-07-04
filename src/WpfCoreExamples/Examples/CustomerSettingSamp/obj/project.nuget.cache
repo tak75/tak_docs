@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rHU3W5zAeeqppWzYkUewnooSBSagR560ckMyhptNAi3LV3ZziQVjQwRB8PRnbmCedD8tbp3knLNkD8GmEcLBqA==",
+  "dgSpecHash": "Z2dA1whPrxc=",
   "success": true,
-  "projectFilePath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj",
+  "projectFilePath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\CustomerSettingSamp\\CustomerSettingSamp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tak_i\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\tak_i\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",

@@ -1,20 +1,20 @@
 ﻿SQLiteDemo
-
+1.0.0.0
 
 winexe
 C#
 .cs
-G:\work\tak_docs\src\WpfCoreExamples\Examples\SQLiteDemo\obj\Debug\netcoreapp3.1\
+D:\work\github_tak_docs\src\WpfCoreExamples\Examples\SQLiteDemo\obj\Debug\netcoreapp3.1\
 SQLiteDemo
 none
 false
-TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-G:\work\tak_docs\src\WpfCoreExamples\Examples\SQLiteDemo\App.xaml
-11151548125
+TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER
+D:\work\github_tak_docs\src\WpfCoreExamples\Examples\SQLiteDemo\App.xaml
+11407045341
 
-4677138365
-197927245283
+6-141438549
+197107442633
 MainWindow.xaml;
 
-False
+True
 

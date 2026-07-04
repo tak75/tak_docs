@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AHlTdFG0i19PTH3SzeDR0qZVCrcq8yDySlX0D0mbz1ZfbnE2c6repi3rBsi1VeL9p63pMUOcwV+ANJbpb3JvlA==",
+  "dgSpecHash": "Z+0IM5p4KY8=",
   "success": true,
-  "projectFilePath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj",
+  "projectFilePath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\AnimatedButton\\AnimatedButton.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

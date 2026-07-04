@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Psl/gBTtw1M4oe01416xW60HZNjSNZ031sNhWHxwS5ie37r01yX4w9T+R60Gu1z7nwDU2Mv090pkQ6EiRQEeCA==",
+  "dgSpecHash": "j3ZkrPLbRP8=",
   "success": true,
-  "projectFilePath": "D:\\work\\tak_docs.git\\trunk\\src\\WpfCoreExamples\\Examples\\ListViewDemo\\ListViewDemo.csproj",
+  "projectFilePath": "D:\\work\\github_tak_docs\\src\\WpfCoreExamples\\Examples\\ListViewDemo\\ListViewDemo.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

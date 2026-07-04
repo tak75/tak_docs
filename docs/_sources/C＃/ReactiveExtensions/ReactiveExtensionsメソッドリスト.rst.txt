@@ -453,7 +453,7 @@ ReactiveExtensionsメソッドリスト
    * - 
      - :term:`Buffer`
      - .. figure:: images/Buffer.png
-     - * メッセージを一定個数ごとにまとめる
+     - * メッセージを 一定個数 or 一定時間 ごとにまとめる
        * あるObservableにメッセージが来るまで値を塞き止めてまとめる
      - * 第二引数を指定することで挙動が変わる
        * 引数にObservableを渡す
